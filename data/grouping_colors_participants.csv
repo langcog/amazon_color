@@ -1,0 +1,24 @@
+subj,orden,género,edad,edad aprendizaje del espanol,ocupación,donde ha crecido (los primeros 15 años),fecha,grabación,lugar de grabación
+gc_1,1,femenino,61,5,artesana,c.c.n.n. (san francisco),10/07/2017,1,san francisco
+gc_2,1,femenino,42,5,artesana,san francisco,10/07/2017,2,san francisco
+gc_3,1,femenino,47,10,artesana,c.c.n.n. betania,10/07/2017,3,san francisco
+gc_4,1,femenino,20,8,artesana,c.c.n.n. (eden),09/07/2017,1,bena jema
+gc_5,1,femenino,20,5,estudiante,c.c.n.n. (eden),09/07/2017,2,bena jema
+gc_6,1,femenino,27,5,artesana,c.c.n.n. (panayllo),09/07/2017,4,bena jema
+gc_7,1,femenino,30,8,artesana,c.c.n.n. (bethijai),29/07/2017,5,bena jema
+gc_8,1,femenino,49,8,artesana,c.c.n.n. (caco macaya),09/07/2017,3,bena jema
+gc_9,2,femenino,58,10,artesana,calleria,10/07/2017,5,san francisco
+gc_10,2,femenino,64,12,artesana,calleria,10/07/2017,4,san francisco
+gc_11,2,femenino,28,5,artesana,c.c.n.n. (iparia),13/07/2017,3,bena jema
+gc_12,2,femenino,38,5,ama de casa,c.c.n.n. (irazola),13/07/2017,2,bena jema
+gc_13,2,femenino,26,5,artesana,c.c.n.n. (olaya),13/07/2017,1,bena jema
+gc_14,3,femenino,32,10,estudiante,c.c.n.n. (pto belen),11/07/2017,2,bilingue
+gc_15,3,femenino,40,8,artesana,pachitea,11/07/2017,1,bilingue
+gc_16,3,masculino,56,6,pescador,c.c.n.n. (pto belen),11/07/2017,4,bilingue
+gc_17,3,femenino,38,10,ama de casa,pahoyan,11/07/2017,3,bilingue
+gc_18,4,femenino,45,5,artesana,c.c.n.n. (san francisco),26/07/2017,5,san francisco
+gc_19,4,femenino,41,5,artesana,c.c.n.n. (san francisco),26/07/2017,4,san francisco
+gc_20,4,masculino,50,3,agricultor,c.c.n.n. (san francisco),26/07/2017,3,san francisco
+gc_21,3,femenino,38,4,artesana,c.c.n.n. (san francisco),26/07/2017,2,san francisco
+gc_22,3,femenino,48,3,artesana,san francisco,26/07/2017,1,san francisco
+gc_23,4,femenino,41,3,artesana,c.c.n.n. (bethez),27/07/2017,1,a.a.h.h. (commandante suarez)
