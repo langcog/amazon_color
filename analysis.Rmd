@@ -1,0 +1,200 @@
+---
+title: Characterizing Color Term Knowledge in Adults and Children in the Peruvian Shipibo Tribe
+author: 
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    highlight: tango
+    theme: spacelab
+---
+
+```{r setup, echo = FALSE}
+library(knitr)
+opts_chunk$set(message = FALSE, warning = FALSE, cache = TRUE, fig.align = "center")
+```
+
+```{r, cache = FALSE, echo = FALSE}
+library(tidyverse)
+library(magrittr)
+
+```
+
+Load in CSV data
+```{r}
+
+naming_data <- read_csv("data/naming_colors_participants.csv") %>%
+  left_join(read_csv("data/naming_colors_data.csv"), by = 'subj')
+
+grouping_data <- read_csv("data/grouping_colors_participants.csv") %>%
+  left_join(read_csv("data/grouping_colors_data.csv"), by = 'subj')
+
+shipibo_child_data <- read_csv("data/shipibo_children_colors_participants.csv") %>%
+  left_join(read_csv("data/shipibo_children_colors_data.csv"), by = 'subj')
+
+spanish_child_data <- read_csv("data/spanish_children_colors_participants.csv") %>%
+  left_join(read_csv("data/spanish_children_colors_data.csv"), by = 'subj')
+
+color_chip_data <- read_csv("data/wcs_measures.csv", skip = 1)
+
+spelling_list <- c(
+    `Ami` = c('ami'),
+    `Ambi` = c('ambi'),
+    `Barin Poi` = c('barin pui', 'barrin pui', 'barrinpui', 'pui', 'barin poi', 'barrin poi'),
+    `Bexnan` = c('berrnan', 'bexna', 'bexnan'),
+    `Kari` = c('cari', 'carri', 'kari', 'karri'),
+    `Chexe` = c('chese', 'chexe'),
+    `Chimapo` = c('chimapu'),
+    `Emo` = c('emu'),
+    `Jimi` = c('jimi'),
+    `Joshin` = c('joshin', 'joxin'),
+    `Joxo` = c('josho', 'joxo'),
+    `Kasho` = c('kashos'),
+    `Keskiti` = c('kex keti'),
+    `Koin` = c('kuin'),
+    `Kononbi` = c('kunumbi'),
+    `Konron` = c('korrum', 'kumrrum', 'kunrrum'),
+    `Koro` = c('coro'),
+    `Mai` = c('mai'),
+    `Mandi` = c('mandi'),
+    `Manxan` = c('manrran', 'manshan', 'manxam', 'manxan', 'maxan', 'maxna'),
+    `Maxe` = c('maxe'),
+    `Nai` = c('nai', 'nia'),
+    `Oxne` = c('oshne'),
+    `Pei` = c('pei'),
+    `Poa` = c('pua'),
+    `Pene` = c('pene'),
+    `Panshin` = c('panshin'),
+    `Pasna` = c('paxsna', 'pasna'),
+    `Paxna` = c('parrna', 'paxna'),
+    `Ranchesh` = c('ranchex'),
+    `Tena` = c('tena'),
+    `Wiso` = c('wiso'),
+    `Xena` = c('xena'),
+    `Xo` = c('xo'),
+    `Xexe` = c('xexe', 'xexi'),
+    `Yame` = c('rayame', 'yame'),
+    `Yankon` = c('rayanko', 'yankom', 'yankon', 'yankum', 'yankun')
+  )
+
+```
+
+```{r}
+naming_data %<>%
+  mutate(color_cat = ifelse(is.na(color_cat), first_response, color_cat)) %>%
+  mutate(color_cat = ifelse(color_cat %in% unlist(spelling_list), color_cat, NA)) %>%
+  mutate(color_cat = ifelse(is.na(color_cat), 'N/A', color_cat)) %>%
+  mutate(color_cat = forcats::fct_collapse(color_cat, 
+                                          `Ami` = c('ami'),
+                                          `Ambi` = c('ambi'),
+                                          `Barin Poi` = c('barin pui', 'barrin pui', 'barrinpui', 'pui', 'barin poi', 'barrin poi'),
+                                          `Bexnan` = c('berrnan', 'bexna', 'bexnan'),
+                                          `Kari` = c('cari', 'carri', 'kari', 'karri'),
+                                          `Chexe` = c('chese', 'chexe'),
+                                          `Chimapo` = c('chimapu'),
+                                          `Emo` = c('emu'),
+                                          `Jimi` = c('jimi'),
+                                          `Joshin` = c('joshin', 'joxin'),
+                                          `Joxo` = c('josho', 'joxo'),
+                                          `Kasho` = c('kashos'),
+                                          `Keskiti` = c('kex keti'),
+                                          `Koin` = c('kuin'),
+                                          `Kononbi` = c('kunumbi'),
+                                          `Konron` = c('korrum', 'kumrrum', 'kunrrum'),
+                                          `Koro` = c('coro'),
+                                          `Mai` = c('mai'),
+                                          `Mandi` = c('mandi'),
+                                          `Manxan` = c('manrran', 'manshan', 'manxam', 'manxan', 'maxan', 'maxna'),
+                                          `Maxe` = c('maxe'),
+                                          `Nai` = c('nai', 'nia'),
+                                          `Oxne` = c('oshne'),
+                                          `Pei` = c('pei'),
+                                          `Poa` = c('pua'),
+                                          `Pene` = c('pene'),
+                                          `Panshin` = c('panshin'),
+                                          `Pasna` = c('paxsna', 'pasna'),
+                                          `Paxna` = c('parrna', 'paxna'),
+                                          `Ranchesh` = c('ranchex'),
+                                          `Tena` = c('tena'),
+                                          `Wiso` = c('wiso'),
+                                          `Xena` = c('xena'),
+                                          `Xo` = c('xo'),
+                                          `Xexe` = c('xexe', 'xexi'),
+                                          `Yame` = c('rayame', 'yame'),
+                                          `Yankon` = c('rayanko', 'yankom', 'yankon', 'yankum', 'yankun'),
+                                          `NA` = c('N/A')))
+
+grouping_data %<>%
+  mutate(`nombre del grupo` = ifelse(`nombre del grupo` %in% unlist(spelling_list), 
+                                     `nombre del grupo`, NA)) %>%
+  mutate(`nombre del grupo` = ifelse(is.na(`nombre del grupo`), 'N/A', `nombre del grupo`)) %>%
+  mutate(`nombre del grupo` = forcats::fct_collapse(`nombre del grupo`, 
+                                          `Ami` = c('ami'),
+                                          `Ambi` = c('ambi'),
+                                          `Barin Poi` = c('barin pui', 'barrin pui', 'barrinpui', 'pui', 'barin poi', 'barrin poi'),
+                                          `Bexnan` = c('berrnan', 'bexna', 'bexnan'),
+                                          `Kari` = c('cari', 'carri', 'kari', 'karri'),
+                                          `Chexe` = c('chese', 'chexe'),
+                                          `Chimapo` = c('chimapu'),
+                                          `Emo` = c('emu'),
+                                          `Jimi` = c('jimi'),
+                                          `Joshin` = c('joshin', 'joxin'),
+                                          `Joxo` = c('josho', 'joxo'),
+                                          `Kasho` = c('kashos'),
+                                          `Keskiti` = c('kex keti'),
+                                          `Koin` = c('kuin'),
+                                          `Kononbi` = c('kunumbi'),
+                                          `Konron` = c('korrum', 'kumrrum', 'kunrrum'),
+                                          `Koro` = c('coro'),
+                                          `Mai` = c('mai'),
+                                          `Mandi` = c('mandi'),
+                                          `Manxan` = c('manrran', 'manshan', 'manxam', 'manxan', 'maxan', 'maxna'),
+                                          `Maxe` = c('maxe'),
+                                          `Nai` = c('nai', 'nia'),
+                                          `Oxne` = c('oshne'),
+                                          `Pei` = c('pei'),
+                                          `Poa` = c('pua'),
+                                          `Pene` = c('pene'),
+                                          `Panshin` = c('panshin'),
+                                          `Pasna` = c('paxsna', 'pasna'),
+                                          `Paxna` = c('parrna', 'paxna'),
+                                          `Ranchesh` = c('ranchex'),
+                                          `Tena` = c('tena'),
+                                          `Wiso` = c('wiso'),
+                                          `Xena` = c('xena'),
+                                          `Xo` = c('xo'),
+                                          `Xexe` = c('xexe', 'xexi'),
+                                          `Yame` = c('rayame', 'yame'),
+                                          `Yankon` = c('rayanko', 'yankom', 'yankon', 'yankum', 'yankun'),
+                                          `NA` = c('N/A')))
+
+color_chip_data %<>%
+  mutate(hex = colorspace::hex(
+    colorspace::LAB(color_chip_data$`L*`, color_chip_data$`a*`, 
+                    color_chip_data$`b*`, color_chip_data$`#cnum`), fixup = T))
+```
+
+Which terms appear to be basic and commonly used?
+```{r}
+naming_data %>%
+  group_by(subj, color_cat) %>%
+  summarise(n = n()) %>%
+  group_by(color_cat) %>%
+  spread(subj, n, fill = 0) %>%
+  gather(key = 'subj', value = 'n', -color_cat) %>%
+  summarise(`% of Subjects Who Used the Term` = 100*sum(n > 0)/n(), 
+            `Mean % of Chips in Set Labeled` = 100*mean(n)/165) %>%
+  dplyr::rename(`Color Term` = color_cat)
+
+grouping_data %>%
+  filter(task == 1) %>%
+  group_by(subj, `nombre del grupo`) %>%
+  summarise(`cuantas tarjetas` = mean(`cuantas tarjetas`)) %>%
+  group_by(`nombre del grupo`) %>%
+  spread(subj, `cuantas tarjetas`, fill = 0) %>%
+  gather(key = 'subj', value = 'n', -`nombre del grupo`) %>%
+  summarise(`% of Subjects Who Used the Term` = 100*sum(n > 0)/n(), 
+            `Mean % of Chips in Set Labeled` = 100*mean(n)/60) %>%
+  dplyr::rename(`Color Term` = `nombre del grupo`)
+
+```
+
