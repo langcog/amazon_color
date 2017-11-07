@@ -30,8 +30,8 @@ nc_1,55,pasna manxam,manxam
 nc_1,57,yankum yame,yankom
 nc_1,59,pasna,pasna
 nc_1,61,joshin shama,joshin
-nc_1,63,jimi manrran,jimi manrran
-nc_1,65,jimi manrran,jimi manrran
+nc_1,63,jimi manrran,manrran
+nc_1,65,jimi manrran,manrran
 nc_1,67,pasna manxan,pasna
 nc_1,69,yame wiso,yame
 nc_1,71,joshin pasna,yankon
@@ -81,7 +81,7 @@ nc_1,157,manrran,
 nc_1,159,panshin manrran,manrran
 nc_1,161,yankon parrnatani,parrna
 nc_1,163,yankon,
-nc_1,165,manrrantani,
+nc_1,165,manrrantani,manrran
 nc_1,167,yankon manrrantani,manrran
 nc_1,169,yankon,
 nc_1,171,wiso yankon,yankon
@@ -178,7 +178,7 @@ nc_2,21,joshin pasna,joshin
 nc_2,23,morado,
 nc_2,25,nai yankon,yankon
 nc_2,27,joxo pasna,pasna
-nc_2,29,verde kikin yankon,
+nc_2,29,verde,
 nc_2,31,manxan yankon,manxan
 nc_2,33,ni pei yankon,yankon
 nc_2,35,naranja,
@@ -448,7 +448,7 @@ nc_3,231,jimi manxan,manxan
 nc_3,233,yankon manxan,manxan
 nc_3,235,kikin yankon,yankon
 nc_3,237,panshin manxan,panshin
-nc_3,239,paxnajoshin,paxsna
+nc_3,239,paxnajoshin,paxna
 nc_3,241,joxo,
 nc_3,243,ami joshin,ami
 nc_3,245,joshin,
@@ -893,7 +893,7 @@ nc_6,131,yankon,
 nc_6,133,pei,
 nc_6,135,joxo joshin,joshin
 nc_6,137,pei,
-nc_6,139,paxna joshin,
+nc_6,139,paxna,
 nc_6,141,joxo,
 nc_6,143,joxo yankon,yankon
 nc_6,145,yankon,
@@ -3106,7 +3106,7 @@ nc_19,268,yankon,
 nc_19,270,narranxa,
 nc_19,272,joxo,
 nc_19,274,joxo,
-nc_19,276,varr,
+nc_19,276,carri,
 nc_19,278,joshin paxna,paxna
 nc_19,280,yankon pei,pei
 nc_19,282,yankon chexe,chexe
@@ -3564,7 +3564,7 @@ nc_22,194,joshin,
 nc_22,196,manxan,
 nc_22,198,wiso pene,pene
 nc_22,200,manxan,
-nc_22,202,yanko yame,
+nc_22,202,yankon,
 nc_22,204,pene,
 nc_22,206,manxan,
 nc_22,208,narranxa,
