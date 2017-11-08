@@ -82,6 +82,15 @@ naming_data_profusion <- naming_data %>%
 
 datatable(naming_data_profusion, rownames = FALSE)
 
+naming_list <- as.character(na.omit(filter(naming_data_profusion, `% of Subjects Who Used the Term` > 50 & !is.na(`Color Term`))$`Color Term`))
+
+```
+
+In the naming task with 165 color chips, commonly used terms include: 
+`r pander::pandoc.list.return(naming_list, style = 'bullet')`
+
+
+```{r}
 num_groups <- grouping_data %>%
   filter(task == 1) %>%
   group_by(subj) %>%
@@ -104,32 +113,19 @@ grouping_data_profusion <- grouping_data %>%
 
 datatable(grouping_data_profusion, rownames = FALSE)
 
+grouping_list <- as.character(na.omit(filter(grouping_data_profusion, `% of Subjects Who Used the Term` > 50 & !is.na(`Color Term`))$`Color Term`))
 
 ```
 
-In the naming task with 165 color chips, commonly used terms include: 
-Kari
-Joshin
-Barin Poi
-Yankon
-Wiso
-Yame
-Paxna
-Panshin
-Nai
-Manxan
-Mai
-Joxo
 
 In the grouping task with 60 chips, subjects usually create between 4-7 groups and mostly use terms like:
-Yankon
-Joshin
-Joxo
-Panshin
-Manxan
+`r pander::pandoc.list.return(grouping_list, style = 'bullet')`
+
 
 For each color chip, how many adults label it with the same term?
 ```{r}
+
+consensus <- 75
 
 naming_consensus <- naming_data %>%
   select(subj, chip_id, color_cat) %>%
@@ -151,11 +147,11 @@ datatable(naming_consensus %>%
   rownames = FALSE)
 
 datatable(naming_consensus %>%
-            filter(`% of Subjects` >= 80), 
+            filter(`% of Subjects` >= consensus), 
           rownames = FALSE)
 
 focal_terms <- pander::p(as.character(
-  unique(filter(naming_consensus,`% of Subjects` >= 80)$`Color Term`)), 
+  unique(filter(naming_consensus,`% of Subjects` >= consensus)$`Color Term`)), 
   wrap = '', copula = ', and ')
 
 color_chip_hexes <- color_chip_data[, c('#cnum', 'hex')]
@@ -163,7 +159,7 @@ color_chip_hexes <- color_chip_data[, c('#cnum', 'hex')]
 
 agreed_chips <- naming_consensus %>%
   group_by(`Color Term`) %>%
-  filter(`% of Subjects` >= 80 & `% of Subjects` == max(`% of Subjects`)) %>%
+  filter(`% of Subjects` >= consensus & `% of Subjects` == max(`% of Subjects`)) %>%
   arrange(`Color Term`, `Chip ID`) %>%
   left_join(color_chip_hexes,
             by = c("Chip ID" = "#cnum")) %>%
@@ -177,3 +173,44 @@ datatable(agreed_chips, rownames = FALSE) %>%
 ```
 
 The only categories with chips that reach a high level of consensus appear to be `r focal_terms`
+
+Is there a similar amount of consensus on labeling between children and adults (in Shipibo)?
+
+```{r}
+
+child_string_spelling_list <-  "`Ami` = c('ami'), `Ambi` = c('ambi'), `Barin Poi` = c('barin pui', 'barrin pui', 'barrinpui', 'pui', 'barin poi', 'barrin poi', 'bavrinpui*', 'barri'), `Bexnan` = c('berrnan', 'bexna', 'bexnan'), `Kari` = c('cari', 'carri', 'kari', 'karri'), `Chexe` = c('chese', 'chexe'), `Chimapo` = c('chimapu'), `Emo` = c('emu'), `Jimi` = c('jimi'), `Jisa` = c('jisa'), `Joshin` = c('joshin', 'joxin', 'toshin'), `Joxo` = c('josho', 'joxo'), `Kasho` = c('kashos'), `Keskiti` = c('kex keti'), `Koin` = c('kuin'), `Kononbi` = c('kunumbi'), `Konron` = c('korrum', 'kumrrum', 'kunrrum'), `Koro` = c('coro'), `Mai` = c('mai'), `Mandi` = c('mandi'), `Manxan` = c('manrran', 'manshan', 'manxam', 'manxan', 'maxan', 'maxna'), `Maxe` = c('maxe'), `Nai` = c('nai', 'nia'), `Oxne` = c('oshne'), `Pei` = c('pei'), `Poa` = c('pua'), `Pene` = c('pene'), `Panshin` = c('panshin'), `Pasna` = c('paxsna', 'pasna'), `Paxna` = c('parrna', 'paxna'), `Ranchesh` = c('ranchex'), `Spanish Term` = c('rojo', 'blanco', 'verde', 'amarillo', 'celeste', 'negro', 'morado', 'azul', 'marron', 'bioleta', 'verdesito', 'carne', 'naranjada', 'naranjado', 'amarilla', 'agua', 'agur', 'uva color*', 'violeta', 'pasto payota'), `Tena` = c('tena'), `Wiso` = c('wiso'), `Xena` = c('xena'), `Xo` = c('xo'), `Xexe` = c('xexe', 'xexi'), `Yame` = c('rayame', 'yame'), `Yankon` = c('rayanko', 'yankom', 'yankon', 'yankum', 'yankun', 'yankontani', 'yakon', 'yakun', 'yankoncha')"
+
+shipibo_1st_response <- shipibo_child_data %>%
+  mutate(age = ifelse(is.na(age), as.numeric(as.character(edad)), as.numeric(as.character(age)))) %>%
+  filter(task == 1) %>%
+  mutate(response_1 = ifelse(response_1 %in% unlist(spelling_list), 
+                                     response_1, NA)) %>%
+  mutate(response_1 = eval( parse(text = gsub(pattern = "x", replacement = child_string_spelling_list,
+                                                      "forcats::fct_collapse(response_1, x)")))
+         ) %>%
+  select(subj, género, age, prompt, response_1)
+
+graph_colors <- c(
+  'Joshin' = '#BC2134',
+  'Joxo' = '#DFE6F0',
+  'Panshin' = '#EDC800',
+  'Yankon' = '#00A79E',
+  'Wiso' = '#272727'
+)
+
+chip_set <- as.numeric(grep(pattern = "^[0-9]+$", unique(shipibo_child_data$response_1), value = T))
+
+adult_naming <- naming_consensus %>%
+  group_by(`Color Term`) %>%
+  arrange(`Chip ID`, `Color Term`) %>%
+  left_join(color_chip_hexes,
+            by = c("Chip ID" = "#cnum")) %>%
+  filter(`Chip ID` %in% chip_set & !is.na(`Color Term`)) %>%
+  dplyr::rename(`Hex Code` = hex)
+
+datatable(adult_naming, rownames = FALSE) %>%
+  formatStyle(columns = "Hex Code",
+              background = styleEqual(adult_naming$`Hex Code`, adult_naming$`Hex Code`))
+
+```
+
