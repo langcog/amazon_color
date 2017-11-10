@@ -26,6 +26,8 @@ library(DT)
 Load in CSV data
 ```{r}
 
+age_interval <- 1
+
 naming_data <- read_csv("data/naming_colors_participants.csv") %>%
   left_join(read_csv("data/naming_colors_data.csv"), by = 'subj')
 
@@ -41,7 +43,7 @@ spanish_child_data <- read_csv("data/spanish_children_colors_participants.csv") 
 color_chip_data <- read_csv("data/wcs_measures.csv", skip = 1)
 
 
-string_spelling_list <- "`Ami` = c('ami'), `Ambi` = c('ambi'), `Barin Poi` = c('barin pui', 'barrin pui', 'barrinpui', 'pui', 'barin poi', 'barrin poi'), `Bexnan` = c('berrnan', 'bexna', 'bexnan'), `Kari` = c('cari', 'carri', 'kari', 'karri'), `Chexe` = c('chese', 'chexe'), `Chimapo` = c('chimapu'), `Emo` = c('emu'), `Jimi` = c('jimi'), `Joshin` = c('joshin', 'joxin'), `Joxo` = c('josho', 'joxo'), `Kasho` = c('kashos'), `Keskiti` = c('kex keti'), `Koin` = c('kuin'), `Kononbi` = c('kunumbi'), `Konron` = c('korrum', 'kumrrum', 'kunrrum'), `Koro` = c('coro'), `Mai` = c('mai'), `Mandi` = c('mandi'), `Manxan` = c('manrran', 'manshan', 'manxam', 'manxan', 'maxan', 'maxna'), `Maxe` = c('maxe'), `Nai` = c('nai', 'nia'), `Oxne` = c('oshne'), `Pei` = c('pei'), `Poa` = c('pua'), `Pene` = c('pene'), `Panshin` = c('panshin'), `Pasna` = c('paxsna', 'pasna'), `Paxna` = c('parrna', 'paxna'), `Ranchesh` = c('ranchex'), `Tena` = c('tena'), `Wiso` = c('wiso'), `Xena` = c('xena'), `Xo` = c('xo'), `Xexe` = c('xexe', 'xexi'), `Yame` = c('rayame', 'yame'), `Yankon` = c('rayanko', 'yankom', 'yankon', 'yankum', 'yankun'), `NA` = c(NA)"
+string_spelling_list <- "`Ami` = c('ami'), `Ambi` = c('ambi'), `Barin Poi` = c('barin pui', 'barrin pui', 'barrinpui', 'pui', 'barin poi', 'barrin poi', 'bavrinpui*', 'barri'), `Bexnan` = c('berrnan', 'bexna', 'bexnan'), `Kari` = c('cari', 'carri', 'kari', 'karri'), `Chexe` = c('chese', 'chexe'), `Chimapo` = c('chimapu'), `Emo` = c('emu'), `Jimi` = c('jimi'), `Jisa` = c('jisa'), `Joshin` = c('joshin', 'joxin', 'toshin'), `Joxo` = c('josho', 'joxo'), `Kasho` = c('kashos'), `Keskiti` = c('kex keti'), `Koin` = c('kuin'), `Kononbi` = c('kunumbi'), `Konron` = c('korrum', 'kumrrum', 'kunrrum'), `Koro` = c('coro'), `Mai` = c('mai'), `Mandi` = c('mandi'), `Manxan` = c('manrran', 'manshan', 'manxam', 'manxan', 'maxan', 'maxna'), `Maxe` = c('maxe'), `Nai` = c('nai', 'nia'), `Oxne` = c('oshne'), `Pei` = c('pei'), `Poa` = c('pua'), `Pene` = c('pene'), `Panshin` = c('panshin'), `Pasna` = c('paxsna', 'pasna'), `Paxna` = c('parrna', 'paxna'), `Ranchesh` = c('ranchex'), `Spanish Term` = c('rojo', 'blanco', 'verde', 'amarillo', 'celeste', 'negro', 'morado', 'azul', 'marron', 'bioleta', 'verdesito', 'carne', 'naranjada', 'naranjado', 'amarilla', 'agua', 'agur', 'uva color*', 'violeta', 'pasto payota', 'naranja', 'chocolate', 'rosado', 'rosada', 'narranxa', 'anaranjado', 'coral', 'cerde', 'gris', 'oscuro', 'lila', 'azu', 'color cielo', 'cielo'), `Tena` = c('tena'), `Wiso` = c('wiso'), `Xena` = c('xena'), `Xo` = c('xo'), `Xexe` = c('xexe', 'xexi'), `Yame` = c('rayame', 'yame'), `Yankon` = c('rayanko', 'yankom', 'yankon', 'yankum', 'yankun', 'yankontani', 'yakon', 'yakun', 'yankoncha'), `NA` = c(NA)"
 
 spelling_list <- eval(parse(text = paste0("c(",string_spelling_list,")")))
 
@@ -56,7 +58,6 @@ grouping_data %<>%
                                      `nombre del grupo`, NA)) %>%
   mutate(`nombre del grupo` = eval( parse(text = gsub(pattern = "x", replacement = string_spelling_list, "forcats::fct_collapse(`nombre del grupo`, x)")))
          )
-
 
 color_chip_data %<>%
   mutate(hex = colorspace::hex(
@@ -178,18 +179,31 @@ Is there a similar amount of consensus on labeling between children and adults (
 
 ```{r}
 
-child_string_spelling_list <-  "`Ami` = c('ami'), `Ambi` = c('ambi'), `Barin Poi` = c('barin pui', 'barrin pui', 'barrinpui', 'pui', 'barin poi', 'barrin poi', 'bavrinpui*', 'barri'), `Bexnan` = c('berrnan', 'bexna', 'bexnan'), `Kari` = c('cari', 'carri', 'kari', 'karri'), `Chexe` = c('chese', 'chexe'), `Chimapo` = c('chimapu'), `Emo` = c('emu'), `Jimi` = c('jimi'), `Jisa` = c('jisa'), `Joshin` = c('joshin', 'joxin', 'toshin'), `Joxo` = c('josho', 'joxo'), `Kasho` = c('kashos'), `Keskiti` = c('kex keti'), `Koin` = c('kuin'), `Kononbi` = c('kunumbi'), `Konron` = c('korrum', 'kumrrum', 'kunrrum'), `Koro` = c('coro'), `Mai` = c('mai'), `Mandi` = c('mandi'), `Manxan` = c('manrran', 'manshan', 'manxam', 'manxan', 'maxan', 'maxna'), `Maxe` = c('maxe'), `Nai` = c('nai', 'nia'), `Oxne` = c('oshne'), `Pei` = c('pei'), `Poa` = c('pua'), `Pene` = c('pene'), `Panshin` = c('panshin'), `Pasna` = c('paxsna', 'pasna'), `Paxna` = c('parrna', 'paxna'), `Ranchesh` = c('ranchex'), `Spanish Term` = c('rojo', 'blanco', 'verde', 'amarillo', 'celeste', 'negro', 'morado', 'azul', 'marron', 'bioleta', 'verdesito', 'carne', 'naranjada', 'naranjado', 'amarilla', 'agua', 'agur', 'uva color*', 'violeta', 'pasto payota'), `Tena` = c('tena'), `Wiso` = c('wiso'), `Xena` = c('xena'), `Xo` = c('xo'), `Xexe` = c('xexe', 'xexi'), `Yame` = c('rayame', 'yame'), `Yankon` = c('rayanko', 'yankom', 'yankon', 'yankum', 'yankun', 'yankontani', 'yakon', 'yakun', 'yankoncha')"
-
 shipibo_1st_response <- shipibo_child_data %>%
   mutate(age = ifelse(is.na(age), as.numeric(as.character(edad)), as.numeric(as.character(age)))) %>%
   filter(task == 1) %>%
   mutate(response_1 = ifelse(response_1 %in% unlist(spelling_list), 
                                      response_1, NA)) %>%
-  mutate(response_1 = eval( parse(text = gsub(pattern = "x", replacement = child_string_spelling_list,
+  mutate(response_1 = eval( parse(text = gsub(pattern = "x", replacement = string_spelling_list,
                                                       "forcats::fct_collapse(response_1, x)")))
          ) %>%
-  select(subj, género, age, prompt, response_1)
-
+  mutate( age_ints = cut(age, breaks = seq(floor(min(age)/age_interval)*age_interval,
+                                           ceiling(max(age)/age_interval)*age_interval, 
+                                           by = age_interval))) %>%
+  select(subj, age, age_ints, prompt, response_1) %>%
+  split(.$age_ints) %>%
+  map_df(function(x) {
+    x %>%
+      mutate(response_1 = as.character(response_1)) %>%
+      spread(prompt, response_1, fill = 'No Response') %>%
+      gather(key = 'prompt', value = 'response', -subj, -age, -age_ints) %>%
+      group_by(age_ints, prompt, response) %>%
+      summarise(n = n()) %>%
+      group_by(age_ints, prompt) %>%
+      mutate(perc = 100*n/sum(n), n_kids = sum(n))
+  })
+  
+  
 graph_colors <- c(
   'Joshin' = '#BC2134',
   'Joxo' = '#DFE6F0',
@@ -208,9 +222,7 @@ adult_naming <- naming_consensus %>%
   filter(`Chip ID` %in% chip_set & !is.na(`Color Term`)) %>%
   dplyr::rename(`Hex Code` = hex)
 
-datatable(adult_naming, rownames = FALSE) %>%
-  formatStyle(columns = "Hex Code",
-              background = styleEqual(adult_naming$`Hex Code`, adult_naming$`Hex Code`))
+
 
 ```
 
