@@ -1,24 +1,28 @@
 ---
-title: Characterizing Color Term Knowledge in Adults and Children in the Peruvian Shipibo Tribe
-author: 
+title: Characterizing Color Term Knowledge in Adults and Children in the Peruvian
+  Shipibo Tribe
+author: "null"
 date: "`r Sys.Date()`"
 output:
   html_document:
     highlight: tango
     theme: spacelab
+  pdf_document: default
 ---
 
 ```{r setup, echo = FALSE}
 
 knitr::opts_chunk$set(warning = FALSE, message = FALSE,
-                      cache = TRUE, dev = 'cairo_pdf')
+                      cache = TRUE)
 ```
 
 ```{r, cache = FALSE, echo = FALSE}
 library(tidyverse)
 library(magrittr)
+library(ggplot2)
 library(htmlTable)
 library(DT)
+library(plotly)
 
 
 ```
@@ -81,9 +85,10 @@ naming_data_profusion <- naming_data %>%
             `Mean % of Chips in Set Labeled` = 100*mean(n)/165) %>%
   dplyr::rename(`Color Term` = color_cat)
 
+naming_list <- as.character(na.omit(filter(naming_data_profusion, `% of Subjects Who Used the Term` > 50 & !is.na(`Color Term`))$`Color Term`))
+
 datatable(naming_data_profusion, rownames = FALSE)
 
-naming_list <- as.character(na.omit(filter(naming_data_profusion, `% of Subjects Who Used the Term` > 50 & !is.na(`Color Term`))$`Color Term`))
 
 ```
 
@@ -112,9 +117,10 @@ grouping_data_profusion <- grouping_data %>%
             `Mean % of Chips in Set Labeled` = 100*mean(n)/60) %>%
   dplyr::rename(`Color Term` = `nombre del grupo`)
 
+grouping_list <- as.character(na.omit(filter(grouping_data_profusion, `% of Subjects Who Used the Term` > 50 & !is.na(`Color Term`))$`Color Term`))
+
 datatable(grouping_data_profusion, rownames = FALSE)
 
-grouping_list <- as.character(na.omit(filter(grouping_data_profusion, `% of Subjects Who Used the Term` > 50 & !is.na(`Color Term`))$`Color Term`))
 
 ```
 
@@ -145,11 +151,7 @@ naming_consensus <- naming_data %>%
 
 datatable(naming_consensus %>%
             spread(`Color Term`, `% of Subjects`, fill = 0), 
-  rownames = FALSE)
-
-datatable(naming_consensus %>%
-            filter(`% of Subjects` >= consensus), 
-          rownames = FALSE)
+  rownames = FALSE, fillContainer = TRUE)
 
 focal_terms <- pander::p(as.character(
   unique(filter(naming_consensus,`% of Subjects` >= consensus)$`Color Term`)), 
@@ -158,15 +160,24 @@ focal_terms <- pander::p(as.character(
 color_chip_hexes <- color_chip_data[, c('#cnum', 'hex')]
 
 
+highest_chips <- (naming_consensus %>% group_by(`Color Term`) %>%
+  filter(`% of Subjects` >= consensus & `% of Subjects` == max(`% of Subjects`)))$`Chip ID`
+
 agreed_chips <- naming_consensus %>%
   group_by(`Color Term`) %>%
-  filter(`% of Subjects` >= consensus & `% of Subjects` == max(`% of Subjects`)) %>%
+  filter(`% of Subjects` >= consensus) %>%
   arrange(`Color Term`, `Chip ID`) %>%
   left_join(color_chip_hexes,
             by = c("Chip ID" = "#cnum")) %>%
-  dplyr::rename(`Hex Code` = hex)
+  dplyr::rename(`Hex Code` = hex) %>%
+  mutate(highest_chips = ifelse(`Chip ID` %in% highest_chips, 1, 0))
 
-datatable(agreed_chips, rownames = FALSE) %>%
+
+datatable(agreed_chips, rownames = FALSE,
+          options=list(columnDefs = list(list(
+            visible=FALSE, targets=c(grep('highest_chips', names(agreed_chips))-1))))) %>%
+  formatStyle('highest_chips', target = 'row',
+              fontWeight = styleEqual(c(0,1), c('normal','bold'))) %>%
   formatStyle(columns = "Hex Code",
               background = styleEqual(agreed_chips$`Hex Code`, agreed_chips$`Hex Code`))
 
@@ -179,6 +190,8 @@ Is there a similar amount of consensus on labeling between children and adults (
 
 ```{r}
 
+chip_set <- as.numeric(grep(pattern = "^[0-9]+$", unique(shipibo_child_data$response_1), value = T))
+
 shipibo_1st_response <- shipibo_child_data %>%
   mutate(age = ifelse(is.na(age), as.numeric(as.character(edad)), as.numeric(as.character(age)))) %>%
   filter(task == 1) %>%
@@ -187,9 +200,7 @@ shipibo_1st_response <- shipibo_child_data %>%
   mutate(response_1 = eval( parse(text = gsub(pattern = "x", replacement = string_spelling_list,
                                                       "forcats::fct_collapse(response_1, x)")))
          ) %>%
-  mutate( age_ints = cut(age, breaks = seq(floor(min(age)/age_interval)*age_interval,
-                                           ceiling(max(age)/age_interval)*age_interval, 
-                                           by = age_interval))) %>%
+  mutate( age_ints = round(age/age_interval)*age_interval) %>%
   select(subj, age, age_ints, prompt, response_1) %>%
   split(.$age_ints) %>%
   map_df(function(x) {
@@ -200,29 +211,113 @@ shipibo_1st_response <- shipibo_child_data %>%
       group_by(age_ints, prompt, response) %>%
       summarise(n = n()) %>%
       group_by(age_ints, prompt) %>%
-      mutate(perc = 100*n/sum(n), n_kids = sum(n))
-  })
+      mutate(perc = 100*n/sum(n), n_total = sum(n))
+  }) %>% ungroup() %>%
+  mutate(prompt = as.numeric(as.character(forcats::fct_collapse(prompt,
+                                        `1` = c('celeste'),
+                                        `234` = c('verde'),
+                                        `245` = c('rojo'),
+                                        `274` = c('blanco'),
+                                        `297` = c('amarillo'),
+                                        `312` = c('negro'),
+                                        `320` = c('mierda sol'),
+                                        `325` = c('morado'))))) %>%
+  left_join(color_chip_hexes,
+            by = c("prompt" = "#cnum")) %>%
+  rename(Age = age_ints, `Chip ID` = prompt, `Color Term` = response, 
+         `% of Subjects` = perc, `Hex Code` = hex) %>%
+  filter(n_total >= 4)
   
   
 graph_colors <- c(
-  'Joshin' = '#BC2134',
-  'Joxo' = '#DFE6F0',
+  'Ambi' = '#874A8C',
+  'Ami' = '#76296E',
+  'Barin Poi' = '#6D6212',
+  'Bexnan' = '#B6D744',
+  'Chexe' = '#81C147',
+  'Chimapo' = '#003459',
+  'Emo' = '#007177',
+  'Jimi' = '#822158',
+  'Joshin' = '#BC1E47',
+  'Joxo' = '#F3F3F3',
+  'Kari' = '#571848',
+  'Kasho' = '#F07000',
+  'Keskiti' = '#E56F92',
+  'Koin' = '#50491D',
+  'Kononbi' = '#503B87',
+  'Konron' = '#BB8F00',
+  'Koro' = '#7B7B7B',
+  'Mai' = '#7F5A21',
+  'Mandi' = '#005637',
+  'Manxan' = '#FEBBA1',
+  'Maxe' = '#DC4800',
+  'Nai' = '#19A2C2',
+  'Oxne' = '#66BCC9',
   'Panshin' = '#EDC800',
+  'Pasna' = '#D3C5DF',
+  'Paxna' = '#EC99A2',
+  'Pei' = '#69C360',
+  'Pene' = '#55471E',
+  'Poa' = '#7E4E94',
+  'Ranchesh' = '#4A2347',
+  'Tena' = '#C5D500',
+  'Yame' = '#666412',
   'Yankon' = '#00A79E',
-  'Wiso' = '#272727'
+  'Wiso' = '#272727',
+  'Xena' = '#D4799C',
+  'Xexe' = '#9769AE',
+  'Xo' = '#3A6E14',
+  'Spanish Term' = '#FF6E00'
 )
 
-chip_set <- as.numeric(grep(pattern = "^[0-9]+$", unique(shipibo_child_data$response_1), value = T))
 
 adult_naming <- naming_consensus %>%
   group_by(`Color Term`) %>%
+  mutate(Age = 18) %>%
   arrange(`Chip ID`, `Color Term`) %>%
   left_join(color_chip_hexes,
             by = c("Chip ID" = "#cnum")) %>%
   filter(`Chip ID` %in% chip_set & !is.na(`Color Term`)) %>%
   dplyr::rename(`Hex Code` = hex)
 
+naming_data_combined <- bind_rows(shipibo_1st_response, adult_naming)
 
+
+term_prototypes <- naming_consensus %>%
+  group_by(`Color Term`) %>%
+  dplyr::arrange(`Color Term`, desc(`% of Subjects`)) %>%
+  slice(1:3) %>%
+  left_join(color_chip_hexes,
+            by = c("Chip ID" = "#cnum")) %>%
+  dplyr::rename(`Hex Code` = hex)
+
+chip_set_data <- color_chip_data %>% 
+  filter(`#cnum` %in% chip_set) %>%
+  select(`#cnum`, `L*`, `a*`, `b*`, hex) %>%
+  arrange(`#cnum`) %>%
+  rename(`Chip ID` = `#cnum`, `Hex Code` = hex)
+
+datatable(chip_set_data, rownames = FALSE) %>%
+  formatStyle(columns = "Hex Code",
+              background = styleEqual(chip_set_data$`Hex Code`, chip_set_data$`Hex Code`))
+
+
+```
+
+
+```{r, fig.width=8, fig.height=8}
+
+p <- ggplot(filter(naming_data_combined, Age < 18), 
+       aes(x = Age, y = `% of Subjects`, group = `Color Term`, colour = `Color Term`)) +
+  facet_wrap(~`Chip ID`) +
+  geom_line(size = 1) +
+  geom_point( size=3) +
+  geom_point(data = filter(naming_data_combined, Age >= 18), size=3) +
+  scale_x_continuous(breaks = c(seq(6,12,2),18), labels = c(seq(6,12,2),'Adult')) +
+  scale_colour_manual(name = "Color Term",values = graph_colors) +
+  theme(panel.grid = element_blank())
+
+ggplotly(p)
 
 ```
 
