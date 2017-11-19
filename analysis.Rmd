@@ -321,3 +321,10 @@ ggplotly(p)
 
 ```
 
+Characterize consensus over the WCS map
+
+How does bilingualism factor into adult responses?
+
+Compare Spanish versus Shipibo responses in children
+
+Age grouped into 2 years
