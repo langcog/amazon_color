@@ -354,6 +354,28 @@ datatable(spanish_chip_set_data, rownames = FALSE) %>%
               background = styleEqual(spanish_chip_set_data$`Hex Code`, spanish_chip_set_data$`Hex Code`))
 
 
+spanish_string_spelling_list <- "`Amarillo` = c('amarilla'),
+`Blanco` = c('blanco'),
+`Celeste` = c('celeste'),
+`Gris` = c('gris'),
+`Joshin` = c('joshin'),
+`Joxo` = c('joxo'),
+`Kari` = c('carri'),
+`Marron` = c('marron'),
+`Morado` = c('bioleta', 'morado', 'violeta'),
+`NA` = c(NA),
+`Nai` = c('nai'),
+`Naranja` = c('naranja', 'naranjada', 'narranxa', 'naranjado', 'narango', 'naranjo'),
+`Oshne` = c('oxe'),
+`Panshin` = c('panshin'),
+`Plomo` = c('plomo'),
+`Pei` = c('pei')
+`Poa` = c('pua'),
+`Rojo` = c('rojo'),
+`Rosa` = c('rosada', 'rosa', 'rosado'),
+`Verde` = c('verde'),
+`Wiso` = c('wiso'),
+`Yankon` = c('Yankon')"
 spanish_1st_response <- spanish_child_data %>%
   mutate(age = ifelse(is.na(age), as.numeric(as.character(edad)), as.numeric(as.character(age)))) %>%
   filter(task == 1) %>%
