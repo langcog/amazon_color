@@ -30,7 +30,7 @@ library(plotly)
 Load in CSV data
 ```{r}
 
-age_interval <- 1
+age_interval <- 2
 
 naming_data <- read_csv("data/naming_colors_participants.csv") %>%
   left_join(read_csv("data/naming_colors_data.csv"), by = 'subj')
@@ -46,6 +46,28 @@ spanish_child_data <- read_csv("data/spanish_children_colors_participants.csv") 
 
 color_chip_data <- read_csv("data/wcs_measures.csv", skip = 1)
 
+shipibo_chip_set <- read.csv(text = "shipibo, spanish, munsell_code, chip_id
+Joshin, rojo, G3, 245
+Pei/Xo, verde, G18, 234
+Panshin, amarillo, C9, 297
+Huiso, negro, J1/I0, 312
+Joxo, blanco, A/B0, 274
+Nai, celeste, E29, 1
+Ami/Pua, morado, H36, 325
+Barin poi, mierda sol, F12, 320")
+
+spanish_chip_set <- read.csv(text = "spanish, munsell_code, chip_id
+Blanco, A/B0, 274
+Verde, G18, 234
+Rojo, G3, 245
+Amarillo, C9, 297
+Azul, F30, 291
+Negro, J1/I0, 312
+Naranja, E4, 121
+Gris, F0, 46
+Morado, H36, 325
+Marron, G5, 266
+Rosa, F39, 65")
 
 string_spelling_list <- "`Ami` = c('ami'), `Ambi` = c('ambi'), `Barin Poi` = c('barin pui', 'barrin pui', 'barrinpui', 'pui', 'barin poi', 'barrin poi', 'bavrinpui*', 'barri'), `Bexnan` = c('berrnan', 'bexna', 'bexnan'), `Kari` = c('cari', 'carri', 'kari', 'karri'), `Chexe` = c('chese', 'chexe'), `Chimapo` = c('chimapu'), `Emo` = c('emu'), `Jimi` = c('jimi'), `Jisa` = c('jisa'), `Joshin` = c('joshin', 'joxin', 'toshin'), `Joxo` = c('josho', 'joxo'), `Kasho` = c('kashos'), `Keskiti` = c('kex keti'), `Koin` = c('kuin'), `Kononbi` = c('kunumbi'), `Konron` = c('korrum', 'kumrrum', 'kunrrum'), `Koro` = c('coro'), `Mai` = c('mai'), `Mandi` = c('mandi'), `Manxan` = c('manrran', 'manshan', 'manxam', 'manxan', 'maxan', 'maxna'), `Maxe` = c('maxe'), `Nai` = c('nai', 'nia'), `Oxne` = c('oshne'), `Pei` = c('pei'), `Poa` = c('pua'), `Pene` = c('pene'), `Panshin` = c('panshin'), `Pasna` = c('paxsna', 'pasna'), `Paxna` = c('parrna', 'paxna'), `Ranchesh` = c('ranchex'), `Spanish Term` = c('rojo', 'blanco', 'verde', 'amarillo', 'celeste', 'negro', 'morado', 'azul', 'marron', 'bioleta', 'verdesito', 'carne', 'naranjada', 'naranjado', 'amarilla', 'agua', 'agur', 'uva color*', 'violeta', 'pasto payota', 'naranja', 'chocolate', 'rosado', 'rosada', 'narranxa', 'anaranjado', 'coral', 'cerde', 'gris', 'oscuro', 'lila', 'azu', 'color cielo', 'cielo'), `Tena` = c('tena'), `Wiso` = c('wiso'), `Xena` = c('xena'), `Xo` = c('xo'), `Xexe` = c('xexe', 'xexi'), `Yame` = c('rayame', 'yame'), `Yankon` = c('rayanko', 'yankom', 'yankon', 'yankum', 'yankun', 'yankontani', 'yakon', 'yakun', 'yankoncha'), `NA` = c(NA)"
 
@@ -190,8 +212,6 @@ Is there a similar amount of consensus on labeling between children and adults (
 
 ```{r}
 
-chip_set <- as.numeric(grep(pattern = "^[0-9]+$", unique(shipibo_child_data$response_1), value = T))
-
 shipibo_1st_response <- shipibo_child_data %>%
   mutate(age = ifelse(is.na(age), as.numeric(as.character(edad)), as.numeric(as.character(age)))) %>%
   filter(task == 1) %>%
@@ -277,7 +297,7 @@ adult_naming <- naming_consensus %>%
   arrange(`Chip ID`, `Color Term`) %>%
   left_join(color_chip_hexes,
             by = c("Chip ID" = "#cnum")) %>%
-  filter(`Chip ID` %in% chip_set & !is.na(`Color Term`)) %>%
+  filter(`Chip ID` %in% shipibo_chip_set$chip_id & !is.na(`Color Term`)) %>%
   dplyr::rename(`Hex Code` = hex)
 
 naming_data_combined <- bind_rows(shipibo_1st_response, adult_naming)
@@ -291,15 +311,15 @@ term_prototypes <- naming_consensus %>%
             by = c("Chip ID" = "#cnum")) %>%
   dplyr::rename(`Hex Code` = hex)
 
-chip_set_data <- color_chip_data %>% 
-  filter(`#cnum` %in% chip_set) %>%
+shipibo_chip_set_data <- color_chip_data %>% 
+  filter(`#cnum` %in% shipibo_chip_set$chip_id) %>%
   select(`#cnum`, `L*`, `a*`, `b*`, hex) %>%
   arrange(`#cnum`) %>%
   rename(`Chip ID` = `#cnum`, `Hex Code` = hex)
 
-datatable(chip_set_data, rownames = FALSE) %>%
+datatable(shipibo_chip_set_data, rownames = FALSE) %>%
   formatStyle(columns = "Hex Code",
-              background = styleEqual(chip_set_data$`Hex Code`, chip_set_data$`Hex Code`))
+              background = styleEqual(shipibo_chip_set_data$`Hex Code`, shipibo_chip_set_data$`Hex Code`))
 
 
 ```
@@ -321,10 +341,58 @@ ggplotly(p)
 
 ```
 
+```{r}
+
+spanish_chip_set_data <- color_chip_data %>% 
+  filter(`#cnum` %in% spanish_chip_set$chip_id) %>%
+  select(`#cnum`, `L*`, `a*`, `b*`, hex) %>%
+  arrange(`#cnum`) %>%
+  rename(`Chip ID` = `#cnum`, `Hex Code` = hex)
+
+datatable(spanish_chip_set_data, rownames = FALSE) %>%
+  formatStyle(columns = "Hex Code",
+              background = styleEqual(spanish_chip_set_data$`Hex Code`, spanish_chip_set_data$`Hex Code`))
+
+
+spanish_1st_response <- spanish_child_data %>%
+  mutate(age = ifelse(is.na(age), as.numeric(as.character(edad)), as.numeric(as.character(age)))) %>%
+  filter(task == 1) %>%
+  mutate(response_1 = ifelse(response_1 %in% unlist(spelling_list), 
+                                     response_1, NA)) %>%
+  mutate(response_1 = eval( parse(text = gsub(pattern = "x", replacement = string_spelling_list,
+                                                      "forcats::fct_collapse(response_1, x)")))
+         ) %>%
+  mutate( age_ints = round(age/age_interval)*age_interval) %>%
+  select(subj, age, age_ints, prompt, response_1) %>%
+  split(.$age_ints) %>%
+  map_df(function(x) {
+    x %>%
+      mutate(response_1 = as.character(response_1)) %>%
+      spread(prompt, response_1, fill = 'No Response') %>%
+      gather(key = 'prompt', value = 'response', -subj, -age, -age_ints) %>%
+      group_by(age_ints, prompt, response) %>%
+      summarise(n = n()) %>%
+      group_by(age_ints, prompt) %>%
+      mutate(perc = 100*n/sum(n), n_total = sum(n))
+  }) %>% ungroup() %>%
+  mutate(prompt = as.numeric(as.character(forcats::fct_collapse(prompt,
+                                        `1` = c('celeste'),
+                                        `234` = c('verde'),
+                                        `245` = c('rojo'),
+                                        `274` = c('blanco'),
+                                        `297` = c('amarillo'),
+                                        `312` = c('negro'),
+                                        `320` = c('mierda sol'),
+                                        `325` = c('morado'))))) %>%
+  left_join(color_chip_hexes,
+            by = c("prompt" = "#cnum")) %>%
+  rename(Age = age_ints, `Chip ID` = prompt, `Color Term` = response, 
+         `% of Subjects` = perc, `Hex Code` = hex) %>%
+  filter(n_total >= 4)
+```
+
 Characterize consensus over the WCS map
 
 How does bilingualism factor into adult responses?
 
 Compare Spanish versus Shipibo responses in children
-
-Age grouped into 2 years
