@@ -46,6 +46,47 @@ spanish_child_data <- read_csv("data/spanish_children_colors_participants.csv") 
 
 color_chip_data <- read_csv("data/wcs_measures.csv", skip = 1)
 
+graph_colors <- c(
+  'Ambi' = '#874A8C',
+  'Ami' = '#76296E',
+  'Barin Poi' = '#6D6212',
+  'Bexnan' = '#B6D744',
+  'Chexe' = '#81C147',
+  'Chimapo' = '#003459',
+  'Emo' = '#007177',
+  'Jimi' = '#822158',
+  'Joshin' = '#BC1E47',
+  'Joxo' = '#DFE6F0',
+  'Kari' = '#571848',
+  'Kasho' = '#F07000',
+  'Keskiti' = '#E56F92',
+  'Koin' = '#50491D',
+  'Kononbi' = '#503B87',
+  'Konron' = '#BB8F00',
+  'Koro' = '#7B7B7B',
+  'Mai' = '#7F5A21',
+  'Mandi' = '#005637',
+  'Manxan' = '#FEBBA1',
+  'Maxe' = '#DC4800',
+  'Nai' = '#19A2C2',
+  'Oxne' = '#66BCC9',
+  'Panshin' = '#EDC800',
+  'Pasna' = '#D3C5DF',
+  'Paxna' = '#EC99A2',
+  'Pei' = '#69C360',
+  'Pene' = '#55471E',
+  'Poa' = '#7E4E94',
+  'Ranchesh' = '#4A2347',
+  'Tena' = '#C5D500',
+  'Yame' = '#666412',
+  'Yankon' = '#00A79E',
+  'Wiso' = '#272727',
+  'Xena' = '#D4799C',
+  'Xexe' = '#9769AE',
+  'Xo' = '#3A6E14',
+  'Spanish Term' = '#FF6E00'
+)
+
 shipibo_chip_set <- read.csv(text = "shipibo, spanish, munsell_code, chip_id
 Joshin, rojo, G3, 245
 Pei/Xo, verde, G18, 234
@@ -208,6 +249,31 @@ datatable(agreed_chips, rownames = FALSE,
 
 The only categories with chips that reach a high level of consensus appear to be `r focal_terms`
 
+```{r}
+highest_consenus <- naming_consensus %>%
+  group_by(`Chip ID`) %>%
+  filter(`% of Subjects` == max(`% of Subjects`)) %>%
+  left_join(color_chip_data, by = c("Chip ID" = "#cnum")) %>%
+  mutate(`Spanish Term` = ifelse(`Color Term` == 'Spanish Term','Spanish','Shipibo'))
+
+consensus_plot <- ggplot(highest_consenus, 
+                         aes(x = H, y = factor(V), 
+                             colour = `Color Term`, size = `% of Subjects`, 
+                             shape = `Spanish Term`)) + 
+    geom_point() + 
+    scale_size(range = c(0, 2.5)) + 
+    scale_shape_manual(name = 'Spanish Term', 
+                       values = c('Spanish' = 17, 'Shipibo' = 16)) +
+    scale_colour_manual(name = "Color Term",values = graph_colors) +
+    scale_y_discrete(limits = rev(levels(factor(highest_consenus$V)))) +
+    theme_bw()
+
+
+```
+
+![Original plot displaying 330 chips by their V and H coordinates](http://www1.icsi.berkeley.edu/wcs/images/jrus-20100531/wcs-chart-4x.png)
+`r plotly::ggplotly(consensus_plot)`
+
 Is there a similar amount of consensus on labeling between children and adults (in Shipibo)?
 
 ```{r}
@@ -247,48 +313,6 @@ shipibo_1st_response <- shipibo_child_data %>%
   rename(Age = age_ints, `Chip ID` = prompt, `Color Term` = response, 
          `% of Subjects` = perc, `Hex Code` = hex) %>%
   filter(n_total >= 4)
-  
-  
-graph_colors <- c(
-  'Ambi' = '#874A8C',
-  'Ami' = '#76296E',
-  'Barin Poi' = '#6D6212',
-  'Bexnan' = '#B6D744',
-  'Chexe' = '#81C147',
-  'Chimapo' = '#003459',
-  'Emo' = '#007177',
-  'Jimi' = '#822158',
-  'Joshin' = '#BC1E47',
-  'Joxo' = '#F3F3F3',
-  'Kari' = '#571848',
-  'Kasho' = '#F07000',
-  'Keskiti' = '#E56F92',
-  'Koin' = '#50491D',
-  'Kononbi' = '#503B87',
-  'Konron' = '#BB8F00',
-  'Koro' = '#7B7B7B',
-  'Mai' = '#7F5A21',
-  'Mandi' = '#005637',
-  'Manxan' = '#FEBBA1',
-  'Maxe' = '#DC4800',
-  'Nai' = '#19A2C2',
-  'Oxne' = '#66BCC9',
-  'Panshin' = '#EDC800',
-  'Pasna' = '#D3C5DF',
-  'Paxna' = '#EC99A2',
-  'Pei' = '#69C360',
-  'Pene' = '#55471E',
-  'Poa' = '#7E4E94',
-  'Ranchesh' = '#4A2347',
-  'Tena' = '#C5D500',
-  'Yame' = '#666412',
-  'Yankon' = '#00A79E',
-  'Wiso' = '#272727',
-  'Xena' = '#D4799C',
-  'Xexe' = '#9769AE',
-  'Xo' = '#3A6E14',
-  'Spanish Term' = '#FF6E00'
-)
 
 
 adult_naming <- naming_consensus %>%
@@ -324,17 +348,25 @@ datatable(shipibo_chip_set_data, rownames = FALSE) %>%
 
 ```
 
-
+Spanish term as a dotted line?
 ```{r, fig.width=8, fig.height=8}
 
-p <- ggplot(filter(naming_data_combined, Age < 18), 
+p <- ggplot(filter(naming_data_combined, Age < 18 & `Color Term` != 'Spanish Term'), 
        aes(x = Age, y = `% of Subjects`, group = `Color Term`, colour = `Color Term`)) +
   facet_wrap(~`Chip ID`) +
   geom_line(size = 1) +
+  geom_line(data = filter(naming_data_combined, 
+                          Age < 18 & `Color Term` == 'Spanish Term'), 
+            linetype = 2, size = 1) + 
+  geom_point(data = filter(naming_data_combined, 
+                          Age < 18 & `Color Term` == 'Spanish Term'), 
+            shape = 17, size = 3) + 
   geom_point( size=3) +
   geom_point(data = filter(naming_data_combined, Age >= 18), size=3) +
+  scale_y_continuous(limits = c(-10,110), breaks = seq(0,100, by = 25)) + 
   scale_x_continuous(breaks = c(seq(6,12,2),18), labels = c(seq(6,12,2),'Adult')) +
   scale_colour_manual(name = "Color Term",values = graph_colors) +
+  theme_bw() + 
   theme(panel.grid = element_blank())
 
 ggplotly(p)
@@ -376,6 +408,7 @@ spanish_string_spelling_list <- "`Amarillo` = c('amarilla'),
 `Verde` = c('verde'),
 `Wiso` = c('wiso'),
 `Yankon` = c('Yankon')"
+
 spanish_1st_response <- spanish_child_data %>%
   mutate(age = ifelse(is.na(age), as.numeric(as.character(edad)), as.numeric(as.character(age)))) %>%
   filter(task == 1) %>%
