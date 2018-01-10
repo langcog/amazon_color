@@ -30,7 +30,8 @@ library(plotly)
 Load in CSV data
 ```{r}
 
-age_interval <- 2
+shipibo_age_interval <- 2
+spanish_age_interval <- 1
 
 naming_data <- read_csv("data/naming_colors_participants.csv") %>%
   left_join(read_csv("data/naming_colors_data.csv"), by = 'subj')
@@ -46,7 +47,7 @@ spanish_child_data <- read_csv("data/spanish_children_colors_participants.csv") 
 
 color_chip_data <- read_csv("data/wcs_measures.csv", skip = 1)
 
-graph_colors <- c(
+shipibo_graph_colors <- c(
   'Ambi' = '#874A8C',
   'Ami' = '#76296E',
   'Barin Poi' = '#6D6212',
@@ -86,6 +87,31 @@ graph_colors <- c(
   'Xo' = '#3A6E14',
   'Spanish Term' = '#FF6E00'
 )
+
+spanish_graph_colors <- c(
+  'Amarillo' = '#FFD416',
+  'Azul' = '#337DCE',
+  'Blanco' = '#F7F7F7',
+  'Celeste' = '#74DFF7', 
+  'Gris' = '#979997', 
+  'Joshin' = '#BC1E47', 
+  'Joxo' = '#DFE6F0', 
+  'Kari' = '#571848', 
+  'Marron' = '#9E5E22', 
+  'Morado' = '#B175F9', 
+  'Nai' = '#19A2C2', 
+  'Naranja' = '#FF6E00',
+  'Oshne' = '#66BCC9', 
+  'Panshin' = '#EDC800', 
+  'Plomo' = '#848484', 
+  'Pei' = '#69C360', 
+  'Poa' = '#7E4E94', 
+  'Rojo' = '#E03D28', 
+  'Rosa' = '#FF8C9D', 
+  'Verde' = '#61E27B', 
+  'Wiso' = '#272727', 
+  'Yankon' = '#00A79E'
+  )
 
 shipibo_chip_set <- read.csv(text = "shipibo, spanish, munsell_code, chip_id
 Joshin, rojo, G3, 245
@@ -264,7 +290,7 @@ consensus_plot <- ggplot(highest_consenus,
     scale_size(range = c(0, 2.5)) + 
     scale_shape_manual(name = 'Spanish Term', 
                        values = c('Spanish' = 17, 'Shipibo' = 16)) +
-    scale_colour_manual(name = "Color Term",values = graph_colors) +
+    scale_colour_manual(name = "Color Term",values = shipibo_graph_colors) +
     scale_y_discrete(limits = rev(levels(factor(highest_consenus$V)))) +
     theme_bw()
 
@@ -286,7 +312,7 @@ shipibo_1st_response <- shipibo_child_data %>%
   mutate(response_1 = eval( parse(text = gsub(pattern = "x", replacement = string_spelling_list,
                                                       "forcats::fct_collapse(response_1, x)")))
          ) %>%
-  mutate( age_ints = round(age/age_interval)*age_interval) %>%
+  mutate( age_ints = round(age/shipibo_age_interval)*shipibo_age_interval) %>%
   select(subj, age, age_ints, prompt, response_1) %>%
   split(.$age_ints) %>%
   map_df(function(x) {
@@ -365,7 +391,7 @@ p <- ggplot(filter(naming_data_combined, Age < 18 & `Color Term` != 'Spanish Ter
   geom_point(data = filter(naming_data_combined, Age >= 18), size=3) +
   scale_y_continuous(limits = c(-10,110), breaks = seq(0,100, by = 25)) + 
   scale_x_continuous(breaks = c(seq(6,12,2),18), labels = c(seq(6,12,2),'Adult')) +
-  scale_colour_manual(name = "Color Term",values = graph_colors) +
+  scale_colour_manual(name = "Color Term",values = shipibo_graph_colors) +
   theme_bw() + 
   theme(panel.grid = element_blank())
 
@@ -381,43 +407,23 @@ spanish_chip_set_data <- color_chip_data %>%
   arrange(`#cnum`) %>%
   rename(`Chip ID` = `#cnum`, `Hex Code` = hex)
 
-datatable(spanish_chip_set_data, rownames = FALSE) %>%
+datatable(spanish_chip_set_data, rownames = FALSE, options = list(pageLength = nrow(spanish_chip_set_data))) %>%
   formatStyle(columns = "Hex Code",
               background = styleEqual(spanish_chip_set_data$`Hex Code`, spanish_chip_set_data$`Hex Code`))
 
 
-spanish_string_spelling_list <- "`Amarillo` = c('amarilla'),
-`Blanco` = c('blanco'),
-`Celeste` = c('celeste'),
-`Gris` = c('gris'),
-`Joshin` = c('joshin'),
-`Joxo` = c('joxo'),
-`Kari` = c('carri'),
-`Marron` = c('marron'),
-`Morado` = c('bioleta', 'morado', 'violeta'),
-`NA` = c(NA),
-`Nai` = c('nai'),
-`Naranja` = c('naranja', 'naranjada', 'narranxa', 'naranjado', 'narango', 'naranjo'),
-`Oshne` = c('oxe'),
-`Panshin` = c('panshin'),
-`Plomo` = c('plomo'),
-`Pei` = c('pei')
-`Poa` = c('pua'),
-`Rojo` = c('rojo'),
-`Rosa` = c('rosada', 'rosa', 'rosado'),
-`Verde` = c('verde'),
-`Wiso` = c('wiso'),
-`Yankon` = c('Yankon')"
+spanish_string_spelling_list <- "`Amarillo` = c('amarilla'), `Azul` = c('azul'), `Blanco` = c('blanco'), `Celeste` = c('celeste'), `Gris` = c('gris'), `Joshin` = c('joshin'), `Joxo` = c('joxo'), `Kari` = c('carri'), `Marron` = c('marron'), `Morado` = c('bioleta', 'morado', 'violeta'), `Nai` = c('nai'), `Naranja` = c('naranja', 'naranjada', 'narranxa', 'naranjado', 'narango', 'naranjo'), `Oshne` = c('oxe'), `Panshin` = c('panshin'), `Plomo` = c('plomo'), `Pei` = c('pei'), `Poa` = c('pua'), `Rojo` = c('rojo'), `Rosa` = c('rosada', 'rosa', 'rosado'), `Verde` = c('verde'), `Wiso` = c('wiso'), `Yankon` = c('yankon'), `NA` = c(NA)" 
+
+spanish_spelling_list <- eval(parse(text = paste0("c(",spanish_string_spelling_list,")")))
 
 spanish_1st_response <- spanish_child_data %>%
   mutate(age = ifelse(is.na(age), as.numeric(as.character(edad)), as.numeric(as.character(age)))) %>%
   filter(task == 1) %>%
-  mutate(response_1 = ifelse(response_1 %in% unlist(spelling_list), 
-                                     response_1, NA)) %>%
-  mutate(response_1 = eval( parse(text = gsub(pattern = "x", replacement = string_spelling_list,
-                                                      "forcats::fct_collapse(response_1, x)")))
+  mutate(response_1 = ifelse(tolower(response_1) %in% unlist(spanish_spelling_list), 
+                                     tolower(response_1), NA)) %>%
+  mutate(response_1 = eval( parse(text = gsub(pattern = "x", replacement = spanish_string_spelling_list, "forcats::fct_collapse(response_1, x)")))
          ) %>%
-  mutate( age_ints = round(age/age_interval)*age_interval) %>%
+  mutate( age_ints = round(age/spanish_age_interval)*spanish_age_interval) %>%
   select(subj, age, age_ints, prompt, response_1) %>%
   split(.$age_ints) %>%
   map_df(function(x) {
@@ -431,23 +437,42 @@ spanish_1st_response <- spanish_child_data %>%
       mutate(perc = 100*n/sum(n), n_total = sum(n))
   }) %>% ungroup() %>%
   mutate(prompt = as.numeric(as.character(forcats::fct_collapse(prompt,
-                                        `1` = c('celeste'),
-                                        `234` = c('verde'),
-                                        `245` = c('rojo'),
-                                        `274` = c('blanco'),
-                                        `297` = c('amarillo'),
-                                        `312` = c('negro'),
-                                        `320` = c('mierda sol'),
-                                        `325` = c('morado'))))) %>%
+                                        `297` = c('AM'),
+                                        `291` = c('AZ'),
+                                        `274` = c('BL'),
+                                        `46` = c('GR'),
+                                        `325` = c('MRD'),
+                                        `266` = c('MRN'),
+                                        `312` = c('NG'),
+                                        `121` = c('NR'),
+                                        `245` = c('RJ'),
+                                        `65` = c('RS'),
+                                        `234` = c('VD'))))) %>%
   left_join(color_chip_hexes,
             by = c("prompt" = "#cnum")) %>%
   rename(Age = age_ints, `Chip ID` = prompt, `Color Term` = response, 
          `% of Subjects` = perc, `Hex Code` = hex) %>%
-  filter(n_total >= 4)
+  filter(n_total >= 4) %>%
+  mutate(language = ifelse(response %in% c('Amarillo', 'Azul', 'Blanco', 'Celeste', 'Gris', 'Morado', 'Marron', 'Naranja', 'Plomo', 'Rojo', 'Rosa', 'Verde'), 'Spanish', 'Shipibo'))
+
 ```
 
 Characterize consensus over the WCS map
 
-How does bilingualism factor into adult responses?
+```{r, fig.width=8, fig.height=8}
 
-Compare Spanish versus Shipibo responses in children
+p <- ggplot(spanish_1st_response, 
+       aes(x = Age, y = `% of Subjects`, group = `Color Term`, colour = `Color Term`)) +
+  facet_wrap(~`Chip ID`) +
+  geom_line(size = 1) +
+  geom_point(size=3) +
+  scale_y_continuous(limits = c(-10,110), breaks = seq(0,100, by = 25)) + 
+  scale_colour_manual(name = "Color Term",values = spanish_graph_colors) +
+  theme_bw() + 
+  theme(panel.grid = element_blank())
+
+ggplotly(p)
+
+```
+
+How does bilingualism factor into adult responses?
