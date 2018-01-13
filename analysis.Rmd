@@ -24,7 +24,6 @@ library(htmlTable)
 library(DT)
 library(plotly)
 
-
 ```
 
 Load in CSV data
@@ -47,14 +46,21 @@ spanish_child_data <- read_csv("data/spanish_children_colors_participants.csv") 
 
 color_chip_data <- read_csv("data/wcs_measures.csv", skip = 1)
 
-shipibo_graph_colors <- c(
+children_new_labels <- read_csv("data/unified_labels.csv")
+
+graph_colors <- c(
+  'Amarillo' = '#FFD416',
   'Ambi' = '#874A8C',
   'Ami' = '#76296E',
+  'Azul' = '#337DCE',
   'Barin Poi' = '#6D6212',
   'Bexnan' = '#B6D744',
+  'Blanco' = '#DBDBDB',
+  'Celeste' = '#74DFF7', 
   'Chexe' = '#81C147',
   'Chimapo' = '#003459',
   'Emo' = '#007177',
+  'Gris' = '#979997', 
   'Jimi' = '#822158',
   'Joshin' = '#BC1E47',
   'Joxo' = '#DFE6F0',
@@ -68,17 +74,25 @@ shipibo_graph_colors <- c(
   'Mai' = '#7F5A21',
   'Mandi' = '#005637',
   'Manxan' = '#FEBBA1',
+  'Marron' = '#9E5E22', 
   'Maxe' = '#DC4800',
+  'Morado' = '#B175F9', 
   'Nai' = '#19A2C2',
+  'Naranja' = '#FF6E00',
+  'Negro' = '#000000',
   'Oxne' = '#66BCC9',
   'Panshin' = '#EDC800',
   'Pasna' = '#D3C5DF',
   'Paxna' = '#EC99A2',
   'Pei' = '#69C360',
   'Pene' = '#55471E',
+  'Plomo' = '#848484', 
   'Poa' = '#7E4E94',
   'Ranchesh' = '#4A2347',
+  'Rojo' = '#E03D28', 
+  'Rosa' = '#FF8C9D', 
   'Tena' = '#C5D500',
+  'Verde' = '#61E27B', 
   'Yame' = '#666412',
   'Yankon' = '#00A79E',
   'Wiso' = '#272727',
@@ -88,55 +102,34 @@ shipibo_graph_colors <- c(
   'Spanish Term' = '#FF6E00'
 )
 
-spanish_graph_colors <- c(
-  'Amarillo' = '#FFD416',
-  'Azul' = '#337DCE',
-  'Blanco' = '#F7F7F7',
-  'Celeste' = '#74DFF7', 
-  'Gris' = '#979997', 
-  'Joshin' = '#BC1E47', 
-  'Joxo' = '#DFE6F0', 
-  'Kari' = '#571848', 
-  'Marron' = '#9E5E22', 
-  'Morado' = '#B175F9', 
-  'Nai' = '#19A2C2', 
-  'Naranja' = '#FF6E00',
-  'Oshne' = '#66BCC9', 
-  'Panshin' = '#EDC800', 
-  'Plomo' = '#848484', 
-  'Pei' = '#69C360', 
-  'Poa' = '#7E4E94', 
-  'Rojo' = '#E03D28', 
-  'Rosa' = '#FF8C9D', 
-  'Verde' = '#61E27B', 
-  'Wiso' = '#272727', 
-  'Yankon' = '#00A79E'
-  )
+spanish_terms <- c("Amarillo", "Azul", "Blanco", "Celeste", "Gris", "Marron", "Morado", "Naranja", "Negro", "Plomo", "Rojo", "Rosa", "Verde")
+
+shipibo_terms <- c("Ambi", "Ami", "Barin Poi", "Bexnan", "Chexe", "Chimapo", "Emo", "Jimi", "Joshin", "Joxo", "Kari", "Kasho", "Keskiti", "Koin", "Kononbi", "Konron", "Koro", "Mai", "Mandi", "Manxan", "Maxe", "Nai", "Oxne", "Panshin", "Pasna", "Paxna", "Pei", "Pene", "Poa", "Ranchesh", "Tena", "Yame", "Yankon", "Wiso", "Xena", "Xexe", "Xo")
 
 shipibo_chip_set <- read.csv(text = "shipibo, spanish, munsell_code, chip_id
 Joshin, rojo, G3, 245
 Pei/Xo, verde, G18, 234
 Panshin, amarillo, C9, 297
-Huiso, negro, J1/I0, 312
+Wiso, negro, J1/I0, 312
 Joxo, blanco, A/B0, 274
 Nai, celeste, E29, 1
-Ami/Pua, morado, H36, 325
+Ami/Poa, morado, H36, 325
 Barin poi, mierda sol, F12, 320")
 
-spanish_chip_set <- read.csv(text = "spanish, munsell_code, chip_id
-Blanco, A/B0, 274
-Verde, G18, 234
-Rojo, G3, 245
-Amarillo, C9, 297
-Azul, F30, 291
-Negro, J1/I0, 312
-Naranja, E4, 121
-Gris, F0, 46
-Morado, H36, 325
-Marron, G5, 266
-Rosa, F39, 65")
+spanish_chip_set <- read.csv(text = "spanish, code, munsell_code, chip_id
+Blanco, BL, A/B0, 274
+Verde, VD, G18, 234
+Rojo, RJ, G3, 245
+Amarillo, AM, C9, 297
+Azul, AZ, F30, 291
+Negro, NG, J1/I0, 312
+Naranja, NR, E4, 121
+Gris, GR, F0, 46
+Morado, MRD, H36, 325
+Marron, MRN, G5, 266
+Rosa, RS, F39, 65")
 
-string_spelling_list <- "`Ami` = c('ami'), `Ambi` = c('ambi'), `Barin Poi` = c('barin pui', 'barrin pui', 'barrinpui', 'pui', 'barin poi', 'barrin poi', 'bavrinpui*', 'barri'), `Bexnan` = c('berrnan', 'bexna', 'bexnan'), `Kari` = c('cari', 'carri', 'kari', 'karri'), `Chexe` = c('chese', 'chexe'), `Chimapo` = c('chimapu'), `Emo` = c('emu'), `Jimi` = c('jimi'), `Jisa` = c('jisa'), `Joshin` = c('joshin', 'joxin', 'toshin'), `Joxo` = c('josho', 'joxo'), `Kasho` = c('kashos'), `Keskiti` = c('kex keti'), `Koin` = c('kuin'), `Kononbi` = c('kunumbi'), `Konron` = c('korrum', 'kumrrum', 'kunrrum'), `Koro` = c('coro'), `Mai` = c('mai'), `Mandi` = c('mandi'), `Manxan` = c('manrran', 'manshan', 'manxam', 'manxan', 'maxan', 'maxna'), `Maxe` = c('maxe'), `Nai` = c('nai', 'nia'), `Oxne` = c('oshne'), `Pei` = c('pei'), `Poa` = c('pua'), `Pene` = c('pene'), `Panshin` = c('panshin'), `Pasna` = c('paxsna', 'pasna'), `Paxna` = c('parrna', 'paxna'), `Ranchesh` = c('ranchex'), `Spanish Term` = c('rojo', 'blanco', 'verde', 'amarillo', 'celeste', 'negro', 'morado', 'azul', 'marron', 'bioleta', 'verdesito', 'carne', 'naranjada', 'naranjado', 'amarilla', 'agua', 'agur', 'uva color*', 'violeta', 'pasto payota', 'naranja', 'chocolate', 'rosado', 'rosada', 'narranxa', 'anaranjado', 'coral', 'cerde', 'gris', 'oscuro', 'lila', 'azu', 'color cielo', 'cielo'), `Tena` = c('tena'), `Wiso` = c('wiso'), `Xena` = c('xena'), `Xo` = c('xo'), `Xexe` = c('xexe', 'xexi'), `Yame` = c('rayame', 'yame'), `Yankon` = c('rayanko', 'yankom', 'yankon', 'yankum', 'yankun', 'yankontani', 'yakon', 'yakun', 'yankoncha'), `NA` = c(NA)"
+string_spelling_list <- "`Amarillo` = c('amarilla', 'amarillo'), `Ami` = c('ami'), `Ambi` = c('ambi'), `Azul` = c('azul', 'azu'), `Barin Poi` = c('barin pui', 'barrin pui', 'barrinpui', 'pui', 'barin poi', 'barrin poi', 'bavrinpui*', 'barri'), `Bexnan` = c('berrnan', 'bexna', 'bexnan'), `Blanco` = c('blanco'), `Celeste` = c('celeste'), `Chexe` = c('chese', 'chexe'), `Chimapo` = c('chimapu'), `Emo` = c('emu'), `Gris` = c('gris'), `Jimi` = c('jimi'), `Jisa` = c('jisa'), `Joshin` = c('joshin', 'joxin', 'toshin'), `Joxo` = c('josho', 'joxo'), `Kari` = c('cari', 'carri', 'kari', 'karri'), `Kasho` = c('kashos'), `Keskiti` = c('kex keti'), `Koin` = c('kuin'), `Kononbi` = c('kunumbi'), `Konron` = c('korrum', 'kumrrum', 'kunrrum'), `Koro` = c('coro'), `Mai` = c('mai'), `Mandi` = c('mandi'), `Manxan` = c('manrran', 'manshan', 'manxam', 'manxan', 'maxan', 'maxna'), `Marron` = c('marron'), `Maxe` = c('maxe'), `Mierda Sol` = c('miarda', 'miarda del sol'), `Morado` = c('bioleta', 'morado', 'violeta', 'morada'), `Nai` = c('nai', 'nia'), `Naranja` = c('naranja', 'naranjada', 'narranxa', 'naranjado', 'narango', 'naranjo', 'anaranjado'), `Negro` = c('negro'), `Oxne` = c('oshne', 'oxne', 'oxe'), `Pei` = c('pei'), `Poa` = c('pua'), `Pene` = c('pene'), `Panshin` = c('panshin'), `Pasna` = c('paxsna', 'pasna'), `Paxna` = c('parrna', 'paxna'), `Plomo` = c('plomo'), `Ranchesh` = c('ranchex'), `Rojo` = c('rojo', 'roja'), `Rosa` = c('rosada', 'rosa', 'rosado'), `Spanish Term` = c('carne', 'agua', 'agur', 'uva color*', 'pasto payota', 'chocolate', 'coral', 'oscuro', 'lila', 'color cielo', 'cielo'), `Tena` = c('tena'), `Verde` = c('verde', 'cerde', 'verdesito'), `Wiso` = c('wiso'), `Xena` = c('xena'), `Xo` = c('xo'), `Xexe` = c('xexe', 'xexi'), `Yame` = c('rayame', 'yame'), `Yankon` = c('rayanko', 'yankom', 'yankon', 'yankum', 'yankun', 'yankontani', 'yakon', 'yakun', 'yankoncha'), `NA` = c(NA)"
 
 spelling_list <- eval(parse(text = paste0("c(",string_spelling_list,")")))
 
@@ -160,6 +153,63 @@ color_chip_data %<>%
 ```
 
 
+Import Berlin-Kay Shipibo data
+```{r}
+
+kay_langs <- read_tsv("data/WCS-Data-20110316/lang.txt", 
+                      col_names = c('WCS Language Number', 'WCS Language Name', 
+                                    'WCS Language Geographic Location', 'Field Worker')) %>%
+  filter(`WCS Language Name` == 'Shipibo')
+
+kay_dict <- read_tsv("data/WCS-Data-20110316/dict.txt",
+                     col_names = c('WCS Language Number', 'Term Number',
+                                   'Term', 'Term Abbreviation')) %>%
+  filter(`WCS Language Number` == kay_langs$`WCS Language Number`)
+
+kay_foci <- read_tsv("data/WCS-Data-20110316/foci-exp.txt",
+                     col_names = c("WCS Language Number", "WCS Speaker Number",
+                                   "WCS Focus Response", "Term Abbreviation",
+                                   "Single Chip")) %>%
+  filter(`WCS Language Number` == kay_langs$`WCS Language Number`)
+
+kay_speaker <- read_tsv("data/WCS-Data-20110316/spkr-lsas.txt", 
+                        col_names = c("WCS Language Number", "WCS Speaker Number",
+                                      "WCS Speaker Age", "WCS Speaker Sex")) %>%
+  filter(`WCS Language Number` == kay_langs$`WCS Language Number`)
+
+kay_terms <- read_tsv("data/WCS-Data-20110316/term.txt", 
+                      col_names = c('WCS Language Number', 'WCS Speaker Number', 
+                                    'WCS Chip Number', 'Term Abbreviation')) %>%
+  filter(`WCS Language Number` == kay_langs$`WCS Language Number`) %>%
+  left_join(select(kay_dict, Term, `Term Abbreviation`), by = "Term Abbreviation") %>%
+  left_join(select(kay_speaker, -`WCS Language Number`), by = "WCS Speaker Number") %>%
+  mutate(Term = forcats::fct_collapse(Term,
+                                      `Ami` = c("ami"),
+                                      `Barin Poi` = c("barin poi"),
+                                      `Cana` = c("cana"),
+                                      `Chexe` = c("cheshe"),
+                                      `Chimapo` = c("chimapo"),
+                                      `Koro` = c("coro"),
+                                      `Emo` = c("emo"),
+                                      `Joshin` = c("joshin"),
+                                      `Joxo` = c("josho"),
+                                      `Kaqui` = c("kaqui"),
+                                      `Mai` = c("mai"),
+                                      `Manxan` = c("manshan"),
+                                      `Panshin` = c("panshin"),
+                                      `Pasna` = c("pashnatani"),
+                                      `Pene` = c("pene"),
+                                      `Pota'` = c("pota'"),
+                                      `Xena` = c("shane"),
+                                      `Xo` = c("shoo"),
+                                      `Yame` = c("yametani"),
+                                      `Yankon` = c("yancon"),
+                                      `Wiso` = c("huiso")
+                                      ))
+
+```
+
+
 
 Which terms appear to be basic and commonly used?
 ```{r}
@@ -170,19 +220,44 @@ naming_data_profusion <- naming_data %>%
   group_by(color_cat) %>%
   spread(subj, n, fill = 0) %>%
   gather(key = 'subj', value = 'n', -color_cat) %>%
-  summarise(`% of Subjects Who Used the Term` = 100*sum(n > 0)/n(), 
-            `Mean % of Chips in Set Labeled` = 100*mean(n)/165) %>%
+  summarise(`% of Subjects Who Used the Term (Current)` = 100*sum(n > 0)/n(), 
+            `Mean % of Chips in Set Labeled (Current)` = 100*mean(n)/165) %>%
   dplyr::rename(`Color Term` = color_cat)
 
-naming_list <- as.character(na.omit(filter(naming_data_profusion, `% of Subjects Who Used the Term` > 50 & !is.na(`Color Term`))$`Color Term`))
+kay_naming_profusion <- kay_terms %>%
+  group_by(`WCS Speaker Number`, Term) %>%
+  summarise(n = n()) %>%
+  group_by(Term) %>%
+  spread(`WCS Speaker Number`, n, fill = 0) %>%
+  gather(key = 'WCS Speaker Number', value = 'n', -Term) %>%
+  summarise(`% of Subjects Who Used the Term (Kay)` = 100*sum(n > 0)/n(), 
+            `Mean % of Chips in Set Labeled (Kay)` = 100*mean(n)/330) %>%
+  dplyr::rename(`Color Term` = Term)
 
-datatable(naming_data_profusion, rownames = FALSE)
+naming_profusion <- full_join(naming_data_profusion, kay_naming_profusion, 
+                              by = 'Color Term') %>%
+  dplyr::select(`Color Term`, `% of Subjects Who Used the Term (Current)`, 
+         `% of Subjects Who Used the Term (Kay)`, `Mean % of Chips in Set Labeled (Current)`,
+        `Mean % of Chips in Set Labeled (Kay)` ) %>%
+  dplyr::arrange(`Color Term`) %>%
+  mutate_if(is.double, round, digits = 2)
+
+kay_naming_list <- as.character(na.omit(filter(naming_profusion, `% of Subjects Who Used the Term (Kay)` > 50 & !is.na(`Color Term`))$`Color Term`))
+naming_list <- as.character(na.omit(filter(naming_profusion, `% of Subjects Who Used the Term (Current)` > 50 & !is.na(`Color Term`))$`Color Term`))
+
+datatable(naming_profusion, rownames = FALSE)
 
 
 ```
 
-In the naming task with 165 color chips, commonly used terms include: 
+In our naming task with 2 sets of 165 color chips, commonly used terms include: 
 `r pander::pandoc.list.return(naming_list, style = 'bullet')`
+
+
+This is a notably smaller set of terms compared to the original WCS:
+`r pander::pandoc.list.return(kay_naming_list, style = 'bullet')`
+
+
 
 
 ```{r}
@@ -214,7 +289,8 @@ datatable(grouping_data_profusion, rownames = FALSE)
 ```
 
 
-In the grouping task with 60 chips, subjects usually create between 4-7 groups and mostly use terms like:
+
+In the grouping task with 60 chips, subjects usually create between 4-7 groups and mostly use terms such as:
 `r pander::pandoc.list.return(grouping_list, style = 'bullet')`
 
 
@@ -238,19 +314,29 @@ naming_consensus <- naming_data %>%
   arrange(chip_id) %>%
   rename(`Chip ID` = chip_id, `Color Term` = color_cat, `% of Subjects` = perc)
 
-datatable(naming_consensus %>%
-            spread(`Color Term`, `% of Subjects`, fill = 0), 
-  rownames = FALSE, fillContainer = TRUE)
+kay_consensus <- kay_terms %>%
+  group_by(`WCS Chip Number`, Term) %>%
+  summarise(n = n()) %>%
+  group_by(`WCS Chip Number`) %>%
+  mutate(`% of Subjects` = 100*n/sum(n)) %>%
+  select(-n) %>%
+  arrange(`WCS Chip Number`)
 
 focal_terms <- pander::p(as.character(
   unique(filter(naming_consensus,`% of Subjects` >= consensus)$`Color Term`)), 
   wrap = '', copula = ', and ')
 
-color_chip_hexes <- color_chip_data[, c('#cnum', 'hex')]
+kay_focal_terms <- pander::p(as.character(
+  unique(filter(kay_consensus,`% of Subjects` >= consensus)$`Term`)), 
+  wrap = '', copula = ', and ')
 
+color_chip_hexes <- color_chip_data[, c('#cnum', 'hex')]
 
 highest_chips <- (naming_consensus %>% group_by(`Color Term`) %>%
   filter(`% of Subjects` >= consensus & `% of Subjects` == max(`% of Subjects`)))$`Chip ID`
+
+kay_highest_chips <- (kay_consensus %>% group_by(`Term`) %>%
+  filter(`% of Subjects` >= consensus & `% of Subjects` == max(`% of Subjects`)))$`WCS Chip Number`
 
 agreed_chips <- naming_consensus %>%
   group_by(`Color Term`) %>%
@@ -261,6 +347,15 @@ agreed_chips <- naming_consensus %>%
   dplyr::rename(`Hex Code` = hex) %>%
   mutate(highest_chips = ifelse(`Chip ID` %in% highest_chips, 1, 0))
 
+kay_agreed_chips <- kay_consensus %>%
+  group_by(Term) %>%
+  filter(`% of Subjects` >= consensus) %>%
+  arrange(`Term`, `WCS Chip Number`) %>%
+  left_join(color_chip_hexes,
+            by = c("WCS Chip Number" = "#cnum")) %>%
+  dplyr::rename(`Hex Code` = hex) %>%
+  mutate(highest_chips = ifelse(`WCS Chip Number` %in% kay_highest_chips, 1, 0))
+
 
 datatable(agreed_chips, rownames = FALSE,
           options=list(columnDefs = list(list(
@@ -270,8 +365,18 @@ datatable(agreed_chips, rownames = FALSE,
   formatStyle(columns = "Hex Code",
               background = styleEqual(agreed_chips$`Hex Code`, agreed_chips$`Hex Code`))
 
+datatable(kay_agreed_chips, rownames = FALSE,
+          options=list(columnDefs = list(list(
+            visible=FALSE, targets=c(grep('highest_chips', names(kay_agreed_chips))-1))))) %>%
+  formatStyle('highest_chips', target = 'row',
+              fontWeight = styleEqual(c(0,1), c('normal','bold'))) %>%
+  formatStyle(columns = "Hex Code",
+              background = styleEqual(kay_agreed_chips$`Hex Code`, kay_agreed_chips$`Hex Code`))
+
 
 ```
+
+
 
 The only categories with chips that reach a high level of consensus appear to be `r focal_terms`
 
@@ -284,21 +389,141 @@ highest_consenus <- naming_consensus %>%
 
 consensus_plot <- ggplot(highest_consenus, 
                          aes(x = H, y = factor(V), 
-                             colour = `Color Term`, size = `% of Subjects`, 
-                             shape = `Spanish Term`)) + 
+                             colour = `Color Term`, size = `% of Subjects`)) + 
     geom_point() + 
     scale_size(range = c(0, 2.5)) + 
     scale_shape_manual(name = 'Spanish Term', 
                        values = c('Spanish' = 17, 'Shipibo' = 16)) +
-    scale_colour_manual(name = "Color Term",values = shipibo_graph_colors) +
+    scale_colour_manual(name = "Color Term",values = graph_colors) +
     scale_y_discrete(limits = rev(levels(factor(highest_consenus$V)))) +
     theme_bw()
 
+kay_highest_consenus <- kay_consensus %>%
+  group_by(`WCS Chip Number`) %>%
+  filter(`% of Subjects` == max(`% of Subjects`)) %>%
+  left_join(color_chip_data, by = c("WCS Chip Number" = "#cnum"))
+
+kay_consensus_plot <- ggplot(kay_highest_consenus, 
+                         aes(x = H, y = factor(V), 
+                             colour = Term, size = `% of Subjects`)) + 
+    geom_point() + 
+    scale_size(range = c(0, 2.5)) + 
+    scale_colour_manual(name = "Term",values = graph_colors) +
+    scale_y_discrete(limits = rev(levels(factor(kay_highest_consenus$V)))) +
+    theme_bw()
 
 ```
 
 ![Original plot displaying 330 chips by their V and H coordinates](http://www1.icsi.berkeley.edu/wcs/images/jrus-20100531/wcs-chart-4x.png)
+
+
 `r plotly::ggplotly(consensus_plot)`
+
+
+`r plotly::ggplotly(kay_consensus_plot)`
+
+Levels of entropy across chips?
+```{r}
+
+num_categories <- n_distinct(naming_consensus$`Color Term`)
+
+naming_entropy <- naming_consensus %>%
+  mutate(`% of Subjects` = `% of Subjects`/100) %>%
+  spread(key = 'Color Term', value = '% of Subjects', fill = 0) %>%
+  mutate_if(is.double, funs( . * log(., base = num_categories))) %>%
+  mutate_if(is.double, funs(replace(., is.nan(.), 0))) %>%
+  ungroup() %>%
+  mutate(Entropy = -rowSums(.[-1])) %>%
+  select(`Chip ID`, Entropy) %>%
+  left_join(color_chip_data, by = c("Chip ID" = "#cnum"))
+
+entropy_plot <- ggplot(naming_entropy, 
+                         aes(x = H, y = factor(V), 
+                            colour = hex, size = Entropy)) + 
+    geom_point() + 
+    scale_size(range = c(0, 2.5)) + 
+    scale_colour_manual(values = eval(parse(text = paste0("c(", paste0("'", naming_entropy$hex, "' = '", naming_entropy$hex, "'", collapse = ", "),")")))) +
+    scale_y_discrete(limits = rev(levels(factor(naming_entropy$V)))) +
+    theme_bw() + 
+  theme(legend.position = "none")
+
+kay_num_categories <- n_distinct(kay_terms$Term)
+
+kay_naming_entropy <- kay_consensus %>%
+  mutate(`% of Subjects` = `% of Subjects`/100) %>%
+  spread(key = 'Term', value = '% of Subjects', fill = 0) %>%
+  mutate_if(is.double, funs( . * log(., base = kay_num_categories))) %>%
+  mutate_if(is.double, funs(replace(., is.nan(.), 0))) %>%
+  ungroup() %>%
+  mutate(Entropy = -rowSums(.[-1])) %>%
+  select(`WCS Chip Number`, Entropy) %>%
+  left_join(color_chip_data, by = c("WCS Chip Number" = "#cnum"))
+
+kay_entropy_plot <- ggplot(kay_naming_entropy, 
+                         aes(x = H, y = factor(V), 
+                            colour = hex, size = Entropy)) + 
+    geom_point() + 
+    scale_size(range = c(0, 2.5)) + 
+    scale_colour_manual(values = eval(parse(text = paste0("c(", paste0("'", kay_naming_entropy$hex, "' = '", kay_naming_entropy$hex, "'", collapse = ", "),")")))) +
+    scale_y_discrete(limits = rev(levels(factor(kay_naming_entropy$V)))) +
+    theme_bw() + 
+  theme(legend.position = "none")
+
+entropy_change <- full_join(select(naming_entropy, `Chip ID`, Entropy), 
+                            select(kay_naming_entropy, `WCS Chip Number`, Entropy), 
+                            by = c("Chip ID" = "WCS Chip Number"),
+                            suffix = c(" (Current)", " (Kay)")) %>%
+  mutate(`Entropy Change` = `Entropy (Current)` - `Entropy (Kay)`) %>%
+  left_join(color_chip_data, by = c("Chip ID" = "#cnum"))
+
+entropy_change_plot <- ggplot(entropy_change, 
+                         aes(x = H, y = factor(V), 
+                            colour = `Entropy Change`, size = `Entropy Change`)) + 
+    geom_point() + 
+    scale_size(range = c(0, 2.5)) + 
+    scale_colour_distiller(palette = "RdBu") + 
+    scale_y_discrete(limits = rev(levels(factor(entropy_change$V)))) +
+    theme_bw() + 
+  theme(legend.position = "none")
+
+spanish_use <- naming_consensus %>%
+  mutate(`Color Term` = ifelse(as.character(`Color Term`) %in% spanish_terms, 
+                               'Spanish Term', as.character(`Color Term`))) %>%
+  group_by(`Chip ID`, `Color Term`) %>%
+  summarise(`% of Subjects` = sum(`% of Subjects`, na.rm = T)) %>%
+  group_by(`Chip ID`) %>%
+  spread(key = `Color Term`, value = `% of Subjects`, fill = 0) %>%
+  select(`Chip ID`, `Spanish Term`) %>%
+  left_join(color_chip_data, by = c("Chip ID" = "#cnum"))
+
+spanish_use_plot <- ggplot(spanish_use, 
+                         aes(x = H, y = factor(V), 
+                            colour = `Spanish Term`, size = `Spanish Term`)) + 
+    geom_point() + 
+    scale_size(range = c(0, 2.5)) + 
+    scale_colour_distiller(palette = "RdBu") + 
+    scale_y_discrete(limits = rev(levels(factor(entropy_change$V)))) +
+    theme_bw() + 
+  theme(legend.position = "none")
+
+entropy_spanish_use <- full_join(entropy_change, spanish_use) %>%
+  select(`Chip ID`:`Entropy Change`, `Spanish Term`, munsell_code:hex)
+
+
+```
+
+
+`r plotly::ggplotly(spanish_use_plot)`
+
+
+`r plotly::ggplotly(entropy_plot)`
+
+
+`r plotly::ggplotly(kay_entropy_plot)`
+
+
+`r plotly::ggplotly(entropy_change_plot)`
+
 
 Is there a similar amount of consensus on labeling between children and adults (in Shipibo)?
 
@@ -350,7 +575,10 @@ adult_naming <- naming_consensus %>%
   filter(`Chip ID` %in% shipibo_chip_set$chip_id & !is.na(`Color Term`)) %>%
   dplyr::rename(`Hex Code` = hex)
 
-naming_data_combined <- bind_rows(shipibo_1st_response, adult_naming)
+naming_data_combined <- bind_rows(shipibo_1st_response, adult_naming) %>%
+    mutate(language = ifelse(`Color Term` %in% spanish_terms, 'Spanish', 
+                             ifelse(`Color Term` %in% shipibo_terms, 'Shipibo', NA)))
+
 
 
 term_prototypes <- naming_consensus %>%
@@ -374,30 +602,34 @@ datatable(shipibo_chip_set_data, rownames = FALSE) %>%
 
 ```
 
+
+
 Spanish term as a dotted line?
 ```{r, fig.width=8, fig.height=8}
 
-p <- ggplot(filter(naming_data_combined, Age < 18 & `Color Term` != 'Spanish Term'), 
+p <- ggplot(filter(naming_data_combined, Age < 18 & language == 'Shipibo'), 
        aes(x = Age, y = `% of Subjects`, group = `Color Term`, colour = `Color Term`)) +
   facet_wrap(~`Chip ID`) +
   geom_line(size = 1) +
   geom_line(data = filter(naming_data_combined, 
-                          Age < 18 & `Color Term` == 'Spanish Term'), 
+                          Age < 18 & language == 'Spanish'), 
             linetype = 2, size = 1) + 
   geom_point(data = filter(naming_data_combined, 
-                          Age < 18 & `Color Term` == 'Spanish Term'), 
+                          Age < 18 & language == 'Spanish'), 
             shape = 17, size = 3) + 
   geom_point( size=3) +
   geom_point(data = filter(naming_data_combined, Age >= 18), size=3) +
   scale_y_continuous(limits = c(-10,110), breaks = seq(0,100, by = 25)) + 
   scale_x_continuous(breaks = c(seq(6,12,2),18), labels = c(seq(6,12,2),'Adult')) +
-  scale_colour_manual(name = "Color Term",values = shipibo_graph_colors) +
+  scale_colour_manual(name = "Color Term",values = graph_colors) +
   theme_bw() + 
   theme(panel.grid = element_blank())
 
 ggplotly(p)
 
 ```
+
+
 
 ```{r}
 
@@ -411,17 +643,12 @@ datatable(spanish_chip_set_data, rownames = FALSE, options = list(pageLength = n
   formatStyle(columns = "Hex Code",
               background = styleEqual(spanish_chip_set_data$`Hex Code`, spanish_chip_set_data$`Hex Code`))
 
-
-spanish_string_spelling_list <- "`Amarillo` = c('amarilla'), `Azul` = c('azul'), `Blanco` = c('blanco'), `Celeste` = c('celeste'), `Gris` = c('gris'), `Joshin` = c('joshin'), `Joxo` = c('joxo'), `Kari` = c('carri'), `Marron` = c('marron'), `Morado` = c('bioleta', 'morado', 'violeta'), `Nai` = c('nai'), `Naranja` = c('naranja', 'naranjada', 'narranxa', 'naranjado', 'narango', 'naranjo'), `Oshne` = c('oxe'), `Panshin` = c('panshin'), `Plomo` = c('plomo'), `Pei` = c('pei'), `Poa` = c('pua'), `Rojo` = c('rojo'), `Rosa` = c('rosada', 'rosa', 'rosado'), `Verde` = c('verde'), `Wiso` = c('wiso'), `Yankon` = c('yankon'), `NA` = c(NA)" 
-
-spanish_spelling_list <- eval(parse(text = paste0("c(",spanish_string_spelling_list,")")))
-
 spanish_1st_response <- spanish_child_data %>%
   mutate(age = ifelse(is.na(age), as.numeric(as.character(edad)), as.numeric(as.character(age)))) %>%
   filter(task == 1) %>%
-  mutate(response_1 = ifelse(tolower(response_1) %in% unlist(spanish_spelling_list), 
+  mutate(response_1 = ifelse(tolower(response_1) %in% unlist(spelling_list), 
                                      tolower(response_1), NA)) %>%
-  mutate(response_1 = eval( parse(text = gsub(pattern = "x", replacement = spanish_string_spelling_list, "forcats::fct_collapse(response_1, x)")))
+  mutate(response_1 = eval( parse(text = gsub(pattern = "x", replacement = string_spelling_list, "forcats::fct_collapse(response_1, x)")))
          ) %>%
   mutate( age_ints = round(age/spanish_age_interval)*spanish_age_interval) %>%
   select(subj, age, age_ints, prompt, response_1) %>%
@@ -453,21 +680,27 @@ spanish_1st_response <- spanish_child_data %>%
   rename(Age = age_ints, `Chip ID` = prompt, `Color Term` = response, 
          `% of Subjects` = perc, `Hex Code` = hex) %>%
   filter(n_total >= 4) %>%
-  mutate(language = ifelse(response %in% c('Amarillo', 'Azul', 'Blanco', 'Celeste', 'Gris', 'Morado', 'Marron', 'Naranja', 'Plomo', 'Rojo', 'Rosa', 'Verde'), 'Spanish', 'Shipibo'))
+  mutate(language = ifelse(`Color Term` %in% spanish_terms, 'Spanish', ifelse(`Color Term` %in% shipibo_terms, 'Shipibo', NA)))
 
 ```
+
+
 
 Characterize consensus over the WCS map
 
 ```{r, fig.width=8, fig.height=8}
 
-p <- ggplot(spanish_1st_response, 
+p <- ggplot(filter(spanish_1st_response, language == 'Spanish'), 
        aes(x = Age, y = `% of Subjects`, group = `Color Term`, colour = `Color Term`)) +
   facet_wrap(~`Chip ID`) +
   geom_line(size = 1) +
   geom_point(size=3) +
+  geom_line(data = filter(spanish_1st_response, language == 'Shipibo'), 
+            linetype = 2, size = 1) + 
+  geom_point(data = filter(spanish_1st_response, language == 'Shipibo'), 
+            shape = 17, size = 3) + 
   scale_y_continuous(limits = c(-10,110), breaks = seq(0,100, by = 25)) + 
-  scale_colour_manual(name = "Color Term",values = spanish_graph_colors) +
+  scale_colour_manual(name = "Color Term",values = graph_colors) +
   theme_bw() + 
   theme(panel.grid = element_blank())
 
@@ -475,4 +708,106 @@ ggplotly(p)
 
 ```
 
+
+```{r}
+# 
+# child_table <- filter(all_child_data, language == 'Shipibo' & task == 'comprehension') %>%
+#   unite('all_responses', response_1:response_4, sep = ', ', remove = F) %>%
+#   mutate(all_responses = gsub("(,\\s)?NA", "", all_responses)) %>%
+#   mutate(all_responses = stringr::str_replace_all(all_responses,
+#                                                   c('amarillo' = '297',
+#                                                     'amarilla' = '297',
+#                                                     'blanco' = '274',
+#                                                     'celeste' = '1',
+#                                                     'joxo' = '274',
+#                                                     'miarda(\\sdel sol)?' = '320',
+#                                                     'morada' = '325',
+#                                                     'morado' = '325',
+#                                                     'negro' = '312',
+#                                                     'roja' = '245',
+#                                                     'rojo' = '245',
+#                                                     'verde' = '234'
+#                                                     ))) %>%
+#   left_join(shipibo_chip_set %>%
+#               mutate(shipibo = tolower(shipibo)) %>%
+#               select(shipibo, chip_id)) %>%
+#   mutate(correct = ifelse(stringr::str_detect(all_responses, as.character(chip_id)), 1, 0))
+#   
+#   
+# 
+# find_correct <- function(child_table, string_spelling_list) {
+#   if (first(child_table$language) == 'Shipibo') {
+#     
+#     if (first(child_table$task) == 'production') {
+#       
+#       child_table %<>%
+#         mutate(response_1 = eval( parse(text = gsub(pattern = "x", 
+#                                                     replacement = string_spelling_list,
+#                                                     "forcats::fct_collapse(response_1, x)")))) %>%
+#         mutate(correct = stringr::str_detect(tolower(response_1), tolower(shipibo)))
+#       
+#     } else if (first(child_table$task) == 'comprehension') {
+#       child_table %<>%
+#         unite('all_responses', response_1:response_4, sep = ', ', remove = F) %>%
+#         mutate(all_responses = gsub("(,\\s)?NA", "", all_responses)) %>%
+#         mutate(all_responses = stringr::str_replace_all(all_responses,
+#                                                         c('amarillo' = '297',
+#                                                           'amarilla' = '297',
+#                                                           'blanco' = '274',
+#                                                           'celeste' = '1',
+#                                                           'joxo' = '274',
+#                                                           'miarda(\\sdel sol)?' = '320',
+#                                                           'morada' = '325',
+#                                                           'morado' = '325',
+#                                                           'negro' = '312',
+#                                                           'roja' = '245',
+#                                                           'rojo' = '245',
+#                                                           'verde' = '234'
+#                                                           )))
+# 
+#     }
+#     
+#   } else if (first(child_table$language) == 'Spanish') {
+#     
+#     if (first(child_table$task) == 'production') {
+# 
+#       child_table %<>%
+#         mutate(response_1 = eval( parse(text = gsub(pattern = "x", 
+#                                                     replacement = string_spelling_list,
+#                                                     "forcats::fct_collapse(response_1, x)")))) %>%
+#         mutate(correct = stringr::str_detect(tolower(response_1), tolower(spanish)))
+#       
+#     } else if (first(child_table$task) == 'comprehension') {
+#       
+#       child_table %<>%
+#         unite('all_responses', response_1:response_4, sep = ', ', remove = F) %>%
+#         mutate(all_responses = gsub("(,\\s)?NA", "", all_responses)) %>%
+#         left_join(spanish_chip_set %>%
+#                     mutate(spanish = tolower(spanish)) %>%
+#                     select(spanish, chip_id)) %>%
+#         mutate(correct = ifelse(stringr::str_detect(all_responses, as.character(chip_id)), 1, 0))
+#       
+#     }
+#   }
+#   return(child_table)
+# }
+# 
+# all_child_data <- bind_rows(mutate(shipibo_child_data, language = 'Shipibo'),
+#                             mutate(spanish_child_data, language = 'Spanish')) %>%
+#   mutate(age = ifelse(!is.na(age), 
+#                       as.numeric(as.character(age)), as.numeric(as.character(edad))),
+#          task = ifelse(task == 1, 'production',
+#                           ifelse(task == 2, 'comprehension', NA))) %>%
+#   left_join(children_new_labels, by = c("task", "language", "prompt")) %>%
+#   mutate(correct = NA) %>%
+#   select(-edad, -`lugar de grabación`, -`grabación`, -fecha ) %>%
+#   group_by(language, task) %>%
+#   do(find_correct)
+# 
+#   
+
+```
+
+
 How does bilingualism factor into adult responses?
+

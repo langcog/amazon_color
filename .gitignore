@@ -1,3 +1,4 @@
 .DS_Store
 .Rproj.user
 packrat/lib*/
+analysis_cache/*

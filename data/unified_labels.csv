@@ -1,0 +1,40 @@
+prompt,language,task,stimuli,spanish,shipibo
+blanco,Shipibo,production,274,blanco,joxo
+verde,Shipibo,production,234,verde,yankon
+rojo,Shipibo,production,245,rojo,joshin
+amarillo,Shipibo,production,297,amarillo,panshin
+celeste,Shipibo,production,1,celeste,nai/yankon
+negro,Shipibo,production,312,negro,wiso
+mierda sol,Shipibo,production,320,mierda sol,barin poi
+morado,Shipibo,production,325,morado,"poa, ami"
+blanco,Shipibo,comprehension,Joxo,blanco,joxo
+verde,Shipibo,comprehension,Pei/Xo,verde,pei/xo
+rojo,Shipibo,comprehension,Joshin,rojo,joshin
+amarillo,Shipibo,comprehension,Panshin,amarillo,panshin
+celeste,Shipibo,comprehension,Nai,celeste,nai
+negro,Shipibo,comprehension,Wiso,negro,wiso
+mierda sol,Shipibo,comprehension,Barin Poi,mierda sol,barin poi
+morado,Shipibo,comprehension,Ami/Poa,morado,ami/poa
+azul/verde,Shipibo,comprehension,Yankon,azul/verde,yankon
+BL,Spanish,production,274,blanco,joxo
+VD,Spanish,production,234,verde,yankon
+RJ,Spanish,production,245,rojo,joshin
+AM,Spanish,production,297,amarillo,panshin
+AZ,Spanish,production,291,azul,yankon
+NG,Spanish,production,312,negro,wiso
+NR,Spanish,production,121,naranja,
+GR,Spanish,production,46,gris,
+MRD,Spanish,production,325,morado,ami/poa
+MRN,Spanish,production,266,marron,mai
+RS,Spanish,production,65,rosa,manxan
+BL,Spanish,comprehension,Blanco,blanco,joxo
+VD,Spanish,comprehension,Verde,verde,yankon
+RJ,Spanish,comprehension,Rojo,rojo,joshin
+AM,Spanish,comprehension,Amarillo,amarillo,panshin
+AZ,Spanish,comprehension,Azul,azul,yankon
+NG,Spanish,comprehension,Negro,negro,wiso
+NR,Spanish,comprehension,Naranja,naranja,
+GR,Spanish,comprehension,Gris,gris,
+MRD,Spanish,comprehension,Morado,morado,ami/poa
+MRN,Spanish,comprehension,Marron,marron,mai
+RS,Spanish,comprehension,Rosa,rosa,manxan
