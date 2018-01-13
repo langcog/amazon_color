@@ -2,3 +2,6 @@
 .Rproj.user
 packrat/lib*/
 analysis_cache/*
+.RData 
+.Rhistory 
+
