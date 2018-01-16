@@ -1,0 +1,380 @@
+---
+title: Characterizing Color Term Knowledge in Adults in the Peruvian
+  Shipibo Tribe
+author: "Danielle Kellier, Martin Fortier, and Mike Frank"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    highlight: tango
+    theme: spacelab
+  pdf_document: default
+---
+
+
+```{r setup, echo = FALSE}
+
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+```{r, cache = FALSE, echo = FALSE}
+library(tidyverse)
+library(magrittr)
+library(ggplot2)
+library(htmlTable)
+library(DT)
+library(plotly)
+library(feather)
+
+```
+
+
+Load and format CSV data from current study along with World Color Survey Data
+
+```{r}
+
+source("load_and_process.R")
+
+consensus <- 75
+
+
+```
+
+
+
+Shipibo adults were asked to label a set of Munsell chips in either of 2 sets of experiments. 
+
+In the naming task, we used a set of chips from the World Color Survey (WCS). Shipibo-speaking adults were split into 2 groups and asked to label 165 odd-numbered or even-numbered chips. Although most adults had some exposure to the Spanish language, prompts were given in Shipibo. While there are some procedural distinctions between the current data and the data shared from the original WCS, we believe that the similarities are great enough to warrant a comparison between our recently-collected data and data from a survey published almost 5 decades ago.
+
+```{r}
+
+curr_naming_profusion <- naming_data %>%
+  group_by(subj, color_cat) %>%
+  summarise(n = n()) %>%
+  group_by(color_cat) %>%
+  spread(subj, n, fill = 0) %>%
+  gather(key = 'subj', value = 'n', -color_cat) %>%
+  summarise(`% of Subjects Who Used the Term (Current)` = 100*sum(n > 0)/n(), 
+            `Mean % of Chips in Set Labeled (Current)` = 100*mean(n)/165) %>%
+  dplyr::rename(`Color Term` = color_cat)
+
+kay_naming_profusion <- kay_terms %>%
+  group_by(`WCS Speaker Number`, Term) %>%
+  summarise(n = n()) %>%
+  group_by(Term) %>%
+  spread(`WCS Speaker Number`, n, fill = 0) %>%
+  gather(key = 'WCS Speaker Number', value = 'n', -Term) %>%
+  summarise(`% of Subjects Who Used the Term (Kay)` = 100*sum(n > 0)/n(), 
+            `Mean % of Chips in Set Labeled (Kay)` = 100*mean(n)/330) %>%
+  dplyr::rename(`Color Term` = Term)
+
+naming_profusion <- full_join(curr_naming_profusion, kay_naming_profusion, 
+                              by = 'Color Term') %>%
+  dplyr::select(`Color Term`, `% of Subjects Who Used the Term (Current)`, 
+         `% of Subjects Who Used the Term (Kay)`, `Mean % of Chips in Set Labeled (Current)`,
+        `Mean % of Chips in Set Labeled (Kay)` ) %>%
+  dplyr::arrange(`Color Term`) %>%
+  mutate_if(is.double, round)
+
+curr_naming_list <- as.character(na.omit(filter(naming_profusion, `% of Subjects Who Used the Term (Current)` > 50 & !is.na(`Color Term`))$`Color Term`))
+kay_naming_list <- as.character(na.omit(filter(naming_profusion, `% of Subjects Who Used the Term (Kay)` > 50 & !is.na(`Color Term`))$`Color Term`))
+
+datatable(naming_profusion, rownames = FALSE) %>% 
+  formatStyle(c('% of Subjects Who Used the Term (Current)', '% of Subjects Who Used the Term (Kay)'),
+              fontWeight = styleInterval(c(50), c('normal', 'bold')))
+
+
+```
+<br>
+
+For the original WCS data, over half of the participants labeled a chip with the following terms:
+`r pander::pandoc.list.return(kay_naming_list, style = 'bullet')`
+
+<br>
+In our naming task, the list of commonly-used terms shrunk to: 
+`r pander::pandoc.list.return(curr_naming_list, style = 'bullet')`
+
+<br>
+Also important to note is that the list of common terms has shrunken from `r length(kay_naming_list)` to `r length(curr_naming_list)`. Also there is the addition of the term 'naranja', a Spanish color term equivalent to 'Orange' which has entered into common use in the Shipibo color lexicon. Along with 'naranja', a multitude of other Spanish color terms (e.g., 'rosa' and 'verde') were given as responses despite the procedure being conducted in Shipibo
+
+In addition to the naming color experiment, another set of adults were given a set of 60 chips and asked to cluster them into groups. They were then asked to label each cluster. 
+
+```{r}
+num_groups <- grouping_data %>%
+  filter(task == 1) %>%
+  group_by(subj) %>%
+  summarise(`# of Groups` = n_distinct(`nombre del grupo`)) %>%
+  ungroup() %>%
+  summarise(Avg = mean(`# of Groups`), 
+            Min = min(`# of Groups`),
+            Max = max(`# of Groups`))
+
+grouping_profusion <- grouping_data %>%
+  filter(task == 1) %>%
+  group_by(subj, `nombre del grupo`) %>%
+  summarise(`cuantas tarjetas` = mean(`cuantas tarjetas`)) %>%
+  group_by(`nombre del grupo`) %>%
+  spread(subj, `cuantas tarjetas`, fill = 0) %>%
+  gather(key = 'subj', value = 'n', -`nombre del grupo`) %>%
+  summarise(`% of Subjects Who Used the Term` = round((100*sum(n > 0)/n()), 2), 
+            `Mean % of Chips in Set Labeled` = round((100*mean(n)/60), 2)) %>%
+  dplyr::rename(`Color Term` = `nombre del grupo`)
+
+grouping_list <- as.character(na.omit(filter(grouping_profusion, `% of Subjects Who Used the Term` > 50 & !is.na(`Color Term`))$`Color Term`))
+
+datatable(grouping_profusion, rownames = FALSE)
+
+
+```
+
+
+<br>
+In the grouping task with 60 chips, subjects usually create between `r num_groups$Min` to `r num_groups$Max` groups and over half of subjects cluster their groups with the following labels:
+`r pander::pandoc.list.return(grouping_list, style = 'bullet')`
+
+Besides, the responses between the naming and grouping tasks suggest that there is a stable group of commonly-used terms between. The only term missing from the grouping task is 'wiso' which was used to label a relatively small group of chips in the naming task.
+
+
+For adults, there is a stable, albeit small, set of terms that are commonly used across the two different labeling tasks. Next we looked at the level of labeling consensus among the individual chips within the naming task.
+```{r}
+
+curr_naming_consensus <- naming_data %>%
+  select(subj, chip_id, color_cat) %>%
+  mutate(set = ifelse((chip_id %% 2) == 0, 'even', 'odd')) %>%
+  split(.$set) %>%
+  map_df(function(x) {
+    x %>%
+    group_by(chip_id, color_cat) %>%
+    summarise(n = n()) %>%
+    group_by(chip_id) %>%
+    mutate(perc = 100*n/sum(n)) %>%
+    select(-n)
+  }) %>%
+  arrange(chip_id) %>%
+  rename(`Chip ID` = chip_id, `Color Term` = color_cat, `% of Subjects` = perc)
+
+kay_naming_consensus <- kay_terms %>%
+  mutate(Term = ifelse(Term %in% c('Huiso', 'Wiso'), 'Wiso', as.character(Term))) %>%
+  group_by(`WCS Chip Number`, Term) %>%
+  summarise(n = n()) %>%
+  group_by(`WCS Chip Number`) %>%
+  mutate(`% of Subjects` = 100*n/sum(n)) %>%
+  select(-n) %>%
+  arrange(`WCS Chip Number`)
+
+curr_focal_terms <- pander::p(sort(as.character(
+  unique(filter(curr_naming_consensus,`% of Subjects` >= consensus)$`Color Term`))), 
+  wrap = '', copula = ', and ')
+
+kay_focal_terms <- pander::p(sort(as.character(
+  unique(filter(kay_naming_consensus,`% of Subjects` >= consensus)$`Term`))), 
+  wrap = '', copula = ', and ')
+
+color_chip_hexes <- color_chip_data[, c('#cnum', 'hex')]
+
+curr_highest_chips <- (curr_naming_consensus %>% group_by(`Color Term`) %>%
+  filter(`% of Subjects` >= consensus & `% of Subjects` == max(`% of Subjects`)))$`Chip ID`
+
+kay_highest_chips <- (kay_naming_consensus %>% group_by(`Term`) %>%
+  filter(`% of Subjects` >= consensus & `% of Subjects` == max(`% of Subjects`)))$`WCS Chip Number`
+
+curr_agreed_chips <- curr_naming_consensus %>%
+  group_by(`Color Term`) %>%
+  filter(`% of Subjects` >= consensus) %>%
+  arrange(`Color Term`, `Chip ID`) %>%
+  left_join(color_chip_hexes,
+            by = c("Chip ID" = "#cnum")) %>%
+  dplyr::rename(`Hex Code` = hex) %>%
+  mutate(highest_chips = ifelse(`Chip ID` %in% curr_highest_chips, 1, 0))
+
+kay_agreed_chips <- kay_naming_consensus %>%
+  group_by(Term) %>%
+  filter(`% of Subjects` >= consensus) %>%
+  arrange(`Term`, `WCS Chip Number`) %>%
+  left_join(color_chip_hexes,
+            by = c("WCS Chip Number" = "#cnum")) %>%
+  dplyr::rename(`Hex Code` = hex) %>%
+  mutate(highest_chips = ifelse(`WCS Chip Number` %in% kay_highest_chips, 1, 0))
+
+
+agreed_chips <- full_join(curr_agreed_chips, kay_agreed_chips,
+                          by = c('Chip ID' = 'WCS Chip Number', 'Color Term' = 'Term', 'Hex Code'),
+                          suffix = c(' (Current)', ' (Kay)')) %>%
+  mutate_at(vars(starts_with('highest_chips')), funs(replace(., is.na(.), 0))) %>%
+  mutate_at(vars(starts_with('%')), round) %>%
+  select(`Chip ID`, `Color Term`, starts_with('%'), `Hex Code`, starts_with('highest'))
+
+
+datatable(agreed_chips, rownames = FALSE,
+          options=list(columnDefs = list(list(
+            visible=FALSE, targets=c(grep('highest_chips', names(agreed_chips))-1))))) %>%
+  formatStyle('highest_chips (Current)', target = 'row',
+              fontWeight = styleEqual(c(0,1), c('normal','bold'))) %>%
+  formatStyle('highest_chips (Kay)', target = 'row',
+              textDecoration = styleEqual(c(0,1), c('none','underline'))) %>%
+  formatStyle(columns = "Hex Code",
+              background = styleEqual(agreed_chips$`Hex Code`, agreed_chips$`Hex Code`))
+
+
+```
+
+This datatable compares chips with the highest levels of consensus between the current study and the original WCS data. Bolded rows are chips with maximum consensus level for their category within the current study. Underlined rows are chips with maximum consensus level for their category within the WCS.
+
+Within the current study, the only categories with chips that reach a high level of consensus appear to be `r curr_focal_terms`. Compared to the WCS, 'manxan' is no longer considered to be a high-consensus category.
+
+
+
+```{r}
+curr_highest_consensus <- curr_naming_consensus %>%
+  group_by(`Chip ID`) %>%
+  filter(`% of Subjects` == max(`% of Subjects`)) %>%
+  left_join(color_chip_data, by = c("Chip ID" = "#cnum"))
+
+curr_consensus_plot <- ggplot(curr_highest_consensus, 
+                         aes(x = H, y = factor(V), 
+                             colour = `Color Term`, size = `% of Subjects`)) + 
+    geom_point() + 
+    scale_size(range = c(0, 2.5)) + 
+    scale_colour_manual(name = "Color Term",values = graph_colors) +
+    ylab('V') +
+    scale_y_discrete(name = "V", limits = rev(levels(factor(curr_highest_consensus$V)))) +
+    theme_bw()
+
+kay_highest_consensus <- kay_naming_consensus %>%
+  group_by(`WCS Chip Number`) %>%
+  filter(`% of Subjects` == max(`% of Subjects`)) %>%
+  left_join(color_chip_data, by = c("WCS Chip Number" = "#cnum")) %>%
+  dplyr::rename(`Color Term` = Term)
+
+kay_consensus_plot <- ggplot(kay_highest_consensus, 
+                         aes(x = H, y = factor(V), 
+                             colour = `Color Term`, size = `% of Subjects`)) + 
+    geom_point() + 
+    scale_size(range = c(0, 2.5)) + 
+    scale_colour_manual(name = "Color Term",values = graph_colors) +
+    scale_y_discrete(name = "V", limits = rev(levels(factor(kay_highest_consensus$V)))) +
+    theme_bw()
+
+```
+ <br>
+![Original plot displaying the 330 WCS chips by their V and H coordinates](http://www1.icsi.berkeley.edu/wcs/images/jrus-20100531/wcs-chart-4x.png)
+
+<br>
+Now we plot the results for the each chip and its term with the highest level of consensus. First for the original Kay data:
+`r plotly::ggplotly(kay_consensus_plot)`
+
+<br>
+This is in comparison to the data from the current study:
+`r plotly::ggplotly(curr_consensus_plot)`
+
+<br>
+With these charts, we are able to map out the general locations and even see boundaries for the various color terms mapped out in Munsell color space. The graphs are similar, showing that common terms like 'Yankon' and 'Panshin' have remained relatively stable in their locations. Areas of interest include 32-37:F-I and 5-6:E-F. In the former, there is a decrease in agreement on how to label purple. More adults answered with terms like 'Yankon' (blue/green) and 'Joshin' (red), seeming to shrink the area of consensus for 'Ami' and 'Poa' (purple). In the latter case, the Spanish term 'Naranja' appears between 'Joshin' (red) and 'Panshin (yellow) where formerly there the two categories shared a boundary.
+
+<br>
+With this, we wondered what the relationship was between using Spanish color terms and level of consensus on a label. Is it that Spanish terms were entering the color lexicon and thus lowering the consensus on labels for certain terms? Or perhaps Shipibo adults were adapting Spanish color terms to cover areas that already had low-consensus. For that, we investigated the use of Spanish terms for individual chips and the change in labeling entropy between the current study and the WCS data.
+
+```{r}
+
+num_categories <- n_distinct(curr_naming_consensus$`Color Term`)
+
+naming_entropy <- curr_naming_consensus %>%
+  mutate(`% of Subjects` = `% of Subjects`/100) %>%
+  spread(key = 'Color Term', value = '% of Subjects', fill = 0) %>%
+  mutate_if(is.double, funs( . * log(., base = num_categories))) %>%
+  mutate_if(is.double, funs(replace(., is.nan(.), 0))) %>%
+  ungroup() %>%
+  mutate(Entropy = -rowSums(.[-1])) %>%
+  select(`Chip ID`, Entropy) %>%
+  left_join(color_chip_data, by = c("Chip ID" = "#cnum"))
+
+kay_num_categories <- n_distinct(kay_terms$Term)
+
+kay_naming_entropy <- kay_naming_consensus %>%
+  mutate(`% of Subjects` = `% of Subjects`/100) %>%
+  spread(key = 'Term', value = '% of Subjects', fill = 0) %>%
+  mutate_if(is.double, funs( . * log(., base = kay_num_categories))) %>%
+  mutate_if(is.double, funs(replace(., is.nan(.), 0))) %>%
+  ungroup() %>%
+  mutate(Entropy = -rowSums(.[-1])) %>%
+  select(`WCS Chip Number`, Entropy) %>%
+  left_join(color_chip_data, by = c("WCS Chip Number" = "#cnum"))
+
+
+entropy_change <- full_join(select(naming_entropy, `Chip ID`, Entropy), 
+                            select(kay_naming_entropy, `WCS Chip Number`, Entropy), 
+                            by = c("Chip ID" = "WCS Chip Number"),
+                            suffix = c(" (Current)", " (Kay)")) %>%
+  mutate(`Entropy Change` = `Entropy (Current)` - `Entropy (Kay)`) %>%
+  left_join(color_chip_data, by = c("Chip ID" = "#cnum"))
+
+entropy_change_plot <- ggplot(entropy_change, 
+                         aes(x = H, y = factor(V), 
+                            colour = `Entropy Change`, size = `Entropy Change`)) + 
+    geom_point() + 
+    scale_size(range = c(0, 2.5)) + 
+    scale_colour_distiller(palette = "RdBu") + 
+    scale_y_discrete(name = "V", limits = rev(levels(factor(entropy_change$V)))) +
+    theme_bw() + 
+  theme(legend.position = "none")
+
+spanish_use <- curr_naming_consensus %>%
+  mutate(`Color Term` = ifelse(as.character(`Color Term`) %in% spanish_terms, 
+                               'Spanish Term', as.character(`Color Term`))) %>%
+  group_by(`Chip ID`, `Color Term`) %>%
+  summarise(`% of Subjects` = sum(`% of Subjects`, na.rm = T)) %>%
+  group_by(`Chip ID`) %>%
+  spread(key = `Color Term`, value = `% of Subjects`, fill = 0) %>%
+  select(`Chip ID`, `Spanish Term`) %>%
+  left_join(color_chip_data, by = c("Chip ID" = "#cnum"))
+
+spanish_use_plot <- ggplot(spanish_use, 
+                         aes(x = H, y = factor(V), 
+                            colour = `Spanish Term`, size = `Spanish Term`)) + 
+    geom_point() + 
+    scale_size(range = c(0, 2.5)) + 
+    scale_colour_distiller(palette = "RdBu") + 
+    scale_y_discrete(name = "V", limits = rev(levels(factor(entropy_change$V)))) +
+    theme_bw() + 
+  theme(legend.position = "none")
+
+entropy_spanish_use <- full_join(entropy_change, spanish_use) %>%
+  select(`Chip ID`:`Entropy Change`, `Spanish Term`, munsell_code:hex)
+
+
+```
+
+<br>
+First, we investigated where Spanish terms were being used in relation to the Munsell plot. Spanish term usage ranged from no usage (blank area) to low usage (small blue dots) to high usage (large red dots). 
+`r plotly::ggplotly(spanish_use_plot)`
+Spanish term usage was relatively spreadout with a relatively higher concentration at the Panshin-Joshin boundary, where 'Naranja' had appeared as a commonly-used color term.
+
+<br>
+Second, we calculated the change in entropy for labeling the individual chips. Small blue dots represent chips where entropy decreased from the WCS data to our current study. Large red dots represent chips where entropy increased.
+`r plotly::ggplotly(entropy_change_plot)`
+With the addition of Spanish terms to the list of common responses given in the current study, there was a notably larger list of categorical bins. While there are notably shifts in entropy throughout the Munsell plot, there is no significant gain or loss in net entropy within the whole set.
+
+
+Finally, we performed correlation tests to see whether levels of entropy in either the WCS data or current data were related to use of Spanish terms.
+
+<br>
+While there is a relationship between entropy levels across both datasets
+```{r}
+cor.test(entropy_spanish_use$`Entropy (Kay)`, entropy_spanish_use$`Entropy (Current)`)
+```
+
+<br>
+
+There does not seem to be a significant correlation between entropy within the WCS data and usage of Spanish terms in the current study
+```{r}
+cor.test(entropy_spanish_use$`Entropy (Kay)`, entropy_spanish_use$`Spanish Term`)
+```
+
+<br>
+
+There is a relationship between entropy within the current data and Spanish term usage. This is not surprising as the addition of Spanish terms increased linguistic diversity in responses and would very well increase entropy in labeling
+```{r}
+cor.test(entropy_spanish_use$`Entropy (Current)`, entropy_spanish_use$`Spanish Term`)
+```
+
+<br>
+
+This would suggest that the adoption of Spanish terms was followed by an increase in labeling entropy reflected in the current data.
