@@ -32,21 +32,21 @@ Load in CSV data
 shipibo_age_interval <- 2
 spanish_age_interval <- 1
 
-naming_data <- read_csv("data/naming_colors_participants.csv") %>%
-  left_join(read_csv("data/naming_colors_data.csv"), by = 'subj')
+naming_data <- read_csv("data/Current_Data/naming_colors_participants.csv") %>%
+  left_join(read_csv("data/Current_Data/naming_colors_data.csv"), by = 'subj')
 
-grouping_data <- read_csv("data/grouping_colors_participants.csv") %>%
-  left_join(read_csv("data/grouping_colors_data.csv"), by = 'subj')
+grouping_data <- read_csv("data/Current_Data/grouping_colors_participants.csv") %>%
+  left_join(read_csv("data/Current_Data/grouping_colors_data.csv"), by = 'subj')
 
-shipibo_child_data <- read_csv("data/shipibo_children_colors_participants.csv") %>%
-  left_join(read_csv("data/shipibo_children_colors_data.csv"), by = 'subj')
+shipibo_child_data <- read_csv("data/Current_Data/shipibo_children_colors_participants.csv") %>%
+  left_join(read_csv("data/Current_Data/shipibo_children_colors_data.csv"), by = 'subj')
 
-spanish_child_data <- read_csv("data/spanish_children_colors_participants.csv") %>%
-  left_join(read_csv("data/spanish_children_colors_data.csv"), by = 'subj')
+spanish_child_data <- read_csv("data/Current_Data/spanish_children_colors_participants.csv") %>%
+  left_join(read_csv("data/Current_Data/spanish_children_colors_data.csv"), by = 'subj')
 
 color_chip_data <- read_csv("data/wcs_measures.csv", skip = 1)
 
-children_new_labels <- read_csv("data/unified_labels.csv")
+children_new_labels <- read_csv("data/Current_Data/unified_labels.csv")
 
 graph_colors <- c(
   'Amarillo' = '#FFD416',
@@ -156,28 +156,28 @@ color_chip_data %<>%
 Import Berlin-Kay Shipibo data
 ```{r}
 
-kay_langs <- read_tsv("data/WCS-Data-20110316/lang.txt", 
+kay_langs <- read_tsv("data/WCS_Data/lang.txt", 
                       col_names = c('WCS Language Number', 'WCS Language Name', 
                                     'WCS Language Geographic Location', 'Field Worker')) %>%
   filter(`WCS Language Name` == 'Shipibo')
 
-kay_dict <- read_tsv("data/WCS-Data-20110316/dict.txt",
+kay_dict <- read_tsv("data/WCS_Data/dict.txt",
                      col_names = c('WCS Language Number', 'Term Number',
                                    'Term', 'Term Abbreviation')) %>%
   filter(`WCS Language Number` == kay_langs$`WCS Language Number`)
 
-kay_foci <- read_tsv("data/WCS-Data-20110316/foci-exp.txt",
+kay_foci <- read_tsv("data/WCS_Data/foci-exp.txt",
                      col_names = c("WCS Language Number", "WCS Speaker Number",
                                    "WCS Focus Response", "Term Abbreviation",
                                    "Single Chip")) %>%
   filter(`WCS Language Number` == kay_langs$`WCS Language Number`)
 
-kay_speaker <- read_tsv("data/WCS-Data-20110316/spkr-lsas.txt", 
+kay_speaker <- read_tsv("data/WCS_Data/spkr-lsas.txt", 
                         col_names = c("WCS Language Number", "WCS Speaker Number",
                                       "WCS Speaker Age", "WCS Speaker Sex")) %>%
   filter(`WCS Language Number` == kay_langs$`WCS Language Number`)
 
-kay_terms <- read_tsv("data/WCS-Data-20110316/term.txt", 
+kay_terms <- read_tsv("data/WCS_Data/term.txt", 
                       col_names = c('WCS Language Number', 'WCS Speaker Number', 
                                     'WCS Chip Number', 'Term Abbreviation')) %>%
   filter(`WCS Language Number` == kay_langs$`WCS Language Number`) %>%

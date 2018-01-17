@@ -32,7 +32,7 @@ Load and format CSV data from current study along with World Color Survey Data
 
 ```{r}
 
-source("load_and_process.R")
+source("helpers/load_and_process.R")
 
 consensus <- 75
 

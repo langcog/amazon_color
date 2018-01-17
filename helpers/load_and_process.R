@@ -13,15 +13,15 @@ spelling_list <- eval(parse(text = paste0("c(",string_spelling_list,")")))
 # Load in data from current study -----------------------------------------
 
 
-naming_data <- read_csv("data/naming_colors_participants.csv") %>%
-  left_join(read_csv("data/naming_colors_data.csv"), by = 'subj') %>%
+naming_data <- read_csv("data/Current_Data/naming_colors_participants.csv") %>%
+  left_join(read_csv("data/Current_Data/naming_colors_data.csv"), by = 'subj') %>%
   mutate(color_cat = ifelse(is.na(color_cat), first_response, color_cat)) %>%
   mutate(color_cat = ifelse(color_cat %in% unlist(spelling_list), color_cat, NA)) %>%
   mutate(color_cat = eval( parse(text = gsub(pattern = "x", replacement = string_spelling_list, "forcats::fct_collapse(color_cat, x)")))
   )
 
-grouping_data <- read_csv("data/grouping_colors_participants.csv") %>%
-  left_join(read_csv("data/grouping_colors_data.csv"), by = 'subj') %>%
+grouping_data <- read_csv("data/Current_Data/grouping_colors_participants.csv") %>%
+  left_join(read_csv("data/Current_Data/grouping_colors_data.csv"), by = 'subj') %>%
   mutate(`nombre del grupo` = ifelse(`nombre del grupo` %in% unlist(spelling_list), 
                                      `nombre del grupo`, NA)) %>%
   mutate(`nombre del grupo` = eval( parse(text = gsub(pattern = "x", replacement = string_spelling_list, "forcats::fct_collapse(`nombre del grupo`, x)")))
@@ -31,28 +31,28 @@ grouping_data <- read_csv("data/grouping_colors_participants.csv") %>%
 # Load in Kay data --------------------------------------------------------
 
 
-kay_langs <- read_tsv("data/WCS-Data-20110316/lang.txt", 
+kay_langs <- read_tsv("data/WCS_Data/lang.txt", 
                       col_names = c('WCS Language Number', 'WCS Language Name', 
                                     'WCS Language Geographic Location', 'Field Worker')) %>%
   filter(`WCS Language Name` == 'Shipibo')
 
-kay_dict <- read_tsv("data/WCS-Data-20110316/dict.txt",
+kay_dict <- read_tsv("data/WCS_Data/dict.txt",
                      col_names = c('WCS Language Number', 'Term Number',
                                    'Term', 'Term Abbreviation')) %>%
   filter(`WCS Language Number` == kay_langs$`WCS Language Number`)
 
-kay_foci <- read_tsv("data/WCS-Data-20110316/foci-exp.txt",
+kay_foci <- read_tsv("data/WCS_Data/foci-exp.txt",
                      col_names = c("WCS Language Number", "WCS Speaker Number",
                                    "WCS Focus Response", "Term Abbreviation",
                                    "Single Chip")) %>%
   filter(`WCS Language Number` == kay_langs$`WCS Language Number`)
 
-kay_speaker <- read_tsv("data/WCS-Data-20110316/spkr-lsas.txt", 
+kay_speaker <- read_tsv("data/WCS_Data/spkr-lsas.txt", 
                         col_names = c("WCS Language Number", "WCS Speaker Number",
                                       "WCS Speaker Age", "WCS Speaker Sex")) %>%
   filter(`WCS Language Number` == kay_langs$`WCS Language Number`)
 
-kay_terms <- read_tsv("data/WCS-Data-20110316/term.txt", 
+kay_terms <- read_tsv("data/WCS_Data/term.txt", 
                       col_names = c('WCS Language Number', 'WCS Speaker Number', 
                                     'WCS Chip Number', 'Term Abbreviation')) %>%
   filter(`WCS Language Number` == kay_langs$`WCS Language Number`) %>%
