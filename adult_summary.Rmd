@@ -226,45 +226,37 @@ Within the current study, the only categories with chips that reach a high level
 ```{r}
 curr_highest_consensus <- curr_naming_consensus %>%
   group_by(`Chip ID`) %>%
-  filter(`% of Subjects` == max(`% of Subjects`)) %>%
-  left_join(color_chip_data, by = c("Chip ID" = "#cnum"))
-
-curr_consensus_plot <- ggplot(curr_highest_consensus, 
-                         aes(x = H, y = factor(V), 
-                             colour = `Color Term`, size = `% of Subjects`)) + 
-    geom_point() + 
-    scale_size(range = c(0, 2.5)) + 
-    scale_colour_manual(name = "Color Term",values = graph_colors) +
-    ylab('V') +
-    scale_y_discrete(name = "V", limits = rev(levels(factor(curr_highest_consensus$V)))) +
-    theme_bw()
+  filter(`% of Subjects` == max(`% of Subjects`)) 
 
 kay_highest_consensus <- kay_naming_consensus %>%
   group_by(`WCS Chip Number`) %>%
   filter(`% of Subjects` == max(`% of Subjects`)) %>%
-  left_join(color_chip_data, by = c("WCS Chip Number" = "#cnum")) %>%
-  dplyr::rename(`Color Term` = Term)
+  dplyr::rename(`Color Term` = Term, `Chip ID` = `WCS Chip Number`)
 
-kay_consensus_plot <- ggplot(kay_highest_consensus, 
-                         aes(x = H, y = factor(V), 
-                             colour = `Color Term`, size = `% of Subjects`)) + 
+all_highest_consensus <- bind_rows("Current Data" = curr_highest_consensus,
+                                   "WCS Data" = kay_highest_consensus,
+                                   .id = "source") %>%
+  left_join(color_chip_data, by = c("Chip ID" = "#cnum"))
+
+all_consensus_plot <- ggplot(all_highest_consensus, 
+                             aes(x = H, y = factor(V), colour = `Color Term`, 
+                                 size = `% of Subjects`, group = source)) + 
     geom_point() + 
+    facet_wrap(~source, ncol = 1) + 
     scale_size(range = c(0, 2.5)) + 
     scale_colour_manual(name = "Color Term",values = graph_colors) +
-    scale_y_discrete(name = "V", limits = rev(levels(factor(kay_highest_consensus$V)))) +
+    ylab('V') +
+    scale_y_discrete(name = "V", limits = rev(levels(factor(all_highest_consensus$V)))) +
     theme_bw()
+
 
 ```
  <br>
 ![Original plot displaying the 330 WCS chips by their V and H coordinates](http://www1.icsi.berkeley.edu/wcs/images/jrus-20100531/wcs-chart-4x.png)
 
 <br>
-Now we plot the results for the each chip and its term with the highest level of consensus. First for the original Kay data:
-`r plotly::ggplotly(kay_consensus_plot)`
-
-<br>
-This is in comparison to the data from the current study:
-`r plotly::ggplotly(curr_consensus_plot)`
+Now we plot the results for the each chip and its term with the highest level of consensus. 
+`r plotly::ggplotly(all_consensus_plot)`
 
 <br>
 With these charts, we are able to map out the general locations and even see boundaries for the various color terms mapped out in Munsell color space. The graphs are similar, showing that common terms like 'Yankon' and 'Panshin' have remained relatively stable in their locations. Areas of interest include 32-37:F-I and 5-6:E-F. In the former, there is a decrease in agreement on how to label purple. More adults answered with terms like 'Yankon' (blue/green) and 'Joshin' (red), seeming to shrink the area of consensus for 'Ami' and 'Poa' (purple). In the latter case, the Spanish term 'Naranja' appears between 'Joshin' (red) and 'Panshin (yellow) where formerly there the two categories shared a boundary.
@@ -276,15 +268,14 @@ With this, we wondered what the relationship was between using Spanish color ter
 
 num_categories <- n_distinct(curr_naming_consensus$`Color Term`)
 
-naming_entropy <- curr_naming_consensus %>%
+curr_naming_entropy <- curr_naming_consensus %>%
   mutate(`% of Subjects` = `% of Subjects`/100) %>%
   spread(key = 'Color Term', value = '% of Subjects', fill = 0) %>%
   mutate_if(is.double, funs( . * log(., base = num_categories))) %>%
   mutate_if(is.double, funs(replace(., is.nan(.), 0))) %>%
   ungroup() %>%
   mutate(Entropy = -rowSums(.[-1])) %>%
-  select(`Chip ID`, Entropy) %>%
-  left_join(color_chip_data, by = c("Chip ID" = "#cnum"))
+  select(`Chip ID`, Entropy)
 
 kay_num_categories <- n_distinct(kay_terms$Term)
 
@@ -296,25 +287,35 @@ kay_naming_entropy <- kay_naming_consensus %>%
   ungroup() %>%
   mutate(Entropy = -rowSums(.[-1])) %>%
   select(`WCS Chip Number`, Entropy) %>%
-  left_join(color_chip_data, by = c("WCS Chip Number" = "#cnum"))
+  rename(`Chip ID` = `WCS Chip Number`)
+
+all_entropy <- bind_rows("Current Data" = curr_naming_entropy,
+                         "WCS Data" = kay_naming_entropy,
+                         .id = "source") %>%
+  left_join(color_chip_data, by = c("Chip ID" = "#cnum"))
+
+all_entropy_plot <- ggplot(all_entropy, aes(x = H, y = factor(V), group = source)) + 
+    geom_tile(aes(fill = Entropy)) + 
+    facet_wrap(~source, ncol = 1) +
+    scale_y_discrete(name = "V", limits = rev(levels(factor(all_entropy$V)))) +
+    scale_fill_gradient(limits = c(0.0, 0.6), low = "#f7f7f7", high = "#ef8a62") + 
+    theme_bw()
 
 
-entropy_change <- full_join(select(naming_entropy, `Chip ID`, Entropy), 
-                            select(kay_naming_entropy, `WCS Chip Number`, Entropy), 
-                            by = c("Chip ID" = "WCS Chip Number"),
+
+entropy_change <- full_join(select(curr_naming_entropy, `Chip ID`, Entropy), 
+                            select(kay_naming_entropy, `Chip ID`, Entropy), 
+                            by = c("Chip ID"),
                             suffix = c(" (Current)", " (Kay)")) %>%
   mutate(`Entropy Change` = `Entropy (Current)` - `Entropy (Kay)`) %>%
   left_join(color_chip_data, by = c("Chip ID" = "#cnum"))
 
 entropy_change_plot <- ggplot(entropy_change, 
-                         aes(x = H, y = factor(V), 
-                            colour = `Entropy Change`, size = `Entropy Change`)) + 
-    geom_point() + 
-    scale_size(range = c(0, 2.5)) + 
-    scale_colour_distiller(palette = "RdBu") + 
+                         aes(x = H, y = factor(V))) + 
+    geom_tile(aes(fill = `Entropy Change`)) + 
+    scale_fill_gradient2(limits = c(-0.6, 0.6), low = "#67a9cf", mid = "#f7f7f7", high = "#ef8a62") + 
     scale_y_discrete(name = "V", limits = rev(levels(factor(entropy_change$V)))) +
-    theme_bw() + 
-  theme(legend.position = "none")
+    theme_bw()
 
 spanish_use <- curr_naming_consensus %>%
   mutate(`Color Term` = ifelse(as.character(`Color Term`) %in% spanish_terms, 
@@ -327,14 +328,11 @@ spanish_use <- curr_naming_consensus %>%
   left_join(color_chip_data, by = c("Chip ID" = "#cnum"))
 
 spanish_use_plot <- ggplot(spanish_use, 
-                         aes(x = H, y = factor(V), 
-                            colour = `Spanish Term`, size = `Spanish Term`)) + 
-    geom_point() + 
-    scale_size(range = c(0, 2.5)) + 
-    scale_colour_distiller(palette = "RdBu") + 
+                         aes(x = H, y = factor(V))) + 
+    geom_tile(aes(fill = `Spanish Term`)) + 
+    scale_fill_gradient(limits = c(0.0, 60), low = "#f7f7f7", high = "#ef8a62") + 
     scale_y_discrete(name = "V", limits = rev(levels(factor(entropy_change$V)))) +
-    theme_bw() + 
-  theme(legend.position = "none")
+    theme_bw()
 
 entropy_spanish_use <- full_join(entropy_change, spanish_use) %>%
   select(`Chip ID`:`Entropy Change`, `Spanish Term`, munsell_code:hex)
@@ -342,17 +340,24 @@ entropy_spanish_use <- full_join(entropy_change, spanish_use) %>%
 
 ```
 
+
 <br>
-First, we investigated where Spanish terms were being used in relation to the Munsell plot. Spanish term usage ranged from no usage (blank area) to low usage (small blue dots) to high usage (large red dots). 
+We calculated the change in entropy for labeling the individual chips. Blue tiles represent low-entropy chips. Red tiles represent high-entropy chips.
+
+<br>
+`r plotly::ggplotly(all_entropy_plot)`
+
+<br>
+Entropy change:
+`r plotly::ggplotly(entropy_change_plot)`
+With the addition of Spanish terms to the list of common responses given in the current study, there was a notably larger list of categorical bins. While there are notably shifts in entropy throughout the Munsell plot, there is no significant gain or loss in net entropy within the whole set.
+
+<br>
+We investigated where Spanish terms were being used in relation to the Munsell plot. Spanish term usage ranged from no usage (blank area) to low usage (small blue dots) to high usage (large red dots). 
 `r plotly::ggplotly(spanish_use_plot)`
 Spanish term usage was relatively spreadout with a relatively higher concentration at the Panshin-Joshin boundary, where 'Naranja' had appeared as a commonly-used color term.
 
 <br>
-Second, we calculated the change in entropy for labeling the individual chips. Small blue dots represent chips where entropy decreased from the WCS data to our current study. Large red dots represent chips where entropy increased.
-`r plotly::ggplotly(entropy_change_plot)`
-With the addition of Spanish terms to the list of common responses given in the current study, there was a notably larger list of categorical bins. While there are notably shifts in entropy throughout the Munsell plot, there is no significant gain or loss in net entropy within the whole set.
-
-
 Finally, we performed correlation tests to see whether levels of entropy in either the WCS data or current data were related to use of Spanish terms.
 
 <br>
@@ -378,3 +383,60 @@ cor.test(entropy_spanish_use$`Entropy (Current)`, entropy_spanish_use$`Spanish T
 <br>
 
 This would suggest that the adoption of Spanish terms was followed by an increase in labeling entropy reflected in the current data.
+
+
+
+Grouping data exploration
+```{r}
+# grouping_profusion %>%
+#   filter(`% of Subjects Who Used the Term` > 50)
+
+best_examples <- grouping_data %>%
+  filter(task == 2) %>%
+  select(subj, `nombre del grupo`, `mas`, `mejor ej`) %>%
+  rename(`Subject` = `subj`, `Color Term` = `nombre del grupo`, 
+         `Most` = `mas`, `Best Example` = `mejor ej`)
+
+most_chosen <- best_examples %>%
+  group_by(`Color Term`, `Best Example`)  %>%
+  summarise(`# Times Chosen` = n()) %>%
+  group_by(`Color Term`) %>%
+  mutate(`% Times Chosen` = round(100*`# Times Chosen`/n(), 2)) %>%
+  arrange(`Color Term`, desc(`% Times Chosen`)) %>%
+  left_join(color_chip_data %>%
+              select(-V, -H, -C, -MunH, -MunV) %>%
+              rename(`Chip ID` = `#cnum`, `Hex Code` = `hex`), 
+            by = c("Best Example" = "munsell_code")) %>%
+  left_join(curr_naming_consensus %>%
+              mutate(`% of Subjects` = round(`% of Subjects`, 2)) %>%
+              rename(`% of Subjects (Naming Exp)` = `% of Subjects`), 
+            by = c("Chip ID", "Color Term")) %>%
+  select(`Color Term`:`% Times Chosen`, `% of Subjects (Naming Exp)`,`Chip ID`:`Hex Code`) %>%
+  replace_na(list(`% of Subjects (Naming Exp)` = 0.00))
+
+datatable(most_chosen, rownames = FALSE) %>%
+  formatStyle(columns = "Hex Code",
+              background = styleEqual(most_chosen$`Hex Code`, 
+                                      most_chosen$`Hex Code`))
+
+best_weighted <- best_examples %>%
+  group_by(`Color Term`, `Best Example`)  %>%
+  filter(n() > 1) %>%
+  left_join(color_chip_data %>%
+              select(munsell_code, `L*`, `a*`, `b*`), 
+            by = c("Best Example" = "munsell_code")) %>%
+  group_by(`Color Term`) %>%
+  summarise(`L*` = mean(`L*`, na.rm = T),
+            `a*` = mean(`a*`, na.rm = T),
+            `b*` = mean(`b*`, na.rm = T)) %>%
+  mutate(`Hex Code` = colorspace::hex(
+    colorspace::LAB(.data$`L*`, .data$`a*`, 
+                    .data$`b*`), fixup = T))
+
+datatable(best_weighted, rownames = FALSE) %>%
+  formatStyle(columns = "Hex Code",
+              background = styleEqual(best_weighted$`Hex Code`, 
+                                      best_weighted$`Hex Code`))
+
+```
+
