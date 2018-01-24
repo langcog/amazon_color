@@ -24,6 +24,8 @@ library(htmlTable)
 library(DT)
 library(plotly)
 library(feather)
+library(viridis)
+library(ggthemes)
 
 ```
 
@@ -239,14 +241,12 @@ all_highest_consensus <- bind_rows("Current Data" = curr_highest_consensus,
   left_join(color_chip_data, by = c("Chip ID" = "#cnum"))
 
 all_consensus_plot <- ggplot(all_highest_consensus, 
-                             aes(x = H, y = factor(V), colour = `Color Term`, 
+                             aes(x = H, y = V, colour = `Color Term`, 
                                  size = `% of Subjects`, group = source)) + 
     geom_point() + 
     facet_wrap(~source, ncol = 1) + 
-    scale_size(range = c(0, 2.5)) + 
+    scale_size(range = c(0, 3.0)) + 
     scale_colour_manual(name = "Color Term",values = graph_colors) +
-    ylab('V') +
-    scale_y_discrete(name = "V", limits = rev(levels(factor(all_highest_consensus$V)))) +
     theme_bw()
 
 
@@ -256,7 +256,7 @@ all_consensus_plot <- ggplot(all_highest_consensus,
 
 <br>
 Now we plot the results for the each chip and its term with the highest level of consensus. 
-`r plotly::ggplotly(all_consensus_plot)`
+`r plotly::ggplotly(all_consensus_plot, tooltip = c("y", "x", "colour", "size"))`
 
 <br>
 With these charts, we are able to map out the general locations and even see boundaries for the various color terms mapped out in Munsell color space. The graphs are similar, showing that common terms like 'Yankon' and 'Panshin' have remained relatively stable in their locations. Areas of interest include 32-37:F-I and 5-6:E-F. In the former, there is a decrease in agreement on how to label purple. More adults answered with terms like 'Yankon' (blue/green) and 'Joshin' (red), seeming to shrink the area of consensus for 'Ami' and 'Poa' (purple). In the latter case, the Spanish term 'Naranja' appears between 'Joshin' (red) and 'Panshin (yellow) where formerly there the two categories shared a boundary.
@@ -294,14 +294,11 @@ all_entropy <- bind_rows("Current Data" = curr_naming_entropy,
                          .id = "source") %>%
   left_join(color_chip_data, by = c("Chip ID" = "#cnum"))
 
-all_entropy_plot <- ggplot(all_entropy, aes(x = H, y = factor(V), group = source)) + 
+all_entropy_plot <- ggplot(all_entropy, aes(x = H, y = V, group = source)) + 
     geom_tile(aes(fill = Entropy)) + 
     facet_wrap(~source, ncol = 1) +
-    scale_y_discrete(name = "V", limits = rev(levels(factor(all_entropy$V)))) +
-    scale_fill_gradient(limits = c(0.0, 0.6), low = "#f7f7f7", high = "#ef8a62") + 
-    theme_bw()
-
-
+    scale_fill_viridis(option="magma") +
+    theme_few()
 
 entropy_change <- full_join(select(curr_naming_entropy, `Chip ID`, Entropy), 
                             select(kay_naming_entropy, `Chip ID`, Entropy), 
@@ -311,11 +308,10 @@ entropy_change <- full_join(select(curr_naming_entropy, `Chip ID`, Entropy),
   left_join(color_chip_data, by = c("Chip ID" = "#cnum"))
 
 entropy_change_plot <- ggplot(entropy_change, 
-                         aes(x = H, y = factor(V))) + 
+                         aes(x = H, y = V)) + 
     geom_tile(aes(fill = `Entropy Change`)) + 
-    scale_fill_gradient2(limits = c(-0.6, 0.6), low = "#67a9cf", mid = "#f7f7f7", high = "#ef8a62") + 
-    scale_y_discrete(name = "V", limits = rev(levels(factor(entropy_change$V)))) +
-    theme_bw()
+    scale_fill_viridis(option="viridis", limits = c(-0.6, 0.6)) +
+    theme_few()
 
 spanish_use <- curr_naming_consensus %>%
   mutate(`Color Term` = ifelse(as.character(`Color Term`) %in% spanish_terms, 
@@ -328,11 +324,10 @@ spanish_use <- curr_naming_consensus %>%
   left_join(color_chip_data, by = c("Chip ID" = "#cnum"))
 
 spanish_use_plot <- ggplot(spanish_use, 
-                         aes(x = H, y = factor(V))) + 
+                         aes(x = H, y = V)) + 
     geom_tile(aes(fill = `Spanish Term`)) + 
-    scale_fill_gradient(limits = c(0.0, 60), low = "#f7f7f7", high = "#ef8a62") + 
-    scale_y_discrete(name = "V", limits = rev(levels(factor(entropy_change$V)))) +
-    theme_bw()
+    scale_fill_viridis(option="magma") +
+    theme_few()
 
 entropy_spanish_use <- full_join(entropy_change, spanish_use) %>%
   select(`Chip ID`:`Entropy Change`, `Spanish Term`, munsell_code:hex)
@@ -388,55 +383,96 @@ This would suggest that the adoption of Spanish terms was followed by an increas
 
 Grouping data exploration
 ```{r}
-# grouping_profusion %>%
-#   filter(`% of Subjects Who Used the Term` > 50)
+
+weighted_focal <- function(df, remove_one_offs = FALSE) {
+  
+  measure <- first(df$measure)
+  task <- first(df$Task)
+  
+  if ( task == "Named") {
+    join_by <- c("response" = "Munsell Code")
+  } else if ( task == "Spontaneous") {
+    join_by <- c("response" = "Chip ID")
+  }
+  
+  chip_data <- color_chip_data %>%
+     dplyr::select(-V, -H, -C, -MunH, -MunV) %>%
+     dplyr::rename(`Chip ID` = `#cnum`, `Munsell Code` = `munsell_code`, 
+                   `Hex Code` = `hex`) %>%
+     mutate(`Chip ID` = as.character(`Chip ID`))
+  
+  temp_df <- df %>%
+    mutate(response = ifelse( grepl("A", response), "A0", 
+                              ifelse( grepl("J", response), "J0", response))) %>%
+    dplyr::left_join(chip_data, 
+                     by = join_by) %>%
+    dplyr::group_by(`Color Term`, `Task`)
+  
+  if (remove_one_offs) {
+    temp_df <- temp_df %>%
+      filter(n() > 1)
+  }
+  
+  temp_df <- temp_df %>%
+    dplyr::summarise(measure = first(measure),
+              `# Responses` = n_distinct(`Subject`),
+              `L*` = mean(`L*`, na.rm = T),
+              `a*` = mean(`a*`, na.rm = T),
+              `b*` = mean(`b*`, na.rm = T)) %>%
+    dplyr::mutate(`Hex Code` = colorspace::hex(
+      colorspace::LAB(.data$`L*`, .data$`a*`, 
+                      .data$`b*`), fixup = T))  
+    return(temp_df)
+}
+
 
 best_examples <- grouping_data %>%
-  filter(task == 2) %>%
-  select(subj, `nombre del grupo`, `mas`, `mejor ej`) %>%
-  rename(`Subject` = `subj`, `Color Term` = `nombre del grupo`, 
-         `Most` = `mas`, `Best Example` = `mejor ej`)
+  mutate(task = ifelse(task == 1, "Spontaneous",
+                       ifelse( task == 2, "Named", NA))) %>%
+  select(subj, task, `nombre del grupo`, `mas`, `mejor ej`) %>%
+  rename(`Subject` = `subj`, `Task` = `task`, `Color Term` = `nombre del grupo`, 
+         `Most` = `mas`, `Best Example` = `mejor ej`) %>%
+  gather(key = "measure", value = "response", `Most`, `Best Example`)
 
-most_chosen <- best_examples %>%
-  group_by(`Color Term`, `Best Example`)  %>%
-  summarise(`# Times Chosen` = n()) %>%
-  group_by(`Color Term`) %>%
-  mutate(`% Times Chosen` = round(100*`# Times Chosen`/n(), 2)) %>%
-  arrange(`Color Term`, desc(`% Times Chosen`)) %>%
-  left_join(color_chip_data %>%
-              select(-V, -H, -C, -MunH, -MunV) %>%
-              rename(`Chip ID` = `#cnum`, `Hex Code` = `hex`), 
-            by = c("Best Example" = "munsell_code")) %>%
-  left_join(curr_naming_consensus %>%
-              mutate(`% of Subjects` = round(`% of Subjects`, 2)) %>%
-              rename(`% of Subjects (Naming Exp)` = `% of Subjects`), 
-            by = c("Chip ID", "Color Term")) %>%
-  select(`Color Term`:`% Times Chosen`, `% of Subjects (Naming Exp)`,`Chip ID`:`Hex Code`) %>%
-  replace_na(list(`% of Subjects (Naming Exp)` = 0.00))
-
-datatable(most_chosen, rownames = FALSE) %>%
-  formatStyle(columns = "Hex Code",
-              background = styleEqual(most_chosen$`Hex Code`, 
-                                      most_chosen$`Hex Code`))
+best_chosen <- best_examples %>%
+  group_by(`Color Term`, `Task`, measure, response) %>%
+  summarise(n = n()) %>%
+  spread(measure, n, fill = 0) %>%
+  arrange(`Color Term`, `Task`,desc(`Best Example`), desc(`Most`)) %>%
+  rename(`Munsell Code` = response) %>%
+  dplyr::left_join(color_chip_data %>%
+                     dplyr::select(-V, -H, -C, -MunH, -MunV) %>%
+                     dplyr::rename(`Chip ID` = `#cnum`, `Hex Code` = `hex`), 
+                   by = c("Munsell Code" = "munsell_code")) %>%
+  select(`Color Term`, `Task`, `Munsell Code`, `Chip ID`, `Best Example`, `Most`, `Hex Code`, `L*`:`b*`)
 
 best_weighted <- best_examples %>%
-  group_by(`Color Term`, `Best Example`)  %>%
-  filter(n() > 1) %>%
-  left_join(color_chip_data %>%
-              select(munsell_code, `L*`, `a*`, `b*`), 
-            by = c("Best Example" = "munsell_code")) %>%
-  group_by(`Color Term`) %>%
-  summarise(`L*` = mean(`L*`, na.rm = T),
-            `a*` = mean(`a*`, na.rm = T),
-            `b*` = mean(`b*`, na.rm = T)) %>%
-  mutate(`Hex Code` = colorspace::hex(
-    colorspace::LAB(.data$`L*`, .data$`a*`, 
-                    .data$`b*`), fixup = T))
+  split(list(.$measure, .$Task)) %>%
+  map_df(weighted_focal, remove_one_offs = F) %>%
+  gather(color_var, value, `L*`, `a*`, `b*`, `Hex Code`) %>% 
+  unite(temp1, color_var, measure, sep = " ") %>% 
+  spread(temp1, value) %>%
+  ungroup() %>%
+  select(`Color Term`, Task, `# Responses`, starts_with("Hex"), 
+         starts_with("L"), starts_with("a"), starts_with("b")) %>%
+  rename_at(vars(starts_with("Hex"), starts_with("L"), starts_with("a"), starts_with("b")), 
+            funs( gsub(" Best Example", " (Best Example)", 
+                       gsub(" Most", " (Most)", .)))) %>%
+  mutate_at(vars(starts_with("L"), starts_with("a"), starts_with("b")),
+            funs( round( as.numeric(as.character(.)), 
+                        digits = 2) )) %>%
+  mutate_if(is.double, funs(replace(., is.nan(.), NA)))
 
 datatable(best_weighted, rownames = FALSE) %>%
-  formatStyle(columns = "Hex Code",
-              background = styleEqual(best_weighted$`Hex Code`, 
-                                      best_weighted$`Hex Code`))
+  formatStyle(columns = "Hex Code (Best Example)",
+              background = styleEqual(best_weighted$`Hex Code (Best Example)`, 
+                                      best_weighted$`Hex Code (Best Example)`)) %>%
+  formatStyle(columns = "Hex Code (Most)",
+              background = styleEqual(best_weighted$`Hex Code (Most)`, 
+                                      best_weighted$`Hex Code (Most)`))  
+
+
 
 ```
 
+Model that predicts the probability that a certain point in LAB space will be labeled with a certain term
