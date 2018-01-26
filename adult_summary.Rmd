@@ -26,6 +26,7 @@ library(plotly)
 library(feather)
 library(viridis)
 library(ggthemes)
+library(stringr)
 
 ```
 
@@ -475,4 +476,12 @@ datatable(best_weighted, rownames = FALSE) %>%
 
 ```
 
-Model that predicts the probability that a certain point in LAB space will be labeled with a certain term
+Is there enough consistency between the two experiments that we can infer about the whole color space?
+ - focal points
+ - boundaries
+ - are the focal colors reported in the grouping exp likely to be  high-consensus items?
+ - how about examples of 'menos' or 'peor ej'. Are these low-consensus items? Possibly boundary items?
+
+Predict the probability that a certain point in LAB space will be labeled with a certain term
+ - Weakness with lower-saturation points not well-represented in sample
+ - Use to calculate level of entropy across space?

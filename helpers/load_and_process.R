@@ -10,6 +10,45 @@ string_spelling_list <- "`Amarillo` = c('amarilla', 'amarillo'), `Ami` = c('ami'
 spelling_list <- eval(parse(text = paste0("c(",string_spelling_list,")")))
 
 
+
+# Load chip set and terms data --------------------------------------------
+
+
+color_chip_data <- read_csv("data/wcs_measures.csv", skip = 1) %>%
+  mutate(V = factor(V, levels = LETTERS[seq(n_distinct(V),1)])) %>%
+  mutate(hex = colorspace::hex(
+    colorspace::LAB(.data$`L*`, .data$`a*`, 
+                    .data$`b*`, .data$`#cnum`), fixup = T))
+
+shipibo_chip_set <- read.csv(text = "shipibo, spanish, munsell_code, chip_id
+                             Joshin, Rojo, G3, 245
+                             Pei/Xo, Verde, G18, 234
+                             Panshin, Amarillo, C9, 297
+                             Wiso, Negro, J1/I0, 312
+                             Joxo, Blanco, A/B0, 274
+                             Nai, Celeste, E29, 1
+                             Ami/Poa, Morado, H36, 325
+                             Barin poi, Mierda sol, F12, 320",
+                             stringsAsFactors = FALSE) %>%
+  mutate_if(is.character, trimws)
+
+spanish_chip_set <- read.csv(text = "spanish, code, munsell_code, chip_id
+                             Blanco, BL, A/B0, 274
+                             Verde, VD, G18, 234
+                             Rojo, RJ, G3, 245
+                             Amarillo, AM, C9, 297
+                             Azul, AZ, F30, 291
+                             Negro, NG, J1/I0, 312
+                             Naranja, NR, E4, 121
+                             Gris, GR, F0, 46
+                             Morado, MRD, H36, 325
+                             Marron, MRN, G5, 266
+                             Rosa, RS, F39, 65",
+                             stringsAsFactors = FALSE) %>%
+  mutate_if(is.character, trimws)
+
+
+
 # Load in data from current study -----------------------------------------
 
 
@@ -26,6 +65,7 @@ grouping_data <- read_csv("data/Current_Data/grouping_colors_participants.csv") 
                                      `nombre del grupo`, NA)) %>%
   mutate(`nombre del grupo` = eval( parse(text = gsub(pattern = "x", replacement = string_spelling_list, "forcats::fct_collapse(`nombre del grupo`, x)")))
   )
+
 
 
 # Load in Kay data --------------------------------------------------------
@@ -81,39 +121,6 @@ kay_terms <- read_tsv("data/WCS_Data/term.txt",
                                       `Yankon` = c("yancon"),
                                       `Wiso` = c("huiso")
   ))
-
-
-# Load chip set and terms data --------------------------------------------
-
-
-color_chip_data <- read_csv("data/wcs_measures.csv", skip = 1) %>%
-  mutate(V = factor(V, levels = LETTERS[seq(n_distinct(V),1)])) %>%
-  mutate(hex = colorspace::hex(
-    colorspace::LAB(.data$`L*`, .data$`a*`, 
-                    .data$`b*`, .data$`#cnum`), fixup = T))
-
-shipibo_chip_set <- read.csv(text = "shipibo, spanish, munsell_code, chip_id
-                             Joshin, rojo, G3, 245
-                             Pei/Xo, verde, G18, 234
-                             Panshin, amarillo, C9, 297
-                             Wiso, negro, J1/I0, 312
-                             Joxo, blanco, A/B0, 274
-                             Nai, celeste, E29, 1
-                             Ami/Poa, morado, H36, 325
-                             Barin poi, mierda sol, F12, 320")
-
-spanish_chip_set <- read.csv(text = "spanish, code, munsell_code, chip_id
-                             Blanco, BL, A/B0, 274
-                             Verde, VD, G18, 234
-                             Rojo, RJ, G3, 245
-                             Amarillo, AM, C9, 297
-                             Azul, AZ, F30, 291
-                             Negro, NG, J1/I0, 312
-                             Naranja, NR, E4, 121
-                             Gris, GR, F0, 46
-                             Morado, MRD, H36, 325
-                             Marron, MRN, G5, 266
-                             Rosa, RS, F39, 65")
 
 
 # Load assigned colors for terms ------------------------------------------
