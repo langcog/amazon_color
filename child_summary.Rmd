@@ -211,5 +211,7 @@ child_data <- bind_rows("Shipibo" = read_csv("data/Current_Data/shipibo_children
             funs(ifelse(response_num == 1 & is.na(response), 0,
                           ifelse(response_num > 1 & is.na(response), NA, .))))
 
+write_csv(child_data, "intermediates/child_data.csv", na = "")
+
 ```
 
