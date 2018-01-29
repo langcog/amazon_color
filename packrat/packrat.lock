@@ -175,6 +175,11 @@ Version: 0.2.0
 Hash: e5a3b0b96a39f5581467b0c6366f7408
 Requires: magrittr, tibble
 
+Package: formatR
+Source: CRAN
+Version: 1.5
+Hash: 258cf79a8dbeedf1c981cdb53837d2af
+
 Package: ggplot2
 Source: github
 Version: 2.2.1.9000
@@ -185,6 +190,12 @@ GithubRepo: ggplot2
 GithubUsername: hadley
 GithubRef: master
 GithubSha1: bf9255e50cb8333e26133cc81927e5baff986d2a
+
+Package: ggthemes
+Source: CRAN
+Version: 3.4.0
+Hash: e9f85417507c5352fc05de654bb6f1ab
+Requires: assertthat, colorspace, ggplot2, scales
 
 Package: git2r
 Source: CRAN

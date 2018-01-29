@@ -1,6 +1,5 @@
 ---
-  title: Characterizing Color Term Knowledge in Adults in the Peruvian
-Shipibo Tribe
+title: Characterizing Color Term Knowledge in Adults in the Peruvian Shipibo Tribe
 author: "Danielle Kellier, Martin Fortier, and Mike Frank"
 date: "`r Sys.Date()`"
 output:
@@ -39,6 +38,7 @@ source("helpers/load_and_process.R")
 
 min_consensus <- 15
 min_edge_chips <- 3
+refresh_data <- FALSE
 
 
 ```
@@ -281,25 +281,25 @@ clean_child_data <- function(df, min_consensus = 10) {
 
 ```{r}
 
-child_data <- bind_rows("Shipibo" = read_csv("data/Current_Data/shipibo_children_colors_participants.csv") %>%
-                          left_join(read_csv("data/Current_Data/shipibo_children_colors_data.csv"), by = 'subj'),
-                        "Spanish" = read_csv("data/Current_Data/spanish_children_colors_participants.csv") %>%
-                          left_join(read_csv("data/Current_Data/spanish_children_colors_data.csv"), by = 'subj'),
-                        .id = "Language") %>% 
-  mutate(age = ifelse(is.na(age), as.numeric(as.character(edad)), as.numeric(as.character(age))),
-         task = ifelse(task == 1, "Production", ifelse( task == 2, "Comprehension", NA))) %>%
-  gather("response_num", "response", response_1:response_4) %>%
-  mutate(response_num = as.numeric(as.character(gsub("response_", "", response_num)))) %>%
-  split(list(.$Language, .$task)) %>%
-  map_df(clean_child_data, min_consensus)
-
+if (refresh_data) {
   
-#   map_df(clean_child_data, min_consensus) %>%
-#   mutate_at(vars(starts_with("correct")),
-#             funs(ifelse(response_num == 1 & is.na(response), 0,
-#                           ifelse(response_num > 1 & is.na(response), NA, .))))
-# 
-# write_csv(child_data, "intermediates/child_data.csv", na = "")
+  child_data <- bind_rows("Shipibo" = read_csv("data/Current_Data/shipibo_children_colors_participants.csv") %>%
+                            left_join(read_csv("data/Current_Data/shipibo_children_colors_data.csv"), by = 'subj'),
+                          "Spanish" = read_csv("data/Current_Data/spanish_children_colors_participants.csv") %>%
+                            left_join(read_csv("data/Current_Data/spanish_children_colors_data.csv"), by = 'subj'),
+                          .id = "Language") %>% 
+    mutate(age = ifelse(is.na(age), as.numeric(as.character(edad)), as.numeric(as.character(age))),
+           task = ifelse(task == 1, "Production", ifelse( task == 2, "Comprehension", NA))) %>%
+    gather("response_num", "response", response_1:response_4) %>%
+    mutate(response_num = as.numeric(as.character(gsub("response_", "", response_num)))) %>%
+    split(list(.$Language, .$task)) %>%
+    map_df(clean_child_data, min_consensus)
+
+    write_csv(child_data, "intermediates/child_data.csv", na = "")
+} else {
+  child_data <- read_csv("intermediates/child_data.csv")
+}
+
 
 ```
 
