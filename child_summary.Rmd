@@ -37,22 +37,44 @@ Load and format CSV data from current study along with World Color Survey Data
 
 source("helpers/load_and_process.R")
 
-min_consensus <- 10
+min_consensus <- 15
+min_edge_chips <- 3
 
 
 ```
 
 
-
 ```{r}
+shipibo_euclid_dist <- shipibo_chip_set %>%
+  select(shipibo, chip_id) %>%
+  separate_rows(shipibo, sep = "/") %>%
+  mutate(k = 1) %>%
+  left_join(select(color_chip_data, "#cnum", "L*", "a*", "b*"), by = c("chip_id" = "#cnum")) %>%
+  full_join(shipibo_chip_set %>%
+              select(shipibo, chip_id) %>%
+              separate_rows(shipibo, sep = "/") %>%
+              mutate(k = 1) %>%
+              left_join(select(color_chip_data, "#cnum", "L*", "a*", "b*"), by = c("chip_id" = "#cnum")), 
+            by = "k") %>%
+  filter(shipibo.x != shipibo.y) %>%
+  mutate(dist = sqrt((`L*.x` - `L*.y`)^2 + (`a*.x` - `a*.y`)^2 + (`b*.x` - `b*.y`)^2)) %>%
+  select(starts_with("shipibo"), starts_with("chip_id"), dist)
 
-child_string_spelling_list <- "`Amarillo` = c('amarilla', 'amarillo'), `Ami` = c('ami'), `Azul` = c('azul'), `Barin Poi` = c('bari', 'barri', 'barrinpui'), `Blanco` = c('blanco'), `Celeste` = c('celeste'), `Gris` = c('gris'), `Jimi` = c('jimi'), `Joa` = c('joa'), `Joshin` = c('joshin', 'toshin'), `Joxo` = c('joxo'), `Kari` = c('carri'), `Mai` = c('mai'), `Manxan` = c('manxan'), `Marron` = c('marron'), `Morado` = c('morado'), `Nai` = c('nai', 'nai (lluvia)'), `Naranja` = c('anarando', 'narango', 'naranja', 'naranjada', 'naranjado', 'naranjo', 'narranxa'), `Negro` = c('negro'), `Oxne` = c('oxe'), `Panshin` = c('panshin', 'panshintani'), `Pei/Xo` = c('pei', 'xo'), `Poa` = c('pua'), `Rojo` = c('rojo'), `Rosa` = c('rosa', 'rosada', 'rosado'), `Verde` = c('verde', 'verdesito'), `Violeta` = c('bioleta', 'violeta'), `Wiso` = c('wiso'), `Yame` = c('yame'), `Yankon` = c('yakon', 'yakun', 'yankon', 'yankontani', 'yankun')"
+spanish_euclid_dist <- spanish_chip_set %>%
+  select(spanish, chip_id) %>%
+  mutate(k = 1) %>%
+  left_join(select(color_chip_data, "#cnum", "L*", "a*", "b*"), by = c("chip_id" = "#cnum")) %>%
+  full_join(spanish_chip_set %>%
+              select(spanish, chip_id) %>%
+              mutate(k = 1) %>%
+              left_join(select(color_chip_data, "#cnum", "L*", "a*", "b*"), by = c("chip_id" = "#cnum")), 
+            by = "k") %>%
+  filter(spanish.x != spanish.y) %>%
+  mutate(dist = sqrt((`L*.x` - `L*.y`)^2 + (`a*.x` - `a*.y`)^2 + (`b*.x` - `b*.y`)^2)) %>%
+  select(starts_with("spanish"), starts_with("chip_id"), dist)
 
-child_spelling_list <- eval(parse(text = paste0("c(",child_string_spelling_list,")")))
-
-adult_naming_consensus <- naming_data %>%
+boundary_chips <- naming_data %>%
   select(subj, chip_id, color_cat) %>%
-  filter(chip_id %in% shipibo_chip_set$chip_id) %>%
   mutate(set = ifelse((chip_id %% 2) == 0, 'even', 'odd')) %>%
   split(.$set) %>%
   map_df(function(x) {
@@ -63,24 +85,72 @@ adult_naming_consensus <- naming_data %>%
     mutate(perc = 100*n/sum(n)) %>%
     select(-n)
   }) %>%
-  arrange(chip_id) %>%
+  group_by(chip_id) %>%
   filter(perc >= min_consensus) %>%
-  select(-perc)
+  mutate(perc = 1) %>%
+  filter(n() >= 2) %>%
+  summarise(color_cats = paste0(color_cat, collapse = ", "))
+
+shipibo_boundary <- crossing(Color_1 = shipibo_terms, 
+         Color_2 = shipibo_terms) %>%
+  filter(Color_1 != Color_2) %>%
+  rowwise() %>%
+  do(Color_1 = first(.$Color_1),
+     Color_2 = first(.$Color_2),
+     boundary_chips = sum(apply(sapply(c(.$Color_1, .$Color_2), grepl, boundary_chips$color_cats), 1, all)))%>%
+  summarise(Color_1 = first(Color_1),
+            Color_2 = first(Color_2),
+            sum_chips = sum(boundary_chips),
+            adjacency = ifelse(sum(boundary_chips) >= min_edge_chips, 1, 0)) %>%
+  left_join(shipibo_euclid_dist, by = c("Color_1" = "shipibo.x", "Color_2" = "shipibo.y"))
+
+spanish_boundary <- as.data.frame(as.matrix(Matrix::forceSymmetric(
+  as.matrix(read_csv("data/adjacent_spanish_labels.csv")[,-1]),uplo="U"))) %>%
+  rownames_to_column("Color_1") %>%
+  gather(key = "Color_2", value = "adjacency", Blanco:Rosa) %>%
+  filter(Color_1 != Color_2) %>%
+  left_join(spanish_euclid_dist, by = c("Color_1" = "spanish.x", "Color_2" = "spanish.y")) %>%
+  rename("Chip ID_1" = "chip_id.x", "Chip ID_2" = "chip_id.y") %>%
+  select(starts_with("Color"), starts_with("Chip"), adjacency, dist)
+```
 
 
-adult_naming_consensus %>%
-  group_by(color_cat) %>%
-  summarise(chips = paste(chip_id, collapse = ", "))
+```{r}
 
-both_chip_sets <- full_join(select(spanish_chip_set, -code), 
-                            shipibo_chip_set, 
-                            by = c("spanish", "munsell_code", "chip_id")) %>%
-  mutate(both_langs = ifelse(!is.na(shipibo),
-                             str_c(spanish, shipibo, sep = ", "), spanish))
+clean_child_data <- function(df, min_consensus = 10) {
 
+  child_string_spelling_list <- "`Amarillo` = c('amarilla', 'amarillo'), `Ami` = c('ami'), `Azul` = c('azul'), `Barin Poi` = c('bari', 'barri', 'barrinpui'), `Blanco` = c('blanco'), `Celeste` = c('celeste'), `Gris` = c('gris'), `Jimi` = c('jimi'), `Joa` = c('joa'), `Joshin` = c('joshin', 'toshin'), `Joxo` = c('joxo'), `Kari` = c('carri'), `Mai` = c('mai'), `Manxan` = c('manxan'), `Marron` = c('marron'), `Morado` = c('morado'), `Nai` = c('nai', 'nai (lluvia)'), `Naranja` = c('anarando', 'narango', 'naranja', 'naranjada', 'naranjado', 'naranjo', 'narranxa'), `Negro` = c('negro'), `Oxne` = c('oxe'), `Panshin` = c('panshin', 'panshintani'), `Pei/Xo` = c('pei', 'xo'), `Poa` = c('pua'), `Rojo` = c('rojo'), `Rosa` = c('rosa', 'rosada', 'rosado'), `Verde` = c('verde', 'verdesito'), `Violeta` = c('bioleta', 'violeta'), `Wiso` = c('wiso'), `Yame` = c('yame'), `Yankon` = c('yakon', 'yakun', 'yankon', 'yankontani', 'yankun')"
 
-clean_child_data <- function(df) {
+  child_spelling_list <- eval(parse(text = paste0("c(",child_string_spelling_list,")")))
 
+  adult_naming_consensus <- naming_data %>%
+    select(subj, chip_id, color_cat) %>%
+    filter(chip_id %in% shipibo_chip_set$chip_id) %>%
+    mutate(set = ifelse((chip_id %% 2) == 0, 'even', 'odd')) %>%
+    split(.$set) %>%
+    map_df(function(x) {
+      x %>%
+      group_by(chip_id, color_cat) %>%
+      summarise(n = n()) %>%
+      group_by(chip_id) %>%
+      mutate(perc = 100*n/sum(n)) %>%
+      select(-n)
+    }) %>%
+    arrange(chip_id) %>%
+    filter(perc >= min_consensus) %>%
+    select(-perc)
+  
+  
+  adult_naming_consensus %>%
+    group_by(color_cat) %>%
+    summarise(chips = paste(chip_id, collapse = ", "))
+  
+  both_chip_sets <- full_join(select(spanish_chip_set, -code), 
+                              shipibo_chip_set, 
+                              by = c("spanish", "munsell_code", "chip_id")) %>%
+    mutate(both_langs = ifelse(!is.na(shipibo),
+                               str_c(spanish, shipibo, sep = ", "), spanish))
+  
   if (first(df$task) == "Comprehension") {
     
     df <- df %>%
@@ -129,17 +199,24 @@ clean_child_data <- function(df) {
                     group_by(color_cat) %>%
                     summarise(chips = paste(chip_id, collapse = ", ")),
                   by = c("prompt" = "color_cat")) %>%
-        mutate(correct = ifelse(str_detect(chips, response), 1, 0))
+        left_join(both_chip_sets, by = c("prompt" = "shipibo")) %>%
+        mutate(correct = ifelse(str_detect(chips, response), 1, 0)) %>%
+        left_join(shipibo_boundary %>%
+                    mutate(`chip_id.y` = as.character(`chip_id.y`),
+                           `Color_1` = ifelse(`Color_1` == "Pei", "Pei/Xo", `Color_1`)), 
+                  by = c("prompt" = "Color_1", "response" = "chip_id.y"))
       
     } else if (first(df$Language) == "Spanish") {
       df <- df %>%
         left_join(mutate(both_chip_sets, chip_id = as.character(chip_id)),
                   by = c("prompt" = "spanish")) %>%
-        mutate(correct = ifelse(str_detect(chip_id, response), 1, 0))
+        mutate(spanish = prompt,
+               correct = ifelse(str_detect(chip_id, response), 1, 0)) %>%
+        left_join(spanish_boundary %>%
+                    mutate(`Chip ID_2` = as.character(`Chip ID_2`)), 
+                  by = c("prompt" = "Color_1", "response" = "Chip ID_2"))
     }
     
-    df <- df %>%
-      select(Language:response, correct)
     
   } else if (first(df$task) == "Production") {
     df <- df %>%
@@ -172,29 +249,37 @@ clean_child_data <- function(df) {
         mutate(correct = ifelse(str_detect(terms, str_replace_na(response)), 1, 0)) %>%
         left_join(mutate(both_chip_sets, chip_id = as.character(chip_id)), 
                   by = c("prompt" = "chip_id")) %>%
-        mutate(correct_switch = ifelse(str_detect(spanish, str_replace_na(response)), 1, 0))
+        mutate(correct_switch = ifelse(str_detect(spanish, str_replace_na(response)), 1, 0)) %>%
+        left_join(shipibo_boundary, 
+                  by = c("shipibo" = "Color_1", "response" = "Color_2"))
       
     } else if (first(df$Language) == "Spanish") {
       df <- df %>%
         left_join(mutate(both_chip_sets, chip_id = as.character(chip_id)),
                   by = c("prompt" = "chip_id")) %>%
         mutate(correct = ifelse(str_detect(spanish, str_replace_na(response)), 1, 0),
-               correct_switch = ifelse(str_detect(shipibo, str_replace_na(response)), 1, 0))
+               correct_switch = ifelse(str_detect(shipibo, str_replace_na(response)), 1, 0)) %>%
+        left_join(spanish_boundary, by = c("spanish" = "Color_1", "response" = "Color_2"))
 
       
     }
     
-    df <- df %>%
-      select(Language:response, correct, correct_switch)
+
        
   }
   
-  # df <- df %>%
-  #   select(Language:response, correct)
+  df <- df %>%
+    select(Language:response, starts_with("correct"), spanish, adjacency, dist)
   
   return(df)
 }
 
+
+
+```
+
+
+```{r}
 
 child_data <- bind_rows("Shipibo" = read_csv("data/Current_Data/shipibo_children_colors_participants.csv") %>%
                           left_join(read_csv("data/Current_Data/shipibo_children_colors_data.csv"), by = 'subj'),
@@ -206,12 +291,15 @@ child_data <- bind_rows("Shipibo" = read_csv("data/Current_Data/shipibo_children
   gather("response_num", "response", response_1:response_4) %>%
   mutate(response_num = as.numeric(as.character(gsub("response_", "", response_num)))) %>%
   split(list(.$Language, .$task)) %>%
-  map_df(clean_child_data) %>%
-  mutate_at(vars(starts_with("correct")),
-            funs(ifelse(response_num == 1 & is.na(response), 0,
-                          ifelse(response_num > 1 & is.na(response), NA, .))))
+  map_df(clean_child_data, min_consensus)
 
-write_csv(child_data, "intermediates/child_data.csv", na = "")
+  
+#   map_df(clean_child_data, min_consensus) %>%
+#   mutate_at(vars(starts_with("correct")),
+#             funs(ifelse(response_num == 1 & is.na(response), 0,
+#                           ifelse(response_num > 1 & is.na(response), NA, .))))
+# 
+# write_csv(child_data, "intermediates/child_data.csv", na = "")
 
 ```
 

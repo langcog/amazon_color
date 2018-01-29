@@ -28,7 +28,7 @@ shipibo_chip_set <- read.csv(text = "shipibo, spanish, munsell_code, chip_id
                              Joxo, Blanco, A/B0, 274
                              Nai, Celeste, E29, 1
                              Ami/Poa, Morado, H36, 325
-                             Barin poi, Mierda sol, F12, 320",
+                             Barin Poi, Mierda sol, F12, 320",
                              stringsAsFactors = FALSE) %>%
   mutate_if(is.character, trimws)
 

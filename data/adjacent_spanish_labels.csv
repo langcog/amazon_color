@@ -1,0 +1,12 @@
+,Blanco,Verde,Rojo,Amarillo,Azul,Negro,Naranja,Gris,Morado,Marron,Rosa
+Blanco,1,0,0,1,0,0,0,1,0,0,1
+Verde,,1,0,1,1,0,0,0,0,0,0
+Rojo,,,1,0,0,0,1,0,1,1,1
+Amarillo,,,,1,0,0,1,0,0,0,0
+Azul,,,,,1,0,0,0,1,0,0
+Negro,,,,,,1,0,1,0,0,0
+Naranja,,,,,,,1,0,0,1,1
+Gris,,,,,,,,1,0,1,0
+Morado,,,,,,,,,1,0,1
+Marron,,,,,,,,,,1,0
+Rosa,,,,,,,,,,,1
