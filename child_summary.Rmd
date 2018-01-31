@@ -38,7 +38,7 @@ source("helpers/load_and_process.R")
 
 min_consensus <- 15
 min_edge_chips <- 3
-refresh_data <- FALSE
+refresh_data <- TRUE
 
 
 ```
@@ -151,6 +151,19 @@ clean_child_data <- function(df, min_consensus = 10) {
     mutate(both_langs = ifelse(!is.na(shipibo),
                                str_c(spanish, shipibo, sep = ", "), spanish))
   
+  shipibo_boundary_c <- shipibo_boundary %>%
+    mutate(`chip_id.y` = as.character(`chip_id.y`),
+           `Color_1` = ifelse(`Color_1` %in% c("Pei", "Xo"), "Pei/Xo", 
+                              ifelse(`Color_1` %in% c("Ami", "Poa"), "Ami/Poa", `Color_1`)),
+           `Color_2` = ifelse(`Color_2` %in% c("Pei", "Xo"), "Pei/Xo", 
+                              ifelse(`Color_2` %in% c("Ami", "Poa"), "Ami/Poa", `Color_2`))) %>%
+    group_by(`Color_1`, `Color_2`) %>%
+    summarise(sum_chips = sum(sum_chips, na.rm = T),
+              adjacency = ifelse(sum(adjacency, na.rm = T) > 1, 1, sum(adjacency, na.rm = T)),
+              chip_id.x = first(chip_id.x),
+              chip_id.y = first(chip_id.y),
+              dist = first(dist))
+  
   if (first(df$task) == "Comprehension") {
     
     df <- df %>%
@@ -193,6 +206,7 @@ clean_child_data <- function(df, min_consensus = 10) {
     
     
     if (first(df$Language) == "Shipibo") {
+      
       df <- df %>%
         left_join(adult_naming_consensus %>% ungroup() %>%
                     add_row(chip_id = c(325, 320, 234), color_cat = c('Ami/Poa', 'Barin Poi', 'Pei/Xo')) %>%
@@ -201,10 +215,11 @@ clean_child_data <- function(df, min_consensus = 10) {
                   by = c("prompt" = "color_cat")) %>%
         left_join(both_chip_sets, by = c("prompt" = "shipibo")) %>%
         mutate(correct = ifelse(str_detect(chips, response), 1, 0)) %>%
-        left_join(shipibo_boundary %>%
-                    mutate(`chip_id.y` = as.character(`chip_id.y`),
-                           `Color_1` = ifelse(`Color_1` == "Pei", "Pei/Xo", `Color_1`)), 
-                  by = c("prompt" = "Color_1", "response" = "chip_id.y"))
+        left_join(select(shipibo_chip_set, shipibo, chip_id) %>%
+                    mutate(chip_id = as.character(chip_id)), 
+                  by = c("response" = "chip_id")) %>%
+        left_join(shipibo_boundary_c, 
+                  by = c("prompt" = "Color_1", "shipibo" = "Color_2"))
       
     } else if (first(df$Language) == "Spanish") {
       df <- df %>%
@@ -250,7 +265,7 @@ clean_child_data <- function(df, min_consensus = 10) {
         left_join(mutate(both_chip_sets, chip_id = as.character(chip_id)), 
                   by = c("prompt" = "chip_id")) %>%
         mutate(correct_switch = ifelse(str_detect(spanish, str_replace_na(response)), 1, 0)) %>%
-        left_join(shipibo_boundary, 
+        left_join(shipibo_boundary_c, 
                   by = c("shipibo" = "Color_1", "response" = "Color_2"))
       
     } else if (first(df$Language) == "Spanish") {
@@ -268,8 +283,8 @@ clean_child_data <- function(df, min_consensus = 10) {
        
   }
   
-  df <- df %>%
-    select(Language:response, starts_with("correct"), spanish, adjacency, dist)
+  # df <- df %>%
+  #   select(Language:response, starts_with("correct"), spanish, adjacency, dist)
   
   return(df)
 }
@@ -293,9 +308,9 @@ if (refresh_data) {
     gather("response_num", "response", response_1:response_4) %>%
     mutate(response_num = as.numeric(as.character(gsub("response_", "", response_num)))) %>%
     split(list(.$Language, .$task)) %>%
-    map_df(clean_child_data, min_consensus)
+    map(clean_child_data, min_consensus)
 
-    write_csv(child_data, "intermediates/child_data.csv", na = "")
+    # write_csv(child_data, "intermediates/child_data.csv", na = "")
 } else {
   child_data <- read_csv("intermediates/child_data.csv")
 }
