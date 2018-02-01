@@ -26,6 +26,7 @@ library(feather)
 library(viridis)
 library(ggthemes)
 library(stringr)
+library(lme4)
 
 ```
 
@@ -336,7 +337,11 @@ if (refresh_data) {
     gather("response_num", "response", response_1:response_4) %>%
     mutate(response_num = as.numeric(as.character(gsub("response_", "", response_num)))) %>%
     split(list(.$Language, .$task)) %>%
-    map_df(clean_child_data, min_consensus)
+    map_df(clean_child_data, min_consensus) %>%
+    mutate(correct = ifelse(response_num == 1 & is.na(response), 0, correct),
+           adjacency = ifelse(correct == 1, NA, adjacency),
+           dist = ifelse(correct == 1, NA, dist))
+  
     write_csv(child_data, "intermediates/child_data.csv", na = "")
 
 } else {
@@ -347,23 +352,28 @@ if (refresh_data) {
 ```
 
 ```{r}
-cd <- child_data
-cd$age.years.c <- scale(cd$age, scale = FALSE)[,1]
-cd %<>%
-  select(Language, subj, task, prompt, spanish, response_num, response, correct, correct_switch) %>%
+
+cd <- child_data %>%
+  mutate(age_scaled = scale(.$age, scale = FALSE)[,1]) %>%
+  select(Language, subj, age, age_scaled, task, prompt, spanish, response_num, response, correct, correct_switch, adjacency, dist) %>%
+  mutate(correct = ifelse(task == "Comprehension" & Language == "Shipibo" & prompt == "Yankon" & response_num == "2" & is.na(response), 0, correct)) %>%
   mutate_if(is.character, factor) %>%
   group_by_at(vars(Language:spanish)) %>%
-  summarise(correct = mean(correct, na.rm = T) )
+  mutate(correct_either = correct + ifelse(!is.na(correct_switch), correct_switch, 0)) %>%
+  summarise(num_responses = n(),
+            response = str_c(response, collapse = ", "),
+            correct = mean(correct, na.rm = T),
+            correct_either = mean(correct_either, na.rm = T),
+            wrong_adjacent = mean(adjacency, na.rm = T),
+            wrong_euc_dist = mean(dist, na.rm = T)) %>%
+  mutate_if(is.double, funs(replace(., is.nan(.), NA)))
 
-pbt_mod <- glmer(proportion ~ age.years.c * task.type + (task.type | subj) + (task.type | prompt), data=cd,
+# write_csv(cd, "intermediates/processed_data.csv", na = "")
+
+pbt_mod <- glmer(correct ~ age_scaled * task + (task | subj) + (task | prompt), data=cd,
                  family = "binomial")
 
 summary(pbt_mod)
-# 
-# ggplot(child_data, aes(x = age_interval, y = correct, group = task, colour = task)) +
-# 
-#   
-# pchildes_mod <- glmer(proportion ~ age.years.c * task.type + in_vocab + (task.type | subj) + (task.type | prompt),
-#                  data=precision.childes, family = "binomial")
+
 ```
 

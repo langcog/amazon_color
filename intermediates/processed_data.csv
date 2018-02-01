@@ -1,0 +1,1982 @@
+Language,subj,age,age_scaled,task,prompt,spanish,num_responses,response,correct,correct_either,wrong_adjacent,wrong_euc_dist
+Shipibo,sh_1,6.4,-2.0654054054054054,Comprehension,Ami/Poa,Morado,1,312,0,0,1,49.65288410555826
+Shipibo,sh_1,6.4,-2.0654054054054054,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_1,6.4,-2.0654054054054054,Comprehension,Joshin,Rojo,2,"245, 320",1,1,,
+Shipibo,sh_1,6.4,-2.0654054054054054,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_1,6.4,-2.0654054054054054,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_1,6.4,-2.0654054054054054,Comprehension,Panshin,Amarillo,1,320,0,0,0,61.75681419892059
+Shipibo,sh_1,6.4,-2.0654054054054054,Comprehension,Pei/Xo,Verde,2,"274, 312",0,0,0,67.24496598417952
+Shipibo,sh_1,6.4,-2.0654054054054054,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_1,6.4,-2.0654054054054054,Comprehension,Yankon,Azul/Verde,4,"234, 1, 325, 297",0.75,0.75,1,
+Shipibo,sh_1,6.4,-2.0654054054054054,Production,1,Celeste,2,"Rojo, Azul",0,0.5,,
+Shipibo,sh_1,6.4,-2.0654054054054054,Production,234,Verde,2,"Yankon, Joxo",0.5,0.5,0,74.88113647641842
+Shipibo,sh_1,6.4,-2.0654054054054054,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_1,6.4,-2.0654054054054054,Production,274,Blanco,2,"Yankon, Joxo",0.5,0.5,1,
+Shipibo,sh_1,6.4,-2.0654054054054054,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_1,6.4,-2.0654054054054054,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_1,6.4,-2.0654054054054054,Production,320,Mierda sol,1,Panshin,0,0,0,61.75681419892059
+Shipibo,sh_1,6.4,-2.0654054054054054,Production,325,Morado,1,Rojo,0,0,,
+Shipibo,sh_10,7,-1.4654054054054058,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_10,7,-1.4654054054054058,Comprehension,Barin Poi,Mierda sol,1,234,0,0,0,62.08941536204057
+Shipibo,sh_10,7,-1.4654054054054058,Comprehension,Joshin,Rojo,2,"245, 325",1,1,,
+Shipibo,sh_10,7,-1.4654054054054058,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_10,7,-1.4654054054054058,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_10,7,-1.4654054054054058,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_10,7,-1.4654054054054058,Comprehension,Pei/Xo,Verde,2,"234, 320",0.5,0.5,0,62.08941536204057
+Shipibo,sh_10,7,-1.4654054054054058,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_10,7,-1.4654054054054058,Comprehension,Yankon,Azul/Verde,4,"234, 1, 320, 325",1,1,,
+Shipibo,sh_10,7,-1.4654054054054058,Production,1,Celeste,1,Azul,0,1,,
+Shipibo,sh_10,7,-1.4654054054054058,Production,234,Verde,1,Yankon,1,1,,
+Shipibo,sh_10,7,-1.4654054054054058,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_10,7,-1.4654054054054058,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_10,7,-1.4654054054054058,Production,297,Amarillo,3,"Naranja, Amarillo, Panshin",0.3333333333333333,0.6666666666666666,,
+Shipibo,sh_10,7,-1.4654054054054058,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_10,7,-1.4654054054054058,Production,320,Mierda sol,1,Panshin,0,0,0,61.75681419892059
+Shipibo,sh_10,7,-1.4654054054054058,Production,325,Morado,1,Azul,0,0,,
+Shipibo,sh_11,6.9,-1.5654054054054054,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_11,6.9,-1.5654054054054054,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_11,6.9,-1.5654054054054054,Comprehension,Joshin,Rojo,2,"325, 320",1,1,,
+Shipibo,sh_11,6.9,-1.5654054054054054,Comprehension,Joxo,Blanco,1,312,0,0,0,70.54001772044006
+Shipibo,sh_11,6.9,-1.5654054054054054,Comprehension,Nai,Celeste,1,297,0,0,0,150.06082933264096
+Shipibo,sh_11,6.9,-1.5654054054054054,Comprehension,Panshin,Amarillo,1,1,0,0,0,150.06082933264096
+Shipibo,sh_11,6.9,-1.5654054054054054,Comprehension,Pei/Xo,Verde,2,"234, 320",0.5,0.5,0,62.08941536204057
+Shipibo,sh_11,6.9,-1.5654054054054054,Comprehension,Wiso,Negro,1,234,0,0,0,59.60879549194061
+Shipibo,sh_11,6.9,-1.5654054054054054,Comprehension,Yankon,Azul/Verde,4,"245, 297, 274, 234",0.25,0.25,1,
+Shipibo,sh_11,6.9,-1.5654054054054054,Production,1,Celeste,3,"Wiso, Panshin, Joxo",0,0,0,85.43402685622111
+Shipibo,sh_11,6.9,-1.5654054054054054,Production,234,Verde,2,"Panshin, Wiso",0,0,0,89.74601308956946
+Shipibo,sh_11,6.9,-1.5654054054054054,Production,245,Rojo,2,"Panshin, Wiso",0,0,1,83.03736613457303
+Shipibo,sh_11,6.9,-1.5654054054054054,Production,274,Blanco,1,Panshin,0,0,0,109.73825859744632
+Shipibo,sh_11,6.9,-1.5654054054054054,Production,297,Amarillo,1,Barin Poi,0,0,0,61.75681419892059
+Shipibo,sh_11,6.9,-1.5654054054054054,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_11,6.9,-1.5654054054054054,Production,320,Mierda sol,1,Barin Poi,1,1,,
+Shipibo,sh_11,6.9,-1.5654054054054054,Production,325,Morado,1,Panshin,0,0,0,146.31869463605804
+Shipibo,sh_12,6.5,-1.9654054054054058,Comprehension,Ami/Poa,Morado,1,320,0,0,0,100.49231861192177
+Shipibo,sh_12,6.5,-1.9654054054054058,Comprehension,Barin Poi,Mierda sol,1,312,0,0,1,67.19189385632764
+Shipibo,sh_12,6.5,-1.9654054054054058,Comprehension,Joshin,Rojo,2,"245, 297",0.5,0.5,1,93.1910736068643
+Shipibo,sh_12,6.5,-1.9654054054054058,Comprehension,Joxo,Blanco,1,234,0,0,0,74.88113647641842
+Shipibo,sh_12,6.5,-1.9654054054054058,Comprehension,Nai,Celeste,1,274,0,0,0,49.223397891653114
+Shipibo,sh_12,6.5,-1.9654054054054058,Comprehension,Panshin,Amarillo,1,1,0,0,0,150.06082933264096
+Shipibo,sh_12,6.5,-1.9654054054054058,Comprehension,Pei/Xo,Verde,2,"297, 245",0,0,0,116.87144232383861
+Shipibo,sh_12,6.5,-1.9654054054054058,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_12,6.5,-1.9654054054054058,Comprehension,Yankon,Azul/Verde,4,"234, 245, 320, 1",0.75,0.75,1,
+Shipibo,sh_12,6.5,-1.9654054054054058,Production,1,Celeste,1,Yankon,1,1,,
+Shipibo,sh_12,6.5,-1.9654054054054058,Production,234,Verde,1,Panshin,0,0,0,119.88323068719829
+Shipibo,sh_12,6.5,-1.9654054054054058,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_12,6.5,-1.9654054054054058,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_12,6.5,-1.9654054054054058,Production,297,Amarillo,1,Naranja,0,0,,
+Shipibo,sh_12,6.5,-1.9654054054054058,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_12,6.5,-1.9654054054054058,Production,320,Mierda sol,1,Naranja,0,0,,
+Shipibo,sh_12,6.5,-1.9654054054054058,Production,325,Morado,1,Yankon,1,1,,
+Shipibo,sh_13,6,-2.4654054054054058,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_13,6,-2.4654054054054058,Comprehension,Barin Poi,Mierda sol,1,297,0,0,0,61.75681419892059
+Shipibo,sh_13,6,-2.4654054054054058,Comprehension,Joshin,Rojo,2,"245, 325",1,1,,
+Shipibo,sh_13,6,-2.4654054054054058,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_13,6,-2.4654054054054058,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_13,6,-2.4654054054054058,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_13,6,-2.4654054054054058,Comprehension,Pei/Xo,Verde,2,"234, 1",0.5,0.5,0,75.71344992800157
+Shipibo,sh_13,6,-2.4654054054054058,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_13,6,-2.4654054054054058,Comprehension,Yankon,Azul/Verde,4,"234, 1, 325, 245",0.75,0.75,1,
+Shipibo,sh_13,6,-2.4654054054054058,Production,1,Celeste,1,Celeste,0,1,,
+Shipibo,sh_13,6,-2.4654054054054058,Production,234,Verde,2,"Yankon, Verde",0.5,1,,
+Shipibo,sh_13,6,-2.4654054054054058,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_13,6,-2.4654054054054058,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_13,6,-2.4654054054054058,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_13,6,-2.4654054054054058,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_13,6,-2.4654054054054058,Production,320,Mierda sol,1,Marron,0,0,,
+Shipibo,sh_13,6,-2.4654054054054058,Production,325,Morado,1,Violeta,0,1,,
+Shipibo,sh_14,6.3,-2.165405405405406,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_14,6.3,-2.165405405405406,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_14,6.3,-2.165405405405406,Comprehension,Joshin,Rojo,2,"245, 297",0.5,0.5,1,93.1910736068643
+Shipibo,sh_14,6.3,-2.165405405405406,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_14,6.3,-2.165405405405406,Comprehension,Nai,Celeste,1,325,0,0,0,58.349317905182055
+Shipibo,sh_14,6.3,-2.165405405405406,Comprehension,Panshin,Amarillo,1,320,0,0,0,61.75681419892059
+Shipibo,sh_14,6.3,-2.165405405405406,Comprehension,Pei/Xo,Verde,2,"234, 325",0.5,0.5,0,104.20868389918375
+Shipibo,sh_14,6.3,-2.165405405405406,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_14,6.3,-2.165405405405406,Comprehension,Yankon,Azul/Verde,4,"325, 1, 234, 320",1,1,,
+Shipibo,sh_14,6.3,-2.165405405405406,Production,1,Celeste,1,Yankon,1,1,,
+Shipibo,sh_14,6.3,-2.165405405405406,Production,234,Verde,1,Yankon,1,1,,
+Shipibo,sh_14,6.3,-2.165405405405406,Production,245,Rojo,3,"Yankon, Panshin, Joshin",0.3333333333333333,0.3333333333333333,1,93.1910736068643
+Shipibo,sh_14,6.3,-2.165405405405406,Production,274,Blanco,2,"Joxo, Panshin",0.5,0.5,0,109.73825859744632
+Shipibo,sh_14,6.3,-2.165405405405406,Production,297,Amarillo,3,"Joshin, Yankon, Joshin",0,0,1,93.1910736068643
+Shipibo,sh_14,6.3,-2.165405405405406,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_14,6.3,-2.165405405405406,Production,320,Mierda sol,2,"Barin Poi, Wiso",0.5,0.5,1,67.19189385632764
+Shipibo,sh_14,6.3,-2.165405405405406,Production,325,Morado,1,Ami,1,1,,
+Shipibo,sh_15,8.4,-0.0654054054054054,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_15,8.4,-0.0654054054054054,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_15,8.4,-0.0654054054054054,Comprehension,Joshin,Rojo,2,"245, 325",1,1,,
+Shipibo,sh_15,8.4,-0.0654054054054054,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_15,8.4,-0.0654054054054054,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_15,8.4,-0.0654054054054054,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_15,8.4,-0.0654054054054054,Comprehension,Pei/Xo,Verde,2,"234, 1",0.5,0.5,0,75.71344992800157
+Shipibo,sh_15,8.4,-0.0654054054054054,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_15,8.4,-0.0654054054054054,Comprehension,Yankon,Azul/Verde,4,"234, 1, 325, 320",1,1,,
+Shipibo,sh_15,8.4,-0.0654054054054054,Production,1,Celeste,2,"Yankon, Nai",1,1,,
+Shipibo,sh_15,8.4,-0.0654054054054054,Production,234,Verde,2,"Verde, Yankon",0.5,1,,
+Shipibo,sh_15,8.4,-0.0654054054054054,Production,245,Rojo,2,"Joshin, Rojo",0.5,1,,
+Shipibo,sh_15,8.4,-0.0654054054054054,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_15,8.4,-0.0654054054054054,Production,297,Amarillo,2,"Panshin, Amarillo",0.5,1,,
+Shipibo,sh_15,8.4,-0.0654054054054054,Production,312,Negro,2,"Wiso, Negro",0.5,1,,
+Shipibo,sh_15,8.4,-0.0654054054054054,Production,320,Mierda sol,2,"Manxan, manxanpui",0,0,0,
+Shipibo,sh_15,8.4,-0.0654054054054054,Production,325,Morado,1,Violeta,0,1,,
+Shipibo,sh_16,7.3,-1.165405405405406,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_16,7.3,-1.165405405405406,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_16,7.3,-1.165405405405406,Comprehension,Joshin,Rojo,2,"245, 325",1,1,,
+Shipibo,sh_16,7.3,-1.165405405405406,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_16,7.3,-1.165405405405406,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_16,7.3,-1.165405405405406,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_16,7.3,-1.165405405405406,Comprehension,Pei/Xo,Verde,2,"234, 320",0.5,0.5,0,62.08941536204057
+Shipibo,sh_16,7.3,-1.165405405405406,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_16,7.3,-1.165405405405406,Comprehension,Yankon,Azul/Verde,4,"234, 320, 1, 325",1,1,,
+Shipibo,sh_16,7.3,-1.165405405405406,Production,1,Celeste,1,agna,0,0,,
+Shipibo,sh_16,7.3,-1.165405405405406,Production,234,Verde,2,"Yankon, Verde",0.5,1,,
+Shipibo,sh_16,7.3,-1.165405405405406,Production,245,Rojo,2,"Joshin, Rojo",0.5,1,,
+Shipibo,sh_16,7.3,-1.165405405405406,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_16,7.3,-1.165405405405406,Production,297,Amarillo,2,"Panshin, Amarillo",0.5,1,,
+Shipibo,sh_16,7.3,-1.165405405405406,Production,312,Negro,2,"Wiso, Negro",0.5,1,,
+Shipibo,sh_16,7.3,-1.165405405405406,Production,320,Mierda sol,1,Panshin,0,0,0,61.75681419892059
+Shipibo,sh_16,7.3,-1.165405405405406,Production,325,Morado,2,"Violeta, Kari",0.5,1,,
+Shipibo,sh_17,9.3,0.834594594594595,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_17,9.3,0.834594594594595,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_17,9.3,0.834594594594595,Comprehension,Joshin,Rojo,2,"245, 297",0.5,0.5,1,93.1910736068643
+Shipibo,sh_17,9.3,0.834594594594595,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_17,9.3,0.834594594594595,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_17,9.3,0.834594594594595,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_17,9.3,0.834594594594595,Comprehension,Pei/Xo,Verde,2,"234, 320",0.5,0.5,0,62.08941536204057
+Shipibo,sh_17,9.3,0.834594594594595,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_17,9.3,0.834594594594595,Comprehension,Yankon,Azul/Verde,4,"1, 234, 320, 325",1,1,,
+Shipibo,sh_17,9.3,0.834594594594595,Production,1,Celeste,1,Yankon,1,1,,
+Shipibo,sh_17,9.3,0.834594594594595,Production,234,Verde,2,"Yankon, Azul",0.5,0.5,,
+Shipibo,sh_17,9.3,0.834594594594595,Production,245,Rojo,2,"Joshin, Amarillo",0.5,0.5,,
+Shipibo,sh_17,9.3,0.834594594594595,Production,274,Blanco,2,"Joxo, Blanco",0.5,1,,
+Shipibo,sh_17,9.3,0.834594594594595,Production,297,Amarillo,2,"Panshin, Amarillo",0.5,1,,
+Shipibo,sh_17,9.3,0.834594594594595,Production,312,Negro,2,"Wiso, Blanco",0.5,0.5,,
+Shipibo,sh_17,9.3,0.834594594594595,Production,320,Mierda sol,1,Barin Poi,1,1,,
+Shipibo,sh_17,9.3,0.834594594594595,Production,325,Morado,2,"Violeta, Kari",0.5,1,,
+Shipibo,sh_18,8,-0.46540540540540576,Comprehension,Ami/Poa,Morado,1,1,0,0,0,58.349317905182055
+Shipibo,sh_18,8,-0.46540540540540576,Comprehension,Barin Poi,Mierda sol,1,297,0,0,0,61.75681419892059
+Shipibo,sh_18,8,-0.46540540540540576,Comprehension,Joshin,Rojo,2,"245, 297",0.5,0.5,1,93.1910736068643
+Shipibo,sh_18,8,-0.46540540540540576,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_18,8,-0.46540540540540576,Comprehension,Nai,Celeste,1,325,0,0,0,58.349317905182055
+Shipibo,sh_18,8,-0.46540540540540576,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_18,8,-0.46540540540540576,Comprehension,Pei/Xo,Verde,2,"234, 320",0.5,0.5,0,62.08941536204057
+Shipibo,sh_18,8,-0.46540540540540576,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_18,8,-0.46540540540540576,Comprehension,Yankon,Azul/Verde,4,"234, 1, 320, 245",0.75,0.75,1,
+Shipibo,sh_18,8,-0.46540540540540576,Production,1,Celeste,1,Celeste,0,1,,
+Shipibo,sh_18,8,-0.46540540540540576,Production,234,Verde,1,Verde,0,1,,
+Shipibo,sh_18,8,-0.46540540540540576,Production,245,Rojo,2,"Rojo, Joshin",0.5,1,,
+Shipibo,sh_18,8,-0.46540540540540576,Production,274,Blanco,2,"Joxo, Blanco",0.5,1,,
+Shipibo,sh_18,8,-0.46540540540540576,Production,297,Amarillo,2,"Amarillo, Panshin",0.5,1,,
+Shipibo,sh_18,8,-0.46540540540540576,Production,312,Negro,2,"Wiso, Negro",0.5,1,,
+Shipibo,sh_18,8,-0.46540540540540576,Production,320,Mierda sol,2,"Verde, manish",0,0,,
+Shipibo,sh_18,8,-0.46540540540540576,Production,325,Morado,1,Morado,0,1,,
+Shipibo,sh_19,6,-2.4654054054054058,Comprehension,Ami/Poa,Morado,1,320,0,0,0,100.49231861192177
+Shipibo,sh_19,6,-2.4654054054054058,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_19,6,-2.4654054054054058,Comprehension,Joshin,Rojo,2,"245, 234",0.5,0.5,0,113.85965396047891
+Shipibo,sh_19,6,-2.4654054054054058,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_19,6,-2.4654054054054058,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_19,6,-2.4654054054054058,Comprehension,Panshin,Amarillo,1,325,0,0,0,146.31869463605804
+Shipibo,sh_19,6,-2.4654054054054058,Comprehension,Pei/Xo,Verde,2,"234, 320",0.5,0.5,0,62.08941536204057
+Shipibo,sh_19,6,-2.4654054054054058,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_19,6,-2.4654054054054058,Comprehension,Yankon,Azul/Verde,4,"297, 320, 325, 274",0.5,0.5,1,
+Shipibo,sh_19,6,-2.4654054054054058,Production,1,Celeste,2,"Panshin, Joxo",0,0,0,99.64211361214704
+Shipibo,sh_19,6,-2.4654054054054058,Production,234,Verde,2,"Panshin, Pei",0.5,0.5,0,119.88323068719829
+Shipibo,sh_19,6,-2.4654054054054058,Production,245,Rojo,1,Panshin,0,0,1,93.1910736068643
+Shipibo,sh_19,6,-2.4654054054054058,Production,274,Blanco,2,"Joxo, Panshin",0.5,0.5,0,109.73825859744632
+Shipibo,sh_19,6,-2.4654054054054058,Production,297,Amarillo,2,"Joa, Panshin",0.5,0.5,,
+Shipibo,sh_19,6,-2.4654054054054058,Production,312,Negro,2,"Wiso, Panshin",0.5,0.5,0,125.11577078849812
+Shipibo,sh_19,6,-2.4654054054054058,Production,320,Mierda sol,2,"Pei, Barin Poi",0.5,0.5,0,62.08941536204057
+Shipibo,sh_19,6,-2.4654054054054058,Production,325,Morado,2,"Panshin, Yankon",0.5,0.5,0,146.31869463605804
+Shipibo,sh_2,7.4,-1.0654054054054054,Comprehension,Ami/Poa,Morado,1,320,0,0,0,100.49231861192177
+Shipibo,sh_2,7.4,-1.0654054054054054,Comprehension,Barin Poi,Mierda sol,1,325,0,0,0,100.49231861192177
+Shipibo,sh_2,7.4,-1.0654054054054054,Comprehension,Joshin,Rojo,2,"245, 297",0.5,0.5,1,93.1910736068643
+Shipibo,sh_2,7.4,-1.0654054054054054,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_2,7.4,-1.0654054054054054,Comprehension,Nai,Celeste,1,312,0,0,0,57.01785334436926
+Shipibo,sh_2,7.4,-1.0654054054054054,Comprehension,Panshin,Amarillo,1,234,0,0,0,119.88323068719829
+Shipibo,sh_2,7.4,-1.0654054054054054,Comprehension,Pei/Xo,Verde,2,"274, 325",0,0,0,89.5449101878011
+Shipibo,sh_2,7.4,-1.0654054054054054,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_2,7.4,-1.0654054054054054,Comprehension,Yankon,Azul/Verde,4,"234, 320, 1, 325",1,1,,
+Shipibo,sh_2,7.4,-1.0654054054054054,Production,1,Celeste,1,Celeste,0,1,,
+Shipibo,sh_2,7.4,-1.0654054054054054,Production,234,Verde,1,Verde,0,1,,
+Shipibo,sh_2,7.4,-1.0654054054054054,Production,245,Rojo,1,Rojo,0,1,,
+Shipibo,sh_2,7.4,-1.0654054054054054,Production,274,Blanco,1,Blanco,0,1,,
+Shipibo,sh_2,7.4,-1.0654054054054054,Production,297,Amarillo,1,Amarillo,0,1,,
+Shipibo,sh_2,7.4,-1.0654054054054054,Production,312,Negro,2,"Negro, Wiso",0.5,1,,
+Shipibo,sh_2,7.4,-1.0654054054054054,Production,320,Mierda sol,1,Verde,0,0,,
+Shipibo,sh_2,7.4,-1.0654054054054054,Production,325,Morado,1,Morado,0,1,,
+Shipibo,sh_20,6.6,-1.8654054054054061,Comprehension,Ami/Poa,Morado,1,320,0,0,0,100.49231861192177
+Shipibo,sh_20,6.6,-1.8654054054054061,Comprehension,Barin Poi,Mierda sol,1,312,0,0,1,67.19189385632764
+Shipibo,sh_20,6.6,-1.8654054054054061,Comprehension,Joshin,Rojo,2,"245, 297",0.5,0.5,1,93.1910736068643
+Shipibo,sh_20,6.6,-1.8654054054054061,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_20,6.6,-1.8654054054054061,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_20,6.6,-1.8654054054054061,Comprehension,Panshin,Amarillo,1,234,0,0,0,119.88323068719829
+Shipibo,sh_20,6.6,-1.8654054054054061,Comprehension,Pei/Xo,Verde,2,"325, 1",0,0,0,89.96106691359266
+Shipibo,sh_20,6.6,-1.8654054054054061,Comprehension,Wiso,Negro,1,234,0,0,0,59.60879549194061
+Shipibo,sh_20,6.6,-1.8654054054054061,Comprehension,Yankon,Azul/Verde,4,"245, 320, 297, 312",0.25,0.25,1,
+Shipibo,sh_20,6.6,-1.8654054054054061,Production,1,Celeste,1,Wiso,0,0,0,57.01785334436926
+Shipibo,sh_20,6.6,-1.8654054054054061,Production,234,Verde,1,Panshin,0,0,0,119.88323068719829
+Shipibo,sh_20,6.6,-1.8654054054054061,Production,245,Rojo,1,Wiso,0,0,1,72.88365866228177
+Shipibo,sh_20,6.6,-1.8654054054054061,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_20,6.6,-1.8654054054054061,Production,297,Amarillo,1,Verde,0,0,,
+Shipibo,sh_20,6.6,-1.8654054054054061,Production,312,Negro,1,Marron,0,0,,
+Shipibo,sh_20,6.6,-1.8654054054054061,Production,320,Mierda sol,1,Wiso,0,0,1,67.19189385632764
+Shipibo,sh_20,6.6,-1.8654054054054061,Production,325,Morado,1,,0,0,,
+Shipibo,sh_21,9.5,1.0345945945945942,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_21,9.5,1.0345945945945942,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_21,9.5,1.0345945945945942,Comprehension,Joshin,Rojo,2,"245, 325",1,1,,
+Shipibo,sh_21,9.5,1.0345945945945942,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_21,9.5,1.0345945945945942,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_21,9.5,1.0345945945945942,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_21,9.5,1.0345945945945942,Comprehension,Pei/Xo,Verde,2,"234, 320",0.5,0.5,0,62.08941536204057
+Shipibo,sh_21,9.5,1.0345945945945942,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_21,9.5,1.0345945945945942,Comprehension,Yankon,Azul/Verde,4,"1, 234, 320, 325",1,1,,
+Shipibo,sh_21,9.5,1.0345945945945942,Production,1,Celeste,2,"Yankon, Nai",1,1,,
+Shipibo,sh_21,9.5,1.0345945945945942,Production,234,Verde,2,"Yankon, Nai",0.5,0.5,0,75.71344992800157
+Shipibo,sh_21,9.5,1.0345945945945942,Production,245,Rojo,2,"Joshin, Amarillo",0.5,0.5,,
+Shipibo,sh_21,9.5,1.0345945945945942,Production,274,Blanco,2,"Joxo, Nai",0.5,0.5,0,49.223397891653114
+Shipibo,sh_21,9.5,1.0345945945945942,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_21,9.5,1.0345945945945942,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_21,9.5,1.0345945945945942,Production,320,Mierda sol,1,,0,0,,
+Shipibo,sh_21,9.5,1.0345945945945942,Production,325,Morado,1,Azul,0,0,,
+Shipibo,sh_22,7.8,-0.6654054054054059,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_22,7.8,-0.6654054054054059,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_22,7.8,-0.6654054054054059,Comprehension,Joshin,Rojo,2,"245, 325",1,1,,
+Shipibo,sh_22,7.8,-0.6654054054054059,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_22,7.8,-0.6654054054054059,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_22,7.8,-0.6654054054054059,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_22,7.8,-0.6654054054054059,Comprehension,Pei/Xo,Verde,2,"234, 320",0.5,0.5,0,62.08941536204057
+Shipibo,sh_22,7.8,-0.6654054054054059,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_22,7.8,-0.6654054054054059,Comprehension,Yankon,Azul/Verde,4,"234, 320, 1, 297",0.75,0.75,1,
+Shipibo,sh_22,7.8,-0.6654054054054059,Production,1,Celeste,1,Nai,1,1,,
+Shipibo,sh_22,7.8,-0.6654054054054059,Production,234,Verde,1,Yankon,1,1,,
+Shipibo,sh_22,7.8,-0.6654054054054059,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_22,7.8,-0.6654054054054059,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_22,7.8,-0.6654054054054059,Production,297,Amarillo,2,"Panshin, Amarillo",0.5,1,,
+Shipibo,sh_22,7.8,-0.6654054054054059,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_22,7.8,-0.6654054054054059,Production,320,Mierda sol,1,Barin Poi,1,1,,
+Shipibo,sh_22,7.8,-0.6654054054054059,Production,325,Morado,1,Poa,1,1,,
+Shipibo,sh_23,8.1,-0.3654054054054061,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_23,8.1,-0.3654054054054061,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_23,8.1,-0.3654054054054061,Comprehension,Joshin,Rojo,2,"245, 297",0.5,0.5,1,93.1910736068643
+Shipibo,sh_23,8.1,-0.3654054054054061,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_23,8.1,-0.3654054054054061,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_23,8.1,-0.3654054054054061,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_23,8.1,-0.3654054054054061,Comprehension,Pei/Xo,Verde,2,"234, 1",0.5,0.5,0,75.71344992800157
+Shipibo,sh_23,8.1,-0.3654054054054061,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_23,8.1,-0.3654054054054061,Comprehension,Yankon,Azul/Verde,4,"234, 320, 1, 325",1,1,,
+Shipibo,sh_23,8.1,-0.3654054054054061,Production,1,Celeste,2,"unpax, agua",0,0,,
+Shipibo,sh_23,8.1,-0.3654054054054061,Production,234,Verde,2,"Yankon, Verde",0.5,1,,
+Shipibo,sh_23,8.1,-0.3654054054054061,Production,245,Rojo,2,"Joshin, Rojo",0.5,1,,
+Shipibo,sh_23,8.1,-0.3654054054054061,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_23,8.1,-0.3654054054054061,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_23,8.1,-0.3654054054054061,Production,312,Negro,2,"Wiso, Negro",0.5,1,,
+Shipibo,sh_23,8.1,-0.3654054054054061,Production,320,Mierda sol,1,Barin Poi,1,1,,
+Shipibo,sh_23,8.1,-0.3654054054054061,Production,325,Morado,1,Violeta,0,1,,
+Shipibo,sh_24,7.7,-0.7654054054054056,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_24,7.7,-0.7654054054054056,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_24,7.7,-0.7654054054054056,Comprehension,Joshin,Rojo,2,"245, 325",1,1,,
+Shipibo,sh_24,7.7,-0.7654054054054056,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_24,7.7,-0.7654054054054056,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_24,7.7,-0.7654054054054056,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_24,7.7,-0.7654054054054056,Comprehension,Pei/Xo,Verde,2,"234, 1",0.5,0.5,0,75.71344992800157
+Shipibo,sh_24,7.7,-0.7654054054054056,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_24,7.7,-0.7654054054054056,Comprehension,Yankon,Azul/Verde,4,"234, 274, 297, 320",0.5,0.5,1,
+Shipibo,sh_24,7.7,-0.7654054054054056,Production,1,Celeste,2,"unpasx, agua",0,0,,
+Shipibo,sh_24,7.7,-0.7654054054054056,Production,234,Verde,1,Yankon,1,1,,
+Shipibo,sh_24,7.7,-0.7654054054054056,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_24,7.7,-0.7654054054054056,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_24,7.7,-0.7654054054054056,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_24,7.7,-0.7654054054054056,Production,312,Negro,2,"Wiso, Marron",0.5,0.5,,
+Shipibo,sh_24,7.7,-0.7654054054054056,Production,320,Mierda sol,1,Barin Poi,1,1,,
+Shipibo,sh_24,7.7,-0.7654054054054056,Production,325,Morado,2,"Kari, Violeta",0.5,1,,
+Shipibo,sh_25,9.7,1.2345945945945935,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_25,9.7,1.2345945945945935,Comprehension,Barin Poi,Mierda sol,1,1,0,0,0,98.427042015901307
+Shipibo,sh_25,9.7,1.2345945945945935,Comprehension,Joshin,Rojo,2,"245, 325",1,1,,
+Shipibo,sh_25,9.7,1.2345945945945935,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_25,9.7,1.2345945945945935,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_25,9.7,1.2345945945945935,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_25,9.7,1.2345945945945935,Comprehension,Pei/Xo,Verde,2,"234, 320",0.5,0.5,0,62.08941536204057
+Shipibo,sh_25,9.7,1.2345945945945935,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_25,9.7,1.2345945945945935,Comprehension,Yankon,Azul/Verde,4,"234, 1, 320, 325",1,1,,
+Shipibo,sh_25,9.7,1.2345945945945935,Production,1,Celeste,3,"Yankon, unpasx, Nai",0.6666666666666666,0.6666666666666666,,
+Shipibo,sh_25,9.7,1.2345945945945935,Production,234,Verde,2,"Yankon, Pei",1,1,,
+Shipibo,sh_25,9.7,1.2345945945945935,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_25,9.7,1.2345945945945935,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_25,9.7,1.2345945945945935,Production,297,Amarillo,2,"Panshin, pei panshinshoko",0.5,0.5,,
+Shipibo,sh_25,9.7,1.2345945945945935,Production,312,Negro,3,"Wiso, naiwiso, barriwiso",0.3333333333333333,0.3333333333333333,,
+Shipibo,sh_25,9.7,1.2345945945945935,Production,320,Mierda sol,2,"Yankon, manish",0.5,0.5,,
+Shipibo,sh_25,9.7,1.2345945945945935,Production,325,Morado,1,Violeta,0,1,,
+Shipibo,sh_26,8.5,0.03459459459459424,Comprehension,Ami/Poa,Morado,1,312,0,0,1,49.65288410555826
+Shipibo,sh_26,8.5,0.03459459459459424,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_26,8.5,0.03459459459459424,Comprehension,Joshin,Rojo,2,"245, 325",1,1,,
+Shipibo,sh_26,8.5,0.03459459459459424,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_26,8.5,0.03459459459459424,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_26,8.5,0.03459459459459424,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_26,8.5,0.03459459459459424,Comprehension,Pei/Xo,Verde,2,"234, 320",0.5,0.5,0,62.08941536204057
+Shipibo,sh_26,8.5,0.03459459459459424,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_26,8.5,0.03459459459459424,Comprehension,Yankon,Azul/Verde,4,"234, 1, 320, 297",0.75,0.75,1,
+Shipibo,sh_26,8.5,0.03459459459459424,Production,1,Celeste,1,Verde,0,0,,
+Shipibo,sh_26,8.5,0.03459459459459424,Production,234,Verde,1,Yankon,1,1,,
+Shipibo,sh_26,8.5,0.03459459459459424,Production,245,Rojo,2,"Joshin, Rojo",0.5,1,,
+Shipibo,sh_26,8.5,0.03459459459459424,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_26,8.5,0.03459459459459424,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_26,8.5,0.03459459459459424,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_26,8.5,0.03459459459459424,Production,320,Mierda sol,1,barrinpui jisa,0,0,,
+Shipibo,sh_26,8.5,0.03459459459459424,Production,325,Morado,1,Amarillo,0,0,,
+Shipibo,sh_27,5.4,-3.0654054054054054,Comprehension,Ami/Poa,Morado,1,297,0,0,0,146.31869463605804
+Shipibo,sh_27,5.4,-3.0654054054054054,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_27,5.4,-3.0654054054054054,Comprehension,Joshin,Rojo,2,"297, 320",0.5,0.5,1,93.1910736068643
+Shipibo,sh_27,5.4,-3.0654054054054054,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_27,5.4,-3.0654054054054054,Comprehension,Nai,Celeste,1,274,0,0,0,49.223397891653114
+Shipibo,sh_27,5.4,-3.0654054054054054,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_27,5.4,-3.0654054054054054,Comprehension,Pei/Xo,Verde,2,"245, 320",0,0,0,87.97453466125974
+Shipibo,sh_27,5.4,-3.0654054054054054,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_27,5.4,-3.0654054054054054,Comprehension,Yankon,Azul/Verde,4,"325, 1, 274, 234",0.75,0.75,1,
+Shipibo,sh_27,5.4,-3.0654054054054054,Production,1,Celeste,2,"Nai, Joshin",0.5,0.5,0,102.87037328599523
+Shipibo,sh_27,5.4,-3.0654054054054054,Production,234,Verde,3,"Joshin, Verde, Joxo",0,0.3333333333333333,0,94.37039521844866
+Shipibo,sh_27,5.4,-3.0654054054054054,Production,245,Rojo,2,"Joshin, Rojo",0.5,1,,
+Shipibo,sh_27,5.4,-3.0654054054054054,Production,274,Blanco,2,"Joxo, Joshin",0.5,0.5,1,85.85165694382374
+Shipibo,sh_27,5.4,-3.0654054054054054,Production,297,Amarillo,1,Rojo,0,0,,
+Shipibo,sh_27,5.4,-3.0654054054054054,Production,312,Negro,3,"Verde, Joxo, Joshin",0,0,0.5,71.71183819136093
+Shipibo,sh_27,5.4,-3.0654054054054054,Production,320,Mierda sol,3,"Barin Poi, Joxo, Joshin",0.6666666666666666,0.6666666666666666,0,71.46716518793788
+Shipibo,sh_27,5.4,-3.0654054054054054,Production,325,Morado,2,"Joxo, Joshin",0.5,0.5,0,77.47574975435863
+Shipibo,sh_28,5.5,-2.9654054054054058,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_28,5.5,-2.9654054054054058,Comprehension,Barin Poi,Mierda sol,1,234,0,0,0,62.08941536204057
+Shipibo,sh_28,5.5,-2.9654054054054058,Comprehension,Joshin,Rojo,2,"245, 320",1,1,,
+Shipibo,sh_28,5.5,-2.9654054054054058,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_28,5.5,-2.9654054054054058,Comprehension,Nai,Celeste,1,274,0,0,0,49.223397891653114
+Shipibo,sh_28,5.5,-2.9654054054054058,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_28,5.5,-2.9654054054054058,Comprehension,Pei/Xo,Verde,2,"320, 234",0.5,0.5,0,62.08941536204057
+Shipibo,sh_28,5.5,-2.9654054054054058,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_28,5.5,-2.9654054054054058,Comprehension,Yankon,Azul/Verde,4,"1, 325, 234, 320",1,1,,
+Shipibo,sh_28,5.5,-2.9654054054054058,Production,1,Celeste,2,"jenekeska, Verde",0,0,,
+Shipibo,sh_28,5.5,-2.9654054054054058,Production,234,Verde,2,"mancoapei, mango",0,0,,
+Shipibo,sh_28,5.5,-2.9654054054054058,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_28,5.5,-2.9654054054054058,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_28,5.5,-2.9654054054054058,Production,297,Amarillo,2,"Barin Poi, Azul",0,0,0,61.75681419892059
+Shipibo,sh_28,5.5,-2.9654054054054058,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_28,5.5,-2.9654054054054058,Production,320,Mierda sol,1,Verde,0,0,,
+Shipibo,sh_28,5.5,-2.9654054054054058,Production,325,Morado,1,,0,0,,
+Shipibo,sh_29,9,0.5345945945945942,Comprehension,Ami/Poa,Morado,1,1,0,0,0,58.349317905182055
+Shipibo,sh_29,9,0.5345945945945942,Comprehension,Barin Poi,Mierda sol,1,234,0,0,0,62.08941536204057
+Shipibo,sh_29,9,0.5345945945945942,Comprehension,Joshin,Rojo,2,"245, 325",1,1,,
+Shipibo,sh_29,9,0.5345945945945942,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_29,9,0.5345945945945942,Comprehension,Nai,Celeste,1,325,0,0,0,58.349317905182055
+Shipibo,sh_29,9,0.5345945945945942,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_29,9,0.5345945945945942,Comprehension,Pei/Xo,Verde,2,"320, 274",0,0,0,68.4852759192295
+Shipibo,sh_29,9,0.5345945945945942,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_29,9,0.5345945945945942,Comprehension,Yankon,Azul/Verde,4,"234, 1, 325, 320",1,1,,
+Shipibo,sh_29,9,0.5345945945945942,Production,1,Celeste,1,,0,0,,
+Shipibo,sh_29,9,0.5345945945945942,Production,234,Verde,1,Yankon,1,1,,
+Shipibo,sh_29,9,0.5345945945945942,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_29,9,0.5345945945945942,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_29,9,0.5345945945945942,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_29,9,0.5345945945945942,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_29,9,0.5345945945945942,Production,320,Mierda sol,1,Yankon,1,1,,
+Shipibo,sh_29,9,0.5345945945945942,Production,325,Morado,1,,0,0,,
+Shipibo,sh_3,9.6,1.1345945945945939,Comprehension,Ami/Poa,Morado,1,320,0,0,0,100.49231861192177
+Shipibo,sh_3,9.6,1.1345945945945939,Comprehension,Barin Poi,Mierda sol,1,297,0,0,0,61.75681419892059
+Shipibo,sh_3,9.6,1.1345945945945939,Comprehension,Joshin,Rojo,2,"245, 297",0.5,0.5,1,93.1910736068643
+Shipibo,sh_3,9.6,1.1345945945945939,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_3,9.6,1.1345945945945939,Comprehension,Nai,Celeste,1,274,0,0,0,49.223397891653114
+Shipibo,sh_3,9.6,1.1345945945945939,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_3,9.6,1.1345945945945939,Comprehension,Pei/Xo,Verde,2,"312, 234",0.5,0.5,0,59.60879549194061
+Shipibo,sh_3,9.6,1.1345945945945939,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_3,9.6,1.1345945945945939,Comprehension,Yankon,Azul/Verde,4,"234, 297, 325, 1",0.75,0.75,1,
+Shipibo,sh_3,9.6,1.1345945945945939,Production,1,Celeste,1,Azul,0,1,,
+Shipibo,sh_3,9.6,1.1345945945945939,Production,234,Verde,2,"Azul, Panshin",0,0,0,119.88323068719829
+Shipibo,sh_3,9.6,1.1345945945945939,Production,245,Rojo,2,"Joshin, Rojo",0.5,1,,
+Shipibo,sh_3,9.6,1.1345945945945939,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_3,9.6,1.1345945945945939,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_3,9.6,1.1345945945945939,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_3,9.6,1.1345945945945939,Production,320,Mierda sol,1,Marron,0,0,,
+Shipibo,sh_3,9.6,1.1345945945945939,Production,325,Morado,2,"Violeta, Joshin",0.5,1,,
+Shipibo,sh_30,8,-0.46540540540540576,Comprehension,Ami/Poa,Morado,1,312,0,0,1,49.65288410555826
+Shipibo,sh_30,8,-0.46540540540540576,Comprehension,Barin Poi,Mierda sol,1,1,0,0,0,98.427042015901307
+Shipibo,sh_30,8,-0.46540540540540576,Comprehension,Joshin,Rojo,2,"245, 274",0.5,0.5,1,85.85165694382374
+Shipibo,sh_30,8,-0.46540540540540576,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_30,8,-0.46540540540540576,Comprehension,Nai,Celeste,1,320,0,0,0,98.427042015901307
+Shipibo,sh_30,8,-0.46540540540540576,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_30,8,-0.46540540540540576,Comprehension,Pei/Xo,Verde,2,"234, 320",0.5,0.5,0,62.08941536204057
+Shipibo,sh_30,8,-0.46540540540540576,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_30,8,-0.46540540540540576,Comprehension,Yankon,Azul/Verde,4,"234, 325, 312, 297",0.5,0.5,1,
+Shipibo,sh_30,8,-0.46540540540540576,Production,1,Celeste,1,agur,0,0,,
+Shipibo,sh_30,8,-0.46540540540540576,Production,234,Verde,2,"Rojo, Verde",0,0.5,,
+Shipibo,sh_30,8,-0.46540540540540576,Production,245,Rojo,2,"Panshin, Joshin",0.5,0.5,1,93.1910736068643
+Shipibo,sh_30,8,-0.46540540540540576,Production,274,Blanco,1,Amarillo,0,0,,
+Shipibo,sh_30,8,-0.46540540540540576,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_30,8,-0.46540540540540576,Production,312,Negro,2,"Wiso, Amarillo",0.5,0.5,,
+Shipibo,sh_30,8,-0.46540540540540576,Production,320,Mierda sol,1,,0,0,,
+Shipibo,sh_30,8,-0.46540540540540576,Production,325,Morado,3,"Panshin, Amarillo, Joshin",0.3333333333333333,0.3333333333333333,0,146.31869463605804
+Shipibo,sh_31,7.9,-0.5654054054054054,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_31,7.9,-0.5654054054054054,Comprehension,Barin Poi,Mierda sol,1,234,0,0,0,62.08941536204057
+Shipibo,sh_31,7.9,-0.5654054054054054,Comprehension,Joshin,Rojo,2,"245, 274",0.5,0.5,1,85.85165694382374
+Shipibo,sh_31,7.9,-0.5654054054054054,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_31,7.9,-0.5654054054054054,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_31,7.9,-0.5654054054054054,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_31,7.9,-0.5654054054054054,Comprehension,Pei/Xo,Verde,2,"234, 320",0.5,0.5,0,62.08941536204057
+Shipibo,sh_31,7.9,-0.5654054054054054,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_31,7.9,-0.5654054054054054,Comprehension,Yankon,Azul/Verde,4,"234, 320, 1, 297",0.75,0.75,1,
+Shipibo,sh_31,7.9,-0.5654054054054054,Production,1,Celeste,1,agur,0,0,,
+Shipibo,sh_31,7.9,-0.5654054054054054,Production,234,Verde,1,Verde,0,1,,
+Shipibo,sh_31,7.9,-0.5654054054054054,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_31,7.9,-0.5654054054054054,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_31,7.9,-0.5654054054054054,Production,297,Amarillo,1,Naranja,0,0,,
+Shipibo,sh_31,7.9,-0.5654054054054054,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_31,7.9,-0.5654054054054054,Production,320,Mierda sol,1,Verde,0,0,,
+Shipibo,sh_31,7.9,-0.5654054054054054,Production,325,Morado,1,Violeta,0,1,,
+Shipibo,sh_32,8,-0.46540540540540576,Comprehension,Ami/Poa,Morado,1,320,0,0,0,100.49231861192177
+Shipibo,sh_32,8,-0.46540540540540576,Comprehension,Barin Poi,Mierda sol,1,274,0,0,0,71.46716518793788
+Shipibo,sh_32,8,-0.46540540540540576,Comprehension,Joshin,Rojo,2,"245, 320",1,1,,
+Shipibo,sh_32,8,-0.46540540540540576,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_32,8,-0.46540540540540576,Comprehension,Nai,Celeste,1,274,0,0,0,49.223397891653114
+Shipibo,sh_32,8,-0.46540540540540576,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_32,8,-0.46540540540540576,Comprehension,Pei/Xo,Verde,2,"234, 297",0.5,0.5,0,119.88323068719829
+Shipibo,sh_32,8,-0.46540540540540576,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_32,8,-0.46540540540540576,Comprehension,Yankon,Azul/Verde,4,"234, 1, 297, 274",0.5,0.5,1,
+Shipibo,sh_32,8,-0.46540540540540576,Production,1,Celeste,1,,0,0,,
+Shipibo,sh_32,8,-0.46540540540540576,Production,234,Verde,1,Yankon,1,1,,
+Shipibo,sh_32,8,-0.46540540540540576,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_32,8,-0.46540540540540576,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_32,8,-0.46540540540540576,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_32,8,-0.46540540540540576,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_32,8,-0.46540540540540576,Production,320,Mierda sol,1,,0,0,,
+Shipibo,sh_32,8,-0.46540540540540576,Production,325,Morado,1,,0,0,,
+Shipibo,sh_33,11.1,2.634594594594594,Comprehension,Ami/Poa,Morado,1,312,0,0,1,49.65288410555826
+Shipibo,sh_33,11.1,2.634594594594594,Comprehension,Barin Poi,Mierda sol,1,234,0,0,0,62.08941536204057
+Shipibo,sh_33,11.1,2.634594594594594,Comprehension,Joshin,Rojo,2,"245, 297",0.5,0.5,1,93.1910736068643
+Shipibo,sh_33,11.1,2.634594594594594,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_33,11.1,2.634594594594594,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_33,11.1,2.634594594594594,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_33,11.1,2.634594594594594,Comprehension,Pei/Xo,Verde,2,"234, 320",0.5,0.5,0,62.08941536204057
+Shipibo,sh_33,11.1,2.634594594594594,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_33,11.1,2.634594594594594,Comprehension,Yankon,Azul/Verde,4,"234, 1, 320, 325",1,1,,
+Shipibo,sh_33,11.1,2.634594594594594,Production,1,Celeste,1,,0,0,,
+Shipibo,sh_33,11.1,2.634594594594594,Production,234,Verde,2,"Yankon, Verde",0.5,1,,
+Shipibo,sh_33,11.1,2.634594594594594,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_33,11.1,2.634594594594594,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_33,11.1,2.634594594594594,Production,297,Amarillo,2,"Panshin, Amarillo",0.5,1,,
+Shipibo,sh_33,11.1,2.634594594594594,Production,312,Negro,2,"Wiso, Negro",0.5,1,,
+Shipibo,sh_33,11.1,2.634594594594594,Production,320,Mierda sol,1,Marron,0,0,,
+Shipibo,sh_33,11.1,2.634594594594594,Production,325,Morado,1,Violeta,0,1,,
+Shipibo,sh_34,11,2.5345945945945942,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_34,11,2.5345945945945942,Comprehension,Barin Poi,Mierda sol,1,312,0,0,1,67.19189385632764
+Shipibo,sh_34,11,2.5345945945945942,Comprehension,Joshin,Rojo,2,"245, 297",0.5,0.5,1,93.1910736068643
+Shipibo,sh_34,11,2.5345945945945942,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_34,11,2.5345945945945942,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_34,11,2.5345945945945942,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_34,11,2.5345945945945942,Comprehension,Pei/Xo,Verde,2,"234, 320",0.5,0.5,0,62.08941536204057
+Shipibo,sh_34,11,2.5345945945945942,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_34,11,2.5345945945945942,Comprehension,Yankon,Azul/Verde,4,"234, 320, 1, 245",0.75,0.75,1,
+Shipibo,sh_34,11,2.5345945945945942,Production,1,Celeste,2,"Azul, unpasx",0,0.5,,
+Shipibo,sh_34,11,2.5345945945945942,Production,234,Verde,2,"Yankon, Verde",0.5,1,,
+Shipibo,sh_34,11,2.5345945945945942,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_34,11,2.5345945945945942,Production,274,Blanco,2,"Joxo, Blanco",0.5,1,,
+Shipibo,sh_34,11,2.5345945945945942,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_34,11,2.5345945945945942,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_34,11,2.5345945945945942,Production,320,Mierda sol,3,"Yankon, Mai, chawa",0.3333333333333333,0.3333333333333333,0,
+Shipibo,sh_34,11,2.5345945945945942,Production,325,Morado,1,Violeta,0,1,,
+Shipibo,sh_35,7.5,-0.9654054054054058,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_35,7.5,-0.9654054054054058,Comprehension,Barin Poi,Mierda sol,1,297,0,0,0,61.75681419892059
+Shipibo,sh_35,7.5,-0.9654054054054058,Comprehension,Joshin,Rojo,2,"245, 297",0.5,0.5,1,93.1910736068643
+Shipibo,sh_35,7.5,-0.9654054054054058,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_35,7.5,-0.9654054054054058,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_35,7.5,-0.9654054054054058,Comprehension,Panshin,Amarillo,1,320,0,0,0,61.75681419892059
+Shipibo,sh_35,7.5,-0.9654054054054058,Comprehension,Pei/Xo,Verde,2,"234, 320",0.5,0.5,0,62.08941536204057
+Shipibo,sh_35,7.5,-0.9654054054054058,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_35,7.5,-0.9654054054054058,Comprehension,Yankon,Azul/Verde,4,"234, 1, 325, 320",1,1,,
+Shipibo,sh_35,7.5,-0.9654054054054058,Production,1,Celeste,2,"agua, Nai",0.5,0.5,,
+Shipibo,sh_35,7.5,-0.9654054054054058,Production,234,Verde,1,Yankon,1,1,,
+Shipibo,sh_35,7.5,-0.9654054054054058,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_35,7.5,-0.9654054054054058,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_35,7.5,-0.9654054054054058,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_35,7.5,-0.9654054054054058,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_35,7.5,-0.9654054054054058,Production,320,Mierda sol,1,Panshin,0,0,0,61.75681419892059
+Shipibo,sh_35,7.5,-0.9654054054054058,Production,325,Morado,1,Violeta,0,1,,
+Shipibo,sh_36,8.7,0.23459459459459353,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_36,8.7,0.23459459459459353,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_36,8.7,0.23459459459459353,Comprehension,Joshin,Rojo,2,"245, 274",0.5,0.5,1,85.85165694382374
+Shipibo,sh_36,8.7,0.23459459459459353,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_36,8.7,0.23459459459459353,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_36,8.7,0.23459459459459353,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_36,8.7,0.23459459459459353,Comprehension,Pei/Xo,Verde,2,"234, 320",0.5,0.5,0,62.08941536204057
+Shipibo,sh_36,8.7,0.23459459459459353,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_36,8.7,0.23459459459459353,Comprehension,Yankon,Azul/Verde,4,"234, 1, 320, 325",1,1,,
+Shipibo,sh_36,8.7,0.23459459459459353,Production,1,Celeste,1,Nai,1,1,,
+Shipibo,sh_36,8.7,0.23459459459459353,Production,234,Verde,1,Yankon,1,1,,
+Shipibo,sh_36,8.7,0.23459459459459353,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_36,8.7,0.23459459459459353,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_36,8.7,0.23459459459459353,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_36,8.7,0.23459459459459353,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_36,8.7,0.23459459459459353,Production,320,Mierda sol,1,Barin Poi,1,1,,
+Shipibo,sh_36,8.7,0.23459459459459353,Production,325,Morado,1,Poa,1,1,,
+Shipibo,sh_37,9.7,1.2345945945945935,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_37,9.7,1.2345945945945935,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_37,9.7,1.2345945945945935,Comprehension,Joshin,Rojo,2,"245, 325",1,1,,
+Shipibo,sh_37,9.7,1.2345945945945935,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_37,9.7,1.2345945945945935,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_37,9.7,1.2345945945945935,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_37,9.7,1.2345945945945935,Comprehension,Pei/Xo,Verde,2,"234, 1",0.5,0.5,0,75.71344992800157
+Shipibo,sh_37,9.7,1.2345945945945935,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_37,9.7,1.2345945945945935,Comprehension,Yankon,Azul/Verde,4,"1, 234, 325, 320",1,1,,
+Shipibo,sh_37,9.7,1.2345945945945935,Production,1,Celeste,2,"Azul, Nai",0.5,1,,
+Shipibo,sh_37,9.7,1.2345945945945935,Production,234,Verde,2,"Verde, Yankon",0.5,1,,
+Shipibo,sh_37,9.7,1.2345945945945935,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_37,9.7,1.2345945945945935,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_37,9.7,1.2345945945945935,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_37,9.7,1.2345945945945935,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_37,9.7,1.2345945945945935,Production,320,Mierda sol,2,"Panshin, Barin Poi",0.5,0.5,0,61.75681419892059
+Shipibo,sh_37,9.7,1.2345945945945935,Production,325,Morado,2,"Verde, Poa",0.5,0.5,,
+Shipibo,sh_38,9.3,0.834594594594595,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_38,9.3,0.834594594594595,Comprehension,Barin Poi,Mierda sol,1,234,0,0,0,62.08941536204057
+Shipibo,sh_38,9.3,0.834594594594595,Comprehension,Joshin,Rojo,2,"245, 297",0.5,0.5,1,93.1910736068643
+Shipibo,sh_38,9.3,0.834594594594595,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_38,9.3,0.834594594594595,Comprehension,Nai,Celeste,1,234,0,0,0,75.71344992800157
+Shipibo,sh_38,9.3,0.834594594594595,Comprehension,Panshin,Amarillo,1,320,0,0,0,61.75681419892059
+Shipibo,sh_38,9.3,0.834594594594595,Comprehension,Pei/Xo,Verde,2,"312, 325",0,0,0,81.90873969556219
+Shipibo,sh_38,9.3,0.834594594594595,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_38,9.3,0.834594594594595,Comprehension,Yankon,Azul/Verde,4,"320, 325, 234, 297",0.75,0.75,1,
+Shipibo,sh_38,9.3,0.834594594594595,Production,1,Celeste,2,"Panshin, Yankon",0.5,0.5,0,150.06082933264096
+Shipibo,sh_38,9.3,0.834594594594595,Production,234,Verde,1,Yankon,1,1,,
+Shipibo,sh_38,9.3,0.834594594594595,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_38,9.3,0.834594594594595,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_38,9.3,0.834594594594595,Production,297,Amarillo,2,"Barin Poi, Yankon",0,0,0.5,61.75681419892059
+Shipibo,sh_38,9.3,0.834594594594595,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_38,9.3,0.834594594594595,Production,320,Mierda sol,1,Yankon,1,1,,
+Shipibo,sh_38,9.3,0.834594594594595,Production,325,Morado,1,Yankon,1,1,,
+Shipibo,sh_39,7,-1.4654054054054058,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_39,7,-1.4654054054054058,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_39,7,-1.4654054054054058,Comprehension,Joshin,Rojo,2,"245, 325",1,1,,
+Shipibo,sh_39,7,-1.4654054054054058,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_39,7,-1.4654054054054058,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_39,7,-1.4654054054054058,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_39,7,-1.4654054054054058,Comprehension,Pei/Xo,Verde,2,"234, 1",0.5,0.5,0,75.71344992800157
+Shipibo,sh_39,7,-1.4654054054054058,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_39,7,-1.4654054054054058,Comprehension,Yankon,Azul/Verde,4,"234, 325, 1, 320",1,1,,
+Shipibo,sh_39,7,-1.4654054054054058,Production,1,Celeste,1,Nai,1,1,,
+Shipibo,sh_39,7,-1.4654054054054058,Production,234,Verde,1,Yankon,1,1,,
+Shipibo,sh_39,7,-1.4654054054054058,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_39,7,-1.4654054054054058,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_39,7,-1.4654054054054058,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_39,7,-1.4654054054054058,Production,312,Negro,2,"Poa, Wiso",0.5,0.5,1,49.65288410555826
+Shipibo,sh_39,7,-1.4654054054054058,Production,320,Mierda sol,1,Barin Poi,1,1,,
+Shipibo,sh_39,7,-1.4654054054054058,Production,325,Morado,1,Poa,1,1,,
+Shipibo,sh_4,7.3,-1.165405405405406,Comprehension,Ami/Poa,Morado,1,274,0,0,0,77.47574975435863
+Shipibo,sh_4,7.3,-1.165405405405406,Comprehension,Barin Poi,Mierda sol,1,297,0,0,0,61.75681419892059
+Shipibo,sh_4,7.3,-1.165405405405406,Comprehension,Joshin,Rojo,2,"1, 245",0.5,0.5,0,102.87037328599523
+Shipibo,sh_4,7.3,-1.165405405405406,Comprehension,Joxo,Blanco,1,245,0,0,1,85.85165694382374
+Shipibo,sh_4,7.3,-1.165405405405406,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_4,7.3,-1.165405405405406,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_4,7.3,-1.165405405405406,Comprehension,Pei/Xo,Verde,2,"325, 234",0.5,0.5,0,104.20868389918375
+Shipibo,sh_4,7.3,-1.165405405405406,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_4,7.3,-1.165405405405406,Comprehension,Yankon,Azul/Verde,4,"234, 297, 320, 274",0.5,0.5,1,
+Shipibo,sh_4,7.3,-1.165405405405406,Production,1,Celeste,1,Azul,0,1,,
+Shipibo,sh_4,7.3,-1.165405405405406,Production,234,Verde,1,Verde,0,1,,
+Shipibo,sh_4,7.3,-1.165405405405406,Production,245,Rojo,1,Rojo,0,1,,
+Shipibo,sh_4,7.3,-1.165405405405406,Production,274,Blanco,1,Blanco,0,1,,
+Shipibo,sh_4,7.3,-1.165405405405406,Production,297,Amarillo,1,Verde,0,0,,
+Shipibo,sh_4,7.3,-1.165405405405406,Production,312,Negro,1,Negro,0,1,,
+Shipibo,sh_4,7.3,-1.165405405405406,Production,320,Mierda sol,3,"Morado, Amarillo, Verde",0,0,,
+Shipibo,sh_4,7.3,-1.165405405405406,Production,325,Morado,1,Morado,0,1,,
+Shipibo,sh_40,7.5,-0.9654054054054058,Comprehension,Ami/Poa,Morado,1,312,0,0,1,49.65288410555826
+Shipibo,sh_40,7.5,-0.9654054054054058,Comprehension,Barin Poi,Mierda sol,1,297,0,0,0,61.75681419892059
+Shipibo,sh_40,7.5,-0.9654054054054058,Comprehension,Joshin,Rojo,2,"245, 297",0.5,0.5,1,93.1910736068643
+Shipibo,sh_40,7.5,-0.9654054054054058,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_40,7.5,-0.9654054054054058,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_40,7.5,-0.9654054054054058,Comprehension,Panshin,Amarillo,1,320,0,0,0,61.75681419892059
+Shipibo,sh_40,7.5,-0.9654054054054058,Comprehension,Pei/Xo,Verde,2,"234, 274",0.5,0.5,0,74.88113647641842
+Shipibo,sh_40,7.5,-0.9654054054054058,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_40,7.5,-0.9654054054054058,Comprehension,Yankon,Azul/Verde,4,"325, 245, 297, 234",0.5,0.5,1,
+Shipibo,sh_40,7.5,-0.9654054054054058,Production,1,Celeste,1,,0,0,,
+Shipibo,sh_40,7.5,-0.9654054054054058,Production,234,Verde,1,,0,0,,
+Shipibo,sh_40,7.5,-0.9654054054054058,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_40,7.5,-0.9654054054054058,Production,274,Blanco,2,"Nai, Joxo",0.5,0.5,0,49.223397891653114
+Shipibo,sh_40,7.5,-0.9654054054054058,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_40,7.5,-0.9654054054054058,Production,312,Negro,2,"Marron, Wiso",0.5,0.5,,
+Shipibo,sh_40,7.5,-0.9654054054054058,Production,320,Mierda sol,1,Panshin,0,0,0,61.75681419892059
+Shipibo,sh_40,7.5,-0.9654054054054058,Production,325,Morado,1,,0,0,,
+Shipibo,sh_41,8.2,-0.26540540540540647,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_41,8.2,-0.26540540540540647,Comprehension,Barin Poi,Mierda sol,1,234,0,0,0,62.08941536204057
+Shipibo,sh_41,8.2,-0.26540540540540647,Comprehension,Joshin,Rojo,2,"245, 325",1,1,,
+Shipibo,sh_41,8.2,-0.26540540540540647,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_41,8.2,-0.26540540540540647,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_41,8.2,-0.26540540540540647,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_41,8.2,-0.26540540540540647,Comprehension,Pei/Xo,Verde,2,"234, 320",0.5,0.5,0,62.08941536204057
+Shipibo,sh_41,8.2,-0.26540540540540647,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_41,8.2,-0.26540540540540647,Comprehension,Yankon,Azul/Verde,4,"234, 320, 1, 325",1,1,,
+Shipibo,sh_41,8.2,-0.26540540540540647,Production,1,Celeste,1,Nai,1,1,,
+Shipibo,sh_41,8.2,-0.26540540540540647,Production,234,Verde,1,Yankon,1,1,,
+Shipibo,sh_41,8.2,-0.26540540540540647,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_41,8.2,-0.26540540540540647,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_41,8.2,-0.26540540540540647,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_41,8.2,-0.26540540540540647,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_41,8.2,-0.26540540540540647,Production,320,Mierda sol,1,Yankon,1,1,,
+Shipibo,sh_41,8.2,-0.26540540540540647,Production,325,Morado,2,"Violeta, Kari",0.5,1,,
+Shipibo,sh_42,10,1.5345945945945942,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_42,10,1.5345945945945942,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_42,10,1.5345945945945942,Comprehension,Joshin,Rojo,2,"245, 325",1,1,,
+Shipibo,sh_42,10,1.5345945945945942,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_42,10,1.5345945945945942,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_42,10,1.5345945945945942,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_42,10,1.5345945945945942,Comprehension,Pei/Xo,Verde,2,"320, 234",0.5,0.5,0,62.08941536204057
+Shipibo,sh_42,10,1.5345945945945942,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_42,10,1.5345945945945942,Comprehension,Yankon,Azul/Verde,4,"234, 1, 325, 320",1,1,,
+Shipibo,sh_42,10,1.5345945945945942,Production,1,Celeste,1,Nai,1,1,,
+Shipibo,sh_42,10,1.5345945945945942,Production,234,Verde,1,Yankon,1,1,,
+Shipibo,sh_42,10,1.5345945945945942,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_42,10,1.5345945945945942,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_42,10,1.5345945945945942,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_42,10,1.5345945945945942,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_42,10,1.5345945945945942,Production,320,Mierda sol,1,Barin Poi,1,1,,
+Shipibo,sh_42,10,1.5345945945945942,Production,325,Morado,1,Poa,1,1,,
+Shipibo,sh_43,8.5,0.03459459459459424,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_43,8.5,0.03459459459459424,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_43,8.5,0.03459459459459424,Comprehension,Joshin,Rojo,2,"245, 325",1,1,,
+Shipibo,sh_43,8.5,0.03459459459459424,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_43,8.5,0.03459459459459424,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_43,8.5,0.03459459459459424,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_43,8.5,0.03459459459459424,Comprehension,Pei/Xo,Verde,2,"320, 234",0.5,0.5,0,62.08941536204057
+Shipibo,sh_43,8.5,0.03459459459459424,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_43,8.5,0.03459459459459424,Comprehension,Yankon,Azul/Verde,4,"234, 325, 1, 320",1,1,,
+Shipibo,sh_43,8.5,0.03459459459459424,Production,1,Celeste,2,"Yankon, jene",0.5,0.5,,
+Shipibo,sh_43,8.5,0.03459459459459424,Production,234,Verde,1,Yankon,1,1,,
+Shipibo,sh_43,8.5,0.03459459459459424,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_43,8.5,0.03459459459459424,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_43,8.5,0.03459459459459424,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_43,8.5,0.03459459459459424,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_43,8.5,0.03459459459459424,Production,320,Mierda sol,2,"Naranja, Yankon",0.5,0.5,,
+Shipibo,sh_43,8.5,0.03459459459459424,Production,325,Morado,3,"Kari, Naranja, Yankon",0.6666666666666666,0.6666666666666666,,
+Shipibo,sh_44,6,-2.4654054054054058,Comprehension,Ami/Poa,Morado,1,234,0,0,0,104.20868389918375
+Shipibo,sh_44,6,-2.4654054054054058,Comprehension,Barin Poi,Mierda sol,1,245,0,0,0,71.2641529803028
+Shipibo,sh_44,6,-2.4654054054054058,Comprehension,Joshin,Rojo,2,"297, 274",0,0,1,89.52136527534401
+Shipibo,sh_44,6,-2.4654054054054058,Comprehension,Joxo,Blanco,1,320,0,0,0,71.46716518793788
+Shipibo,sh_44,6,-2.4654054054054058,Comprehension,Nai,Celeste,1,274,0,0,0,49.223397891653114
+Shipibo,sh_44,6,-2.4654054054054058,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_44,6,-2.4654054054054058,Comprehension,Pei/Xo,Verde,2,"245, 1",0,0,0,94.78655194424024
+Shipibo,sh_44,6,-2.4654054054054058,Comprehension,Wiso,Negro,1,234,0,0,0,59.60879549194061
+Shipibo,sh_44,6,-2.4654054054054058,Comprehension,Yankon,Azul/Verde,4,"320, 325, 234, 312",0.75,0.75,1,
+Shipibo,sh_44,6,-2.4654054054054058,Production,1,Celeste,2,"Joshin, Wiso",0,0,0,79.94411331518225
+Shipibo,sh_44,6,-2.4654054054054058,Production,234,Verde,2,"Joxo, Wiso",0,0,0,67.24496598417952
+Shipibo,sh_44,6,-2.4654054054054058,Production,245,Rojo,2,"Wiso, Joxo",0,0,1,79.36765780305277
+Shipibo,sh_44,6,-2.4654054054054058,Production,274,Blanco,3,"Joshin, Wiso, Joxo",0.3333333333333333,0.3333333333333333,0.5,78.1958373321319
+Shipibo,sh_44,6,-2.4654054054054058,Production,297,Amarillo,2,"Joxo, Wiso",0,0,0,117.42701469297222
+Shipibo,sh_44,6,-2.4654054054054058,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_44,6,-2.4654054054054058,Production,320,Mierda sol,2,"Wiso, Joxo",0,0,0.5,69.32952952213276
+Shipibo,sh_44,6,-2.4654054054054058,Production,325,Morado,2,"Joxo, Wiso",0,0,0.5,63.564316929958444
+Shipibo,sh_45,10.6,2.134594594594594,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_45,10.6,2.134594594594594,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_45,10.6,2.134594594594594,Comprehension,Joshin,Rojo,2,"245, 325",1,1,,
+Shipibo,sh_45,10.6,2.134594594594594,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_45,10.6,2.134594594594594,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_45,10.6,2.134594594594594,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_45,10.6,2.134594594594594,Comprehension,Pei/Xo,Verde,2,"234, 320",0.5,0.5,0,62.08941536204057
+Shipibo,sh_45,10.6,2.134594594594594,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_45,10.6,2.134594594594594,Comprehension,Yankon,Azul/Verde,4,"1, 234, 320, 325",1,1,,
+Shipibo,sh_45,10.6,2.134594594594594,Production,1,Celeste,2,"Yankon, Nai",1,1,,
+Shipibo,sh_45,10.6,2.134594594594594,Production,234,Verde,1,Yankon,1,1,,
+Shipibo,sh_45,10.6,2.134594594594594,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_45,10.6,2.134594594594594,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_45,10.6,2.134594594594594,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_45,10.6,2.134594594594594,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_45,10.6,2.134594594594594,Production,320,Mierda sol,1,,0,0,,
+Shipibo,sh_45,10.6,2.134594594594594,Production,325,Morado,2,"Violeta, Poa",0.5,1,,
+Shipibo,sh_46,11,2.5345945945945942,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_46,11,2.5345945945945942,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_46,11,2.5345945945945942,Comprehension,Joshin,Rojo,2,"245, 325",1,1,,
+Shipibo,sh_46,11,2.5345945945945942,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_46,11,2.5345945945945942,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_46,11,2.5345945945945942,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_46,11,2.5345945945945942,Comprehension,Pei/Xo,Verde,2,"234, 1",0.5,0.5,0,75.71344992800157
+Shipibo,sh_46,11,2.5345945945945942,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_46,11,2.5345945945945942,Comprehension,Yankon,Azul/Verde,4,"1, 234, 325, 320",1,1,,
+Shipibo,sh_46,11,2.5345945945945942,Production,1,Celeste,1,Nai,1,1,,
+Shipibo,sh_46,11,2.5345945945945942,Production,234,Verde,1,Yankon,1,1,,
+Shipibo,sh_46,11,2.5345945945945942,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_46,11,2.5345945945945942,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_46,11,2.5345945945945942,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_46,11,2.5345945945945942,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_46,11,2.5345945945945942,Production,320,Mierda sol,1,Barin Poi,1,1,,
+Shipibo,sh_46,11,2.5345945945945942,Production,325,Morado,1,Poa,1,1,,
+Shipibo,sh_47,9.4,0.9345945945945946,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_47,9.4,0.9345945945945946,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_47,9.4,0.9345945945945946,Comprehension,Joshin,Rojo,2,"245, 297",0.5,0.5,1,93.1910736068643
+Shipibo,sh_47,9.4,0.9345945945945946,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_47,9.4,0.9345945945945946,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_47,9.4,0.9345945945945946,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_47,9.4,0.9345945945945946,Comprehension,Pei/Xo,Verde,2,"234, 1",0.5,0.5,0,75.71344992800157
+Shipibo,sh_47,9.4,0.9345945945945946,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_47,9.4,0.9345945945945946,Comprehension,Yankon,Azul/Verde,4,"1, 234, 320, 325",1,1,,
+Shipibo,sh_47,9.4,0.9345945945945946,Production,1,Celeste,3,"Barin Poi, Oxne, Yankon",0.3333333333333333,0.3333333333333333,0,98.427042015901307
+Shipibo,sh_47,9.4,0.9345945945945946,Production,234,Verde,1,Yankon,1,1,,
+Shipibo,sh_47,9.4,0.9345945945945946,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_47,9.4,0.9345945945945946,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_47,9.4,0.9345945945945946,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_47,9.4,0.9345945945945946,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_47,9.4,0.9345945945945946,Production,320,Mierda sol,1,Barin Poi,1,1,,
+Shipibo,sh_47,9.4,0.9345945945945946,Production,325,Morado,1,Poa,1,1,,
+Shipibo,sh_48,11.7,3.2345945945945935,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_48,11.7,3.2345945945945935,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_48,11.7,3.2345945945945935,Comprehension,Joshin,Rojo,2,"245, 325",1,1,,
+Shipibo,sh_48,11.7,3.2345945945945935,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_48,11.7,3.2345945945945935,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_48,11.7,3.2345945945945935,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_48,11.7,3.2345945945945935,Comprehension,Pei/Xo,Verde,2,"234, 1",0.5,0.5,0,75.71344992800157
+Shipibo,sh_48,11.7,3.2345945945945935,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_48,11.7,3.2345945945945935,Comprehension,Yankon,Azul/Verde,4,"1, 234, 320, 274",0.75,0.75,1,
+Shipibo,sh_48,11.7,3.2345945945945935,Production,1,Celeste,1,Nai,1,1,,
+Shipibo,sh_48,11.7,3.2345945945945935,Production,234,Verde,1,Yankon,1,1,,
+Shipibo,sh_48,11.7,3.2345945945945935,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_48,11.7,3.2345945945945935,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_48,11.7,3.2345945945945935,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_48,11.7,3.2345945945945935,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_48,11.7,3.2345945945945935,Production,320,Mierda sol,1,Barin Poi,1,1,,
+Shipibo,sh_48,11.7,3.2345945945945935,Production,325,Morado,1,Poa,1,1,,
+Shipibo,sh_49,8.1,-0.3654054054054061,Comprehension,Ami/Poa,Morado,1,1,0,0,0,58.349317905182055
+Shipibo,sh_49,8.1,-0.3654054054054061,Comprehension,Barin Poi,Mierda sol,1,325,0,0,0,100.49231861192177
+Shipibo,sh_49,8.1,-0.3654054054054061,Comprehension,Joshin,Rojo,2,"245, 325",1,1,,
+Shipibo,sh_49,8.1,-0.3654054054054061,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_49,8.1,-0.3654054054054061,Comprehension,Nai,Celeste,1,325,0,0,0,58.349317905182055
+Shipibo,sh_49,8.1,-0.3654054054054061,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_49,8.1,-0.3654054054054061,Comprehension,Pei/Xo,Verde,2,"320, 234",0.5,0.5,0,62.08941536204057
+Shipibo,sh_49,8.1,-0.3654054054054061,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_49,8.1,-0.3654054054054061,Comprehension,Yankon,Azul/Verde,4,"234, 1, 325, 320",1,1,,
+Shipibo,sh_49,8.1,-0.3654054054054061,Production,1,Celeste,2,"Yankon, Nai",1,1,,
+Shipibo,sh_49,8.1,-0.3654054054054061,Production,234,Verde,1,Yankon,1,1,,
+Shipibo,sh_49,8.1,-0.3654054054054061,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_49,8.1,-0.3654054054054061,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_49,8.1,-0.3654054054054061,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_49,8.1,-0.3654054054054061,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_49,8.1,-0.3654054054054061,Production,320,Mierda sol,1,Barin Poi,1,1,,
+Shipibo,sh_49,8.1,-0.3654054054054061,Production,325,Morado,2,"Violeta, Nai",0,0.5,0,58.349317905182055
+Shipibo,sh_5,7.8,-0.6654054054054059,Comprehension,Ami/Poa,Morado,1,320,0,0,0,100.49231861192177
+Shipibo,sh_5,7.8,-0.6654054054054059,Comprehension,Barin Poi,Mierda sol,1,297,0,0,0,61.75681419892059
+Shipibo,sh_5,7.8,-0.6654054054054059,Comprehension,Joshin,Rojo,2,"297, 245",0.5,0.5,1,93.1910736068643
+Shipibo,sh_5,7.8,-0.6654054054054059,Comprehension,Joxo,Blanco,1,245,0,0,1,85.85165694382374
+Shipibo,sh_5,7.8,-0.6654054054054059,Comprehension,Nai,Celeste,1,325,0,0,0,58.349317905182055
+Shipibo,sh_5,7.8,-0.6654054054054059,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_5,7.8,-0.6654054054054059,Comprehension,Pei/Xo,Verde,2,"234, 274",0.5,0.5,0,74.88113647641842
+Shipibo,sh_5,7.8,-0.6654054054054059,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_5,7.8,-0.6654054054054059,Comprehension,Yankon,Azul/Verde,4,"234, 274, 1, 245",0.5,0.5,1,
+Shipibo,sh_5,7.8,-0.6654054054054059,Production,1,Celeste,1,nuve,0,0,,
+Shipibo,sh_5,7.8,-0.6654054054054059,Production,234,Verde,1,Verde,0,1,,
+Shipibo,sh_5,7.8,-0.6654054054054059,Production,245,Rojo,1,Rojo,0,1,,
+Shipibo,sh_5,7.8,-0.6654054054054059,Production,274,Blanco,1,Blanco,0,1,,
+Shipibo,sh_5,7.8,-0.6654054054054059,Production,297,Amarillo,2,"Amarillo, Panshin",0.5,1,,
+Shipibo,sh_5,7.8,-0.6654054054054059,Production,312,Negro,1,Negro,0,1,,
+Shipibo,sh_5,7.8,-0.6654054054054059,Production,320,Mierda sol,1,Panshin,0,0,0,61.75681419892059
+Shipibo,sh_5,7.8,-0.6654054054054059,Production,325,Morado,1,Rojo,0,0,,
+Shipibo,sh_50,8.7,0.23459459459459353,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_50,8.7,0.23459459459459353,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_50,8.7,0.23459459459459353,Comprehension,Joshin,Rojo,2,"245, 297",0.5,0.5,1,93.1910736068643
+Shipibo,sh_50,8.7,0.23459459459459353,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_50,8.7,0.23459459459459353,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_50,8.7,0.23459459459459353,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_50,8.7,0.23459459459459353,Comprehension,Pei/Xo,Verde,2,"234, 1",0.5,0.5,0,75.71344992800157
+Shipibo,sh_50,8.7,0.23459459459459353,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_50,8.7,0.23459459459459353,Comprehension,Yankon,Azul/Verde,4,"234, 325, 1, 320",1,1,,
+Shipibo,sh_50,8.7,0.23459459459459353,Production,1,Celeste,1,Nai,1,1,,
+Shipibo,sh_50,8.7,0.23459459459459353,Production,234,Verde,1,Yankon,1,1,,
+Shipibo,sh_50,8.7,0.23459459459459353,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_50,8.7,0.23459459459459353,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_50,8.7,0.23459459459459353,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_50,8.7,0.23459459459459353,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_50,8.7,0.23459459459459353,Production,320,Mierda sol,1,Barin Poi,1,1,,
+Shipibo,sh_50,8.7,0.23459459459459353,Production,325,Morado,1,Poa,1,1,,
+Shipibo,sh_51,11.6,3.134594594594594,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_51,11.6,3.134594594594594,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_51,11.6,3.134594594594594,Comprehension,Joshin,Rojo,2,"245, 325",1,1,,
+Shipibo,sh_51,11.6,3.134594594594594,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_51,11.6,3.134594594594594,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_51,11.6,3.134594594594594,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_51,11.6,3.134594594594594,Comprehension,Pei/Xo,Verde,2,"234, 1",0.5,0.5,0,75.71344992800157
+Shipibo,sh_51,11.6,3.134594594594594,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_51,11.6,3.134594594594594,Comprehension,Yankon,Azul/Verde,4,"234, 1, 325, 320",1,1,,
+Shipibo,sh_51,11.6,3.134594594594594,Production,1,Celeste,1,Nai,1,1,,
+Shipibo,sh_51,11.6,3.134594594594594,Production,234,Verde,1,Yankon,1,1,,
+Shipibo,sh_51,11.6,3.134594594594594,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_51,11.6,3.134594594594594,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_51,11.6,3.134594594594594,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_51,11.6,3.134594594594594,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_51,11.6,3.134594594594594,Production,320,Mierda sol,1,Barin Poi,1,1,,
+Shipibo,sh_51,11.6,3.134594594594594,Production,325,Morado,1,Poa,1,1,,
+Shipibo,sh_52,10.2,1.7345945945945935,Comprehension,Ami/Poa,Morado,1,320,0,0,0,100.49231861192177
+Shipibo,sh_52,10.2,1.7345945945945935,Comprehension,Barin Poi,Mierda sol,1,,0,0,,
+Shipibo,sh_52,10.2,1.7345945945945935,Comprehension,Joshin,Rojo,2,,1,1,,
+Shipibo,sh_52,10.2,1.7345945945945935,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_52,10.2,1.7345945945945935,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_52,10.2,1.7345945945945935,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_52,10.2,1.7345945945945935,Comprehension,Pei/Xo,Verde,2,,1,1,,
+Shipibo,sh_52,10.2,1.7345945945945935,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_52,10.2,1.7345945945945935,Comprehension,Yankon,Azul/Verde,4,,0.5,0.5,,
+Shipibo,sh_52,10.2,1.7345945945945935,Production,1,Celeste,2,"Azul, Yankon",0.5,1,,
+Shipibo,sh_52,10.2,1.7345945945945935,Production,234,Verde,1,Verde,0,1,,
+Shipibo,sh_52,10.2,1.7345945945945935,Production,245,Rojo,2,"Joshin, Rojo",0.5,1,,
+Shipibo,sh_52,10.2,1.7345945945945935,Production,274,Blanco,2,"Blanco, Joxo",0.5,1,,
+Shipibo,sh_52,10.2,1.7345945945945935,Production,297,Amarillo,2,"Amarillo, Panshin",0.5,1,,
+Shipibo,sh_52,10.2,1.7345945945945935,Production,312,Negro,2,"Wiso, Negro",0.5,1,,
+Shipibo,sh_52,10.2,1.7345945945945935,Production,320,Mierda sol,1,,0,0,,
+Shipibo,sh_52,10.2,1.7345945945945935,Production,325,Morado,1,Morado,0,1,,
+Shipibo,sh_53,10,1.5345945945945942,Comprehension,Ami/Poa,Morado,1,320,0,0,0,100.49231861192177
+Shipibo,sh_53,10,1.5345945945945942,Comprehension,Barin Poi,Mierda sol,1,325,0,0,0,100.49231861192177
+Shipibo,sh_53,10,1.5345945945945942,Comprehension,Joshin,Rojo,2,"245, 325",1,1,,
+Shipibo,sh_53,10,1.5345945945945942,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_53,10,1.5345945945945942,Comprehension,Nai,Celeste,1,274,0,0,0,49.223397891653114
+Shipibo,sh_53,10,1.5345945945945942,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_53,10,1.5345945945945942,Comprehension,Pei/Xo,Verde,2,"234, 320",0.5,0.5,0,62.08941536204057
+Shipibo,sh_53,10,1.5345945945945942,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_53,10,1.5345945945945942,Comprehension,Yankon,Azul/Verde,4,"1, 234, 325, 320",1,1,,
+Shipibo,sh_53,10,1.5345945945945942,Production,1,Celeste,2,"Yankon, Yakunshama",0.5,0.5,,
+Shipibo,sh_53,10,1.5345945945945942,Production,234,Verde,2,"Yankon, yakonshama",0.5,0.5,,
+Shipibo,sh_53,10,1.5345945945945942,Production,245,Rojo,2,"Joshin, joshinshama suki",0.5,0.5,,
+Shipibo,sh_53,10,1.5345945945945942,Production,274,Blanco,2,"Joxo, joxo jakwokawa",0.5,0.5,,
+Shipibo,sh_53,10,1.5345945945945942,Production,297,Amarillo,2,"Panshin, Panshinshima",0.5,0.5,,
+Shipibo,sh_53,10,1.5345945945945942,Production,312,Negro,2,"Wiso, wisoshama",0.5,0.5,,
+Shipibo,sh_53,10,1.5345945945945942,Production,320,Mierda sol,3,"grub, Panshin, Yankon",0.3333333333333333,0.3333333333333333,0,61.75681419892059
+Shipibo,sh_53,10,1.5345945945945942,Production,325,Morado,2,"uva color, shokouerde",0,0,,
+Shipibo,sh_54,9.6,1.1345945945945939,Comprehension,Ami/Poa,Morado,1,325,1,1,,
+Shipibo,sh_54,9.6,1.1345945945945939,Comprehension,Barin Poi,Mierda sol,1,297,0,0,0,61.75681419892059
+Shipibo,sh_54,9.6,1.1345945945945939,Comprehension,Joshin,Rojo,2,"245, 297",0.5,0.5,1,93.1910736068643
+Shipibo,sh_54,9.6,1.1345945945945939,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_54,9.6,1.1345945945945939,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_54,9.6,1.1345945945945939,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_54,9.6,1.1345945945945939,Comprehension,Pei/Xo,Verde,2,"320, 234",0.5,0.5,0,62.08941536204057
+Shipibo,sh_54,9.6,1.1345945945945939,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_54,9.6,1.1345945945945939,Comprehension,Yankon,Azul/Verde,4,"234, 320, 1, 325",1,1,,
+Shipibo,sh_54,9.6,1.1345945945945939,Production,1,Celeste,2,"Azul, Nai",0.5,1,,
+Shipibo,sh_54,9.6,1.1345945945945939,Production,234,Verde,1,Verde,0,1,,
+Shipibo,sh_54,9.6,1.1345945945945939,Production,245,Rojo,2,"Joshin, joshin metsashoko",0.5,0.5,,
+Shipibo,sh_54,9.6,1.1345945945945939,Production,274,Blanco,2,"Joxo, joxo metsa",0.5,0.5,,
+Shipibo,sh_54,9.6,1.1345945945945939,Production,297,Amarillo,2,"Panshin, panshim oni",0.5,0.5,,
+Shipibo,sh_54,9.6,1.1345945945945939,Production,312,Negro,2,"Wiso, Yame",1,1,,
+Shipibo,sh_54,9.6,1.1345945945945939,Production,320,Mierda sol,1,pasto payota,0,0,,
+Shipibo,sh_54,9.6,1.1345945945945939,Production,325,Morado,1,metsa shoko violeta,0,0,,
+Shipibo,sh_55,7.5,-0.9654054054054058,Comprehension,Ami/Poa,Morado,1,1,0,0,0,58.349317905182055
+Shipibo,sh_55,7.5,-0.9654054054054058,Comprehension,Barin Poi,Mierda sol,1,297,0,0,0,61.75681419892059
+Shipibo,sh_55,7.5,-0.9654054054054058,Comprehension,Joshin,Rojo,2,"245, 325",1,1,,
+Shipibo,sh_55,7.5,-0.9654054054054058,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_55,7.5,-0.9654054054054058,Comprehension,Nai,Celeste,1,274,0,0,0,49.223397891653114
+Shipibo,sh_55,7.5,-0.9654054054054058,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_55,7.5,-0.9654054054054058,Comprehension,Pei/Xo,Verde,2,"234, 320",0.5,0.5,0,62.08941536204057
+Shipibo,sh_55,7.5,-0.9654054054054058,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_55,7.5,-0.9654054054054058,Comprehension,Yankon,Azul/Verde,4,"320, 234, 1, 297",0.75,0.75,1,
+Shipibo,sh_55,7.5,-0.9654054054054058,Production,1,Celeste,2,"Azul, Gris",0,0.5,,
+Shipibo,sh_55,7.5,-0.9654054054054058,Production,234,Verde,1,Naranja,0,0,,
+Shipibo,sh_55,7.5,-0.9654054054054058,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_55,7.5,-0.9654054054054058,Production,274,Blanco,2,"Azul, Joxo",0.5,0.5,,
+Shipibo,sh_55,7.5,-0.9654054054054058,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_55,7.5,-0.9654054054054058,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_55,7.5,-0.9654054054054058,Production,320,Mierda sol,2,"Azul, Verde",0,0,,
+Shipibo,sh_55,7.5,-0.9654054054054058,Production,325,Morado,1,Violeta,0,1,,
+Shipibo,sh_56,9.6,1.1345945945945939,Comprehension,Ami/Poa,Morado,1,,0,0,,
+Shipibo,sh_56,9.6,1.1345945945945939,Comprehension,Barin Poi,Mierda sol,1,297,0,0,0,61.75681419892059
+Shipibo,sh_56,9.6,1.1345945945945939,Comprehension,Joshin,Rojo,2,,1,1,,
+Shipibo,sh_56,9.6,1.1345945945945939,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_56,9.6,1.1345945945945939,Comprehension,Nai,Celeste,1,274,0,0,0,49.223397891653114
+Shipibo,sh_56,9.6,1.1345945945945939,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_56,9.6,1.1345945945945939,Comprehension,Pei/Xo,Verde,2,,1,1,,
+Shipibo,sh_56,9.6,1.1345945945945939,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_56,9.6,1.1345945945945939,Comprehension,Yankon,Azul/Verde,4,"234, 1, 320, 325",1,1,,
+Shipibo,sh_56,9.6,1.1345945945945939,Production,1,Celeste,2,"Yankon, jene",0.5,0.5,,
+Shipibo,sh_56,9.6,1.1345945945945939,Production,234,Verde,2,"Yankon, Pei",1,1,,
+Shipibo,sh_56,9.6,1.1345945945945939,Production,245,Rojo,2,"Joshin, Jimi",0.5,0.5,1,
+Shipibo,sh_56,9.6,1.1345945945945939,Production,274,Blanco,2,"Joxo, Nai",0.5,0.5,0,49.223397891653114
+Shipibo,sh_56,9.6,1.1345945945945939,Production,297,Amarillo,2,"Panshin, mankoa",0.5,0.5,,
+Shipibo,sh_56,9.6,1.1345945945945939,Production,312,Negro,2,"Wiso, Nai",0.5,0.5,0,57.01785334436926
+Shipibo,sh_56,9.6,1.1345945945945939,Production,320,Mierda sol,1,yankoncha,0,0,,
+Shipibo,sh_56,9.6,1.1345945945945939,Production,325,Morado,2,"Morado, Uva jisa",0,0.5,,
+Shipibo,sh_57,8.5,0.03459459459459424,Comprehension,Ami/Poa,Morado,1,,0,0,,
+Shipibo,sh_57,8.5,0.03459459459459424,Comprehension,Barin Poi,Mierda sol,1,297,0,0,0,61.75681419892059
+Shipibo,sh_57,8.5,0.03459459459459424,Comprehension,Joshin,Rojo,2,,1,1,,
+Shipibo,sh_57,8.5,0.03459459459459424,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_57,8.5,0.03459459459459424,Comprehension,Nai,Celeste,1,312,0,0,0,57.01785334436926
+Shipibo,sh_57,8.5,0.03459459459459424,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_57,8.5,0.03459459459459424,Comprehension,Pei/Xo,Verde,2,,0,0,0,119.88323068719829
+Shipibo,sh_57,8.5,0.03459459459459424,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_57,8.5,0.03459459459459424,Comprehension,Yankon,Azul/Verde,4,,1,1,,
+Shipibo,sh_57,8.5,0.03459459459459424,Production,1,Celeste,1,Celeste,0,1,,
+Shipibo,sh_57,8.5,0.03459459459459424,Production,234,Verde,3,"Verde, Yankon, andolni pei",0.3333333333333333,0.6666666666666666,,
+Shipibo,sh_57,8.5,0.03459459459459424,Production,245,Rojo,2,"Joshin, Jimi",0.5,0.5,1,
+Shipibo,sh_57,8.5,0.03459459459459424,Production,274,Blanco,1,Joxo,1,1,,
+Shipibo,sh_57,8.5,0.03459459459459424,Production,297,Amarillo,2,"Panshin, Barin Poi",0.5,0.5,0,61.75681419892059
+Shipibo,sh_57,8.5,0.03459459459459424,Production,312,Negro,2,"Wiso, nai wisoa",0.5,0.5,,
+Shipibo,sh_57,8.5,0.03459459459459424,Production,320,Mierda sol,2,"Verde, Yankon",0.5,0.5,,
+Shipibo,sh_57,8.5,0.03459459459459424,Production,325,Morado,1,Morado,0,1,,
+Shipibo,sh_6,8.2,-0.26540540540540647,Comprehension,Ami/Poa,Morado,1,,0,0,,
+Shipibo,sh_6,8.2,-0.26540540540540647,Comprehension,Barin Poi,Mierda sol,1,297,0,0,0,61.75681419892059
+Shipibo,sh_6,8.2,-0.26540540540540647,Comprehension,Joshin,Rojo,2,,1,1,,
+Shipibo,sh_6,8.2,-0.26540540540540647,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_6,8.2,-0.26540540540540647,Comprehension,Nai,Celeste,1,320,0,0,0,98.427042015901307
+Shipibo,sh_6,8.2,-0.26540540540540647,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_6,8.2,-0.26540540540540647,Comprehension,Pei/Xo,Verde,2,"234, 320",0.5,0.5,0,62.08941536204057
+Shipibo,sh_6,8.2,-0.26540540540540647,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_6,8.2,-0.26540540540540647,Comprehension,Yankon,Azul/Verde,4,"234, 1, 320, 325",1,1,,
+Shipibo,sh_6,8.2,-0.26540540540540647,Production,1,Celeste,1,Azul,0,1,,
+Shipibo,sh_6,8.2,-0.26540540540540647,Production,234,Verde,2,"Verde, Yankon",0.5,1,,
+Shipibo,sh_6,8.2,-0.26540540540540647,Production,245,Rojo,2,"Joshin, Rojo",0.5,1,,
+Shipibo,sh_6,8.2,-0.26540540540540647,Production,274,Blanco,2,"Blanco, Joxo",0.5,1,,
+Shipibo,sh_6,8.2,-0.26540540540540647,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_6,8.2,-0.26540540540540647,Production,312,Negro,2,"Wiso, Negro",0.5,1,,
+Shipibo,sh_6,8.2,-0.26540540540540647,Production,320,Mierda sol,1,Verde,0,0,,
+Shipibo,sh_6,8.2,-0.26540540540540647,Production,325,Morado,2,"Morado, Violeta",0,1,,
+Shipibo,sh_7,5.7,-2.7654054054054056,Comprehension,Ami/Poa,Morado,1,234,0,0,0,104.20868389918375
+Shipibo,sh_7,5.7,-2.7654054054054056,Comprehension,Barin Poi,Mierda sol,1,297,0,0,0,61.75681419892059
+Shipibo,sh_7,5.7,-2.7654054054054056,Comprehension,Joshin,Rojo,2,"245, 1",0.5,0.5,0,102.87037328599523
+Shipibo,sh_7,5.7,-2.7654054054054056,Comprehension,Joxo,Blanco,1,1,0,0,0,49.223397891653114
+Shipibo,sh_7,5.7,-2.7654054054054056,Comprehension,Nai,Celeste,1,274,0,0,0,49.223397891653114
+Shipibo,sh_7,5.7,-2.7654054054054056,Comprehension,Panshin,Amarillo,1,1,0,0,0,150.06082933264096
+Shipibo,sh_7,5.7,-2.7654054054054056,Comprehension,Pei/Xo,Verde,2,"312, 320",0,0,0,60.84910542699059
+Shipibo,sh_7,5.7,-2.7654054054054056,Comprehension,Wiso,Negro,1,325,0,0,1,49.65288410555826
+Shipibo,sh_7,5.7,-2.7654054054054056,Comprehension,Yankon,Azul/Verde,4,"274, 312, 245, 234",0.25,0.25,1,
+Shipibo,sh_7,5.7,-2.7654054054054056,Production,1,Celeste,3,"Verde, Azul, Joshin",0,0.3333333333333333,0,102.87037328599523
+Shipibo,sh_7,5.7,-2.7654054054054056,Production,234,Verde,2,"Joshin, Negro",0,0,0,113.85965396047891
+Shipibo,sh_7,5.7,-2.7654054054054056,Production,245,Rojo,1,Verde,0,0,,
+Shipibo,sh_7,5.7,-2.7654054054054056,Production,274,Blanco,1,,0,0,,
+Shipibo,sh_7,5.7,-2.7654054054054056,Production,297,Amarillo,2,"Verde, Joshin",0,0,1,93.1910736068643
+Shipibo,sh_7,5.7,-2.7654054054054056,Production,312,Negro,2,"Verde, Joshin",0,0,1,72.88365866228177
+Shipibo,sh_7,5.7,-2.7654054054054056,Production,320,Mierda sol,2,"carne, Verde",0,0,,
+Shipibo,sh_7,5.7,-2.7654054054054056,Production,325,Morado,1,Verde,0,0,,
+Shipibo,sh_8,8.9,0.4345945945945946,Comprehension,Ami/Poa,Morado,1,320,0,0,0,100.49231861192177
+Shipibo,sh_8,8.9,0.4345945945945946,Comprehension,Barin Poi,Mierda sol,1,297,0,0,0,61.75681419892059
+Shipibo,sh_8,8.9,0.4345945945945946,Comprehension,Joshin,Rojo,2,"245, 297",0.5,0.5,1,93.1910736068643
+Shipibo,sh_8,8.9,0.4345945945945946,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_8,8.9,0.4345945945945946,Comprehension,Nai,Celeste,1,1,1,1,,
+Shipibo,sh_8,8.9,0.4345945945945946,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_8,8.9,0.4345945945945946,Comprehension,Pei/Xo,Verde,2,,0,0,0,74.88113647641842
+Shipibo,sh_8,8.9,0.4345945945945946,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_8,8.9,0.4345945945945946,Comprehension,Yankon,Azul/Verde,4,"320, 234, 1, 325",1,1,,
+Shipibo,sh_8,8.9,0.4345945945945946,Production,1,Celeste,1,Yankon,1,1,,
+Shipibo,sh_8,8.9,0.4345945945945946,Production,234,Verde,2,"Verde, Yankon",0.5,1,,
+Shipibo,sh_8,8.9,0.4345945945945946,Production,245,Rojo,1,Joshin,1,1,,
+Shipibo,sh_8,8.9,0.4345945945945946,Production,274,Blanco,2,"Joxo, Gris",0.5,0.5,,
+Shipibo,sh_8,8.9,0.4345945945945946,Production,297,Amarillo,1,Panshin,1,1,,
+Shipibo,sh_8,8.9,0.4345945945945946,Production,312,Negro,1,Wiso,1,1,,
+Shipibo,sh_8,8.9,0.4345945945945946,Production,320,Mierda sol,1,Verde,0,0,,
+Shipibo,sh_8,8.9,0.4345945945945946,Production,325,Morado,1,Violeta,0,1,,
+Shipibo,sh_9,8.3,-0.16540540540540505,Comprehension,Ami/Poa,Morado,1,245,0,0,1,66.94457558308963
+Shipibo,sh_9,8.3,-0.16540540540540505,Comprehension,Barin Poi,Mierda sol,1,320,1,1,,
+Shipibo,sh_9,8.3,-0.16540540540540505,Comprehension,Joshin,Rojo,2,"245, 320",1,1,,
+Shipibo,sh_9,8.3,-0.16540540540540505,Comprehension,Joxo,Blanco,1,274,1,1,,
+Shipibo,sh_9,8.3,-0.16540540540540505,Comprehension,Nai,Celeste,1,274,0,0,0,49.223397891653114
+Shipibo,sh_9,8.3,-0.16540540540540505,Comprehension,Panshin,Amarillo,1,297,1,1,,
+Shipibo,sh_9,8.3,-0.16540540540540505,Comprehension,Pei/Xo,Verde,2,"297, 234",0.5,0.5,0,119.88323068719829
+Shipibo,sh_9,8.3,-0.16540540540540505,Comprehension,Wiso,Negro,1,312,1,1,,
+Shipibo,sh_9,8.3,-0.16540540540540505,Comprehension,Yankon,Azul/Verde,4,"234, 1, 274, 325",0.75,0.75,1,
+Shipibo,sh_9,8.3,-0.16540540540540505,Production,1,Celeste,2,"Yankon, plomo",0.5,0.5,,
+Shipibo,sh_9,8.3,-0.16540540540540505,Production,234,Verde,2,"Verde, Yankon",0.5,1,,
+Shipibo,sh_9,8.3,-0.16540540540540505,Production,245,Rojo,2,"Joshin, plomo",0.5,0.5,,
+Shipibo,sh_9,8.3,-0.16540540540540505,Production,274,Blanco,2,"Joxo, plomo",0.5,0.5,,
+Shipibo,sh_9,8.3,-0.16540540540540505,Production,297,Amarillo,2,"Panshin, plomo",0.5,0.5,,
+Shipibo,sh_9,8.3,-0.16540540540540505,Production,312,Negro,2,"Wiso, plomo",0.5,0.5,,
+Shipibo,sh_9,8.3,-0.16540540540540505,Production,320,Mierda sol,2,"serru, plomo",0,0,,
+Shipibo,sh_9,8.3,-0.16540540540540505,Production,325,Morado,2,"Morado, plomo",0,0.5,,
+Spanish,sp_1,9,0.5345945945945942,Comprehension,Amarillo,Amarillo,1,65,0,0,0,123.32584725028245
+Spanish,sp_1,9,0.5345945945945942,Comprehension,Blanco,Blanco,1,121,0,0,0,80.65681620297195
+Spanish,sp_1,9,0.5345945945945942,Comprehension,Celeste,Celeste,1,325,0,0,,
+Spanish,sp_1,9,0.5345945945945942,Comprehension,Gris,Gris,1,274,0,0,1,39.51001012401794
+Spanish,sp_1,9,0.5345945945945942,Comprehension,Marron,Marron,1,234,0,0,0,92.30452318277798
+Spanish,sp_1,9,0.5345945945945942,Comprehension,Morado,Morado,1,65,0,0,1,36.901482355049104
+Spanish,sp_1,9,0.5345945945945942,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_1,9,0.5345945945945942,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_1,9,0.5345945945945942,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_1,9,0.5345945945945942,Comprehension,Rosa,Rosa,1,297,0,0,0,123.32584725028245
+Spanish,sp_1,9,0.5345945945945942,Comprehension,Verde,Verde,1,291,0,0,1,86.72483439015609
+Spanish,sp_1,9,0.5345945945945942,Production,121,Naranja,1,,0,0,,
+Spanish,sp_1,9,0.5345945945945942,Production,234,Verde,1,Yankon,0,1,,
+Spanish,sp_1,9,0.5345945945945942,Production,245,Rojo,1,Joshin,0,1,,
+Spanish,sp_1,9,0.5345945945945942,Production,266,Marron,1,,0,0,,
+Spanish,sp_1,9,0.5345945945945942,Production,274,Blanco,1,Joxo,0,1,,
+Spanish,sp_1,9,0.5345945945945942,Production,291,Azul,1,Panshin,0,0,,
+Spanish,sp_1,9,0.5345945945945942,Production,297,Amarillo,1,,0,0,,
+Spanish,sp_1,9,0.5345945945945942,Production,312,Negro,2,"Wiso, Blanco",0,0.5,0,70.54001772044006
+Spanish,sp_1,9,0.5345945945945942,Production,325,Morado,1,,0,0,,
+Spanish,sp_1,9,0.5345945945945942,Production,46,Gris,1,,0,0,,
+Spanish,sp_1,9,0.5345945945945942,Production,65,Rosa,1,,0,0,,
+Spanish,sp_10,8.7,0.23459459459459353,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_10,8.7,0.23459459459459353,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_10,8.7,0.23459459459459353,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_10,8.7,0.23459459459459353,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_10,8.7,0.23459459459459353,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_10,8.7,0.23459459459459353,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_10,8.7,0.23459459459459353,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_10,8.7,0.23459459459459353,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_10,8.7,0.23459459459459353,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_10,8.7,0.23459459459459353,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_10,8.7,0.23459459459459353,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_10,8.7,0.23459459459459353,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_10,8.7,0.23459459459459353,Production,234,Verde,1,Verde,1,1,,
+Spanish,sp_10,8.7,0.23459459459459353,Production,245,Rojo,1,Rojo,1,1,,
+Spanish,sp_10,8.7,0.23459459459459353,Production,266,Marron,1,Marron,1,1,,
+Spanish,sp_10,8.7,0.23459459459459353,Production,274,Blanco,1,Blanco,1,1,,
+Spanish,sp_10,8.7,0.23459459459459353,Production,291,Azul,1,Azul,1,1,,
+Spanish,sp_10,8.7,0.23459459459459353,Production,297,Amarillo,1,Amarillo,1,1,,
+Spanish,sp_10,8.7,0.23459459459459353,Production,312,Negro,1,Negro,1,1,,
+Spanish,sp_10,8.7,0.23459459459459353,Production,325,Morado,1,Morado,1,1,,
+Spanish,sp_10,8.7,0.23459459459459353,Production,46,Gris,1,Gris,1,1,,
+Spanish,sp_10,8.7,0.23459459459459353,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_11,7.5,-0.9654054054054058,Comprehension,Amarillo,Amarillo,1,245,0,0,0,93.1910736068643
+Spanish,sp_11,7.5,-0.9654054054054058,Comprehension,Blanco,Blanco,1,325,0,0,0,77.47574975435863
+Spanish,sp_11,7.5,-0.9654054054054058,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_11,7.5,-0.9654054054054058,Comprehension,Gris,Gris,1,274,0,0,1,39.51001012401794
+Spanish,sp_11,7.5,-0.9654054054054058,Comprehension,Marron,Marron,1,46,0,0,1,57.67650214775511
+Spanish,sp_11,7.5,-0.9654054054054058,Comprehension,Morado,Morado,1,312,0,0,0,49.65288410555826
+Spanish,sp_11,7.5,-0.9654054054054058,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_11,7.5,-0.9654054054054058,Comprehension,Negro,Negro,1,234,0,0,0,59.60879549194061
+Spanish,sp_11,7.5,-0.9654054054054058,Comprehension,Rojo,Rojo,1,65,0,0,1,40.91163893074928
+Spanish,sp_11,7.5,-0.9654054054054058,Comprehension,Rosa,Rosa,1,325,0,0,1,36.901482355049104
+Spanish,sp_11,7.5,-0.9654054054054058,Comprehension,Verde,Verde,1,46,0,0,0,56.84204341858234
+Spanish,sp_11,7.5,-0.9654054054054058,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_11,7.5,-0.9654054054054058,Production,234,Verde,1,,0,0,,
+Spanish,sp_11,7.5,-0.9654054054054058,Production,245,Rojo,1,Joshin,0,1,,
+Spanish,sp_11,7.5,-0.9654054054054058,Production,266,Marron,1,Naranja,0,0,1,28.373205670138866
+Spanish,sp_11,7.5,-0.9654054054054058,Production,274,Blanco,1,Joxo,0,1,,
+Spanish,sp_11,7.5,-0.9654054054054058,Production,291,Azul,1,,0,0,,
+Spanish,sp_11,7.5,-0.9654054054054058,Production,297,Amarillo,1,Panshin,0,1,,
+Spanish,sp_11,7.5,-0.9654054054054058,Production,312,Negro,2,"Wiso, Marron",0,0.5,0,60.40144451915037
+Spanish,sp_11,7.5,-0.9654054054054058,Production,325,Morado,1,,0,0,,
+Spanish,sp_11,7.5,-0.9654054054054058,Production,46,Gris,1,Joxo,0,0,,
+Spanish,sp_11,7.5,-0.9654054054054058,Production,65,Rosa,1,,0,0,,
+Spanish,sp_12,9.5,1.0345945945945942,Comprehension,Amarillo,Amarillo,1,266,0,0,0,78.3975446044071
+Spanish,sp_12,9.5,1.0345945945945942,Comprehension,Blanco,Blanco,1,291,0,0,0,62.69189022513199
+Spanish,sp_12,9.5,1.0345945945945942,Comprehension,Celeste,Celeste,1,121,0,0,,
+Spanish,sp_12,9.5,1.0345945945945942,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_12,9.5,1.0345945945945942,Comprehension,Marron,Marron,1,325,0,0,0,71.70394549813838
+Spanish,sp_12,9.5,1.0345945945945942,Comprehension,Morado,Morado,1,65,0,0,1,36.901482355049104
+Spanish,sp_12,9.5,1.0345945945945942,Comprehension,Naranja,Naranja,1,266,0,0,1,28.373205670138866
+Spanish,sp_12,9.5,1.0345945945945942,Comprehension,Negro,Negro,1,325,0,0,0,49.65288410555826
+Spanish,sp_12,9.5,1.0345945945945942,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_12,9.5,1.0345945945945942,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_12,9.5,1.0345945945945942,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_12,9.5,1.0345945945945942,Production,121,Naranja,1,,0,0,,
+Spanish,sp_12,9.5,1.0345945945945942,Production,234,Verde,1,,0,0,,
+Spanish,sp_12,9.5,1.0345945945945942,Production,245,Rojo,1,Azul,0,0,0,103.67861158406781
+Spanish,sp_12,9.5,1.0345945945945942,Production,266,Marron,1,Rojo,0,0,1,24.87548592490205
+Spanish,sp_12,9.5,1.0345945945945942,Production,274,Blanco,1,,0,0,,
+Spanish,sp_12,9.5,1.0345945945945942,Production,291,Azul,1,Rojo,0,0,0,103.67861158406781
+Spanish,sp_12,9.5,1.0345945945945942,Production,297,Amarillo,1,,0,0,,
+Spanish,sp_12,9.5,1.0345945945945942,Production,312,Negro,1,Wiso,0,1,,
+Spanish,sp_12,9.5,1.0345945945945942,Production,325,Morado,1,,0,0,,
+Spanish,sp_12,9.5,1.0345945945945942,Production,46,Gris,1,Morado,0,0,0,52.86956118599813
+Spanish,sp_12,9.5,1.0345945945945942,Production,65,Rosa,1,,0,0,,
+Spanish,sp_13,9.8,1.334594594594595,Comprehension,Amarillo,Amarillo,1,234,0,0,1,119.88323068719829
+Spanish,sp_13,9.8,1.334594594594595,Comprehension,Blanco,Blanco,1,46,0,0,1,39.51001012401794
+Spanish,sp_13,9.8,1.334594594594595,Comprehension,Celeste,Celeste,1,121,0,0,,
+Spanish,sp_13,9.8,1.334594594594595,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_13,9.8,1.334594594594595,Comprehension,Marron,Marron,1,46,0,0,1,57.67650214775511
+Spanish,sp_13,9.8,1.334594594594595,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_13,9.8,1.334594594594595,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_13,9.8,1.334594594594595,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_13,9.8,1.334594594594595,Comprehension,Rojo,Rojo,1,325,0,0,1,66.94457558308963
+Spanish,sp_13,9.8,1.334594594594595,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_13,9.8,1.334594594594595,Comprehension,Verde,Verde,1,291,0,0,1,86.72483439015609
+Spanish,sp_13,9.8,1.334594594594595,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_13,9.8,1.334594594594595,Production,234,Verde,2,"Azul, Yankon",0,0.5,1,86.72483439015609
+Spanish,sp_13,9.8,1.334594594594595,Production,245,Rojo,1,Joshin,0,1,,
+Spanish,sp_13,9.8,1.334594594594595,Production,266,Marron,1,Joshin,0,0,,
+Spanish,sp_13,9.8,1.334594594594595,Production,274,Blanco,2,"Joxo, Blanco",0.5,1,,
+Spanish,sp_13,9.8,1.334594594594595,Production,291,Azul,1,Azul,1,1,,
+Spanish,sp_13,9.8,1.334594594594595,Production,297,Amarillo,1,Panshin,0,1,,
+Spanish,sp_13,9.8,1.334594594594595,Production,312,Negro,1,Wiso,0,1,,
+Spanish,sp_13,9.8,1.334594594594595,Production,325,Morado,1,,0,0,,
+Spanish,sp_13,9.8,1.334594594594595,Production,46,Gris,1,Azul,0,0,0,48.65279642528269
+Spanish,sp_13,9.8,1.334594594594595,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_14,7,-1.4654054054054058,Comprehension,Amarillo,Amarillo,1,325,0,0,0,146.31869463605804
+Spanish,sp_14,7,-1.4654054054054058,Comprehension,Blanco,Blanco,1,312,0,0,0,70.54001772044006
+Spanish,sp_14,7,-1.4654054054054058,Comprehension,Celeste,Celeste,1,245,0,0,,
+Spanish,sp_14,7,-1.4654054054054058,Comprehension,Gris,Gris,1,65,0,0,0,59.738584683602944
+Spanish,sp_14,7,-1.4654054054054058,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_14,7,-1.4654054054054058,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_14,7,-1.4654054054054058,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_14,7,-1.4654054054054058,Comprehension,Negro,Negro,1,266,0,0,0,60.40144451915037
+Spanish,sp_14,7,-1.4654054054054058,Comprehension,Rojo,Rojo,1,266,0,0,1,24.87548592490205
+Spanish,sp_14,7,-1.4654054054054058,Comprehension,Rosa,Rosa,1,325,0,0,1,36.901482355049104
+Spanish,sp_14,7,-1.4654054054054058,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_14,7,-1.4654054054054058,Production,121,Naranja,1,Joshin,0,0,,
+Spanish,sp_14,7,-1.4654054054054058,Production,234,Verde,2,"Yankon, Verde",0.5,1,,
+Spanish,sp_14,7,-1.4654054054054058,Production,245,Rojo,1,Joshin,0,1,,
+Spanish,sp_14,7,-1.4654054054054058,Production,266,Marron,1,Naranja,0,0,1,28.373205670138866
+Spanish,sp_14,7,-1.4654054054054058,Production,274,Blanco,1,Joxo,0,1,,
+Spanish,sp_14,7,-1.4654054054054058,Production,291,Azul,1,,0,0,,
+Spanish,sp_14,7,-1.4654054054054058,Production,297,Amarillo,2,"Panshin, Amarillo",0.5,1,,
+Spanish,sp_14,7,-1.4654054054054058,Production,312,Negro,1,Wiso,0,1,,
+Spanish,sp_14,7,-1.4654054054054058,Production,325,Morado,1,Azul,0,0,1,49.45158137006339
+Spanish,sp_14,7,-1.4654054054054058,Production,46,Gris,1,Joxo,0,0,,
+Spanish,sp_14,7,-1.4654054054054058,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_15,9.4,0.9345945945945946,Comprehension,Amarillo,Amarillo,1,325,0,0,0,146.31869463605804
+Spanish,sp_15,9.4,0.9345945945945946,Comprehension,Blanco,Blanco,1,121,0,0,0,80.65681620297195
+Spanish,sp_15,9.4,0.9345945945945946,Comprehension,Celeste,Celeste,1,266,0,0,,
+Spanish,sp_15,9.4,0.9345945945945946,Comprehension,Gris,Gris,1,274,0,0,1,39.51001012401794
+Spanish,sp_15,9.4,0.9345945945945946,Comprehension,Marron,Marron,1,312,0,0,0,60.40144451915037
+Spanish,sp_15,9.4,0.9345945945945946,Comprehension,Morado,Morado,1,297,0,0,0,146.31869463605804
+Spanish,sp_15,9.4,0.9345945945945946,Comprehension,Naranja,Naranja,1,245,0,0,1,26.93551187558908
+Spanish,sp_15,9.4,0.9345945945945946,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_15,9.4,0.9345945945945946,Comprehension,Rojo,Rojo,1,234,0,0,0,113.85965396047891
+Spanish,sp_15,9.4,0.9345945945945946,Comprehension,Rosa,Rosa,1,325,0,0,1,36.901482355049104
+Spanish,sp_15,9.4,0.9345945945945946,Comprehension,Verde,Verde,1,65,0,0,0,114.9480012875387
+Spanish,sp_15,9.4,0.9345945945945946,Production,121,Naranja,2,"Naranja, Rojo",0.5,0.5,1,26.93551187558908
+Spanish,sp_15,9.4,0.9345945945945946,Production,234,Verde,1,Yankon,0,1,,
+Spanish,sp_15,9.4,0.9345945945945946,Production,245,Rojo,2,"Joshin, Rojo",0.5,1,,
+Spanish,sp_15,9.4,0.9345945945945946,Production,266,Marron,1,Azul,0,0,0,99.37024655297984
+Spanish,sp_15,9.4,0.9345945945945946,Production,274,Blanco,2,"Joxo, Rojo",0,0.5,0,85.85165694382374
+Spanish,sp_15,9.4,0.9345945945945946,Production,291,Azul,1,Yankon,0,1,,
+Spanish,sp_15,9.4,0.9345945945945946,Production,297,Amarillo,1,Naranja,0,0,1,69.81768687087822
+Spanish,sp_15,9.4,0.9345945945945946,Production,312,Negro,2,"Wiso, Rojo",0,0.5,0,72.88365866228177
+Spanish,sp_15,9.4,0.9345945945945946,Production,325,Morado,1,,0,0,,
+Spanish,sp_15,9.4,0.9345945945945946,Production,46,Gris,1,Joxo,0,0,,
+Spanish,sp_15,9.4,0.9345945945945946,Production,65,Rosa,1,Verde,0,0,0,114.9480012875387
+Spanish,sp_16,10,1.5345945945945942,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_16,10,1.5345945945945942,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_16,10,1.5345945945945942,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_16,10,1.5345945945945942,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_16,10,1.5345945945945942,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_16,10,1.5345945945945942,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_16,10,1.5345945945945942,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_16,10,1.5345945945945942,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_16,10,1.5345945945945942,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_16,10,1.5345945945945942,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_16,10,1.5345945945945942,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_16,10,1.5345945945945942,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_16,10,1.5345945945945942,Production,234,Verde,1,Verde,1,1,,
+Spanish,sp_16,10,1.5345945945945942,Production,245,Rojo,1,Rojo,1,1,,
+Spanish,sp_16,10,1.5345945945945942,Production,266,Marron,1,Marron,1,1,,
+Spanish,sp_16,10,1.5345945945945942,Production,274,Blanco,1,Blanco,1,1,,
+Spanish,sp_16,10,1.5345945945945942,Production,291,Azul,1,Azul,1,1,,
+Spanish,sp_16,10,1.5345945945945942,Production,297,Amarillo,1,Amarillo,1,1,,
+Spanish,sp_16,10,1.5345945945945942,Production,312,Negro,1,Negro,1,1,,
+Spanish,sp_16,10,1.5345945945945942,Production,325,Morado,2,"Violeta, Poa",0.5,1,,
+Spanish,sp_16,10,1.5345945945945942,Production,46,Gris,1,Gris,1,1,,
+Spanish,sp_16,10,1.5345945945945942,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_17,11.1,2.634594594594594,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_17,11.1,2.634594594594594,Comprehension,Blanco,Blanco,1,325,0,0,0,77.47574975435863
+Spanish,sp_17,11.1,2.634594594594594,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_17,11.1,2.634594594594594,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_17,11.1,2.634594594594594,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_17,11.1,2.634594594594594,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_17,11.1,2.634594594594594,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_17,11.1,2.634594594594594,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_17,11.1,2.634594594594594,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_17,11.1,2.634594594594594,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_17,11.1,2.634594594594594,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_17,11.1,2.634594594594594,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_17,11.1,2.634594594594594,Production,234,Verde,2,"Yankon, Verde",0.5,1,,
+Spanish,sp_17,11.1,2.634594594594594,Production,245,Rojo,2,"Joshin, Rojo",0.5,1,,
+Spanish,sp_17,11.1,2.634594594594594,Production,266,Marron,1,Marron,1,1,,
+Spanish,sp_17,11.1,2.634594594594594,Production,274,Blanco,2,"Joxo, Blanco",0.5,1,,
+Spanish,sp_17,11.1,2.634594594594594,Production,291,Azul,1,Azul,1,1,,
+Spanish,sp_17,11.1,2.634594594594594,Production,297,Amarillo,2,"Panshin, Amarillo",0.5,1,,
+Spanish,sp_17,11.1,2.634594594594594,Production,312,Negro,2,"Wiso, Negro",0.5,1,,
+Spanish,sp_17,11.1,2.634594594594594,Production,325,Morado,1,Violeta,1,1,,
+Spanish,sp_17,11.1,2.634594594594594,Production,46,Gris,1,Gris,1,1,,
+Spanish,sp_17,11.1,2.634594594594594,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_18,10.7,2.2345945945945935,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_18,10.7,2.2345945945945935,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_18,10.7,2.2345945945945935,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_18,10.7,2.2345945945945935,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_18,10.7,2.2345945945945935,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_18,10.7,2.2345945945945935,Comprehension,Morado,Morado,1,266,0,0,0,71.70394549813838
+Spanish,sp_18,10.7,2.2345945945945935,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_18,10.7,2.2345945945945935,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_18,10.7,2.2345945945945935,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_18,10.7,2.2345945945945935,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_18,10.7,2.2345945945945935,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_18,10.7,2.2345945945945935,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_18,10.7,2.2345945945945935,Production,234,Verde,1,Verde,1,1,,
+Spanish,sp_18,10.7,2.2345945945945935,Production,245,Rojo,1,Rojo,1,1,,
+Spanish,sp_18,10.7,2.2345945945945935,Production,266,Marron,1,Marron,1,1,,
+Spanish,sp_18,10.7,2.2345945945945935,Production,274,Blanco,1,Blanco,1,1,,
+Spanish,sp_18,10.7,2.2345945945945935,Production,291,Azul,1,Azul,1,1,,
+Spanish,sp_18,10.7,2.2345945945945935,Production,297,Amarillo,2,"Verde, Panshin",0,0.5,1,119.88323068719829
+Spanish,sp_18,10.7,2.2345945945945935,Production,312,Negro,1,Negro,1,1,,
+Spanish,sp_18,10.7,2.2345945945945935,Production,325,Morado,2,"Violeta, Poa",0.5,1,,
+Spanish,sp_18,10.7,2.2345945945945935,Production,46,Gris,1,Gris,1,1,,
+Spanish,sp_18,10.7,2.2345945945945935,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_19,6.3,-2.165405405405406,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_19,6.3,-2.165405405405406,Comprehension,Blanco,Blanco,1,65,0,0,1,71.63845754900088
+Spanish,sp_19,6.3,-2.165405405405406,Comprehension,Celeste,Celeste,1,245,0,0,,
+Spanish,sp_19,6.3,-2.165405405405406,Comprehension,Gris,Gris,1,121,0,0,0,75.79747819024061
+Spanish,sp_19,6.3,-2.165405405405406,Comprehension,Marron,Marron,1,46,0,0,1,57.67650214775511
+Spanish,sp_19,6.3,-2.165405405405406,Comprehension,Morado,Morado,1,266,0,0,0,71.70394549813838
+Spanish,sp_19,6.3,-2.165405405405406,Comprehension,Naranja,Naranja,1,291,0,0,0,114.50241351168106
+Spanish,sp_19,6.3,-2.165405405405406,Comprehension,Negro,Negro,1,325,0,0,0,49.65288410555826
+Spanish,sp_19,6.3,-2.165405405405406,Comprehension,Rojo,Rojo,1,274,0,0,0,85.85165694382374
+Spanish,sp_19,6.3,-2.165405405405406,Comprehension,Rosa,Rosa,1,312,0,0,0,67.30843260691783
+Spanish,sp_19,6.3,-2.165405405405406,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_19,6.3,-2.165405405405406,Production,121,Naranja,1,,0,0,,
+Spanish,sp_19,6.3,-2.165405405405406,Production,234,Verde,2,"Yankon, Verde",0.5,1,,
+Spanish,sp_19,6.3,-2.165405405405406,Production,245,Rojo,1,Joshin,0,1,,
+Spanish,sp_19,6.3,-2.165405405405406,Production,266,Marron,1,Joshin,0,0,,
+Spanish,sp_19,6.3,-2.165405405405406,Production,274,Blanco,2,"Gris, Joxo",0,0.5,1,39.51001012401794
+Spanish,sp_19,6.3,-2.165405405405406,Production,291,Azul,1,,0,0,,
+Spanish,sp_19,6.3,-2.165405405405406,Production,297,Amarillo,2,"Panshin, Rojo",0,0.5,0,93.1910736068643
+Spanish,sp_19,6.3,-2.165405405405406,Production,312,Negro,1,Wiso,0,1,,
+Spanish,sp_19,6.3,-2.165405405405406,Production,325,Morado,1,,0,0,,
+Spanish,sp_19,6.3,-2.165405405405406,Production,46,Gris,1,Gris,1,1,,
+Spanish,sp_19,6.3,-2.165405405405406,Production,65,Rosa,1,,0,0,,
+Spanish,sp_2,7.7,-0.7654054054054056,Comprehension,Amarillo,Amarillo,1,46,0,0,0,113.30812371582189
+Spanish,sp_2,7.7,-0.7654054054054056,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_2,7.7,-0.7654054054054056,Comprehension,Celeste,Celeste,1,312,0,0,,
+Spanish,sp_2,7.7,-0.7654054054054056,Comprehension,Gris,Gris,1,65,0,0,0,59.738584683602944
+Spanish,sp_2,7.7,-0.7654054054054056,Comprehension,Marron,Marron,1,46,0,0,1,57.67650214775511
+Spanish,sp_2,7.7,-0.7654054054054056,Comprehension,Morado,Morado,1,245,0,0,1,66.94457558308963
+Spanish,sp_2,7.7,-0.7654054054054056,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_2,7.7,-0.7654054054054056,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_2,7.7,-0.7654054054054056,Comprehension,Rojo,Rojo,1,266,0,0,1,24.87548592490205
+Spanish,sp_2,7.7,-0.7654054054054056,Comprehension,Rosa,Rosa,1,325,0,0,1,36.901482355049104
+Spanish,sp_2,7.7,-0.7654054054054056,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_2,7.7,-0.7654054054054056,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_2,7.7,-0.7654054054054056,Production,234,Verde,1,Yankon,0,1,,
+Spanish,sp_2,7.7,-0.7654054054054056,Production,245,Rojo,1,Joshin,0,1,,
+Spanish,sp_2,7.7,-0.7654054054054056,Production,266,Marron,1,Joshin,0,0,,
+Spanish,sp_2,7.7,-0.7654054054054056,Production,274,Blanco,1,Joxo,0,1,,
+Spanish,sp_2,7.7,-0.7654054054054056,Production,291,Azul,2,"unpax, agua",0,0,,
+Spanish,sp_2,7.7,-0.7654054054054056,Production,297,Amarillo,1,Panshin,0,1,,
+Spanish,sp_2,7.7,-0.7654054054054056,Production,312,Negro,2,"Wiso, Negro",0.5,1,,
+Spanish,sp_2,7.7,-0.7654054054054056,Production,325,Morado,2,"Kari, Violeta",0.5,1,,
+Spanish,sp_2,7.7,-0.7654054054054056,Production,46,Gris,1,Marron,0,0,1,57.67650214775511
+Spanish,sp_2,7.7,-0.7654054054054056,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_20,8.7,0.23459459459459353,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_20,8.7,0.23459459459459353,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_20,8.7,0.23459459459459353,Comprehension,Celeste,Celeste,1,325,0,0,,
+Spanish,sp_20,8.7,0.23459459459459353,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_20,8.7,0.23459459459459353,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_20,8.7,0.23459459459459353,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_20,8.7,0.23459459459459353,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_20,8.7,0.23459459459459353,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_20,8.7,0.23459459459459353,Comprehension,Rojo,Rojo,1,266,0,0,1,24.87548592490205
+Spanish,sp_20,8.7,0.23459459459459353,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_20,8.7,0.23459459459459353,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_20,8.7,0.23459459459459353,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_20,8.7,0.23459459459459353,Production,234,Verde,1,Verde,1,1,,
+Spanish,sp_20,8.7,0.23459459459459353,Production,245,Rojo,1,Joshin,0,1,,
+Spanish,sp_20,8.7,0.23459459459459353,Production,266,Marron,1,Marron,1,1,,
+Spanish,sp_20,8.7,0.23459459459459353,Production,274,Blanco,2,"Joxo, Blanco",0.5,1,,
+Spanish,sp_20,8.7,0.23459459459459353,Production,291,Azul,1,Nai,0,1,,
+Spanish,sp_20,8.7,0.23459459459459353,Production,297,Amarillo,2,"Panshin, Amarillo",0.5,1,,
+Spanish,sp_20,8.7,0.23459459459459353,Production,312,Negro,2,"Wiso, Negro",0.5,1,,
+Spanish,sp_20,8.7,0.23459459459459353,Production,325,Morado,1,Morado,1,1,,
+Spanish,sp_20,8.7,0.23459459459459353,Production,46,Gris,1,,0,0,,
+Spanish,sp_20,8.7,0.23459459459459353,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_21,5.5,-2.9654054054054058,Comprehension,Amarillo,Amarillo,1,121,0,0,1,69.81768687087822
+Spanish,sp_21,5.5,-2.9654054054054058,Comprehension,Blanco,Blanco,1,325,0,0,0,77.47574975435863
+Spanish,sp_21,5.5,-2.9654054054054058,Comprehension,Celeste,Celeste,1,245,0,0,,
+Spanish,sp_21,5.5,-2.9654054054054058,Comprehension,Gris,Gris,1,297,0,0,0,113.30812371582189
+Spanish,sp_21,5.5,-2.9654054054054058,Comprehension,Marron,Marron,1,46,0,0,1,57.67650214775511
+Spanish,sp_21,5.5,-2.9654054054054058,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_21,5.5,-2.9654054054054058,Comprehension,Naranja,Naranja,1,266,0,0,1,28.373205670138866
+Spanish,sp_21,5.5,-2.9654054054054058,Comprehension,Negro,Negro,1,65,0,0,0,67.30843260691783
+Spanish,sp_21,5.5,-2.9654054054054058,Comprehension,Rojo,Rojo,1,234,0,0,0,113.85965396047891
+Spanish,sp_21,5.5,-2.9654054054054058,Comprehension,Rosa,Rosa,1,121,0,0,1,57.18996940023661
+Spanish,sp_21,5.5,-2.9654054054054058,Comprehension,Verde,Verde,1,291,0,0,1,86.72483439015609
+Spanish,sp_21,5.5,-2.9654054054054058,Production,121,Naranja,2,"espejokeska, Azul",0,0,0,114.50241351168106
+Spanish,sp_21,5.5,-2.9654054054054058,Production,234,Verde,2,"mancoa pei, Verde",0.5,0.5,,
+Spanish,sp_21,5.5,-2.9654054054054058,Production,245,Rojo,2,"Joshin, Azul",0,0.5,0,103.67861158406781
+Spanish,sp_21,5.5,-2.9654054054054058,Production,266,Marron,1,espejokeska,0,0,,
+Spanish,sp_21,5.5,-2.9654054054054058,Production,274,Blanco,2,"Joxo, Verde",0,0.5,0,74.88113647641842
+Spanish,sp_21,5.5,-2.9654054054054058,Production,291,Azul,1,Verde,0,0,1,86.72483439015609
+Spanish,sp_21,5.5,-2.9654054054054058,Production,297,Amarillo,2,"Panshin, Azul",0,0.5,0,160.2771253173702
+Spanish,sp_21,5.5,-2.9654054054054058,Production,312,Negro,3,"Wiso, Azul, Marron",0,0.3333333333333333,0,59.04478317339243
+Spanish,sp_21,5.5,-2.9654054054054058,Production,325,Morado,2,"Marron, Azul",0,0,0.5,60.57776343410089
+Spanish,sp_21,5.5,-2.9654054054054058,Production,46,Gris,1,,0,0,,
+Spanish,sp_21,5.5,-2.9654054054054058,Production,65,Rosa,3,"librokeska, Verde, Azul",0,0,0,94.47678195815166
+Spanish,sp_22,6,-2.4654054054054058,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_22,6,-2.4654054054054058,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_22,6,-2.4654054054054058,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_22,6,-2.4654054054054058,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_22,6,-2.4654054054054058,Comprehension,Marron,Marron,1,46,0,0,1,57.67650214775511
+Spanish,sp_22,6,-2.4654054054054058,Comprehension,Morado,Morado,1,121,0,0,0,86.42375483627173
+Spanish,sp_22,6,-2.4654054054054058,Comprehension,Naranja,Naranja,1,297,0,0,1,69.81768687087822
+Spanish,sp_22,6,-2.4654054054054058,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_22,6,-2.4654054054054058,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_22,6,-2.4654054054054058,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_22,6,-2.4654054054054058,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_22,6,-2.4654054054054058,Production,121,Naranja,2,"Joshin, Naranja",0.5,0.5,,
+Spanish,sp_22,6,-2.4654054054054058,Production,234,Verde,2,"Pei, Verde",0.5,1,,
+Spanish,sp_22,6,-2.4654054054054058,Production,245,Rojo,1,Rojo,1,1,,
+Spanish,sp_22,6,-2.4654054054054058,Production,266,Marron,1,Naranja,0,0,1,28.373205670138866
+Spanish,sp_22,6,-2.4654054054054058,Production,274,Blanco,2,"Joxo, Blanco",0.5,1,,
+Spanish,sp_22,6,-2.4654054054054058,Production,291,Azul,1,Azul,1,1,,
+Spanish,sp_22,6,-2.4654054054054058,Production,297,Amarillo,1,Naranja,0,0,1,69.81768687087822
+Spanish,sp_22,6,-2.4654054054054058,Production,312,Negro,2,"Wiso, Negro",0.5,1,,
+Spanish,sp_22,6,-2.4654054054054058,Production,325,Morado,1,Joshin,0,0,,
+Spanish,sp_22,6,-2.4654054054054058,Production,46,Gris,1,,0,0,,
+Spanish,sp_22,6,-2.4654054054054058,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_23,8.5,0.03459459459459424,Comprehension,Amarillo,Amarillo,1,274,0,0,1,109.73825859744632
+Spanish,sp_23,8.5,0.03459459459459424,Comprehension,Blanco,Blanco,1,46,0,0,1,39.51001012401794
+Spanish,sp_23,8.5,0.03459459459459424,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_23,8.5,0.03459459459459424,Comprehension,Gris,Gris,1,266,0,0,1,57.67650214775511
+Spanish,sp_23,8.5,0.03459459459459424,Comprehension,Marron,Marron,1,46,0,0,1,57.67650214775511
+Spanish,sp_23,8.5,0.03459459459459424,Comprehension,Morado,Morado,1,65,0,0,1,36.901482355049104
+Spanish,sp_23,8.5,0.03459459459459424,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_23,8.5,0.03459459459459424,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_23,8.5,0.03459459459459424,Comprehension,Rojo,Rojo,1,234,0,0,0,113.85965396047891
+Spanish,sp_23,8.5,0.03459459459459424,Comprehension,Rosa,Rosa,1,297,0,0,0,123.32584725028245
+Spanish,sp_23,8.5,0.03459459459459424,Comprehension,Verde,Verde,1,297,0,0,1,119.88323068719829
+Spanish,sp_23,8.5,0.03459459459459424,Production,121,Naranja,2,"Joshin, Naranja",0.5,0.5,,
+Spanish,sp_23,8.5,0.03459459459459424,Production,234,Verde,1,Yankon,0,1,,
+Spanish,sp_23,8.5,0.03459459459459424,Production,245,Rojo,2,"Naranja, Joshin",0,0.5,1,26.93551187558908
+Spanish,sp_23,8.5,0.03459459459459424,Production,266,Marron,1,,0,0,,
+Spanish,sp_23,8.5,0.03459459459459424,Production,274,Blanco,1,Joxo,0,1,,
+Spanish,sp_23,8.5,0.03459459459459424,Production,291,Azul,3,"Naranja, Marron, Yankon",0,0.3333333333333333,0,106.93633003233045
+Spanish,sp_23,8.5,0.03459459459459424,Production,297,Amarillo,2,"Panshin, Verde",0,0.5,1,119.88323068719829
+Spanish,sp_23,8.5,0.03459459459459424,Production,312,Negro,1,Wiso,0,1,,
+Spanish,sp_23,8.5,0.03459459459459424,Production,325,Morado,1,Poa,0,1,,
+Spanish,sp_23,8.5,0.03459459459459424,Production,46,Gris,2,"Yankon, Wiso",0,0,,
+Spanish,sp_23,8.5,0.03459459459459424,Production,65,Rosa,1,,0,0,,
+Spanish,sp_24,8,-0.46540540540540576,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_24,8,-0.46540540540540576,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_24,8,-0.46540540540540576,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_24,8,-0.46540540540540576,Comprehension,Gris,Gris,1,266,0,0,1,57.67650214775511
+Spanish,sp_24,8,-0.46540540540540576,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_24,8,-0.46540540540540576,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_24,8,-0.46540540540540576,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_24,8,-0.46540540540540576,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_24,8,-0.46540540540540576,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_24,8,-0.46540540540540576,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_24,8,-0.46540540540540576,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_24,8,-0.46540540540540576,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_24,8,-0.46540540540540576,Production,234,Verde,1,Verde,1,1,,
+Spanish,sp_24,8,-0.46540540540540576,Production,245,Rojo,1,Rojo,1,1,,
+Spanish,sp_24,8,-0.46540540540540576,Production,266,Marron,1,Gris,0,0,1,57.67650214775511
+Spanish,sp_24,8,-0.46540540540540576,Production,274,Blanco,1,Blanco,1,1,,
+Spanish,sp_24,8,-0.46540540540540576,Production,291,Azul,1,Celeste,1,1,,
+Spanish,sp_24,8,-0.46540540540540576,Production,297,Amarillo,1,Amarillo,1,1,,
+Spanish,sp_24,8,-0.46540540540540576,Production,312,Negro,1,Negro,1,1,,
+Spanish,sp_24,8,-0.46540540540540576,Production,325,Morado,1,Morado,1,1,,
+Spanish,sp_24,8,-0.46540540540540576,Production,46,Gris,1,plomo,0,0,,
+Spanish,sp_24,8,-0.46540540540540576,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_25,8.8,0.33459459459459495,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_25,8.8,0.33459459459459495,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_25,8.8,0.33459459459459495,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_25,8.8,0.33459459459459495,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_25,8.8,0.33459459459459495,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_25,8.8,0.33459459459459495,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_25,8.8,0.33459459459459495,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_25,8.8,0.33459459459459495,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_25,8.8,0.33459459459459495,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_25,8.8,0.33459459459459495,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_25,8.8,0.33459459459459495,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_25,8.8,0.33459459459459495,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_25,8.8,0.33459459459459495,Production,234,Verde,1,Verde,1,1,,
+Spanish,sp_25,8.8,0.33459459459459495,Production,245,Rojo,1,Rojo,1,1,,
+Spanish,sp_25,8.8,0.33459459459459495,Production,266,Marron,1,Marron,1,1,,
+Spanish,sp_25,8.8,0.33459459459459495,Production,274,Blanco,1,Blanco,1,1,,
+Spanish,sp_25,8.8,0.33459459459459495,Production,291,Azul,1,Azul,1,1,,
+Spanish,sp_25,8.8,0.33459459459459495,Production,297,Amarillo,2,"Naranja, Panshin",0,0.5,1,69.81768687087822
+Spanish,sp_25,8.8,0.33459459459459495,Production,312,Negro,1,Negro,1,1,,
+Spanish,sp_25,8.8,0.33459459459459495,Production,325,Morado,1,Morado,1,1,,
+Spanish,sp_25,8.8,0.33459459459459495,Production,46,Gris,1,,0,0,,
+Spanish,sp_25,8.8,0.33459459459459495,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_26,7,-1.4654054054054058,Comprehension,Amarillo,Amarillo,1,266,0,0,0,78.3975446044071
+Spanish,sp_26,7,-1.4654054054054058,Comprehension,Blanco,Blanco,1,234,0,0,0,74.88113647641842
+Spanish,sp_26,7,-1.4654054054054058,Comprehension,Celeste,Celeste,1,245,0,0,,
+Spanish,sp_26,7,-1.4654054054054058,Comprehension,Gris,Gris,1,312,0,0,1,31.03000805671826
+Spanish,sp_26,7,-1.4654054054054058,Comprehension,Marron,Marron,1,274,0,0,0,75.53085197454084
+Spanish,sp_26,7,-1.4654054054054058,Comprehension,Morado,Morado,1,291,0,0,1,49.45158137006339
+Spanish,sp_26,7,-1.4654054054054058,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_26,7,-1.4654054054054058,Comprehension,Negro,Negro,1,46,0,0,1,31.03000805671826
+Spanish,sp_26,7,-1.4654054054054058,Comprehension,Rojo,Rojo,1,121,0,0,1,26.93551187558908
+Spanish,sp_26,7,-1.4654054054054058,Comprehension,Rosa,Rosa,1,297,0,0,0,123.32584725028245
+Spanish,sp_26,7,-1.4654054054054058,Comprehension,Verde,Verde,1,297,0,0,1,119.88323068719829
+Spanish,sp_26,7,-1.4654054054054058,Production,121,Naranja,1,,0,0,,
+Spanish,sp_26,7,-1.4654054054054058,Production,234,Verde,2,"Yankon, Amarillo",0,0.5,1,119.88323068719829
+Spanish,sp_26,7,-1.4654054054054058,Production,245,Rojo,1,Joshin,0,1,,
+Spanish,sp_26,7,-1.4654054054054058,Production,266,Marron,1,Rojo,0,0,1,24.87548592490205
+Spanish,sp_26,7,-1.4654054054054058,Production,274,Blanco,1,Joxo,0,1,,
+Spanish,sp_26,7,-1.4654054054054058,Production,291,Azul,2,"Yankon, Rojo",0,0.5,0,103.67861158406781
+Spanish,sp_26,7,-1.4654054054054058,Production,297,Amarillo,1,,0,0,,
+Spanish,sp_26,7,-1.4654054054054058,Production,312,Negro,2,"Wiso, Negro",0.5,1,,
+Spanish,sp_26,7,-1.4654054054054058,Production,325,Morado,2,"Yankon, Ami",0,0.5,,
+Spanish,sp_26,7,-1.4654054054054058,Production,46,Gris,1,Joxo,0,0,,
+Spanish,sp_26,7,-1.4654054054054058,Production,65,Rosa,1,Amarillo,0,0,0,123.32584725028245
+Spanish,sp_27,9.7,1.2345945945945935,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_27,9.7,1.2345945945945935,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_27,9.7,1.2345945945945935,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_27,9.7,1.2345945945945935,Comprehension,Gris,Gris,1,65,0,0,0,59.738584683602944
+Spanish,sp_27,9.7,1.2345945945945935,Comprehension,Marron,Marron,1,46,0,0,1,57.67650214775511
+Spanish,sp_27,9.7,1.2345945945945935,Comprehension,Morado,Morado,1,121,0,0,0,86.42375483627173
+Spanish,sp_27,9.7,1.2345945945945935,Comprehension,Naranja,Naranja,1,266,0,0,1,28.373205670138866
+Spanish,sp_27,9.7,1.2345945945945935,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_27,9.7,1.2345945945945935,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_27,9.7,1.2345945945945935,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_27,9.7,1.2345945945945935,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_27,9.7,1.2345945945945935,Production,121,Naranja,2,"Rosa, Morado",0,0,0.5,71.80686211825417
+Spanish,sp_27,9.7,1.2345945945945935,Production,234,Verde,1,Verde,1,1,,
+Spanish,sp_27,9.7,1.2345945945945935,Production,245,Rojo,1,Rojo,1,1,,
+Spanish,sp_27,9.7,1.2345945945945935,Production,266,Marron,1,Morado,0,0,0,71.70394549813838
+Spanish,sp_27,9.7,1.2345945945945935,Production,274,Blanco,2,"Joxo, Negro",0,0.5,0,70.54001772044006
+Spanish,sp_27,9.7,1.2345945945945935,Production,291,Azul,1,Celeste,1,1,,
+Spanish,sp_27,9.7,1.2345945945945935,Production,297,Amarillo,1,Amarillo,1,1,,
+Spanish,sp_27,9.7,1.2345945945945935,Production,312,Negro,1,Negro,1,1,,
+Spanish,sp_27,9.7,1.2345945945945935,Production,325,Morado,2,"Naranja, Azul",0,0,0.5,67.93766810316755
+Spanish,sp_27,9.7,1.2345945945945935,Production,46,Gris,2,"Joxo, Azul",0,0,0,48.65279642528269
+Spanish,sp_27,9.7,1.2345945945945935,Production,65,Rosa,2,"Morado, Yankon",0,0,1,36.901482355049104
+Spanish,sp_28,7.8,-0.6654054054054059,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_28,7.8,-0.6654054054054059,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_28,7.8,-0.6654054054054059,Comprehension,Celeste,Celeste,1,121,0,0,,
+Spanish,sp_28,7.8,-0.6654054054054059,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_28,7.8,-0.6654054054054059,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_28,7.8,-0.6654054054054059,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_28,7.8,-0.6654054054054059,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_28,7.8,-0.6654054054054059,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_28,7.8,-0.6654054054054059,Comprehension,Rojo,Rojo,1,46,0,0,0,70.64688174293329
+Spanish,sp_28,7.8,-0.6654054054054059,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_28,7.8,-0.6654054054054059,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_28,7.8,-0.6654054054054059,Production,121,Naranja,1,,0,0,,
+Spanish,sp_28,7.8,-0.6654054054054059,Production,234,Verde,1,Yankon,0,1,,
+Spanish,sp_28,7.8,-0.6654054054054059,Production,245,Rojo,1,Joshin,0,1,,
+Spanish,sp_28,7.8,-0.6654054054054059,Production,266,Marron,1,Marron,1,1,,
+Spanish,sp_28,7.8,-0.6654054054054059,Production,274,Blanco,1,Joxo,0,1,,
+Spanish,sp_28,7.8,-0.6654054054054059,Production,291,Azul,1,,0,0,,
+Spanish,sp_28,7.8,-0.6654054054054059,Production,297,Amarillo,2,"Panshin, Amarillo",0.5,1,,
+Spanish,sp_28,7.8,-0.6654054054054059,Production,312,Negro,1,Wiso,0,1,,
+Spanish,sp_28,7.8,-0.6654054054054059,Production,325,Morado,1,,0,0,,
+Spanish,sp_28,7.8,-0.6654054054054059,Production,46,Gris,1,,0,0,,
+Spanish,sp_28,7.8,-0.6654054054054059,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_29,11,2.5345945945945942,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_29,11,2.5345945945945942,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_29,11,2.5345945945945942,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_29,11,2.5345945945945942,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_29,11,2.5345945945945942,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_29,11,2.5345945945945942,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_29,11,2.5345945945945942,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_29,11,2.5345945945945942,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_29,11,2.5345945945945942,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_29,11,2.5345945945945942,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_29,11,2.5345945945945942,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_29,11,2.5345945945945942,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_29,11,2.5345945945945942,Production,234,Verde,2,"Yankon, Verde",0.5,1,,
+Spanish,sp_29,11,2.5345945945945942,Production,245,Rojo,2,"Joshin, Rojo",0.5,1,,
+Spanish,sp_29,11,2.5345945945945942,Production,266,Marron,2,"Joshin, Marron",0.5,0.5,,
+Spanish,sp_29,11,2.5345945945945942,Production,274,Blanco,2,"Joxo, Blanco",0.5,1,,
+Spanish,sp_29,11,2.5345945945945942,Production,291,Azul,2,"Yankon, Azul",0.5,1,,
+Spanish,sp_29,11,2.5345945945945942,Production,297,Amarillo,2,"Panshin, Amarillo",0.5,1,,
+Spanish,sp_29,11,2.5345945945945942,Production,312,Negro,2,"Wiso, Negro",0.5,1,,
+Spanish,sp_29,11,2.5345945945945942,Production,325,Morado,2,"Violeta, Poa",0.5,1,,
+Spanish,sp_29,11,2.5345945945945942,Production,46,Gris,1,Gris,1,1,,
+Spanish,sp_29,11,2.5345945945945942,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_3,8.5,0.03459459459459424,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_3,8.5,0.03459459459459424,Comprehension,Blanco,Blanco,1,46,0,0,1,39.51001012401794
+Spanish,sp_3,8.5,0.03459459459459424,Comprehension,Celeste,Celeste,1,65,0,0,,
+Spanish,sp_3,8.5,0.03459459459459424,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_3,8.5,0.03459459459459424,Comprehension,Marron,Marron,1,46,0,0,1,57.67650214775511
+Spanish,sp_3,8.5,0.03459459459459424,Comprehension,Morado,Morado,1,245,0,0,1,66.94457558308963
+Spanish,sp_3,8.5,0.03459459459459424,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_3,8.5,0.03459459459459424,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_3,8.5,0.03459459459459424,Comprehension,Rojo,Rojo,1,266,0,0,1,24.87548592490205
+Spanish,sp_3,8.5,0.03459459459459424,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_3,8.5,0.03459459459459424,Comprehension,Verde,Verde,1,325,0,0,0,104.20868389918375
+Spanish,sp_3,8.5,0.03459459459459424,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_3,8.5,0.03459459459459424,Production,234,Verde,1,Yankon,0,1,,
+Spanish,sp_3,8.5,0.03459459459459424,Production,245,Rojo,2,"Joshin, Violeta",0,0.5,,
+Spanish,sp_3,8.5,0.03459459459459424,Production,266,Marron,2,"Naranja, Marron",0.5,0.5,1,28.373205670138866
+Spanish,sp_3,8.5,0.03459459459459424,Production,274,Blanco,2,"Joxo, Blanco",0.5,1,,
+Spanish,sp_3,8.5,0.03459459459459424,Production,291,Azul,1,,0,0,,
+Spanish,sp_3,8.5,0.03459459459459424,Production,297,Amarillo,2,"Panshin, Amarillo",0.5,1,,
+Spanish,sp_3,8.5,0.03459459459459424,Production,312,Negro,1,Wiso,0,1,,
+Spanish,sp_3,8.5,0.03459459459459424,Production,325,Morado,1,Violeta,1,1,,
+Spanish,sp_3,8.5,0.03459459459459424,Production,46,Gris,1,Marron,0,0,1,57.67650214775511
+Spanish,sp_3,8.5,0.03459459459459424,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_30,9.4,0.9345945945945946,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_30,9.4,0.9345945945945946,Comprehension,Blanco,Blanco,1,312,0,0,0,70.54001772044006
+Spanish,sp_30,9.4,0.9345945945945946,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_30,9.4,0.9345945945945946,Comprehension,Gris,Gris,1,65,0,0,0,59.738584683602944
+Spanish,sp_30,9.4,0.9345945945945946,Comprehension,Marron,Marron,1,46,0,0,1,57.67650214775511
+Spanish,sp_30,9.4,0.9345945945945946,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_30,9.4,0.9345945945945946,Comprehension,Naranja,Naranja,1,266,0,0,1,28.373205670138866
+Spanish,sp_30,9.4,0.9345945945945946,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_30,9.4,0.9345945945945946,Comprehension,Rojo,Rojo,1,312,0,0,0,72.88365866228177
+Spanish,sp_30,9.4,0.9345945945945946,Comprehension,Rosa,Rosa,1,245,0,0,1,40.91163893074928
+Spanish,sp_30,9.4,0.9345945945945946,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_30,9.4,0.9345945945945946,Production,121,Naranja,1,Azul,0,0,0,114.50241351168106
+Spanish,sp_30,9.4,0.9345945945945946,Production,234,Verde,1,Verde,1,1,,
+Spanish,sp_30,9.4,0.9345945945945946,Production,245,Rojo,1,Rojo,1,1,,
+Spanish,sp_30,9.4,0.9345945945945946,Production,266,Marron,1,,0,0,,
+Spanish,sp_30,9.4,0.9345945945945946,Production,274,Blanco,2,"Rojo, Joxo",0,0.5,0,85.85165694382374
+Spanish,sp_30,9.4,0.9345945945945946,Production,291,Azul,1,Azul,1,1,,
+Spanish,sp_30,9.4,0.9345945945945946,Production,297,Amarillo,1,Amarillo,1,1,,
+Spanish,sp_30,9.4,0.9345945945945946,Production,312,Negro,1,Wiso,0,1,,
+Spanish,sp_30,9.4,0.9345945945945946,Production,325,Morado,1,Verde,0,0,0,104.20868389918375
+Spanish,sp_30,9.4,0.9345945945945946,Production,46,Gris,1,Wiso,0,0,,
+Spanish,sp_30,9.4,0.9345945945945946,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_31,10.9,2.4345945945945946,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_31,10.9,2.4345945945945946,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_31,10.9,2.4345945945945946,Comprehension,Celeste,Celeste,1,325,0,0,,
+Spanish,sp_31,10.9,2.4345945945945946,Comprehension,Gris,Gris,1,266,0,0,1,57.67650214775511
+Spanish,sp_31,10.9,2.4345945945945946,Comprehension,Marron,Marron,1,46,0,0,1,57.67650214775511
+Spanish,sp_31,10.9,2.4345945945945946,Comprehension,Morado,Morado,1,291,0,0,1,49.45158137006339
+Spanish,sp_31,10.9,2.4345945945945946,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_31,10.9,2.4345945945945946,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_31,10.9,2.4345945945945946,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_31,10.9,2.4345945945945946,Comprehension,Rosa,Rosa,1,266,0,0,0,53.72720912163594
+Spanish,sp_31,10.9,2.4345945945945946,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_31,10.9,2.4345945945945946,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_31,10.9,2.4345945945945946,Production,234,Verde,2,"Yankon, Verde",0.5,1,,
+Spanish,sp_31,10.9,2.4345945945945946,Production,245,Rojo,1,Rojo,1,1,,
+Spanish,sp_31,10.9,2.4345945945945946,Production,266,Marron,1,,0,0,,
+Spanish,sp_31,10.9,2.4345945945945946,Production,274,Blanco,1,Blanco,1,1,,
+Spanish,sp_31,10.9,2.4345945945945946,Production,291,Azul,1,Azul,1,1,,
+Spanish,sp_31,10.9,2.4345945945945946,Production,297,Amarillo,1,Amarillo,1,1,,
+Spanish,sp_31,10.9,2.4345945945945946,Production,312,Negro,1,Negro,1,1,,
+Spanish,sp_31,10.9,2.4345945945945946,Production,325,Morado,2,"Violeta, Poa",0.5,1,,
+Spanish,sp_31,10.9,2.4345945945945946,Production,46,Gris,1,,0,0,,
+Spanish,sp_31,10.9,2.4345945945945946,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_32,10.2,1.7345945945945935,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_32,10.2,1.7345945945945935,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_32,10.2,1.7345945945945935,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_32,10.2,1.7345945945945935,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_32,10.2,1.7345945945945935,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_32,10.2,1.7345945945945935,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_32,10.2,1.7345945945945935,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_32,10.2,1.7345945945945935,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_32,10.2,1.7345945945945935,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_32,10.2,1.7345945945945935,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_32,10.2,1.7345945945945935,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_32,10.2,1.7345945945945935,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_32,10.2,1.7345945945945935,Production,234,Verde,2,"Azul, Yankon",0,0.5,1,86.72483439015609
+Spanish,sp_32,10.2,1.7345945945945935,Production,245,Rojo,1,Rojo,1,1,,
+Spanish,sp_32,10.2,1.7345945945945935,Production,266,Marron,1,Marron,1,1,,
+Spanish,sp_32,10.2,1.7345945945945935,Production,274,Blanco,1,Blanco,1,1,,
+Spanish,sp_32,10.2,1.7345945945945935,Production,291,Azul,1,Morado,0,0,1,49.45158137006339
+Spanish,sp_32,10.2,1.7345945945945935,Production,297,Amarillo,1,Amarillo,1,1,,
+Spanish,sp_32,10.2,1.7345945945945935,Production,312,Negro,1,Negro,1,1,,
+Spanish,sp_32,10.2,1.7345945945945935,Production,325,Morado,1,Violeta,1,1,,
+Spanish,sp_32,10.2,1.7345945945945935,Production,46,Gris,1,,0,0,,
+Spanish,sp_32,10.2,1.7345945945945935,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_33,9.3,0.834594594594595,Comprehension,Amarillo,Amarillo,1,312,0,0,0,125.11577078849812
+Spanish,sp_33,9.3,0.834594594594595,Comprehension,Blanco,Blanco,1,46,0,0,1,39.51001012401794
+Spanish,sp_33,9.3,0.834594594594595,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_33,9.3,0.834594594594595,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_33,9.3,0.834594594594595,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_33,9.3,0.834594594594595,Comprehension,Morado,Morado,1,234,0,0,0,104.20868389918375
+Spanish,sp_33,9.3,0.834594594594595,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_33,9.3,0.834594594594595,Comprehension,Negro,Negro,1,274,0,0,0,70.54001772044006
+Spanish,sp_33,9.3,0.834594594594595,Comprehension,Rojo,Rojo,1,234,0,0,0,113.85965396047891
+Spanish,sp_33,9.3,0.834594594594595,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_33,9.3,0.834594594594595,Comprehension,Verde,Verde,1,245,0,0,0,113.85965396047891
+Spanish,sp_33,9.3,0.834594594594595,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_33,9.3,0.834594594594595,Production,234,Verde,3,"Yankon, Rojo, Verde",0.3333333333333333,0.6666666666666666,0,113.85965396047891
+Spanish,sp_33,9.3,0.834594594594595,Production,245,Rojo,2,"Joshin, Verde",0,0.5,0,113.85965396047891
+Spanish,sp_33,9.3,0.834594594594595,Production,266,Marron,1,,0,0,,
+Spanish,sp_33,9.3,0.834594594594595,Production,274,Blanco,2,"Joxo, Blanco",0.5,1,,
+Spanish,sp_33,9.3,0.834594594594595,Production,291,Azul,1,Nai,0,1,,
+Spanish,sp_33,9.3,0.834594594594595,Production,297,Amarillo,2,"Panshin, Verde",0,0.5,1,119.88323068719829
+Spanish,sp_33,9.3,0.834594594594595,Production,312,Negro,1,Wiso,0,1,,
+Spanish,sp_33,9.3,0.834594594594595,Production,325,Morado,2,"Violeta, Kari",0.5,1,,
+Spanish,sp_33,9.3,0.834594594594595,Production,46,Gris,2,"Oxne, Amarillo",0,0,0,113.30812371582189
+Spanish,sp_33,9.3,0.834594594594595,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_34,9,0.5345945945945942,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_34,9,0.5345945945945942,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_34,9,0.5345945945945942,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_34,9,0.5345945945945942,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_34,9,0.5345945945945942,Comprehension,Marron,Marron,1,46,0,0,1,57.67650214775511
+Spanish,sp_34,9,0.5345945945945942,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_34,9,0.5345945945945942,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_34,9,0.5345945945945942,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_34,9,0.5345945945945942,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_34,9,0.5345945945945942,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_34,9,0.5345945945945942,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_34,9,0.5345945945945942,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_34,9,0.5345945945945942,Production,234,Verde,1,Verde,1,1,,
+Spanish,sp_34,9,0.5345945945945942,Production,245,Rojo,2,"Naranja, Joshin",0,0.5,1,26.93551187558908
+Spanish,sp_34,9,0.5345945945945942,Production,266,Marron,2,"Naranja, Joshin",0,0,1,28.373205670138866
+Spanish,sp_34,9,0.5345945945945942,Production,274,Blanco,1,Blanco,1,1,,
+Spanish,sp_34,9,0.5345945945945942,Production,291,Azul,2,"Yankon, Azul",0.5,1,,
+Spanish,sp_34,9,0.5345945945945942,Production,297,Amarillo,2,"Panshin, Amarillo",0.5,1,,
+Spanish,sp_34,9,0.5345945945945942,Production,312,Negro,1,Negro,1,1,,
+Spanish,sp_34,9,0.5345945945945942,Production,325,Morado,1,Violeta,1,1,,
+Spanish,sp_34,9,0.5345945945945942,Production,46,Gris,2,"Marron, Wiso",0,0,1,57.67650214775511
+Spanish,sp_34,9,0.5345945945945942,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_35,7,-1.4654054054054058,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_35,7,-1.4654054054054058,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_35,7,-1.4654054054054058,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_35,7,-1.4654054054054058,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_35,7,-1.4654054054054058,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_35,7,-1.4654054054054058,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_35,7,-1.4654054054054058,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_35,7,-1.4654054054054058,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_35,7,-1.4654054054054058,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_35,7,-1.4654054054054058,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_35,7,-1.4654054054054058,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_35,7,-1.4654054054054058,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_35,7,-1.4654054054054058,Production,234,Verde,2,"Azul, Panshin",0,0,1,86.72483439015609
+Spanish,sp_35,7,-1.4654054054054058,Production,245,Rojo,1,Rojo,1,1,,
+Spanish,sp_35,7,-1.4654054054054058,Production,266,Marron,1,Naranja,0,0,1,28.373205670138866
+Spanish,sp_35,7,-1.4654054054054058,Production,274,Blanco,1,Blanco,1,1,,
+Spanish,sp_35,7,-1.4654054054054058,Production,291,Azul,1,Azul,1,1,,
+Spanish,sp_35,7,-1.4654054054054058,Production,297,Amarillo,2,"Verde, Amarillo",0.5,0.5,1,119.88323068719829
+Spanish,sp_35,7,-1.4654054054054058,Production,312,Negro,1,Negro,1,1,,
+Spanish,sp_35,7,-1.4654054054054058,Production,325,Morado,1,,0,0,,
+Spanish,sp_35,7,-1.4654054054054058,Production,46,Gris,1,Blanco,0,0,1,39.51001012401794
+Spanish,sp_35,7,-1.4654054054054058,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_36,7,-1.4654054054054058,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_36,7,-1.4654054054054058,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_36,7,-1.4654054054054058,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_36,7,-1.4654054054054058,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_36,7,-1.4654054054054058,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_36,7,-1.4654054054054058,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_36,7,-1.4654054054054058,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_36,7,-1.4654054054054058,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_36,7,-1.4654054054054058,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_36,7,-1.4654054054054058,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_36,7,-1.4654054054054058,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_36,7,-1.4654054054054058,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_36,7,-1.4654054054054058,Production,234,Verde,1,Verde,1,1,,
+Spanish,sp_36,7,-1.4654054054054058,Production,245,Rojo,1,Rojo,1,1,,
+Spanish,sp_36,7,-1.4654054054054058,Production,266,Marron,1,Naranja,0,0,1,28.373205670138866
+Spanish,sp_36,7,-1.4654054054054058,Production,274,Blanco,1,Blanco,1,1,,
+Spanish,sp_36,7,-1.4654054054054058,Production,291,Azul,2,"Celeste, Azul",1,1,,
+Spanish,sp_36,7,-1.4654054054054058,Production,297,Amarillo,1,Amarillo,1,1,,
+Spanish,sp_36,7,-1.4654054054054058,Production,312,Negro,1,Negro,1,1,,
+Spanish,sp_36,7,-1.4654054054054058,Production,325,Morado,1,Morado,1,1,,
+Spanish,sp_36,7,-1.4654054054054058,Production,46,Gris,1,Gris,1,1,,
+Spanish,sp_36,7,-1.4654054054054058,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_37,5,-3.4654054054054058,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_37,5,-3.4654054054054058,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_37,5,-3.4654054054054058,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_37,5,-3.4654054054054058,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_37,5,-3.4654054054054058,Comprehension,Marron,Marron,1,312,0,0,0,60.40144451915037
+Spanish,sp_37,5,-3.4654054054054058,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_37,5,-3.4654054054054058,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_37,5,-3.4654054054054058,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_37,5,-3.4654054054054058,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_37,5,-3.4654054054054058,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_37,5,-3.4654054054054058,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_37,5,-3.4654054054054058,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_37,5,-3.4654054054054058,Production,234,Verde,1,Verde,1,1,,
+Spanish,sp_37,5,-3.4654054054054058,Production,245,Rojo,1,Rojo,1,1,,
+Spanish,sp_37,5,-3.4654054054054058,Production,266,Marron,3,"Naranja, Panshin, Rojo",0,0,1,26.62434579752046
+Spanish,sp_37,5,-3.4654054054054058,Production,274,Blanco,1,Blanco,1,1,,
+Spanish,sp_37,5,-3.4654054054054058,Production,291,Azul,1,Azul,1,1,,
+Spanish,sp_37,5,-3.4654054054054058,Production,297,Amarillo,2,"Naranja, Amarillo",0.5,0.5,1,69.81768687087822
+Spanish,sp_37,5,-3.4654054054054058,Production,312,Negro,1,Negro,1,1,,
+Spanish,sp_37,5,-3.4654054054054058,Production,325,Morado,1,Morado,1,1,,
+Spanish,sp_37,5,-3.4654054054054058,Production,46,Gris,1,Gris,1,1,,
+Spanish,sp_37,5,-3.4654054054054058,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_38,7,-1.4654054054054058,Comprehension,Amarillo,Amarillo,1,291,0,0,0,160.2771253173702
+Spanish,sp_38,7,-1.4654054054054058,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_38,7,-1.4654054054054058,Comprehension,Celeste,Celeste,1,234,0,0,,
+Spanish,sp_38,7,-1.4654054054054058,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_38,7,-1.4654054054054058,Comprehension,Marron,Marron,1,325,0,0,0,71.70394549813838
+Spanish,sp_38,7,-1.4654054054054058,Comprehension,Morado,Morado,1,65,0,0,1,36.901482355049104
+Spanish,sp_38,7,-1.4654054054054058,Comprehension,Naranja,Naranja,1,266,0,0,1,28.373205670138866
+Spanish,sp_38,7,-1.4654054054054058,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_38,7,-1.4654054054054058,Comprehension,Rojo,Rojo,1,297,0,0,0,93.1910736068643
+Spanish,sp_38,7,-1.4654054054054058,Comprehension,Rosa,Rosa,1,266,0,0,0,53.72720912163594
+Spanish,sp_38,7,-1.4654054054054058,Comprehension,Verde,Verde,1,245,0,0,0,113.85965396047891
+Spanish,sp_38,7,-1.4654054054054058,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_38,7,-1.4654054054054058,Production,234,Verde,2,"Azul, Verde",0.5,0.5,1,86.72483439015609
+Spanish,sp_38,7,-1.4654054054054058,Production,245,Rojo,2,"Azul, Rojo",0.5,0.5,0,103.67861158406781
+Spanish,sp_38,7,-1.4654054054054058,Production,266,Marron,1,Naranja,0,0,1,28.373205670138866
+Spanish,sp_38,7,-1.4654054054054058,Production,274,Blanco,1,Blanco,1,1,,
+Spanish,sp_38,7,-1.4654054054054058,Production,291,Azul,1,Azul,1,1,,
+Spanish,sp_38,7,-1.4654054054054058,Production,297,Amarillo,1,Verde,0,0,1,119.88323068719829
+Spanish,sp_38,7,-1.4654054054054058,Production,312,Negro,1,Negro,1,1,,
+Spanish,sp_38,7,-1.4654054054054058,Production,325,Morado,1,Celeste,0,0,,
+Spanish,sp_38,7,-1.4654054054054058,Production,46,Gris,1,Gris,1,1,,
+Spanish,sp_38,7,-1.4654054054054058,Production,65,Rosa,2,"Amarillo, Rosa",0.5,0.5,0,123.32584725028245
+Spanish,sp_39,9.6,1.1345945945945939,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_39,9.6,1.1345945945945939,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_39,9.6,1.1345945945945939,Comprehension,Celeste,Celeste,1,234,0,0,,
+Spanish,sp_39,9.6,1.1345945945945939,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_39,9.6,1.1345945945945939,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_39,9.6,1.1345945945945939,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_39,9.6,1.1345945945945939,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_39,9.6,1.1345945945945939,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_39,9.6,1.1345945945945939,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_39,9.6,1.1345945945945939,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_39,9.6,1.1345945945945939,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_39,9.6,1.1345945945945939,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_39,9.6,1.1345945945945939,Production,234,Verde,1,Verde,1,1,,
+Spanish,sp_39,9.6,1.1345945945945939,Production,245,Rojo,2,"Joshin, Rojo",0.5,1,,
+Spanish,sp_39,9.6,1.1345945945945939,Production,266,Marron,1,Marron,1,1,,
+Spanish,sp_39,9.6,1.1345945945945939,Production,274,Blanco,2,"Joxo, Blanco",0.5,1,,
+Spanish,sp_39,9.6,1.1345945945945939,Production,291,Azul,1,Azul,1,1,,
+Spanish,sp_39,9.6,1.1345945945945939,Production,297,Amarillo,2,"Panshin, Amarillo",0.5,1,,
+Spanish,sp_39,9.6,1.1345945945945939,Production,312,Negro,2,"Wiso, Negro",0.5,1,,
+Spanish,sp_39,9.6,1.1345945945945939,Production,325,Morado,1,Violeta,1,1,,
+Spanish,sp_39,9.6,1.1345945945945939,Production,46,Gris,1,Gris,1,1,,
+Spanish,sp_39,9.6,1.1345945945945939,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_4,8.2,-0.26540540540540647,Comprehension,Amarillo,Amarillo,1,234,0,0,1,119.88323068719829
+Spanish,sp_4,8.2,-0.26540540540540647,Comprehension,Blanco,Blanco,1,65,0,0,1,71.63845754900088
+Spanish,sp_4,8.2,-0.26540540540540647,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_4,8.2,-0.26540540540540647,Comprehension,Gris,Gris,1,245,0,0,0,70.64688174293329
+Spanish,sp_4,8.2,-0.26540540540540647,Comprehension,Marron,Marron,1,46,0,0,1,57.67650214775511
+Spanish,sp_4,8.2,-0.26540540540540647,Comprehension,Morado,Morado,1,266,0,0,0,71.70394549813838
+Spanish,sp_4,8.2,-0.26540540540540647,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_4,8.2,-0.26540540540540647,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_4,8.2,-0.26540540540540647,Comprehension,Rojo,Rojo,1,46,0,0,0,70.64688174293329
+Spanish,sp_4,8.2,-0.26540540540540647,Comprehension,Rosa,Rosa,1,274,0,0,1,71.63845754900088
+Spanish,sp_4,8.2,-0.26540540540540647,Comprehension,Verde,Verde,1,325,0,0,0,104.20868389918375
+Spanish,sp_4,8.2,-0.26540540540540647,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_4,8.2,-0.26540540540540647,Production,234,Verde,1,Yankon,0,1,,
+Spanish,sp_4,8.2,-0.26540540540540647,Production,245,Rojo,1,Joshin,0,1,,
+Spanish,sp_4,8.2,-0.26540540540540647,Production,266,Marron,1,Naranja,0,0,1,28.373205670138866
+Spanish,sp_4,8.2,-0.26540540540540647,Production,274,Blanco,1,Joxo,0,1,,
+Spanish,sp_4,8.2,-0.26540540540540647,Production,291,Azul,2,"agua, Nai",0,0.5,,
+Spanish,sp_4,8.2,-0.26540540540540647,Production,297,Amarillo,1,Panshin,0,1,,
+Spanish,sp_4,8.2,-0.26540540540540647,Production,312,Negro,1,Wiso,0,1,,
+Spanish,sp_4,8.2,-0.26540540540540647,Production,325,Morado,2,"Violeta, Kari",0.5,1,,
+Spanish,sp_4,8.2,-0.26540540540540647,Production,46,Gris,1,,0,0,,
+Spanish,sp_4,8.2,-0.26540540540540647,Production,65,Rosa,1,,0,0,,
+Spanish,sp_40,10,1.5345945945945942,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_40,10,1.5345945945945942,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_40,10,1.5345945945945942,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_40,10,1.5345945945945942,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_40,10,1.5345945945945942,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_40,10,1.5345945945945942,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_40,10,1.5345945945945942,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_40,10,1.5345945945945942,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_40,10,1.5345945945945942,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_40,10,1.5345945945945942,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_40,10,1.5345945945945942,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_40,10,1.5345945945945942,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_40,10,1.5345945945945942,Production,234,Verde,1,Verde,1,1,,
+Spanish,sp_40,10,1.5345945945945942,Production,245,Rojo,2,"Joshin, Rojo",0.5,1,,
+Spanish,sp_40,10,1.5345945945945942,Production,266,Marron,1,Naranja,0,0,1,28.373205670138866
+Spanish,sp_40,10,1.5345945945945942,Production,274,Blanco,2,"Joxo, Blanco",0.5,1,,
+Spanish,sp_40,10,1.5345945945945942,Production,291,Azul,1,Azul,1,1,,
+Spanish,sp_40,10,1.5345945945945942,Production,297,Amarillo,2,"Panshin, Amarillo",0.5,1,,
+Spanish,sp_40,10,1.5345945945945942,Production,312,Negro,2,"Wiso, Negro",0.5,1,,
+Spanish,sp_40,10,1.5345945945945942,Production,325,Morado,1,Morado,1,1,,
+Spanish,sp_40,10,1.5345945945945942,Production,46,Gris,1,,0,0,,
+Spanish,sp_40,10,1.5345945945945942,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_41,9.6,1.1345945945945939,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_41,9.6,1.1345945945945939,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_41,9.6,1.1345945945945939,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_41,9.6,1.1345945945945939,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_41,9.6,1.1345945945945939,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_41,9.6,1.1345945945945939,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_41,9.6,1.1345945945945939,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_41,9.6,1.1345945945945939,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_41,9.6,1.1345945945945939,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_41,9.6,1.1345945945945939,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_41,9.6,1.1345945945945939,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_41,9.6,1.1345945945945939,Production,121,Naranja,2,"yankon joshimansikaya, Naranja",0.5,0.5,,
+Spanish,sp_41,9.6,1.1345945945945939,Production,234,Verde,1,Verde,1,1,,
+Spanish,sp_41,9.6,1.1345945945945939,Production,245,Rojo,2,"Joshin, Rojo",0.5,1,,
+Spanish,sp_41,9.6,1.1345945945945939,Production,266,Marron,2,"piel, yankon pasna",0,0,,
+Spanish,sp_41,9.6,1.1345945945945939,Production,274,Blanco,2,"Joxo, Blanco",0.5,1,,
+Spanish,sp_41,9.6,1.1345945945945939,Production,291,Azul,2,"Yankon, Azul",0.5,1,,
+Spanish,sp_41,9.6,1.1345945945945939,Production,297,Amarillo,2,"Panshin, Amarillo",0.5,1,,
+Spanish,sp_41,9.6,1.1345945945945939,Production,312,Negro,2,"Wiso, Negro",0.5,1,,
+Spanish,sp_41,9.6,1.1345945945945939,Production,325,Morado,2,"Yankon, Morado",0.5,0.5,,
+Spanish,sp_41,9.6,1.1345945945945939,Production,46,Gris,1,Gris,1,1,,
+Spanish,sp_41,9.6,1.1345945945945939,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_42,7.5,-0.9654054054054058,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_42,7.5,-0.9654054054054058,Comprehension,Blanco,Blanco,1,46,0,0,1,39.51001012401794
+Spanish,sp_42,7.5,-0.9654054054054058,Comprehension,Celeste,Celeste,1,121,0,0,,
+Spanish,sp_42,7.5,-0.9654054054054058,Comprehension,Gris,Gris,1,291,0,0,0,48.65279642528269
+Spanish,sp_42,7.5,-0.9654054054054058,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_42,7.5,-0.9654054054054058,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_42,7.5,-0.9654054054054058,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_42,7.5,-0.9654054054054058,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_42,7.5,-0.9654054054054058,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_42,7.5,-0.9654054054054058,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_42,7.5,-0.9654054054054058,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_42,7.5,-0.9654054054054058,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_42,7.5,-0.9654054054054058,Production,234,Verde,2,"Azul, Naranja",0,0,0.5,100.12148210985619
+Spanish,sp_42,7.5,-0.9654054054054058,Production,245,Rojo,1,Joshin,0,1,,
+Spanish,sp_42,7.5,-0.9654054054054058,Production,266,Marron,1,Naranja,0,0,1,28.373205670138866
+Spanish,sp_42,7.5,-0.9654054054054058,Production,274,Blanco,1,Marron,0,0,0,75.53085197454084
+Spanish,sp_42,7.5,-0.9654054054054058,Production,291,Azul,1,Naranja,0,0,0,114.50241351168106
+Spanish,sp_42,7.5,-0.9654054054054058,Production,297,Amarillo,1,Panshin,0,1,,
+Spanish,sp_42,7.5,-0.9654054054054058,Production,312,Negro,1,Negro,1,1,,
+Spanish,sp_42,7.5,-0.9654054054054058,Production,325,Morado,1,Violeta,1,1,,
+Spanish,sp_42,7.5,-0.9654054054054058,Production,46,Gris,1,,0,0,,
+Spanish,sp_42,7.5,-0.9654054054054058,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_43,8.5,0.03459459459459424,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_43,8.5,0.03459459459459424,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_43,8.5,0.03459459459459424,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_43,8.5,0.03459459459459424,Comprehension,Gris,Gris,1,266,0,0,1,57.67650214775511
+Spanish,sp_43,8.5,0.03459459459459424,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_43,8.5,0.03459459459459424,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_43,8.5,0.03459459459459424,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_43,8.5,0.03459459459459424,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_43,8.5,0.03459459459459424,Comprehension,Rojo,Rojo,1,266,0,0,1,24.87548592490205
+Spanish,sp_43,8.5,0.03459459459459424,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_43,8.5,0.03459459459459424,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_43,8.5,0.03459459459459424,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_43,8.5,0.03459459459459424,Production,234,Verde,1,Verde,1,1,,
+Spanish,sp_43,8.5,0.03459459459459424,Production,245,Rojo,2,"Joshin, Rojo",0.5,1,,
+Spanish,sp_43,8.5,0.03459459459459424,Production,266,Marron,1,Marron,1,1,,
+Spanish,sp_43,8.5,0.03459459459459424,Production,274,Blanco,2,"Joxo, Blanco",0.5,1,,
+Spanish,sp_43,8.5,0.03459459459459424,Production,291,Azul,1,Celeste,1,1,,
+Spanish,sp_43,8.5,0.03459459459459424,Production,297,Amarillo,2,"Panshin, Amarillo",0.5,1,,
+Spanish,sp_43,8.5,0.03459459459459424,Production,312,Negro,2,"Wiso, Negro",0.5,1,,
+Spanish,sp_43,8.5,0.03459459459459424,Production,325,Morado,1,Morado,1,1,,
+Spanish,sp_43,8.5,0.03459459459459424,Production,46,Gris,1,,0,0,,
+Spanish,sp_43,8.5,0.03459459459459424,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_44,10,1.5345945945945942,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_44,10,1.5345945945945942,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_44,10,1.5345945945945942,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_44,10,1.5345945945945942,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_44,10,1.5345945945945942,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_44,10,1.5345945945945942,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_44,10,1.5345945945945942,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_44,10,1.5345945945945942,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_44,10,1.5345945945945942,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_44,10,1.5345945945945942,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_44,10,1.5345945945945942,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_44,10,1.5345945945945942,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_44,10,1.5345945945945942,Production,234,Verde,1,Verde,1,1,,
+Spanish,sp_44,10,1.5345945945945942,Production,245,Rojo,1,Rojo,1,1,,
+Spanish,sp_44,10,1.5345945945945942,Production,266,Marron,1,Marron,1,1,,
+Spanish,sp_44,10,1.5345945945945942,Production,274,Blanco,2,"Joxo, Blanco",0.5,1,,
+Spanish,sp_44,10,1.5345945945945942,Production,291,Azul,1,Azul,1,1,,
+Spanish,sp_44,10,1.5345945945945942,Production,297,Amarillo,1,Amarillo,1,1,,
+Spanish,sp_44,10,1.5345945945945942,Production,312,Negro,1,Negro,1,1,,
+Spanish,sp_44,10,1.5345945945945942,Production,325,Morado,1,Morado,1,1,,
+Spanish,sp_44,10,1.5345945945945942,Production,46,Gris,1,Gris,1,1,,
+Spanish,sp_44,10,1.5345945945945942,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_45,10.6,2.134594594594594,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_45,10.6,2.134594594594594,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_45,10.6,2.134594594594594,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_45,10.6,2.134594594594594,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_45,10.6,2.134594594594594,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_45,10.6,2.134594594594594,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_45,10.6,2.134594594594594,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_45,10.6,2.134594594594594,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_45,10.6,2.134594594594594,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_45,10.6,2.134594594594594,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_45,10.6,2.134594594594594,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_45,10.6,2.134594594594594,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_45,10.6,2.134594594594594,Production,234,Verde,2,"Yankon, Verde",0.5,1,,
+Spanish,sp_45,10.6,2.134594594594594,Production,245,Rojo,2,"Joshin, Rojo",0.5,1,,
+Spanish,sp_45,10.6,2.134594594594594,Production,266,Marron,1,Marron,1,1,,
+Spanish,sp_45,10.6,2.134594594594594,Production,274,Blanco,2,"Joxo, Blanco",0.5,1,,
+Spanish,sp_45,10.6,2.134594594594594,Production,291,Azul,1,Azul,1,1,,
+Spanish,sp_45,10.6,2.134594594594594,Production,297,Amarillo,2,"Panshin, Amarillo",0.5,1,,
+Spanish,sp_45,10.6,2.134594594594594,Production,312,Negro,2,"Wiso, Negro",0.5,1,,
+Spanish,sp_45,10.6,2.134594594594594,Production,325,Morado,1,Morado,1,1,,
+Spanish,sp_45,10.6,2.134594594594594,Production,46,Gris,1,,0,0,,
+Spanish,sp_45,10.6,2.134594594594594,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_46,10.3,1.834594594594595,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_46,10.3,1.834594594594595,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_46,10.3,1.834594594594595,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_46,10.3,1.834594594594595,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_46,10.3,1.834594594594595,Comprehension,Marron,Marron,1,121,0,0,1,28.373205670138866
+Spanish,sp_46,10.3,1.834594594594595,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_46,10.3,1.834594594594595,Comprehension,Naranja,Naranja,1,266,0,0,1,28.373205670138866
+Spanish,sp_46,10.3,1.834594594594595,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_46,10.3,1.834594594594595,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_46,10.3,1.834594594594595,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_46,10.3,1.834594594594595,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_46,10.3,1.834594594594595,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_46,10.3,1.834594594594595,Production,234,Verde,1,Verde,1,1,,
+Spanish,sp_46,10.3,1.834594594594595,Production,245,Rojo,2,"Joshin, Rojo",0.5,1,,
+Spanish,sp_46,10.3,1.834594594594595,Production,266,Marron,1,Naranja,0,0,1,28.373205670138866
+Spanish,sp_46,10.3,1.834594594594595,Production,274,Blanco,2,"Joxo, Blanco",0.5,1,,
+Spanish,sp_46,10.3,1.834594594594595,Production,291,Azul,1,Celeste,1,1,,
+Spanish,sp_46,10.3,1.834594594594595,Production,297,Amarillo,2,"Panshin, Amarillo",0.5,1,,
+Spanish,sp_46,10.3,1.834594594594595,Production,312,Negro,2,"Wiso, Negro",0.5,1,,
+Spanish,sp_46,10.3,1.834594594594595,Production,325,Morado,1,Morado,1,1,,
+Spanish,sp_46,10.3,1.834594594594595,Production,46,Gris,1,Gris,1,1,,
+Spanish,sp_46,10.3,1.834594594594595,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_5,8,-0.46540540540540576,Comprehension,Amarillo,Amarillo,1,291,0,0,0,160.2771253173702
+Spanish,sp_5,8,-0.46540540540540576,Comprehension,Blanco,Blanco,1,46,0,0,1,39.51001012401794
+Spanish,sp_5,8,-0.46540540540540576,Comprehension,Celeste,Celeste,1,234,0,0,,
+Spanish,sp_5,8,-0.46540540540540576,Comprehension,Gris,Gris,1,325,0,0,0,52.86956118599813
+Spanish,sp_5,8,-0.46540540540540576,Comprehension,Marron,Marron,1,245,0,0,1,24.87548592490205
+Spanish,sp_5,8,-0.46540540540540576,Comprehension,Morado,Morado,1,297,0,0,0,146.31869463605804
+Spanish,sp_5,8,-0.46540540540540576,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_5,8,-0.46540540540540576,Comprehension,Negro,Negro,1,325,0,0,0,49.65288410555826
+Spanish,sp_5,8,-0.46540540540540576,Comprehension,Rojo,Rojo,1,312,0,0,0,72.88365866228177
+Spanish,sp_5,8,-0.46540540540540576,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_5,8,-0.46540540540540576,Comprehension,Verde,Verde,1,274,0,0,0,74.88113647641842
+Spanish,sp_5,8,-0.46540540540540576,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_5,8,-0.46540540540540576,Production,234,Verde,1,Panshin,0,0,,
+Spanish,sp_5,8,-0.46540540540540576,Production,245,Rojo,1,Joshin,0,1,,
+Spanish,sp_5,8,-0.46540540540540576,Production,266,Marron,1,,0,0,,
+Spanish,sp_5,8,-0.46540540540540576,Production,274,Blanco,1,Joxo,0,1,,
+Spanish,sp_5,8,-0.46540540540540576,Production,291,Azul,1,,0,0,,
+Spanish,sp_5,8,-0.46540540540540576,Production,297,Amarillo,1,Panshin,0,1,,
+Spanish,sp_5,8,-0.46540540540540576,Production,312,Negro,1,Wiso,0,1,,
+Spanish,sp_5,8,-0.46540540540540576,Production,325,Morado,1,Violeta,1,1,,
+Spanish,sp_5,8,-0.46540540540540576,Production,46,Gris,1,,0,0,,
+Spanish,sp_5,8,-0.46540540540540576,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_6,7.5,-0.9654054054054058,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_6,7.5,-0.9654054054054058,Comprehension,Blanco,Blanco,1,312,0,0,0,70.54001772044006
+Spanish,sp_6,7.5,-0.9654054054054058,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_6,7.5,-0.9654054054054058,Comprehension,Gris,Gris,1,266,0,0,1,57.67650214775511
+Spanish,sp_6,7.5,-0.9654054054054058,Comprehension,Marron,Marron,1,46,0,0,1,57.67650214775511
+Spanish,sp_6,7.5,-0.9654054054054058,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_6,7.5,-0.9654054054054058,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_6,7.5,-0.9654054054054058,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_6,7.5,-0.9654054054054058,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_6,7.5,-0.9654054054054058,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_6,7.5,-0.9654054054054058,Comprehension,Verde,Verde,1,245,0,0,0,113.85965396047891
+Spanish,sp_6,7.5,-0.9654054054054058,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_6,7.5,-0.9654054054054058,Production,234,Verde,1,Yankon,0,1,,
+Spanish,sp_6,7.5,-0.9654054054054058,Production,245,Rojo,1,Joshin,0,1,,
+Spanish,sp_6,7.5,-0.9654054054054058,Production,266,Marron,1,,0,0,,
+Spanish,sp_6,7.5,-0.9654054054054058,Production,274,Blanco,1,Joxo,0,1,,
+Spanish,sp_6,7.5,-0.9654054054054058,Production,291,Azul,1,,0,0,,
+Spanish,sp_6,7.5,-0.9654054054054058,Production,297,Amarillo,1,Amarillo,1,1,,
+Spanish,sp_6,7.5,-0.9654054054054058,Production,312,Negro,1,Wiso,0,1,,
+Spanish,sp_6,7.5,-0.9654054054054058,Production,325,Morado,1,Violeta,1,1,,
+Spanish,sp_6,7.5,-0.9654054054054058,Production,46,Gris,1,,0,0,,
+Spanish,sp_6,7.5,-0.9654054054054058,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_7,9.2,0.7345945945945935,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_7,9.2,0.7345945945945935,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_7,9.2,0.7345945945945935,Comprehension,Celeste,Celeste,1,325,0,0,,
+Spanish,sp_7,9.2,0.7345945945945935,Comprehension,Gris,Gris,1,291,0,0,0,48.65279642528269
+Spanish,sp_7,9.2,0.7345945945945935,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_7,9.2,0.7345945945945935,Comprehension,Morado,Morado,1,46,0,0,0,52.86956118599813
+Spanish,sp_7,9.2,0.7345945945945935,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_7,9.2,0.7345945945945935,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_7,9.2,0.7345945945945935,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_7,9.2,0.7345945945945935,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_7,9.2,0.7345945945945935,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_7,9.2,0.7345945945945935,Production,121,Naranja,1,Rojo,0,0,1,26.93551187558908
+Spanish,sp_7,9.2,0.7345945945945935,Production,234,Verde,1,Verde,1,1,,
+Spanish,sp_7,9.2,0.7345945945945935,Production,245,Rojo,1,Rojo,1,1,,
+Spanish,sp_7,9.2,0.7345945945945935,Production,266,Marron,1,Marron,1,1,,
+Spanish,sp_7,9.2,0.7345945945945935,Production,274,Blanco,1,Blanco,1,1,,
+Spanish,sp_7,9.2,0.7345945945945935,Production,291,Azul,1,Azul,1,1,,
+Spanish,sp_7,9.2,0.7345945945945935,Production,297,Amarillo,1,Amarillo,1,1,,
+Spanish,sp_7,9.2,0.7345945945945935,Production,312,Negro,1,Negro,1,1,,
+Spanish,sp_7,9.2,0.7345945945945935,Production,325,Morado,1,Violeta,1,1,,
+Spanish,sp_7,9.2,0.7345945945945935,Production,46,Gris,1,Azul,0,0,0,48.65279642528269
+Spanish,sp_7,9.2,0.7345945945945935,Production,65,Rosa,1,Rosa,1,1,,
+Spanish,sp_8,11.6,3.134594594594594,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_8,11.6,3.134594594594594,Comprehension,Blanco,Blanco,1,274,1,1,,
+Spanish,sp_8,11.6,3.134594594594594,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_8,11.6,3.134594594594594,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_8,11.6,3.134594594594594,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_8,11.6,3.134594594594594,Comprehension,Morado,Morado,1,325,1,1,,
+Spanish,sp_8,11.6,3.134594594594594,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_8,11.6,3.134594594594594,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_8,11.6,3.134594594594594,Comprehension,Rojo,Rojo,1,245,1,1,,
+Spanish,sp_8,11.6,3.134594594594594,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_8,11.6,3.134594594594594,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_8,11.6,3.134594594594594,Production,121,Naranja,2,"Rosa, Joshin",0,0,1,57.18996940023661
+Spanish,sp_8,11.6,3.134594594594594,Production,234,Verde,2,"Yankon, Verde",0.5,1,,
+Spanish,sp_8,11.6,3.134594594594594,Production,245,Rojo,2,"Joshin, Rojo",0.5,1,,
+Spanish,sp_8,11.6,3.134594594594594,Production,266,Marron,2,"Rosa, Joshin",0,0,0,53.72720912163594
+Spanish,sp_8,11.6,3.134594594594594,Production,274,Blanco,1,Joxo,0,1,,
+Spanish,sp_8,11.6,3.134594594594594,Production,291,Azul,2,"Yankon, Azul",0.5,1,,
+Spanish,sp_8,11.6,3.134594594594594,Production,297,Amarillo,2,"Panshin, Amarillo",0.5,1,,
+Spanish,sp_8,11.6,3.134594594594594,Production,312,Negro,2,"Wiso, Negro",0.5,1,,
+Spanish,sp_8,11.6,3.134594594594594,Production,325,Morado,2,"Violeta, Yankon",0.5,0.5,,
+Spanish,sp_8,11.6,3.134594594594594,Production,46,Gris,1,,0,0,,
+Spanish,sp_8,11.6,3.134594594594594,Production,65,Rosa,1,,0,0,,
+Spanish,sp_9,7,-1.4654054054054058,Comprehension,Amarillo,Amarillo,1,297,1,1,,
+Spanish,sp_9,7,-1.4654054054054058,Comprehension,Blanco,Blanco,1,325,0,0,0,77.47574975435863
+Spanish,sp_9,7,-1.4654054054054058,Comprehension,Celeste,Celeste,1,291,0,0,,
+Spanish,sp_9,7,-1.4654054054054058,Comprehension,Gris,Gris,1,46,1,1,,
+Spanish,sp_9,7,-1.4654054054054058,Comprehension,Marron,Marron,1,266,1,1,,
+Spanish,sp_9,7,-1.4654054054054058,Comprehension,Morado,Morado,1,266,0,0,0,71.70394549813838
+Spanish,sp_9,7,-1.4654054054054058,Comprehension,Naranja,Naranja,1,121,1,1,,
+Spanish,sp_9,7,-1.4654054054054058,Comprehension,Negro,Negro,1,312,1,1,,
+Spanish,sp_9,7,-1.4654054054054058,Comprehension,Rojo,Rojo,1,274,0,0,0,85.85165694382374
+Spanish,sp_9,7,-1.4654054054054058,Comprehension,Rosa,Rosa,1,65,1,1,,
+Spanish,sp_9,7,-1.4654054054054058,Comprehension,Verde,Verde,1,234,1,1,,
+Spanish,sp_9,7,-1.4654054054054058,Production,121,Naranja,1,Naranja,1,1,,
+Spanish,sp_9,7,-1.4654054054054058,Production,234,Verde,1,Verde,1,1,,
+Spanish,sp_9,7,-1.4654054054054058,Production,245,Rojo,1,Joshin,0,1,,
+Spanish,sp_9,7,-1.4654054054054058,Production,266,Marron,1,Marron,1,1,,
+Spanish,sp_9,7,-1.4654054054054058,Production,274,Blanco,1,Joxo,0,1,,
+Spanish,sp_9,7,-1.4654054054054058,Production,291,Azul,2,"Nai, Azul",0.5,1,,
+Spanish,sp_9,7,-1.4654054054054058,Production,297,Amarillo,2,"Panshin, Amarillo",0.5,1,,
+Spanish,sp_9,7,-1.4654054054054058,Production,312,Negro,2,"Wiso, Negro",0.5,1,,
+Spanish,sp_9,7,-1.4654054054054058,Production,325,Morado,3,"Poa, Azul, Morado",0.3333333333333333,0.6666666666666666,1,49.45158137006339
+Spanish,sp_9,7,-1.4654054054054058,Production,46,Gris,1,,0,0,,
+Spanish,sp_9,7,-1.4654054054054058,Production,65,Rosa,1,Rosa,1,1,,

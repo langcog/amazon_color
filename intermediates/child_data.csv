@@ -1,6 +1,6 @@
 Language,subj,edad,género,lugar de grabación,grabación,fecha,age,task,prompt,age_interval,response_num,response,correct,spanish,adjacency,dist,correct_switch
 Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Comprehension,Wiso,6,1,312,1,Negro,,,
-Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Comprehension,Yankon,6,1,234,1,Azul/Verde,1,,
+Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Comprehension,Yankon,6,1,234,1,Azul/Verde,,,
 Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Comprehension,Joshin,6,1,245,1,Rojo,,,
 Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Comprehension,Pei/Xo,6,1,274,0,Verde,0,74.88113647641842,
 Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Comprehension,Panshin,6,1,320,0,Amarillo,0,61.75681419892059,
@@ -9,7 +9,7 @@ Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Comprehension,Joxo,6,1,274,1,B
 Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Comprehension,Ami/Poa,6,1,312,0,Morado,1,49.65288410555826,
 Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Comprehension,Barin Poi,6,1,320,1,Mierda sol,,,
 Shipibo,sh_2,7,femenino,bilingue,8,17/07/2017,7.4,Comprehension,Wiso,7,1,312,1,Negro,,,
-Shipibo,sh_2,7,femenino,bilingue,8,17/07/2017,7.4,Comprehension,Yankon,7,1,234,1,Azul/Verde,1,,
+Shipibo,sh_2,7,femenino,bilingue,8,17/07/2017,7.4,Comprehension,Yankon,7,1,234,1,Azul/Verde,,,
 Shipibo,sh_2,7,femenino,bilingue,8,17/07/2017,7.4,Comprehension,Joshin,7,1,245,1,Rojo,,,
 Shipibo,sh_2,7,femenino,bilingue,8,17/07/2017,7.4,Comprehension,Pei/Xo,7,1,274,0,Verde,0,74.88113647641842,
 Shipibo,sh_2,7,femenino,bilingue,8,17/07/2017,7.4,Comprehension,Panshin,7,1,234,0,Amarillo,0,119.88323068719829,
@@ -18,7 +18,7 @@ Shipibo,sh_2,7,femenino,bilingue,8,17/07/2017,7.4,Comprehension,Joxo,7,1,274,1,B
 Shipibo,sh_2,7,femenino,bilingue,8,17/07/2017,7.4,Comprehension,Ami/Poa,7,1,320,0,Morado,0,100.49231861192177,
 Shipibo,sh_2,7,femenino,bilingue,8,17/07/2017,7.4,Comprehension,Barin Poi,7,1,325,0,Mierda sol,0,100.49231861192177,
 Shipibo,sh_3,9,masculino,bilingue,5,17/07/2017,9.6,Comprehension,Wiso,10,1,312,1,Negro,,,
-Shipibo,sh_3,9,masculino,bilingue,5,17/07/2017,9.6,Comprehension,Yankon,10,1,234,1,Azul/Verde,1,,
+Shipibo,sh_3,9,masculino,bilingue,5,17/07/2017,9.6,Comprehension,Yankon,10,1,234,1,Azul/Verde,,,
 Shipibo,sh_3,9,masculino,bilingue,5,17/07/2017,9.6,Comprehension,Joshin,10,1,245,1,Rojo,,,
 Shipibo,sh_3,9,masculino,bilingue,5,17/07/2017,9.6,Comprehension,Pei/Xo,10,1,312,0,Verde,0,59.60879549194061,
 Shipibo,sh_3,9,masculino,bilingue,5,17/07/2017,9.6,Comprehension,Panshin,10,1,297,1,Amarillo,,,
@@ -27,7 +27,7 @@ Shipibo,sh_3,9,masculino,bilingue,5,17/07/2017,9.6,Comprehension,Joxo,10,1,274,1
 Shipibo,sh_3,9,masculino,bilingue,5,17/07/2017,9.6,Comprehension,Ami/Poa,10,1,320,0,Morado,0,100.49231861192177,
 Shipibo,sh_3,9,masculino,bilingue,5,17/07/2017,9.6,Comprehension,Barin Poi,10,1,297,0,Mierda sol,0,61.75681419892059,
 Shipibo,sh_4,7,masculino,bilingue,6,17/07/2017,7.3,Comprehension,Wiso,7,1,312,1,Negro,,,
-Shipibo,sh_4,7,masculino,bilingue,6,17/07/2017,7.3,Comprehension,Yankon,7,1,234,1,Azul/Verde,1,,
+Shipibo,sh_4,7,masculino,bilingue,6,17/07/2017,7.3,Comprehension,Yankon,7,1,234,1,Azul/Verde,,,
 Shipibo,sh_4,7,masculino,bilingue,6,17/07/2017,7.3,Comprehension,Joshin,7,1,1,0,Rojo,0,102.87037328599523,
 Shipibo,sh_4,7,masculino,bilingue,6,17/07/2017,7.3,Comprehension,Pei/Xo,7,1,325,0,Verde,0,104.20868389918375,
 Shipibo,sh_4,7,masculino,bilingue,6,17/07/2017,7.3,Comprehension,Panshin,7,1,297,1,Amarillo,,,
@@ -36,7 +36,7 @@ Shipibo,sh_4,7,masculino,bilingue,6,17/07/2017,7.3,Comprehension,Joxo,7,1,245,0,
 Shipibo,sh_4,7,masculino,bilingue,6,17/07/2017,7.3,Comprehension,Ami/Poa,7,1,274,0,Morado,0,77.47574975435863,
 Shipibo,sh_4,7,masculino,bilingue,6,17/07/2017,7.3,Comprehension,Barin Poi,7,1,297,0,Mierda sol,0,61.75681419892059,
 Shipibo,sh_5,7,femenino,bilingue,1,17/07/2017,7.8,Comprehension,Wiso,8,1,312,1,Negro,,,
-Shipibo,sh_5,7,femenino,bilingue,1,17/07/2017,7.8,Comprehension,Yankon,8,1,234,1,Azul/Verde,1,,
+Shipibo,sh_5,7,femenino,bilingue,1,17/07/2017,7.8,Comprehension,Yankon,8,1,234,1,Azul/Verde,,,
 Shipibo,sh_5,7,femenino,bilingue,1,17/07/2017,7.8,Comprehension,Joshin,8,1,297,0,Rojo,1,93.1910736068643,
 Shipibo,sh_5,7,femenino,bilingue,1,17/07/2017,7.8,Comprehension,Pei/Xo,8,1,234,1,Verde,,,
 Shipibo,sh_5,7,femenino,bilingue,1,17/07/2017,7.8,Comprehension,Panshin,8,1,297,1,Amarillo,,,
@@ -45,7 +45,7 @@ Shipibo,sh_5,7,femenino,bilingue,1,17/07/2017,7.8,Comprehension,Joxo,8,1,245,0,B
 Shipibo,sh_5,7,femenino,bilingue,1,17/07/2017,7.8,Comprehension,Ami/Poa,8,1,320,0,Morado,0,100.49231861192177,
 Shipibo,sh_5,7,femenino,bilingue,1,17/07/2017,7.8,Comprehension,Barin Poi,8,1,297,0,Mierda sol,0,61.75681419892059,
 Shipibo,sh_6,8,masculino,bilingue,2,17/07/2017,8.2,Comprehension,Wiso,8,1,312,1,Negro,,,
-Shipibo,sh_6,8,masculino,bilingue,2,17/07/2017,8.2,Comprehension,Yankon,8,1,234,1,Azul/Verde,1,,
+Shipibo,sh_6,8,masculino,bilingue,2,17/07/2017,8.2,Comprehension,Yankon,8,1,234,1,Azul/Verde,,,
 Shipibo,sh_6,8,masculino,bilingue,2,17/07/2017,8.2,Comprehension,Joshin,8,1,245,1,Rojo,,,
 Shipibo,sh_6,8,masculino,bilingue,2,17/07/2017,8.2,Comprehension,Pei/Xo,8,1,234,1,Verde,,,
 Shipibo,sh_6,8,masculino,bilingue,2,17/07/2017,8.2,Comprehension,Panshin,8,1,297,1,Amarillo,,,
@@ -63,7 +63,7 @@ Shipibo,sh_7,5,masculino,bilingue,3,17/07/2017,5.7,Comprehension,Joxo,6,1,1,0,Bl
 Shipibo,sh_7,5,masculino,bilingue,3,17/07/2017,5.7,Comprehension,Ami/Poa,6,1,234,0,Morado,0,104.20868389918375,
 Shipibo,sh_7,5,masculino,bilingue,3,17/07/2017,5.7,Comprehension,Barin Poi,6,1,297,0,Mierda sol,0,61.75681419892059,
 Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Comprehension,Wiso,9,1,312,1,Negro,,,
-Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Comprehension,Yankon,9,1,320,1,Azul/Verde,1,,
+Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Comprehension,Yankon,9,1,320,1,Azul/Verde,,,
 Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Comprehension,Joshin,9,1,245,1,Rojo,,,
 Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Comprehension,Pei/Xo,9,1,274,0,Verde,0,74.88113647641842,
 Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Comprehension,Panshin,9,1,297,1,Amarillo,,,
@@ -72,7 +72,7 @@ Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Comprehension,Joxo,9,1,274,1,B
 Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Comprehension,Ami/Poa,9,1,320,0,Morado,0,100.49231861192177,
 Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Comprehension,Barin Poi,9,1,297,0,Mierda sol,0,61.75681419892059,
 Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Comprehension,Wiso,8,1,312,1,Negro,,,
-Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Comprehension,Yankon,8,1,234,1,Azul/Verde,1,,
+Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Comprehension,Yankon,8,1,234,1,Azul/Verde,,,
 Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Comprehension,Joshin,8,1,245,1,Rojo,,,
 Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Comprehension,Pei/Xo,8,1,297,0,Verde,0,119.88323068719829,
 Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Comprehension,Panshin,8,1,297,1,Amarillo,,,
@@ -81,7 +81,7 @@ Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Comprehension,Joxo,8,1,274,1,
 Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Comprehension,Ami/Poa,8,1,245,0,Morado,1,66.94457558308963,
 Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Comprehension,Barin Poi,8,1,320,1,Mierda sol,,,
 Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Comprehension,Wiso,7,1,312,1,Negro,,,
-Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Comprehension,Yankon,7,1,234,1,Azul/Verde,1,,
+Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Comprehension,Yankon,7,1,234,1,Azul/Verde,,,
 Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Comprehension,Joshin,7,1,245,1,Rojo,,,
 Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Comprehension,Pei/Xo,7,1,234,1,Verde,,,
 Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Comprehension,Panshin,7,1,297,1,Amarillo,,,
@@ -91,7 +91,7 @@ Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Comprehension,Ami
 Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Comprehension,Barin Poi,7,1,234,0,Mierda sol,0,62.08941536204057,
 Shipibo,sh_11,6,masculino,c.c.n.n. (bahuanisho),2,02/08/2017,6.9,Comprehension,Wiso,7,1,234,0,Negro,0,59.60879549194061,
 Shipibo,sh_11,6,masculino,c.c.n.n. (bahuanisho),2,02/08/2017,6.9,Comprehension,Yankon,7,1,245,0,Azul/Verde,1,,
-Shipibo,sh_11,6,masculino,c.c.n.n. (bahuanisho),2,02/08/2017,6.9,Comprehension,Joshin,7,1,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_11,6,masculino,c.c.n.n. (bahuanisho),2,02/08/2017,6.9,Comprehension,Joshin,7,1,325,1,Rojo,,,
 Shipibo,sh_11,6,masculino,c.c.n.n. (bahuanisho),2,02/08/2017,6.9,Comprehension,Pei/Xo,7,1,234,1,Verde,,,
 Shipibo,sh_11,6,masculino,c.c.n.n. (bahuanisho),2,02/08/2017,6.9,Comprehension,Panshin,7,1,1,0,Amarillo,0,150.06082933264096,
 Shipibo,sh_11,6,masculino,c.c.n.n. (bahuanisho),2,02/08/2017,6.9,Comprehension,Nai,7,1,297,0,Celeste,0,150.06082933264096,
@@ -99,7 +99,7 @@ Shipibo,sh_11,6,masculino,c.c.n.n. (bahuanisho),2,02/08/2017,6.9,Comprehension,J
 Shipibo,sh_11,6,masculino,c.c.n.n. (bahuanisho),2,02/08/2017,6.9,Comprehension,Ami/Poa,7,1,325,1,Morado,,,
 Shipibo,sh_11,6,masculino,c.c.n.n. (bahuanisho),2,02/08/2017,6.9,Comprehension,Barin Poi,7,1,320,1,Mierda sol,,,
 Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Comprehension,Wiso,6,1,312,1,Negro,,,
-Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Comprehension,Yankon,6,1,234,1,Azul/Verde,1,,
+Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Comprehension,Yankon,6,1,234,1,Azul/Verde,,,
 Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Comprehension,Joshin,6,1,245,1,Rojo,,,
 Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Comprehension,Pei/Xo,6,1,297,0,Verde,0,119.88323068719829,
 Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Comprehension,Panshin,6,1,1,0,Amarillo,0,150.06082933264096,
@@ -108,7 +108,7 @@ Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Comprehension,Jo
 Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Comprehension,Ami/Poa,6,1,320,0,Morado,0,100.49231861192177,
 Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Comprehension,Barin Poi,6,1,312,0,Mierda sol,1,67.19189385632764,
 Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Comprehension,Wiso,6,1,312,1,Negro,,,
-Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Comprehension,Yankon,6,1,234,1,Azul/Verde,1,,
+Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Comprehension,Yankon,6,1,234,1,Azul/Verde,,,
 Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Comprehension,Joshin,6,1,245,1,Rojo,,,
 Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Comprehension,Pei/Xo,6,1,234,1,Verde,,,
 Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Comprehension,Panshin,6,1,297,1,Amarillo,,,
@@ -117,7 +117,7 @@ Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Comprehension,Joxo
 Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Comprehension,Ami/Poa,6,1,325,1,Morado,,,
 Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Comprehension,Barin Poi,6,1,297,0,Mierda sol,0,61.75681419892059,
 Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Comprehension,Wiso,6,1,312,1,Negro,,,
-Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Comprehension,Yankon,6,1,325,1,Azul/Verde,1,,
+Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Comprehension,Yankon,6,1,325,1,Azul/Verde,,,
 Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Comprehension,Joshin,6,1,245,1,Rojo,,,
 Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Comprehension,Pei/Xo,6,1,234,1,Verde,,,
 Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Comprehension,Panshin,6,1,320,0,Amarillo,0,61.75681419892059,
@@ -126,7 +126,7 @@ Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Comprehension,J
 Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Comprehension,Ami/Poa,6,1,325,1,Morado,,,
 Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Comprehension,Barin Poi,6,1,320,1,Mierda sol,,,
 Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Comprehension,Wiso,8,1,312,1,Negro,,,
-Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Comprehension,Yankon,8,1,234,1,Azul/Verde,1,,
+Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Comprehension,Yankon,8,1,234,1,Azul/Verde,,,
 Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Comprehension,Joshin,8,1,245,1,Rojo,,,
 Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Comprehension,Pei/Xo,8,1,234,1,Verde,,,
 Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Comprehension,Panshin,8,1,297,1,Amarillo,,,
@@ -135,7 +135,7 @@ Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Comprehension,Jo
 Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Comprehension,Ami/Poa,8,1,325,1,Morado,,,
 Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Comprehension,Barin Poi,8,1,320,1,Mierda sol,,,
 Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Comprehension,Wiso,7,1,312,1,Negro,,,
-Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Comprehension,Yankon,7,1,234,1,Azul/Verde,1,,
+Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Comprehension,Yankon,7,1,234,1,Azul/Verde,,,
 Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Comprehension,Joshin,7,1,245,1,Rojo,,,
 Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Comprehension,Pei/Xo,7,1,234,1,Verde,,,
 Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Comprehension,Panshin,7,1,297,1,Amarillo,,,
@@ -144,7 +144,7 @@ Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Comprehension,Jo
 Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Comprehension,Ami/Poa,7,1,325,1,Morado,,,
 Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Comprehension,Barin Poi,7,1,320,1,Mierda sol,,,
 Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Comprehension,Wiso,9,1,312,1,Negro,,,
-Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Comprehension,Yankon,9,1,1,1,Azul/Verde,1,,
+Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Comprehension,Yankon,9,1,1,1,Azul/Verde,,,
 Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Comprehension,Joshin,9,1,245,1,Rojo,,,
 Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Comprehension,Pei/Xo,9,1,234,1,Verde,,,
 Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Comprehension,Panshin,9,1,297,1,Amarillo,,,
@@ -153,7 +153,7 @@ Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Comprehension,J
 Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Comprehension,Ami/Poa,9,1,325,1,Morado,,,
 Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Comprehension,Barin Poi,9,1,320,1,Mierda sol,,,
 Shipibo,sh_18,8,femenino,c.c.n.n. (bahuanisho),4,03/08/2017,8,Comprehension,Wiso,8,1,312,1,Negro,,,
-Shipibo,sh_18,8,femenino,c.c.n.n. (bahuanisho),4,03/08/2017,8,Comprehension,Yankon,8,1,234,1,Azul/Verde,1,,
+Shipibo,sh_18,8,femenino,c.c.n.n. (bahuanisho),4,03/08/2017,8,Comprehension,Yankon,8,1,234,1,Azul/Verde,,,
 Shipibo,sh_18,8,femenino,c.c.n.n. (bahuanisho),4,03/08/2017,8,Comprehension,Joshin,8,1,245,1,Rojo,,,
 Shipibo,sh_18,8,femenino,c.c.n.n. (bahuanisho),4,03/08/2017,8,Comprehension,Pei/Xo,8,1,234,1,Verde,,,
 Shipibo,sh_18,8,femenino,c.c.n.n. (bahuanisho),4,03/08/2017,8,Comprehension,Panshin,8,1,297,1,Amarillo,,,
@@ -180,7 +180,7 @@ Shipibo,sh_20,6,masculino,c.c.n.n. (bahuanisho),6,03/08/2017,6.6,Comprehension,J
 Shipibo,sh_20,6,masculino,c.c.n.n. (bahuanisho),6,03/08/2017,6.6,Comprehension,Ami/Poa,7,1,320,0,Morado,0,100.49231861192177,
 Shipibo,sh_20,6,masculino,c.c.n.n. (bahuanisho),6,03/08/2017,6.6,Comprehension,Barin Poi,7,1,312,0,Mierda sol,1,67.19189385632764,
 Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Comprehension,Wiso,10,1,312,1,Negro,,,
-Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Comprehension,Yankon,10,1,1,1,Azul/Verde,1,,
+Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Comprehension,Yankon,10,1,1,1,Azul/Verde,,,
 Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Comprehension,Joshin,10,1,245,1,Rojo,,,
 Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Comprehension,Pei/Xo,10,1,234,1,Verde,,,
 Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Comprehension,Panshin,10,1,297,1,Amarillo,,,
@@ -189,7 +189,7 @@ Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Comprehension,J
 Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Comprehension,Ami/Poa,10,1,325,1,Morado,,,
 Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Comprehension,Barin Poi,10,1,320,1,Mierda sol,,,
 Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Comprehension,Wiso,8,1,312,1,Negro,,,
-Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Comprehension,Yankon,8,1,234,1,Azul/Verde,1,,
+Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Comprehension,Yankon,8,1,234,1,Azul/Verde,,,
 Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Comprehension,Joshin,8,1,245,1,Rojo,,,
 Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Comprehension,Pei/Xo,8,1,234,1,Verde,,,
 Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Comprehension,Panshin,8,1,297,1,Amarillo,,,
@@ -198,7 +198,7 @@ Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Comprehension,Jo
 Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Comprehension,Ami/Poa,8,1,325,1,Morado,,,
 Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Comprehension,Barin Poi,8,1,320,1,Mierda sol,,,
 Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Comprehension,Wiso,8,1,312,1,Negro,,,
-Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Comprehension,Yankon,8,1,234,1,Azul/Verde,1,,
+Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Comprehension,Yankon,8,1,234,1,Azul/Verde,,,
 Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Comprehension,Joshin,8,1,245,1,Rojo,,,
 Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Comprehension,Pei/Xo,8,1,234,1,Verde,,,
 Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Comprehension,Panshin,8,1,297,1,Amarillo,,,
@@ -207,7 +207,7 @@ Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Comprehension,Jo
 Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Comprehension,Ami/Poa,8,1,325,1,Morado,,,
 Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Comprehension,Barin Poi,8,1,320,1,Mierda sol,,,
 Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Comprehension,Wiso,8,1,312,1,Negro,,,
-Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Comprehension,Yankon,8,1,234,1,Azul/Verde,1,,
+Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Comprehension,Yankon,8,1,234,1,Azul/Verde,,,
 Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Comprehension,Joshin,8,1,245,1,Rojo,,,
 Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Comprehension,Pei/Xo,8,1,234,1,Verde,,,
 Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Comprehension,Panshin,8,1,297,1,Amarillo,,,
@@ -216,7 +216,7 @@ Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Comprehension,J
 Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Comprehension,Ami/Poa,8,1,325,1,Morado,,,
 Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Comprehension,Barin Poi,8,1,320,1,Mierda sol,,,
 Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Comprehension,Wiso,10,1,312,1,Negro,,,
-Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Comprehension,Yankon,10,1,234,1,Azul/Verde,1,,
+Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Comprehension,Yankon,10,1,234,1,Azul/Verde,,,
 Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Comprehension,Joshin,10,1,245,1,Rojo,,,
 Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Comprehension,Pei/Xo,10,1,234,1,Verde,,,
 Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Comprehension,Panshin,10,1,297,1,Amarillo,,,
@@ -225,7 +225,7 @@ Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Comprehension,J
 Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Comprehension,Ami/Poa,10,1,325,1,Morado,,,
 Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Comprehension,Barin Poi,10,1,1,0,Mierda sol,0,98.427042015901307,
 Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Comprehension,Wiso,8,1,312,1,Negro,,,
-Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Comprehension,Yankon,8,1,234,1,Azul/Verde,1,,
+Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Comprehension,Yankon,8,1,234,1,Azul/Verde,,,
 Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Comprehension,Joshin,8,1,245,1,Rojo,,,
 Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Comprehension,Pei/Xo,8,1,234,1,Verde,,,
 Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Comprehension,Panshin,8,1,297,1,Amarillo,,,
@@ -234,7 +234,7 @@ Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Comprehension,J
 Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Comprehension,Ami/Poa,8,1,312,0,Morado,1,49.65288410555826,
 Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Comprehension,Barin Poi,8,1,320,1,Mierda sol,,,
 Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Comprehension,Wiso,5,1,312,1,Negro,,,
-Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Comprehension,Yankon,5,1,325,1,Azul/Verde,1,,
+Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Comprehension,Yankon,5,1,325,1,Azul/Verde,,,
 Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Comprehension,Joshin,5,1,297,0,Rojo,1,93.1910736068643,
 Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Comprehension,Pei/Xo,5,1,245,0,Verde,0,113.85965396047891,
 Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Comprehension,Panshin,5,1,297,1,Amarillo,,,
@@ -243,7 +243,7 @@ Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Comprehension,J
 Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Comprehension,Ami/Poa,5,1,297,0,Morado,0,146.31869463605804,
 Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Comprehension,Barin Poi,5,1,320,1,Mierda sol,,,
 Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Comprehension,Wiso,6,1,312,1,Negro,,,
-Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Comprehension,Yankon,6,1,1,1,Azul/Verde,1,,
+Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Comprehension,Yankon,6,1,1,1,Azul/Verde,,,
 Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Comprehension,Joshin,6,1,245,1,Rojo,,,
 Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Comprehension,Pei/Xo,6,1,320,0,Verde,0,62.08941536204057,
 Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Comprehension,Panshin,6,1,297,1,Amarillo,,,
@@ -252,7 +252,7 @@ Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Comprehension,J
 Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Comprehension,Ami/Poa,6,1,325,1,Morado,,,
 Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Comprehension,Barin Poi,6,1,234,0,Mierda sol,0,62.08941536204057,
 Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Comprehension,Wiso,9,1,312,1,Negro,,,
-Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Comprehension,Yankon,9,1,234,1,Azul/Verde,1,,
+Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Comprehension,Yankon,9,1,234,1,Azul/Verde,,,
 Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Comprehension,Joshin,9,1,245,1,Rojo,,,
 Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Comprehension,Pei/Xo,9,1,320,0,Verde,0,62.08941536204057,
 Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Comprehension,Panshin,9,1,297,1,Amarillo,,,
@@ -261,7 +261,7 @@ Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Comprehensio
 Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Comprehension,Ami/Poa,9,1,1,0,Morado,0,58.349317905182055,
 Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Comprehension,Barin Poi,9,1,234,0,Mierda sol,0,62.08941536204057,
 Shipibo,sh_30,7 or 8,femenino,c.c.n.n. (bahuanisho),16,03/08/2017,8,Comprehension,Wiso,8,1,312,1,Negro,,,
-Shipibo,sh_30,7 or 8,femenino,c.c.n.n. (bahuanisho),16,03/08/2017,8,Comprehension,Yankon,8,1,234,1,Azul/Verde,1,,
+Shipibo,sh_30,7 or 8,femenino,c.c.n.n. (bahuanisho),16,03/08/2017,8,Comprehension,Yankon,8,1,234,1,Azul/Verde,,,
 Shipibo,sh_30,7 or 8,femenino,c.c.n.n. (bahuanisho),16,03/08/2017,8,Comprehension,Joshin,8,1,245,1,Rojo,,,
 Shipibo,sh_30,7 or 8,femenino,c.c.n.n. (bahuanisho),16,03/08/2017,8,Comprehension,Pei/Xo,8,1,234,1,Verde,,,
 Shipibo,sh_30,7 or 8,femenino,c.c.n.n. (bahuanisho),16,03/08/2017,8,Comprehension,Panshin,8,1,297,1,Amarillo,,,
@@ -270,7 +270,7 @@ Shipibo,sh_30,7 or 8,femenino,c.c.n.n. (bahuanisho),16,03/08/2017,8,Comprehensio
 Shipibo,sh_30,7 or 8,femenino,c.c.n.n. (bahuanisho),16,03/08/2017,8,Comprehension,Ami/Poa,8,1,312,0,Morado,1,49.65288410555826,
 Shipibo,sh_30,7 or 8,femenino,c.c.n.n. (bahuanisho),16,03/08/2017,8,Comprehension,Barin Poi,8,1,1,0,Mierda sol,0,98.427042015901307,
 Shipibo,sh_31,8,femenino,c.c.n.n. (bahuanisho),17,03/08/2017,7.9,Comprehension,Wiso,8,1,312,1,Negro,,,
-Shipibo,sh_31,8,femenino,c.c.n.n. (bahuanisho),17,03/08/2017,7.9,Comprehension,Yankon,8,1,234,1,Azul/Verde,1,,
+Shipibo,sh_31,8,femenino,c.c.n.n. (bahuanisho),17,03/08/2017,7.9,Comprehension,Yankon,8,1,234,1,Azul/Verde,,,
 Shipibo,sh_31,8,femenino,c.c.n.n. (bahuanisho),17,03/08/2017,7.9,Comprehension,Joshin,8,1,245,1,Rojo,,,
 Shipibo,sh_31,8,femenino,c.c.n.n. (bahuanisho),17,03/08/2017,7.9,Comprehension,Pei/Xo,8,1,234,1,Verde,,,
 Shipibo,sh_31,8,femenino,c.c.n.n. (bahuanisho),17,03/08/2017,7.9,Comprehension,Panshin,8,1,297,1,Amarillo,,,
@@ -279,7 +279,7 @@ Shipibo,sh_31,8,femenino,c.c.n.n. (bahuanisho),17,03/08/2017,7.9,Comprehension,J
 Shipibo,sh_31,8,femenino,c.c.n.n. (bahuanisho),17,03/08/2017,7.9,Comprehension,Ami/Poa,8,1,325,1,Morado,,,
 Shipibo,sh_31,8,femenino,c.c.n.n. (bahuanisho),17,03/08/2017,7.9,Comprehension,Barin Poi,8,1,234,0,Mierda sol,0,62.08941536204057,
 Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Comprehension,Wiso,8,1,312,1,Negro,,,
-Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Comprehension,Yankon,8,1,234,1,Azul/Verde,1,,
+Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Comprehension,Yankon,8,1,234,1,Azul/Verde,,,
 Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Comprehension,Joshin,8,1,245,1,Rojo,,,
 Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Comprehension,Pei/Xo,8,1,234,1,Verde,,,
 Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Comprehension,Panshin,8,1,297,1,Amarillo,,,
@@ -288,7 +288,7 @@ Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Comprehension,Jox
 Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Comprehension,Ami/Poa,8,1,320,0,Morado,0,100.49231861192177,
 Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Comprehension,Barin Poi,8,1,274,0,Mierda sol,0,71.46716518793788,
 Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Comprehension,Wiso,11,1,312,1,Negro,,,
-Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Comprehension,Yankon,11,1,234,1,Azul/Verde,1,,
+Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Comprehension,Yankon,11,1,234,1,Azul/Verde,,,
 Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Comprehension,Joshin,11,1,245,1,Rojo,,,
 Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Comprehension,Pei/Xo,11,1,234,1,Verde,,,
 Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Comprehension,Panshin,11,1,297,1,Amarillo,,,
@@ -297,7 +297,7 @@ Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Comprehensio
 Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Comprehension,Ami/Poa,11,1,312,0,Morado,1,49.65288410555826,
 Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Comprehension,Barin Poi,11,1,234,0,Mierda sol,0,62.08941536204057,
 Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Comprehension,Wiso,11,1,312,1,Negro,,,
-Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Comprehension,Yankon,11,1,234,1,Azul/Verde,1,,
+Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Comprehension,Yankon,11,1,234,1,Azul/Verde,,,
 Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Comprehension,Joshin,11,1,245,1,Rojo,,,
 Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Comprehension,Pei/Xo,11,1,234,1,Verde,,,
 Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Comprehension,Panshin,11,1,297,1,Amarillo,,,
@@ -306,7 +306,7 @@ Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Comprehension,J
 Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Comprehension,Ami/Poa,11,1,325,1,Morado,,,
 Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Comprehension,Barin Poi,11,1,312,0,Mierda sol,1,67.19189385632764,
 Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Comprehension,Wiso,8,1,312,1,Negro,,,
-Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Comprehension,Yankon,8,1,234,1,Azul/Verde,1,,
+Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Comprehension,Yankon,8,1,234,1,Azul/Verde,,,
 Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Comprehension,Joshin,8,1,245,1,Rojo,,,
 Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Comprehension,Pei/Xo,8,1,234,1,Verde,,,
 Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Comprehension,Panshin,8,1,320,0,Amarillo,0,61.75681419892059,
@@ -315,7 +315,7 @@ Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Comprehension,J
 Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Comprehension,Ami/Poa,8,1,325,1,Morado,,,
 Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Comprehension,Barin Poi,8,1,297,0,Mierda sol,0,61.75681419892059,
 Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Comprehension,Wiso,9,1,312,1,Negro,,,
-Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Comprehension,Yankon,9,1,234,1,Azul/Verde,1,,
+Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Comprehension,Yankon,9,1,234,1,Azul/Verde,,,
 Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Comprehension,Joshin,9,1,245,1,Rojo,,,
 Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Comprehension,Pei/Xo,9,1,234,1,Verde,,,
 Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Comprehension,Panshin,9,1,297,1,Amarillo,,,
@@ -324,7 +324,7 @@ Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Comprehension,
 Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Comprehension,Ami/Poa,9,1,325,1,Morado,,,
 Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Comprehension,Barin Poi,9,1,320,1,Mierda sol,,,
 Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Comprehension,Wiso,10,1,312,1,Negro,,,
-Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Comprehension,Yankon,10,1,1,1,Azul/Verde,1,,
+Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Comprehension,Yankon,10,1,1,1,Azul/Verde,,,
 Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Comprehension,Joshin,10,1,245,1,Rojo,,,
 Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Comprehension,Pei/Xo,10,1,234,1,Verde,,,
 Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Comprehension,Panshin,10,1,297,1,Amarillo,,,
@@ -333,7 +333,7 @@ Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Comprehension,J
 Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Comprehension,Ami/Poa,10,1,325,1,Morado,,,
 Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Comprehension,Barin Poi,10,1,320,1,Mierda sol,,,
 Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Comprehension,Wiso,9,1,312,1,Negro,,,
-Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Comprehension,Yankon,9,1,320,1,Azul/Verde,1,,
+Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Comprehension,Yankon,9,1,320,1,Azul/Verde,,,
 Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Comprehension,Joshin,9,1,245,1,Rojo,,,
 Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Comprehension,Pei/Xo,9,1,312,0,Verde,0,59.60879549194061,
 Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Comprehension,Panshin,9,1,320,0,Amarillo,0,61.75681419892059,
@@ -342,7 +342,7 @@ Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Comprehension,J
 Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Comprehension,Ami/Poa,9,1,325,1,Morado,,,
 Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Comprehension,Barin Poi,9,1,234,0,Mierda sol,0,62.08941536204057,
 Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Comprehension,Wiso,7,1,312,1,Negro,,,
-Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Comprehension,Yankon,7,1,234,1,Azul/Verde,1,,
+Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Comprehension,Yankon,7,1,234,1,Azul/Verde,,,
 Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Comprehension,Joshin,7,1,245,1,Rojo,,,
 Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Comprehension,Pei/Xo,7,1,234,1,Verde,,,
 Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Comprehension,Panshin,7,1,297,1,Amarillo,,,
@@ -351,7 +351,7 @@ Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Comprehension,Jo
 Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Comprehension,Ami/Poa,7,1,325,1,Morado,,,
 Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Comprehension,Barin Poi,7,1,320,1,Mierda sol,,,
 Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Comprehension,Wiso,8,1,312,1,Negro,,,
-Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Comprehension,Yankon,8,1,325,1,Azul/Verde,1,,
+Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Comprehension,Yankon,8,1,325,1,Azul/Verde,,,
 Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Comprehension,Joshin,8,1,245,1,Rojo,,,
 Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Comprehension,Pei/Xo,8,1,234,1,Verde,,,
 Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Comprehension,Panshin,8,1,320,0,Amarillo,0,61.75681419892059,
@@ -360,7 +360,7 @@ Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Comprehension,
 Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Comprehension,Ami/Poa,8,1,312,0,Morado,1,49.65288410555826,
 Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Comprehension,Barin Poi,8,1,297,0,Mierda sol,0,61.75681419892059,
 Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Comprehension,Wiso,8,1,312,1,Negro,,,
-Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Comprehension,Yankon,8,1,234,1,Azul/Verde,1,,
+Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Comprehension,Yankon,8,1,234,1,Azul/Verde,,,
 Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Comprehension,Joshin,8,1,245,1,Rojo,,,
 Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Comprehension,Pei/Xo,8,1,234,1,Verde,,,
 Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Comprehension,Panshin,8,1,297,1,Amarillo,,,
@@ -369,7 +369,7 @@ Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Comprehension,
 Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Comprehension,Ami/Poa,8,1,325,1,Morado,,,
 Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Comprehension,Barin Poi,8,1,234,0,Mierda sol,0,62.08941536204057,
 Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Comprehension,Wiso,10,1,312,1,Negro,,,
-Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Comprehension,Yankon,10,1,234,1,Azul/Verde,1,,
+Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Comprehension,Yankon,10,1,234,1,Azul/Verde,,,
 Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Comprehension,Joshin,10,1,245,1,Rojo,,,
 Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Comprehension,Pei/Xo,10,1,320,0,Verde,0,62.08941536204057,
 Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Comprehension,Panshin,10,1,297,1,Amarillo,,,
@@ -378,7 +378,7 @@ Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Comprehension,Jo
 Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Comprehension,Ami/Poa,10,1,325,1,Morado,,,
 Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Comprehension,Barin Poi,10,1,320,1,Mierda sol,,,
 Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Comprehension,Wiso,8,1,312,1,Negro,,,
-Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Comprehension,Yankon,8,1,234,1,Azul/Verde,1,,
+Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Comprehension,Yankon,8,1,234,1,Azul/Verde,,,
 Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Comprehension,Joshin,8,1,245,1,Rojo,,,
 Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Comprehension,Pei/Xo,8,1,320,0,Verde,0,62.08941536204057,
 Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Comprehension,Panshin,8,1,297,1,Amarillo,,,
@@ -387,7 +387,7 @@ Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Comprehension,Jo
 Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Comprehension,Ami/Poa,8,1,325,1,Morado,,,
 Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Comprehension,Barin Poi,8,1,320,1,Mierda sol,,,
 Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Comprehension,Wiso,6,1,234,0,Negro,0,59.60879549194061,
-Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Comprehension,Yankon,6,1,320,1,Azul/Verde,1,,
+Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Comprehension,Yankon,6,1,320,1,Azul/Verde,,,
 Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Comprehension,Joshin,6,1,297,0,Rojo,1,93.1910736068643,
 Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Comprehension,Pei/Xo,6,1,245,0,Verde,0,113.85965396047891,
 Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Comprehension,Panshin,6,1,297,1,Amarillo,,,
@@ -396,7 +396,7 @@ Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Comprehension,Joxo
 Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Comprehension,Ami/Poa,6,1,234,0,Morado,0,104.20868389918375,
 Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Comprehension,Barin Poi,6,1,245,0,Mierda sol,0,71.2641529803028,
 Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Comprehension,Wiso,11,1,312,1,Negro,,,
-Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Comprehension,Yankon,11,1,1,1,Azul/Verde,1,,
+Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Comprehension,Yankon,11,1,1,1,Azul/Verde,,,
 Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Comprehension,Joshin,11,1,245,1,Rojo,,,
 Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Comprehension,Pei/Xo,11,1,234,1,Verde,,,
 Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Comprehension,Panshin,11,1,297,1,Amarillo,,,
@@ -405,7 +405,7 @@ Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Comprehension
 Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Comprehension,Ami/Poa,11,1,325,1,Morado,,,
 Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Comprehension,Barin Poi,11,1,320,1,Mierda sol,,,
 Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Comprehension,Wiso,11,1,312,1,Negro,,,
-Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Comprehension,Yankon,11,1,1,1,Azul/Verde,1,,
+Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Comprehension,Yankon,11,1,1,1,Azul/Verde,,,
 Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Comprehension,Joshin,11,1,245,1,Rojo,,,
 Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Comprehension,Pei/Xo,11,1,234,1,Verde,,,
 Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Comprehension,Panshin,11,1,297,1,Amarillo,,,
@@ -414,7 +414,7 @@ Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Comprehension,J
 Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Comprehension,Ami/Poa,11,1,325,1,Morado,,,
 Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Comprehension,Barin Poi,11,1,320,1,Mierda sol,,,
 Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Comprehension,Wiso,9,1,312,1,Negro,,,
-Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Comprehension,Yankon,9,1,1,1,Azul/Verde,1,,
+Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Comprehension,Yankon,9,1,1,1,Azul/Verde,,,
 Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Comprehension,Joshin,9,1,245,1,Rojo,,,
 Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Comprehension,Pei/Xo,9,1,234,1,Verde,,,
 Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Comprehension,Panshin,9,1,297,1,Amarillo,,,
@@ -423,7 +423,7 @@ Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Comprehension,J
 Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Comprehension,Ami/Poa,9,1,325,1,Morado,,,
 Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Comprehension,Barin Poi,9,1,320,1,Mierda sol,,,
 Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Comprehension,Wiso,12,1,312,1,Negro,,,
-Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Comprehension,Yankon,12,1,1,1,Azul/Verde,1,,
+Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Comprehension,Yankon,12,1,1,1,Azul/Verde,,,
 Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Comprehension,Joshin,12,1,245,1,Rojo,,,
 Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Comprehension,Pei/Xo,12,1,234,1,Verde,,,
 Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Comprehension,Panshin,12,1,297,1,Amarillo,,,
@@ -432,7 +432,7 @@ Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Comprehension,
 Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Comprehension,Ami/Poa,12,1,325,1,Morado,,,
 Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Comprehension,Barin Poi,12,1,320,1,Mierda sol,,,
 Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Comprehension,Wiso,8,1,312,1,Negro,,,
-Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Comprehension,Yankon,8,1,234,1,Azul/Verde,1,,
+Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Comprehension,Yankon,8,1,234,1,Azul/Verde,,,
 Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Comprehension,Joshin,8,1,245,1,Rojo,,,
 Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Comprehension,Pei/Xo,8,1,320,0,Verde,0,62.08941536204057,
 Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Comprehension,Panshin,8,1,297,1,Amarillo,,,
@@ -441,7 +441,7 @@ Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Comprehension,J
 Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Comprehension,Ami/Poa,8,1,1,0,Morado,0,58.349317905182055,
 Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Comprehension,Barin Poi,8,1,325,0,Mierda sol,0,100.49231861192177,
 Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Comprehension,Wiso,9,1,312,1,Negro,,,
-Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Comprehension,Yankon,9,1,234,1,Azul/Verde,1,,
+Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Comprehension,Yankon,9,1,234,1,Azul/Verde,,,
 Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Comprehension,Joshin,9,1,245,1,Rojo,,,
 Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Comprehension,Pei/Xo,9,1,234,1,Verde,,,
 Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Comprehension,Panshin,9,1,297,1,Amarillo,,,
@@ -450,7 +450,7 @@ Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Comprehension,Jo
 Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Comprehension,Ami/Poa,9,1,325,1,Morado,,,
 Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Comprehension,Barin Poi,9,1,320,1,Mierda sol,,,
 Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Comprehension,Wiso,12,1,312,1,Negro,,,
-Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Comprehension,Yankon,12,1,234,1,Azul/Verde,1,,
+Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Comprehension,Yankon,12,1,234,1,Azul/Verde,,,
 Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Comprehension,Joshin,12,1,245,1,Rojo,,,
 Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Comprehension,Pei/Xo,12,1,234,1,Verde,,,
 Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Comprehension,Panshin,12,1,297,1,Amarillo,,,
@@ -459,7 +459,7 @@ Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Comprehensio
 Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Comprehension,Ami/Poa,12,1,325,1,Morado,,,
 Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Comprehension,Barin Poi,12,1,320,1,Mierda sol,,,
 Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Comprehension,Wiso,10,1,312,1,Negro,,,
-Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Comprehension,Yankon,10,1,1,1,Azul/Verde,1,,
+Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Comprehension,Yankon,10,1,1,1,Azul/Verde,,,
 Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Comprehension,Joshin,10,1,245,1,Rojo,,,
 Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Comprehension,Pei/Xo,10,1,234,1,Verde,,,
 Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Comprehension,Panshin,10,1,297,1,Amarillo,,,
@@ -468,7 +468,7 @@ Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Comprehension,Joxo,10,1,2
 Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Comprehension,Ami/Poa,10,1,320,0,Morado,0,100.49231861192177,
 Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Comprehension,Barin Poi,10,1,,0,Mierda sol,,,
 Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Comprehension,Wiso,10,1,312,1,Negro,,,
-Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Comprehension,Yankon,10,1,1,1,Azul/Verde,1,,
+Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Comprehension,Yankon,10,1,1,1,Azul/Verde,,,
 Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Comprehension,Joshin,10,1,245,1,Rojo,,,
 Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Comprehension,Pei/Xo,10,1,234,1,Verde,,,
 Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Comprehension,Panshin,10,1,297,1,Amarillo,,,
@@ -477,7 +477,7 @@ Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Comprehension,Joxo,10,1,27
 Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Comprehension,Ami/Poa,10,1,320,0,Morado,0,100.49231861192177,
 Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Comprehension,Barin Poi,10,1,325,0,Mierda sol,0,100.49231861192177,
 Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Comprehension,Wiso,10,1,312,1,Negro,,,
-Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Comprehension,Yankon,10,1,234,1,Azul/Verde,1,,
+Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Comprehension,Yankon,10,1,234,1,Azul/Verde,,,
 Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Comprehension,Joshin,10,1,245,1,Rojo,,,
 Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Comprehension,Pei/Xo,10,1,320,0,Verde,0,62.08941536204057,
 Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Comprehension,Panshin,10,1,297,1,Amarillo,,,
@@ -486,7 +486,7 @@ Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Comprehension,Joxo,10,1,274
 Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Comprehension,Ami/Poa,10,1,325,1,Morado,,,
 Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Comprehension,Barin Poi,10,1,297,0,Mierda sol,0,61.75681419892059,
 Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Comprehension,Wiso,8,1,312,1,Negro,,,
-Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Comprehension,Yankon,8,1,320,1,Azul/Verde,1,,
+Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Comprehension,Yankon,8,1,320,1,Azul/Verde,,,
 Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Comprehension,Joshin,8,1,245,1,Rojo,,,
 Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Comprehension,Pei/Xo,8,1,234,1,Verde,,,
 Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Comprehension,Panshin,8,1,297,1,Amarillo,,,
@@ -495,7 +495,7 @@ Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Comprehension,Joxo,8,1,274,
 Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Comprehension,Ami/Poa,8,1,1,0,Morado,0,58.349317905182055,
 Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Comprehension,Barin Poi,8,1,297,0,Mierda sol,0,61.75681419892059,
 Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Comprehension,Wiso,10,1,312,1,Negro,,,
-Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Comprehension,Yankon,10,1,234,1,Azul/Verde,1,,
+Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Comprehension,Yankon,10,1,234,1,Azul/Verde,,,
 Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Comprehension,Joshin,10,1,245,1,Rojo,,,
 Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Comprehension,Pei/Xo,10,1,234,1,Verde,,,
 Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Comprehension,Panshin,10,1,297,1,Amarillo,,,
@@ -504,7 +504,7 @@ Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Comprehension,Joxo,10,1,27
 Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Comprehension,Ami/Poa,10,1,,0,Morado,,,
 Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Comprehension,Barin Poi,10,1,297,0,Mierda sol,0,61.75681419892059,
 Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Comprehension,Wiso,8,1,312,1,Negro,,,
-Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Comprehension,Yankon,8,1,234,1,Azul/Verde,1,,
+Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Comprehension,Yankon,8,1,234,1,Azul/Verde,,,
 Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Comprehension,Joshin,8,1,245,1,Rojo,,,
 Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Comprehension,Pei/Xo,8,1,297,0,Verde,0,119.88323068719829,
 Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Comprehension,Panshin,8,1,297,1,Amarillo,,,
@@ -512,10 +512,10 @@ Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Comprehension,Nai,8,1,312,0
 Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Comprehension,Joxo,8,1,274,1,Blanco,,,
 Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Comprehension,Ami/Poa,8,1,,0,Morado,,,
 Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Comprehension,Barin Poi,8,1,297,0,Mierda sol,0,61.75681419892059,
-Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Comprehension,Yankon,6,2,1,1,Azul/Verde,1,,
-Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Comprehension,Joshin,6,2,320,1,Rojo,0,71.2641529803028,
+Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Comprehension,Yankon,6,2,1,1,Azul/Verde,,,
+Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Comprehension,Joshin,6,2,320,1,Rojo,,,
 Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Comprehension,Pei/Xo,6,2,312,0,Verde,0,59.60879549194061,
-Shipibo,sh_2,7,femenino,bilingue,8,17/07/2017,7.4,Comprehension,Yankon,7,2,320,1,Azul/Verde,1,,
+Shipibo,sh_2,7,femenino,bilingue,8,17/07/2017,7.4,Comprehension,Yankon,7,2,320,1,Azul/Verde,,,
 Shipibo,sh_2,7,femenino,bilingue,8,17/07/2017,7.4,Comprehension,Joshin,7,2,297,0,Rojo,1,93.1910736068643,
 Shipibo,sh_2,7,femenino,bilingue,8,17/07/2017,7.4,Comprehension,Pei/Xo,7,2,325,0,Verde,0,104.20868389918375,
 Shipibo,sh_3,9,masculino,bilingue,5,17/07/2017,9.6,Comprehension,Yankon,10,2,297,0,Azul/Verde,1,,
@@ -527,275 +527,275 @@ Shipibo,sh_4,7,masculino,bilingue,6,17/07/2017,7.3,Comprehension,Pei/Xo,7,2,234,
 Shipibo,sh_5,7,femenino,bilingue,1,17/07/2017,7.8,Comprehension,Yankon,8,2,274,0,Azul/Verde,1,,
 Shipibo,sh_5,7,femenino,bilingue,1,17/07/2017,7.8,Comprehension,Joshin,8,2,245,1,Rojo,,,
 Shipibo,sh_5,7,femenino,bilingue,1,17/07/2017,7.8,Comprehension,Pei/Xo,8,2,274,0,Verde,0,74.88113647641842,
-Shipibo,sh_6,8,masculino,bilingue,2,17/07/2017,8.2,Comprehension,Yankon,8,2,1,1,Azul/Verde,1,,
+Shipibo,sh_6,8,masculino,bilingue,2,17/07/2017,8.2,Comprehension,Yankon,8,2,1,1,Azul/Verde,,,
 Shipibo,sh_6,8,masculino,bilingue,2,17/07/2017,8.2,Comprehension,Joshin,8,2,,,Rojo,,,
 Shipibo,sh_6,8,masculino,bilingue,2,17/07/2017,8.2,Comprehension,Pei/Xo,8,2,320,0,Verde,0,62.08941536204057,
 Shipibo,sh_7,5,masculino,bilingue,3,17/07/2017,5.7,Comprehension,Yankon,6,2,312,0,Azul/Verde,1,,
 Shipibo,sh_7,5,masculino,bilingue,3,17/07/2017,5.7,Comprehension,Joshin,6,2,1,0,Rojo,0,102.87037328599523,
 Shipibo,sh_7,5,masculino,bilingue,3,17/07/2017,5.7,Comprehension,Pei/Xo,6,2,320,0,Verde,0,62.08941536204057,
-Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Comprehension,Yankon,9,2,234,1,Azul/Verde,1,,
+Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Comprehension,Yankon,9,2,234,1,Azul/Verde,,,
 Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Comprehension,Joshin,9,2,297,0,Rojo,1,93.1910736068643,
 Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Comprehension,Pei/Xo,9,2,,,Verde,,,
-Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Comprehension,Yankon,8,2,1,1,Azul/Verde,1,,
-Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Comprehension,Joshin,8,2,320,1,Rojo,0,71.2641529803028,
+Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Comprehension,Yankon,8,2,1,1,Azul/Verde,,,
+Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Comprehension,Joshin,8,2,320,1,Rojo,,,
 Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Comprehension,Pei/Xo,8,2,234,1,Verde,,,
-Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Comprehension,Yankon,7,2,1,1,Azul/Verde,1,,
-Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Comprehension,Joshin,7,2,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Comprehension,Yankon,7,2,1,1,Azul/Verde,,,
+Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Comprehension,Joshin,7,2,325,1,Rojo,,,
 Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Comprehension,Pei/Xo,7,2,320,0,Verde,0,62.08941536204057,
 Shipibo,sh_11,6,masculino,c.c.n.n. (bahuanisho),2,02/08/2017,6.9,Comprehension,Yankon,7,2,297,0,Azul/Verde,1,,
-Shipibo,sh_11,6,masculino,c.c.n.n. (bahuanisho),2,02/08/2017,6.9,Comprehension,Joshin,7,2,320,1,Rojo,0,71.2641529803028,
+Shipibo,sh_11,6,masculino,c.c.n.n. (bahuanisho),2,02/08/2017,6.9,Comprehension,Joshin,7,2,320,1,Rojo,,,
 Shipibo,sh_11,6,masculino,c.c.n.n. (bahuanisho),2,02/08/2017,6.9,Comprehension,Pei/Xo,7,2,320,0,Verde,0,62.08941536204057,
 Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Comprehension,Yankon,6,2,245,0,Azul/Verde,1,,
 Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Comprehension,Joshin,6,2,297,0,Rojo,1,93.1910736068643,
 Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Comprehension,Pei/Xo,6,2,245,0,Verde,0,113.85965396047891,
-Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Comprehension,Yankon,6,2,1,1,Azul/Verde,1,,
-Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Comprehension,Joshin,6,2,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Comprehension,Yankon,6,2,1,1,Azul/Verde,,,
+Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Comprehension,Joshin,6,2,325,1,Rojo,,,
 Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Comprehension,Pei/Xo,6,2,1,0,Verde,0,75.71344992800157,
-Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Comprehension,Yankon,6,2,1,1,Azul/Verde,1,,
+Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Comprehension,Yankon,6,2,1,1,Azul/Verde,,,
 Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Comprehension,Joshin,6,2,297,0,Rojo,1,93.1910736068643,
 Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Comprehension,Pei/Xo,6,2,325,0,Verde,0,104.20868389918375,
-Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Comprehension,Yankon,8,2,1,1,Azul/Verde,1,,
-Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Comprehension,Joshin,8,2,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Comprehension,Yankon,8,2,1,1,Azul/Verde,,,
+Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Comprehension,Joshin,8,2,325,1,Rojo,,,
 Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Comprehension,Pei/Xo,8,2,1,0,Verde,0,75.71344992800157,
-Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Comprehension,Yankon,7,2,320,1,Azul/Verde,1,,
-Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Comprehension,Joshin,7,2,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Comprehension,Yankon,7,2,320,1,Azul/Verde,,,
+Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Comprehension,Joshin,7,2,325,1,Rojo,,,
 Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Comprehension,Pei/Xo,7,2,320,0,Verde,0,62.08941536204057,
-Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Comprehension,Yankon,9,2,234,1,Azul/Verde,1,,
+Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Comprehension,Yankon,9,2,234,1,Azul/Verde,,,
 Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Comprehension,Joshin,9,2,297,0,Rojo,1,93.1910736068643,
 Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Comprehension,Pei/Xo,9,2,320,0,Verde,0,62.08941536204057,
-Shipibo,sh_18,8,femenino,c.c.n.n. (bahuanisho),4,03/08/2017,8,Comprehension,Yankon,8,2,1,1,Azul/Verde,1,,
+Shipibo,sh_18,8,femenino,c.c.n.n. (bahuanisho),4,03/08/2017,8,Comprehension,Yankon,8,2,1,1,Azul/Verde,,,
 Shipibo,sh_18,8,femenino,c.c.n.n. (bahuanisho),4,03/08/2017,8,Comprehension,Joshin,8,2,297,0,Rojo,1,93.1910736068643,
 Shipibo,sh_18,8,femenino,c.c.n.n. (bahuanisho),4,03/08/2017,8,Comprehension,Pei/Xo,8,2,320,0,Verde,0,62.08941536204057,
-Shipibo,sh_19,6,femenino,c.c.n.n. (bahuanisho),5,03/08/2017,6,Comprehension,Yankon,6,2,320,1,Azul/Verde,1,,
+Shipibo,sh_19,6,femenino,c.c.n.n. (bahuanisho),5,03/08/2017,6,Comprehension,Yankon,6,2,320,1,Azul/Verde,,,
 Shipibo,sh_19,6,femenino,c.c.n.n. (bahuanisho),5,03/08/2017,6,Comprehension,Joshin,6,2,234,0,Rojo,0,113.85965396047891,
 Shipibo,sh_19,6,femenino,c.c.n.n. (bahuanisho),5,03/08/2017,6,Comprehension,Pei/Xo,6,2,320,0,Verde,0,62.08941536204057,
-Shipibo,sh_20,6,masculino,c.c.n.n. (bahuanisho),6,03/08/2017,6.6,Comprehension,Yankon,7,2,320,1,Azul/Verde,1,,
+Shipibo,sh_20,6,masculino,c.c.n.n. (bahuanisho),6,03/08/2017,6.6,Comprehension,Yankon,7,2,320,1,Azul/Verde,,,
 Shipibo,sh_20,6,masculino,c.c.n.n. (bahuanisho),6,03/08/2017,6.6,Comprehension,Joshin,7,2,297,0,Rojo,1,93.1910736068643,
 Shipibo,sh_20,6,masculino,c.c.n.n. (bahuanisho),6,03/08/2017,6.6,Comprehension,Pei/Xo,7,2,1,0,Verde,0,75.71344992800157,
-Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Comprehension,Yankon,10,2,234,1,Azul/Verde,1,,
-Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Comprehension,Joshin,10,2,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Comprehension,Yankon,10,2,234,1,Azul/Verde,,,
+Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Comprehension,Joshin,10,2,325,1,Rojo,,,
 Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Comprehension,Pei/Xo,10,2,320,0,Verde,0,62.08941536204057,
-Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Comprehension,Yankon,8,2,320,1,Azul/Verde,1,,
-Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Comprehension,Joshin,8,2,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Comprehension,Yankon,8,2,320,1,Azul/Verde,,,
+Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Comprehension,Joshin,8,2,325,1,Rojo,,,
 Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Comprehension,Pei/Xo,8,2,320,0,Verde,0,62.08941536204057,
-Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Comprehension,Yankon,8,2,320,1,Azul/Verde,1,,
+Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Comprehension,Yankon,8,2,320,1,Azul/Verde,,,
 Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Comprehension,Joshin,8,2,297,0,Rojo,1,93.1910736068643,
 Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Comprehension,Pei/Xo,8,2,1,0,Verde,0,75.71344992800157,
 Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Comprehension,Yankon,8,2,274,0,Azul/Verde,1,,
-Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Comprehension,Joshin,8,2,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Comprehension,Joshin,8,2,325,1,Rojo,,,
 Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Comprehension,Pei/Xo,8,2,1,0,Verde,0,75.71344992800157,
-Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Comprehension,Yankon,10,2,1,1,Azul/Verde,1,,
-Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Comprehension,Joshin,10,2,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Comprehension,Yankon,10,2,1,1,Azul/Verde,,,
+Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Comprehension,Joshin,10,2,325,1,Rojo,,,
 Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Comprehension,Pei/Xo,10,2,320,0,Verde,0,62.08941536204057,
-Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Comprehension,Yankon,8,2,1,1,Azul/Verde,1,,
-Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Comprehension,Joshin,8,2,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Comprehension,Yankon,8,2,1,1,Azul/Verde,,,
+Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Comprehension,Joshin,8,2,325,1,Rojo,,,
 Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Comprehension,Pei/Xo,8,2,320,0,Verde,0,62.08941536204057,
-Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Comprehension,Yankon,5,2,1,1,Azul/Verde,1,,
-Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Comprehension,Joshin,5,2,320,1,Rojo,0,71.2641529803028,
+Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Comprehension,Yankon,5,2,1,1,Azul/Verde,,,
+Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Comprehension,Joshin,5,2,320,1,Rojo,,,
 Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Comprehension,Pei/Xo,5,2,320,0,Verde,0,62.08941536204057,
-Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Comprehension,Yankon,6,2,325,1,Azul/Verde,1,,
-Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Comprehension,Joshin,6,2,320,1,Rojo,0,71.2641529803028,
+Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Comprehension,Yankon,6,2,325,1,Azul/Verde,,,
+Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Comprehension,Joshin,6,2,320,1,Rojo,,,
 Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Comprehension,Pei/Xo,6,2,234,1,Verde,,,
-Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Comprehension,Yankon,9,2,1,1,Azul/Verde,1,,
-Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Comprehension,Joshin,9,2,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Comprehension,Yankon,9,2,1,1,Azul/Verde,,,
+Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Comprehension,Joshin,9,2,325,1,Rojo,,,
 Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Comprehension,Pei/Xo,9,2,274,0,Verde,0,74.88113647641842,
-Shipibo,sh_30,7 or 8,femenino,c.c.n.n. (bahuanisho),16,03/08/2017,8,Comprehension,Yankon,8,2,325,1,Azul/Verde,1,,
+Shipibo,sh_30,7 or 8,femenino,c.c.n.n. (bahuanisho),16,03/08/2017,8,Comprehension,Yankon,8,2,325,1,Azul/Verde,,,
 Shipibo,sh_30,7 or 8,femenino,c.c.n.n. (bahuanisho),16,03/08/2017,8,Comprehension,Joshin,8,2,274,0,Rojo,1,85.85165694382374,
 Shipibo,sh_30,7 or 8,femenino,c.c.n.n. (bahuanisho),16,03/08/2017,8,Comprehension,Pei/Xo,8,2,320,0,Verde,0,62.08941536204057,
-Shipibo,sh_31,8,femenino,c.c.n.n. (bahuanisho),17,03/08/2017,7.9,Comprehension,Yankon,8,2,320,1,Azul/Verde,1,,
+Shipibo,sh_31,8,femenino,c.c.n.n. (bahuanisho),17,03/08/2017,7.9,Comprehension,Yankon,8,2,320,1,Azul/Verde,,,
 Shipibo,sh_31,8,femenino,c.c.n.n. (bahuanisho),17,03/08/2017,7.9,Comprehension,Joshin,8,2,274,0,Rojo,1,85.85165694382374,
 Shipibo,sh_31,8,femenino,c.c.n.n. (bahuanisho),17,03/08/2017,7.9,Comprehension,Pei/Xo,8,2,320,0,Verde,0,62.08941536204057,
-Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Comprehension,Yankon,8,2,1,1,Azul/Verde,1,,
-Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Comprehension,Joshin,8,2,320,1,Rojo,0,71.2641529803028,
+Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Comprehension,Yankon,8,2,1,1,Azul/Verde,,,
+Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Comprehension,Joshin,8,2,320,1,Rojo,,,
 Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Comprehension,Pei/Xo,8,2,297,0,Verde,0,119.88323068719829,
-Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Comprehension,Yankon,11,2,1,1,Azul/Verde,1,,
+Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Comprehension,Yankon,11,2,1,1,Azul/Verde,,,
 Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Comprehension,Joshin,11,2,297,0,Rojo,1,93.1910736068643,
 Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Comprehension,Pei/Xo,11,2,320,0,Verde,0,62.08941536204057,
-Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Comprehension,Yankon,11,2,320,1,Azul/Verde,1,,
+Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Comprehension,Yankon,11,2,320,1,Azul/Verde,,,
 Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Comprehension,Joshin,11,2,297,0,Rojo,1,93.1910736068643,
 Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Comprehension,Pei/Xo,11,2,320,0,Verde,0,62.08941536204057,
-Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Comprehension,Yankon,8,2,1,1,Azul/Verde,1,,
+Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Comprehension,Yankon,8,2,1,1,Azul/Verde,,,
 Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Comprehension,Joshin,8,2,297,0,Rojo,1,93.1910736068643,
 Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Comprehension,Pei/Xo,8,2,320,0,Verde,0,62.08941536204057,
-Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Comprehension,Yankon,9,2,1,1,Azul/Verde,1,,
+Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Comprehension,Yankon,9,2,1,1,Azul/Verde,,,
 Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Comprehension,Joshin,9,2,274,0,Rojo,1,85.85165694382374,
 Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Comprehension,Pei/Xo,9,2,320,0,Verde,0,62.08941536204057,
-Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Comprehension,Yankon,10,2,234,1,Azul/Verde,1,,
-Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Comprehension,Joshin,10,2,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Comprehension,Yankon,10,2,234,1,Azul/Verde,,,
+Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Comprehension,Joshin,10,2,325,1,Rojo,,,
 Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Comprehension,Pei/Xo,10,2,1,0,Verde,0,75.71344992800157,
-Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Comprehension,Yankon,9,2,325,1,Azul/Verde,1,,
+Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Comprehension,Yankon,9,2,325,1,Azul/Verde,,,
 Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Comprehension,Joshin,9,2,297,0,Rojo,1,93.1910736068643,
 Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Comprehension,Pei/Xo,9,2,325,0,Verde,0,104.20868389918375,
-Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Comprehension,Yankon,7,2,325,1,Azul/Verde,1,,
-Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Comprehension,Joshin,7,2,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Comprehension,Yankon,7,2,325,1,Azul/Verde,,,
+Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Comprehension,Joshin,7,2,325,1,Rojo,,,
 Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Comprehension,Pei/Xo,7,2,1,0,Verde,0,75.71344992800157,
 Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Comprehension,Yankon,8,2,245,0,Azul/Verde,1,,
 Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Comprehension,Joshin,8,2,297,0,Rojo,1,93.1910736068643,
 Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Comprehension,Pei/Xo,8,2,274,0,Verde,0,74.88113647641842,
-Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Comprehension,Yankon,8,2,320,1,Azul/Verde,1,,
-Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Comprehension,Joshin,8,2,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Comprehension,Yankon,8,2,320,1,Azul/Verde,,,
+Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Comprehension,Joshin,8,2,325,1,Rojo,,,
 Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Comprehension,Pei/Xo,8,2,320,0,Verde,0,62.08941536204057,
-Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Comprehension,Yankon,10,2,1,1,Azul/Verde,1,,
-Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Comprehension,Joshin,10,2,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Comprehension,Yankon,10,2,1,1,Azul/Verde,,,
+Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Comprehension,Joshin,10,2,325,1,Rojo,,,
 Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Comprehension,Pei/Xo,10,2,234,1,Verde,,,
-Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Comprehension,Yankon,8,2,325,1,Azul/Verde,1,,
-Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Comprehension,Joshin,8,2,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Comprehension,Yankon,8,2,325,1,Azul/Verde,,,
+Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Comprehension,Joshin,8,2,325,1,Rojo,,,
 Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Comprehension,Pei/Xo,8,2,234,1,Verde,,,
-Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Comprehension,Yankon,6,2,325,1,Azul/Verde,1,,
+Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Comprehension,Yankon,6,2,325,1,Azul/Verde,,,
 Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Comprehension,Joshin,6,2,274,0,Rojo,1,85.85165694382374,
 Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Comprehension,Pei/Xo,6,2,1,0,Verde,0,75.71344992800157,
-Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Comprehension,Yankon,11,2,234,1,Azul/Verde,1,,
-Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Comprehension,Joshin,11,2,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Comprehension,Yankon,11,2,234,1,Azul/Verde,,,
+Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Comprehension,Joshin,11,2,325,1,Rojo,,,
 Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Comprehension,Pei/Xo,11,2,320,0,Verde,0,62.08941536204057,
-Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Comprehension,Yankon,11,2,234,1,Azul/Verde,1,,
-Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Comprehension,Joshin,11,2,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Comprehension,Yankon,11,2,234,1,Azul/Verde,,,
+Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Comprehension,Joshin,11,2,325,1,Rojo,,,
 Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Comprehension,Pei/Xo,11,2,1,0,Verde,0,75.71344992800157,
-Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Comprehension,Yankon,9,2,234,1,Azul/Verde,1,,
+Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Comprehension,Yankon,9,2,234,1,Azul/Verde,,,
 Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Comprehension,Joshin,9,2,297,0,Rojo,1,93.1910736068643,
 Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Comprehension,Pei/Xo,9,2,1,0,Verde,0,75.71344992800157,
-Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Comprehension,Yankon,12,2,234,1,Azul/Verde,1,,
-Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Comprehension,Joshin,12,2,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Comprehension,Yankon,12,2,234,1,Azul/Verde,,,
+Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Comprehension,Joshin,12,2,325,1,Rojo,,,
 Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Comprehension,Pei/Xo,12,2,1,0,Verde,0,75.71344992800157,
-Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Comprehension,Yankon,8,2,1,1,Azul/Verde,1,,
-Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Comprehension,Joshin,8,2,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Comprehension,Yankon,8,2,1,1,Azul/Verde,,,
+Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Comprehension,Joshin,8,2,325,1,Rojo,,,
 Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Comprehension,Pei/Xo,8,2,234,1,Verde,,,
-Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Comprehension,Yankon,9,2,325,1,Azul/Verde,1,,
+Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Comprehension,Yankon,9,2,325,1,Azul/Verde,,,
 Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Comprehension,Joshin,9,2,297,0,Rojo,1,93.1910736068643,
 Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Comprehension,Pei/Xo,9,2,1,0,Verde,0,75.71344992800157,
-Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Comprehension,Yankon,12,2,1,1,Azul/Verde,1,,
-Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Comprehension,Joshin,12,2,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Comprehension,Yankon,12,2,1,1,Azul/Verde,,,
+Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Comprehension,Joshin,12,2,325,1,Rojo,,,
 Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Comprehension,Pei/Xo,12,2,1,0,Verde,0,75.71344992800157,
 Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Comprehension,Yankon,10,2,,,Azul/Verde,,,
 Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Comprehension,Joshin,10,2,,,Rojo,,,
 Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Comprehension,Pei/Xo,10,2,,,Verde,,,
-Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Comprehension,Yankon,10,2,234,1,Azul/Verde,1,,
-Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Comprehension,Joshin,10,2,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Comprehension,Yankon,10,2,234,1,Azul/Verde,,,
+Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Comprehension,Joshin,10,2,325,1,Rojo,,,
 Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Comprehension,Pei/Xo,10,2,320,0,Verde,0,62.08941536204057,
-Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Comprehension,Yankon,10,2,320,1,Azul/Verde,1,,
+Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Comprehension,Yankon,10,2,320,1,Azul/Verde,,,
 Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Comprehension,Joshin,10,2,297,0,Rojo,1,93.1910736068643,
 Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Comprehension,Pei/Xo,10,2,234,1,Verde,,,
-Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Comprehension,Yankon,8,2,234,1,Azul/Verde,1,,
-Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Comprehension,Joshin,8,2,325,1,Rojo,1,66.94457558308963,
+Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Comprehension,Yankon,8,2,234,1,Azul/Verde,,,
+Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Comprehension,Joshin,8,2,325,1,Rojo,,,
 Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Comprehension,Pei/Xo,8,2,320,0,Verde,0,62.08941536204057,
-Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Comprehension,Yankon,10,2,1,1,Azul/Verde,1,,
+Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Comprehension,Yankon,10,2,1,1,Azul/Verde,,,
 Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Comprehension,Joshin,10,2,,,Rojo,,,
 Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Comprehension,Pei/Xo,10,2,,,Verde,,,
-Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Comprehension,Yankon,8,2,320,1,Azul/Verde,1,,
+Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Comprehension,Yankon,8,2,320,1,Azul/Verde,,,
 Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Comprehension,Joshin,8,2,,,Rojo,,,
 Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Comprehension,Pei/Xo,8,2,,,Verde,,,
-Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Comprehension,Yankon,6,3,325,1,Azul/Verde,1,,
-Shipibo,sh_2,7,femenino,bilingue,8,17/07/2017,7.4,Comprehension,Yankon,7,3,1,1,Azul/Verde,1,,
-Shipibo,sh_3,9,masculino,bilingue,5,17/07/2017,9.6,Comprehension,Yankon,10,3,325,1,Azul/Verde,1,,
-Shipibo,sh_4,7,masculino,bilingue,6,17/07/2017,7.3,Comprehension,Yankon,7,3,320,1,Azul/Verde,1,,
-Shipibo,sh_5,7,femenino,bilingue,1,17/07/2017,7.8,Comprehension,Yankon,8,3,1,1,Azul/Verde,1,,
-Shipibo,sh_6,8,masculino,bilingue,2,17/07/2017,8.2,Comprehension,Yankon,8,3,320,1,Azul/Verde,1,,
+Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Comprehension,Yankon,6,3,325,1,Azul/Verde,,,
+Shipibo,sh_2,7,femenino,bilingue,8,17/07/2017,7.4,Comprehension,Yankon,7,3,1,1,Azul/Verde,,,
+Shipibo,sh_3,9,masculino,bilingue,5,17/07/2017,9.6,Comprehension,Yankon,10,3,325,1,Azul/Verde,,,
+Shipibo,sh_4,7,masculino,bilingue,6,17/07/2017,7.3,Comprehension,Yankon,7,3,320,1,Azul/Verde,,,
+Shipibo,sh_5,7,femenino,bilingue,1,17/07/2017,7.8,Comprehension,Yankon,8,3,1,1,Azul/Verde,,,
+Shipibo,sh_6,8,masculino,bilingue,2,17/07/2017,8.2,Comprehension,Yankon,8,3,320,1,Azul/Verde,,,
 Shipibo,sh_7,5,masculino,bilingue,3,17/07/2017,5.7,Comprehension,Yankon,6,3,245,0,Azul/Verde,1,,
-Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Comprehension,Yankon,9,3,1,1,Azul/Verde,1,,
+Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Comprehension,Yankon,9,3,1,1,Azul/Verde,,,
 Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Comprehension,Yankon,8,3,274,0,Azul/Verde,1,,
-Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Comprehension,Yankon,7,3,320,1,Azul/Verde,1,,
+Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Comprehension,Yankon,7,3,320,1,Azul/Verde,,,
 Shipibo,sh_11,6,masculino,c.c.n.n. (bahuanisho),2,02/08/2017,6.9,Comprehension,Yankon,7,3,274,0,Azul/Verde,1,,
-Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Comprehension,Yankon,6,3,320,1,Azul/Verde,1,,
-Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Comprehension,Yankon,6,3,325,1,Azul/Verde,1,,
-Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Comprehension,Yankon,6,3,234,1,Azul/Verde,1,,
-Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Comprehension,Yankon,8,3,325,1,Azul/Verde,1,,
-Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Comprehension,Yankon,7,3,1,1,Azul/Verde,1,,
-Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Comprehension,Yankon,9,3,320,1,Azul/Verde,1,,
-Shipibo,sh_18,8,femenino,c.c.n.n. (bahuanisho),4,03/08/2017,8,Comprehension,Yankon,8,3,320,1,Azul/Verde,1,,
-Shipibo,sh_19,6,femenino,c.c.n.n. (bahuanisho),5,03/08/2017,6,Comprehension,Yankon,6,3,325,1,Azul/Verde,1,,
+Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Comprehension,Yankon,6,3,320,1,Azul/Verde,,,
+Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Comprehension,Yankon,6,3,325,1,Azul/Verde,,,
+Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Comprehension,Yankon,6,3,234,1,Azul/Verde,,,
+Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Comprehension,Yankon,8,3,325,1,Azul/Verde,,,
+Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Comprehension,Yankon,7,3,1,1,Azul/Verde,,,
+Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Comprehension,Yankon,9,3,320,1,Azul/Verde,,,
+Shipibo,sh_18,8,femenino,c.c.n.n. (bahuanisho),4,03/08/2017,8,Comprehension,Yankon,8,3,320,1,Azul/Verde,,,
+Shipibo,sh_19,6,femenino,c.c.n.n. (bahuanisho),5,03/08/2017,6,Comprehension,Yankon,6,3,325,1,Azul/Verde,,,
 Shipibo,sh_20,6,masculino,c.c.n.n. (bahuanisho),6,03/08/2017,6.6,Comprehension,Yankon,7,3,297,0,Azul/Verde,1,,
-Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Comprehension,Yankon,10,3,320,1,Azul/Verde,1,,
-Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Comprehension,Yankon,8,3,1,1,Azul/Verde,1,,
-Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Comprehension,Yankon,8,3,1,1,Azul/Verde,1,,
+Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Comprehension,Yankon,10,3,320,1,Azul/Verde,,,
+Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Comprehension,Yankon,8,3,1,1,Azul/Verde,,,
+Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Comprehension,Yankon,8,3,1,1,Azul/Verde,,,
 Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Comprehension,Yankon,8,3,297,0,Azul/Verde,1,,
-Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Comprehension,Yankon,10,3,320,1,Azul/Verde,1,,
-Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Comprehension,Yankon,8,3,320,1,Azul/Verde,1,,
+Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Comprehension,Yankon,10,3,320,1,Azul/Verde,,,
+Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Comprehension,Yankon,8,3,320,1,Azul/Verde,,,
 Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Comprehension,Yankon,5,3,274,0,Azul/Verde,1,,
-Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Comprehension,Yankon,6,3,234,1,Azul/Verde,1,,
-Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Comprehension,Yankon,9,3,325,1,Azul/Verde,1,,
+Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Comprehension,Yankon,6,3,234,1,Azul/Verde,,,
+Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Comprehension,Yankon,9,3,325,1,Azul/Verde,,,
 Shipibo,sh_30,7 or 8,femenino,c.c.n.n. (bahuanisho),16,03/08/2017,8,Comprehension,Yankon,8,3,312,0,Azul/Verde,1,,
-Shipibo,sh_31,8,femenino,c.c.n.n. (bahuanisho),17,03/08/2017,7.9,Comprehension,Yankon,8,3,1,1,Azul/Verde,1,,
+Shipibo,sh_31,8,femenino,c.c.n.n. (bahuanisho),17,03/08/2017,7.9,Comprehension,Yankon,8,3,1,1,Azul/Verde,,,
 Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Comprehension,Yankon,8,3,297,0,Azul/Verde,1,,
-Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Comprehension,Yankon,11,3,320,1,Azul/Verde,1,,
-Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Comprehension,Yankon,11,3,1,1,Azul/Verde,1,,
-Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Comprehension,Yankon,8,3,325,1,Azul/Verde,1,,
-Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Comprehension,Yankon,9,3,320,1,Azul/Verde,1,,
-Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Comprehension,Yankon,10,3,325,1,Azul/Verde,1,,
-Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Comprehension,Yankon,9,3,234,1,Azul/Verde,1,,
-Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Comprehension,Yankon,7,3,1,1,Azul/Verde,1,,
+Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Comprehension,Yankon,11,3,320,1,Azul/Verde,,,
+Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Comprehension,Yankon,11,3,1,1,Azul/Verde,,,
+Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Comprehension,Yankon,8,3,325,1,Azul/Verde,,,
+Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Comprehension,Yankon,9,3,320,1,Azul/Verde,,,
+Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Comprehension,Yankon,10,3,325,1,Azul/Verde,,,
+Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Comprehension,Yankon,9,3,234,1,Azul/Verde,,,
+Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Comprehension,Yankon,7,3,1,1,Azul/Verde,,,
 Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Comprehension,Yankon,8,3,297,0,Azul/Verde,1,,
-Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Comprehension,Yankon,8,3,1,1,Azul/Verde,1,,
-Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Comprehension,Yankon,10,3,325,1,Azul/Verde,1,,
-Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Comprehension,Yankon,8,3,1,1,Azul/Verde,1,,
-Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Comprehension,Yankon,6,3,234,1,Azul/Verde,1,,
-Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Comprehension,Yankon,11,3,320,1,Azul/Verde,1,,
-Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Comprehension,Yankon,11,3,325,1,Azul/Verde,1,,
-Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Comprehension,Yankon,9,3,320,1,Azul/Verde,1,,
-Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Comprehension,Yankon,12,3,320,1,Azul/Verde,1,,
-Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Comprehension,Yankon,8,3,325,1,Azul/Verde,1,,
-Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Comprehension,Yankon,9,3,1,1,Azul/Verde,1,,
-Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Comprehension,Yankon,12,3,325,1,Azul/Verde,1,,
+Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Comprehension,Yankon,8,3,1,1,Azul/Verde,,,
+Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Comprehension,Yankon,10,3,325,1,Azul/Verde,,,
+Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Comprehension,Yankon,8,3,1,1,Azul/Verde,,,
+Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Comprehension,Yankon,6,3,234,1,Azul/Verde,,,
+Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Comprehension,Yankon,11,3,320,1,Azul/Verde,,,
+Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Comprehension,Yankon,11,3,325,1,Azul/Verde,,,
+Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Comprehension,Yankon,9,3,320,1,Azul/Verde,,,
+Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Comprehension,Yankon,12,3,320,1,Azul/Verde,,,
+Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Comprehension,Yankon,8,3,325,1,Azul/Verde,,,
+Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Comprehension,Yankon,9,3,1,1,Azul/Verde,,,
+Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Comprehension,Yankon,12,3,325,1,Azul/Verde,,,
 Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Comprehension,Yankon,10,3,,,Azul/Verde,,,
-Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Comprehension,Yankon,10,3,325,1,Azul/Verde,1,,
-Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Comprehension,Yankon,10,3,1,1,Azul/Verde,1,,
-Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Comprehension,Yankon,8,3,1,1,Azul/Verde,1,,
-Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Comprehension,Yankon,10,3,320,1,Azul/Verde,1,,
-Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Comprehension,Yankon,8,3,1,1,Azul/Verde,1,,
+Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Comprehension,Yankon,10,3,325,1,Azul/Verde,,,
+Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Comprehension,Yankon,10,3,1,1,Azul/Verde,,,
+Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Comprehension,Yankon,8,3,1,1,Azul/Verde,,,
+Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Comprehension,Yankon,10,3,320,1,Azul/Verde,,,
+Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Comprehension,Yankon,8,3,1,1,Azul/Verde,,,
 Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Comprehension,Yankon,6,4,297,0,Azul/Verde,1,,
-Shipibo,sh_2,7,femenino,bilingue,8,17/07/2017,7.4,Comprehension,Yankon,7,4,325,1,Azul/Verde,1,,
-Shipibo,sh_3,9,masculino,bilingue,5,17/07/2017,9.6,Comprehension,Yankon,10,4,1,1,Azul/Verde,1,,
+Shipibo,sh_2,7,femenino,bilingue,8,17/07/2017,7.4,Comprehension,Yankon,7,4,325,1,Azul/Verde,,,
+Shipibo,sh_3,9,masculino,bilingue,5,17/07/2017,9.6,Comprehension,Yankon,10,4,1,1,Azul/Verde,,,
 Shipibo,sh_4,7,masculino,bilingue,6,17/07/2017,7.3,Comprehension,Yankon,7,4,274,0,Azul/Verde,1,,
 Shipibo,sh_5,7,femenino,bilingue,1,17/07/2017,7.8,Comprehension,Yankon,8,4,245,0,Azul/Verde,1,,
-Shipibo,sh_6,8,masculino,bilingue,2,17/07/2017,8.2,Comprehension,Yankon,8,4,325,1,Azul/Verde,1,,
-Shipibo,sh_7,5,masculino,bilingue,3,17/07/2017,5.7,Comprehension,Yankon,6,4,234,1,Azul/Verde,1,,
-Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Comprehension,Yankon,9,4,325,1,Azul/Verde,1,,
-Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Comprehension,Yankon,8,4,325,1,Azul/Verde,1,,
-Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Comprehension,Yankon,7,4,325,1,Azul/Verde,1,,
-Shipibo,sh_11,6,masculino,c.c.n.n. (bahuanisho),2,02/08/2017,6.9,Comprehension,Yankon,7,4,234,1,Azul/Verde,1,,
-Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Comprehension,Yankon,6,4,1,1,Azul/Verde,1,,
+Shipibo,sh_6,8,masculino,bilingue,2,17/07/2017,8.2,Comprehension,Yankon,8,4,325,1,Azul/Verde,,,
+Shipibo,sh_7,5,masculino,bilingue,3,17/07/2017,5.7,Comprehension,Yankon,6,4,234,1,Azul/Verde,,,
+Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Comprehension,Yankon,9,4,325,1,Azul/Verde,,,
+Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Comprehension,Yankon,8,4,325,1,Azul/Verde,,,
+Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Comprehension,Yankon,7,4,325,1,Azul/Verde,,,
+Shipibo,sh_11,6,masculino,c.c.n.n. (bahuanisho),2,02/08/2017,6.9,Comprehension,Yankon,7,4,234,1,Azul/Verde,,,
+Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Comprehension,Yankon,6,4,1,1,Azul/Verde,,,
 Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Comprehension,Yankon,6,4,245,0,Azul/Verde,1,,
-Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Comprehension,Yankon,6,4,320,1,Azul/Verde,1,,
-Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Comprehension,Yankon,8,4,320,1,Azul/Verde,1,,
-Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Comprehension,Yankon,7,4,325,1,Azul/Verde,1,,
-Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Comprehension,Yankon,9,4,325,1,Azul/Verde,1,,
+Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Comprehension,Yankon,6,4,320,1,Azul/Verde,,,
+Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Comprehension,Yankon,8,4,320,1,Azul/Verde,,,
+Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Comprehension,Yankon,7,4,325,1,Azul/Verde,,,
+Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Comprehension,Yankon,9,4,325,1,Azul/Verde,,,
 Shipibo,sh_18,8,femenino,c.c.n.n. (bahuanisho),4,03/08/2017,8,Comprehension,Yankon,8,4,245,0,Azul/Verde,1,,
 Shipibo,sh_19,6,femenino,c.c.n.n. (bahuanisho),5,03/08/2017,6,Comprehension,Yankon,6,4,274,0,Azul/Verde,1,,
 Shipibo,sh_20,6,masculino,c.c.n.n. (bahuanisho),6,03/08/2017,6.6,Comprehension,Yankon,7,4,312,0,Azul/Verde,1,,
-Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Comprehension,Yankon,10,4,325,1,Azul/Verde,1,,
+Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Comprehension,Yankon,10,4,325,1,Azul/Verde,,,
 Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Comprehension,Yankon,8,4,297,0,Azul/Verde,1,,
-Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Comprehension,Yankon,8,4,325,1,Azul/Verde,1,,
-Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Comprehension,Yankon,8,4,320,1,Azul/Verde,1,,
-Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Comprehension,Yankon,10,4,325,1,Azul/Verde,1,,
+Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Comprehension,Yankon,8,4,325,1,Azul/Verde,,,
+Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Comprehension,Yankon,8,4,320,1,Azul/Verde,,,
+Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Comprehension,Yankon,10,4,325,1,Azul/Verde,,,
 Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Comprehension,Yankon,8,4,297,0,Azul/Verde,1,,
-Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Comprehension,Yankon,5,4,234,1,Azul/Verde,1,,
-Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Comprehension,Yankon,6,4,320,1,Azul/Verde,1,,
-Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Comprehension,Yankon,9,4,320,1,Azul/Verde,1,,
+Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Comprehension,Yankon,5,4,234,1,Azul/Verde,,,
+Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Comprehension,Yankon,6,4,320,1,Azul/Verde,,,
+Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Comprehension,Yankon,9,4,320,1,Azul/Verde,,,
 Shipibo,sh_30,7 or 8,femenino,c.c.n.n. (bahuanisho),16,03/08/2017,8,Comprehension,Yankon,8,4,297,0,Azul/Verde,1,,
 Shipibo,sh_31,8,femenino,c.c.n.n. (bahuanisho),17,03/08/2017,7.9,Comprehension,Yankon,8,4,297,0,Azul/Verde,1,,
 Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Comprehension,Yankon,8,4,274,0,Azul/Verde,1,,
-Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Comprehension,Yankon,11,4,325,1,Azul/Verde,1,,
+Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Comprehension,Yankon,11,4,325,1,Azul/Verde,,,
 Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Comprehension,Yankon,11,4,245,0,Azul/Verde,1,,
-Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Comprehension,Yankon,8,4,320,1,Azul/Verde,1,,
-Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Comprehension,Yankon,9,4,325,1,Azul/Verde,1,,
-Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Comprehension,Yankon,10,4,320,1,Azul/Verde,1,,
+Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Comprehension,Yankon,8,4,320,1,Azul/Verde,,,
+Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Comprehension,Yankon,9,4,325,1,Azul/Verde,,,
+Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Comprehension,Yankon,10,4,320,1,Azul/Verde,,,
 Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Comprehension,Yankon,9,4,297,0,Azul/Verde,1,,
-Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Comprehension,Yankon,7,4,320,1,Azul/Verde,1,,
-Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Comprehension,Yankon,8,4,234,1,Azul/Verde,1,,
-Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Comprehension,Yankon,8,4,325,1,Azul/Verde,1,,
-Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Comprehension,Yankon,10,4,320,1,Azul/Verde,1,,
-Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Comprehension,Yankon,8,4,320,1,Azul/Verde,1,,
+Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Comprehension,Yankon,7,4,320,1,Azul/Verde,,,
+Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Comprehension,Yankon,8,4,234,1,Azul/Verde,,,
+Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Comprehension,Yankon,8,4,325,1,Azul/Verde,,,
+Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Comprehension,Yankon,10,4,320,1,Azul/Verde,,,
+Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Comprehension,Yankon,8,4,320,1,Azul/Verde,,,
 Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Comprehension,Yankon,6,4,312,0,Azul/Verde,1,,
-Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Comprehension,Yankon,11,4,325,1,Azul/Verde,1,,
-Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Comprehension,Yankon,11,4,320,1,Azul/Verde,1,,
-Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Comprehension,Yankon,9,4,325,1,Azul/Verde,1,,
+Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Comprehension,Yankon,11,4,325,1,Azul/Verde,,,
+Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Comprehension,Yankon,11,4,320,1,Azul/Verde,,,
+Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Comprehension,Yankon,9,4,325,1,Azul/Verde,,,
 Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Comprehension,Yankon,12,4,274,0,Azul/Verde,1,,
-Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Comprehension,Yankon,8,4,320,1,Azul/Verde,1,,
-Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Comprehension,Yankon,9,4,320,1,Azul/Verde,1,,
-Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Comprehension,Yankon,12,4,320,1,Azul/Verde,1,,
+Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Comprehension,Yankon,8,4,320,1,Azul/Verde,,,
+Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Comprehension,Yankon,9,4,320,1,Azul/Verde,,,
+Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Comprehension,Yankon,12,4,320,1,Azul/Verde,,,
 Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Comprehension,Yankon,10,4,,,Azul/Verde,,,
-Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Comprehension,Yankon,10,4,320,1,Azul/Verde,1,,
-Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Comprehension,Yankon,10,4,325,1,Azul/Verde,1,,
+Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Comprehension,Yankon,10,4,320,1,Azul/Verde,,,
+Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Comprehension,Yankon,10,4,325,1,Azul/Verde,,,
 Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Comprehension,Yankon,8,4,297,0,Azul/Verde,1,,
-Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Comprehension,Yankon,10,4,325,1,Azul/Verde,1,,
+Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Comprehension,Yankon,10,4,325,1,Azul/Verde,,,
 Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Comprehension,Yankon,8,4,,,Azul/Verde,,,
 Spanish,sp_1,8,femenino,c.c.n.n. (bahuanisho),9,04/08/2017,9,Comprehension,Blanco,9,1,121,0,Blanco,0,80.65681620297195,
 Spanish,sp_1,8,femenino,c.c.n.n. (bahuanisho),9,04/08/2017,9,Comprehension,Verde,9,1,291,0,Verde,1,86.72483439015609,
@@ -1304,7 +1304,7 @@ Spanish,sp_46,10,femenino,bena jema,8,10/08/2017,10.3,Comprehension,Morado,10,1,
 Spanish,sp_46,10,femenino,bena jema,8,10/08/2017,10.3,Comprehension,Marron,10,1,121,0,Marron,1,28.373205670138866,
 Spanish,sp_46,10,femenino,bena jema,8,10/08/2017,10.3,Comprehension,Rosa,10,1,65,1,Rosa,,,
 Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Production,274,6,1,Yankon,0,Blanco,1,,0
-Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Production,234,6,1,Yankon,1,Verde,1,,0
+Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Production,234,6,1,Yankon,1,Verde,,,0
 Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Production,245,6,1,Joshin,1,Rojo,,,0
 Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Production,297,6,1,Panshin,1,Amarillo,,,0
 Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Production,1,6,1,Rojo,0,Celeste,,,0
@@ -1363,7 +1363,7 @@ Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Production,274,9,1,Joxo,1,Blan
 Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Production,234,9,1,Verde,0,Verde,,,1
 Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Production,245,9,1,Joshin,1,Rojo,,,0
 Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Production,297,9,1,Panshin,1,Amarillo,,,0
-Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Production,1,9,1,Yankon,1,Celeste,1,,0
+Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Production,1,9,1,Yankon,1,Celeste,,,0
 Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Production,312,9,1,Wiso,1,Negro,,,0
 Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Production,320,9,1,Verde,0,Mierda sol,,,0
 Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Production,325,9,1,Violeta,0,Morado,,,1
@@ -1371,12 +1371,12 @@ Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Production,274,8,1,Joxo,1,Bla
 Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Production,234,8,1,Verde,0,Verde,,,1
 Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Production,245,8,1,Joshin,1,Rojo,,,0
 Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Production,297,8,1,Panshin,1,Amarillo,,,0
-Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Production,1,8,1,Yankon,1,Celeste,1,,0
+Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Production,1,8,1,Yankon,1,Celeste,,,0
 Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Production,312,8,1,Wiso,1,Negro,,,0
 Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Production,320,8,1,serru,0,Mierda sol,,,0
 Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Production,325,8,1,Morado,0,Morado,,,1
 Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Production,274,7,1,Joxo,1,Blanco,,,0
-Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Production,234,7,1,Yankon,1,Verde,1,,0
+Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Production,234,7,1,Yankon,1,Verde,,,0
 Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Production,245,7,1,Joshin,1,Rojo,,,0
 Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Production,297,7,1,Naranja,0,Amarillo,,,0
 Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Production,1,7,1,Azul,0,Celeste,,,1
@@ -1395,12 +1395,12 @@ Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Production,274,6
 Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Production,234,6,1,Panshin,0,Verde,0,119.88323068719829,0
 Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Production,245,6,1,Joshin,1,Rojo,,,0
 Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Production,297,6,1,Naranja,0,Amarillo,,,0
-Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Production,1,6,1,Yankon,1,Celeste,1,,0
+Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Production,1,6,1,Yankon,1,Celeste,,,0
 Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Production,312,6,1,Wiso,1,Negro,,,0
 Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Production,320,6,1,Naranja,0,Mierda sol,,,0
-Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Production,325,6,1,Yankon,1,Morado,1,,0
+Shipibo,sh_12,5,femenino,c.c.n.n. (bahuanisho),3,02/08/2017,6.5,Production,325,6,1,Yankon,1,Morado,,,0
 Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Production,274,6,1,Joxo,1,Blanco,,,0
-Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Production,234,6,1,Yankon,1,Verde,1,,0
+Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Production,234,6,1,Yankon,1,Verde,,,0
 Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Production,245,6,1,Joshin,1,Rojo,,,0
 Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Production,297,6,1,Panshin,1,Amarillo,,,0
 Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Production,1,6,1,Celeste,0,Celeste,,,1
@@ -1408,10 +1408,10 @@ Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Production,312,6,1
 Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Production,320,6,1,Marron,0,Mierda sol,,,0
 Shipibo,sh_13,6,femenino,c.c.n.n. (bahuanisho),4,02/08/2017,6,Production,325,6,1,Violeta,0,Morado,,,1
 Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Production,274,6,1,Joxo,1,Blanco,,,0
-Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Production,234,6,1,Yankon,1,Verde,1,,0
+Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Production,234,6,1,Yankon,1,Verde,,,0
 Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Production,245,6,1,Yankon,0,Rojo,1,,0
 Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Production,297,6,1,Joshin,0,Amarillo,1,93.1910736068643,0
-Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Production,1,6,1,Yankon,1,Celeste,1,,0
+Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Production,1,6,1,Yankon,1,Celeste,,,0
 Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Production,312,6,1,Wiso,1,Negro,,,0
 Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Production,320,6,1,Barin Poi,1,Mierda sol,,,0
 Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Production,325,6,1,Ami,1,Morado,,,0
@@ -1419,12 +1419,12 @@ Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Production,274,8
 Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Production,234,8,1,Verde,0,Verde,,,1
 Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Production,245,8,1,Joshin,1,Rojo,,,0
 Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Production,297,8,1,Panshin,1,Amarillo,,,0
-Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Production,1,8,1,Yankon,1,Celeste,1,,0
+Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Production,1,8,1,Yankon,1,Celeste,,,0
 Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Production,312,8,1,Wiso,1,Negro,,,0
 Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Production,320,8,1,Manxan,0,Mierda sol,0,,0
 Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Production,325,8,1,Violeta,0,Morado,,,1
 Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Production,274,7,1,Joxo,1,Blanco,,,0
-Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Production,234,7,1,Yankon,1,Verde,1,,0
+Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Production,234,7,1,Yankon,1,Verde,,,0
 Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Production,245,7,1,Joshin,1,Rojo,,,0
 Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Production,297,7,1,Panshin,1,Amarillo,,,0
 Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Production,1,7,1,agna,0,Celeste,,,0
@@ -1432,10 +1432,10 @@ Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Production,312,7
 Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Production,320,7,1,Panshin,0,Mierda sol,0,61.75681419892059,0
 Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Production,325,7,1,Violeta,0,Morado,,,1
 Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Production,274,9,1,Joxo,1,Blanco,,,0
-Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Production,234,9,1,Yankon,1,Verde,1,,0
+Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Production,234,9,1,Yankon,1,Verde,,,0
 Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Production,245,9,1,Joshin,1,Rojo,,,0
 Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Production,297,9,1,Panshin,1,Amarillo,,,0
-Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Production,1,9,1,Yankon,1,Celeste,1,,0
+Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Production,1,9,1,Yankon,1,Celeste,,,0
 Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Production,312,9,1,Wiso,1,Negro,,,0
 Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Production,320,9,1,Barin Poi,1,Mierda sol,,,0
 Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Production,325,9,1,Violeta,0,Morado,,,1
@@ -1462,17 +1462,17 @@ Shipibo,sh_20,6,masculino,c.c.n.n. (bahuanisho),6,03/08/2017,6.6,Production,297,
 Shipibo,sh_20,6,masculino,c.c.n.n. (bahuanisho),6,03/08/2017,6.6,Production,1,7,1,Wiso,0,Celeste,0,57.01785334436926,0
 Shipibo,sh_20,6,masculino,c.c.n.n. (bahuanisho),6,03/08/2017,6.6,Production,312,7,1,Marron,0,Negro,,,0
 Shipibo,sh_20,6,masculino,c.c.n.n. (bahuanisho),6,03/08/2017,6.6,Production,320,7,1,Wiso,0,Mierda sol,1,67.19189385632764,0
-Shipibo,sh_20,6,masculino,c.c.n.n. (bahuanisho),6,03/08/2017,6.6,Production,325,7,1,,,Morado,,,
+Shipibo,sh_20,6,masculino,c.c.n.n. (bahuanisho),6,03/08/2017,6.6,Production,325,7,1,,0,Morado,,,
 Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Production,274,10,1,Joxo,1,Blanco,,,0
-Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Production,234,10,1,Yankon,1,Verde,1,,0
+Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Production,234,10,1,Yankon,1,Verde,,,0
 Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Production,245,10,1,Joshin,1,Rojo,,,0
 Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Production,297,10,1,Panshin,1,Amarillo,,,0
-Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Production,1,10,1,Yankon,1,Celeste,1,,0
+Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Production,1,10,1,Yankon,1,Celeste,,,0
 Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Production,312,10,1,Wiso,1,Negro,,,0
 Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Production,320,10,1,,0,Mierda sol,,,0
 Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Production,325,10,1,Azul,0,Morado,,,0
 Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Production,274,8,1,Joxo,1,Blanco,,,0
-Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Production,234,8,1,Yankon,1,Verde,1,,0
+Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Production,234,8,1,Yankon,1,Verde,,,0
 Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Production,245,8,1,Joshin,1,Rojo,,,0
 Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Production,297,8,1,Panshin,1,Amarillo,,,0
 Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Production,1,8,1,Nai,1,Celeste,,,0
@@ -1480,7 +1480,7 @@ Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Production,312,8
 Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Production,320,8,1,Barin Poi,1,Mierda sol,,,0
 Shipibo,sh_22,7,femenino,c.c.n.n. (bahuanisho),8,03/08/2017,7.8,Production,325,8,1,Poa,1,Morado,,,0
 Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Production,274,8,1,Joxo,1,Blanco,,,0
-Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Production,234,8,1,Yankon,1,Verde,1,,0
+Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Production,234,8,1,Yankon,1,Verde,,,0
 Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Production,245,8,1,Joshin,1,Rojo,,,0
 Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Production,297,8,1,Panshin,1,Amarillo,,,0
 Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Production,1,8,1,unpax,0,Celeste,,,0
@@ -1488,23 +1488,23 @@ Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Production,312,8
 Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Production,320,8,1,Barin Poi,1,Mierda sol,,,0
 Shipibo,sh_23,8,femenino,c.c.n.n. (bahuanisho),9,03/08/2017,8.1,Production,325,8,1,Violeta,0,Morado,,,1
 Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Production,274,8,1,Joxo,1,Blanco,,,0
-Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Production,234,8,1,Yankon,1,Verde,1,,0
+Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Production,234,8,1,Yankon,1,Verde,,,0
 Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Production,245,8,1,Joshin,1,Rojo,,,0
 Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Production,297,8,1,Panshin,1,Amarillo,,,0
 Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Production,1,8,1,unpasx,0,Celeste,,,0
 Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Production,312,8,1,Wiso,1,Negro,,,0
 Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Production,320,8,1,Barin Poi,1,Mierda sol,,,0
-Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Production,325,8,1,Kari,1,Morado,1,,0
+Shipibo,sh_24,7,femenino,c.c.n.n. (bahuanisho),10,03/08/2017,7.7,Production,325,8,1,Kari,1,Morado,,,0
 Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Production,274,10,1,Joxo,1,Blanco,,,0
-Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Production,234,10,1,Yankon,1,Verde,1,,0
+Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Production,234,10,1,Yankon,1,Verde,,,0
 Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Production,245,10,1,Joshin,1,Rojo,,,0
 Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Production,297,10,1,Panshin,1,Amarillo,,,0
-Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Production,1,10,1,Yankon,1,Celeste,1,,0
+Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Production,1,10,1,Yankon,1,Celeste,,,0
 Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Production,312,10,1,Wiso,1,Negro,,,0
-Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Production,320,10,1,Yankon,1,Mierda sol,1,,0
+Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Production,320,10,1,Yankon,1,Mierda sol,,,0
 Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Production,325,10,1,Violeta,0,Morado,,,1
 Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Production,274,8,1,Joxo,1,Blanco,,,0
-Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Production,234,8,1,Yankon,1,Verde,1,,0
+Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Production,234,8,1,Yankon,1,Verde,,,0
 Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Production,245,8,1,Joshin,1,Rojo,,,0
 Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Production,297,8,1,Panshin,1,Amarillo,,,0
 Shipibo,sh_26,8,femenino,c.c.n.n. (bahuanisho),12,03/08/2017,8.5,Production,1,8,1,Verde,0,Celeste,,,0
@@ -1526,15 +1526,15 @@ Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Production,297,
 Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Production,1,6,1,jenekeska,0,Celeste,,,0
 Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Production,312,6,1,Wiso,1,Negro,,,0
 Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Production,320,6,1,Verde,0,Mierda sol,,,0
-Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Production,325,6,1,,,Morado,,,
+Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Production,325,6,1,,0,Morado,,,
 Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Production,274,9,1,Joxo,1,Blanco,,,0
-Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Production,234,9,1,Yankon,1,Verde,1,,0
+Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Production,234,9,1,Yankon,1,Verde,,,0
 Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Production,245,9,1,Joshin,1,Rojo,,,0
 Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Production,297,9,1,Panshin,1,Amarillo,,,0
 Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Production,1,9,1,,0,Celeste,,,
 Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Production,312,9,1,Wiso,1,Negro,,,0
-Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Production,320,9,1,Yankon,1,Mierda sol,1,,0
-Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Production,325,9,1,,,Morado,,,
+Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Production,320,9,1,Yankon,1,Mierda sol,,,0
+Shipibo,sh_29,8 or 9,femenino,c.c.n.n. (bahuanisho),15,03/08/2017,9,Production,325,9,1,,0,Morado,,,
 Shipibo,sh_30,7 or 8,femenino,c.c.n.n. (bahuanisho),16,03/08/2017,8,Production,274,8,1,Amarillo,0,Blanco,,,0
 Shipibo,sh_30,7 or 8,femenino,c.c.n.n. (bahuanisho),16,03/08/2017,8,Production,234,8,1,Rojo,0,Verde,,,0
 Shipibo,sh_30,7 or 8,femenino,c.c.n.n. (bahuanisho),16,03/08/2017,8,Production,245,8,1,Panshin,0,Rojo,1,93.1910736068643,0
@@ -1552,15 +1552,15 @@ Shipibo,sh_31,8,femenino,c.c.n.n. (bahuanisho),17,03/08/2017,7.9,Production,312,
 Shipibo,sh_31,8,femenino,c.c.n.n. (bahuanisho),17,03/08/2017,7.9,Production,320,8,1,Verde,0,Mierda sol,,,0
 Shipibo,sh_31,8,femenino,c.c.n.n. (bahuanisho),17,03/08/2017,7.9,Production,325,8,1,Violeta,0,Morado,,,1
 Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Production,274,8,1,Joxo,1,Blanco,,,0
-Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Production,234,8,1,Yankon,1,Verde,1,,0
+Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Production,234,8,1,Yankon,1,Verde,,,0
 Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Production,245,8,1,Joshin,1,Rojo,,,0
 Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Production,297,8,1,Panshin,1,Amarillo,,,0
 Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Production,1,8,1,,0,Celeste,,,
 Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Production,312,8,1,Wiso,1,Negro,,,0
 Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Production,320,8,1,,0,Mierda sol,,,0
-Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Production,325,8,1,,,Morado,,,
+Shipibo,sh_32,8,femenino,c.c.n.n. (bahuanisho),18,03/08/2017,8,Production,325,8,1,,0,Morado,,,
 Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Production,274,11,1,Joxo,1,Blanco,,,0
-Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Production,234,11,1,Yankon,1,Verde,1,,0
+Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Production,234,11,1,Yankon,1,Verde,,,0
 Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Production,245,11,1,Joshin,1,Rojo,,,0
 Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Production,297,11,1,Panshin,1,Amarillo,,,0
 Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Production,1,11,1,,0,Celeste,,,
@@ -1568,15 +1568,15 @@ Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Production,3
 Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Production,320,11,1,Marron,0,Mierda sol,,,0
 Shipibo,sh_33,11,masculino,c.c.n.n. (bahuanisho),19,03/08/2017,11.1,Production,325,11,1,Violeta,0,Morado,,,1
 Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Production,274,11,1,Joxo,1,Blanco,,,0
-Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Production,234,11,1,Yankon,1,Verde,1,,0
+Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Production,234,11,1,Yankon,1,Verde,,,0
 Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Production,245,11,1,Joshin,1,Rojo,,,0
 Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Production,297,11,1,Panshin,1,Amarillo,,,0
 Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Production,1,11,1,Azul,0,Celeste,,,1
 Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Production,312,11,1,Wiso,1,Negro,,,0
-Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Production,320,11,1,Yankon,1,Mierda sol,1,,0
+Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Production,320,11,1,Yankon,1,Mierda sol,,,0
 Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Production,325,11,1,Violeta,0,Morado,,,1
 Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Production,274,8,1,Joxo,1,Blanco,,,0
-Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Production,234,8,1,Yankon,1,Verde,1,,0
+Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Production,234,8,1,Yankon,1,Verde,,,0
 Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Production,245,8,1,Joshin,1,Rojo,,,0
 Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Production,297,8,1,Panshin,1,Amarillo,,,0
 Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Production,1,8,1,agua,0,Celeste,,,0
@@ -1584,7 +1584,7 @@ Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Production,312,
 Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Production,320,8,1,Panshin,0,Mierda sol,0,61.75681419892059,0
 Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Production,325,8,1,Violeta,0,Morado,,,1
 Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Production,274,9,1,Joxo,1,Blanco,,,0
-Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Production,234,9,1,Yankon,1,Verde,1,,0
+Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Production,234,9,1,Yankon,1,Verde,,,0
 Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Production,245,9,1,Joshin,1,Rojo,,,0
 Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Production,297,9,1,Panshin,1,Amarillo,,,0
 Shipibo,sh_36,8,masculino,c.c.n.n. (bahuanisho),22,03/08/2017,8.7,Production,1,9,1,Nai,1,Celeste,,,0
@@ -1600,15 +1600,15 @@ Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Production,312,
 Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Production,320,10,1,Panshin,0,Mierda sol,0,61.75681419892059,0
 Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Production,325,10,1,Verde,0,Morado,,,0
 Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Production,274,9,1,Joxo,1,Blanco,,,0
-Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Production,234,9,1,Yankon,1,Verde,1,,0
+Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Production,234,9,1,Yankon,1,Verde,,,0
 Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Production,245,9,1,Joshin,1,Rojo,,,0
 Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Production,297,9,1,Barin Poi,0,Amarillo,0,61.75681419892059,0
 Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Production,1,9,1,Panshin,0,Celeste,0,150.06082933264096,0
 Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Production,312,9,1,Wiso,1,Negro,,,0
-Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Production,320,9,1,Yankon,1,Mierda sol,1,,0
-Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Production,325,9,1,Yankon,1,Morado,1,,0
+Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Production,320,9,1,Yankon,1,Mierda sol,,,0
+Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Production,325,9,1,Yankon,1,Morado,,,0
 Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Production,274,7,1,Joxo,1,Blanco,,,0
-Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Production,234,7,1,Yankon,1,Verde,1,,0
+Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Production,234,7,1,Yankon,1,Verde,,,0
 Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Production,245,7,1,Joshin,1,Rojo,,,0
 Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Production,297,7,1,Panshin,1,Amarillo,,,0
 Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Production,1,7,1,Nai,1,Celeste,,,0
@@ -1622,17 +1622,17 @@ Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Production,297
 Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Production,1,8,1,,0,Celeste,,,
 Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Production,312,8,1,Marron,0,Negro,,,0
 Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Production,320,8,1,Panshin,0,Mierda sol,0,61.75681419892059,0
-Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Production,325,8,1,,,Morado,,,
+Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Production,325,8,1,,0,Morado,,,
 Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Production,274,8,1,Joxo,1,Blanco,,,0
-Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Production,234,8,1,Yankon,1,Verde,1,,0
+Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Production,234,8,1,Yankon,1,Verde,,,0
 Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Production,245,8,1,Joshin,1,Rojo,,,0
 Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Production,297,8,1,Panshin,1,Amarillo,,,0
 Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Production,1,8,1,Nai,1,Celeste,,,0
 Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Production,312,8,1,Wiso,1,Negro,,,0
-Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Production,320,8,1,Yankon,1,Mierda sol,1,,0
+Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Production,320,8,1,Yankon,1,Mierda sol,,,0
 Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Production,325,8,1,Violeta,0,Morado,,,1
 Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Production,274,10,1,Joxo,1,Blanco,,,0
-Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Production,234,10,1,Yankon,1,Verde,1,,0
+Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Production,234,10,1,Yankon,1,Verde,,,0
 Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Production,245,10,1,Joshin,1,Rojo,,,0
 Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Production,297,10,1,Panshin,1,Amarillo,,,0
 Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Production,1,10,1,Nai,1,Celeste,,,0
@@ -1640,13 +1640,13 @@ Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Production,312,1
 Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Production,320,10,1,Barin Poi,1,Mierda sol,,,0
 Shipibo,sh_42,10,femenino,c.c.n.n. (bahuanisho),1,05/08/2017,10,Production,325,10,1,Poa,1,Morado,,,0
 Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Production,274,8,1,Joxo,1,Blanco,,,0
-Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Production,234,8,1,Yankon,1,Verde,1,,0
+Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Production,234,8,1,Yankon,1,Verde,,,0
 Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Production,245,8,1,Joshin,1,Rojo,,,0
 Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Production,297,8,1,Panshin,1,Amarillo,,,0
-Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Production,1,8,1,Yankon,1,Celeste,1,,0
+Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Production,1,8,1,Yankon,1,Celeste,,,0
 Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Production,312,8,1,Wiso,1,Negro,,,0
 Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Production,320,8,1,Naranja,0,Mierda sol,,,0
-Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Production,325,8,1,Kari,1,Morado,1,,0
+Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Production,325,8,1,Kari,1,Morado,,,0
 Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Production,274,6,1,Joshin,0,Blanco,1,85.85165694382374,0
 Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Production,234,6,1,Joxo,0,Verde,0,74.88113647641842,0
 Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Production,245,6,1,Wiso,0,Rojo,1,72.88365866228177,0
@@ -1656,15 +1656,15 @@ Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Production,312,6,1
 Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Production,320,6,1,Wiso,0,Mierda sol,1,67.19189385632764,0
 Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Production,325,6,1,Joxo,0,Morado,0,77.47574975435863,0
 Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Production,274,11,1,Joxo,1,Blanco,,,0
-Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Production,234,11,1,Yankon,1,Verde,1,,0
+Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Production,234,11,1,Yankon,1,Verde,,,0
 Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Production,245,11,1,Joshin,1,Rojo,,,0
 Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Production,297,11,1,Panshin,1,Amarillo,,,0
-Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Production,1,11,1,Yankon,1,Celeste,1,,0
+Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Production,1,11,1,Yankon,1,Celeste,,,0
 Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Production,312,11,1,Wiso,1,Negro,,,0
 Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Production,320,11,1,,0,Mierda sol,,,0
 Shipibo,sh_45,10,masculino,c.c.n.n. (bahuanisho),4,05/08/2017,10.6,Production,325,11,1,Violeta,0,Morado,,,1
 Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Production,274,11,1,Joxo,1,Blanco,,,0
-Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Production,234,11,1,Yankon,1,Verde,1,,0
+Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Production,234,11,1,Yankon,1,Verde,,,0
 Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Production,245,11,1,Joshin,1,Rojo,,,0
 Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Production,297,11,1,Panshin,1,Amarillo,,,0
 Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Production,1,11,1,Nai,1,Celeste,,,0
@@ -1672,7 +1672,7 @@ Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Production,312,
 Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Production,320,11,1,Barin Poi,1,Mierda sol,,,0
 Shipibo,sh_46,11,masculino,c.c.n.n. (bahuanisho),5,05/08/2017,11,Production,325,11,1,Poa,1,Morado,,,0
 Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Production,274,9,1,Joxo,1,Blanco,,,0
-Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Production,234,9,1,Yankon,1,Verde,1,,0
+Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Production,234,9,1,Yankon,1,Verde,,,0
 Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Production,245,9,1,Joshin,1,Rojo,,,0
 Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Production,297,9,1,Panshin,1,Amarillo,,,0
 Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Production,1,9,1,Barin Poi,0,Celeste,0,98.427042015901307,0
@@ -1680,7 +1680,7 @@ Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Production,312,
 Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Production,320,9,1,Barin Poi,1,Mierda sol,,,0
 Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Production,325,9,1,Poa,1,Morado,,,0
 Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Production,274,12,1,Joxo,1,Blanco,,,0
-Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Production,234,12,1,Yankon,1,Verde,1,,0
+Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Production,234,12,1,Yankon,1,Verde,,,0
 Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Production,245,12,1,Joshin,1,Rojo,,,0
 Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Production,297,12,1,Panshin,1,Amarillo,,,0
 Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Production,1,12,1,Nai,1,Celeste,,,0
@@ -1688,15 +1688,15 @@ Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Production,312
 Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Production,320,12,1,Barin Poi,1,Mierda sol,,,0
 Shipibo,sh_48,11,femenino,c.c.n.n. (bahuanisho),7,05/08/2017,11.7,Production,325,12,1,Poa,1,Morado,,,0
 Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Production,274,8,1,Joxo,1,Blanco,,,0
-Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Production,234,8,1,Yankon,1,Verde,1,,0
+Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Production,234,8,1,Yankon,1,Verde,,,0
 Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Production,245,8,1,Joshin,1,Rojo,,,0
 Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Production,297,8,1,Panshin,1,Amarillo,,,0
-Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Production,1,8,1,Yankon,1,Celeste,1,,0
+Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Production,1,8,1,Yankon,1,Celeste,,,0
 Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Production,312,8,1,Wiso,1,Negro,,,0
 Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Production,320,8,1,Barin Poi,1,Mierda sol,,,0
 Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Production,325,8,1,Violeta,0,Morado,,,1
 Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Production,274,9,1,Joxo,1,Blanco,,,0
-Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Production,234,9,1,Yankon,1,Verde,1,,0
+Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Production,234,9,1,Yankon,1,Verde,,,0
 Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Production,245,9,1,Joshin,1,Rojo,,,0
 Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Production,297,9,1,Panshin,1,Amarillo,,,0
 Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Production,1,9,1,Nai,1,Celeste,,,0
@@ -1704,7 +1704,7 @@ Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Production,312,9
 Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Production,320,9,1,Barin Poi,1,Mierda sol,,,0
 Shipibo,sh_50,8,femenino,c.c.n.n. (bahuanisho),9,05/08/2017,8.7,Production,325,9,1,Poa,1,Morado,,,0
 Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Production,274,12,1,Joxo,1,Blanco,,,0
-Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Production,234,12,1,Yankon,1,Verde,1,,0
+Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Production,234,12,1,Yankon,1,Verde,,,0
 Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Production,245,12,1,Joshin,1,Rojo,,,0
 Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Production,297,12,1,Panshin,1,Amarillo,,,0
 Shipibo,sh_51,11,masculino,c.c.n.n. (bahuanisho),10,05/08/2017,11.6,Production,1,12,1,Nai,1,Celeste,,,0
@@ -1720,10 +1720,10 @@ Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Production,312,10,1,Wiso,
 Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Production,320,10,1,,0,Mierda sol,,,0
 Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Production,325,10,1,Morado,0,Morado,,,1
 Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Production,274,10,1,Joxo,1,Blanco,,,0
-Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Production,234,10,1,Yankon,1,Verde,1,,0
+Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Production,234,10,1,Yankon,1,Verde,,,0
 Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Production,245,10,1,Joshin,1,Rojo,,,0
 Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Production,297,10,1,Panshin,1,Amarillo,,,0
-Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Production,1,10,1,Yankon,1,Celeste,1,,0
+Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Production,1,10,1,Yankon,1,Celeste,,,0
 Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Production,312,10,1,Wiso,1,Negro,,,0
 Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Production,320,10,1,grub,0,Mierda sol,,,0
 Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Production,325,10,1,uva color,0,Morado,,,0
@@ -1744,10 +1744,10 @@ Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Production,312,8,1,Wiso,1,N
 Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Production,320,8,1,Azul,0,Mierda sol,,,0
 Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Production,325,8,1,Violeta,0,Morado,,,1
 Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Production,274,10,1,Joxo,1,Blanco,,,0
-Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Production,234,10,1,Yankon,1,Verde,1,,0
+Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Production,234,10,1,Yankon,1,Verde,,,0
 Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Production,245,10,1,Joshin,1,Rojo,,,0
 Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Production,297,10,1,Panshin,1,Amarillo,,,0
-Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Production,1,10,1,Yankon,1,Celeste,1,,0
+Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Production,1,10,1,Yankon,1,Celeste,,,0
 Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Production,312,10,1,Wiso,1,Negro,,,0
 Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Production,320,10,1,yankoncha,0,Mierda sol,,,0
 Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Production,325,10,1,Morado,0,Morado,,,1
@@ -1765,11 +1765,11 @@ Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Production,1,6,2,Azul,0,Celest
 Shipibo,sh_2,7,femenino,bilingue,8,17/07/2017,7.4,Production,312,7,2,Wiso,1,Negro,,,0
 Shipibo,sh_3,9,masculino,bilingue,5,17/07/2017,9.6,Production,234,10,2,Panshin,0,Verde,0,119.88323068719829,0
 Shipibo,sh_3,9,masculino,bilingue,5,17/07/2017,9.6,Production,245,10,2,Rojo,0,Rojo,,,1
-Shipibo,sh_3,9,masculino,bilingue,5,17/07/2017,9.6,Production,325,10,2,Joshin,1,Morado,1,66.94457558308963,0
+Shipibo,sh_3,9,masculino,bilingue,5,17/07/2017,9.6,Production,325,10,2,Joshin,1,Morado,,,0
 Shipibo,sh_4,7,masculino,bilingue,6,17/07/2017,7.3,Production,320,7,2,Amarillo,0,Mierda sol,,,0
 Shipibo,sh_5,7,femenino,bilingue,1,17/07/2017,7.8,Production,297,8,2,Panshin,1,Amarillo,,,0
 Shipibo,sh_6,8,masculino,bilingue,2,17/07/2017,8.2,Production,274,8,2,Joxo,1,Blanco,,,0
-Shipibo,sh_6,8,masculino,bilingue,2,17/07/2017,8.2,Production,234,8,2,Yankon,1,Verde,1,,0
+Shipibo,sh_6,8,masculino,bilingue,2,17/07/2017,8.2,Production,234,8,2,Yankon,1,Verde,,,0
 Shipibo,sh_6,8,masculino,bilingue,2,17/07/2017,8.2,Production,245,8,2,Rojo,0,Rojo,,,1
 Shipibo,sh_6,8,masculino,bilingue,2,17/07/2017,8.2,Production,312,8,2,Negro,0,Negro,,,1
 Shipibo,sh_6,8,masculino,bilingue,2,17/07/2017,8.2,Production,325,8,2,Violeta,0,Morado,,,1
@@ -1779,9 +1779,9 @@ Shipibo,sh_7,5,masculino,bilingue,3,17/07/2017,5.7,Production,1,6,2,Azul,0,Celes
 Shipibo,sh_7,5,masculino,bilingue,3,17/07/2017,5.7,Production,312,6,2,Joshin,0,Negro,1,72.88365866228177,0
 Shipibo,sh_7,5,masculino,bilingue,3,17/07/2017,5.7,Production,320,6,2,Verde,0,Mierda sol,,,0
 Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Production,274,9,2,Gris,0,Blanco,,,0
-Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Production,234,9,2,Yankon,1,Verde,1,,0
+Shipibo,sh_8,8,femenino,bilingue,4,17/07/2017,8.9,Production,234,9,2,Yankon,1,Verde,,,0
 Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Production,274,8,2,plomo,0,Blanco,,,0
-Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Production,234,8,2,Yankon,1,Verde,1,,0
+Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Production,234,8,2,Yankon,1,Verde,,,0
 Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Production,245,8,2,plomo,0,Rojo,,,0
 Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Production,297,8,2,plomo,0,Amarillo,,,0
 Shipibo,sh_9,8,masculino,bilingue,9,17/07/2017,8.3,Production,1,8,2,plomo,0,Celeste,,,0
@@ -1797,7 +1797,7 @@ Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Production,274,
 Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Production,245,6,2,Panshin,0,Rojo,1,93.1910736068643,0
 Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Production,297,6,2,Yankon,0,Amarillo,1,,0
 Shipibo,sh_14,6,masculino,c.c.n.n. (bahuanisho),5,02/08/2017,6.3,Production,320,6,2,Wiso,0,Mierda sol,1,67.19189385632764,0
-Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Production,234,8,2,Yankon,1,Verde,1,,0
+Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Production,234,8,2,Yankon,1,Verde,,,0
 Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Production,245,8,2,Rojo,0,Rojo,,,1
 Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Production,297,8,2,Amarillo,0,Amarillo,,,1
 Shipibo,sh_15,8,femenino,c.c.n.n. (bahuanisho),1,03/08/2017,8.4,Production,1,8,2,Nai,1,Celeste,,,0
@@ -1807,13 +1807,13 @@ Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Production,234,7
 Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Production,245,7,2,Rojo,0,Rojo,,,1
 Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Production,297,7,2,Amarillo,0,Amarillo,,,1
 Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Production,312,7,2,Negro,0,Negro,,,1
-Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Production,325,7,2,Kari,1,Morado,1,,0
+Shipibo,sh_16,7,femenino,c.c.n.n. (bahuanisho),2,03/08/2017,7.3,Production,325,7,2,Kari,1,Morado,,,0
 Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Production,274,9,2,Blanco,0,Blanco,,,1
 Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Production,234,9,2,Azul,0,Verde,,,0
 Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Production,245,9,2,Amarillo,0,Rojo,,,0
 Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Production,297,9,2,Amarillo,0,Amarillo,,,1
 Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Production,312,9,2,Blanco,0,Negro,,,0
-Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Production,325,9,2,Kari,1,Morado,1,,0
+Shipibo,sh_17,9,masculino,c.c.n.n. (bahuanisho),3,03/08/2017,9.3,Production,325,9,2,Kari,1,Morado,,,0
 Shipibo,sh_18,8,femenino,c.c.n.n. (bahuanisho),4,03/08/2017,8,Production,274,8,2,Blanco,0,Blanco,,,1
 Shipibo,sh_18,8,femenino,c.c.n.n. (bahuanisho),4,03/08/2017,8,Production,245,8,2,Joshin,1,Rojo,,,0
 Shipibo,sh_18,8,femenino,c.c.n.n. (bahuanisho),4,03/08/2017,8,Production,297,8,2,Panshin,1,Amarillo,,,0
@@ -1825,7 +1825,7 @@ Shipibo,sh_19,6,femenino,c.c.n.n. (bahuanisho),5,03/08/2017,6,Production,297,6,2
 Shipibo,sh_19,6,femenino,c.c.n.n. (bahuanisho),5,03/08/2017,6,Production,1,6,2,Joxo,0,Celeste,0,49.223397891653114,0
 Shipibo,sh_19,6,femenino,c.c.n.n. (bahuanisho),5,03/08/2017,6,Production,312,6,2,Panshin,0,Negro,0,125.11577078849812,0
 Shipibo,sh_19,6,femenino,c.c.n.n. (bahuanisho),5,03/08/2017,6,Production,320,6,2,Barin Poi,1,Mierda sol,,,0
-Shipibo,sh_19,6,femenino,c.c.n.n. (bahuanisho),5,03/08/2017,6,Production,325,6,2,Yankon,1,Morado,1,,0
+Shipibo,sh_19,6,femenino,c.c.n.n. (bahuanisho),5,03/08/2017,6,Production,325,6,2,Yankon,1,Morado,,,0
 Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Production,274,10,2,Nai,0,Blanco,0,49.223397891653114,0
 Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Production,234,10,2,Nai,0,Verde,0,75.71344992800157,0
 Shipibo,sh_21,9,masculino,c.c.n.n. (bahuanisho),7,03/08/2017,9.5,Production,245,10,2,Amarillo,0,Rojo,,,0
@@ -1850,7 +1850,7 @@ Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Production,245,
 Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Production,1,5,2,Joshin,0,Celeste,0,102.87037328599523,0
 Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Production,312,5,2,Joxo,0,Negro,0,70.54001772044006,0
 Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Production,320,5,2,Joxo,0,Mierda sol,0,71.46716518793788,0
-Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Production,325,5,2,Joshin,1,Morado,1,66.94457558308963,0
+Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Production,325,5,2,Joshin,1,Morado,,,0
 Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Production,234,6,2,mango,0,Verde,,,0
 Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Production,297,6,2,Azul,0,Amarillo,,,0
 Shipibo,sh_28,5,femenino,c.c.n.n. (bahuanisho),14,03/08/2017,5.5,Production,1,6,2,Verde,0,Celeste,,,0
@@ -1866,18 +1866,18 @@ Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Production,234,
 Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Production,1,11,2,unpasx,0,Celeste,,,0
 Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Production,320,11,2,Mai,0,Mierda sol,0,,0
 Shipibo,sh_35,7,femenino,c.c.n.n. (bahuanisho),21,03/08/2017,7.5,Production,1,8,2,Nai,1,Celeste,,,0
-Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Production,234,10,2,Yankon,1,Verde,1,,0
+Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Production,234,10,2,Yankon,1,Verde,,,0
 Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Production,1,10,2,Nai,1,Celeste,,,0
 Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Production,320,10,2,Barin Poi,1,Mierda sol,,,0
 Shipibo,sh_37,9,femenino,c.c.n.n. (bahuanisho),23,03/08/2017,9.7,Production,325,10,2,Poa,1,Morado,,,0
 Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Production,297,9,2,Yankon,0,Amarillo,1,,0
-Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Production,1,9,2,Yankon,1,Celeste,1,,0
+Shipibo,sh_38,8,femenino,c.c.n.n. (bahuanisho),24,03/08/2017,9.3,Production,1,9,2,Yankon,1,Celeste,,,0
 Shipibo,sh_39,7,masculino,c.c.n.n. (bahuanisho),25,03/08/2017,7,Production,312,7,2,Wiso,1,Negro,,,0
 Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Production,274,8,2,Joxo,1,Blanco,,,0
 Shipibo,sh_40,7,masculino,c.c.n.n. (bahuanisho),26,03/08/2017,7.5,Production,312,8,2,Wiso,1,Negro,,,0
-Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Production,325,8,2,Kari,1,Morado,1,,0
+Shipibo,sh_41,8,masculino,c.c.n.n. (bahuanisho),27,03/08/2017,8.2,Production,325,8,2,Kari,1,Morado,,,0
 Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Production,1,8,2,jene,0,Celeste,,,0
-Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Production,320,8,2,Yankon,1,Mierda sol,1,,0
+Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Production,320,8,2,Yankon,1,Mierda sol,,,0
 Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Production,325,8,2,Naranja,0,Morado,,,0
 Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Production,274,6,2,Wiso,0,Blanco,0,70.54001772044006,0
 Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Production,234,6,2,Wiso,0,Verde,0,59.60879549194061,0
@@ -1894,7 +1894,7 @@ Shipibo,sh_49,8,masculino,c.c.n.n. (bahuanisho),8,05/08/2017,8.1,Production,325,
 Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Production,274,10,2,Joxo,1,Blanco,,,0
 Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Production,245,10,2,Rojo,0,Rojo,,,1
 Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Production,297,10,2,Panshin,1,Amarillo,,,0
-Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Production,1,10,2,Yankon,1,Celeste,1,,0
+Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Production,1,10,2,Yankon,1,Celeste,,,0
 Shipibo,sh_52,10,femenino,bena jema,20,10/08/2017,10.2,Production,312,10,2,Negro,0,Negro,,,1
 Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Production,274,10,2,joxo jakwokawa,0,Blanco,,,0
 Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Production,234,10,2,yakonshama,0,Verde,,,0
@@ -1908,7 +1908,7 @@ Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Production,274,10,2,joxo me
 Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Production,245,10,2,joshin metsashoko,0,Rojo,,,0
 Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Production,297,10,2,panshim oni,0,Amarillo,,,0
 Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Production,1,10,2,Nai,1,Celeste,,,0
-Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Production,312,10,2,Yame,1,Negro,1,,0
+Shipibo,sh_54,9,femenino,bena jema,22,10/08/2017,9.6,Production,312,10,2,Yame,1,Negro,,,0
 Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Production,274,8,2,Joxo,1,Blanco,,,0
 Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Production,1,8,2,Gris,0,Celeste,,,0
 Shipibo,sh_55,7,femenino,bena jema,23,10/08/2017,7.5,Production,320,8,2,Verde,0,Mierda sol,,,0
@@ -1919,11 +1919,11 @@ Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Production,297,10,2,mankoa
 Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Production,1,10,2,jene,0,Celeste,,,0
 Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Production,312,10,2,Nai,0,Negro,0,57.01785334436926,0
 Shipibo,sh_56,9,masculino,bena jema,24,10/08/2017,9.6,Production,325,10,2,Uva jisa,0,Morado,,,0
-Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Production,234,8,2,Yankon,1,Verde,1,,0
+Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Production,234,8,2,Yankon,1,Verde,,,0
 Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Production,245,8,2,Jimi,0,Rojo,1,,0
 Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Production,297,8,2,Barin Poi,0,Amarillo,0,61.75681419892059,0
 Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Production,312,8,2,nai wisoa,0,Negro,,,0
-Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Production,320,8,2,Yankon,1,Mierda sol,1,,0
+Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Production,320,8,2,Yankon,1,Mierda sol,,,0
 Shipibo,sh_4,7,masculino,bilingue,6,17/07/2017,7.3,Production,320,7,3,Verde,0,Mierda sol,,,0
 Shipibo,sh_7,5,masculino,bilingue,3,17/07/2017,5.7,Production,1,6,3,Joshin,0,Celeste,0,102.87037328599523,0
 Shipibo,sh_10,7,masculino,c.c.n.n. (bahuanisho),1,02/08/2017,7,Production,297,7,3,Panshin,1,Amarillo,,,0
@@ -1934,13 +1934,13 @@ Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Production,1,10
 Shipibo,sh_25,9,femenino,c.c.n.n. (bahuanisho),11,03/08/2017,9.7,Production,312,10,3,barriwiso,0,Negro,,,0
 Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Production,234,5,3,Joxo,0,Verde,0,74.88113647641842,0
 Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Production,312,5,3,Joshin,0,Negro,1,72.88365866228177,0
-Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Production,320,5,3,Joshin,1,Mierda sol,0,71.2641529803028,0
-Shipibo,sh_30,7 or 8,femenino,c.c.n.n. (bahuanisho),16,03/08/2017,8,Production,325,8,3,Joshin,1,Morado,1,66.94457558308963,0
+Shipibo,sh_27,5,femenino,c.c.n.n. (bahuanisho),13,03/08/2017,5.4,Production,320,5,3,Joshin,1,Mierda sol,,,0
+Shipibo,sh_30,7 or 8,femenino,c.c.n.n. (bahuanisho),16,03/08/2017,8,Production,325,8,3,Joshin,1,Morado,,,0
 Shipibo,sh_34,11,femenino,c.c.n.n. (bahuanisho),20,03/08/2017,11,Production,320,11,3,chawa,0,Mierda sol,,,0
-Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Production,325,8,3,Yankon,1,Morado,1,,0
+Shipibo,sh_43,8,femenino,c.c.n.n. (bahuanisho),2,05/08/2017,8.5,Production,325,8,3,Yankon,1,Morado,,,0
 Shipibo,sh_44,6,femenino,c.c.n.n. (bahuanisho),3,05/08/2017,6,Production,274,6,3,Joxo,1,Blanco,,,0
-Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Production,1,9,3,Yankon,1,Celeste,1,,0
-Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Production,320,10,3,Yankon,1,Mierda sol,1,,0
+Shipibo,sh_47,9,masculino,c.c.n.n. (bahuanisho),6,05/08/2017,9.4,Production,1,9,3,Yankon,1,Celeste,,,0
+Shipibo,sh_53,10,masculino,bena jema,21,10/08/2017,10,Production,320,10,3,Yankon,1,Mierda sol,,,0
 Shipibo,sh_57,8,femenino,bena jema,25,10/08/2017,8.5,Production,234,8,3,andolni pei,0,Verde,,,0
 Spanish,sp_1,8,femenino,c.c.n.n. (bahuanisho),9,04/08/2017,9,Production,274,9,1,Joxo,0,Blanco,,,1
 Spanish,sp_1,8,femenino,c.c.n.n. (bahuanisho),9,04/08/2017,9,Production,234,9,1,Yankon,0,Verde,,,1
@@ -1950,7 +1950,7 @@ Spanish,sp_1,8,femenino,c.c.n.n. (bahuanisho),9,04/08/2017,9,Production,291,9,1,
 Spanish,sp_1,8,femenino,c.c.n.n. (bahuanisho),9,04/08/2017,9,Production,312,9,1,Wiso,0,Negro,,,1
 Spanish,sp_1,8,femenino,c.c.n.n. (bahuanisho),9,04/08/2017,9,Production,121,9,1,,0,Naranja,,,
 Spanish,sp_1,8,femenino,c.c.n.n. (bahuanisho),9,04/08/2017,9,Production,46,9,1,,0,Gris,,,
-Spanish,sp_1,8,femenino,c.c.n.n. (bahuanisho),9,04/08/2017,9,Production,325,9,1,,,Morado,,,0
+Spanish,sp_1,8,femenino,c.c.n.n. (bahuanisho),9,04/08/2017,9,Production,325,9,1,,0,Morado,,,0
 Spanish,sp_1,8,femenino,c.c.n.n. (bahuanisho),9,04/08/2017,9,Production,266,9,1,,0,Marron,,,
 Spanish,sp_1,8,femenino,c.c.n.n. (bahuanisho),9,04/08/2017,9,Production,65,9,1,,0,Rosa,,,
 Spanish,sp_2,7,femenino,c.c.n.n. (bahuanisho),10,04/08/2017,7.7,Production,274,8,1,Joxo,0,Blanco,,,1
@@ -1968,7 +1968,7 @@ Spanish,sp_3,8,femenino,c.c.n.n. (bahuanisho),7,04/08/2017,8.5,Production,274,8,
 Spanish,sp_3,8,femenino,c.c.n.n. (bahuanisho),7,04/08/2017,8.5,Production,234,8,1,Yankon,0,Verde,,,1
 Spanish,sp_3,8,femenino,c.c.n.n. (bahuanisho),7,04/08/2017,8.5,Production,245,8,1,Joshin,0,Rojo,,,1
 Spanish,sp_3,8,femenino,c.c.n.n. (bahuanisho),7,04/08/2017,8.5,Production,297,8,1,Panshin,0,Amarillo,,,1
-Spanish,sp_3,8,femenino,c.c.n.n. (bahuanisho),7,04/08/2017,8.5,Production,291,8,1,,,Azul,,,
+Spanish,sp_3,8,femenino,c.c.n.n. (bahuanisho),7,04/08/2017,8.5,Production,291,8,1,,0,Azul,,,
 Spanish,sp_3,8,femenino,c.c.n.n. (bahuanisho),7,04/08/2017,8.5,Production,312,8,1,Wiso,0,Negro,,,1
 Spanish,sp_3,8,femenino,c.c.n.n. (bahuanisho),7,04/08/2017,8.5,Production,121,8,1,Naranja,1,Naranja,,,
 Spanish,sp_3,8,femenino,c.c.n.n. (bahuanisho),7,04/08/2017,8.5,Production,46,8,1,Marron,0,Gris,1,57.67650214775511,
@@ -1990,7 +1990,7 @@ Spanish,sp_5,8,femenino,c.c.n.n. (bahuanisho),5,04/08/2017,8,Production,274,8,1,
 Spanish,sp_5,8,femenino,c.c.n.n. (bahuanisho),5,04/08/2017,8,Production,234,8,1,Panshin,0,Verde,,,0
 Spanish,sp_5,8,femenino,c.c.n.n. (bahuanisho),5,04/08/2017,8,Production,245,8,1,Joshin,0,Rojo,,,1
 Spanish,sp_5,8,femenino,c.c.n.n. (bahuanisho),5,04/08/2017,8,Production,297,8,1,Panshin,0,Amarillo,,,1
-Spanish,sp_5,8,femenino,c.c.n.n. (bahuanisho),5,04/08/2017,8,Production,291,8,1,,,Azul,,,
+Spanish,sp_5,8,femenino,c.c.n.n. (bahuanisho),5,04/08/2017,8,Production,291,8,1,,0,Azul,,,
 Spanish,sp_5,8,femenino,c.c.n.n. (bahuanisho),5,04/08/2017,8,Production,312,8,1,Wiso,0,Negro,,,1
 Spanish,sp_5,8,femenino,c.c.n.n. (bahuanisho),5,04/08/2017,8,Production,121,8,1,Naranja,1,Naranja,,,
 Spanish,sp_5,8,femenino,c.c.n.n. (bahuanisho),5,04/08/2017,8,Production,46,8,1,,0,Gris,,,
@@ -2001,7 +2001,7 @@ Spanish,sp_6,7,femenino,c.c.n.n. (bahuanisho),6,04/08/2017,7.5,Production,274,8,
 Spanish,sp_6,7,femenino,c.c.n.n. (bahuanisho),6,04/08/2017,7.5,Production,234,8,1,Yankon,0,Verde,,,1
 Spanish,sp_6,7,femenino,c.c.n.n. (bahuanisho),6,04/08/2017,7.5,Production,245,8,1,Joshin,0,Rojo,,,1
 Spanish,sp_6,7,femenino,c.c.n.n. (bahuanisho),6,04/08/2017,7.5,Production,297,8,1,Amarillo,1,Amarillo,,,0
-Spanish,sp_6,7,femenino,c.c.n.n. (bahuanisho),6,04/08/2017,7.5,Production,291,8,1,,,Azul,,,
+Spanish,sp_6,7,femenino,c.c.n.n. (bahuanisho),6,04/08/2017,7.5,Production,291,8,1,,0,Azul,,,
 Spanish,sp_6,7,femenino,c.c.n.n. (bahuanisho),6,04/08/2017,7.5,Production,312,8,1,Wiso,0,Negro,,,1
 Spanish,sp_6,7,femenino,c.c.n.n. (bahuanisho),6,04/08/2017,7.5,Production,121,8,1,Naranja,1,Naranja,,,
 Spanish,sp_6,7,femenino,c.c.n.n. (bahuanisho),6,04/08/2017,7.5,Production,46,8,1,,0,Gris,,,
@@ -2056,11 +2056,11 @@ Spanish,sp_11,7,masculino,c.c.n.n. (bahuanisho),31,05/08/2017,7.5,Production,274
 Spanish,sp_11,7,masculino,c.c.n.n. (bahuanisho),31,05/08/2017,7.5,Production,234,8,1,,0,Verde,,,0
 Spanish,sp_11,7,masculino,c.c.n.n. (bahuanisho),31,05/08/2017,7.5,Production,245,8,1,Joshin,0,Rojo,,,1
 Spanish,sp_11,7,masculino,c.c.n.n. (bahuanisho),31,05/08/2017,7.5,Production,297,8,1,Panshin,0,Amarillo,,,1
-Spanish,sp_11,7,masculino,c.c.n.n. (bahuanisho),31,05/08/2017,7.5,Production,291,8,1,,,Azul,,,
+Spanish,sp_11,7,masculino,c.c.n.n. (bahuanisho),31,05/08/2017,7.5,Production,291,8,1,,0,Azul,,,
 Spanish,sp_11,7,masculino,c.c.n.n. (bahuanisho),31,05/08/2017,7.5,Production,312,8,1,Wiso,0,Negro,,,1
 Spanish,sp_11,7,masculino,c.c.n.n. (bahuanisho),31,05/08/2017,7.5,Production,121,8,1,Naranja,1,Naranja,,,
 Spanish,sp_11,7,masculino,c.c.n.n. (bahuanisho),31,05/08/2017,7.5,Production,46,8,1,Joxo,0,Gris,,,
-Spanish,sp_11,7,masculino,c.c.n.n. (bahuanisho),31,05/08/2017,7.5,Production,325,8,1,,,Morado,,,0
+Spanish,sp_11,7,masculino,c.c.n.n. (bahuanisho),31,05/08/2017,7.5,Production,325,8,1,,0,Morado,,,0
 Spanish,sp_11,7,masculino,c.c.n.n. (bahuanisho),31,05/08/2017,7.5,Production,266,8,1,Naranja,0,Marron,1,28.373205670138866,
 Spanish,sp_11,7,masculino,c.c.n.n. (bahuanisho),31,05/08/2017,7.5,Production,65,8,1,,0,Rosa,,,
 Spanish,sp_12,8,masculino,c.c.n.n. (bahuanisho),32,05/08/2017,9.5,Production,274,10,1,,0,Blanco,,,0
@@ -2071,7 +2071,7 @@ Spanish,sp_12,8,masculino,c.c.n.n. (bahuanisho),32,05/08/2017,9.5,Production,291
 Spanish,sp_12,8,masculino,c.c.n.n. (bahuanisho),32,05/08/2017,9.5,Production,312,10,1,Wiso,0,Negro,,,1
 Spanish,sp_12,8,masculino,c.c.n.n. (bahuanisho),32,05/08/2017,9.5,Production,121,10,1,,0,Naranja,,,
 Spanish,sp_12,8,masculino,c.c.n.n. (bahuanisho),32,05/08/2017,9.5,Production,46,10,1,Morado,0,Gris,0,52.86956118599813,
-Spanish,sp_12,8,masculino,c.c.n.n. (bahuanisho),32,05/08/2017,9.5,Production,325,10,1,,,Morado,,,0
+Spanish,sp_12,8,masculino,c.c.n.n. (bahuanisho),32,05/08/2017,9.5,Production,325,10,1,,0,Morado,,,0
 Spanish,sp_12,8,masculino,c.c.n.n. (bahuanisho),32,05/08/2017,9.5,Production,266,10,1,Rojo,0,Marron,1,24.87548592490205,
 Spanish,sp_12,8,masculino,c.c.n.n. (bahuanisho),32,05/08/2017,9.5,Production,65,10,1,,0,Rosa,,,
 Spanish,sp_13,9,femenino,c.c.n.n. (bahuanisho),29,05/08/2017,9.8,Production,274,10,1,Joxo,0,Blanco,,,1
@@ -2082,14 +2082,14 @@ Spanish,sp_13,9,femenino,c.c.n.n. (bahuanisho),29,05/08/2017,9.8,Production,291,
 Spanish,sp_13,9,femenino,c.c.n.n. (bahuanisho),29,05/08/2017,9.8,Production,312,10,1,Wiso,0,Negro,,,1
 Spanish,sp_13,9,femenino,c.c.n.n. (bahuanisho),29,05/08/2017,9.8,Production,121,10,1,Naranja,1,Naranja,,,
 Spanish,sp_13,9,femenino,c.c.n.n. (bahuanisho),29,05/08/2017,9.8,Production,46,10,1,Azul,0,Gris,0,48.65279642528269,
-Spanish,sp_13,9,femenino,c.c.n.n. (bahuanisho),29,05/08/2017,9.8,Production,325,10,1,,,Morado,,,0
+Spanish,sp_13,9,femenino,c.c.n.n. (bahuanisho),29,05/08/2017,9.8,Production,325,10,1,,0,Morado,,,0
 Spanish,sp_13,9,femenino,c.c.n.n. (bahuanisho),29,05/08/2017,9.8,Production,266,10,1,Joshin,0,Marron,,,
 Spanish,sp_13,9,femenino,c.c.n.n. (bahuanisho),29,05/08/2017,9.8,Production,65,10,1,Rosa,1,Rosa,,,
 Spanish,sp_14,6 or 7,masculino,c.c.n.n. (bahuanisho),30,05/08/2017,7,Production,274,7,1,Joxo,0,Blanco,,,1
 Spanish,sp_14,6 or 7,masculino,c.c.n.n. (bahuanisho),30,05/08/2017,7,Production,234,7,1,Yankon,0,Verde,,,1
 Spanish,sp_14,6 or 7,masculino,c.c.n.n. (bahuanisho),30,05/08/2017,7,Production,245,7,1,Joshin,0,Rojo,,,1
 Spanish,sp_14,6 or 7,masculino,c.c.n.n. (bahuanisho),30,05/08/2017,7,Production,297,7,1,Panshin,0,Amarillo,,,1
-Spanish,sp_14,6 or 7,masculino,c.c.n.n. (bahuanisho),30,05/08/2017,7,Production,291,7,1,,,Azul,,,
+Spanish,sp_14,6 or 7,masculino,c.c.n.n. (bahuanisho),30,05/08/2017,7,Production,291,7,1,,0,Azul,,,
 Spanish,sp_14,6 or 7,masculino,c.c.n.n. (bahuanisho),30,05/08/2017,7,Production,312,7,1,Wiso,0,Negro,,,1
 Spanish,sp_14,6 or 7,masculino,c.c.n.n. (bahuanisho),30,05/08/2017,7,Production,121,7,1,Joshin,0,Naranja,,,
 Spanish,sp_14,6 or 7,masculino,c.c.n.n. (bahuanisho),30,05/08/2017,7,Production,46,7,1,Joxo,0,Gris,,,
@@ -2104,7 +2104,7 @@ Spanish,sp_15,9,masculino,c.c.n.n. (bahuanisho),27,05/08/2017,9.4,Production,291
 Spanish,sp_15,9,masculino,c.c.n.n. (bahuanisho),27,05/08/2017,9.4,Production,312,9,1,Wiso,0,Negro,,,1
 Spanish,sp_15,9,masculino,c.c.n.n. (bahuanisho),27,05/08/2017,9.4,Production,121,9,1,Naranja,1,Naranja,,,
 Spanish,sp_15,9,masculino,c.c.n.n. (bahuanisho),27,05/08/2017,9.4,Production,46,9,1,Joxo,0,Gris,,,
-Spanish,sp_15,9,masculino,c.c.n.n. (bahuanisho),27,05/08/2017,9.4,Production,325,9,1,,,Morado,,,0
+Spanish,sp_15,9,masculino,c.c.n.n. (bahuanisho),27,05/08/2017,9.4,Production,325,9,1,,0,Morado,,,0
 Spanish,sp_15,9,masculino,c.c.n.n. (bahuanisho),27,05/08/2017,9.4,Production,266,9,1,Azul,0,Marron,0,99.37024655297984,
 Spanish,sp_15,9,masculino,c.c.n.n. (bahuanisho),27,05/08/2017,9.4,Production,65,9,1,Verde,0,Rosa,0,114.9480012875387,
 Spanish,sp_16,10,femenino,c.c.n.n. (bahuanisho),28,05/08/2017,10,Production,274,10,1,Blanco,1,Blanco,,,0
@@ -2144,11 +2144,11 @@ Spanish,sp_19,6,femenino,c.c.n.n. (bahuanisho),23,05/08/2017,6.3,Production,274,
 Spanish,sp_19,6,femenino,c.c.n.n. (bahuanisho),23,05/08/2017,6.3,Production,234,6,1,Yankon,0,Verde,,,1
 Spanish,sp_19,6,femenino,c.c.n.n. (bahuanisho),23,05/08/2017,6.3,Production,245,6,1,Joshin,0,Rojo,,,1
 Spanish,sp_19,6,femenino,c.c.n.n. (bahuanisho),23,05/08/2017,6.3,Production,297,6,1,Panshin,0,Amarillo,,,1
-Spanish,sp_19,6,femenino,c.c.n.n. (bahuanisho),23,05/08/2017,6.3,Production,291,6,1,,,Azul,,,
+Spanish,sp_19,6,femenino,c.c.n.n. (bahuanisho),23,05/08/2017,6.3,Production,291,6,1,,0,Azul,,,
 Spanish,sp_19,6,femenino,c.c.n.n. (bahuanisho),23,05/08/2017,6.3,Production,312,6,1,Wiso,0,Negro,,,1
 Spanish,sp_19,6,femenino,c.c.n.n. (bahuanisho),23,05/08/2017,6.3,Production,121,6,1,,0,Naranja,,,
 Spanish,sp_19,6,femenino,c.c.n.n. (bahuanisho),23,05/08/2017,6.3,Production,46,6,1,Gris,1,Gris,,,
-Spanish,sp_19,6,femenino,c.c.n.n. (bahuanisho),23,05/08/2017,6.3,Production,325,6,1,,,Morado,,,0
+Spanish,sp_19,6,femenino,c.c.n.n. (bahuanisho),23,05/08/2017,6.3,Production,325,6,1,,0,Morado,,,0
 Spanish,sp_19,6,femenino,c.c.n.n. (bahuanisho),23,05/08/2017,6.3,Production,266,6,1,Joshin,0,Marron,,,
 Spanish,sp_19,6,femenino,c.c.n.n. (bahuanisho),23,05/08/2017,6.3,Production,65,6,1,,0,Rosa,,,
 Spanish,sp_20,8,femenino,c.c.n.n. (bahuanisho),24,05/08/2017,8.7,Production,274,9,1,Joxo,0,Blanco,,,1
@@ -2243,11 +2243,11 @@ Spanish,sp_28,7,femenino,c.c.n.n. (bahuanisho),16,05/08/2017,7.8,Production,274,
 Spanish,sp_28,7,femenino,c.c.n.n. (bahuanisho),16,05/08/2017,7.8,Production,234,8,1,Yankon,0,Verde,,,1
 Spanish,sp_28,7,femenino,c.c.n.n. (bahuanisho),16,05/08/2017,7.8,Production,245,8,1,Joshin,0,Rojo,,,1
 Spanish,sp_28,7,femenino,c.c.n.n. (bahuanisho),16,05/08/2017,7.8,Production,297,8,1,Panshin,0,Amarillo,,,1
-Spanish,sp_28,7,femenino,c.c.n.n. (bahuanisho),16,05/08/2017,7.8,Production,291,8,1,,,Azul,,,
+Spanish,sp_28,7,femenino,c.c.n.n. (bahuanisho),16,05/08/2017,7.8,Production,291,8,1,,0,Azul,,,
 Spanish,sp_28,7,femenino,c.c.n.n. (bahuanisho),16,05/08/2017,7.8,Production,312,8,1,Wiso,0,Negro,,,1
 Spanish,sp_28,7,femenino,c.c.n.n. (bahuanisho),16,05/08/2017,7.8,Production,121,8,1,,0,Naranja,,,
 Spanish,sp_28,7,femenino,c.c.n.n. (bahuanisho),16,05/08/2017,7.8,Production,46,8,1,,0,Gris,,,
-Spanish,sp_28,7,femenino,c.c.n.n. (bahuanisho),16,05/08/2017,7.8,Production,325,8,1,,,Morado,,,0
+Spanish,sp_28,7,femenino,c.c.n.n. (bahuanisho),16,05/08/2017,7.8,Production,325,8,1,,0,Morado,,,0
 Spanish,sp_28,7,femenino,c.c.n.n. (bahuanisho),16,05/08/2017,7.8,Production,266,8,1,Marron,1,Marron,,,
 Spanish,sp_28,7,femenino,c.c.n.n. (bahuanisho),16,05/08/2017,7.8,Production,65,8,1,Rosa,1,Rosa,,,
 Spanish,sp_29,11,masculino,c.c.n.n. (bahuanisho),13,05/08/2017,11,Production,274,11,1,Joxo,0,Blanco,,,1
@@ -2324,7 +2324,7 @@ Spanish,sp_35,7,femenino,bena jema,2,07/08/2017,7,Production,291,7,1,Azul,1,Azul
 Spanish,sp_35,7,femenino,bena jema,2,07/08/2017,7,Production,312,7,1,Negro,1,Negro,,,0
 Spanish,sp_35,7,femenino,bena jema,2,07/08/2017,7,Production,121,7,1,Naranja,1,Naranja,,,
 Spanish,sp_35,7,femenino,bena jema,2,07/08/2017,7,Production,46,7,1,Blanco,0,Gris,1,39.51001012401794,
-Spanish,sp_35,7,femenino,bena jema,2,07/08/2017,7,Production,325,7,1,,,Morado,,,0
+Spanish,sp_35,7,femenino,bena jema,2,07/08/2017,7,Production,325,7,1,,0,Morado,,,0
 Spanish,sp_35,7,femenino,bena jema,2,07/08/2017,7,Production,266,7,1,Naranja,0,Marron,1,28.373205670138866,
 Spanish,sp_35,7,femenino,bena jema,2,07/08/2017,7,Production,65,7,1,Rosa,1,Rosa,,,
 Spanish,sp_36,7,femenino,bena jema,3,07/08/2017,7,Production,274,7,1,Blanco,1,Blanco,,,0
