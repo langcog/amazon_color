@@ -1,4 +1,4 @@
-Language,subj,edad,género,lugar de grabación,grabación,fecha,age,task,prompt,age_interval,response_num,response,correct,spanish,adjacency,dist,correct_switch
+language,subj,edad,género,lugar de grabación,grabación,fecha,age,task,prompt,age_interval,response_num,response,correct,spanish,adjacency,dist,correct_switch
 Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Comprehension,Wiso,6,1,312,1,Negro,,,
 Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Comprehension,Yankon,6,1,234,1,Azul/Verde,,,
 Shipibo,sh_1,6,femenino,bilingue,7,17/07/2017,6.4,Comprehension,Joshin,6,1,245,1,Rojo,,,

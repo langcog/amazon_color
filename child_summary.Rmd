@@ -210,7 +210,7 @@ clean_child_data <- function(df, min_consensus = 10) {
                                               `46` = c("46"))))
     
     
-    if (first(df$Language) == "Shipibo") {
+    if (first(df$language) == "Shipibo") {
       
       df <- df %>%
         filter((prompt %in% c("Wiso", "Panshin", "Nai", "Joxo", "Ami/Poa", "Barin Poi") & response_num == 1) | 
@@ -231,7 +231,7 @@ clean_child_data <- function(df, min_consensus = 10) {
         left_join(shipibo_boundary, 
                   by = c("prompt" = "Color_1", "shipibo" = "Color_2"))
       
-    } else if (first(df$Language) == "Spanish") {
+    } else if (first(df$language) == "Spanish") {
       df <- df %>%
         filter(response_num == 1) %>%
         left_join(mutate(both_chip_sets, chip_id = as.character(chip_id)),
@@ -267,7 +267,7 @@ clean_child_data <- function(df, min_consensus = 10) {
                text = gsub(pattern = "x", replacement = child_string_spelling_list,
                            "forcats::fct_collapse(response, x)")))))
     
-    if (first(df$Language) == "Shipibo") {
+    if (first(df$language) == "Shipibo") {
       df <- df %>%
         left_join(adult_naming_consensus %>% ungroup() %>%
                     add_row(chip_id = 234, color_cat = c("Pei", "Xo")) %>%
@@ -288,7 +288,7 @@ clean_child_data <- function(df, min_consensus = 10) {
         left_join(shipibo_boundary, 
                   by = c("shipibo" = "Color_1", "response" = "Color_2"))
       
-    } else if (first(df$Language) == "Spanish") {
+    } else if (first(df$language) == "Spanish") {
       df <- df %>%
         left_join(both_chip_sets %>%
                     mutate(chip_id = as.character(chip_id)),
@@ -312,7 +312,7 @@ clean_child_data <- function(df, min_consensus = 10) {
   
   df <- df %>%
     mutate_at(vars(starts_with("chip")), as.character) %>%
-    select(Language:response, starts_with("correct"), spanish, adjacency, dist)
+    select(language:response, starts_with("correct"), spanish, adjacency, dist)
   
   return(df)
 }
@@ -330,13 +330,13 @@ if (refresh_data) {
                             left_join(read_csv("data/Current_Data/shipibo_children_colors_data.csv"), by = 'subj'),
                           "Spanish" = read_csv("data/Current_Data/spanish_children_colors_participants.csv") %>%
                             left_join(read_csv("data/Current_Data/spanish_children_colors_data.csv"), by = 'subj'),
-                          .id = "Language") %>% 
+                          .id = "language") %>% 
     mutate(age = ifelse(is.na(age), as.numeric(as.character(edad)), as.numeric(as.character(age))),
            task = ifelse(task == 1, "Production", ifelse( task == 2, "Comprehension", NA)),
            age_interval = round(age/age_int)*age_int) %>%
     gather("response_num", "response", response_1:response_4) %>%
     mutate(response_num = as.numeric(as.character(gsub("response_", "", response_num)))) %>%
-    split(list(.$Language, .$task)) %>%
+    split(list(.$language, .$task)) %>%
     map_df(clean_child_data, min_consensus) %>%
     mutate(correct = ifelse(response_num == 1 & is.na(response), 0, correct),
            adjacency = ifelse(correct == 1, NA, adjacency),
@@ -355,10 +355,11 @@ if (refresh_data) {
 
 cd <- child_data %>%
   mutate(age_scaled = scale(.$age, scale = FALSE)[,1]) %>%
-  select(Language, subj, age, age_scaled, task, prompt, spanish, response_num, response, correct, correct_switch, adjacency, dist) %>%
-  mutate(correct = ifelse(task == "Comprehension" & Language == "Shipibo" & prompt == "Yankon" & response_num == "2" & is.na(response), 0, correct)) %>%
+  select(language, género, subj, age, age_scaled, task, prompt, spanish, response_num, response, correct, correct_switch, adjacency, dist) %>%
+  rename(gender = género) %>%
+  mutate(correct = ifelse(task == "Comprehension" & language == "Shipibo" & prompt == "Yankon" & response_num == "2" & is.na(response), 0, correct)) %>%
   mutate_if(is.character, factor) %>%
-  group_by_at(vars(Language:spanish)) %>%
+  group_by_at(vars(language:spanish)) %>%
   mutate(correct_either = correct + ifelse(!is.na(correct_switch), correct_switch, 0)) %>%
   summarise(num_responses = n(),
             response = str_c(response, collapse = ", "),
