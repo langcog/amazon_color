@@ -138,8 +138,8 @@ spanish_boundary <- as.data.frame(as.matrix(Matrix::forceSymmetric(
 
 clean_child_data <- function(df, min_consensus = 10) {
 
-  child_string_spelling_list <- "`Amarillo` = c('amarilla', 'amarillo'), `Ami` = c('ami'), `Azul` = c('azul'), `Barin Poi` = c('bari', 'barri', 'barrinpui'), `Blanco` = c('blanco'), `Celeste` = c('celeste'), `Gris` = c('gris'), `Jimi` = c('jimi'), `Joa` = c('joa'), `Joshin` = c('joshin', 'toshin'), `Joxo` = c('joxo'), `Kari` = c('carri'), `Mai` = c('mai'), `Manxan` = c('manxan'), `Marron` = c('marron'), `Morado` = c('morado'), `Nai` = c('nai', 'nai (lluvia)'), `Naranja` = c('anarando', 'narango', 'naranja', 'naranjada', 'naranjado', 'naranjo', 'narranxa'), `Negro` = c('negro'), `Oxne` = c('oxe'), `Panshin` = c('panshin', 'panshintani'), `Pei` = c('pei'), `Poa` = c('pua'), `Rojo` = c('rojo'), `Rosa` = c('rosa', 'rosada', 'rosado'), `Verde` = c('verde', 'verdesito'), `Violeta` = c('bioleta', 'violeta'), `Wiso` = c('wiso'), `Xo` = c('xo'), `Yame` = c('yame'), `Yankon` = c('yakon', 'yakun', 'yankon', 'yankontani', 'yankun')"
-
+  child_string_spelling_list <- "`Agua` = c('agna', 'agua', 'agur'), `Amarillo` = c('amarilla', 'amarillo'), `Ami` = c('ami'), `Azul` = c('azul'), `Barin Poi` = c('bari', 'barri', 'barrinpui'), `Blanco` = c('blanco'), `Celeste` = c('celeste'), `Gris` = c('gris'), `Jene` = c('jene', 'jenekeska'), `Jimi` = c('jimi'), `Joa` = c('joa'), `Joshin` = c('joshin', 'toshin', 'joshin metsashoko', 'joshinshama'), `Joxo` = c('joxo', 'joxo jakwokawa', 'joxo metsa'), `Kari` = c('carri'), `Mai` = c('mai'), `Mancoa Pei` = c('mancoapei', 'mancoa pei'), `Manxan` = c('manxan'), `Marron` = c('marron'), `Morado` = c('morado'), `Nai` = c('nai', 'nai (lluvia)'), `Nai Wiso` = c('nai wisoa', 'naiwiso'), `Naranja` = c('anarando', 'narango', 'naranja', 'naranjada', 'naranjado', 'naranjo', 'narranxa'), `Negro` = c('negro'), `Oxne` = c('oxe'), `Panshin` = c('panshin', 'panshintani', 'panshinshima'), `Pei` = c('pei'), `Poa` = c('pua'), `Rojo` = c('rojo'), `Rosa` = c('rosa', 'rosada', 'rosado'), `Unpasx` = c('unpasx', 'unpax'), `Verde` = c('verde', 'verdesito', 'shokouerde'), `Violeta` = c('bioleta', 'violeta', 'metsa shoko violeta'), `Wiso` = c('wiso', 'wisoshama'), `Xo` = c('xo'), `Yame` = c('yame'), `Yankon` = c('yakon', 'yakun', 'yankon', 'yankontani', 'yankun', 'yakonshama', 'Yakunshama', 'yankon pasna', 'yankoncha')"
+  
   child_spelling_list <- eval(parse(text = paste0("c(",child_string_spelling_list,")")))
 
   adult_naming_consensus <- naming_data %>%
@@ -369,12 +369,12 @@ cd <- child_data %>%
             wrong_euc_dist = mean(dist, na.rm = T)) %>%
   mutate_if(is.double, funs(replace(., is.nan(.), NA)))
 
-# write_csv(cd, "intermediates/processed_data.csv", na = "")
+write_csv(cd, "intermediates/processed_data.csv", na = "")
 
-pbt_mod <- glmer(correct ~ age_scaled * task + (task | subj) + (task | prompt), data=cd,
-                 family = "binomial")
-
-summary(pbt_mod)
+# pbt_mod <- glmer(correct ~ age_scaled * task + (task | subj) + (task | prompt), data=cd,
+#                  family = "binomial")
+# 
+# summary(pbt_mod)
 
 ```
 
