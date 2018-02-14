@@ -1,11 +1,24 @@
 # Load term-sorting data --------------------------------------------------
 
+shipibo_color_terms <- c("Joshin", "Joxo", "Panshin", "Yankon", "Wiso")
 
-spanish_terms <- c("Amarillo", "Azul", "Blanco", "Celeste", "Gris", "Marron", "Morado", "Naranja", "Negro", "Plomo", "Rojo", "Rosa", "Verde")
+shipibo_object_terms <- c("Ambi", "Ami", "Barin Poi", "Bexnan", "Chexe", "Chimapo", "Emo", "Jimi", "Kari", "Kasho", "Keskiti", "Koin", "Kononbi", "Konron", "Koro", "Mai", "Mandi", "Maxe", "Nai", "Nete", "Oxne", "Paxna", "Pei", "Poa", "Xena", "Xexe", "Xo", "Yame")
 
-shipibo_terms <- c("Ambi", "Ami", "Barin Poi", "Bexnan", "Chexe", "Chimapo", "Emo", "Jimi", "Joshin", "Joxo", "Kari", "Kasho", "Keskiti", "Koin", "Kononbi", "Konron", "Koro", "Mai", "Mandi", "Manxan", "Maxe", "Nai", "Oxne", "Panshin", "Pasna", "Paxna", "Pei", "Pene", "Poa", "Ranchesh", "Tena", "Yame", "Yankon", "Wiso", "Xena", "Xexe", "Xo")
+shipibo_other_terms <- c("Jisa", "Manxan", "Pasna", "Pene", "Ranchesh", "Tena")
 
-string_spelling_list <- "`Amarillo` = c('amarilla', 'amarillo'), `Ami` = c('ami'), `Ambi` = c('ambi'), `Azul` = c('azul', 'azu'), `Barin Poi` = c('barin pui', 'barrin pui', 'barrinpui', 'pui', 'barin poi', 'barrin poi', 'bavrinpui*', 'barri'), `Bexnan` = c('berrnan', 'bexna', 'bexnan'), `Blanco` = c('blanco'), `Celeste` = c('celeste'), `Chexe` = c('chese', 'chexe'), `Chimapo` = c('chimapu'), `Emo` = c('emu'), `Gris` = c('gris'), `Jimi` = c('jimi'), `Jimi Manxan` = c('jimi manxan'), `Jisa` = c('jisa'), `Joa` = c('joa'), `Joshin` = c('joshin', 'joxin', 'toshin'), `Joxo` = c('josho', 'joxo'), `Kari` = c('cari', 'carri', 'kari', 'karri'), `Kasho` = c('kashos'), `Keskiti` = c('kex keti'), `Koin` = c('kuin'), `Kononbi` = c('kunumbi'), `Konron` = c('korrum', 'kumrrum', 'kunrrum'), `Koro` = c('coro'), `Mai` = c('mai'), `Mandi` = c('mandi'), `Manxan` = c('manrran', 'manshan', 'manxam', 'manxan', 'maxan', 'maxna'), `Manxan Yankon` = c('manxan yankon'), `Marron` = c('marron'), `Maxe` = c('maxe'), `Mierda Sol` = c('miarda', 'miarda del sol'), `Morado` = c('bioleta', 'morado', 'violeta', 'morada'), `Nai` = c('nai', 'nia'), `Naranja` = c('naranja', 'naranjada', 'narranxa', 'naranjado', 'narango', 'naranjo', 'anaranjado'), `Negro` = c('negro'), `Oxne` = c('oshne', 'oxne', 'oxe'), `Pei` = c('pei'), `Poa` = c('pua'), `Pene` = c('pene'), `Panshin` = c('panshin'), `Pasna` = c('paxsna', 'pasna'), `Paxna` = c('parrna', 'paxna'), `Plomo` = c('plomo'), `Ranchesh` = c('ranchex'), `Rojo` = c('rojo', 'roja'), `Rosa` = c('rosada', 'rosa', 'rosado'), `Spanish Term` = c('carne', 'agua', 'agur', 'uva color*', 'pasto payota', 'chocolate', 'coral', 'oscuro', 'lila', 'color cielo', 'cielo'), `Tena` = c('tena'), `Verde` = c('verde', 'cerde', 'verdesito'), `Wiso` = c('wiso'), `Xena` = c('xena'), `Xo` = c('xo'), `Xexe` = c('xexe', 'xexi'), `Yame` = c('rayame', 'yame'), `Yame Wiso` = c('yame wiso'), `Yankon` = c('rayanko', 'yankom', 'yankon', 'yankum', 'yankun', 'yankontani', 'yakon', 'yakun', 'yankoncha'), `NA` = c(NA)"
+shipibo_terms <- c(shipibo_color_terms, shipibo_object_terms, shipibo_other_terms)
+
+
+spanish_color_terms <- c("Amarillo", "Azul", "Blanco", "Celeste", "Gris", "Lila", "Marron", "Morado", "Naranja", "Negro", "Rojo", "Rosa", "Verde")
+
+spanish_object_terms <- c("Agua", "Carne", "Chocolate", "Coral", "Cielo", "Mierda Sol", "Pasto Payota", "Plomo", "Uva Color", "Violeta")
+
+spanish_other_terms <- c("Oscuro")
+
+spanish_terms <- c(spanish_color_terms, spanish_object_terms, spanish_other_terms)
+
+
+string_spelling_list <- "`Agua` = c('agua', 'agur'), `Amarillo` = c('amarilla', 'amarillo'), `Ami` = c('ami'), `Ambi` = c('ambi'), `Azul` = c('azul', 'azu'), `Barin Poi` = c('barin pui', 'barrin pui', 'barrinpui', 'pui', 'barin poi', 'barrin poi', 'bavrinpui*', 'barri'), `Bexnan` = c('berrnan', 'bexna', 'bexnan'), `Blanco` = c('blanco'), `Carne` = c('Carne'), `Celeste` = c('celeste'), `Chexe` = c('chese', 'chexe'), `Chimapo` = c('chimapu'), `Cielo` = c('color cielo', 'cielo'), `Chocolate` = c('chocolate'), `Coral` = c('coral'), `Emo` = c('emu'), `Gris` = c('gris'), `Jimi` = c('jimi'), `Jimi Manxan` = c('jimi manxan'), `Jisa` = c('jisa'), `Joa` = c('joa'), `Joshin` = c('joshin', 'joxin', 'toshin'), `Joxo` = c('josho', 'joxo'), `Kari` = c('cari', 'carri', 'kari', 'karri'), `Kasho` = c('kashos'), `Keskiti` = c('kex keti'), `Koin` = c('kuin'), `Kononbi` = c('kunumbi'), `Konron` = c('korrum', 'kumrrum', 'kunrrum'), `Koro` = c('coro'), `Lila` = c('lila'), `Mai` = c('mai'), `Mandi` = c('mandi'), `Manxan` = c('manrran', 'manshan', 'manxam', 'manxan', 'maxan', 'maxna'), `Manxan Yankon` = c('manxan yankon'), `Marron` = c('marron'), `Maxe` = c('maxe'), `Mierda Sol` = c('miarda', 'miarda del sol'), `Morado` = c('morado', 'morada'), `Nai` = c('nai', 'nia'), `Naranja` = c('naranja', 'naranjada', 'narranxa', 'naranjado', 'narango', 'naranjo', 'anaranjado'), `Negro` = c('negro'), `Nete` = c('nete'), `Oscuro` = c('oscuro'), `Oxne` = c('oshne', 'oxne', 'oxe'), `Pei` = c('pei'), `Poa` = c('pua'), `Pene` = c('pene'), `Panshin` = c('panshin'), `Pasna` = c('paxsna', 'pasna'), `Pasto Payota` = c('pasto payota'), `Paxna` = c('parrna', 'paxna'), `Plomo` = c('plomo'), `Ranchesh` = c('ranchex'), `Rojo` = c('rojo', 'roja'), `Rosa` = c('rosada', 'rosa', 'rosado'), `Tena` = c('tena'), `Uva Color` = c('uva color*'), `Verde` = c('verde', 'cerde', 'verdesito'), `Violeta` = c('bioleta', 'violeta'), `Wiso` = c('wiso'), `Xena` = c('xena'), `Xo` = c('xo'), `Xexe` = c('xexe', 'xexi'), `Yame` = c('rayame', 'yame'), `Yame Wiso` = c('yame wiso'), `Yankon` = c('rayanko', 'yankom', 'yankon', 'yankum', 'yankun', 'yankontani', 'yakon', 'yakun', 'yankoncha'), `NA` = c(NA)"
 
 spelling_list <- eval(parse(text = paste0("c(",string_spelling_list,")")))
 
@@ -55,7 +68,6 @@ spanish_chip_set <- read.csv(text = "spanish, code, munsell_code, chip_id
 naming_data <- read_csv("data/Current_Data/naming_colors_participants.csv") %>%
   left_join(read_csv("data/Current_Data/naming_colors_data.csv"), by = 'subj') %>%
   mutate(color_cat = ifelse(is.na(color_cat), first_response, color_cat)) %>%
-  mutate(color_cat = ifelse(color_cat %in% unlist(spelling_list), color_cat, NA)) %>%
   mutate(color_cat = eval( parse(text = gsub(pattern = "x", replacement = string_spelling_list, "forcats::fct_collapse(color_cat, x)")))
   )
 
