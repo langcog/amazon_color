@@ -248,6 +248,11 @@ clean_child_data <- function(df, min_consensus = 10) {
   } else if (first(df$task) == "Production") {
     df <- df %>%
       filter(response_num == 1 | !is.na(response)) %>%
+      group_by(subj, task, prompt) %>%
+      mutate(response_order = ifelse(row_number() == 1,
+                                     ifelse(row_number() == max(row_number()), 'only', 'first'),
+                                     ifelse(row_number() == max(row_number()), 'last', NA))) %>%
+      ungroup() %>%
       mutate(
         prompt = as.character(forcats::fct_collapse(prompt,
                                             `297` = c("amarillo", "AM"),
@@ -312,7 +317,7 @@ clean_child_data <- function(df, min_consensus = 10) {
   
   df <- df %>%
     mutate_at(vars(starts_with("chip")), as.character) %>%
-    select(language:response, starts_with("correct"), spanish, adjacency, dist)
+    select(language:age_interval, starts_with("response"), starts_with("correct"), spanish, adjacency, dist)
   
   return(df)
 }
@@ -333,7 +338,7 @@ if (refresh_data) {
                           .id = "language") %>% 
     mutate(age = ifelse(is.na(age), as.numeric(as.character(edad)), as.numeric(as.character(age))),
            task = ifelse(task == 1, "Production", ifelse( task == 2, "Comprehension", NA)),
-           age_interval = round(age/age_int)*age_int) %>%
+           age_interval = floor(age/age_int)*age_int) %>%
     gather("response_num", "response", response_1:response_4) %>%
     mutate(response_num = as.numeric(as.character(gsub("response_", "", response_num)))) %>%
     split(list(.$language, .$task)) %>%
@@ -342,10 +347,10 @@ if (refresh_data) {
            adjacency = ifelse(correct == 1, NA, adjacency),
            dist = ifelse(correct == 1, NA, dist))
   
-    write_csv(child_data, "intermediates/child_data.csv", na = "")
+    feather::write_feather(child_data, "intermediates/child_data.csv")
 
 } else {
-  child_data <- read_csv("intermediates/child_data.csv")
+  child_data <- feather::read_feather("intermediates/child_data.csv")
 }
 
 
@@ -355,11 +360,11 @@ if (refresh_data) {
 
 cd <- child_data %>%
   mutate(age_scaled = scale(.$age, scale = FALSE)[,1]) %>%
-  select(language, género, subj, age, age_scaled, task, prompt, spanish, response_num, response, correct, correct_switch, adjacency, dist) %>%
+  select(language, género, subj, age, age_scaled, age_interval, task, prompt, spanish, response_num, response, response_order, correct, correct_switch, adjacency, dist) %>%
   rename(gender = género) %>%
   mutate(correct = ifelse(task == "Comprehension" & language == "Shipibo" & prompt == "Yankon" & response_num == "2" & is.na(response), 0, correct)) %>%
   mutate_if(is.character, factor) %>%
-  group_by_at(vars(language:spanish)) %>%
+  group_by_at(vars(language:spanish, response_order)) %>%
   mutate(correct_either = correct + ifelse(!is.na(correct_switch), correct_switch, 0)) %>%
   summarise(num_responses = n(),
             response = str_c(response, collapse = ", "),
@@ -369,7 +374,8 @@ cd <- child_data %>%
             wrong_euc_dist = mean(dist, na.rm = T)) %>%
   mutate_if(is.double, funs(replace(., is.nan(.), NA)))
 
-write_csv(cd, "intermediates/processed_data.csv", na = "")
+feather::write_feather(cd, "intermediates/processed_data.csv")
+
 
 # pbt_mod <- glmer(correct ~ age_scaled * task + (task | subj) + (task | prompt), data=cd,
 #                  family = "binomial")

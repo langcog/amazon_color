@@ -1,0 +1,536 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+library(tidyverse)
+library(plotly)
+library(viridis)
+library(wordbankr)
+
+source("helpers/load_and_process.R")
+
+cd <- feather::read_feather("intermediates/processed_data.csv")
+child_data <- feather::read_feather("intermediates/child_data.csv")
+
+```
+
+```{r}
+weighted_focal <- function(df, remove_one_offs = FALSE) {
+
+  join_by <- c("response" = "Munsell Code")
+
+  chip_data <- color_chip_data %>%
+    dplyr::select(-V, -H, -C, -MunH, -MunV) %>%
+    dplyr::rename(`Chip ID` = `#cnum`, `Munsell Code` = `munsell_code`, 
+                  `Hex Code` = `hex`) %>%
+    mutate(`Chip ID` = as.character(`Chip ID`))
+  
+  temp_df <- df %>%
+    mutate(response = ifelse( grepl("A", response), "A0", 
+                              ifelse( grepl("J", response), "J0", response))) %>%
+    dplyr::left_join(chip_data, 
+                     by = join_by) %>%
+    dplyr::group_by(`Color Term`, `Task`)
+  
+  if (remove_one_offs) {
+    temp_df <- temp_df %>%
+      filter(n() > 1)
+  }
+  
+  temp_df <- temp_df %>%
+    dplyr::mutate(`# Responses` = n_distinct(`Subject`),
+                  euc_dist = sqrt((`L*` - mean(`L*`, na.rm = T))^2 + 
+                                    (`a*` - mean(`a*`, na.rm = T))^2 + 
+                                    (`b*` - mean(`b*`, na.rm = T))^2)) 
+  return(temp_df)
+}
+
+median_agreement <- grouping_data %>%
+  filter(task == 2) %>%
+  select(subj, task, `nombre del grupo`, `mejor ej`) %>%
+  rename(`Subject` = `subj`, `Task` = `task`, `Color Term` = `nombre del grupo`, `response` = `mejor ej`) %>%
+  do(weighted_focal(., remove_one_offs = F)) %>%
+  group_by(`Color Term`) %>%
+  summarise(`Median Euc Dist` = median(euc_dist, na.rm = T))
+
+term_usage <- naming_data %>%
+  group_by(subj, color_cat) %>%
+  summarise(n = n()) %>%
+  group_by(color_cat) %>%
+  spread(subj, n, fill = 0) %>%
+  gather(key = 'subj', value = 'n', -color_cat) %>%
+  summarise(n = sum(n > 0)/n()) %>%
+  dplyr::rename(`Color Term` = color_cat, `Term Usage` = n) 
+
+term_agreement_plot <- ggplot(full_join(median_agreement, term_usage) %>% filter(!is.na(`Median Euc Dist`)), 
+       aes(x = `Median Euc Dist`, y = `Term Usage`, colour = `Color Term`)) +
+  geom_point(size = 4) +
+  scale_colour_manual(name = "Color Term",values = graph_colors) +
+  scale_y_continuous(limits = c(0,1), breaks = seq(0,1,.25), labels = scales::percent) +
+  ggrepel::geom_text_repel(aes(label = `Color Term`), point.padding = 0.5, size = 6) +
+  labs(x = "Median Euclidean Distance from\nAverage Focal Color (Grouping)", 
+       y = "% of Subjects\nWho Used Term (Naming)") +
+  ggthemes::theme_few(14) +
+  theme(legend.position = "none", panel.grid = element_blank())
+
+
+```
+
+
+```{r}
+naming_response_types <- naming_data %>%
+  select(subj, chip_id, color_cat) %>%
+  mutate(color_cat = as.character(color_cat)) %>%
+  rowwise() %>%
+  do(subj = first(.$subj),
+     chip_id = first(.$chip_id),
+     color_cat = first(.$color_cat),
+     shipibo = any(sapply(shipibo_terms, grepl, .$color_cat, ignore.case = TRUE)),
+     spanish = any(sapply(spanish_terms, grepl, .$color_cat, ignore.case = TRUE))) %>%
+  summarise_all(funs(first(.))) %>%
+  mutate(language = ifelse(shipibo, "Shipibo", ifelse(spanish, "Spanish", NA)),
+         color_term = ifelse(color_cat %in% c(spanish_color_terms, shipibo_color_terms), TRUE, FALSE),
+         object = ifelse(color_cat %in% c(spanish_object_terms, shipibo_object_terms), TRUE, FALSE),
+         other = ifelse(color_cat %in% c(spanish_other_terms, shipibo_other_terms), TRUE, FALSE)) %>%
+  mutate_if(is.logical, funs(as.numeric(.)))
+
+naming_responses <- naming_response_types %>%
+  ungroup() %>% mutate(n_rows = n()) %>%
+  group_by(subj, language, n_rows) %>%
+  summarise_at(vars(shipibo, spanish, color_term, object, other),
+               funs(sum(., na.rm = T))) %>% group_by(language, n_rows) %>%
+  summarise_at(vars(shipibo, spanish, color_term, object, other),
+               funs(sum(., na.rm = T))) %>%
+  select(-spanish, -shipibo) %>%
+  rename(Language = language, `Color Term` = color_term, `Object Term` = object, `Other` = other) %>%
+  gather(key = "Response Type", value = "# of responses", `Color Term`:Other) %>%
+  mutate(`% of Responses` = `# of responses`/n_rows) %>%
+  filter(!is.na(Language))
+
+kay_responses <- kay_terms %>% ungroup() %>%
+  mutate(Term = ifelse(Term %in% c('Huiso', 'Wiso'), 'Wiso', as.character(Term)),
+         language = "WCS Data",
+         n_rows = n(),
+         color_term = ifelse(Term %in% c(spanish_color_terms, shipibo_color_terms), TRUE, FALSE),
+         object = ifelse(Term %in% c(spanish_object_terms, shipibo_object_terms), TRUE, FALSE),
+         other = ifelse(Term %in% c(spanish_other_terms, shipibo_other_terms), TRUE, FALSE)) %>%
+  mutate_if(is.logical, funs(as.numeric(.))) %>%
+  group_by(language, n_rows) %>%
+  summarise_at(vars(color_term, object, other),
+               funs(sum(., na.rm = T))) %>%
+  rename(Language = language, `Color Term` = color_term, `Object Term` = object, `Other` = other) %>%
+  gather(key = "Response Type", value = "# of responses", `Color Term`:Other) %>%
+  mutate(`% of Responses` = `# of responses`/n_rows)
+
+
+main_response_plot <- ggplot(bind_rows(naming_responses, kay_responses) %>% ungroup() %>%
+                               mutate(Language = factor(Language, 
+                                                        levels = c("Shipibo", "Spanish", "WCS Data"))), 
+                             aes(Language, `% of Responses`)) + 
+  geom_bar(aes(fill = `Response Type`), width = 0.4, position = position_dodge(width=0.5), stat="identity") +
+  scale_fill_viridis(discrete=TRUE) +
+  scale_y_continuous(limits = c(0,1), breaks = seq(0,1,0.25), labels = scales::percent) +
+  theme_few(14) +
+  theme(axis.ticks.x = element_blank())
+
+
+```
+
+
+```{r}
+curr_naming_consensus <- naming_data %>%
+  select(subj, género, chip_id, color_cat) %>%
+  mutate(set = ifelse((chip_id %% 2) == 0, 'even', 'odd')) %>%
+  split(.$set) %>%
+  map_df(function(x) {
+    x %>%
+    group_by(chip_id, color_cat) %>%
+    summarise(n = n()) %>%
+    group_by(chip_id) %>%
+    mutate(perc = 100*n/sum(n)) %>%
+    select(-n)
+  }) %>%
+  arrange(chip_id) %>%
+  rename(`Chip ID` = chip_id, `Color Term` = color_cat, `% of Subjects` = perc)
+
+kay_naming_consensus <- kay_terms %>%
+  mutate(Term = ifelse(Term %in% c('Huiso', 'Wiso'), 'Wiso', as.character(Term))) %>%
+  group_by(`WCS Chip Number`, Term) %>%
+  summarise(n = n()) %>%
+  group_by(`WCS Chip Number`) %>%
+  mutate(`% of Subjects` = 100*n/sum(n)) %>%
+  select(-n) %>%
+  arrange(`WCS Chip Number`)
+
+curr_highest_consensus <- curr_naming_consensus %>%
+  group_by(`Chip ID`) %>%
+  filter(`% of Subjects` == max(`% of Subjects`)) 
+
+kay_highest_consensus <- kay_naming_consensus %>%
+  group_by(`WCS Chip Number`) %>%
+  filter(`% of Subjects` == max(`% of Subjects`)) %>%
+  dplyr::rename(`Color Term` = Term, `Chip ID` = `WCS Chip Number`)
+
+kay_consensus_plot <- ggplot(kay_highest_consensus %>%
+                               left_join(color_chip_data, by = c("Chip ID" = "#cnum")), 
+       aes(x = H, y = V, colour = `Color Term`, size = `% of Subjects`)) + 
+    geom_point() + 
+    scale_size(range = c(0, 6.0)) + 
+    scale_colour_manual(name = "Color Term",values = graph_colors) +
+    theme_few(14) + theme(axis.title = element_blank()) +
+  guides(colour = guide_legend(order = 1),
+         size = guide_legend(order = 0)) 
+
+all_highest_consensus <- bind_rows("WCS Data" = kay_highest_consensus,
+                                   "Current Data" = curr_highest_consensus,
+                                   .id = "source") %>%
+  left_join(color_chip_data, by = c("Chip ID" = "#cnum")) %>%
+  mutate(source = factor(source, levels = c("WCS Data", "Current Data")))
+
+
+combined_consensus_plot <- ggplot(all_highest_consensus, 
+       aes(x = H, y = V, colour = `Color Term`, size = `% of Subjects`, 
+           group = source)) + 
+    geom_point() + 
+    facet_wrap(~source, ncol = 1) + 
+    scale_size(range = c(0, 4.0)) + 
+    scale_colour_manual(name = "Color Term",values = graph_colors) +
+    theme_few(14) + theme(axis.title = element_blank()) +
+  guides(colour = guide_legend(order = 1),
+         size = guide_legend(order = 0)) 
+
+```
+
+```{r}
+spanish_use <- curr_naming_consensus %>%
+  mutate(`Color Term` = ifelse(as.character(`Color Term`) %in% spanish_terms, 
+                               'Spanish Term', as.character(`Color Term`))) %>%
+  group_by(`Chip ID`, `Color Term`) %>%
+  summarise(`% of Subjects` = sum(`% of Subjects`, na.rm = T)/100) %>%
+  group_by(`Chip ID`) %>%
+  spread(key = `Color Term`, value = `% of Subjects`, fill = 0) %>%
+  select(`Chip ID`, `Spanish Term`) %>%
+  left_join(color_chip_data, by = c("Chip ID" = "#cnum"))
+
+spanish_use_plot <- ggplot(spanish_use, aes(x = H, y = V)) + 
+    geom_tile(aes(fill = `Spanish Term`)) + 
+    scale_fill_viridis(option="magma") +
+    theme_few(14) + theme(axis.title = element_blank())
+
+```
+
+```{r}
+
+adhoc_use <- curr_naming_consensus %>%
+  mutate(`Color Term` = ifelse(as.character(`Color Term`) %in% spanish_terms, 
+                               'Spanish Term', as.character(`Color Term`))) %>%
+  group_by(`Chip ID`, `Color Term`) %>%
+  summarise(`% of Subjects` = sum(`% of Subjects`, na.rm = T)) %>%
+  group_by(`Chip ID`) %>%
+  spread(key = `Color Term`, value = `% of Subjects`, fill = 0) %>%
+  select(`Chip ID`, `Spanish Term`) %>%
+  left_join(color_chip_data, by = c("Chip ID" = "#cnum"))
+
+spanish_use_plot <- ggplot(spanish_use, aes(x = H, y = V)) + 
+    geom_tile(aes(fill = `Spanish Term`)) + 
+    scale_fill_viridis(option="magma") +
+    ggthemes::theme_few(14)
+
+```
+
+
+```{r}
+child_response_types <- child_data %>%
+  filter(task == "Production") %>%
+  rowwise() %>%
+  do(language = first(.$language),
+     subj = first(.$subj),
+     age = first(.$age),
+     age_interval = first(.$age_interval),
+     prompt = first(.$prompt),
+     response = first(.$response),
+     response_order = first(.$response_order),
+     shipibo = any(sapply(shipibo_terms, grepl, .$response, ignore.case = TRUE)),
+     spanish = any(sapply(spanish_terms, grepl, .$response, ignore.case = TRUE))) %>%
+  summarise_all(funs(first(.))) %>%
+  mutate(response_language = ifelse(shipibo, "Shipibo", ifelse(spanish, "Spanish", NA)),
+         color_term = ifelse(tolower(response) %in% tolower(c(spanish_color_terms, shipibo_color_terms)), TRUE, FALSE),
+         object = ifelse(tolower(response) %in% tolower(c(spanish_object_terms, shipibo_object_terms)), TRUE, FALSE),
+         other = ifelse(tolower(response) %in% tolower(c(spanish_other_terms, shipibo_other_terms)), TRUE, FALSE)) %>%
+  mutate_if(is.logical, funs(as.numeric(.)))
+
+first_response_summary <- child_response_types %>%
+  filter(response_order %in% c('first','only')) %>%
+  group_by(subj, age_interval, language, response_language) %>%
+  summarise_at(vars(color_term, object, other),
+               funs(sum(., na.rm = T))) %>%
+  group_by(age_interval, language) %>%
+  mutate(n_kids = n_distinct(subj)) %>%
+  group_by(language, age_interval, n_kids, response_language) %>%
+  summarise_at(vars(color_term, object, other),
+               funs(sum(., na.rm = T))) %>%
+  rename(`Experiment Language` = language, `Age` = age_interval, 
+         `# of Kids` = n_kids, `Response Language` = response_language, 
+         `Color Term` = color_term, `Object Term` = object, `Other` = other) %>%
+  gather(key = "Response Type", value = "# of Responses", `Color Term`:Other) %>%
+  mutate(`% of Responses` = round(`# of Responses`/(`# of Kids` * ifelse(`Experiment Language` == "Shipibo", 8, 11)), 2)) %>%
+  filter(!is.na(`Response Language`)) %>%
+  arrange(`Experiment Language`, `Age`, `# of Responses`)
+
+first_response <- child_response_types %>%
+  filter(response_order %in% c('first','only')) %>%
+  group_by(subj) %>%
+  mutate(total_responses = n()) %>%
+  group_by(subj, age_interval, language, total_responses, response_language) %>%
+  summarise_at(vars(color_term, object, other),
+               funs(sum(., na.rm = T))) %>%
+  rename(`Experiment Language` = language, `Age` = age_interval, 
+         `Total # of Responses` = total_responses, `Response Language` = response_language, 
+         `Color Term` = color_term, `Object Term` = object, `Other` = other) %>%
+  gather(key = "Response Type", value = "# of Responses", `Color Term`:Other) %>%
+  mutate(`% of Responses` = round(`# of Responses`/(`Total # of Responses`), 2)) %>%
+  filter(!is.na(`Response Language`)) %>%
+  arrange(`Experiment Language`, `Age`, subj)
+
+  
+final_response_summary <- child_response_types %>%
+  filter(response_order %in% c('last','only')) %>%
+  group_by(subj, age_interval, language, response_language) %>%
+  summarise_at(vars(color_term, object, other),
+               funs(sum(., na.rm = T))) %>%
+  group_by(age_interval, language) %>%
+  mutate(n_kids = n_distinct(subj)) %>%
+  group_by(language, age_interval, n_kids, response_language) %>%
+  summarise_at(vars(color_term, object, other),
+               funs(sum(., na.rm = T))) %>%
+  rename(`Experiment Language` = language, `Age` = age_interval, 
+         `# of Kids` = n_kids, `Response Language` = response_language, 
+         `Color Term` = color_term, `Object Term` = object, `Other` = other) %>%
+  gather(key = "Response Type", value = "# of Responses", `Color Term`:Other) %>%
+  mutate(`% of Responses` = round(`# of Responses`/(`# of Kids` * ifelse(`Experiment Language` == "Shipibo", 8, 11)), 2)) %>%
+  filter(!is.na(`Response Language`)) %>%
+  arrange(`Experiment Language`, `Age`, `# of Responses`)
+
+child_response_summary <- bind_rows("First Response" = first_response_summary, 
+                                    "Final Response" = final_response_summary, 
+                                    .id = "Response Order") %>%
+  mutate(`Response Order` = factor(`Response Order`, levels = c("First Response", "Final Response")))
+  
+
+child_response_plot <- ggplot(filter(child_response_summary, `Experiment Language` == "Shipibo"),
+       aes(x = Age, y = `% of Responses`, 
+           group = interaction(`Response Type`, `Response Language`), 
+           color = `Response Type`, linetype = `Response Language`, shape = `Response Language`)) +
+  geom_point(size = 3) +
+  geom_smooth(data = first_response, method = loess, se = FALSE) +
+  facet_grid( ~ `Response Order`) +
+  scale_y_continuous(limits = c(0,1), breaks = seq(0,1,0.25), labels = scales::percent) +
+  scale_color_viridis(discrete=TRUE) +
+  theme_few(14)
+
+```
+
+```{r}
+all_chip_sets <- full_join(shipibo_chip_set, spanish_chip_set) %>%
+  left_join(color_chip_data, by = c("chip_id" = "#cnum"))
+
+chip_id_colors <- setNames(all_chip_sets$hex, all_chip_sets$chip_id)
+
+
+between_chip_sets <- inner_join(shipibo_chip_set, spanish_chip_set) %>%
+  select(chip_id) %>%
+  mutate(chip_id = as.character(chip_id))
+
+first_production <- cd %>% 
+         filter(task == 'Production' & 
+                  response_order %in% c('first','only')) %>%
+         group_by(language, age, prompt) 
+
+final_production <- cd %>% 
+         filter(task == 'Production' & 
+                  response_order %in% c('last','only') &
+                  prompt %in% between_chip_sets$chip_id) %>%
+         group_by(language, age, prompt) 
+
+
+first_production_plot <- ggplot(first_production %>%
+                                  filter(prompt %in% between_chip_sets$chip_id) %>%
+                                  rename(`Correct (Same Language)` = correct, 
+                                         `Correct (Either Language)` = correct_either) %>%
+                                  gather(key = "criteria", value = "score", 
+                                         `Correct (Same Language)`, `Correct (Either Language)`) %>%
+                                  group_by(language, prompt, age_interval, criteria),
+       aes(x = age_interval, y = score, colour = prompt, group = criteria, linetype = criteria)) +
+  geom_smooth(se = FALSE, method = "loess") +
+  facet_grid(as.numeric(as.character(prompt)) ~ language) + 
+  scale_y_continuous(limits = c(-0.1,1.1), breaks = seq(0,1,0.5), labels = scales::percent) + 
+  scale_color_manual(values = chip_id_colors) +
+  scale_linetype_manual(values = c("Correct (Same Language)" = "solid", 
+                                   "Correct (Either Language)" = "dotted")) +
+  labs(x = "Age", y = "% of Correct Responses", linetype = "Measure", colour = "Chip ID") +
+  theme_few(14)
+
+final_production_plot <- ggplot(final_production %>%
+                                  filter(prompt %in% between_chip_sets$chip_id) %>%
+                                  rename(`Correct (Same Language)` = correct, 
+                                         `Correct (Either Language)` = correct_either) %>%
+                                  gather(key = "criteria", value = "score", 
+                                         `Correct (Same Language)`, `Correct (Either Language)`) %>%
+                                  group_by(language, prompt, age_interval, criteria),
+       aes(x = age_interval, y = score, colour = prompt, group = criteria, linetype = criteria)) +
+  geom_smooth(se = FALSE, method = "loess") +
+  facet_grid(as.numeric(as.character(prompt)) ~ language) + 
+  scale_y_continuous(limits = c(-0.1,1.1), breaks = seq(0,1,0.5), labels = scales::percent) + 
+  scale_color_manual(values = chip_id_colors) +
+  scale_linetype_manual(values = c("Correct (Same Language)" = "solid", 
+                                   "Correct (Either Language)" = "dotted")) +
+  labs(x = "Age", y = "% of Correct Responses", linetype = "Measure", colour = "Chip ID") +
+  theme_few(14)
+
+production_entropy <- curr_naming_consensus %>%
+  filter(`Chip ID` %in% between_chip_sets$chip_id) %>%
+  mutate(`% of Subjects` = `% of Subjects`/100) %>%
+  spread(key = 'Color Term', value = '% of Subjects', fill = 0) %>%
+  mutate_if(is.double, funs( . * log(., base = n_distinct(curr_naming_consensus$`Color Term`)))) %>%
+  mutate_if(is.double, funs(replace(., is.nan(.), 0))) %>%
+  ungroup() %>%
+  mutate(Entropy = -rowSums(.[-1])) %>%
+  select(`Chip ID`, Entropy)
+
+first_production_extra_plot <- ggplot(first_production %>%
+                                  filter(!prompt %in% between_chip_sets$chip_id) %>%
+                                  rename(`Correct (Same Language)` = correct, 
+                                         `Correct (Either Language)` = correct_either) %>%
+                                  gather(key = "criteria", value = "score", 
+                                         `Correct (Same Language)`, `Correct (Either Language)`) %>%
+                                  group_by(language, prompt, age_interval, criteria),
+       aes(x = age_interval, y = score, colour = prompt, group = criteria, linetype = criteria)) +
+  geom_smooth(se = FALSE, method = "loess") +
+  facet_wrap(as.numeric(as.character(prompt)) ~ language) + 
+  scale_y_continuous(limits = c(-0.1,1.1), breaks = seq(0,1,0.5), labels = scales::percent) + 
+  scale_color_manual(values = chip_id_colors) +
+  scale_linetype_manual(values = c("Correct (Same Language)" = "solid", 
+                                   "Correct (Either Language)" = "dotted")) +
+  labs(x = "Age", y = "% of Correct Responses", linetype = "Measure", colour = "Chip ID") +
+  theme_few(14)
+
+first_spanish <- first_production %>%
+  select(language, subj, age, age_interval, prompt, response) %>%
+  mutate(in_spanish = ifelse(response %in% spanish_terms, 1, 0)) %>%
+  group_by(language, age_interval) %>%
+  summarise(in_spanish = mean(in_spanish))
+
+final_spanish <- final_production %>%
+  select(language, subj, age, age_interval, prompt, response) %>%
+  mutate(in_spanish = ifelse(response %in% spanish_terms, 1, 0)) %>%
+  group_by(language, age_interval) %>%
+  summarise(in_spanish = mean(in_spanish))
+
+full_join(first_spanish, final_spanish, 
+          by = c("language", "age_interval"), 
+          suffix = c(" (First)", " (Final)"))
+
+```
+
+```{r}
+color_list <- c("black", "blue", "brown", "green", "orange (description)", "red", "white", "yellow",
+                "amarillo", "azul", "blanco", "morado", "negro", "rojo", "rosa", "verde")
+
+cdi_colors <- c(
+  'yellow' = '#FFD416',
+  'blue' = '#337DCE',
+  'white' = '#DBDBDB',
+  'gray' = '#979997', 
+  'brown' = '#9E5E22', 
+  'purple' = '#B175F9', 
+  'orange' = '#FF6E00',
+  'black' = '#000000',
+  'red' = '#E03D28', 
+  'pink' = '#FF8C9D', 
+  'green' = '#61E27B'
+)
+
+cdi_items <- get_item_data(language = "English (American)", form = "WS", mode = "remote") %>%
+  bind_rows(get_item_data(language = "Spanish", form = "WS", mode = "remote")) %>%
+  filter(definition %in% color_list) %>%
+  split(.$language) %>%
+  map_df(function(x) {
+    y <- get_instrument_data(instrument_language = first(x$language), instrument_form = first(x$form),
+                             items = x$item_id, administrations = TRUE, iteminfo = TRUE) %>%
+      filter(num_item_id %in% x$num_item_id)
+    return(y)
+  }) %>%
+  mutate(value = ifelse(value == "produces", 1, 0),
+         uni_lemma = ifelse(definition == "blanco", "white",
+                            ifelse(definition == "morado", "purple",
+                                   ifelse(definition == "negro", "black",
+                                          ifelse(definition == "rosa", "pink", 
+                                                 ifelse(grepl('orange', definition), 'orange', uni_lemma)))))) %>%
+  group_by(language, item_id, definition, uni_lemma, age)
+
+cdi_plot <- ggplot(cdi_items, aes(x = age, y = value, group = interaction(uni_lemma, language), 
+                      color = uni_lemma, linetype = language)) +
+  geom_smooth(se = FALSE, method = "loess") +
+  scale_color_manual(values = cdi_colors) +
+  scale_linetype_manual(values = c("English (American)" = "dashed",
+                                   "Spanish" = "solid")) +
+  scale_y_continuous(limits = c(0,1), breaks = seq(0,1,0.25), labels = scales::percent) +
+  labs(x = "Age (in months)", y = "% of Subjects\nProducing a Color Term", 
+       color = "Color Term", linetype = "Language") +
+  theme_few(14)
+  
+```
+
+```{r}
+child_bothtasks_first <- cd %>%
+  filter(spanish %in% c("Blanco", "Negro", "Verde", "Amarillo", "Rojo") & 
+           (task == "Comprehension" | response_order %in% c("first", "only"))) %>%
+  group_by(language, age, task, prompt, spanish) %>%
+  gather(key = "criteria", value = "score", correct, correct_either) %>%
+  ungroup() %>%
+  mutate(criteria = ifelse(task == "Comprehension", "Comprehension",
+                           ifelse(task == "Production" & criteria == "correct", "Production (Same Language)",
+                                  ifelse(task == "Production" & criteria == "correct_either", 
+                                         "Production (Either Language)", NA)))) %>%
+  select(language, subj, age, age_interval, prompt, spanish, response, criteria, score)
+  
+child_bothtasks_plot <- ggplot(child_bothtasks_first,
+       aes(x = age_interval, y = score, colour = spanish, group = criteria, linetype = criteria)) +
+  geom_smooth(se = FALSE, method = "loess") +
+  facet_grid(spanish ~ language) + 
+  scale_y_continuous(limits = c(-0.1,1.1), breaks = seq(0,1,0.5), labels = scales::percent) + 
+  scale_color_manual(values = setNames(all_chip_sets$hex, all_chip_sets$spanish) ) +
+  scale_linetype_manual(values = c("Comprehension" = "solid", 
+                                   "Production (Same Language)" = "twodash",
+                                   "Production (Either Language)" = "dotted")) +
+  labs(x = "Age", y = "% of Correct Responses", colour = "Color", linetype = "Measure") +
+  theme_few(14)
+
+```
+
+```{r}
+naming_spanish_use <- naming_data %>%
+  mutate_at(vars(starts_with("edad")), funs(as.numeric(as.character(.)))) %>%
+  mutate(spanish = ifelse(color_cat %in% spanish_terms, 1, 0)) %>%
+  group_by(subj, género, edad, `edad aprendizaje del espanol`, `donde ha crecido (los primeros 15 años)`) %>%
+  summarise(spanish = mean(spanish))
+
+cor.test(naming_spanish_use$edad, naming_spanish_use$`edad aprendizaje del espanol`)
+cor.test(naming_spanish_use$edad, naming_spanish_use$spanish)
+cor.test(naming_spanish_use$`edad aprendizaje del espanol`, naming_spanish_use$spanish)
+
+spanish_corr_plot <- ggplot(naming_spanish_use, aes(x = edad, y = `edad aprendizaje del espanol`)) +
+  geom_point(size = 4) + 
+  geom_smooth(method = "lm", se = FALSE) +
+  annotate("text", label = paste0("r = ", round(cor.test(naming_spanish_use$edad, naming_spanish_use$`edad aprendizaje del espanol`)$estimate, 2)), x = 57, y = 12, size = 6) +
+  scale_y_continuous(limits = c(0,15), breaks = seq(0,15,5)) +
+  scale_x_continuous(limits = c(20,65), breaks = seq(20,70,10)) +
+  labs(x = "Age at Testing", y = "Age When Introduced to Spanish") +
+  theme_few(14)
+
+  
+```
+
