@@ -27,6 +27,7 @@ library(viridis)
 library(ggthemes)
 library(stringr)
 library(lme4)
+library(readxl)
 
 ```
 
@@ -35,7 +36,7 @@ Load and format CSV data from current study along with World Color Survey Data
 
 ```{r}
 
-source("helpers/load_and_process.R")
+source("../helpers/load_and_process.R")
 
 min_consensus <- 15
 min_edge_chips <- 3
@@ -124,7 +125,7 @@ shipibo_boundary %<>%
     filter( is.na(chip_id.x) | chip_id.x != chip_id.y))
 
 spanish_boundary <- as.data.frame(as.matrix(Matrix::forceSymmetric(
-  as.matrix(read_csv("data/adjacent_spanish_labels.csv")[,-1]),uplo="U"))) %>%
+  as.matrix(read_csv("../data/adjacent_spanish_labels.csv")[,-1]),uplo="U"))) %>%
   rownames_to_column("Color_1") %>%
   gather(key = "Color_2", value = "adjacency", Blanco:Rosa) %>%
   filter(Color_1 != Color_2) %>%
@@ -138,7 +139,7 @@ spanish_boundary <- as.data.frame(as.matrix(Matrix::forceSymmetric(
 
 clean_child_data <- function(df, min_consensus = 10) {
 
-  child_string_spelling_list <- "`Agua` = c('agna', 'agua', 'agur'), `Amarillo` = c('amarilla', 'amarillo'), `Ami` = c('ami'), `Azul` = c('azul'), `Barin Poi` = c('bari', 'barri', 'barrinpui'), `Blanco` = c('blanco'), `Celeste` = c('celeste'), `Gris` = c('gris'), `Jene` = c('jene', 'jenekeska'), `Jimi` = c('jimi'), `Joa` = c('joa'), `Joshin` = c('joshin', 'toshin', 'joshin metsashoko', 'joshinshama'), `Joxo` = c('joxo', 'joxo jakwokawa', 'joxo metsa'), `Kari` = c('carri'), `Mai` = c('mai'), `Mancoa Pei` = c('mancoapei', 'mancoa pei'), `Manxan` = c('manxan'), `Marron` = c('marron'), `Morado` = c('morado'), `Nai` = c('nai', 'nai (lluvia)'), `Nai Wiso` = c('nai wisoa', 'naiwiso'), `Naranja` = c('anarando', 'narango', 'naranja', 'naranjada', 'naranjado', 'naranjo', 'narranxa'), `Negro` = c('negro'), `Oxne` = c('oxe'), `Panshin` = c('panshin', 'panshintani', 'panshinshima'), `Pei` = c('pei'), `Poa` = c('pua'), `Rojo` = c('rojo'), `Rosa` = c('rosa', 'rosada', 'rosado'), `Unpasx` = c('unpasx', 'unpax'), `Verde` = c('verde', 'verdesito', 'shokouerde'), `Violeta` = c('bioleta', 'violeta', 'metsa shoko violeta'), `Wiso` = c('wiso', 'wisoshama'), `Xo` = c('xo'), `Yame` = c('yame'), `Yankon` = c('yakon', 'yakun', 'yankon', 'yankontani', 'yankun', 'yakonshama', 'Yakunshama', 'yankon pasna', 'yankoncha')"
+  child_string_spelling_list <- "`Agua` = c('agna', 'agua', 'agur'), `Amarillo` = c('amarilla', 'amarillo'), `Ami` = c('ami'), `Azul` = c('azul'), `Barin Poi` = c('bari', 'barri', 'barrinpui'), `Blanco` = c('blanco'), `Celeste` = c('celeste'), `Gris` = c('gris'), `Jene` = c('jene', 'jenekeska'), `Jimi` = c('jimi'), `Joa` = c('joa'), `Joshin` = c('joshin', 'toshin', 'joshin metsashoko', 'joshinshama'), `Joxo` = c('joxo', 'joxo jakwokawa', 'joxo metsa'), `Kari` = c('carri'), `Mai` = c('mai'), `Mancoa Pei` = c('mancoapei', 'mancoa pei'), `Manxan` = c('manxan'), `Marron` = c('marron'), `Morado` = c('morado'), `Nai` = c('nai', 'nai (lluvia)'), `Nai Wiso` = c('nai wisoa', 'naiwiso'), `Naranja` = c('anarando', 'narango', 'naranja', 'naranjada', 'naranjado', 'naranjo', 'narranxa'), `Negro` = c('negro'), `Oxne` = c('oxe'), `Panshin` = c('panshin', 'panshintani', 'panshinshima', 'Panshinshima'), `Pei` = c('pei'), `Poa` = c('pua'), `Rojo` = c('rojo'), `Rosa` = c('rosa', 'rosada', 'rosado'), `Unpasx` = c('unpasx', 'unpax'), `Verde` = c('verde', 'verdesito', 'shokouerde'), `Violeta` = c('bioleta', 'violeta', 'metsa shoko violeta'), `Wiso` = c('wiso', 'wisoshama'), `Xo` = c('xo'), `Yame` = c('yame'), `Yankon` = c('yakon', 'yakun', 'yankon', 'yankontani', 'yankun', 'yakonshama', 'Yakunshama', 'yankon pasna', 'yankoncha')"
   
   child_spelling_list <- eval(parse(text = paste0("c(",child_string_spelling_list,")")))
 
@@ -331,10 +332,10 @@ clean_child_data <- function(df, min_consensus = 10) {
 
 if (refresh_data) {
   
-  child_data <- bind_rows("Shipibo" = read_csv("data/Current_Data/shipibo_children_colors_participants.csv") %>%
-                            left_join(read_csv("data/Current_Data/shipibo_children_colors_data.csv"), by = 'subj'),
-                          "Spanish" = read_csv("data/Current_Data/spanish_children_colors_participants.csv") %>%
-                            left_join(read_csv("data/Current_Data/spanish_children_colors_data.csv"), by = 'subj'),
+  child_data <- bind_rows("Shipibo" = read_csv("../data/Current_Data/shipibo_children_colors_participants.csv") %>%
+                            left_join(read_csv("../data/Current_Data/shipibo_children_colors_data.csv"), by = 'subj'),
+                          "Spanish" = read_csv("../data/Current_Data/spanish_children_colors_participants.csv") %>%
+                            left_join(read_csv("../data/Current_Data/spanish_children_colors_data.csv"), by = 'subj'),
                           .id = "language") %>% 
     mutate(age = ifelse(is.na(age), as.numeric(as.character(edad)), as.numeric(as.character(age))),
            task = ifelse(task == 1, "Production", ifelse( task == 2, "Comprehension", NA)),
@@ -347,10 +348,10 @@ if (refresh_data) {
            adjacency = ifelse(correct == 1, NA, adjacency),
            dist = ifelse(correct == 1, NA, dist))
   
-    feather::write_feather(child_data, "intermediates/child_data.csv")
+    feather::write_feather(child_data, "../intermediates/child_data.csv")
 
 } else {
-  child_data <- feather::read_feather("intermediates/child_data.csv")
+  child_data <- feather::read_feather("../intermediates/child_data.csv")
 }
 
 
@@ -374,7 +375,7 @@ cd <- child_data %>%
             wrong_euc_dist = mean(dist, na.rm = T)) %>%
   mutate_if(is.double, funs(replace(., is.nan(.), NA)))
 
-feather::write_feather(cd, "intermediates/processed_data.csv")
+feather::write_feather(cd, "../intermediates/processed_data.csv")
 
 
 # pbt_mod <- glmer(correct ~ age_scaled * task + (task | subj) + (task | prompt), data=cd,

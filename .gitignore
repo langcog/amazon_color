@@ -1,8 +1,8 @@
 .DS_Store
 .Rproj.user
 packrat/lib*/
+packrat/src*/
 *_cache/*
 .RData 
 .Rhistory 
 rsconnect/
-packrat/src/

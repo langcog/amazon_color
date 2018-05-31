@@ -27,7 +27,7 @@ spelling_list <- eval(parse(text = paste0("c(",string_spelling_list,")")))
 # Load chip set and terms data --------------------------------------------
 
 
-color_chip_data <- read_csv("data/wcs_measures.csv", skip = 1) %>%
+color_chip_data <- read_csv("../data/wcs_measures.csv", skip = 1) %>%
   mutate(V = factor(V, levels = LETTERS[seq(n_distinct(V),1)])) %>%
   mutate(hex = colorspace::hex(
     colorspace::LAB(.data$`L*`, .data$`a*`, 
@@ -65,14 +65,14 @@ spanish_chip_set <- read.csv(text = "spanish, code, munsell_code, chip_id
 # Load in data from current study -----------------------------------------
 
 
-naming_data <- read_csv("data/Current_Data/naming_colors_participants.csv") %>%
-  left_join(read_csv("data/Current_Data/naming_colors_data.csv"), by = 'subj') %>%
+naming_data <- read_csv("../data/Current_Data/naming_colors_participants.csv") %>%
+  left_join(read_csv("../data/Current_Data/naming_colors_data.csv"), by = 'subj') %>%
   mutate(color_cat = ifelse(is.na(color_cat), first_response, color_cat)) %>%
   mutate(color_cat = eval( parse(text = gsub(pattern = "x", replacement = string_spelling_list, "forcats::fct_collapse(color_cat, x)")))
   )
 
-grouping_data <- read_csv("data/Current_Data/grouping_colors_participants.csv") %>%
-  left_join(read_csv("data/Current_Data/grouping_colors_data.csv"), by = 'subj') %>%
+grouping_data <- read_csv("../data/Current_Data/grouping_colors_participants.csv") %>%
+  left_join(read_csv("../data/Current_Data/grouping_colors_data.csv"), by = 'subj') %>%
   mutate(`nombre del grupo` = ifelse(`nombre del grupo` %in% unlist(spelling_list), 
                                      `nombre del grupo`, NA)) %>%
   mutate(`nombre del grupo` = eval( parse(text = gsub(pattern = "x", replacement = string_spelling_list, "forcats::fct_collapse(`nombre del grupo`, x)")))
@@ -83,28 +83,28 @@ grouping_data <- read_csv("data/Current_Data/grouping_colors_participants.csv") 
 # Load in Kay data --------------------------------------------------------
 
 
-kay_langs <- read_tsv("data/WCS_Data/lang.txt", 
+kay_langs <- read_tsv("../data/WCS_Data/lang.txt", 
                       col_names = c('WCS Language Number', 'WCS Language Name', 
                                     'WCS Language Geographic Location', 'Field Worker')) %>%
   filter(`WCS Language Name` == 'Shipibo')
 
-kay_dict <- read_tsv("data/WCS_Data/dict.txt",
+kay_dict <- read_tsv("../data/WCS_Data/dict.txt",
                      col_names = c('WCS Language Number', 'Term Number',
                                    'Term', 'Term Abbreviation')) %>%
   filter(`WCS Language Number` == kay_langs$`WCS Language Number`)
 
-kay_foci <- read_tsv("data/WCS_Data/foci-exp.txt",
+kay_foci <- read_tsv("../data/WCS_Data/foci-exp.txt",
                      col_names = c("WCS Language Number", "WCS Speaker Number",
                                    "WCS Focus Response", "Term Abbreviation",
                                    "Single Chip")) %>%
   filter(`WCS Language Number` == kay_langs$`WCS Language Number`)
 
-kay_speaker <- read_tsv("data/WCS_Data/spkr-lsas.txt", 
+kay_speaker <- read_tsv("../data/WCS_Data/spkr-lsas.txt", 
                         col_names = c("WCS Language Number", "WCS Speaker Number",
                                       "WCS Speaker Age", "WCS Speaker Sex")) %>%
   filter(`WCS Language Number` == kay_langs$`WCS Language Number`)
 
-kay_terms <- read_tsv("data/WCS_Data/term.txt", 
+kay_terms <- read_tsv("../data/WCS_Data/term.txt", 
                       col_names = c('WCS Language Number', 'WCS Speaker Number', 
                                     'WCS Chip Number', 'Term Abbreviation')) %>%
   filter(`WCS Language Number` == kay_langs$`WCS Language Number`) %>%
@@ -124,7 +124,7 @@ kay_terms <- read_tsv("data/WCS_Data/term.txt",
                                       `Mai` = c("mai"),
                                       `Manxan` = c("manshan"),
                                       `Panshin` = c("panshin"),
-                                      `Pasna` = c("pashnatani"),
+                                      `Paxna` = c("pashnatani"),
                                       `Pene` = c("pene"),
                                       `Pota'` = c("pota'"),
                                       `Xena` = c("shane"),
