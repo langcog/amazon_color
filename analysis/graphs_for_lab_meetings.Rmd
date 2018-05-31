@@ -1,6 +1,9 @@
 ---
-title: "R Notebook"
-output: html_notebook
+output:
+  html_document:
+    highlight: tango
+    theme: spacelab
+  pdf_document: default
 ---
 
 
@@ -10,10 +13,10 @@ library(plotly)
 library(viridis)
 library(wordbankr)
 
-source("helpers/load_and_process.R")
+source("../helpers/load_and_process.R")
 
-cd <- feather::read_feather("intermediates/processed_data.csv")
-child_data <- feather::read_feather("intermediates/child_data.csv")
+cd <- feather::read_feather("../intermediates/processed_data.csv")
+child_data <- feather::read_feather("../intermediates/child_data.csv")
 
 ```
 
