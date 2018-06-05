@@ -11,12 +11,17 @@ RUN apt-get update -qq \
 && apt-get -y --no-install-recommends install \
 	jags \
     libgdal-dev \
-    libxt-dev \
-    libudunits2-dev \
+    libmagick++-dev \
     libnlopt-dev \
+    libudunits2-dev \
+    libxt-dev \
 && install2.r --error \
     --deps TRUE \
+    cowplot \
     DT \
     ggthemes \
+    ggrepel \
     lme4 \
-    plotly
+    plotly \
+&& installGithub.r \
+    langcog/wordbankr@fec28549941a32368f8e75bdd204c2f43f1d33ad

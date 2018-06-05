@@ -12,6 +12,7 @@ library(tidyverse)
 library(plotly)
 library(viridis)
 library(wordbankr)
+library(ggthemes)
 
 source("../helpers/load_and_process.R")
 
@@ -457,11 +458,11 @@ cdi_colors <- c(
 )
 
 cdi_items <- get_item_data(language = "English (American)", form = "WS", mode = "remote") %>%
-  bind_rows(get_item_data(language = "Spanish", form = "WS", mode = "remote")) %>%
+  bind_rows(get_item_data(language = "Spanish (Mexican)", form = "WS", mode = "remote")) %>%
   filter(definition %in% color_list) %>%
   split(.$language) %>%
   map_df(function(x) {
-    y <- get_instrument_data(instrument_language = first(x$language), instrument_form = first(x$form),
+    y <- get_instrument_data(language = first(x$language), form = first(x$form),
                              items = x$item_id, administrations = TRUE, iteminfo = TRUE) %>%
       filter(num_item_id %in% x$num_item_id)
     return(y)
