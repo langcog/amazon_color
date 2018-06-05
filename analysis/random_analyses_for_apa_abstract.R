@@ -160,9 +160,9 @@ adult_figure <- cowplot::plot_grid(
   theme(plot.margin = unit(c(1,0.5,1.5,0.5), "in")) 
 
 
-# cowplot::save_plot(filename = "working/analysis/adult_figure.png", adult_figure,
+# cowplot::save_plot(filename = "working/figures/adult_figure.png", adult_figure,
 #                    base_height = 8, base_width = 8, base_aspect_ratio = 1:1)
 # 
-# cowplot::save_plot(filename = "working/analysis/child_figure.png", child_figure,
+# cowplot::save_plot(filename = "working/figures/child_figure.png", child_figure,
 #                    base_height = 8, base_width = 8, base_aspect_ratio = 1:1)
 # 
