@@ -19,6 +19,7 @@ RUN apt-get update -qq \
     --deps TRUE \
     cowplot \
     DT \
+    english \
     ggthemes \
     ggrepel \
     lme4 \
