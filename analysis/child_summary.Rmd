@@ -361,8 +361,8 @@ if (refresh_data) {
 
 cd <- child_data %>%
   mutate(age_scaled = scale(.$age, scale = FALSE)[,1]) %>%
-  select(language, género, subj, age, age_scaled, age_interval, task, prompt, spanish, response_num, response, response_order, correct, correct_switch, adjacency, dist) %>%
-  rename(gender = género) %>%
+  select(language, género, subj, `lugar de grabación`, age, age_scaled, age_interval, task, prompt, spanish, response_num, response, response_order, correct, correct_switch, adjacency, dist) %>%
+  rename(gender = género, location = `lugar de grabación`) %>%
   mutate(correct = ifelse(task == "Comprehension" & language == "Shipibo" & prompt == "Yankon" & response_num == "2" & is.na(response), 0, correct)) %>%
   mutate_if(is.character, factor) %>%
   group_by_at(vars(language:spanish, response_order)) %>%

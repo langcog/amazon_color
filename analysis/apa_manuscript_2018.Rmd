@@ -106,7 +106,7 @@ study1_highestspanish <- datatable(study1_spanishbychip, rownames = FALSE) %>%
 ```
 
 
-In Study 1, we presented adult participants (*M* = `r study1_participants$mean_age`yo, *SD* = `r study1_participants$sd_age`y) with 165 color chips – replicating Berlin & Kay’s general procedure – and asked them to produce a single color term for each chip. More than half of adults used basic terms for light/white (“joxo”), dark/black (“wiso”), yellow (“panshin”), red (“joshin”), and green/blue (“yankon”). One departure from the Berlin-Kay data, however, was that `r study1_spanishperc$atleast_1` of adults described at least 1 chip using a Spanish-language color term, accounting for `r study1_spanishperc$overall_spanish` of all responses (Figure 1a-b). Spanish use reached as high as 55% when participants were asked to label chips that English speakers would consider to be orange. 
+In Study 1, we presented adult participants (*M* = `r study1_participants$mean_age`yo, *SD* = `r study1_participants$sd_age`y) with 165 color chips – replicating Berlin & Kay’s general procedure – and asked them to produce a single color term for each chip. More than half of adults used basic terms for light/white (“joxo”), dark/black (“wiso”), yellow (“panshin”), red (“joshin”), and green/blue (“yankon”). One departure from the Berlin-Kay data was that `r study1_spanishperc$atleast_1` of adults described at least 1 chip using a Spanish-language color term, accounting for `r study1_spanishperc$overall_spanish` of all responses (Figure 1a-b). Spanish use reached as high as `r round(100*max(study1_spanishbychip$'% of Subjects'))`% when participants were asked to label chips that English speakers would consider to be orange. 
 <br>
 
 `r study1_highestspanish` 
@@ -131,30 +131,17 @@ study1_consensus <- naming_data %>%
 
 
 ```
+
+
 Study 2
 In Study 2, we tested children on their production and comprehension skills with a set of chips representing the prototypical colors for common Shipibo terms. 
-Methods
-Participants.
-We recruited 57 5- to 11-year-old children (23 boys). 
-Materials.
-Procedure. The production task had a procedure very similar to Study 1, albeit with only 7 chips. We scored whether children produced a color term that was commonly given by adults in Study 1 for that same chip. 
-Results and Discussion
-Older children displayed a higher level of overall accuracy in comparison to younger children (r(55) = 0.546, p < 0.001, see Figure 2). However, over a quarter (26%) of all responses were given in Spanish. The distribution of Spanish responses was non-random. Children tended to respond in Spanish when presented with a chip which had low naming consensus (high entropy) among adults in Study 1. Even when accounting for individual differences in age, this effect remained strong (p = 0.003, see inset entropy values in Figure 2).
-Accuracy analyses.
-Entropy analyses. 
-Overextensions.
-Study 3
-Noting the level of bilingualism in Study 2, we designed Study 3 as its complement. In Study 3, we tested children entirely in Spanish with a set of chips representing prototypical colors for the Spanish color system. 
-Methods
-Participants. 46 5- to 11-year-old children (16 boys)
-Materials. (11 chips in total, 5 chips were shared between Studies 2 and 3)
-Procedure.
-Results and Discussion
-Similar to Study 2, over a quarter of all responses (29%) were given in another language (Shipibo in this case). However, there was no significant correlation between age and label accuracy (p = 0.063). Children tended to respond in Shipibo when presented with items that had low entropy among SK adults during Study 1 (p = 0.004). We conducted a range of studies to better characterize SK color term knowledge and its development. 
 
 
-Study 2.
+
+Methods
 Participants.
+
+
 ```{r study2_participants, include=FALSE}
 
 a <- read_csv("../data/Current_Data/shipibo_children_colors_participants.csv") 
@@ -172,9 +159,105 @@ study2_participants <- study2_data %>%
             num_78 = sum(age_interval %in% 7:8),
             num_910 = sum(age_interval %in% 9:10),
             num_1112 = sum(age_interval %in% 11:12),
-            total_num = n(),
-            total_boys = sum(gender == "masculino"))
+            num_benajema = sum(location == 'bena jema'),
+            num_bilingue = sum(location == 'bilingue'),
+            num_ccnn = sum(location == 'c.c.n.n. (bahuanisho)'),
+            num_boys = sum(gender == "masculino"),
+            num_total = n())
+
+study2_agesex <- study2_data %>%
+  group_by(subj) %>%
+  filter(row_number() == 1) %>% group_by(age_interval) %>%
+  summarise(num_total = n(),
+            num_boys = sum(gender == 'masculino'),
+            mean_age = round(mean(age), 1),
+            sd_age = round(sd(age), 2)) %>% ungroup() %>%
+  mutate(freq_total = round(100*num_total/sum(num_total)),
+         freq_boys = round(100*num_boys/num_total)) %>%
+  mutate(`Age Group` = paste0(age_interval, "-years-old"),
+         `Age (SD)` = paste0(mean_age, " (", sd_age, ")"),
+         `N` = paste0(num_total, " (", freq_total, "%)"),
+         `Male` = paste0(num_boys, " (", freq_boys, "%)")) %>%
+  select(`Age Group`, `Age (SD)`, `N`, `Male`)
+
+study2_table1 <- datatable(study2_agesex, rownames = FALSE)
+
 ```
+
+The Pontificia Universidad Católica del Perú’s Institutional Review Board approved our study protocol. We recruited `r study2_participants$num_total` `r study2_participants$min_age`- to `r study2_participants$max_age`-year-old children (`r study2_participants$num_boys` boys). Table 1 details the distribution of age and gender. `r tools::toTitleCase(as.character(as.english(with(study2_participants, num_benajema + num_bilingue)))` children were recruited from neighborhoods in Yarinacocha, in the Pucallpa region of Peru, as well as in `r study2_participants$num_ccnn` children from Bawanisho, a native community settled along the Ucayali River, south of Pucallpa. Children were recruited either through their parents or through local schools. When recruited at school, consent for participation was collected from both the teachers and the parents; otherwise, only consent from the parents was collected.  
+
+<br>
+
+`r study2_table1` 
+<br>
+
+
+Materials.
+Procedure. The production task had a procedure very similar to Study 1, albeit with only 7 chips. We scored whether children produced a color term that was commonly given by adults in Study 1 for that same chip. 
+Results and Discussion
+Older children displayed a higher level of overall accuracy in comparison to younger children (r(55) = 0.546, p < 0.001, see Figure 2). However, over a quarter (26%) of all responses were given in Spanish. The distribution of Spanish responses was non-random. Children tended to respond in Spanish when presented with a chip which had low naming consensus (high entropy) among adults in Study 1. Even when accounting for individual differences in age, this effect remained strong (p = 0.003, see inset entropy values in Figure 2).
+Accuracy analyses.
+Entropy analyses. 
+Overextensions.
+
+
+
+
+Study 3
+Noting the level of bilingualism in Study 2, we designed Study 3 as its complement. In Study 3, we tested children entirely in Spanish with a set of chips representing prototypical colors for the Spanish color system. 
+
+
+Methods
+Participants. 
+
+```{r study3_participants, include=FALSE}
+
+b <- read_csv("../data/Current_Data/shipibo_children_colors_participants.csv") 
+
+study3_data <- feather::read_feather("../intermediates/processed_data.csv") %>%
+  filter(language == "Spanish", task == "Production") %>%
+  mutate(shipibo_response = ifelse(response %in% shipibo_terms, 1, 0)) 
+
+study3_participants <- study3_data %>%
+  group_by(subj) %>%
+  filter(row_number() == 1) %>% ungroup() %>%
+  summarise(min_age = min(age_interval),
+            max_age = max(age_interval),
+            num_56 = sum(age_interval %in% 5:6),
+            num_78 = sum(age_interval %in% 7:8),
+            num_910 = sum(age_interval %in% 9:10),
+            num_1112 = sum(age_interval %in% 11:12),
+            num_benajema = sum(location == 'bena jema'),
+            num_bilingue = sum(location == 'bilingue'),
+            num_ccnn = sum(location == 'c.c.n.n. (bahuanisho)'),
+            num_boys = sum(gender == "masculino"),
+            num_total = n())
+
+study3_agesex <- study3_data %>%
+  group_by(subj) %>%
+  filter(row_number() == 1) %>% group_by(age_interval) %>%
+  summarise(num_total = n(),
+            num_boys = sum(gender == 'masculino'),
+            mean_age = round(mean(age), 1),
+            sd_age = round(sd(age), 2)) %>% ungroup() %>%
+  mutate(freq_total = round(100*num_total/sum(num_total)),
+         freq_boys = round(100*num_boys/num_total)) %>%
+  mutate(`Age Group` = paste0(age_interval, "-years-old"),
+         `Age (SD)` = paste0(mean_age, " (", sd_age, ")"),
+         `N` = paste0(num_total, " (", freq_total, "%)"),
+         `Male` = paste0(num_boys, " (", freq_boys, "%)")) %>%
+  select(`Age Group`, `Age (SD)`, `N`, `Male`)
+
+study3_table1 <- datatable(study3_agesex, rownames = FALSE)
+
+```
+
+46 5- to 11-year-old children (16 boys)
+Materials. (11 chips in total, 5 chips were shared between Studies 2 and 3)
+Procedure.
+Results and Discussion
+Similar to Study 2, over a quarter of all responses (29%) were given in another language (Shipibo in this case). However, there was no significant correlation between age and label accuracy (p = 0.063). Children tended to respond in Shipibo when presented with items that had low entropy among SK adults during Study 1 (p = 0.004). We conducted a range of studies to better characterize SK color term knowledge and its development. 
+
 
 Study 3.
 Participants.
