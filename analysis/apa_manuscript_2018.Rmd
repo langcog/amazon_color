@@ -275,7 +275,41 @@ study2_SpanEnt_model <- summary(lme4::glmer(
 However, over a quarter (`r study2_spanishperc$spanish_response`) of all responses were given in Spanish. The distribution of Spanish responses was non-random. Children tended to respond in Spanish when presented with a chip which had low naming consensus (high entropy) among adults in Study 1. Even when accounting for individual differences in age, this effect remained strong (*p* `r with(study2_SpanEnt_model, ifelse(coefficients["Entropy", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["Entropy", "Pr(>|z|)"], 3))))`, see inset entropy values in Figure 2).
 
 Overextensions.
+```{r study2_overextensions, include=FALSE}
+study2_adjacentorswitch <- study2_data %>%
+  group_by(subj, age, gender) %>%
+  filter(response_order %in% c("first", "only")) %>%
+  mutate(correct_nearby = correct + ifelse(is.na(wrong_adjacent), 0, wrong_adjacent)) %>%
+  summarise(correct = mean(correct), correcteither = mean(correct_either), correctnearby = mean(correct_nearby)) %>%
+  gather(key = "measure", value = "score", starts_with("correct"))
 
+predicted_range <- seq(6,10, 0.25)
+
+study2_accuracyloess <- bind_cols(lapply(
+  study2_adjacentorswitch %>% split(.$measure),
+  function(x){
+    as_data_frame(predict(loess(formula = score ~ age, data = x, span = 0.75), 
+            newdata = predicted_range, se = TRUE)[c("fit", "se.fit")]) %>%
+      rename_all(funs(paste0(first(x$measure),"_",.)))
+    })) %>%
+  mutate(predicted_age = predicted_range) %>%
+  gather(key = "measure", value = "score", starts_with("correct")) %>%
+  separate("measure", into = c("measure", "stat"), sep = "_") %>%
+  spread(stat, score)
+  
+ggplot(study2_accuracyloess,
+  aes(x = predicted_age, y = fit, color = measure, group = measure)) + 
+  geom_line(size = 1) + geom_point(size = 4) +
+  geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = measure, fill = measure), alpha = .2, colour=NA) +
+  scale_color_viridis(discrete=TRUE, option = "D") +
+  scale_fill_viridis(discrete=TRUE, option = "D")
+
+
+```
+
+```{r}
+
+```
 
 
 
@@ -287,8 +321,6 @@ Methods
 Participants. 
 
 ```{r study3_participants, include=FALSE}
-
-b <- read_csv("../data/Current_Data/shipibo_children_colors_participants.csv") 
 
 study3_data <- feather::read_feather("../intermediates/processed_data.csv") %>%
   filter(language == "Spanish", task == "Production") %>%
@@ -328,110 +360,11 @@ study3_table1 <- datatable(study3_agesex, rownames = FALSE)
 
 ```
 
-46 5- to 11-year-old children (16 boys)
-Materials. (11 chips in total, 5 chips were shared between Studies 2 and 3)
+Materials. 
 Procedure.
-Results and Discussion
-Similar to Study 2, over a quarter of all responses (29%) were given in another language (Shipibo in this case). However, there was no significant correlation between age and label accuracy (p = 0.063). Children tended to respond in Shipibo when presented with items that had low entropy among SK adults during Study 1 (p = 0.004). We conducted a range of studies to better characterize SK color term knowledge and its development. 
+Results and Discussion.
 
-
-Study 3.
-Participants.
-```{r study3_participants, include=FALSE}
-
-study3_data <- feather::read_feather("../intermediates/processed_data.csv") %>%
-  filter(language == "Spanish", task == "Production") %>%
-  mutate(shipibo_response = ifelse(response %in% shipibo_terms, 1, 0)) 
-
-study3_participants <- study3_data %>%
-  group_by(subj) %>%
-  filter(row_number() == 1) %>% ungroup() %>%
-  summarise(min_age = min(age_interval),
-            max_age = max(age_interval),
-            num_56 = sum(age_interval %in% 5:6),
-            num_78 = sum(age_interval %in% 7:8),
-            num_910 = sum(age_interval %in% 9:10),
-            num_1112 = sum(age_interval %in% 11:12),
-            total_num = n(),
-            total_boys = sum(gender == "masculino"))
-```
-
-
-<center> <h1>Abstract</h1> </center>
-<br>
-
-Color language is where language and perception meet. Terms like *blue* or *red* draw boundary lines across a perceptually continuous space. In English, there are 11 basic color terms, but this color categorization is not universal. For instance, Russian speakers use two distinct words to describe the colors light blue (“goluboy”) and dark blue (“siniy”); and some languages have as few as two words (e.g., the Jalé people only have terms for “light” and “dark”; Berlin & Kay, 1969). Why do languages vary in their color systems? One emerging consensus is that languages categorize the color spectrum in different ways in part due to functional demands (Gibson et al., 2017): both smaller and larger color systems are relatively optimal for suiting different communicative needs (Regier, Khetarpal, & Kay, 2007). 
-One important component of this hypothesis is the idea that some color systems are easier to learn for children than others; but the actual acquisition of color terms – while well-studied in English (e.g., Wagner, Dobkins, & Barner, 2013) – is extremely under-studied across other populations. Berlin & Kay’s seminal World Color Survey (WCS; Berlin & Kay, 2009) presented adult speakers of over 100 languages with differently colored chips and asked them to produce a label, characterizing the space of color vocabulary in a range of written and unwritten languages. Although the WCS is now a publicly shared dataset, there is no comparable resource for the acquisition of color language in children. In the current project, our goals were (1) to characterize color term knowledge in an indigenous population previously studied by the WCS, the Shipibo-Konibo (SK), and then (2) to build on this foundation to characterize the developmental trajectory of color language acquisition in a group of children raised outside of the WEIRD (Western Educated Industrialized Rich Democratic) populations that are over-represented in behavioral science. 
-The SK people are an indigenous group located within the Peruvian Amazon. They are mainly horticulturalists, fishermen, occasionally hunters but are noted for their strong display of tradition despite increasingly regular interactions with the western world. Their children receive formal schooling for 4 hours a day and begin formal Spanish lessons closer to adolescence. Most SK adults have some grasp of Spanish but younger adults show more proficiency than elders. 
-
-
-In the Berlin-Kay data, speakers would switch between using “joshin” or “panshin”, but in this study adults also used the Spanish term “naranja” (Figure 1b-c). After finding which color terms had high consensus (low entropy) between Shipibo adults, we turned our focus towards mapping the developmental trajectory for color term knowledge in Shipibo children. 
-
-
-```{r study2, include=FALSE}
-study2_data <- feather::read_feather("../intermediates/processed_data.csv") %>%
-  filter(language == "Shipibo", task == "Production") %>%
-  mutate(spanish_response = ifelse(response %in% spanish_terms, 1, 0)) 
-
-study2_participants <- study2_data %>%
-  group_by(subj) %>%
-  filter(row_number() == 1) %>% ungroup() %>%
-  summarise(min_age = min(age_interval),
-            max_age = max(age_interval),
-            total_num = n(),
-            total_boys = sum(gender == "masculino"))
-
-study2_overallscore <- study2_data %>%
-  group_by(subj, age) %>%
-  summarise(correct = mean(correct, na.rm = T))
-
-study2_overallscore_test <- cor.test(study2_overallscore$correct, study2_overallscore$age)
-
-
-study2_spanishperc <- study2_data %>%
-  summarise(spanish_response = paste0(round(100*mean(spanish_response)), "%"))
-
-study1_entropy <-  study1_consensus %>% 
-  mutate(`% of Subjects` = `% of Subjects`/100) %>%
-  spread(key = 'Color Term', value = '% of Subjects', fill = 0) %>%
-  mutate_if(is.double, funs( . * log(., 
-                                     base = n_distinct(study1_consensus$`Color Term`)))) %>%
-  mutate_if(is.double, funs(replace(., is.nan(.), 0))) %>%
-  ungroup() %>%
-  mutate(Entropy = -rowSums(.[-1])) %>%
-  select(`Chip ID`, Entropy)
-
-study2_responsebyentropy <- study2_data %>%
-  filter(spanish %in% c("Blanco", "Negro", "Verde", "Amarillo", "Rojo") & 
-           (task == "Comprehension" | response_order %in% c("first", "only"))) %>%
-  left_join(study1_entropy %>% mutate(`Chip ID` = as.character(`Chip ID`)),
-            by = c("prompt" = "Chip ID"))
-
-study2_responsebyentropy$age.years.c <- scale(study2_responsebyentropy$age, scale = FALSE)[,1]
-
-study2_SpanEnt_model <- summary(lme4::glmer(
-  spanish_response ~ age.years.c * Entropy + (1|subj),
-  data=study2_responsebyentropy, family = "binomial"))
-
-
-```
-
-In Study 2, we tested `r study2_participants$total_num` `r study2_participants$min_age`- to `r study2_participants$max_age`-year-old SK children (`r study2_participants$total_boys` boys) on their production and comprehension skills with a set of chips representing the prototypical colors for common Shipibo terms. The production task had a procedure very similar to Study 1, albeit with only 7 chips. We scored whether children produced a color term that was commonly given by adults in Study 1 for that same chip. Older children displayed a higher level of overall accuracy in comparison to younger children (*r*(`r study2_overallscore_test$parameter`) = `r round(study2_overallscore_test$estimate, 3)`, *p* `r with(study2_overallscore_test, ifelse(p.value < 0.001, "< 0.001", paste0("= ", round(p.value, 3))))`, see Figure 2). However, over a quarter (`r study2_spanishperc$spanish_response`) of all responses were given in Spanish. The distribution of Spanish responses was non-random. Children tended to respond in Spanish when presented with a chip which had low naming consensus (high entropy) among adults in Study 1. Even when accounting for individual differences in age, this effect remained strong (*p* `r with(study2_SpanEnt_model, ifelse(coefficients["Entropy", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["Entropy", "Pr(>|z|)"], 3))))`, see inset entropy values in Figure 2).
-
-```{r study3, include=FALSE}
-
-study3_data <- feather::read_feather("../intermediates/processed_data.csv") %>%
-  filter(language == "Spanish", task == "Production") %>%
-  mutate(shipibo_response = ifelse(response %in% shipibo_terms, 1, 0)) 
-
-study3_participants <- study3_data %>%
-  group_by(subj) %>%
-  filter(row_number() == 1) %>% ungroup() %>%
-  summarise(min_age = min(age_interval),
-            max_age = max(age_interval),
-            total_num = n(),
-            total_boys = sum(gender == "masculino"))
-
+```{r study3_spanishentropy, include=FALSE}}
 study3_spanishperc <- study3_data %>%
   summarise(shipibo_response = paste0(round(100*mean(shipibo_response)), "%"))
 
@@ -452,10 +385,48 @@ study3_responsebyentropy$age.years.c <- scale(study3_responsebyentropy$age, scal
 study3_SpanEnt_model <- summary(lme4::glmer(
   shipibo_response ~ age.years.c * Entropy + (1|subj),
   data=study3_responsebyentropy, family = "binomial"))
+```
+
+Similar to Study 2, over a quarter of all responses (`r study3_spanishperc`) were given in another language (Shipibo in this case). However, there was no significant correlation between age and label accuracy (*p* `r with(study3_overallscore_test, ifelse(p.value < 0.001, "< 0.001", paste0("= ", round(p.value, 3))))`). Children tended to respond in Shipibo when presented with items that had low entropy among SK adults during Study 1 (p `r with(study3_SpanEnt_model, ifelse(coefficients["Entropy", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["Entropy", "Pr(>|z|)"], 3))))`). 
+
+Overextensions.
+```{r study3_overextensions, include=FALSE}
+
+study3_adjacentorswitch <- study3_data %>%
+  group_by(subj, age, gender) %>%
+  filter(response_order %in% c("first", "only")) %>%
+  mutate(correct_nearby = correct + ifelse(is.na(wrong_adjacent), 0, wrong_adjacent)) %>%
+  summarise(correct = mean(correct), correcteither = mean(correct_either), correctnearby = mean(correct_nearby)) %>%
+  gather(key = "measure", value = "score", starts_with("correct"))
+
+predicted_range <- seq(6,10, 0.25)
+
+study3_accuracyloess <- bind_cols(lapply(
+  study3_adjacentorswitch %>% split(.$measure),
+  function(x){
+    as_data_frame(predict(loess(formula = score ~ age, data = x, span = 0.75), 
+            newdata = predicted_range, se = TRUE)[c("fit", "se.fit")]) %>%
+      rename_all(funs(paste0(first(x$measure),"_",.)))
+    })) %>%
+  mutate(predicted_age = predicted_range) %>%
+  gather(key = "measure", value = "score", starts_with("correct")) %>%
+  separate("measure", into = c("measure", "stat"), sep = "_") %>%
+  spread(stat, score)
+  
+ggplot(study3_accuracyloess,
+  aes(x = predicted_age, y = fit, color = measure, group = measure)) + 
+  geom_line(size = 1) + geom_point(size = 4) +
+  geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = measure, fill = measure), alpha = .2, colour=NA) +
+  scale_color_viridis(discrete=TRUE, option = "D") +
+  scale_fill_viridis(discrete=TRUE, option = "D")
+
 
 ```
 
-Noting the level of bilingualism in Study 2, we designed Study 3 as its complement. In Study 3, we tested `r study3_participants$total_num` `r study3_participants$min_age`- to `r study3_participants$max_age`-year-old children (`r study3_participants$total_boys` boys) entirely in Spanish with a set of chips representing prototypical colors for the Spanish color system (11 in total, 5 chips were shared between Studies 2 and 3). Similar to Study 2, over a quarter of all responses (`r study3_spanishperc`) were given in another language (Shipibo in this case). However, there was no significant correlation between age and label accuracy (*p* `r with(study3_overallscore_test, ifelse(p.value < 0.001, "< 0.001", paste0("= ", round(p.value, 3))))`). Children tended to respond in Shipibo when presented with items that had low entropy among SK adults during Study 1 (p `r with(study3_SpanEnt_model, ifelse(coefficients["Entropy", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["Entropy", "Pr(>|z|)"], 3))))`). 
+
+
+
+
 We conducted a range of studies to better characterize SK color term knowledge and its development. Two important generalizations emerged. First, we observed a much longer developmental trajectory for color than is observed in modern US populations (cf. Bornstein, 1985). Second, we found evidence for competition between the Shipibo and Spanish color systems, implying the potential for functionally-driven language change. In sum, these data further support a model of color word knowledge and acquisition that is driven by communicative need. 
 <br><br>
 
