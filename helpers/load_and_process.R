@@ -1,27 +1,44 @@
+color_sheet <- readxl::read_excel("../data/shipibo_colors (2018_02_21).xlsx") %>%
+  filter(!is.na(`Term (2017 survey)`))
+
+filter(color_sheet, language == "SK" & nature == "BCT")$`Term (2017 survey)`
+
+
+
 # Load term-sorting data --------------------------------------------------
 
-shipibo_color_terms <- c("Joshin", "Joxo", "Panshin", "Yankon", "Wiso")
+shipibo_bct <- filter(color_sheet, language == "SK" & grepl("\\bBCT\\b", nature))$`Term (2017 survey)`
 
-shipibo_object_terms <- c("Ambi", "Ami", "Barin Poi", "Bexnan", "Chexe", "Chimapo", "Emo", "Jimi", "Kari", "Kasho", "Keskiti", "Koin", "Kononbi", "Konron", "Koro", "Mai", "Mandi", "Maxe", "Nai", "Nete", "Oxne", "Paxna", "Pei", "Poa", "Xena", "Xexe", "Xo", "Yame")
+shipibo_nbct <- filter(color_sheet, language == "SK" & grepl("\\bNBCT\\b", nature))$`Term (2017 survey)`
 
-shipibo_other_terms <- c("Jisa", "Manxan", "Pasna", "Pene", "Ranchesh", "Tena")
+shipibo_ahct <-  filter(color_sheet, language == "SK" & grepl("\\bAHCT\\b", nature))$`Term (2017 survey)`
 
-shipibo_terms <- c(shipibo_color_terms, shipibo_object_terms, shipibo_other_terms)
+shipibo_slt <-  filter(color_sheet, language == "SK" & grepl("\\bSLT\\b", nature))$`Term (2017 survey)`
 
+shipibo_mt <-  filter(color_sheet, language == "SK" & grepl("\\bMT\\b", nature))$`Term (2017 survey)`
 
-spanish_color_terms <- c("Amarillo", "Azul", "Blanco", "Celeste", "Gris", "Lila", "Marron", "Morado", "Naranja", "Negro", "Rojo", "Rosa", "Verde")
+shipibo_ot <-  filter(color_sheet, language == "SK" & grepl("\\bOT\\b", nature))$`Term (2017 survey)`
 
-spanish_object_terms <- c("Agua", "Carne", "Chocolate", "Coral", "Cielo", "Mierda Sol", "Pasto Payota", "Plomo", "Uva Color", "Violeta")
-
-spanish_other_terms <- c("Oscuro")
-
-spanish_terms <- c(spanish_color_terms, spanish_object_terms, spanish_other_terms)
+shipibo_terms <- filter(color_sheet, language == "SK")$`Term (2017 survey)`
 
 
-string_spelling_list <- "`Agua` = c('agua', 'agur'), `Amarillo` = c('amarilla', 'amarillo'), `Ami` = c('ami'), `Ambi` = c('ambi'), `Azul` = c('azul', 'azu'), `Barin Poi` = c('barin pui', 'barrin pui', 'barrinpui', 'pui', 'barin poi', 'barrin poi', 'bavrinpui*', 'barri'), `Bexnan` = c('berrnan', 'bexna', 'bexnan'), `Blanco` = c('blanco'), `Carne` = c('Carne'), `Celeste` = c('celeste'), `Chexe` = c('chese', 'chexe'), `Chimapo` = c('chimapu'), `Cielo` = c('color cielo', 'cielo'), `Chocolate` = c('chocolate'), `Coral` = c('coral'), `Emo` = c('emu'), `Gris` = c('gris'), `Jimi` = c('jimi'), `Jimi Manxan` = c('jimi manxan'), `Jisa` = c('jisa'), `Joa` = c('joa'), `Joshin` = c('joshin', 'joxin', 'toshin'), `Joxo` = c('josho', 'joxo'), `Kari` = c('cari', 'carri', 'kari', 'karri'), `Kasho` = c('kashos'), `Keskiti` = c('kex keti'), `Koin` = c('kuin'), `Kononbi` = c('kunumbi'), `Konron` = c('korrum', 'kumrrum', 'kunrrum'), `Koro` = c('coro'), `Lila` = c('lila'), `Mai` = c('mai'), `Mandi` = c('mandi'), `Manxan` = c('manrran', 'manshan', 'manxam', 'manxan', 'maxan', 'maxna'), `Manxan Yankon` = c('manxan yankon'), `Marron` = c('marron'), `Maxe` = c('maxe'), `Mierda Sol` = c('miarda', 'miarda del sol'), `Morado` = c('morado', 'morada'), `Nai` = c('nai', 'nia'), `Naranja` = c('naranja', 'naranjada', 'narranxa', 'naranjado', 'narango', 'naranjo', 'anaranjado'), `Negro` = c('negro'), `Nete` = c('nete'), `Oscuro` = c('oscuro'), `Oxne` = c('oshne', 'oxne', 'oxe'), `Pei` = c('pei'), `Poa` = c('pua'), `Pene` = c('pene'), `Panshin` = c('panshin'), `Pasna` = c('paxsna', 'pasna'), `Pasto Payota` = c('pasto payota'), `Paxna` = c('parrna', 'paxna'), `Plomo` = c('plomo'), `Ranchesh` = c('ranchex'), `Rojo` = c('rojo', 'roja'), `Rosa` = c('rosada', 'rosa', 'rosado'), `Tena` = c('tena'), `Uva Color` = c('uva color*'), `Verde` = c('verde', 'cerde', 'verdesito'), `Violeta` = c('bioleta', 'violeta'), `Wiso` = c('wiso'), `Xena` = c('xena'), `Xo` = c('xo'), `Xexe` = c('xexe', 'xexi'), `Yame` = c('rayame', 'yame'), `Yame Wiso` = c('yame wiso'), `Yankon` = c('rayanko', 'yankom', 'yankon', 'yankum', 'yankun', 'yankontani', 'yakon', 'yakun', 'yankoncha'), `NA` = c(NA)"
+spanish_bct <- filter(color_sheet, language == "SP" & grepl("\\bBCT\\b", nature))$`Term (2017 survey)`
 
-spelling_list <- eval(parse(text = paste0("c(",string_spelling_list,")")))
+spanish_nbct <- filter(color_sheet, language == "SP" & grepl("\\bNBCT\\b", nature))$`Term (2017 survey)`
 
+spanish_ahct <-  filter(color_sheet, language == "SP" & grepl("\\bAHCT\\b", nature))$`Term (2017 survey)`
+
+spanish_slt <-  filter(color_sheet, language == "SP" & grepl("\\bSLT\\b", nature))$`Term (2017 survey)`
+
+spanish_mt <-  filter(color_sheet, language == "SP" & grepl("\\bMT\\b", nature))$`Term (2017 survey)`
+
+spanish_ot <-  filter(color_sheet, language == "SP" & grepl("\\bOT\\b", nature))$`Term (2017 survey)`
+
+spanish_terms <- filter(color_sheet, language == "SP")$`Term (2017 survey)`
+
+color_sheet$`Alternate spellings (2017 survey-adults)`
+
+spelling_list <- setNames(str_split(apply(color_sheet[, c("Term (2017 survey)", "Alternate spellings (2017 survey-adults)", "Alternate spellings (2017 survey-children)", "Term (WCS)")], 1, function(x) tolower(toString(na.omit(x)))), ",(\\s)?"), color_sheet$`Term (2017 survey)`)
 
 
 # Load chip set and terms data --------------------------------------------
@@ -68,16 +85,15 @@ spanish_chip_set <- read.csv(text = "spanish, code, munsell_code, chip_id
 naming_data <- read_csv("../data/Current_Data/naming_colors_participants.csv") %>%
   left_join(read_csv("../data/Current_Data/naming_colors_data.csv"), by = 'subj') %>%
   mutate(color_cat = ifelse(is.na(color_cat), first_response, color_cat)) %>%
-  mutate(color_cat = eval( parse(text = gsub(pattern = "x", replacement = string_spelling_list, "forcats::fct_collapse(color_cat, x)")))
-  )
+  mutate(color_cat = do.call(forcats::fct_collapse, list(color_cat, !!!spelling_list)))
+
 
 grouping_data <- read_csv("../data/Current_Data/grouping_colors_participants.csv") %>%
   left_join(read_csv("../data/Current_Data/grouping_colors_data.csv"), by = 'subj') %>%
   mutate(`nombre del grupo` = ifelse(`nombre del grupo` %in% unlist(spelling_list), 
                                      `nombre del grupo`, NA)) %>%
-  mutate(`nombre del grupo` = eval( parse(text = gsub(pattern = "x", replacement = string_spelling_list, "forcats::fct_collapse(`nombre del grupo`, x)")))
-  )
-
+  mutate(`nombre del grupo` = do.call(forcats::fct_collapse, list(`nombre del grupo`, !!!spelling_list)))
+  
 
 
 # Load in Kay data --------------------------------------------------------

@@ -133,9 +133,41 @@ study1_consensus <- naming_data %>%
 ```
 
 
+Study 1 - Gender differences in term profusion or term appearance
+```{r, study1_genderdifferences}
+study1_genderbychip <- naming_data %>%
+  group_by(género) %>%
+  mutate(gender_count = n_distinct(subj)) %>%
+  group_by(chip_id, género, color_cat, gender_count) %>%
+  summarise(n = n()) %>%
+  mutate(prop = n/gender_count) %>%
+  select(-gender_count, -n) %>% ungroup() %>%
+  complete(chip_id, género, color_cat, fill = list(prop = 0))
+
+study1_genderbyterm <- naming_data %>%
+  group_by(subj, género, color_cat) %>%
+  summarise(prop = n()/165) %>% ungroup() %>%
+  complete(nesting(subj, género), color_cat, fill = list(prop = 0))
+
+study1_ttest_gendertermprofusion <- with(
+  study1_genderbyterm %>% 
+   group_by(color_cat, género) %>%
+   summarise(prop = mean(prop)) %>%
+   spread(género, prop), t.test(femenino, masculino))
+
+study1_ttest_gendertermappearance <- with(
+  study1_genderbyterm %>% 
+    mutate(used = ifelse(prop > 0, 1, 0)) %>%
+    group_by(color_cat, género) %>%
+    summarise(prop = mean(used)) %>%
+    spread(género, prop), t.test(femenino, masculino))
+
+```
+We speculated as to whether or not there were overall gender differences in responses given during Study 1, especially considering the differences in reported occupations across genders. We found no significant differences in the overall spread of color term usage across the set (*t* = `r study1_ttest_gendertermprofusion$statistic`, *P* = `r study1_ttest_gendertermprofusion$p.value`) or in the percentage of subjects who used a term at least once throughout the task (*t* = `r study1_ttest_gendertermappearance$statistic`, *P* = `r study1_ttest_gendertermappearance$p.value`).
+
+
 Study 2
 In Study 2, we tested children on their production and comprehension skills with a set of chips representing the prototypical colors for common Shipibo terms. 
-
 
 
 Methods
@@ -143,8 +175,6 @@ Participants.
 
 
 ```{r study2_participants, include=FALSE}
-
-a <- read_csv("../data/Current_Data/shipibo_children_colors_participants.csv") 
 
 study2_data <- feather::read_feather("../intermediates/processed_data.csv") %>%
   filter(language == "Shipibo", task == "Production") %>%
@@ -195,9 +225,55 @@ The Pontificia Universidad Católica del Perú’s Institutional Review Board ap
 Materials.
 Procedure. The production task had a procedure very similar to Study 1, albeit with only 7 chips. We scored whether children produced a color term that was commonly given by adults in Study 1 for that same chip. 
 Results and Discussion
-Older children displayed a higher level of overall accuracy in comparison to younger children (r(55) = 0.546, p < 0.001, see Figure 2). However, over a quarter (26%) of all responses were given in Spanish. The distribution of Spanish responses was non-random. Children tended to respond in Spanish when presented with a chip which had low naming consensus (high entropy) among adults in Study 1. Even when accounting for individual differences in age, this effect remained strong (p = 0.003, see inset entropy values in Figure 2).
-Accuracy analyses.
-Entropy analyses. 
+
+
+```{r study2_accuracy, include=FALSE}
+
+study2_overallscore <- study2_data %>%
+  group_by(subj, age) %>%
+  summarise(correct = mean(correct, na.rm = T))
+
+study2_overallscore_test <- cor.test(study2_overallscore$correct, study2_overallscore$age)
+
+
+```
+
+Older children displayed a higher level of overall accuracy in comparison to younger children (*r*(`r study2_overallscore_test$parameter`) = `r round(study2_overallscore_test$estimate, 3)`, *p* `r with(study2_overallscore_test, ifelse(p.value < 0.001, "< 0.001", paste0("= ", round(p.value, 3))))`, see Figure 2). 
+
+
+Accuracy analyses and Spanish-language responses.
+```{r study2_spanishentropy, include=FALSE}
+
+study2_spanishperc <- study2_data %>%
+  summarise(spanish_response = paste0(round(100*mean(spanish_response)), "%"))
+
+study1_entropy <-  study1_consensus %>% 
+  mutate(`% of Subjects` = `% of Subjects`/100) %>%
+  spread(key = 'Color Term', value = '% of Subjects', fill = 0) %>%
+  mutate_if(is.double, funs( . * log(., 
+                                     base = n_distinct(study1_consensus$`Color Term`)))) %>%
+  mutate_if(is.double, funs(replace(., is.nan(.), 0))) %>%
+  ungroup() %>%
+  mutate(Entropy = -rowSums(.[-1])) %>%
+  select(`Chip ID`, Entropy)
+
+study2_responsebyentropy <- study2_data %>%
+  filter(spanish %in% c("Blanco", "Negro", "Verde", "Amarillo", "Rojo") & 
+           (task == "Comprehension" | response_order %in% c("first", "only"))) %>%
+  left_join(study1_entropy %>% mutate(`Chip ID` = as.character(`Chip ID`)),
+            by = c("prompt" = "Chip ID"))
+
+study2_responsebyentropy$age.years.c <- scale(study2_responsebyentropy$age, scale = FALSE)[,1]
+
+study2_SpanEnt_model <- summary(lme4::glmer(
+  spanish_response ~ age.years.c * Entropy + (1|subj),
+  data=study2_responsebyentropy, family = "binomial"))
+
+
+```
+
+However, over a quarter (`r study2_spanishperc$spanish_response`) of all responses were given in Spanish. The distribution of Spanish responses was non-random. Children tended to respond in Spanish when presented with a chip which had low naming consensus (high entropy) among adults in Study 1. Even when accounting for individual differences in age, this effect remained strong (*p* `r with(study2_SpanEnt_model, ifelse(coefficients["Entropy", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["Entropy", "Pr(>|z|)"], 3))))`, see inset entropy values in Figure 2).
+
 Overextensions.
 
 
@@ -290,6 +366,7 @@ The SK people are an indigenous group located within the Peruvian Amazon. They a
 
 
 In the Berlin-Kay data, speakers would switch between using “joshin” or “panshin”, but in this study adults also used the Spanish term “naranja” (Figure 1b-c). After finding which color terms had high consensus (low entropy) between Shipibo adults, we turned our focus towards mapping the developmental trajectory for color term knowledge in Shipibo children. 
+
 
 ```{r study2, include=FALSE}
 study2_data <- feather::read_feather("../intermediates/processed_data.csv") %>%

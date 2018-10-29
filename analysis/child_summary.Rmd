@@ -139,9 +139,9 @@ spanish_boundary <- as.data.frame(as.matrix(Matrix::forceSymmetric(
 
 clean_child_data <- function(df, min_consensus = 10) {
 
-  child_string_spelling_list <- "`Agua` = c('agna', 'agua', 'agur'), `Amarillo` = c('amarilla', 'amarillo'), `Ami` = c('ami'), `Azul` = c('azul'), `Barin Poi` = c('bari', 'barri', 'barrinpui'), `Blanco` = c('blanco'), `Celeste` = c('celeste'), `Gris` = c('gris'), `Jene` = c('jene', 'jenekeska'), `Jimi` = c('jimi'), `Joa` = c('joa'), `Joshin` = c('joshin', 'toshin', 'joshin metsashoko', 'joshinshama'), `Joxo` = c('joxo', 'joxo jakwokawa', 'joxo metsa'), `Kari` = c('carri'), `Mai` = c('mai'), `Mancoa Pei` = c('mancoapei', 'mancoa pei'), `Manxan` = c('manxan'), `Marron` = c('marron'), `Morado` = c('morado'), `Nai` = c('nai', 'nai (lluvia)'), `Nai Wiso` = c('nai wisoa', 'naiwiso'), `Naranja` = c('anarando', 'narango', 'naranja', 'naranjada', 'naranjado', 'naranjo', 'narranxa'), `Negro` = c('negro'), `Oxne` = c('oxe'), `Panshin` = c('panshin', 'panshintani', 'panshinshima', 'Panshinshima'), `Pei` = c('pei'), `Poa` = c('pua'), `Rojo` = c('rojo'), `Rosa` = c('rosa', 'rosada', 'rosado'), `Unpasx` = c('unpasx', 'unpax'), `Verde` = c('verde', 'verdesito', 'shokouerde'), `Violeta` = c('bioleta', 'violeta', 'metsa shoko violeta'), `Wiso` = c('wiso', 'wisoshama'), `Xo` = c('xo'), `Yame` = c('yame'), `Yankon` = c('yakon', 'yakun', 'yankon', 'yankontani', 'yankun', 'yakonshama', 'Yakunshama', 'yankon pasna', 'yankoncha')"
-  
-  child_spelling_list <- eval(parse(text = paste0("c(",child_string_spelling_list,")")))
+  # child_string_spelling_list <- "`Agua` = c('agna', 'agua', 'agur'), `Amarillo` = c('amarilla', 'amarillo'), `Ami` = c('ami'), `Azul` = c('azul'), `Barin Poi` = c('bari', 'barri', 'barrinpui'), `Blanco` = c('blanco'), `Celeste` = c('celeste'), `Gris` = c('gris'), `Jene` = c('jene', 'jenekeska'), `Jimi` = c('jimi'), `Joa` = c('joa'), `Joshin` = c('joshin', 'toshin', 'joshin metsashoko', 'joshinshama'), `Joxo` = c('joxo', 'joxo jakwokawa', 'joxo metsa'), `Kari` = c('carri'), `Mai` = c('mai'), `Mancoa Pei` = c('mancoapei', 'mancoa pei'), `Manxan` = c('manxan'), `Marron` = c('marron'), `Morado` = c('morado'), `Nai` = c('nai', 'nai (lluvia)'), `Nai Wiso` = c('nai wisoa', 'naiwiso'), `Naranja` = c('anarando', 'narango', 'naranja', 'naranjada', 'naranjado', 'naranjo', 'narranxa'), `Negro` = c('negro'), `Oxne` = c('oxe'), `Panshin` = c('panshin', 'panshintani', 'panshinshima', 'Panshinshima'), `Pei` = c('pei'), `Poa` = c('pua'), `Rojo` = c('rojo'), `Rosa` = c('rosa', 'rosada', 'rosado'), `Unpasx` = c('unpasx', 'unpax'), `Verde` = c('verde', 'verdesito', 'shokouerde'), `Violeta` = c('bioleta', 'violeta', 'metsa shoko violeta'), `Wiso` = c('wiso', 'wisoshama'), `Xo` = c('xo'), `Yame` = c('yame'), `Yankon` = c('yakon', 'yakun', 'yankon', 'yankontani', 'yankun', 'yakonshama', 'Yakunshama', 'yankon pasna', 'yankoncha')"
+  # 
+  # child_spelling_list <- eval(parse(text = paste0("c(",child_string_spelling_list,")")))
 
   adult_naming_consensus <- naming_data %>%
     select(subj, chip_id, color_cat) %>%
@@ -252,7 +252,7 @@ clean_child_data <- function(df, min_consensus = 10) {
       group_by(subj, task, prompt) %>%
       mutate(response_order = ifelse(row_number() == 1,
                                      ifelse(row_number() == max(row_number()), 'only', 'first'),
-                                     ifelse(row_number() == max(row_number()), 'last', NA))) %>%
+                                     ifelse(row_number() == max(row_number()), 'last', 'middle'))) %>%
       ungroup() %>%
       mutate(
         prompt = as.character(forcats::fct_collapse(prompt,
@@ -269,10 +269,10 @@ clean_child_data <- function(df, min_consensus = 10) {
                                             `245` = c("rojo", "RJ"),
                                             `65` = c("RS"),
                                             `234` = c("VD", "verde"))),
-             response = as.character(eval( parse(
-               text = gsub(pattern = "x", replacement = child_string_spelling_list,
-                           "forcats::fct_collapse(response, x)")))))
-    
+        response = do.call(forcats::fct_collapse, list(response, !!!spelling_list))
+        )
+             
+             
     if (first(df$language) == "Shipibo") {
       df <- df %>%
         left_join(adult_naming_consensus %>% ungroup() %>%
@@ -322,7 +322,6 @@ clean_child_data <- function(df, min_consensus = 10) {
   
   return(df)
 }
-
 
 
 ```
