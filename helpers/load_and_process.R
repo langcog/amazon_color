@@ -85,7 +85,8 @@ spanish_chip_set <- read.csv(text = "spanish, code, munsell_code, chip_id
 naming_data <- read_csv("../data/Current_Data/naming_colors_participants.csv") %>%
   left_join(read_csv("../data/Current_Data/naming_colors_data.csv"), by = 'subj') %>%
   mutate(color_cat = ifelse(is.na(color_cat), first_response, color_cat)) %>%
-  mutate(color_cat = do.call(forcats::fct_collapse, list(color_cat, !!!spelling_list)))
+  mutate(color_cat = do.call(forcats::fct_collapse, list(color_cat, !!!spelling_list))) %>%
+  left_join(select(color_sheet, "Term (2017 survey)", "nature"), by = c("color_cat" = "Term (2017 survey)"))
 
 
 grouping_data <- read_csv("../data/Current_Data/grouping_colors_participants.csv") %>%

@@ -132,6 +132,12 @@ study1_consensus <- naming_data %>%
 
 ```
 
+Study 1 - Nature of terms used
+```{r}
+naming_data %>%
+  group_by(subj)
+```
+
 
 Study 1 - Gender differences in term profusion or term appearance
 ```{r, study1_genderdifferences}
@@ -307,8 +313,80 @@ ggplot(study2_accuracyloess,
 
 ```
 
-```{r}
 
+```{r study2_termnature, include=FALSE}
+
+predicted_range <- seq(6,10, 0.25)
+
+study2_allresponsetypes <- study2_data %>%
+  filter(response_order %in% c("first", "only", "last")) %>%
+  separate_rows(nature, sep = "-") %>%
+  mutate(nature = trimws(ifelse(is.na(nature), "Other", nature))) %>%
+  group_by(subj, age, response_order, nature) %>%
+  summarise(n = n()) %>%
+  group_by(subj, age, response_order) %>%
+  mutate(prop = n/sum(n)) %>% ungroup() %>%
+  complete(nesting(subj, age, response_order), nature, fill = list(n = 0, prop = 0.0))
+
+
+study2_allresponseloess <- bind_rows(lapply(
+  study2_allresponsetypes %>% split(list(.$response_order, .$nature)),
+  function(x){
+    if (nrow(x) > 0) {
+    as_data_frame(predict(loess(formula = prop ~ age, data = x, span = 0.75), 
+            newdata = predicted_range, se = TRUE)[c("fit", "se.fit")]) %>%
+      mutate(predicted_age = predicted_range, 
+             nature = case_when(
+               first(x$nature) == "AHCT" ~ "Ad-hoc color term",
+               first(x$nature) == "BCT" ~ "Basic color term",
+               first(x$nature) == "NBCT" ~ "Other color term",
+               first(x$nature) == "SLT" ~ "Saturation/lightness term",
+               TRUE ~ as.character(first(x$nature))),
+             response_order = first(x$response_order))
+    }}))
+  
+ggplot(study2_allresponseloess,
+  aes(x = predicted_age, y = fit, color = nature, group = nature)) + 
+  facet_grid(. ~ response_order) +
+  geom_line(size = 1) + geom_point(size = 4) +
+  geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = nature, fill = nature), alpha = .2, colour=NA) +
+  scale_color_viridis(discrete=TRUE, option = "D") +
+  scale_fill_viridis(discrete=TRUE, option = "D")
+
+# study2_wrongresponsetypes <- study2_data %>%
+#   group_by(subj, prompt) %>%
+#   filter(first(correct) == 0 & response_order %in% c("first", "only", "last")) %>%
+#   separate_rows(nature, sep = "-") %>%
+#   mutate(nature = trimws(ifelse(is.na(nature), "Other", nature))) %>%
+#   group_by(subj, age, response_order, nature) %>%
+#   summarise(n = n()) %>%
+#   group_by(subj, age, response_order) %>%
+#   mutate(prop = n/sum(n))
+# 
+# study2_wrongresponseloess <- bind_rows(lapply(
+#   study2_wrongresponsetypes %>% split(list(.$response_order, .$nature)),
+#   function(x){
+#     if (nrow(x) > 6) {
+#     as_data_frame(predict(loess(formula = prop ~ age, data = x, span = 0.75), 
+#             newdata = predicted_range, se = TRUE)[c("fit", "se.fit")]) %>%
+#       mutate(predicted_age = predicted_range, 
+#              nature = case_when(
+#                first(x$nature) == "AHCT" ~ "Ad-hoc color term",
+#                first(x$nature) == "BCT" ~ "Basic color term",
+#                first(x$nature) == "NBCT" ~ "Other color term",
+#                first(x$nature) == "SLT" ~ "Saturation/lightness term",
+#                TRUE ~ as.character(first(x$nature))),
+#              response_order = first(x$response_order))
+#     }}))
+#   
+# ggplot(study2_wrongresponseloess,
+#   aes(x = predicted_age, y = fit, color = nature, group = nature)) + 
+#   facet_grid(. ~ response_order) +
+#   geom_line(size = 1) + geom_point(size = 4) +
+#   geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = nature, fill = nature), alpha = .2, colour=NA) +
+#   scale_color_viridis(discrete=TRUE, option = "D") +
+#   scale_fill_viridis(discrete=TRUE, option = "D")
+  
 ```
 
 
@@ -424,6 +502,47 @@ ggplot(study3_accuracyloess,
 ```
 
 
+
+```{r study3_termnature, include=FALSE}
+
+predicted_range <- seq(6,10, 0.25)
+
+study3_allresponsetypes <- study3_data %>%
+  filter(response_order %in% c("first", "only", "last")) %>%
+  separate_rows(nature, sep = "-") %>%
+  mutate(nature = trimws(ifelse(is.na(nature), "Other", nature))) %>%
+  group_by(subj, age, response_order, nature) %>%
+  summarise(n = n()) %>%
+  group_by(subj, age, response_order) %>%
+  mutate(prop = n/sum(n)) %>% ungroup() %>%
+  complete(nesting(subj, age, response_order), nature, fill = list(n = 0, prop = 0.0))
+
+
+study3_allresponseloess <- bind_rows(lapply(
+  study3_allresponsetypes %>% split(list(.$response_order, .$nature)),
+  function(x){
+    if (nrow(x) > 0) {
+    as_data_frame(predict(loess(formula = prop ~ age, data = x, span = 0.75), 
+            newdata = predicted_range, se = TRUE)[c("fit", "se.fit")]) %>%
+      mutate(predicted_age = predicted_range, 
+             nature = case_when(
+               first(x$nature) == "AHCT" ~ "Ad-hoc color term",
+               first(x$nature) == "BCT" ~ "Basic color term",
+               first(x$nature) == "NBCT" ~ "Other color term",
+               first(x$nature) == "SLT" ~ "Saturation/lightness term",
+               TRUE ~ as.character(first(x$nature))),
+             response_order = first(x$response_order))
+    }}))
+  
+ggplot(study3_allresponseloess,
+  aes(x = predicted_age, y = fit, color = nature, group = nature)) + 
+  facet_grid(. ~ response_order) +
+  geom_line(size = 1) + geom_point(size = 4) +
+  geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = nature, fill = nature), alpha = .2, colour=NA) +
+  scale_color_viridis(discrete=TRUE, option = "D") +
+  scale_fill_viridis(discrete=TRUE, option = "D")
+  
+```
 
 
 
