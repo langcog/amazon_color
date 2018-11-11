@@ -23,6 +23,7 @@ RUN apt-get update -qq \
     ggthemes \
     ggrepel \
     lme4 \
+    nnet \
     plotly \
 && installGithub.r \
     langcog/wordbankr@fec28549941a32368f8e75bdd204c2f43f1d33ad

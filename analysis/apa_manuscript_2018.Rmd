@@ -13,6 +13,8 @@ library(ggthemes)
 library(cowplot)
 library(viridis)
 library(english)
+library(lme4)
+library(nnet)
 
 source("../helpers/load_and_process.R")
 
@@ -271,25 +273,37 @@ study2_responsebyentropy <- study2_data %>%
 
 study2_responsebyentropy$age.years.c <- scale(study2_responsebyentropy$age, scale = FALSE)[,1]
 
-study2_SpanEnt_model <- summary(lme4::glmer(
+study2_SwitchEnt_model <- summary(lme4::glmer(
   spanish_response ~ age.years.c * Entropy + (1|subj),
   data=study2_responsebyentropy, family = "binomial"))
 
 
 ```
 
-However, over a quarter (`r study2_spanishperc$spanish_response`) of all responses were given in Spanish. The distribution of Spanish responses was non-random. Children tended to respond in Spanish when presented with a chip which had low naming consensus (high entropy) among adults in Study 1. Even when accounting for individual differences in age, this effect remained strong (*p* `r with(study2_SpanEnt_model, ifelse(coefficients["Entropy", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["Entropy", "Pr(>|z|)"], 3))))`, see inset entropy values in Figure 2).
+However, over a quarter (`r study2_spanishperc$spanish_response`) of all responses were given in Spanish. The distribution of Spanish responses was non-random. Children tended to respond in Spanish when presented with a chip which had low naming consensus (high entropy) among adults in Study 1. Even when accounting for individual differences in age, this effect remained strong (*p* `r with(study2_SwitchEnt_model, ifelse(coefficients["Entropy", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["Entropy", "Pr(>|z|)"], 3))))`, see inset entropy values in Figure 2).
 
 Overextensions.
 ```{r study2_overextensions, include=FALSE}
-study2_adjacentorswitch <- study2_data %>%
+
+study2_adjacentorswitch_whole <- study2_data %>%
   group_by(subj, age, gender) %>%
   filter(response_order %in% c("first", "only")) %>%
   mutate(correct_nearby = correct + ifelse(is.na(wrong_adjacent), 0, wrong_adjacent)) %>%
-  summarise(correct = mean(correct), correcteither = mean(correct_either), correctnearby = mean(correct_nearby)) %>%
-  gather(key = "measure", value = "score", starts_with("correct"))
+  select(subj, age, gender, starts_with("correct")) %>%
+  gather(key = "measure", value = "score", starts_with("correct")) %>%
+  mutate(measure = factor(gsub("_","",measure)))
+
+study2_adjacentorswitch_whole$age.years.c <- scale(study2_adjacentorswitch_whole$age, scale = FALSE)[,1]
+
+study2_adjacentorswitch <- study2_adjacentorswitch_whole %>%
+  group_by(subj, age, age.years.c, gender, measure) %>%
+  summarise(score = mean(score)) %>% ungroup()
 
 predicted_range <- seq(6,10, 0.25)
+
+study2_AdjSwitchModel <- summary(lme4::glmer(
+  score ~ age.years.c + measure + (1|subj),
+  data=study2_adjacentorswitch_whole, family = "binomial"))
 
 study2_accuracyloess <- bind_cols(lapply(
   study2_adjacentorswitch %>% split(.$measure),
@@ -326,8 +340,21 @@ study2_allresponsetypes <- study2_data %>%
   summarise(n = n()) %>%
   group_by(subj, age, response_order) %>%
   mutate(prop = n/sum(n)) %>% ungroup() %>%
-  complete(nesting(subj, age, response_order), nature, fill = list(n = 0, prop = 0.0))
+  complete(nesting(subj, age, response_order), nature, fill = list(n = 0, prop = 0.0)) %>%
+  mutate(nature = factor(nature))
 
+study2_allresponsetypes_whole <- study2_allresponsetypes %>%
+  select(-n) %>%
+  spread(nature, prop)
+
+study2_allresponsetypes_whole$age.years.c <- scale(study2_allresponsetypes_whole$age, scale = FALSE)[,1]
+study2_allresponsetypes_whole$Y <- as.matrix(study2_allresponsetypes_whole[, c("BCT", "AHCT", "NBCT", "Other", "SLT")])
+
+study2_msat <- multinom(Y ~ age.years.c + response_order,
+                 data=study2_allresponsetypes_whole)
+
+
+study2_responsedev <- deviance(multinom(Y~1, data=study2_allresponsetypes_whole)) - deviance(study2_msat)
 
 study2_allresponseloess <- bind_rows(lapply(
   study2_allresponsetypes %>% split(list(.$response_order, .$nature)),
@@ -353,42 +380,27 @@ ggplot(study2_allresponseloess,
   scale_color_viridis(discrete=TRUE, option = "D") +
   scale_fill_viridis(discrete=TRUE, option = "D")
 
-# study2_wrongresponsetypes <- study2_data %>%
-#   group_by(subj, prompt) %>%
-#   filter(first(correct) == 0 & response_order %in% c("first", "only", "last")) %>%
-#   separate_rows(nature, sep = "-") %>%
-#   mutate(nature = trimws(ifelse(is.na(nature), "Other", nature))) %>%
-#   group_by(subj, age, response_order, nature) %>%
-#   summarise(n = n()) %>%
-#   group_by(subj, age, response_order) %>%
-#   mutate(prop = n/sum(n))
-# 
-# study2_wrongresponseloess <- bind_rows(lapply(
-#   study2_wrongresponsetypes %>% split(list(.$response_order, .$nature)),
-#   function(x){
-#     if (nrow(x) > 6) {
-#     as_data_frame(predict(loess(formula = prop ~ age, data = x, span = 0.75), 
-#             newdata = predicted_range, se = TRUE)[c("fit", "se.fit")]) %>%
-#       mutate(predicted_age = predicted_range, 
-#              nature = case_when(
-#                first(x$nature) == "AHCT" ~ "Ad-hoc color term",
-#                first(x$nature) == "BCT" ~ "Basic color term",
-#                first(x$nature) == "NBCT" ~ "Other color term",
-#                first(x$nature) == "SLT" ~ "Saturation/lightness term",
-#                TRUE ~ as.character(first(x$nature))),
-#              response_order = first(x$response_order))
-#     }}))
-#   
-# ggplot(study2_wrongresponseloess,
-#   aes(x = predicted_age, y = fit, color = nature, group = nature)) + 
-#   facet_grid(. ~ response_order) +
-#   geom_line(size = 1) + geom_point(size = 4) +
-#   geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = nature, fill = nature), alpha = .2, colour=NA) +
-#   scale_color_viridis(discrete=TRUE, option = "D") +
-#   scale_fill_viridis(discrete=TRUE, option = "D")
   
 ```
 
+```{r}
+
+study2_FLTypes <- study2_data %>%
+  filter(response_order %in% c("first", "last")) %>%
+  select(subj, age, prompt, response_order, nature) %>%
+  spread(response_order, nature) %>%
+  mutate(first_BCT = ifelse(first == "BCT", 1, 0),
+         first_AHCT = ifelse(first == "AHCT", 1, 0),
+         last_BCT = ifelse(last == "BCT", 1, 0),
+         last_AHCT = ifelse(last == "AHCT", 1, 0)) %>%
+  group_by(subj, age) %>%
+  summarise_at(vars(first_BCT:last_AHCT), mean, na.rm = TRUE)
+
+ggplot(study2_FLTypes %>% gather(key = "measure", value = "prop", first_BCT:last_AHCT),
+       aes(y = prop, x = age, colour = measure, group = measure)) +
+  geom_smooth(method = "loess")
+
+```
 
 
 Study 3
@@ -460,24 +472,36 @@ study3_responsebyentropy <- study3_data %>%
 
 study3_responsebyentropy$age.years.c <- scale(study3_responsebyentropy$age, scale = FALSE)[,1]
 
-study3_SpanEnt_model <- summary(lme4::glmer(
+study3_SwitchEnt_model <- summary(lme4::glmer(
   shipibo_response ~ age.years.c * Entropy + (1|subj),
   data=study3_responsebyentropy, family = "binomial"))
+
 ```
 
-Similar to Study 2, over a quarter of all responses (`r study3_spanishperc`) were given in another language (Shipibo in this case). However, there was no significant correlation between age and label accuracy (*p* `r with(study3_overallscore_test, ifelse(p.value < 0.001, "< 0.001", paste0("= ", round(p.value, 3))))`). Children tended to respond in Shipibo when presented with items that had low entropy among SK adults during Study 1 (p `r with(study3_SpanEnt_model, ifelse(coefficients["Entropy", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["Entropy", "Pr(>|z|)"], 3))))`). 
+Similar to Study 2, over a quarter of all responses (`r study3_spanishperc`) were given in another language (Shipibo in this case). However, there was no significant correlation between age and label accuracy (*p* `r with(study3_overallscore_test, ifelse(p.value < 0.001, "< 0.001", paste0("= ", round(p.value, 3))))`). Children tended to respond in Shipibo when presented with items that had low entropy among SK adults during Study 1 (p `r with(study3_SwitchEnt_model, ifelse(coefficients["Entropy", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["Entropy", "Pr(>|z|)"], 3))))`). 
 
 Overextensions.
 ```{r study3_overextensions, include=FALSE}
 
-study3_adjacentorswitch <- study3_data %>%
+study3_adjacentorswitch_whole <- study3_data %>%
   group_by(subj, age, gender) %>%
   filter(response_order %in% c("first", "only")) %>%
   mutate(correct_nearby = correct + ifelse(is.na(wrong_adjacent), 0, wrong_adjacent)) %>%
-  summarise(correct = mean(correct), correcteither = mean(correct_either), correctnearby = mean(correct_nearby)) %>%
-  gather(key = "measure", value = "score", starts_with("correct"))
+  select(subj, age, gender, starts_with("correct")) %>%
+  gather(key = "measure", value = "score", starts_with("correct")) %>%
+  mutate(measure = factor(gsub("_","",measure)))
+
+study3_adjacentorswitch_whole$age.years.c <- scale(study3_adjacentorswitch_whole$age, scale = FALSE)[,1]
+
+study3_adjacentorswitch <- study3_adjacentorswitch_whole %>%
+  group_by(subj, age, age.years.c, gender, measure) %>%
+  summarise(score = mean(score)) %>% ungroup()
 
 predicted_range <- seq(6,10, 0.25)
+
+study3_AdjSwitchModel <- summary(lme4::glmer(
+  score ~ age.years.c + measure + (1|subj),
+  data=study3_adjacentorswitch_whole, family = "binomial"))
 
 study3_accuracyloess <- bind_cols(lapply(
   study3_adjacentorswitch %>% split(.$measure),
@@ -518,6 +542,19 @@ study3_allresponsetypes <- study3_data %>%
   complete(nesting(subj, age, response_order), nature, fill = list(n = 0, prop = 0.0))
 
 
+study3_allresponsetypes_whole <- study3_allresponsetypes %>%
+  select(-n) %>%
+  spread(nature, prop)
+
+study3_allresponsetypes_whole$age.years.c <- scale(study3_allresponsetypes_whole$age, scale = FALSE)[,1]
+study3_allresponsetypes_whole$Y <- as.matrix(study3_allresponsetypes_whole[, c("BCT", "AHCT", "NBCT", "Other", "SLT")])
+
+study_3msat <- multinom(Y ~ age.years.c + response_order,
+                 data=study3_allresponsetypes_whole)
+
+study3_responsedev <- deviance(multinom(Y~1, data=study3_allresponsetypes_whole)) - deviance(study_3msat)
+
+
 study3_allresponseloess <- bind_rows(lapply(
   study3_allresponsetypes %>% split(list(.$response_order, .$nature)),
   function(x){
@@ -544,8 +581,39 @@ ggplot(study3_allresponseloess,
   
 ```
 
+```{r}
+
+study3_FLTypes <- study3_data %>%
+  filter(response_order %in% c("first", "last")) %>%
+  select(subj, age, prompt, response_order, nature) %>%
+  spread(response_order, nature) %>%
+  mutate(first_BCT = ifelse(first == "BCT", 1, 0),
+         first_AHCT = ifelse(first == "AHCT", 1, 0),
+         last_BCT = ifelse(last == "BCT", 1, 0),
+         last_AHCT = ifelse(last == "AHCT", 1, 0)) %>%
+  group_by(subj, age) %>%
+  summarise_at(vars(first_BCT:last_AHCT), mean, na.rm = TRUE)
+
+ggplot(study3_FLTypes %>% gather(key = "measure", value = "prop", first_BCT:last_AHCT),
+       aes(y = prop, x = age, colour = measure, group = measure)) +
+  geom_smooth(method = "loess")
 
 
+study3_FLTypes$age.years.c <- scale(study3_FLTypes$age, scale = FALSE)[,1]
+study3_FLTypes$Y <- as.matrix(study3_FLTypes[, c("first_BCT", "first_AHCT", "NBCT", "Other", "SLT")])
+
+study_3msat <- multinom(Y ~ age.years.c + response_order,
+                 data=study3_allresponsetypes_whole)
+
+study3_responsedev <- deviance(multinom(Y~1, data=study3_allresponsetypes_whole)) - deviance(study_3msat)
+
+```
+
+
+
+
+
+================================================
 We conducted a range of studies to better characterize SK color term knowledge and its development. Two important generalizations emerged. First, we observed a much longer developmental trajectory for color than is observed in modern US populations (cf. Bornstein, 1985). Second, we found evidence for competition between the Shipibo and Spanish color systems, implying the potential for functionally-driven language change. In sum, these data further support a model of color word knowledge and acquisition that is driven by communicative need. 
 <br><br>
 
