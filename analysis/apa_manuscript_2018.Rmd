@@ -65,22 +65,28 @@ study1_profusion <- naming_data %>%
   group_by(color_cat) %>%
   spread(subj, n, fill = 0) %>%
   gather(key = 'subj', value = 'n', -color_cat) %>%
-  summarise(`% of Subjects Who Used the Term (Current)` = 100*sum(n > 0)/n(), 
-            `Mean % of Chips in Set Labeled (Current)` = 100*mean(n)/165) %>%
-  dplyr::rename(`Color Term` = color_cat)
+  mutate(prop = 100*n/165) %>%
+  summarise(`% of Subjects Who Used the Term (Current)` = 100*sum(prop > 0)/n(), 
+            `Mean % of Chips in Set Labeled (Current)` = mean(prop),
+            `SD % of Chips in Set Labeled (Current)` = sd(prop))
 
-curr_naming_list <- as.character(na.omit(filter(study1_profusion, `% of Subjects Who Used the Term (Current)` > 50 & !is.na(`Color Term`))$`Color Term`))
+curr_naming_list <- as.character(na.omit(filter(study1_profusion, `% of Subjects Who Used the Term (Current)` > 50 & !is.na(color_cat))$`color_cat`))
 
-study1_spanishperc <- naming_data %>%
+study1_switchperc <- naming_data %>%
   mutate(spanish_response = ifelse(color_cat %in% spanish_terms,
                                    1, 0)) %>%
   mutate(overall_spanish = paste0(round(100*mean(spanish_response), 0),"%")) %>%
   group_by(subj) %>%
   summarise(overall_spanish = first(overall_spanish),
-            atleast_1 = ifelse(sum(spanish_response) > 0, 1, 0)) %>% 
+            atleast_1 = ifelse(sum(spanish_response) > 0, 1, 0),
+            by_subject = mean(spanish_response)) %>% 
   ungroup() %>%
   summarise(overall_spanish = first(overall_spanish),
-            atleast_1 = paste0(round(100*mean(atleast_1), 0),"%"))
+            atleast_1 = paste0(round(100*mean(atleast_1), 0),"%"),
+            mean_subj_spanish = paste0(round(100*mean(by_subject)),"%"),
+            sd_subj_spanish = paste0(round(100*sd(by_subject)),"%"),
+            max_subj_spanish = paste0(round(100*max(by_subject)),"%"),
+            min_subj_spanish = paste0(round(100*min(by_subject)),"%"))
 
 study1_spanishbychip <- naming_data %>%
   mutate(spanish_response = ifelse(color_cat %in% spanish_terms,
@@ -108,11 +114,14 @@ study1_highestspanish <- datatable(study1_spanishbychip, rownames = FALSE) %>%
 ```
 
 
-In Study 1, we presented adult participants (*M* = `r study1_participants$mean_age`yo, *SD* = `r study1_participants$sd_age`y) with 165 color chips – replicating Berlin & Kay’s general procedure – and asked them to produce a single color term for each chip. More than half of adults used basic terms for light/white (“joxo”), dark/black (“wiso”), yellow (“panshin”), red (“joshin”), and green/blue (“yankon”). One departure from the Berlin-Kay data was that `r study1_spanishperc$atleast_1` of adults described at least 1 chip using a Spanish-language color term, accounting for `r study1_spanishperc$overall_spanish` of all responses (Figure 1a-b). Spanish use reached as high as `r round(100*max(study1_spanishbychip$'% of Subjects'))`% when participants were asked to label chips that English speakers would consider to be orange. 
-<br>
+All participants described at least 1 chip with the following set of color terms: light/white (“joxo”), dark/black (“wiso”), yellow (“panshin”), red (“joshin”), and green/blue (“yankon”). Most (`r paste0(round(filter(study1_profusion, color_cat == "Manxan")$'% of Subjects Who Used the Term (Current)'), '%')`) participants also used described at least 1 chip as faded or "manxan", referring to a chip's saturation. In terms of overall popularity, participants on average described `r paste0(round(filter(study1_profusion, color_cat == "Yankon")$'Mean % of Chips in Set Labeled (Current)'), '%')` of chips as "yankon" (*SD* = `r paste0(round(filter(study1_profusion, color_cat == "Yankon")$'SD % of Chips in Set Labeled (Current)'), '%')`) followed by "joshin" (*M* = `r paste0(round(filter(study1_profusion, color_cat == "Joshin")$'Mean % of Chips in Set Labeled (Current)'), '%')`, *SD* = `r paste0(round(filter(study1_profusion, color_cat == "Joshin")$'SD % of Chips in Set Labeled (Current)'), '%')`), "joxo" (`r paste0(round(filter(study1_profusion, color_cat == "Joxo")$'Mean % of Chips in Set Labeled (Current)'), '%')`, `r paste0(round(filter(study1_profusion, color_cat == "Joxo")$'SD % of Chips in Set Labeled (Current)'), '%')`), "panshin" (`r paste0(round(filter(study1_profusion, color_cat == "Panshin")$'Mean % of Chips in Set Labeled (Current)'), '%')`, `r paste0(round(filter(study1_profusion, color_cat == "Panshin")$'SD % of Chips in Set Labeled (Current)'), '%')`), "manxan" (`r paste0(round(filter(study1_profusion, color_cat == "Manxan")$'Mean % of Chips in Set Labeled (Current)'), '%')`, `r paste0(round(filter(study1_profusion, color_cat == "Manxan")$'SD % of Chips in Set Labeled (Current)'), '%')`), and "wiso" (`r paste0(round(filter(study1_profusion, color_cat == "Wiso")$'Mean % of Chips in Set Labeled (Current)'), '%')`, `r paste0(round(filter(study1_profusion, color_cat == "Wiso")$'SD % of Chips in Set Labeled (Current)'), '%')`).
+
+One departure from the Berlin-Kay data was that `r study1_switchperc$atleast_1` of adults described at least 1 chip using a Spanish-language color term, accounting for `r study1_switchperc$overall_spanish` of all responses (Figure 1a-b). In particular, spanish use reached as high as `r round(100*max(study1_spanishbychip$'% of Subjects'))`% when participants were asked to label chips that English speakers would consider to be orange. However, there was a high amount of variability in Spanish use between subjects (*M* = `r study1_switchperc$mean_subj_spanish`, *SD* = `r study1_switchperc$sd_subj_spanish`) with some subjects never responding in Spanish. One responded in Spanish for `r study1_switchperc$min_subj_spanish` of all trials despite all sessions being conducted entirely in the Shipibo-Konibo language.
+
+<!--<br>
 
 `r study1_highestspanish` 
-<br>
+<br>-->
 
 ```{r study1_moredetail, include=FALSE}
 
@@ -136,10 +145,21 @@ study1_consensus <- naming_data %>%
 
 Study 1 - Nature of terms used
 ```{r}
-naming_data %>%
-  group_by(subj)
+study1_nature <- naming_data %>%
+  mutate(spanish_response = ifelse(color_cat %in% spanish_terms, 1, 0)) %>%
+  group_by(subj, spanish_response, nature) %>%
+  summarise(n = n()) %>% ungroup() %>%
+  mutate(nature = ifelse(is.na(nature), "Other", nature)) %>%
+  complete(subj, spanish_response, nature, fill = list(n = 0)) %>%
+  group_by(subj) %>%
+  mutate(perc = 100*n/sum(n)) %>%
+  group_by(spanish_response, nature) %>%
+  summarise(mean_prop = paste0(round(mean(perc)), '%'),
+            sd_prop = paste0(round(sd(perc)), '%'))
+  
 ```
 
+Participants on average described `r filter(study1_nature, nature == "BCT" & spanish_response == 0)$mean_prop` of chips using a SK-language basic color term like "yankon" (*SD* = `r filter(study1_nature, nature == "BCT" & spanish_response == 0)$sd_prop`). Some participants described chips using SK-language ad hoc color terms, such as "nai" or *sky* for blue chips (*M* = `r filter(study1_nature, nature == "AHCT" & spanish_response == 0)$mean_prop`, *SD* = `r filter(study1_nature, nature == "AHCT" & spanish_response == 0)$sd_prop`), or ad hoc terms referring to saturation or luminosity of a chip, such as "manxan" (*M* = `r filter(study1_nature, nature == "AHCT - SLT" & spanish_response == 0)$mean_prop`, *SD* = `r filter(study1_nature, nature == "AHCT - SLT" & spanish_response == 0)$sd_prop`). Virtually all instances where a participant responded in Spanish involved a Spanish basic color term such as "rojo" (*M* = `r filter(study1_nature, nature == "BCT" & spanish_response == 1)$mean_prop`, *SD* = `r filter(study1_nature, nature == "BCT" & spanish_response == 1)$sd_prop`). In other words, participants only responded in Spanish to label chips into basic categories but relied on Shipibo-Konibo all other descriptor types.
 
 Study 1 - Gender differences in term profusion or term appearance
 ```{r, study1_genderdifferences}
@@ -171,6 +191,7 @@ study1_ttest_gendertermappearance <- with(
     spread(género, prop), t.test(femenino, masculino))
 
 ```
+
 We speculated as to whether or not there were overall gender differences in responses given during Study 1, especially considering the differences in reported occupations across genders. We found no significant differences in the overall spread of color term usage across the set (*t* = `r study1_ttest_gendertermprofusion$statistic`, *P* = `r study1_ttest_gendertermprofusion$p.value`) or in the percentage of subjects who used a term at least once throughout the task (*t* = `r study1_ttest_gendertermappearance$statistic`, *P* = `r study1_ttest_gendertermappearance$p.value`).
 
 
@@ -222,12 +243,12 @@ study2_table1 <- datatable(study2_agesex, rownames = FALSE)
 
 ```
 
-The Pontificia Universidad Católica del Perú’s Institutional Review Board approved our study protocol. We recruited `r study2_participants$num_total` `r study2_participants$min_age`- to `r study2_participants$max_age`-year-old children (`r study2_participants$num_boys` boys). Table 1 details the distribution of age and gender. `r tools::toTitleCase(as.character(as.english(with(study2_participants, num_benajema + num_bilingue)))` children were recruited from neighborhoods in Yarinacocha, in the Pucallpa region of Peru, as well as in `r study2_participants$num_ccnn` children from Bawanisho, a native community settled along the Ucayali River, south of Pucallpa. Children were recruited either through their parents or through local schools. When recruited at school, consent for participation was collected from both the teachers and the parents; otherwise, only consent from the parents was collected.  
+The Pontificia Universidad Católica del Perú’s Institutional Review Board approved our study protocol. We recruited `r study2_participants$num_total` `r study2_participants$min_age`- to `r study2_participants$max_age`-year-old children (`r study2_participants$num_boys` boys). Table 1 details the distribution of age and gender. `r tools::toTitleCase(as.character(as.english(with(study2_participants, num_benajema + num_bilingue))))` children were recruited from neighborhoods in Yarinacocha, in the Pucallpa region of Peru, as well as in `r study2_participants$num_ccnn` children from Bawanisho, a native community settled along the Ucayali River, south of Pucallpa. Children were recruited either through their parents or through local schools. When recruited at school, consent for participation was collected from both the teachers and the parents; otherwise, only consent from the parents was collected.  
 
-<br>
+<!--<br>
 
 `r study2_table1` 
-<br>
+<br>-->
 
 
 Materials.
@@ -235,7 +256,8 @@ Procedure. The production task had a procedure very similar to Study 1, albeit w
 Results and Discussion
 
 
-```{r study2_accuracy, include=FALSE}
+Accuracy analyses and Spanish-language responses.
+```{r study2_accuracyspanishentropy, include=FALSE}
 
 study2_overallscore <- study2_data %>%
   group_by(subj, age) %>%
@@ -243,16 +265,13 @@ study2_overallscore <- study2_data %>%
 
 study2_overallscore_test <- cor.test(study2_overallscore$correct, study2_overallscore$age)
 
+study2_overallswitch <- study2_data %>%
+  group_by(subj, age) %>%
+  summarise(spanish_response = mean(spanish_response))
 
-```
+study2_overallswitch_test <- cor.test(study2_overallswitch$spanish_response, study2_overallswitch$age)
 
-Older children displayed a higher level of overall accuracy in comparison to younger children (*r*(`r study2_overallscore_test$parameter`) = `r round(study2_overallscore_test$estimate, 3)`, *p* `r with(study2_overallscore_test, ifelse(p.value < 0.001, "< 0.001", paste0("= ", round(p.value, 3))))`, see Figure 2). 
-
-
-Accuracy analyses and Spanish-language responses.
-```{r study2_spanishentropy, include=FALSE}
-
-study2_spanishperc <- study2_data %>%
+study2_switchperc <- study2_data %>%
   summarise(spanish_response = paste0(round(100*mean(spanish_response)), "%"))
 
 study1_entropy <-  study1_consensus %>% 
@@ -280,7 +299,8 @@ study2_SwitchEnt_model <- summary(lme4::glmer(
 
 ```
 
-However, over a quarter (`r study2_spanishperc$spanish_response`) of all responses were given in Spanish. The distribution of Spanish responses was non-random. Children tended to respond in Spanish when presented with a chip which had low naming consensus (high entropy) among adults in Study 1. Even when accounting for individual differences in age, this effect remained strong (*p* `r with(study2_SwitchEnt_model, ifelse(coefficients["Entropy", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["Entropy", "Pr(>|z|)"], 3))))`, see inset entropy values in Figure 2).
+
+Older children displayed a higher level of overall accuracy in comparison to younger children (*r*(`r study2_overallscore_test$parameter`) = `r round(study2_overallscore_test$estimate, 3)`, *p* `r with(study2_overallscore_test, ifelse(p.value < 0.001, "< 0.001", paste0("= ", round(p.value, 3))))`, see Figure 2). Over a quarter (`r study2_switchperc$spanish_response`) of all responses were given in Spanish. The distribution of Spanish responses was non-random. There was no significant relationship between age and giving a response in a different language (*p* `r with(study2_overallswitch_test, ifelse(p.value < 0.001, "< 0.001", paste0("= ", round(p.value, 3))))` ). However, children tended to respond in Spanish when presented with a chip with low naming consensus (high entropy) among adult participants in Study 1. Even when accounting for between-subject differences and age, this effect remained strong (*p* `r with(study2_SwitchEnt_model, ifelse(coefficients["Entropy", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["Entropy", "Pr(>|z|)"], 3))))`, see inset entropy values in Figure 2).
 
 Overextensions.
 ```{r study2_overextensions, include=FALSE}
@@ -288,8 +308,9 @@ Overextensions.
 study2_adjacentorswitch_whole <- study2_data %>%
   group_by(subj, age, gender) %>%
   filter(response_order %in% c("first", "only")) %>%
-  mutate(correct_nearby = correct + ifelse(is.na(wrong_adjacent), 0, wrong_adjacent)) %>%
-  select(subj, age, gender, starts_with("correct")) %>%
+  mutate(correct_nearby = correct + ifelse(is.na(wrong_adjacent), 0, wrong_adjacent),
+         correct_all = ifelse(correct + correct_either + correct_nearby > 0, 1, 0)) %>%
+  select(subj, age, gender, spanish, starts_with("correct")) %>%
   gather(key = "measure", value = "score", starts_with("correct")) %>%
   mutate(measure = factor(gsub("_","",measure)))
 
@@ -302,7 +323,7 @@ study2_adjacentorswitch <- study2_adjacentorswitch_whole %>%
 predicted_range <- seq(6,10, 0.25)
 
 study2_AdjSwitchModel <- summary(lme4::glmer(
-  score ~ age.years.c + measure + (1|subj),
+  score ~ age.years.c * measure + (1|subj),
   data=study2_adjacentorswitch_whole, family = "binomial"))
 
 study2_accuracyloess <- bind_cols(lapply(
@@ -325,22 +346,53 @@ ggplot(study2_accuracyloess,
   scale_fill_viridis(discrete=TRUE, option = "D")
 
 
+study2_EucDist <- study2_data %>%
+  group_by(subj, age, gender) %>%
+  filter(response_order %in% c("first", "only")) %>%
+  mutate(wrong_euc_dist = ifelse(correct == 1, NA, wrong_euc_dist)) %>%
+  filter(!is.na(wrong_euc_dist))
+
+study2_EucDist$age.years.c <- scale(study2_EucDist$age, scale = FALSE)[,1]
+
+ggplot(study2_EucDist, aes(y = wrong_euc_dist, x = age)) +
+  geom_point(aes(color = spanish, group = spanish)) +
+  geom_smooth(method = "loess") +
+  scale_colour_manual(values = graph_colors)
+
+study2_EucDistModel <- lme4::lmer(
+  wrong_euc_dist ~ age.years.c + (1|subj),
+  data=study2_EucDist, REML=FALSE)
+
+study2_EucDistModel_p <- pchisq(deviance(lm(wrong_euc_dist ~ 1, data=study2_EucDist)) - deviance(study2_EucDistModel), 78, lower.tail=FALSE)
+
 ```
+The relationship between word entropy and language switching brings up the possibility that children may be using alternative strategies when they lack knowledge of the proper color term mapping. Participants might respond in Spanish if they fail to recall the proper SK color term but do know the proper mapping in the Spanish color system such as labeling a *panshin* chip as "amarillo". They may also choose to respond with a same-language but adjacent color term such as "joshin" for a *panshin*-colored chip. If we allow for more leniency in scoring—accepting same-language, adjacent or different-language, corresponding responses—we can check for more subtlety surrounding color term mapping. Using a mixed-effects model, we found a significant improvement in accuracy scores when we allowed different-language but corresponding responses (*p* `r with(study2_AdjSwitchModel, ifelse(coefficients["measurecorrecteither", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["measurecorrecteither", "Pr(>|z|)"], 3))))`) but no significant change when allowing for same-language but adjacent responses (*p* `r with(study2_AdjSwitchModel, ifelse(coefficients["measurecorrectnearby", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["measurecorrectnearby", "Pr(>|z|)"], 3))))`).
 
 
 ```{r study2_termnature, include=FALSE}
 
 predicted_range <- seq(6,10, 0.25)
 
+# study2_allresponsetypes <- study2_data %>%
+#   filter(response_order %in% c("first", "only", "last")) %>%
+#   separate_rows(nature, sep = "-") %>%
+#   mutate(nature = trimws(ifelse(is.na(nature), "Other", nature))) %>%
+#   group_by(subj, age, response_order, nature) %>%
+#   summarise(n = n()) %>%
+#   group_by(subj, age, response_order) %>%
+#   mutate(prop = n/sum(n)) %>% ungroup() %>%
+#   complete(nesting(subj, age, response_order), nature, fill = list(n = 0, prop = 0.0)) %>%
+#   mutate(nature = factor(nature))
+
 study2_allresponsetypes <- study2_data %>%
-  filter(response_order %in% c("first", "only", "last")) %>%
+  filter(response_order %in% c("first", "only")) %>%
   separate_rows(nature, sep = "-") %>%
   mutate(nature = trimws(ifelse(is.na(nature), "Other", nature))) %>%
-  group_by(subj, age, response_order, nature) %>%
+  group_by(subj, age, nature) %>%
   summarise(n = n()) %>%
-  group_by(subj, age, response_order) %>%
+  group_by(subj, age) %>%
   mutate(prop = n/sum(n)) %>% ungroup() %>%
-  complete(nesting(subj, age, response_order), nature, fill = list(n = 0, prop = 0.0)) %>%
+  complete(nesting(subj, age), nature, fill = list(n = 0, prop = 0.0)) %>%
   mutate(nature = factor(nature))
 
 study2_allresponsetypes_whole <- study2_allresponsetypes %>%
@@ -350,35 +402,36 @@ study2_allresponsetypes_whole <- study2_allresponsetypes %>%
 study2_allresponsetypes_whole$age.years.c <- scale(study2_allresponsetypes_whole$age, scale = FALSE)[,1]
 study2_allresponsetypes_whole$Y <- as.matrix(study2_allresponsetypes_whole[, c("BCT", "AHCT", "NBCT", "Other", "SLT")])
 
-study2_msat <- multinom(Y ~ age.years.c + response_order,
-                 data=study2_allresponsetypes_whole)
-
-
-study2_responsedev <- deviance(multinom(Y~1, data=study2_allresponsetypes_whole)) - deviance(study2_msat)
-
-study2_allresponseloess <- bind_rows(lapply(
-  study2_allresponsetypes %>% split(list(.$response_order, .$nature)),
-  function(x){
-    if (nrow(x) > 0) {
-    as_data_frame(predict(loess(formula = prop ~ age, data = x, span = 0.75), 
-            newdata = predicted_range, se = TRUE)[c("fit", "se.fit")]) %>%
-      mutate(predicted_age = predicted_range, 
-             nature = case_when(
-               first(x$nature) == "AHCT" ~ "Ad-hoc color term",
-               first(x$nature) == "BCT" ~ "Basic color term",
-               first(x$nature) == "NBCT" ~ "Other color term",
-               first(x$nature) == "SLT" ~ "Saturation/lightness term",
-               TRUE ~ as.character(first(x$nature))),
-             response_order = first(x$response_order))
-    }}))
-  
-ggplot(study2_allresponseloess,
-  aes(x = predicted_age, y = fit, color = nature, group = nature)) + 
-  facet_grid(. ~ response_order) +
-  geom_line(size = 1) + geom_point(size = 4) +
-  geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = nature, fill = nature), alpha = .2, colour=NA) +
-  scale_color_viridis(discrete=TRUE, option = "D") +
-  scale_fill_viridis(discrete=TRUE, option = "D")
+# 
+# study2_msat <- multinom(Y ~ age.years.c + response_order,
+#                  data=study2_allresponsetypes_whole)
+# 
+# 
+# study2_responsedev <- deviance(multinom(Y~1, data=study2_allresponsetypes_whole)) - deviance(multinom(Y ~ age.years.c , data=study2_allresponsetypes_whole))
+# 
+# study2_allresponseloess <- bind_rows(lapply(
+#   study2_allresponsetypes %>% split(list(.$response_order, .$nature)),
+#   function(x){
+#     if (nrow(x) > 0) {
+#     as_data_frame(predict(loess(formula = prop ~ age, data = x, span = 0.75), 
+#             newdata = predicted_range, se = TRUE)[c("fit", "se.fit")]) %>%
+#       mutate(predicted_age = predicted_range, 
+#              nature = case_when(
+#                first(x$nature) == "AHCT" ~ "Ad-hoc color term",
+#                first(x$nature) == "BCT" ~ "Basic color term",
+#                first(x$nature) == "NBCT" ~ "Other color term",
+#                first(x$nature) == "SLT" ~ "Saturation/lightness term",
+#                TRUE ~ as.character(first(x$nature))),
+#              response_order = first(x$response_order))
+#     }}))
+#   
+# ggplot(study2_allresponseloess,
+#   aes(x = predicted_age, y = fit, color = nature, group = nature)) + 
+#   facet_grid(. ~ response_order) +
+#   geom_line(size = 1) + geom_point(size = 4) +
+#   geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = nature, fill = nature), alpha = .2, colour=NA) +
+#   scale_color_viridis(discrete=TRUE, option = "D") +
+#   scale_fill_viridis(discrete=TRUE, option = "D")
 
   
 ```
@@ -454,15 +507,28 @@ Materials.
 Procedure.
 Results and Discussion.
 
-```{r study3_spanishentropy, include=FALSE}}
-study3_spanishperc <- study3_data %>%
-  summarise(shipibo_response = paste0(round(100*mean(shipibo_response)), "%"))
+```{r study3_spanishentropy, include=FALSE}
+study3_switchperc <- study3_data %>%
+  group_by(subj) %>%
+  summarise(shipibo_response = 100*mean(shipibo_response)) %>%
+  ungroup() %>%
+  summarise(mean_switch = mean(shipibo_response),
+            sd_switch = sd(shipibo_response),
+            min_switch = min(shipibo_response),
+            max_switch = max(shipibo_response)) %>%
+  mutate_all(funs(paste0(round(.),'%')))
 
 study3_overallscore <- study3_data %>%
   group_by(subj, age) %>%
   summarise(correct = mean(correct, na.rm = T))
 
 study3_overallscore_test <- cor.test(study3_overallscore$correct, study3_overallscore$age)
+
+study3_overallswitch <- study3_data %>%
+  group_by(subj, age) %>%
+  summarise(shipibo_response = mean(shipibo_response))
+
+study3_overallswitch_test <- cor.test(study3_overallswitch$shipibo_response, study3_overallswitch$age)
 
 study3_responsebyentropy <- study3_data %>%
   filter(spanish %in% c("Blanco", "Negro", "Verde", "Amarillo", "Rojo") & 
@@ -478,7 +544,7 @@ study3_SwitchEnt_model <- summary(lme4::glmer(
 
 ```
 
-Similar to Study 2, over a quarter of all responses (`r study3_spanishperc`) were given in another language (Shipibo in this case). However, there was no significant correlation between age and label accuracy (*p* `r with(study3_overallscore_test, ifelse(p.value < 0.001, "< 0.001", paste0("= ", round(p.value, 3))))`). Children tended to respond in Shipibo when presented with items that had low entropy among SK adults during Study 1 (p `r with(study3_SwitchEnt_model, ifelse(coefficients["Entropy", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["Entropy", "Pr(>|z|)"], 3))))`). 
+Similar to Study 2, over a quarter of all responses (*M* = `r study3_switchperc$mean_switch`, *SD* = `r study3_switchperc$sd_switch`) were given in another language (Shipibo in this case). There was significant variation in language-switching with some children completing the entire task in Spanish while others responded to upwards of `r study3_switchperc$max_switch` of trials in Shipibo. Similar to Study 2, there was no significant correlation between age and label accuracy (*p* `r with(study3_overallscore_test, ifelse(p.value < 0.001, "< 0.001", paste0("= ", round(p.value, 3))))`) or between age and language-switching (*p* `r with(study3_overallswitch_test, ifelse(p.value < 0.001, "< 0.001", paste0("= ", round(p.value, 3))))`). Still, we found that participants tended to respond in Shipibo when presented with items that had low entropy among SK adults during Study 1 (p `r with(study3_SwitchEnt_model, ifelse(coefficients["Entropy", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["Entropy", "Pr(>|z|)"], 3))))`). This suggests that participants across Studies 2 and 3 preferred to respond in Shipibo when presented with a high-consensus chip and in Spanish when shown a low-consensus chip.
 
 Overextensions.
 ```{r study3_overextensions, include=FALSE}
@@ -525,6 +591,7 @@ ggplot(study3_accuracyloess,
 
 ```
 
+Similar to Study 2, we adopted alternative scoring to accommodate language-switching from Spanish to Shipibo-Konibo and same-language adjacent responses. Using a mixed-effects model, we did not find that age explained a significant amount of the variation seen in accuracy (*p* `r with(study3_AdjSwitchModel, ifelse(coefficients["age.years.c", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["age.years.c", "Pr(>|z|)"], 3))))`), in concordance with earlier analyses. However, we did find that participants made use of both mapping strategies of either providing different-language but corresponding responses (*p* `r with(study3_AdjSwitchModel, ifelse(coefficients["measurecorrecteither", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["measurecorrecteither", "Pr(>|z|)"], 3))))`) or same-language but adjacent responses (*p* `r with(study3_AdjSwitchModel, ifelse(coefficients["measurecorrectnearby", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["measurecorrectnearby", "Pr(>|z|)"], 3))))`). Between Studies 2 and 3, we find frequent use of language switching but only Study 3 shows significant use of same-language but adjacent terms as well. This discrepancy, along with the lack of an age correlation, can be due to foreign language exposure. Children may be exposed to Spanish at a young age but do not receive any formal Spanish education until later in adolescence. With a limited knowledge of Spanish color terms, children may spontaneously provide Spanish color terms during the Shipibo-language Study 2 but may struggle to succeed during Spanish-language Study 3. This suggests that children may rely on either strategy to communicate a color label to the best of their knowledge set.
 
 
 ```{r study3_termnature, include=FALSE}
@@ -583,7 +650,7 @@ ggplot(study3_allresponseloess,
 
 ```{r}
 
-study3_FLTypes <- study3_data %>%
+study3_FLTypes <- study3_data %>% ungroup() %>%
   filter(response_order %in% c("first", "last")) %>%
   select(subj, age, prompt, response_order, nature) %>%
   spread(response_order, nature) %>%
@@ -600,12 +667,16 @@ ggplot(study3_FLTypes %>% gather(key = "measure", value = "prop", first_BCT:last
 
 
 study3_FLTypes$age.years.c <- scale(study3_FLTypes$age, scale = FALSE)[,1]
-study3_FLTypes$Y <- as.matrix(study3_FLTypes[, c("first_BCT", "first_AHCT", "NBCT", "Other", "SLT")])
+study3_FLTypes$Y <- as.matrix(study3_FLTypes[, c("first_BCT", "first_AHCT", "last_BCT", "last_AHCT")])
 
 study_3msat <- multinom(Y ~ age.years.c + response_order,
                  data=study3_allresponsetypes_whole)
 
 study3_responsedev <- deviance(multinom(Y~1, data=study3_allresponsetypes_whole)) - deviance(study_3msat)
+
+study3_responsedev <- deviance(multinom(Y~1, data=study3_allresponsetypes_whole)) - deviance(multinom(Y ~ age.years.c * response_order, data=study3_allresponsetypes_whole))
+
+pchisq(study3_responsedev, 39+39-2, lower.tail = T)
 
 ```
 
