@@ -86,7 +86,9 @@ naming_data <- read_csv("../data/Current_Data/naming_colors_participants.csv") %
   left_join(read_csv("../data/Current_Data/naming_colors_data.csv"), by = 'subj') %>%
   mutate(color_cat = ifelse(is.na(color_cat), first_response, color_cat)) %>%
   mutate(color_cat = do.call(forcats::fct_collapse, list(color_cat, !!!spelling_list))) %>%
-  left_join(select(color_sheet, "Term (2017 survey)", "nature"), by = c("color_cat" = "Term (2017 survey)"))
+  left_join(select(color_sheet, "Term (2017 survey)", "nature"), by = c("color_cat" = "Term (2017 survey)")) %>%
+  mutate(bct_count = stringi::stri_count_regex(color_cat, paste(c(shipibo_terms, spanish_terms), collapse="|"))) %>%
+  mutate(nature = ifelse(bct_count > 1, "MCT", nature)) %>% select(-bct_count)
 
 
 grouping_data <- read_csv("../data/Current_Data/grouping_colors_participants.csv") %>%

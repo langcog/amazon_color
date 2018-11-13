@@ -17,6 +17,8 @@ library(lme4)
 library(nnet)
 
 source("../helpers/load_and_process.R")
+predicted_range <- seq(6,10, 0.25)
+
 
 ```
 
@@ -195,6 +197,51 @@ study1_ttest_gendertermappearance <- with(
 We speculated as to whether or not there were overall gender differences in responses given during Study 1, especially considering the differences in reported occupations across genders. We found no significant differences in the overall spread of color term usage across the set (*t* = `r study1_ttest_gendertermprofusion$statistic`, *P* = `r study1_ttest_gendertermprofusion$p.value`) or in the percentage of subjects who used a term at least once throughout the task (*t* = `r study1_ttest_gendertermappearance$statistic`, *P* = `r study1_ttest_gendertermappearance$p.value`).
 
 
+```{r study1_entropyanalyses, include = FALSE}
+
+study1_entropy <-  study1_consensus %>% 
+  mutate(`% of Subjects` = `% of Subjects`/100) %>%
+  spread(key = 'Color Term', value = '% of Subjects', fill = 0) %>%
+  mutate_if(is.double, funs( . * log(., 
+                                     base = n_distinct(study1_consensus$`Color Term`)))) %>%
+  mutate_if(is.double, funs(replace(., is.nan(.), 0))) %>%
+  ungroup() %>%
+  mutate(Entropy = -rowSums(.[-1])) %>%
+  select(`Chip ID`, Entropy)
+
+study1_naturebyentropy <-naming_data %>%
+  mutate(response_language = case_when(
+    color_cat %in% spanish_terms ~ "spanish",
+    color_cat %in% shipibo_terms ~ "shipibo"
+  )) %>%
+  select(subj, chip_id, color_cat, response_language, nature) %>%
+  mutate(shipibo_BCT = ifelse(nature == "BCT" & response_language == "shipibo", 1, 0),
+         shipibo_AHCT = ifelse(nature == "AHCT" & response_language == "shipibo", 1, 0),
+         spanish_BCT = ifelse(nature == "BCT" & response_language == "spanish", 1, 0),
+         spanish_AHCT = ifelse(nature == "AHCT" & response_language == "spanish", 1, 0)) %>%
+  mutate_at(vars(shipibo_BCT:spanish_AHCT), funs(ifelse(is.na(.), 0, .))) %>%
+  group_by(chip_id) %>%
+  summarise_at(vars(ends_with("CT", ignore.case = FALSE)), mean, na.rm = TRUE) %>%
+  right_join(study1_entropy, by = c("chip_id" = "Chip ID")) %>%
+  select(`Chip ID` = chip_id, Entropy, ends_with("CT", ignore.case = FALSE))
+
+study1_naturebyentropy_plot <- ggplot(study1_naturebyentropy %>% 
+         gather(key = "measure", value = "prop", ends_with("CT")) %>%
+         separate(measure, c("language", "nature"), sep = "_") %>%
+         mutate(language = tools::toTitleCase(language),
+                nature = case_when(
+                  nature == "BCT" ~ "Basic color term",
+                  nature == "AHCT" ~ "Ad-hoc color term"),
+                language = relevel(factor(language), ref = "Shipibo"),
+                nature = relevel(factor(nature), ref = "Basic color term")),
+       aes(x = Entropy, y = prop, group = interaction(language, nature), colour = language, shape = nature)) +
+  geom_smooth(method = "loess", aes(fill = language, linetype = nature), alpha = .2) +
+  scale_fill_viridis(discrete = TRUE, option = "D") +
+  scale_color_viridis(discrete = TRUE, option = "D")
+
+```
+
+
 Study 2
 In Study 2, we tested children on their production and comprehension skills with a set of chips representing the prototypical colors for common Shipibo terms. 
 
@@ -274,16 +321,6 @@ study2_overallswitch_test <- cor.test(study2_overallswitch$spanish_response, stu
 study2_switchperc <- study2_data %>%
   summarise(spanish_response = paste0(round(100*mean(spanish_response)), "%"))
 
-study1_entropy <-  study1_consensus %>% 
-  mutate(`% of Subjects` = `% of Subjects`/100) %>%
-  spread(key = 'Color Term', value = '% of Subjects', fill = 0) %>%
-  mutate_if(is.double, funs( . * log(., 
-                                     base = n_distinct(study1_consensus$`Color Term`)))) %>%
-  mutate_if(is.double, funs(replace(., is.nan(.), 0))) %>%
-  ungroup() %>%
-  mutate(Entropy = -rowSums(.[-1])) %>%
-  select(`Chip ID`, Entropy)
-
 study2_responsebyentropy <- study2_data %>%
   filter(spanish %in% c("Blanco", "Negro", "Verde", "Amarillo", "Rojo") & 
            (task == "Comprehension" | response_order %in% c("first", "only"))) %>%
@@ -320,8 +357,6 @@ study2_adjacentorswitch <- study2_adjacentorswitch_whole %>%
   group_by(subj, age, age.years.c, gender, measure) %>%
   summarise(score = mean(score)) %>% ungroup()
 
-predicted_range <- seq(6,10, 0.25)
-
 study2_AdjSwitchModel <- summary(lme4::glmer(
   score ~ age.years.c * measure + (1|subj),
   data=study2_adjacentorswitch_whole, family = "binomial"))
@@ -338,7 +373,7 @@ study2_accuracyloess <- bind_cols(lapply(
   separate("measure", into = c("measure", "stat"), sep = "_") %>%
   spread(stat, score)
   
-ggplot(study2_accuracyloess,
+study2_accuracy_plot <- ggplot(study2_accuracyloess,
   aes(x = predicted_age, y = fit, color = measure, group = measure)) + 
   geom_line(size = 1) + geom_point(size = 4) +
   geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = measure, fill = measure), alpha = .2, colour=NA) +
@@ -354,7 +389,7 @@ study2_EucDist <- study2_data %>%
 
 study2_EucDist$age.years.c <- scale(study2_EucDist$age, scale = FALSE)[,1]
 
-ggplot(study2_EucDist, aes(y = wrong_euc_dist, x = age)) +
+study2_EucDist_plot <- ggplot(study2_EucDist, aes(y = wrong_euc_dist, x = age)) +
   geom_point(aes(color = spanish, group = spanish)) +
   geom_smooth(method = "loess") +
   scale_colour_manual(values = graph_colors)
@@ -370,8 +405,6 @@ The relationship between word entropy and language switching brings up the possi
 
 
 ```{r study2_termnature, include=FALSE}
-
-predicted_range <- seq(6,10, 0.25)
 
 # study2_allresponsetypes <- study2_data %>%
 #   filter(response_order %in% c("first", "only", "last")) %>%
@@ -436,7 +469,7 @@ study2_allresponsetypes_whole$Y <- as.matrix(study2_allresponsetypes_whole[, c("
   
 ```
 
-```{r}
+```{r study2_FLTypes, include = FALSE}
 
 study2_FLTypes <- study2_data %>%
   filter(response_order %in% c("first", "last")) %>%
@@ -449,7 +482,8 @@ study2_FLTypes <- study2_data %>%
   group_by(subj, age) %>%
   summarise_at(vars(first_BCT:last_AHCT), mean, na.rm = TRUE)
 
-ggplot(study2_FLTypes %>% gather(key = "measure", value = "prop", first_BCT:last_AHCT),
+study2_FLTypes_plot <- ggplot(study2_FLTypes %>% 
+       gather(key = "measure", value = "prop", first_BCT:last_AHCT),
        aes(y = prop, x = age, colour = measure, group = measure)) +
   geom_smooth(method = "loess")
 
@@ -563,8 +597,6 @@ study3_adjacentorswitch <- study3_adjacentorswitch_whole %>%
   group_by(subj, age, age.years.c, gender, measure) %>%
   summarise(score = mean(score)) %>% ungroup()
 
-predicted_range <- seq(6,10, 0.25)
-
 study3_AdjSwitchModel <- summary(lme4::glmer(
   score ~ age.years.c + measure + (1|subj),
   data=study3_adjacentorswitch_whole, family = "binomial"))
@@ -581,7 +613,7 @@ study3_accuracyloess <- bind_cols(lapply(
   separate("measure", into = c("measure", "stat"), sep = "_") %>%
   spread(stat, score)
   
-ggplot(study3_accuracyloess,
+study3_accuracyloess_plot <- ggplot(study3_accuracyloess,
   aes(x = predicted_age, y = fit, color = measure, group = measure)) + 
   geom_line(size = 1) + geom_point(size = 4) +
   geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = measure, fill = measure), alpha = .2, colour=NA) +
@@ -595,8 +627,6 @@ Similar to Study 2, we adopted alternative scoring to accommodate language-switc
 
 
 ```{r study3_termnature, include=FALSE}
-
-predicted_range <- seq(6,10, 0.25)
 
 study3_allresponsetypes <- study3_data %>%
   filter(response_order %in% c("first", "only", "last")) %>%
@@ -638,7 +668,7 @@ study3_allresponseloess <- bind_rows(lapply(
              response_order = first(x$response_order))
     }}))
   
-ggplot(study3_allresponseloess,
+study3_allresponseloess_plot <- ggplot(study3_allresponseloess,
   aes(x = predicted_age, y = fit, color = nature, group = nature)) + 
   facet_grid(. ~ response_order) +
   geom_line(size = 1) + geom_point(size = 4) +
@@ -648,7 +678,7 @@ ggplot(study3_allresponseloess,
   
 ```
 
-```{r}
+```{r study3_FLTypes, include = FALSE}}
 
 study3_FLTypes <- study3_data %>% ungroup() %>%
   filter(response_order %in% c("first", "last")) %>%
@@ -681,25 +711,74 @@ pchisq(study3_responsedev, 39+39-2, lower.tail = T)
 ```
 
 
+Comparisons between Studies 2 & 3.
+Proportion of ad hoc terms used in production tasks (compare across Studies 2 & 3)
+- first response only (basic, ad hoc, non-ad hoc, spanish)
+- do kids ever use a basic term at all in their responses?
+
+```{r crossstudy_adhoc, include = FALSE}
+
+studies2n3_data <- feather::read_feather("../intermediates/processed_data.csv") %>%
+  filter(task == "Production") %>%
+  mutate(spanish_response = ifelse(response %in% spanish_terms, 1, 0),
+         shipibo_response = ifelse(response %in% shipibo_terms, 1, 0))
+
+studies2n3_firstresponse_whole <- studies2n3_data %>% ungroup() %>%
+  filter(response_order %in% c("first", "only")) %>%
+  select(language, subj, age, prompt, nature, spanish_response, shipibo_response) 
+
+studies2n3_firstresponse <- studies2n3_firstresponse_whole %>%
+  group_by(language, subj, age, nature, spanish_response, shipibo_response) %>%
+  summarise(n = n()) %>% 
+  group_by(language, subj, age) %>%
+  mutate(prop = n/sum(n),
+         response_language = case_when(
+           spanish_response == 1 ~ "spanish",
+           shipibo_response == 1 ~ "shipibo",
+           TRUE ~ NA_character_
+         )) %>% ungroup()
+
+
+studies2n3_firstresploess <- bind_rows(lapply(
+  studies2n3_firstresponse %>% 
+    filter(nature %in% c("AHCT", "BCT")) %>%
+    split(list(.$language, .$nature, .$response_language)),
+  function(x){
+    if (nrow(x) > 6) {
+    as_data_frame(predict(loess(formula = prop ~ age, data = x, span = 0.75), 
+            newdata = predicted_range, se = TRUE)[c("fit", "se.fit")]) %>%
+      mutate(predicted_age = predicted_range,
+             response_language = first(x$response_language),
+             study_language = first(x$language),
+             nature = case_when(
+               first(x$nature) == "AHCT" ~ "Ad-hoc color term",
+               first(x$nature) == "BCT" ~ "Basic color term",
+               TRUE ~ "Other"))
+    }}))
+
+studies2n3_firstresploess_plot <- ggplot(studies2n3_firstresploess,
+  aes(x = predicted_age, y = fit, color = response_language, group = response_language)) + 
+  facet_grid(nature ~ study_language) +
+  geom_line(size = 1) + geom_point(size = 4) +
+  geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = response_language, fill = response_language), alpha = .2, colour=NA) +
+  scale_color_viridis(discrete=TRUE, option = "D") +
+  scale_fill_viridis(discrete=TRUE, option = "D")
+
+
+```
+
+
 
 
 
 ================================================
-We conducted a range of studies to better characterize SK color term knowledge and its development. Two important generalizations emerged. First, we observed a much longer developmental trajectory for color than is observed in modern US populations (cf. Bornstein, 1985). Second, we found evidence for competition between the Shipibo and Spanish color systems, implying the potential for functionally-driven language change. In sum, these data further support a model of color word knowledge and acquisition that is driven by communicative need. 
-<br><br>
-
-**Perceived fit with the special issue**: In the last two decades, cross-cultural research aiming to go beyond North-American “convenience samples” has mainly focused on the study of East Asian children and adults. This endeavor has proved very fruitful (Kitayama & Cohen, 2007) but is still limited because of its almost exclusive focus on North-American vs. East-Asian samples. The current study contributes to the general effort to go beyond such samples and study the development of human cognition in a non-North American and non-East Asian context. The SK indigenous people are particularly interesting for at least two reasons:
-
-1. They differ from samples usually studied by cross-cultural evolutionary psychologists (Apicella & Barrett, 2016). Indeed, evolutionary psychologists are particularly interested in the study of contemporary hunter-gatherers because they are believed to a good model of our Pleistocene ancestors. By contrast, like most riverine Amazonian cultures, the SK culture is not based on hunting and gathering, but on horticulture, fishing, and to a limited extent, hunting.
-2. Because of their location on the Ucayali River, one of the main tributaries of the Amazon, the SK culture has always been enmeshed in rich trading networks involving other indigenous groups of the Andes and the Lowlands (in pre-conquest times) as well as Mestizos and Westerners (in post-conquest times) (Lathrap, 1970). It would thus be mistaken to think of this culture as an “isolated” or “preserved” one. On the contrary, having been extensively exposed to numerous cultural influences, the SK culture has been constantly reworked and reshaped through the centuries. This was especially true in the second half of the 20th century with intense contact with the Spanish-speaking Mestizo populations established along the Ucayali River. As a result, today’s SK culture straddles two worlds. 
-<br><br>
 
 ## Figures
 <br>
 
 ```{r adultfigure, include=FALSE}
 
-study1_consensusplot <- ggplot(study1_consensus %>%
+study1_consensus_plot <- ggplot(study1_consensus %>%
                                  group_by(`Chip ID`) %>%
                                  filter(`% of Subjects` == max(`% of Subjects`)) %>%
                                  left_join(color_chip_data, by = c("Chip ID" = "#cnum")), 
@@ -724,7 +803,7 @@ kay_consensus <- kay_terms %>%
   left_join(color_chip_data, by = c("Chip ID" = "#cnum"))
 
 
-kay_consensusplot <- ggplot(kay_consensus, 
+kay_consensus_plot <- ggplot(kay_consensus, 
                              aes(x = H, y = V, fill = `Color Term`)) + 
   geom_tile() + 
   scale_size(range = c(0, 2.0)) + 
@@ -732,7 +811,7 @@ kay_consensusplot <- ggplot(kay_consensus,
   ggtitle("WCS Data") +
   theme(legend.position = "none", plot.title = element_text(hjust = 0.5))
 
-study1_spanishplot <- ggplot(study1_spanishbychip %>%
+study1_spanish_plot <- ggplot(study1_spanishbychip %>%
                                mutate(`% of Subjects` = 100*`% of Subjects`) %>%
                                rename(`Spanish Term` = `% of Subjects`) %>%
                                left_join(select(color_chip_data, `#cnum`, V, H), 
@@ -743,17 +822,17 @@ study1_spanishplot <- ggplot(study1_spanishbychip %>%
   labs(fill = "Spanish\nUse (%)")
 
 adult_figurelegends <- plot_grid(
-  get_legend(study1_consensusplot),
+  get_legend(study1_consensus_plot),
   NULL,
-  get_legend(study1_spanishplot),
+  get_legend(study1_spanish_plot),
   labels = c("A and B", "", "C"),
   ncol = 3) + 
   theme(plot.margin = unit(c(0.5,0.5,0.5,1), "in")) 
 
 adult_figure <- plot_grid(
-  study1_consensusplot + theme(legend.position = "none"), 
-  kay_consensusplot + theme(legend.position = "none"), 
-  study1_spanishplot + theme(legend.position = "none"), 
+  study1_consensus_plot + theme(legend.position = "none"), 
+  kay_consensus_plot + theme(legend.position = "none"), 
+  study1_spanish_plot + theme(legend.position = "none"), 
   adult_figurelegends, 
   labels = c("A", "B", "C"), ncol = 2
   )
@@ -813,3 +892,8 @@ print(child_figure)
 ```
 
 *Figure 2*. A comparison of children's performance during the production task in Studies 2 and 3. Solid or dotted lines represent overall performance by age for a particular chip. Solid lines show whether the child gave a correct answer in the language indicated in that column; dotted lines show if they gave a response that was correct in either language. Line colors are representative of the chip’s color coordinates. Values in the lower-right corners of each subplot display the entropy (uncertainty) values calculated from adult responses given during Study 1.
+
+<br>
+
+### Unfinished Figures
+
