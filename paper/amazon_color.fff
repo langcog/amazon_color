@@ -1,0 +1,34 @@
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\centering
+\includegraphics{amazon_color_files/figure-latex/study1_entropyanalyses-1.pdf}
+\caption{}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\centering
+\includegraphics{amazon_color_files/figure-latex/adultfigure-1.pdf}
+\caption{\label{fig:adultfigure}(A and B) Plots of the modal term given for
+a particular chip. Color coordinates were represented in 2-D Munsell
+space. Modal responses were given by SK adults during (A) the original
+World Color Survey and during (B) our Study 1. (C) Heat map of
+prevalence of Spanish-language responses during Study 1. Legends for all
+three subplots located in the bottom-right quadrant.}
+\end{figure*}
+\begin{figure*}[hbt]
+\ifnextchar[{\eatarg}{}
+
+\centering
+\includegraphics{amazon_color_files/figure-latex/childfigure-1.pdf}
+\caption{\label{fig:childfigure}A comparison of children's performance
+during the production task in Studies 2 and 3. Solid or dotted lines
+represent overall performance by age for a particular chip. Solid lines
+show whether the child gave a correct answer in the language indicated
+in that column; dotted lines show if they gave a response that was
+correct in either language. Line colors are representative of the chip's
+color coordinates. Values in the lower-right corners of each subplot
+display the entropy (uncertainty) values calculated from adult responses
+given during Study 1.}
+\end{figure*}
