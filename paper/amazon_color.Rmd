@@ -38,7 +38,7 @@ wordcount         : "X"
 
 bibliography      : ["r-references.bib"]
 
-figsintext        : no
+figsintext        : yes
 figurelist        : no
 tablelist         : no
 footnotelist      : no
@@ -349,21 +349,19 @@ study1_ttest_gendertermappearance <- with(
 <!-- We found no significant gender differences in the overall spread of color term usage across the set (*t* = `r study1_ttest_gendertermprofusion$statistic`, *P* = `r study1_ttest_gendertermprofusion$p.value`) or in the percentage of subjects who used a term at least once throughout the task (*t* = `r study1_ttest_gendertermappearance$statistic`, *P* = `r study1_ttest_gendertermappearance$p.value`). -->
 <!-- MCF: There are some issues with these stats - you really want to test for distributional differences, but it's complicated. -->
 
-
-```{r study1_entropyanalyses}
-
-study1_entropy <-  study1_consensus %>% 
-  mutate(`% of Subjects` = `% of Subjects`/100) %>%
-  spread(key = 'Color Term', value = '% of Subjects', fill = 0) %>%
-  mutate_if(is.double, funs( . * log(., 
-                                     base = n_distinct(study1_consensus$`Color Term`)))) %>%
-  mutate_if(is.double, funs(replace(., is.nan(.), 0))) %>%
-  ungroup() %>%
-  mutate(Entropy = -rowSums(.[-1])) %>%
-  select(`Chip ID`, Entropy)
+```{r study1_corrected_entropy}
+study1_entropy <- naming_data %>%
+  group_by(chip_id, color_cat) %>% 
+  select(chip_id, color_cat) %>%
+  count %>%
+  group_by(chip_id) %>%
+  mutate(p = n / sum(n)) %>%
+  summarise(entropy = - sum(p * log(p))) %>%
+  rename(`Chip ID` = chip_id, 
+         Entropy = entropy)
 ```
 
-```{r, eval = FALSE}
+```{r, eval=FALSE}
 study1_naturebyentropy <-naming_data %>%
   mutate(response_language = case_when(
     color_cat %in% spanish_terms ~ "spanish",
@@ -473,7 +471,7 @@ When the experimenter asked children to pick up a color that was instantiated by
 
 ## Results and Discussion
 
-```{r childfigure, fig.cap = "A comparison of children's performance during the production task in Studies 2 and 3. Solid or dotted lines represent overall performance by age for a particular chip. Solid lines show whether the child gave a correct answer in the language indicated in that column; dotted lines show if they gave a response that was correct in either language. Line colors are representative of the chip’s color coordinates."}
+```{r childfigure, fig.cap = "A comparison of children's performance during the production task in Studies 2 and 3. Solid or dotted lines represent overall performance by age for a particular chip. Solid lines show whether the child gave a correct answer in the language indicated in that column; dotted lines show if they gave a response that was correct in either language. Line colors are representative of the chip’s color coordinates. Values in the lower-right corners of each subplot display the entropy (uncertainty) values calculated from adult responses given during Experiment 1."}
 
 all_chip_sets <- full_join(shipibo_chip_set, 
                            spanish_chip_set) %>%
@@ -503,7 +501,8 @@ study23_firstprod <- feather::read_feather("../intermediates/processed_data.csv"
 ggplot(study23_firstprod,
                        aes(x = age_interval, y = score, colour = prompt,
                            group = criteria, linetype = criteria)) +
-  geom_jitter(alpha = .1, width = .3, height = .1, col = "gray") + 
+  geom_jitter(data = filter(study23_firstprod, criteria == "Correct (Same Language)"),
+    alpha = .25, width = .3, height = .1, col = "gray") + 
   geom_smooth(se = FALSE, method = "loess", span = 1) +
   facet_grid(as.numeric(as.character(prompt)) ~ language) + 
   scale_y_continuous(limits = c(-0.1,1.1), breaks = seq(0,1,0.5), labels = scales::percent) + 
@@ -512,25 +511,25 @@ ggplot(study23_firstprod,
   scale_linetype_manual(values = c("Correct (Same Language)" = "solid", 
                                    "Correct (Either Language)" = "dotted"), 
                         guide = FALSE) +
-  labs(x = "Age", y = "% of Correct Responses", linetype = "Measure", colour = "Chip ID") +
-  guides(label = "none")
-  # geom_label(aes(x = Inf, y = -Inf, hjust = 1.1, vjust = -0.3), 
-  #            show.legend = FALSE, colour = "black") 
-
-# Values in the lower-right corners of each subplot display the entropy (uncertainty) values calculated from adult responses given during Experiment 1.
+  labs(x = "Age", y = "% of Correct Responses", 
+       linetype = "Measure", colour = "Chip ID") +
+  guides(label = "none") + 
+  geom_label(aes(x = Inf, y = -Inf, hjust = 1.1, vjust = -0.3, label = Entropy),
+             show.legend = FALSE, colour = "black")
 
 ```
 
 ```{r}
-firstprod_same <- glmer(score ~ age  + (age | prompt) + (1 | subj), 
+study23_firstprod$age.years.c <- scale(study23_firstprod$age, scale = FALSE)
+firstprod_same <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
       data = filter(study23_firstprod, criteria == "Correct (Same Language)"), 
       family = "binomial")
-firstprod_either <- glmer(score ~ age  + (1 | prompt) + (1 | subj), 
+firstprod_either <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
       data = filter(study23_firstprod, criteria == "Correct (Either Language)"), 
       family = "binomial")
 ```
 
-**Production.** Children's production accuracy increased substantially across nearly all color chips in the age range that we tested. Figure 2, left panels shows the accuracy of children's first production, both in SK (solid line) and in either language (dashed line). To quantify these developmental trends, we fit two generalized linear mixed effects models, one for the accuracy of SK production and one for the accuracy of production in either language. Both of these predicted accuracy as a function of the child's age, and included random intercepts for color chip and for participant, as well as a random slope of age by color chip. Age was a significant predictor in both models: $\beta = `r round(summary(firstprod_same)$coef["age", "Estimate"], digits = 2)`$, SE = `r round(summary(firstprod_same)$coef["age", "Std. Error"], digits = 2)`, $p = `r round(summary(firstprod_same)$coef["age", "Pr(>|z|)"], digits = 3)`$ and $\beta = `r round(summary(firstprod_either)$coef["age", "Estimate"], digits = 2)`$, SE = `r round(summary(firstprod_either)$coef["age", "Std. Error"], digits = 2)`, $p < .0001$.
+**Production.** Children's production accuracy increased substantially across nearly all color chips in the age range that we tested. Figure 2, left panels shows the accuracy of children's first production, both in SK (solid line) and in either language (dashed line). To quantify these developmental trends, we fit two generalized linear mixed effects models, one for the accuracy of SK production and one for the accuracy of production in either language. Both of these predicted accuracy as a function of the child's age, and included random intercepts for color chip and for participant, as well as a random slope of age by color chip. Age was a significant predictor in both models: $\beta = `r round(summary(firstprod_same)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(firstprod_same)$coef["age.years.c", "Std. Error"], digits = 2)`, $p = `r round(summary(firstprod_same)$coef["age.years.c", "Pr(>|z|)"], digits = 3)`$ and $\beta = `r round(summary(firstprod_either)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(firstprod_either)$coef["age.years.c", "Std. Error"], digits = 2)`, $p < .0001$.
 
 
 ```{r study2_accuracyspanishentropy}
@@ -559,14 +558,13 @@ study2_responsebyentropy <- study2_data %>%
 study2_responsebyentropy$age.years.c <- scale(study2_responsebyentropy$age, scale = FALSE)[,1]
 
 study2_SwitchEnt_model <- summary(lme4::glmer(
-  spanish_response ~ age.years.c * Entropy + (1|subj),
+  spanish_response ~ age.years.c * Entropy + (1|subj) + (1 | prompt),
   data=study2_responsebyentropy, family = "binomial"))
 ```
 
-<!-- Over a quarter (`r study2_switchperc$spanish_response`) of all responses were given in Spanish, and the distribution of Spanish responses was non-random: children tended to respond in Spanish when presented with a chip with low naming consensus (high entropy) among adult participants in Experiment 1. To assess this, we  -->
+Over a quarter (`r study2_switchperc$spanish_response`) of all responses were given in Spanish, and the distribution of Spanish responses was non-random. Children tended to respond in Spanish when presented with a chip with low naming consensus among adult participants in Experiment. We computed the naming entropy for each chip by computing the probabilities for each chip $c$ to be named with a particular label $l$ ($p(l \mid c)$) and then taking $H(c) = - \sum{p(l\mid c) \log[p(l \mid c)]}$ (see inset entropy values by chip in Figure 2). 
 
-
-<!-- Even when accounting for between-subject differences and age, this effect remained strong (*p* `r with(study2_SwitchEnt_model, ifelse(coefficients["Entropy", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["Entropy", "Pr(>|z|)"], 3))))`, see inset entropy values in Figure 2). -->
+To assess the hypothesis that naming entropy in adults was related to Spanish use in children, we fit a mixed effects model predicting Spanish responses as a function of age, entropy of the chip's naming distribution for adults, and their interaction. We included random intercepts for color chip and for participant, but our model did not converge with a random slope term and so we pruned this term following our lab's standard operating procedure. We found a reliable effect of entropy ($\beta = `r round(summary(study2_SwitchEnt_model)$coef["Entropy", "Estimate"], digits = 2)`$, SE = `r round(summary(study2_SwitchEnt_model)$coef["Entropy", "Std. Error"], digits = 2)`, $p = `r round(summary(study2_SwitchEnt_model)$coef["Entropy", "Pr(>|z|)"], digits = 3)`$) and an interaction between age and entropy ($\beta = `r round(summary(study2_SwitchEnt_model)$coef["age.years.c:Entropy", "Estimate"], digits = 2)`$, SE = `r round(summary(study2_SwitchEnt_model)$coef["age.years.c:Entropy", "Std. Error"], digits = 2)`, $p = `r round(summary(study2_SwitchEnt_model)$coef["age.years.c:Entropy", "Pr(>|z|)"], digits = 3)`$), suggesting that adults' uncertainty regarding naming was related to children's likelihood of producing Spanish labels. 
 
 
 
@@ -638,52 +636,6 @@ study2_EucDist_pchisq <- pchisq(deviance(lm(wrong_euc_dist ~ 1, data=study2_EucD
 Another possible reason to use Spanish would be if children fail to recall the proper SK color term but do know the proper mapping in the Spanish. They may also choose to respond with a same-language but adjacent color term )such as "joshin" for a *panshin*-colored chip). In our next analysis, we aggregate across chips and examine the pattern of responses, categorizing them as same-language, adjacent, and different-language. 
 
 
-<!-- ```{r crossstudy_accuracystrats} -->
-<!-- bind_rows( -->
-<!--   list("Experiment 2" = study2_allresponseloess,  -->
-<!--        "Experiment 3" = study3_allresponseloess), .id = "study") %>% -->
-<!--   mutate(response_order = tools::toTitleCase(as.character(response_order))) %>% -->
-<!--   ggplot(aes(x = predicted_age, y = fit, color = nature, group = nature)) +  -->
-<!--   facet_grid(response_order ~ study) + -->
-<!--   geom_line() +  -->
-<!--   geom_point() + -->
-<!--   geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit,  -->
-<!--                   group = nature, fill = nature), alpha = .2, colour=NA) + -->
-<!--   labs(x = "Age", y = "Proportion of Responses", fill = "Nature of Response", color = "Nature of Response") + -->
-<!--   scale_color_viridis(discrete=TRUE, option = "D") + -->
-<!--   scale_fill_viridis(discrete=TRUE, option = "D") + -->
-<!--   coord_cartesian(ylim = c(0,1)) -->
-<!-- ``` -->
-
-<!-- ```{r} -->
-<!-- studies2n3_accuracy_plot <- ggplot( -->
-<!--   bind_rows(list("Experiment 2" = study2_accuracyloess, "Experiment 3" = study3_accuracyloess), .id = "study") %>% -->
-<!--     mutate(measure = case_when( -->
-<!--       measure == "correct" ~ "Original", -->
-<!--       measure == "correcteither" ~ "Either Language", -->
-<!--       measure == "correctnearby" ~ "Adjacent Color", -->
-<!--       measure == "correctall" ~ "Either + Adjacent")) %>% -->
-<!--     mutate(measure = factor(measure, levels = c("Original", "Either Language", "Adjacent Color", "Either + Adjacent"))), -->
-<!--   aes(x = predicted_age, y = fit, color = measure, group = measure)) +  -->
-<!--   facet_grid(. ~ study) + -->
-<!--   geom_line(size = 1) + geom_point(size = 4) + -->
-<!--   geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = measure, fill = measure), alpha = .2, colour=NA) + -->
-<!--   labs(x = "Age", y = "Proportion of Responses", fill = "Accuracy", color = "Accuracy") + -->
-<!--   scale_color_viridis(discrete=TRUE, option = "D") + -->
-<!--   scale_fill_viridis(discrete=TRUE, option = "D") + -->
-<!--   coord_cartesian(ylim = c(0,1)) -->
-
-<!-- print(studies2n3_allresponseloess_plot) -->
-
-<!-- print(studies2n3_accuracy_plot) -->
-
-<!-- ``` -->
-
-Using a mixed-effects model, we found a significant improvement in accuracy scores when we allowed different-language but corresponding responses (*p* `r with(study2_AdjSwitchModel, ifelse(coefficients["measurecorrecteither", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["measurecorrecteither", "Pr(>|z|)"], 3))))`) but no significant change when allowing for same-language but adjacent responses (*p* `r with(study2_AdjSwitchModel, ifelse(coefficients["measurecorrectnearby", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["measurecorrectnearby", "Pr(>|z|)"], 3))))`).
-
-**Comprehension.**
-
-
 
 ```{r study2_termnature}
 
@@ -737,6 +689,168 @@ study2_allresponseloess <- bind_rows(lapply(
 
   
 ```
+
+
+```{r study3_termnature}
+
+study3_allresponsetypes <- study3_data %>%
+  filter(response_order %in% c("first", "only", "last")) %>%
+  separate_rows(nature, sep = "-") %>%
+  mutate(nature = trimws(ifelse(is.na(nature), "Other", nature))) %>%
+  group_by(subj, age, response_order, nature) %>%
+  summarise(n = n()) %>%
+  group_by(subj, age, response_order) %>%
+  mutate(prop = n/sum(n)) %>% ungroup() %>%
+  complete(nesting(subj, age, response_order), nature, fill = list(n = 0, prop = 0.0))
+
+
+study3_allresponsetypes_whole <- study3_allresponsetypes %>%
+  select(-n) %>%
+  spread(nature, prop)
+
+study3_allresponsetypes_whole$age.years.c <- scale(study3_allresponsetypes_whole$age, scale = FALSE)[,1]
+study3_allresponsetypes_whole$Y <- as.matrix(study3_allresponsetypes_whole[, c("BCT", "AHCT", "NBCT", "Other", "SLT")])
+
+study3_allresponsetypes_model <- multinom(Y ~ age.years.c + response_order,
+                 data=study3_allresponsetypes_whole)
+
+study3_allresponsetypes_dev <- deviance(multinom(Y~1, data=study3_allresponsetypes_whole)) - deviance(study3_allresponsetypes_model)
+
+
+study3_allresponseloess <- bind_rows(lapply(
+  study3_allresponsetypes %>% split(list(.$response_order, .$nature)),
+  function(x){
+    if (nrow(x) > 0) {
+    as_data_frame(predict(loess(formula = prop ~ age, data = x, span = 0.75), 
+            newdata = predicted_range, se = TRUE)[c("fit", "se.fit")]) %>%
+      mutate(predicted_age = predicted_range, 
+             nature = case_when(
+               first(x$nature) == "AHCT" ~ "Ad-hoc color term",
+               first(x$nature) == "BCT" ~ "Basic color term",
+               first(x$nature) == "NBCT" ~ "Other color term",
+               first(x$nature) == "SLT" ~ "Saturation/lightness term",
+               TRUE ~ as.character(first(x$nature))),
+             response_order = first(x$response_order))
+    }}))
+  
+# study3_allresponseloess_plot <- ggplot(study3_allresponseloess,
+#   aes(x = predicted_age, y = fit, color = nature, group = nature)) + 
+#   facet_grid(. ~ response_order) +
+#   geom_line(size = 1) + geom_point(size = 4) +
+#   geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = nature, fill = nature), alpha = .2, colour=NA) +
+#   scale_color_viridis(discrete=TRUE, option = "D") +
+#   scale_fill_viridis(discrete=TRUE, option = "D")
+  
+```
+
+```{r study3_overextensions}
+
+study3_adjacentorswitch_whole <- study3_data %>%
+  group_by(subj, age, gender) %>%
+  filter(response_order %in% c("first", "only")) %>%
+  mutate(correct_nearby = correct + ifelse(is.na(wrong_adjacent), 0, wrong_adjacent),
+         correct_all = ifelse(correct + correct_either + correct_nearby > 0, 1, 0)) %>%
+  select(subj, age, gender, starts_with("correct")) %>%
+  gather(key = "measure", value = "score", starts_with("correct")) %>%
+  mutate(measure = factor(gsub("_","",measure)))
+
+study3_adjacentorswitch_whole$age.years.c <- scale(study3_adjacentorswitch_whole$age, scale = FALSE)[,1]
+
+study3_adjacentorswitch <- study3_adjacentorswitch_whole %>%
+  group_by(subj, age, age.years.c, gender, measure) %>%
+  summarise(score = mean(score)) %>% ungroup()
+
+study3_AdjSwitchModel <- summary(lme4::glmer(
+  score ~ age.years.c + measure + (1|subj),
+  data=study3_adjacentorswitch_whole, family = "binomial"))
+
+study3_accuracyloess <- bind_cols(lapply(
+  study3_adjacentorswitch %>% split(.$measure),
+  function(x){
+    as_data_frame(predict(loess(formula = score ~ age, data = x, span = 0.75), 
+            newdata = predicted_range, se = TRUE)[c("fit", "se.fit")]) %>%
+      rename_all(funs(paste0(first(x$measure),"_",.)))
+    })) %>%
+  mutate(predicted_age = predicted_range) %>%
+  gather(key = "measure", value = "score", starts_with("correct")) %>%
+  separate("measure", into = c("measure", "stat"), sep = "_") %>%
+  spread(stat, score)
+  
+# study3_accuracy_plot <- ggplot(study3_accuracyloess,
+#   aes(x = predicted_age, y = fit, color = measure, group = measure)) + 
+#   geom_line(size = 1) + geom_point(size = 4) +
+#   geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = measure, fill = measure), alpha = .2, colour=NA) +
+#   scale_color_viridis(discrete=TRUE, option = "D") +
+#   scale_fill_viridis(discrete=TRUE, option = "D")
+
+study3_EucDist <- study3_data %>%
+  group_by(subj, age, gender) %>%
+  filter(response_order %in% c("first", "only")) %>%
+  mutate(wrong_euc_dist = ifelse(correct == 1, NA, wrong_euc_dist)) %>%
+  filter(!is.na(wrong_euc_dist))
+
+study3_EucDist$age.years.c <- scale(study3_EucDist$age, scale = FALSE)[,1]
+
+# study3_EucDist_plot <- ggplot(study3_EucDist, aes(y = wrong_euc_dist, x = age)) +
+#   geom_point(aes(color = spanish, group = spanish)) +
+#   geom_smooth(method = "loess") +
+#   scale_colour_manual(values = graph_colors)
+
+study3_EucDist_model <- lme4::lmer(
+  wrong_euc_dist ~ age.years.c + (1|subj),
+  data=study3_EucDist, REML=FALSE)
+
+study3_EucDist_pchisq <- pchisq(deviance(lm(wrong_euc_dist ~ 1, data=study3_EucDist)) - deviance(study3_EucDist_model), 78, lower.tail=FALSE)
+
+
+```
+
+```{r crossstudy_accuracystrats}
+bind_rows(
+  list("Experiment 2" = study2_allresponseloess,
+       "Experiment 3" = study3_allresponseloess), .id = "study") %>%
+  mutate(response_order = tools::toTitleCase(as.character(response_order))) %>%
+  ggplot(aes(x = predicted_age, y = fit, color = nature, group = nature)) +
+  facet_grid(response_order ~ study) +
+  geom_line() +
+  geom_point() +
+  geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit,
+                  group = nature, fill = nature), alpha = .2, colour=NA) +
+  labs(x = "Age", y = "Proportion of Responses", fill = "Nature of Response", color = "Nature of Response") +
+  scale_color_viridis(discrete=TRUE, option = "D") +
+  scale_fill_viridis(discrete=TRUE, option = "D") +
+  coord_cartesian(ylim = c(0,1))
+```
+
+```{r, include = FALSE}
+studies2n3_accuracy_plot <- ggplot(
+  bind_rows(list("Experiment 2" = study2_accuracyloess, "Experiment 3" = study3_accuracyloess), .id = "study") %>%
+    mutate(measure = case_when(
+      measure == "correct" ~ "Original",
+      measure == "correcteither" ~ "Either Language",
+      measure == "correctnearby" ~ "Adjacent Color",
+      measure == "correctall" ~ "Either + Adjacent")) %>%
+    mutate(measure = factor(measure, levels = c("Original", "Either Language", "Adjacent Color", "Either + Adjacent"))),
+  aes(x = predicted_age, y = fit, color = measure, group = measure)) +
+  facet_grid(. ~ study) +
+  geom_line(size = 1) + geom_point(size = 4) +
+  geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = measure, fill = measure), alpha = .2, colour=NA) +
+  labs(x = "Age", y = "Proportion of Responses", fill = "Accuracy", color = "Accuracy") +
+  scale_color_viridis(discrete=TRUE, option = "D") +
+  scale_fill_viridis(discrete=TRUE, option = "D") +
+  coord_cartesian(ylim = c(0,1))
+
+# print(studies2n3_allresponseloess_plot)
+
+# print(studies2n3_accuracy_plot)
+
+```
+
+Using a mixed-effects model, we found a significant improvement in accuracy scores when we allowed different-language but corresponding responses (*p* `r with(study2_AdjSwitchModel, ifelse(coefficients["measurecorrecteither", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["measurecorrecteither", "Pr(>|z|)"], 3))))`) but no significant change when allowing for same-language but adjacent responses (*p* `r with(study2_AdjSwitchModel, ifelse(coefficients["measurecorrectnearby", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["measurecorrectnearby", "Pr(>|z|)"], 3))))`).
+
+**Comprehension.**
+
+
 
 ```{r study2_FLTypes, include = FALSE}
 
@@ -865,122 +979,11 @@ study3_SwitchEnt_model <- summary(lme4::glmer(
 Similar to Experiment 2, over a quarter of all responses (*M* = `r study3_switchperc$mean_switch`, *SD* = `r study3_switchperc$sd_switch`) were given in another language (Shipibo in this case). There was significant variation in language-switching with some children completing the entire task in Spanish while others responded to upwards of `r study3_switchperc$max_switch` of trials in Shipibo. Similar to Experiment 2, there was no significant correlation between age and label accuracy (*p* `r with(study3_overallscore_test, ifelse(p.value < 0.001, "< 0.001", paste0("= ", round(p.value, 3))))`) or between age and language-switching (*p* `r with(study3_overallswitch_test, ifelse(p.value < 0.001, "< 0.001", paste0("= ", round(p.value, 3))))`). Still, we found that participants tended to respond in Shipibo when presented with items that had low entropy among SK adults during Experiment 1 (p `r with(study3_SwitchEnt_model, ifelse(coefficients["Entropy", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["Entropy", "Pr(>|z|)"], 3))))`). This suggests that participants across Studies 2 and 3 preferred to respond in Shipibo when presented with a high-consensus chip and in Spanish when shown a low-consensus chip.
 
 **Overextensions.**
-```{r study3_overextensions}
 
-study3_adjacentorswitch_whole <- study3_data %>%
-  group_by(subj, age, gender) %>%
-  filter(response_order %in% c("first", "only")) %>%
-  mutate(correct_nearby = correct + ifelse(is.na(wrong_adjacent), 0, wrong_adjacent),
-         correct_all = ifelse(correct + correct_either + correct_nearby > 0, 1, 0)) %>%
-  select(subj, age, gender, starts_with("correct")) %>%
-  gather(key = "measure", value = "score", starts_with("correct")) %>%
-  mutate(measure = factor(gsub("_","",measure)))
-
-study3_adjacentorswitch_whole$age.years.c <- scale(study3_adjacentorswitch_whole$age, scale = FALSE)[,1]
-
-study3_adjacentorswitch <- study3_adjacentorswitch_whole %>%
-  group_by(subj, age, age.years.c, gender, measure) %>%
-  summarise(score = mean(score)) %>% ungroup()
-
-study3_AdjSwitchModel <- summary(lme4::glmer(
-  score ~ age.years.c + measure + (1|subj),
-  data=study3_adjacentorswitch_whole, family = "binomial"))
-
-study3_accuracyloess <- bind_cols(lapply(
-  study3_adjacentorswitch %>% split(.$measure),
-  function(x){
-    as_data_frame(predict(loess(formula = score ~ age, data = x, span = 0.75), 
-            newdata = predicted_range, se = TRUE)[c("fit", "se.fit")]) %>%
-      rename_all(funs(paste0(first(x$measure),"_",.)))
-    })) %>%
-  mutate(predicted_age = predicted_range) %>%
-  gather(key = "measure", value = "score", starts_with("correct")) %>%
-  separate("measure", into = c("measure", "stat"), sep = "_") %>%
-  spread(stat, score)
-  
-# study3_accuracy_plot <- ggplot(study3_accuracyloess,
-#   aes(x = predicted_age, y = fit, color = measure, group = measure)) + 
-#   geom_line(size = 1) + geom_point(size = 4) +
-#   geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = measure, fill = measure), alpha = .2, colour=NA) +
-#   scale_color_viridis(discrete=TRUE, option = "D") +
-#   scale_fill_viridis(discrete=TRUE, option = "D")
-
-study3_EucDist <- study3_data %>%
-  group_by(subj, age, gender) %>%
-  filter(response_order %in% c("first", "only")) %>%
-  mutate(wrong_euc_dist = ifelse(correct == 1, NA, wrong_euc_dist)) %>%
-  filter(!is.na(wrong_euc_dist))
-
-study3_EucDist$age.years.c <- scale(study3_EucDist$age, scale = FALSE)[,1]
-
-# study3_EucDist_plot <- ggplot(study3_EucDist, aes(y = wrong_euc_dist, x = age)) +
-#   geom_point(aes(color = spanish, group = spanish)) +
-#   geom_smooth(method = "loess") +
-#   scale_colour_manual(values = graph_colors)
-
-study3_EucDist_model <- lme4::lmer(
-  wrong_euc_dist ~ age.years.c + (1|subj),
-  data=study3_EucDist, REML=FALSE)
-
-study3_EucDist_pchisq <- pchisq(deviance(lm(wrong_euc_dist ~ 1, data=study3_EucDist)) - deviance(study3_EucDist_model), 78, lower.tail=FALSE)
-
-
-```
 
 Similar to Experiment 2, we adopted alternative scoring to accommodate language-switching from Spanish to Shipibo-Konibo and same-language adjacent responses. Using a mixed-effects model, we did not find that age explained a significant amount of the variation seen in accuracy (*p* `r with(study3_AdjSwitchModel, ifelse(coefficients["age.years.c", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["age.years.c", "Pr(>|z|)"], 3))))`), in concordance with earlier analyses. However, we did find that participants made use of both mapping strategies of either providing different-language but corresponding responses (*p* `r with(study3_AdjSwitchModel, ifelse(coefficients["measurecorrecteither", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["measurecorrecteither", "Pr(>|z|)"], 3))))`) or same-language but adjacent responses (*p* `r with(study3_AdjSwitchModel, ifelse(coefficients["measurecorrectnearby", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["measurecorrectnearby", "Pr(>|z|)"], 3))))`). Between Studies 2 and 3, we find frequent use of language switching but only Experiment 3 shows significant use of same-language but adjacent terms as well. This discrepancy, along with the lack of an age correlation, can be due to foreign language exposure. Children may be exposed to Spanish at a young age but do not receive any formal Spanish education until later in adolescence. With a limited knowledge of Spanish color terms, children may spontaneously provide Spanish color terms during the Shipibo-language Experiment 2 but may struggle to succeed during Spanish-language Experiment 3. This suggests that children may rely on either strategy to communicate a color label to the best of their knowledge set.
 
 
-```{r study3_termnature}
-
-study3_allresponsetypes <- study3_data %>%
-  filter(response_order %in% c("first", "only", "last")) %>%
-  separate_rows(nature, sep = "-") %>%
-  mutate(nature = trimws(ifelse(is.na(nature), "Other", nature))) %>%
-  group_by(subj, age, response_order, nature) %>%
-  summarise(n = n()) %>%
-  group_by(subj, age, response_order) %>%
-  mutate(prop = n/sum(n)) %>% ungroup() %>%
-  complete(nesting(subj, age, response_order), nature, fill = list(n = 0, prop = 0.0))
-
-
-study3_allresponsetypes_whole <- study3_allresponsetypes %>%
-  select(-n) %>%
-  spread(nature, prop)
-
-study3_allresponsetypes_whole$age.years.c <- scale(study3_allresponsetypes_whole$age, scale = FALSE)[,1]
-study3_allresponsetypes_whole$Y <- as.matrix(study3_allresponsetypes_whole[, c("BCT", "AHCT", "NBCT", "Other", "SLT")])
-
-study3_allresponsetypes_model <- multinom(Y ~ age.years.c + response_order,
-                 data=study3_allresponsetypes_whole)
-
-study3_allresponsetypes_dev <- deviance(multinom(Y~1, data=study3_allresponsetypes_whole)) - deviance(study3_allresponsetypes_model)
-
-
-study3_allresponseloess <- bind_rows(lapply(
-  study3_allresponsetypes %>% split(list(.$response_order, .$nature)),
-  function(x){
-    if (nrow(x) > 0) {
-    as_data_frame(predict(loess(formula = prop ~ age, data = x, span = 0.75), 
-            newdata = predicted_range, se = TRUE)[c("fit", "se.fit")]) %>%
-      mutate(predicted_age = predicted_range, 
-             nature = case_when(
-               first(x$nature) == "AHCT" ~ "Ad-hoc color term",
-               first(x$nature) == "BCT" ~ "Basic color term",
-               first(x$nature) == "NBCT" ~ "Other color term",
-               first(x$nature) == "SLT" ~ "Saturation/lightness term",
-               TRUE ~ as.character(first(x$nature))),
-             response_order = first(x$response_order))
-    }}))
-  
-# study3_allresponseloess_plot <- ggplot(study3_allresponseloess,
-#   aes(x = predicted_age, y = fit, color = nature, group = nature)) + 
-#   facet_grid(. ~ response_order) +
-#   geom_line(size = 1) + geom_point(size = 4) +
-#   geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = nature, fill = nature), alpha = .2, colour=NA) +
-#   scale_color_viridis(discrete=TRUE, option = "D") +
-#   scale_fill_viridis(discrete=TRUE, option = "D")
-  
-```
 
 ```{r study3_FLTypes, include = FALSE}
 

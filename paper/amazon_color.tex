@@ -1,4 +1,4 @@
-\documentclass[man]{apa6}
+\documentclass[floatsintext,man]{apa6}
 
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -39,12 +39,6 @@
   {\begin{landscape}\begin{center}\begin{ThreePartTable}}
   {\end{ThreePartTable}\end{center}\end{landscape}}
 
-  \usepackage{ifthen} % Only add declarations when endfloat package is loaded
-  \ifthenelse{\equal{\string man}{\string man}}{%
-   \DeclareDelayedFloatFlavor{ThreePartTable}{table} % Make endfloat play with longtable
-   % \DeclareDelayedFloatFlavor{ltable}{table} % Make endfloat play with lscape
-   \DeclareDelayedFloatFlavor{lltable}{table} % Make endfloat play with lscape & longtable
-  }{}%
 
 
 
@@ -426,8 +420,29 @@ one for the accuracy of production in either language. Both of these
 predicted accuracy as a function of the child's age, and included random
 intercepts for color chip and for participant, as well as a random slope
 of age by color chip. Age was a significant predictor in both models:
-\(\beta = 0.42\), SE = 0.16, \(p = 0.01\) and \(\beta = 0.86\), SE =
-0.16, \(p < .0001\).
+\(\beta = 0.42\), SE = 0.16, \(p = 0.01\) and \(\beta = 0.87\), SE =
+0.17, \(p < .0001\).
+
+Over a quarter (28\%) of all responses were given in Spanish, and the
+distribution of Spanish responses was non-random. Children tended to
+respond in Spanish when presented with a chip with low naming consensus
+among adult participants in Experiment. We computed the naming entropy
+for each chip by computing the probabilities for each chip \(c\) to be
+named with a particular label \(l\) (\(p(l \mid c)\)) and then taking
+\(H(c) = - \sum{p(l\mid c) \log[p(l \mid c)]}\) (see inset entropy
+values by chip in Figure 2).
+
+To assess the hypothesis that naming entropy in adults was related to
+Spanish use in children, we fit a mixed effects model predicting Spanish
+responses as a function of age, entropy of the chip's naming
+distribution for adults, and their interaction. We included random
+intercepts for color chip and for participant, but our model did not
+converge with a random slope term and so we pruned this term following
+our lab's standard operating procedure. We found a reliable effect of
+entropy (\(\beta = -6.09\), SE = 2.38, \(p = 0.01\)) and an interaction
+between age and entropy (\(\beta = -3.97\), SE = 1.49, \(p = 0.01\)),
+suggesting that adults' uncertainty regarding naming was related to
+children's likelihood of producing Spanish labels.
 
 Another possible reason to use Spanish would be if children fail to
 recall the proper SK color term but do know the proper mapping in the
