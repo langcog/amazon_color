@@ -1,5 +1,5 @@
-\documentclass[,man,floatsintext]{apa6}
-\usepackage{lmodern}
+\documentclass[floatsintext,man]{apa6}
+
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
@@ -9,110 +9,143 @@
 \else % if luatex or xelatex
   \ifxetex
     \usepackage{mathspec}
+    \usepackage{xltxtra,xunicode}
   \else
     \usepackage{fontspec}
   \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
 \fi
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-}{}
-\usepackage{hyperref}
-\hypersetup{unicode=true,
-            pdftitle={The Development of Color Terms in Shipibo-Konibo Children},
-            pdfauthor={Danielle Kellier, Martin Fortier, Maria Fernández Flecha, \& Michael C. Frank},
-            pdfkeywords={keywords},
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\usepackage{graphicx,grffile}
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{0}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
 
-%%% Use protect on footnotes to avoid problems with footnotes in titles
-\let\rmarkdownfootnote\footnote%
-\def\footnote{\protect\rmarkdownfootnote}
-
-
-  \title{The Development of Color Terms in Shipibo-Konibo Children}
-    \author{Danielle Kellier\emph{\textsuperscript{1}, Martin
-Fortier}\textsuperscript{2}, Maria Fernández Flecha\textsuperscript{3},
-\& Michael C. Frank\textsuperscript{4}}
-    \date{}
-  
-\shorttitle{Color Terms in Shipibo-Konibo Children}
-\affiliation{
-\vspace{0.5cm}
-\textsuperscript{1} University of Pennsylvania\\\textsuperscript{2} PSL Research University\\\textsuperscript{3} Pontificia Universidad Católica del Perú\\\textsuperscript{4} Stanford University}
-\keywords{keywords\newline\indent Word count: X}
-\usepackage{csquotes}
-\usepackage{upgreek}
-\captionsetup{font=singlespacing,justification=justified}
-
-\usepackage{longtable}
+% Table formatting
+\usepackage{longtable, booktabs}
 \usepackage{lscape}
-\usepackage{multirow}
-\usepackage{tabularx}
-\usepackage[flushleft]{threeparttable}
-\usepackage{threeparttablex}
+% \usepackage[counterclockwise]{rotating}   % Landscape page setup for large tables
+\usepackage{multirow}		% Table styling
+\usepackage{tabularx}		% Control Column width
+\usepackage[flushleft]{threeparttable}	% Allows for three part tables with a specified notes section
+\usepackage{threeparttablex}            % Lets threeparttable work with longtable
 
-\newenvironment{lltable}{\begin{landscape}\begin{center}\begin{ThreePartTable}}{\end{ThreePartTable}\end{center}\end{landscape}}
+% Create new environments so endfloat can handle them
+% \newenvironment{ltable}
+%   {\begin{landscape}\begin{center}\begin{threeparttable}}
+%   {\end{threeparttable}\end{center}\end{landscape}}
 
+\newenvironment{lltable}
+  {\begin{landscape}\begin{center}\begin{ThreePartTable}}
+  {\end{ThreePartTable}\end{center}\end{landscape}}
+
+
+
+
+% The following enables adjusting longtable caption width to table width
+% Solution found at http://golatex.de/longtable-mit-caption-so-breit-wie-die-tabelle-t15767.html
 \makeatletter
 \newcommand\LastLTentrywidth{1em}
 \newlength\longtablewidth
 \setlength{\longtablewidth}{1in}
-\newcommand{\getlongtablewidth}{\begingroup \ifcsname LT@\roman{LT@tables}\endcsname \global\longtablewidth=0pt \renewcommand{\LT@entry}[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}\@nameuse{LT@\roman{LT@tables}} \fi \endgroup}
+\newcommand\getlongtablewidth{%
+ \begingroup
+  \ifcsname LT@\roman{LT@tables}\endcsname
+  \global\longtablewidth=0pt
+  \renewcommand\LT@entry[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}%
+  \@nameuse{LT@\roman{LT@tables}}%
+  \fi
+\endgroup}
 
 
-\usepackage{lineno}
+  \usepackage{graphicx}
+  \makeatletter
+  \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+  \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+  \makeatother
+  % Scale images if necessary, so that they will not overflow the page
+  % margins by default, and it is still possible to overwrite the defaults
+  % using explicit options in \includegraphics[width, height, ...]{}
+  \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            pdfauthor={},
+            pdftitle={The Development of Color Terms in Shipibo-Konibo Children},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=black,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
 
-\linenumbers
+\setlength{\parindent}{0pt}
+%\setlength{\parskip}{0pt plus 0pt minus 0pt}
 
-\authornote{* these authors contributed equally.
-
-MCF was supported by a Jacobs Foundation Fellowship. We are especially
-grateful to Paul Kay for assistance throughout the study.
-
-Correspondence concerning this article should be addressed to Martin
-Fortier*, Postal address. E-mail:
-\href{mailto:my@email.com}{\nolinkurl{my@email.com}}}
-
-\abstract{
-Enter abstract here. Each new line herein must be indented, like this
-line.
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
 
 
-}
+% Manuscript styling
+\captionsetup{font=singlespacing,justification=justified}
+\usepackage{csquotes}
+\usepackage{upgreek}
+
+ % Line numbering
+  \usepackage{lineno}
+  \linenumbers
+
+
+\usepackage{tikz} % Variable definition to generate author note
+
+% fix for \tightlist problem in pandoc 1.14
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Essential manuscript parts
+  \title{The Development of Color Terms in Shipibo-Konibo Children}
+
+  \shorttitle{Color Terms in Shipibo-Konibo Children}
+
+
+  \author{Danielle Kellier*\textsuperscript{1}, Martin Fortier*\textsuperscript{2}, Maria Fernández Flecha\textsuperscript{3}, \& Michael C. Frank\textsuperscript{4}}
+
+  % \def\affdep{{"", "", "", ""}}%
+  % \def\affcity{{"", "", "", ""}}%
+
+  \affiliation{
+    \vspace{0.5cm}
+          \textsuperscript{1} University of Pennsylvania\\
+          \textsuperscript{2} PSL Research University\\
+          \textsuperscript{3} Pontificia Universidad Católica del Perú\\
+          \textsuperscript{4} Stanford University  }
+
+  \authornote{
+    * these authors contributed equally.
+    
+    MCF was supported by a Jacobs Foundation Fellowship. We are especially
+    grateful to Paul Kay for assistance throughout the study.
+    
+    Correspondence concerning this article should be addressed to Martin
+    Fortier*, Postal address. E-mail:
+    \href{mailto:martin.fortier@ens.fr}{\nolinkurl{martin.fortier@ens.fr}}
+  }
+
+
+  \abstract{Enter abstract here. Each new line herein must be indented, like this
+line.}
+  \keywords{keywords \\
+
+    \indent Word count: X
+  }
+
+
+
+
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[section]
@@ -129,7 +162,12 @@ line.
 \newtheorem*{remark}{Remark}
 \newtheorem*{solution}{Solution}
 \begin{document}
+
 \maketitle
+
+\setcounter{secnumdepth}{0}
+
+
 
 TO BE PASTED FROM GOOGLE DOC
 
@@ -161,16 +199,18 @@ rainforest (Nueva Betania, Paoyhan, and Puerto Belen).
 The median self-reported age for participants was 38 years with a range
 between 20 to 64 years of age (SD = 13.60yo). Regarding occupations,
 41\% of the women were homemakers (33\% overall) and another 41\% were
-artisans (33\%).
-\texttt{tools::toTitleCase(as.character(as.english(filter(study1\_occupations,\ género\ ==\ \textquotesingle{}masculino\textquotesingle{}\ \&\ ocupación\ ==\ \textquotesingle{}agricultor\textquotesingle{})\$n)))}
-of the 7 men were horticulturalists (43\%, 8\% overall). Four women
-(12\%, 10\% overall) and three men (43\%, 8\% overall) identified as
-students.
+artisans (33\%). Three of the 7 men were horticulturalists (43\%, 8\%
+overall). Four women (12\%, 10\% overall) and three men (43\%, 8\%
+overall) identified as students.
 
 Although all adult participants spoke Shipibo-Konibo as a first
-language, all were bilingual to a substantial degree. All reported
-beginning to learn Spanish before early adolescence (median = 8yo, SD =
-2.90y).
+language, all were bilingual to a substantial degree. All reported an
+introduction to the Spanish language before early adolescence (\emph{M}
+= 7.80yo, \emph{SD} = 2.90y). Participant age and reported age of
+introduction to Spanish were positively correlated; younger participants
+reported learning Spanish at an early age although all participants
+reported introductions before early adolescence (\emph{r} = 0.43,
+\emph{p} = 0.01).
 
 \subsection{Materials}\label{materials}
 
@@ -200,21 +240,20 @@ One major difference between the WCS procedure and ours is that, in the
 WCS, the experimenter was expected to brief participants so that they
 would only provide basic color terms during the task (e.g.,
 \enquote{blue} as opposed to \enquote{navy blue} or \enquote{sky-like}).
-We found it rather difficult to help participants understand in a few
-sentences what a basic color term was, however.\footnote{Indeed, as
-  Berlin \& Kay (2009: 587-589) acknowledge, there is no straightforward
+However, we found it rather difficult to help participants understand in
+a few sentences what a basic color term was.\footnote{Indeed, as Berlin
+  \& Kay (2009: 587-589) acknowledge, there is no straightforward
   necessary and sufficient criteria for the \enquote{basicness} of a
   color term.} Thus, we opted to let participants provide any term they
 wished. If they did not provide a basic color term, we would ask further
-questions to elicit a basic color term. For example, if, when presented
-with a red color chip, the participant provided the term
-\enquote{blood-like} (a non-basic color term), the experimenter would
-ask: \enquote{Do you know of any other word to refer to the color of
-this chip?} If the participant subsequently responded \enquote{dark red}
-(another non-basic color term), the experimenter would further ask:
-\enquote{How would you refer to this color with only one word?}
-Eventually, the participant would say \enquote{red} (a basic color
-term).
+questions to elicit a basic color term. For example, if the participant
+provided the term \enquote{blood-like} (a non-basic color term) when
+presented with a red color chip, the experimenter would ask: \enquote{Do
+you know of any other word to refer to the color of this chip?} If the
+participant subsequently responded \enquote{dark red} (another non-basic
+color term), the experimenter would further ask: \enquote{How would you
+refer to this color with only one word?} Eventually, the participant
+would say \enquote{red} (a basic color term).
 
 For some chips, participants would provide a basic color term at once;
 but for others, they would first provide one or two non-basic terms
@@ -237,6 +276,17 @@ chips.
 
 \subsection{Results and Discussion}\label{results-and-discussion}
 
+\begin{figure}
+\centering
+\includegraphics{amazon_color_files/figure-latex/adultfigure-1.pdf}
+\caption{\label{fig:adultfigure}(A and B) Plots of the modal term given for
+a particular chip. Color coordinates were represented in 2-D Munsell
+space. Modal responses were given by SK adults during (A) the original
+World Color Survey and during (B) our Experiment 1. (C) Heat map of
+prevalence of Spanish-language responses during Experiment 1. Legends
+for all three subplots located in the bottom-right quadrant.}
+\end{figure}
+
 Broadly speaking, our results were quite similar to the WCS findings.
 Figure 1 shows a comparison between our data (Panel A) and the WCS
 (panel B). The basic level colors in our data were quite similar, as
@@ -257,28 +307,26 @@ of all responses (Figure 1, Panel C). In particular, Spanish use reached
 as high as 55\% when participants were asked to label chips that English
 speakers would consider to be orange. However, there was a high amount
 of variability in Spanish use between subjects (\emph{M} = 4\%,
-\emph{SD} = 12\%) with some subjects never responding in Spanish. One
-responded in Spanish for 0\% of all trials despite all sessions being
-conducted entirely in the Shipibo-Konibo language. While we can only
-speculate as to this participant's motivations, it seems likely that
-they were more familiar with the Spanish vocabulary or viewed it as more
-precise.
+\emph{SD} = 12\%) which neither participant age (\emph{p} = 0.87) nor
+reported age of Spanish introduction (\emph{p} = 0.56) failed to
+predict. Some subjects never responding in Spanish whereas one
+participant responded in Spanish for 71\% of all trials despite all
+sessions being conducted entirely in the Shipibo-Konibo language. While
+we can only speculate as to this participant's motivations, it seems
+likely that they were more familiar with the Spanish vocabulary or
+viewed it as more precise.
 
-\hypertarget{htmlwidget-eaef49d4a484bc22a8b4}{}
-
---\textgreater{}
-
-Participants on average described 69\% of chips using a SK-language
-basic color term like \enquote{yankon} (\emph{SD} = 22\%). Some
-participants described chips using SK-language ad hoc color terms, such
-as \enquote{nai} or \emph{sky} for blue chips (\emph{M} = 11\%,
-\emph{SD} = 12\%), or ad hoc terms referring to saturation or luminosity
-of a chip, such as \enquote{manxan} (\emph{M} = 7\%, \emph{SD} = 7\%).
-Virtually all instances where a participant responded in Spanish
-involved a Spanish basic color term such as \enquote{rojo} (\emph{M} =
-4\%, \emph{SD} = 10\%). In other words, participants typically only
-responded in Spanish to label chips into basic categories; they relied
-on Shipibo-Konibo for other descriptors.
+Participants on average described 69\% of chips using a SK basic color
+term like \enquote{yankon} (\emph{SD} = 22\%). Some participants
+described chips using SK ad-hoc color terms, such as \enquote{nai} or
+\emph{sky} for blue chips (\emph{M} = 11\%, \emph{SD} = 12\%), or ad hoc
+terms referring to saturation or luminosity of a chip, such as
+\enquote{manxan} (\emph{M} = 7\%, \emph{SD} = 7\%). Virtually all
+instances where a participant responded in Spanish involved a Spanish
+basic color term such as \enquote{rojo} (\emph{M} = 4\%, \emph{SD} =
+10\%). In other words, participants typically only responded in Spanish
+to label chips into basic categories; they relied on Shipibo-Konibo for
+other descriptors.
 
 Given these data, we next moved on to exploring the development of SK
 color vocabulary in childhood. Experiment 2 tests production and
@@ -294,6 +342,27 @@ colors for common SK color terms.
 \subsection{Methods}\label{methods-1}
 
 \subsubsection{Participants}\label{participants-1}
+
+\begin{table}[tbp]
+\begin{center}
+\begin{threeparttable}
+\caption{\label{tab:unnamed-chunk-2}Demographics of participants in Experiment 2.}
+\begin{tabular}{lll}
+\toprule
+Age Group & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Male}\\
+\midrule
+5 & 3 (5\%) & 1 (33\%)\\
+6 & 8 (14\%) & 3 (38\%)\\
+7 & 12 (21\%) & 4 (33\%)\\
+8 & 15 (26\%) & 5 (33\%)\\
+9 & 10 (18\%) & 5 (50\%)\\
+10 & 4 (7\%) & 2 (50\%)\\
+11 & 5 (9\%) & 3 (60\%)\\
+\bottomrule
+\end{tabular}
+\end{threeparttable}
+\end{center}
+\end{table}
 
 The Pontificia Universidad Católica del Perú's Institutional Review
 Board approved our study protocol. We recruited 57 5- to 11-year-old
@@ -313,8 +382,10 @@ were prototypical instances of prominent SK color terms. These color
 chips were blue (WCS n°1), green (WCS n°234), red (WCS n°245), white
 (WCS n°274), yellow (WCS n°297), black (WCS n°312), greeny-yellow (WCS
 n°320), and purple (WCS n°325). These color chips were exactly the same
-as those used in Experiment 1; the only difference was that while 330
-chips were used in Experiment 1, only 8 were used in Experiment 2.
+as those used in Experiment 1; the only difference was that adult
+participants in Study 1 were presented with these chips along the rest
+of their assigned 165 chip set. Child participants only had these 8
+chips.
 
 \subsubsection{Procedure}\label{procedure-1}
 
@@ -341,31 +412,31 @@ response (when children provided a SK basic color term in the first
 trial) or two or three responses (when children's initial responses were
 either non-basic and/or in Spanish).
 
+Further, Experiment 1 showed that for some of these color terms, only
+one response was accurate, while for others, several responses were
+equally correct. For example, responses during Experiment 1 to a
+particular purple chip ranged from red to blue with some using the terms
+ami (\enquote{flower}) or pua (\enquote{yam}) as common descriptors.
+Accuracy was coded based on the results derived from Experiment 1: if at
+least 15\% of participants in Experiment 1 labeled a chip with a
+particular term, we considered a trial to be correct if the child made
+the same pairing, regardless of whether the term as a basic or ad-hoc
+color term.
+
 \textbf{Comprehension task.} The 8 color chips of the production task
 were simultaneously displayed in front of the children. The experimenter
 would then ask: \enquote{Can you give me the {[}color{]} chip?} In
 total, the comprehension of 9 SK color terms was tested. The choice of
 these terms was based on the findings of Experiment 1. Not all of them
 were basic, but all of them stood out as being prominent in the SK color
-system. The 9 terms used as prompts included: yankon (\enquote{grue}),
-joshin (\enquote{red}), panshin (\enquote{yellow}), joxo
-(\enquote{white), wiso (}black\enquote{), nai (}blue\enquote{), and
-barin poi (}greeny-yellow\enquote{). In addition, as Experiment 1
-revealed that two non-basic terms are widely used to refer to green and
-purple, two words were used to test comprehension of each of these two
-colors: pei/xo (}green\enquote{) and ami/pua (}purple``).
-
-Further, Experiment 1 showed that for some of these color terms, only
-one response was accurate, while for others, several responses were
-equally correct. For example, only one chip could be picked up as an
-instance of wiso. By contrast, four chips could be considered to be
-instances of yankon (blue, green, greeny-yellow, and, to a lesser
-extent, purple); two chips for joshin (red, and, to a lesser extent,
-purple); and two as well for pei/xo (green, and, to a lesser extent,
-green-yellow). Accuracy was coded based on the results derived from
-Experiment 1: if at least 15\% of participants in Experiment 1
-associated a chip with a particular label, we considered a trial to be
-correct if the child made the same pairing.
+system. The 9 terms used as prompts included: yankon
+(\enquote{green/blue}), joshin (\enquote{red}), panshin
+(\enquote{yellow}), joxo (\enquote{white), wiso (}black\enquote{), nai
+(}blue\enquote{), and barin poi (}greeny-yellow\enquote{). In addition,
+as Experiment 1 revealed that two non-basic terms are widely used to
+refer to green and purple, two words were used to test comprehension of
+each of these two colors: pei/xo (}green\enquote{) and ami/pua
+(}purple``).
 
 When the experimenter asked children to pick up a color that was
 instantiated by several chips, we followed the following procedure. The
@@ -378,9 +449,16 @@ pick up a new chip. The response would be registered and the chip be
 taken out of the table. The experimenter would then ask the same
 question again until a total of as many times as there were correct
 instances. Thus, for example, for yankon four chips would be elicited,
-while for joshin, two chips would be elicited.
+while for joshin, two chips would be elicited. Like the preceding
+production task, accuracy was scored based on responses given in Study
+1. If a child chose a particular chip, their choice was deemed accurate
+if at least 15\% of participants during Study 1 made the same chip-label
+pairing.
 
 \subsection{Results and Discussion}\label{results-and-discussion-1}
+
+\includegraphics{amazon_color_files/figure-latex/childfigure-1.pdf}
+\includegraphics{amazon_color_files/figure-latex/childfigure-2.pdf}
 
 \textbf{Production.} Children's production accuracy increased
 substantially across nearly all color chips in the age range that we
@@ -429,6 +507,30 @@ accuracy scores when we allowed different-language but corresponding
 responses (\emph{p} \textless{} 0.001) but no significant change when
 allowing for same-language but adjacent responses (\emph{p} = 0.454).
 
+\begin{verbatim}
+## # weights:  30 (20 variable)
+## initial  value 236.587373 
+## iter  10 value 120.155378
+## iter  20 value 113.858407
+## iter  30 value 113.838510
+## iter  40 value 113.836190
+## final  value 113.836165 
+## converged
+\end{verbatim}
+
+\begin{verbatim}
+## # weights:  10 (4 variable)
+## initial  value 236.587373 
+## iter  10 value 119.446075
+## final  value 119.333166 
+## converged
+## # weights:  15 (8 variable)
+## initial  value 236.587373 
+## iter  10 value 121.753001
+## final  value 118.436067 
+## converged
+\end{verbatim}
+
 \textbf{Comprehension.}
 
 \section{Experiment 3}\label{experiment-3}
@@ -437,6 +539,27 @@ Noting the level of bilingualism in Experiment 2, we designed Experient
 3 as its complement. In Experiment 3, we tested children entirely in
 Spanish with a set of chips representing prototypical colors for the
 Spanish color system.
+
+\begin{table}[tbp]
+\begin{center}
+\begin{threeparttable}
+\caption{\label{tab:unnamed-chunk-4}}
+\begin{tabular}{llll}
+\toprule
+Age Group & \multicolumn{1}{c}{Age (SD)} & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Male}\\
+\midrule
+5-years-old & 5.2 (0.35) & 2 (4\%) & 1 (50\%)\\
+6-years-old & 6.2 (0.21) & 2 (4\%) & 0 (0\%)\\
+7-years-old & 7.3 (0.33) & 11 (24\%) & 4 (36\%)\\
+8-years-old & 8.4 (0.3) & 9 (20\%) & 1 (11\%)\\
+9-years-old & 9.4 (0.27) & 11 (24\%) & 4 (36\%)\\
+10-years-old & 10.3 (0.35) & 8 (17\%) & 3 (38\%)\\
+11-years-old & 11.2 (0.32) & 3 (7\%) & 3 (100\%)\\
+\bottomrule
+\end{tabular}
+\end{threeparttable}
+\end{center}
+\end{table}
 
 \subsubsection{Participants}\label{participants-2}
 
@@ -561,7 +684,32 @@ succeed during Spanish-language Experiment 3. This suggests that
 children may rely on either strategy to communicate a color label to the
 best of their knowledge set.
 
+\begin{verbatim}
+## # weights:  30 (20 variable)
+## initial  value 202.789177 
+## iter  10 value 72.998387
+## iter  20 value 72.094921
+## iter  30 value 72.071216
+## iter  40 value 72.069217
+## final  value 72.069182 
+## converged
+\end{verbatim}
+
+\begin{verbatim}
+## # weights:  10 (4 variable)
+## initial  value 202.789177 
+## iter  10 value 82.649326
+## final  value 82.642259 
+## converged
+\end{verbatim}
+
 \textbf{Comparisons between Studies 2 \& 3. - Unfinished plots}
+
+\begin{figure}
+\centering
+\includegraphics{amazon_color_files/figure-latex/crossstudy_accuracystrats-1.pdf}
+\caption{}
+\end{figure}
 
 \section{General Discussion}\label{general-discussion}
 
@@ -581,6 +729,10 @@ Kay, P., Berlin, B., Maffin, L., Merrifield, W. R., \& Cook, R. (2009).
 Language; Information.
 
 \endgroup
+
+
+
+
 
 
 \end{document}

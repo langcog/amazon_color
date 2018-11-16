@@ -52,7 +52,7 @@ output            : papaja::apa6_pdf
 
 ```{r load_packages, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE, cache = TRUE, warning = FALSE, error = FALSE, 
-                      message = FALSE, sanitize = TRUE, include = FALSE)
+                      message = FALSE, sanitize = TRUE)
 library("papaja")
 
 library(tidyverse)
@@ -275,7 +275,7 @@ adult_figurelegends <- plot_grid(
   get_legend(study1_consensus_plot),
   NULL,
   get_legend(study1_spanish_plot),
-  labels = c("A and B", "", "C"),
+  # labels = c("A and B", "", "C"),
   ncol = 3) + 
   theme(plot.margin = unit(c(0.5,0.5,0.5,1), "in")) 
 
@@ -452,14 +452,16 @@ study2_agesex <- study2_data %>%
          `N` = paste0(num_total, " (", freq_total, "%)"),
          `Male` = paste0(num_boys, " (", freq_boys, "%)")) %>%
   select(`Age Group`, `N`, `Male`)
-
-study2_table1 <- apa_table(study2_agesex, caption = "Demographics of participants in Experiment 2.")
-
 ```
+
 
 ## Methods
 
 ### Participants
+
+```{r results='asis'}
+apa_table(study2_agesex, caption = "Demographics of participants in Experiment 2.")
+```
 
 The Pontificia Universidad Católica del Perú’s Institutional Review Board approved our study protocol. We recruited `r study2_participants$num_total` `r study2_participants$min_age`- to `r study2_participants$max_age`-year-old children (`r study2_participants$num_boys` boys). Table 1 shows the distribution of ages and genders. `r tools::toTitleCase(as.character(as.english(with(study2_participants, num_benajema + num_bilingue))))` children were recruited from neighborhoods in Yarinacocha, in the Pucallpa region of Peru, as well as in `r study2_participants$num_ccnn` children from Bawanisho, a native community settled along the Ucayali River, south of Pucallpa. Children were recruited either through their parents or through local schools. When recruited at school, consent for participation was collected from both the teachers and the parents; otherwise, only consent from the parents was collected.  
 
@@ -802,8 +804,10 @@ study3_agesex <- study3_data %>%
          `N` = paste0(num_total, " (", freq_total, "%)"),
          `Male` = paste0(num_boys, " (", freq_boys, "%)")) %>%
   select(`Age Group`, `Age (SD)`, `N`, `Male`)
+```
 
-study3_table1 <- datatable(study3_agesex, rownames = FALSE)
+```{r, results = 'asis'}
+apa_table(study3_agesex)
 
 ```
 
