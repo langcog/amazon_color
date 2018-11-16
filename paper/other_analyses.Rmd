@@ -1,0 +1,345 @@
+```{r study2_termnature}
+
+study2_allresponsetypes <- study2_data %>%
+  filter(response_order %in% c("first", "only", "last")) %>%
+  separate_rows(nature, sep = "-") %>%
+  mutate(nature = trimws(ifelse(is.na(nature), "Other", nature))) %>%
+  group_by(subj, age, response_order, nature) %>%
+  summarise(n = n()) %>%
+  group_by(subj, age, response_order) %>%
+  mutate(prop = n/sum(n)) %>% ungroup() %>%
+  complete(nesting(subj, age, response_order), nature, fill = list(n = 0, prop = 0.0))
+
+study2_allresponsetypes_whole <- study2_allresponsetypes %>%
+  select(-n) %>%
+  spread(nature, prop)
+
+study2_allresponsetypes_whole$age.years.c <- scale(study2_allresponsetypes_whole$age, scale = FALSE)[,1]
+study2_allresponsetypes_whole$Y <- as.matrix(study2_allresponsetypes_whole[, c("BCT", "AHCT", "NBCT", "Other", "SLT")])
+
+
+study2_allresponsetypes_model <- multinom(Y ~ age.years.c + response_order,
+                                          data=study2_allresponsetypes_whole)
+
+
+study2_responsedev <- deviance(multinom(Y~1, data=study2_allresponsetypes_whole)) - deviance(multinom(Y ~ age.years.c , data=study2_allresponsetypes_whole))
+
+study2_allresponseloess <- bind_rows(lapply(
+  study2_allresponsetypes %>% split(list(.$response_order, .$nature)),
+  function(x){
+    if (nrow(x) > 0) {
+      as_data_frame(predict(loess(formula = prop ~ age, data = x, span = 0.75),
+                            newdata = predicted_range, se = TRUE)[c("fit", "se.fit")]) %>%
+        mutate(predicted_age = predicted_range,
+               nature = case_when(
+                 first(x$nature) == "AHCT" ~ "Ad-hoc color term",
+                 first(x$nature) == "BCT" ~ "Basic color term",
+                 first(x$nature) == "NBCT" ~ "Other color term",
+                 first(x$nature) == "SLT" ~ "Saturation/lightness term",
+                 TRUE ~ as.character(first(x$nature))),
+               response_order = first(x$response_order))
+    }}))
+
+# study2_allresponseloess_plot <- ggplot(study2_allresponseloess,
+#   aes(x = predicted_age, y = fit, color = nature, group = nature)) +
+#   facet_grid(. ~ response_order) +
+#   geom_line(size = 1) + geom_point(size = 4) +
+#   geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = nature, fill = nature), alpha = .2, colour=NA) +
+#   scale_color_viridis(discrete=TRUE, option = "D") +
+#   scale_fill_viridis(discrete=TRUE, option = "D")
+
+
+```
+
+
+
+
+
+
+```{r study2_FLTypes, include = FALSE}
+
+study2_FLTypes <- study2_data %>%
+  filter(response_order %in% c("first", "last")) %>%
+  select(subj, age, prompt, response_order, nature) %>%
+  spread(response_order, nature) %>%
+  mutate(first_BCT = ifelse(first == "BCT", 1, 0),
+         first_AHCT = ifelse(first == "AHCT", 1, 0),
+         last_BCT = ifelse(last == "BCT", 1, 0),
+         last_AHCT = ifelse(last == "AHCT", 1, 0)) %>%
+  group_by(subj, age) %>%
+  summarise_at(vars(first_BCT:last_AHCT), mean, na.rm = TRUE)
+
+# study2_FLTypes_plot <- ggplot(study2_FLTypes %>% 
+#        gather(key = "measure", value = "prop", first_BCT:last_AHCT),
+#        aes(y = prop, x = age, colour = measure, group = measure)) +
+#   geom_smooth(method = "loess")
+
+```
+
+
+
+
+
+study3_accuracy_plot <- ggplot(study3_accuracyloess,
+                               aes(x = predicted_age, y = fit, color = measure, group = measure)) +
+  geom_line(size = 1) + geom_point(size = 4) +
+  geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = measure, fill = measure), alpha = .2, colour=NA) +
+  scale_color_viridis(discrete=TRUE, option = "D") +
+  scale_fill_viridis(discrete=TRUE, option = "D")
+
+study3_EucDist <- study3_data %>%
+  group_by(subj, age, gender) %>%
+  filter(response_order %in% c("first", "only")) %>%
+  mutate(wrong_euc_dist = ifelse(correct == 1, NA, wrong_euc_dist)) %>%
+  filter(!is.na(wrong_euc_dist))
+
+study3_EucDist$age.years.c <- scale(study3_EucDist$age, scale = FALSE)[,1]
+
+# study3_EucDist_plot <- ggplot(study3_EucDist, aes(y = wrong_euc_dist, x = age)) +
+#   geom_point(aes(color = spanish, group = spanish)) +
+#   geom_smooth(method = "loess") +
+#   scale_colour_manual(values = graph_colors)
+
+study3_EucDist_model <- lme4::lmer(
+  wrong_euc_dist ~ age.years.c + (1|subj),
+  data=study3_EucDist, REML=FALSE)
+
+study3_EucDist_pchisq <- pchisq(deviance(lm(wrong_euc_dist ~ 1, data=study3_EucDist)) - deviance(study3_EucDist_model), 78, lower.tail=FALSE)
+
+
+
+
+```{r}
+study2_EucDist <- study2_data %>%
+  group_by(subj, age, gender) %>%
+  filter(response_order %in% c("first", "only")) %>%
+  mutate(wrong_euc_dist = ifelse(correct == 1, NA, wrong_euc_dist)) %>%
+  filter(!is.na(wrong_euc_dist))
+
+study2_EucDist$age.years.c <- scale(study2_EucDist$age, scale = FALSE)[,1]
+
+# study2_EucDist_plot <- ggplot(study2_EucDist, aes(y = wrong_euc_dist, x = age)) +
+#   geom_point(aes(color = spanish, group = spanish)) +
+#   geom_smooth(method = "loess") +
+#   scale_colour_manual(values = graph_colors)
+
+study2_EucDist_model <- lme4::lmer(
+  wrong_euc_dist ~ age.years.c + (1|subj),
+  data=study2_EucDist, REML=FALSE)
+
+study2_EucDist_pchisq <- pchisq(deviance(lm(wrong_euc_dist ~ 1, data=study2_EucDist)) - deviance(study2_EucDist_model), 78, lower.tail=FALSE)
+```
+
+
+
+
+```{r study3_FLTypes, include = FALSE}
+
+study3_FLTypes <- study3_data %>% ungroup() %>%
+  filter(response_order %in% c("first", "last")) %>%
+  select(subj, age, prompt, response_order, nature) %>%
+  spread(response_order, nature) %>%
+  mutate(first_BCT = ifelse(first == "BCT", 1, 0),
+         first_AHCT = ifelse(first == "AHCT", 1, 0),
+         last_BCT = ifelse(last == "BCT", 1, 0),
+         last_AHCT = ifelse(last == "AHCT", 1, 0)) %>%
+  group_by(subj, age) %>%
+  summarise_at(vars(first_BCT:last_AHCT), mean, na.rm = TRUE)
+
+ggplot(study3_FLTypes %>% gather(key = "measure", value = "prop", first_BCT:last_AHCT),
+       aes(y = prop, x = age, colour = measure, group = measure)) +
+  geom_smooth(method = "loess")
+
+
+study3_FLTypes$age.years.c <- scale(study3_FLTypes$age, scale = FALSE)[,1]
+study3_FLTypes$Y <- as.matrix(study3_FLTypes[, c("first_BCT", "first_AHCT", "last_BCT", "last_AHCT")])
+
+study3_allresponsetypes_model <- multinom(Y ~ age.years.c + response_order,
+                                          data=study3_allresponsetypes_whole)
+
+study3_allresponsetypes_dev <- deviance(multinom(Y~1, data=study3_allresponsetypes_whole)) - deviance(study3_allresponsetypes_model)
+
+pchisq(study3_allresponsetypes_dev, 39+39-2, lower.tail = T)
+
+```
+
+
+
+```{r crossstudy_accuracystrats}
+bind_rows(
+  list("Experiment 2" = study2_allresponseloess,
+       "Experiment 3" = study3_allresponseloess), .id = "study") %>%
+  mutate(response_order = tools::toTitleCase(as.character(response_order))) %>%
+  ggplot(aes(x = predicted_age, y = fit, color = nature, group = nature)) +
+  facet_grid(response_order ~ study) +
+  geom_line() +
+  geom_point() +
+  geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit,
+                  group = nature, fill = nature), alpha = .2, colour=NA) +
+  labs(x = "Age", y = "Proportion of Responses", fill = "Nature of Response", color = "Nature of Response") +
+  scale_color_viridis(discrete=TRUE, option = "D") +
+  scale_fill_viridis(discrete=TRUE, option = "D") +
+  coord_cartesian(ylim = c(0,1))
+```
+
+
+
+
+**Comparisons between Studies 2 & 3. - Unfinished plots**
+  
+  ```{r crossstudy_adhoc, include = FALSE}
+
+studies2n3_data <- feather::read_feather("../intermediates/processed_data.csv") %>%
+  filter(task == "Production") %>%
+  mutate(language = case_when(
+    language == "Shipibo" ~ "Experiment 2",
+    language == "Spanish" ~ "Experiment 3"
+  ),
+  spanish_response = ifelse(response %in% spanish_terms, 1, 0),
+  shipibo_response = ifelse(response %in% shipibo_terms, 1, 0)) %>%
+  rename(study = language)
+
+studies2n3_firstresponse_whole <- studies2n3_data %>% ungroup() %>%
+  filter(response_order %in% c("first", "only")) %>%
+  select(study, subj, age, prompt, nature, spanish_response, shipibo_response) %>%
+  left_join(mutate(study1_entropy, `Chip ID` = as.character(`Chip ID`)), 
+            by = c("prompt" = "Chip ID"))
+
+studies2n3_firstresponse_whole$age.years.c <- scale(studies2n3_firstresponse_whole$age, scale = FALSE)[,1]
+studies2n3_firstresponse_whole$nature <- relevel(studies2n3_firstresponse_whole$nature, ref = "BCT")
+
+study2_naturebyentropy_model <- multinom(nature ~ age.years.c + Entropy + (1:subj),
+                                         data=filter(studies2n3_firstresponse_whole, study == "Experiment 2"))
+study3_naturebyentropy_model <- multinom(nature ~ age.years.c + Entropy + (1:subj),
+                                         data=filter(studies2n3_firstresponse_whole, study == "Experiment 3"))
+
+studies2n3_naturebyentropy_plot <- ggplot(studies2n3_firstresponse_whole %>%
+                                            mutate(BCT = as.numeric(grepl("BCT", nature)),
+                                                   AHCT = as.numeric(grepl("AHCT", nature))) %>%
+                                            group_by(study, prompt, Entropy) %>%
+                                            mutate_at(vars(BCT, AHCT), funs(ifelse(is.na(.), 0, .))) %>%
+                                            summarise_at(vars(BCT, AHCT), mean, na.rm = TRUE) %>%
+                                            gather(key = "nature", value = "prop", BCT, AHCT) %>%
+                                            mutate(nature = case_when(
+                                              nature == "BCT" ~ "Basic Color Term",
+                                              nature == "AHCT" ~ "Ad-hoc color term"),
+                                              nature = relevel(factor(nature), ref = "Basic Color Term")), 
+                                          aes(x = Entropy, y = prop, group = nature, colour = nature, fill = nature)) +
+  facet_grid(. ~ study) +
+  geom_smooth(method = "lm") +
+  coord_cartesian(ylim = c(0,1)) +
+  labs(x = "Labelling Entropy of Chip", y = "Proportion of Responses", color = "Nature of Response", fill = "Nature of Response") +
+  scale_color_viridis(discrete=TRUE, option = "D") +
+  scale_fill_viridis(discrete=TRUE, option = "D") 
+
+studies2n3_firstresponse <- studies2n3_firstresponse_whole %>%
+  group_by(study, subj, age, nature, spanish_response, shipibo_response) %>%
+  summarise(n = n()) %>% 
+  group_by(study, subj, age) %>%
+  mutate(prop = n/sum(n),
+         response_language = case_when(
+           spanish_response == 1 ~ "spanish",
+           shipibo_response == 1 ~ "shipibo",
+           TRUE ~ NA_character_
+         )) %>% ungroup()
+
+
+studies2n3_firstresploess <- bind_rows(lapply(
+  studies2n3_firstresponse %>% 
+    filter(nature %in% c("AHCT", "BCT")) %>%
+    split(list(.$study, .$nature, .$response_language)),
+  function(x){
+    if (nrow(x) > 6) {
+      as_data_frame(predict(loess(formula = prop ~ age, data = x, span = 0.75), 
+                            newdata = predicted_range, se = TRUE)[c("fit", "se.fit")]) %>%
+        mutate(predicted_age = predicted_range,
+               response_language = tools::toTitleCase(first(x$response_language)),
+               study = first(x$study),
+               nature = case_when(
+                 first(x$nature) == "AHCT" ~ "Ad-hoc color term",
+                 first(x$nature) == "BCT" ~ "Basic color term",
+                 TRUE ~ "Other"))
+    }}))
+
+studies2n3_firstresploess_plot <- ggplot(studies2n3_firstresploess,
+                                         aes(x = predicted_age, y = fit, color = response_language, group = response_language)) + 
+  facet_grid(nature ~ study) +
+  geom_line(size = 1) + geom_point(size = 4) +
+  geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = response_language, fill = response_language), alpha = .2, colour=NA) +
+  scale_color_viridis(discrete=TRUE, option = "D") +
+  scale_fill_viridis(discrete=TRUE, option = "D") +
+  labs(x = "Age", y = "Proportion of Responses", colour = "Language of Response", fill = "Language of Response") +
+  coord_cartesian(ylim = c(0,1))
+print(studies2n3_naturebyentropy_plot)
+
+print(studies2n3_firstresploess_plot)
+
+```
+
+
+
+
+
+```{r study3_termnature}
+
+study3_allresponsetypes <- study3_data %>%
+  filter(response_order %in% c("first", "only", "last")) %>%
+  separate_rows(nature, sep = "-") %>%
+  mutate(nature = trimws(ifelse(is.na(nature), "Other", nature))) %>%
+  group_by(subj, age, response_order, nature) %>%
+  summarise(n = n()) %>%
+  group_by(subj, age, response_order) %>%
+  mutate(prop = n/sum(n)) %>% ungroup() %>%
+  complete(nesting(subj, age, response_order), nature, fill = list(n = 0, prop = 0.0))
+
+
+study3_allresponsetypes_whole <- study3_allresponsetypes %>%
+  select(-n) %>%
+  spread(nature, prop)
+
+study3_allresponsetypes_whole$age.years.c <- scale(study3_allresponsetypes_whole$age, scale = FALSE)[,1]
+study3_allresponsetypes_whole$Y <- as.matrix(study3_allresponsetypes_whole[, c("BCT", "AHCT", "NBCT", "Other", "SLT")])
+
+
+study3_allresponseloess <- bind_rows(lapply(
+  study3_allresponsetypes %>% split(list(.$response_order, .$nature)),
+  function(x){
+    if (nrow(x) > 0) {
+      as_data_frame(predict(loess(formula = prop ~ age, data = x, span = 0.75), 
+                            newdata = predicted_range, se = TRUE)[c("fit", "se.fit")]) %>%
+        mutate(predicted_age = predicted_range, 
+               nature = case_when(
+                 first(x$nature) == "AHCT" ~ "Ad-hoc color term",
+                 first(x$nature) == "BCT" ~ "Basic color term",
+                 first(x$nature) == "NBCT" ~ "Other color term",
+                 first(x$nature) == "SLT" ~ "Saturation/lightness term",
+                 TRUE ~ as.character(first(x$nature))),
+               response_order = first(x$response_order))
+    }}))
+```
+
+study2_accuracyloess <- bind_cols(lapply(
+  study2_adjacentorswitch %>% 
+    split(.$measure),
+  function(x){
+    as_data_frame(predict(loess(formula = score ~ age, data = x, span = 0.75), 
+                          newdata = predicted_range, se = TRUE)[c("fit", "se.fit")]) %>%
+      rename_all(funs(paste0(first(x$measure),"_",.)))
+  })) %>%
+  mutate(predicted_age = predicted_range) %>%
+  gather(key = "measure", value = "score", starts_with("correct")) %>%
+  separate("measure", into = c("measure", "stat"), sep = "_") %>%
+  spread(stat, score)
+
+study3_accuracyloess <- bind_cols(lapply(
+  study3_adjacentorswitch %>% split(.$measure),
+  function(x){
+    as_data_frame(predict(loess(formula = score ~ age, data = x, span = 0.75), 
+                          newdata = predicted_range, se = TRUE)[c("fit", "se.fit")]) %>%
+      rename_all(funs(paste0(first(x$measure),"_",.)))
+  })) %>%
+  mutate(predicted_age = predicted_range) %>%
+  gather(key = "measure", value = "score", starts_with("correct")) %>%
+  separate("measure", into = c("measure", "stat"), sep = "_") %>%
+  spread(stat, score)
+
