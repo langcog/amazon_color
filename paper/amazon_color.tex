@@ -1,5 +1,5 @@
-\documentclass[floatsintext,man]{apa6}
-
+\documentclass[,man,floatsintext]{apa6}
+\usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
@@ -9,138 +9,110 @@
 \else % if luatex or xelatex
   \ifxetex
     \usepackage{mathspec}
-    \usepackage{xltxtra,xunicode}
   \else
     \usepackage{fontspec}
   \fi
-  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
-  \newcommand{\euro}{€}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
-\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={The Development of Color Terms in Shipibo-Konibo Children},
+            pdfauthor={Danielle Kellier, Martin Fortier, Maria Fernández Flecha, \& Michael C. Frank},
+            pdfkeywords={keywords},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
 
-% Table formatting
-\usepackage{longtable, booktabs}
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+
+  \title{The Development of Color Terms in Shipibo-Konibo Children}
+    \author{Danielle Kellier\emph{\textsuperscript{1}, Martin
+Fortier}\textsuperscript{2}, Maria Fernández Flecha\textsuperscript{3},
+\& Michael C. Frank\textsuperscript{4}}
+    \date{}
+  
+\shorttitle{Color Terms in Shipibo-Konibo Children}
+\affiliation{
+\vspace{0.5cm}
+\textsuperscript{1} University of Pennsylvania\\\textsuperscript{2} PSL Research University\\\textsuperscript{3} Pontificia Universidad Católica del Perú\\\textsuperscript{4} Stanford University}
+\keywords{keywords\newline\indent Word count: X}
+\usepackage{csquotes}
+\usepackage{upgreek}
+\captionsetup{font=singlespacing,justification=justified}
+
+\usepackage{longtable}
 \usepackage{lscape}
-% \usepackage[counterclockwise]{rotating}   % Landscape page setup for large tables
-\usepackage{multirow}		% Table styling
-\usepackage{tabularx}		% Control Column width
-\usepackage[flushleft]{threeparttable}	% Allows for three part tables with a specified notes section
-\usepackage{threeparttablex}            % Lets threeparttable work with longtable
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage[flushleft]{threeparttable}
+\usepackage{threeparttablex}
 
-% Create new environments so endfloat can handle them
-% \newenvironment{ltable}
-%   {\begin{landscape}\begin{center}\begin{threeparttable}}
-%   {\end{threeparttable}\end{center}\end{landscape}}
+\newenvironment{lltable}{\begin{landscape}\begin{center}\begin{ThreePartTable}}{\end{ThreePartTable}\end{center}\end{landscape}}
 
-\newenvironment{lltable}
-  {\begin{landscape}\begin{center}\begin{ThreePartTable}}
-  {\end{ThreePartTable}\end{center}\end{landscape}}
-
-
-
-
-% The following enables adjusting longtable caption width to table width
-% Solution found at http://golatex.de/longtable-mit-caption-so-breit-wie-die-tabelle-t15767.html
 \makeatletter
 \newcommand\LastLTentrywidth{1em}
 \newlength\longtablewidth
 \setlength{\longtablewidth}{1in}
-\newcommand\getlongtablewidth{%
- \begingroup
-  \ifcsname LT@\roman{LT@tables}\endcsname
-  \global\longtablewidth=0pt
-  \renewcommand\LT@entry[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}%
-  \@nameuse{LT@\roman{LT@tables}}%
-  \fi
-\endgroup}
+\newcommand{\getlongtablewidth}{\begingroup \ifcsname LT@\roman{LT@tables}\endcsname \global\longtablewidth=0pt \renewcommand{\LT@entry}[2]{\global\advance\longtablewidth by ##2\relax\gdef\LastLTentrywidth{##2}}\@nameuse{LT@\roman{LT@tables}} \fi \endgroup}
 
 
-\ifxetex
-  \usepackage[setpagesize=false, % page size defined by xetex
-              unicode=false, % unicode breaks when used with xetex
-              xetex]{hyperref}
-\else
-  \usepackage[unicode=true]{hyperref}
-\fi
-\hypersetup{breaklinks=true,
-            pdfauthor={},
-            pdftitle={The Development of Color Terms in Shipibo-Konibo Children},
-            colorlinks=true,
-            citecolor=blue,
-            urlcolor=blue,
-            linkcolor=black,
-            pdfborder={0 0 0}}
-\urlstyle{same}  % don't use monospace font for urls
+\usepackage{lineno}
 
-\setlength{\parindent}{0pt}
-%\setlength{\parskip}{0pt plus 0pt minus 0pt}
+\linenumbers
 
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\authornote{* these authors contributed equally.
+
+MCF was supported by a Jacobs Foundation Fellowship. We are especially
+grateful to Paul Kay for assistance throughout the study.
+
+Correspondence concerning this article should be addressed to Martin
+Fortier*, Postal address. E-mail:
+\href{mailto:my@email.com}{\nolinkurl{my@email.com}}}
+
+\abstract{
+Enter abstract here. Each new line herein must be indented, like this
+line.
 
 
-% Manuscript styling
-\captionsetup{font=singlespacing,justification=justified}
-\usepackage{csquotes}
-\usepackage{upgreek}
-
- % Line numbering
-  \usepackage{lineno}
-  \linenumbers
-
-
-\usepackage{tikz} % Variable definition to generate author note
-
-% fix for \tightlist problem in pandoc 1.14
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-
-% Essential manuscript parts
-  \title{The Development of Color Terms in Shipibo-Konibo Children}
-
-  \shorttitle{Color Terms in Shipibo-Konibo Children}
-
-
-  \author{Danielle Kellier*\textsuperscript{1}, Martin Fortier*\textsuperscript{2}, Maria Fernández Flecha\textsuperscript{3}, \& Michael C. Frank\textsuperscript{4}}
-
-  % \def\affdep{{"", "", "", ""}}%
-  % \def\affcity{{"", "", "", ""}}%
-
-  \affiliation{
-    \vspace{0.5cm}
-          \textsuperscript{1} University of Pennsylvania\\
-          \textsuperscript{2} PSL Research University\\
-          \textsuperscript{2} Pontificia Universidad Católica del Perú\\
-          \textsuperscript{2} Stanford University  }
-
-  \authornote{
-    \begin{itemize}
-    \tightlist
-    \item
-      these authors contributed equally.
-    \end{itemize}
-    
-    MCF was supported by a Jacobs Foundation Fellowship. We are especially
-    grateful to Paul Kay for assistance throughout the study.
-    
-    Correspondence concerning this article should be addressed to Martin
-    Fortier*, Postal address. E-mail:
-    \href{mailto:my@email.com}{\nolinkurl{my@email.com}}
-  }
-
-
-  \abstract{Enter abstract here. Each new line herein must be indented, like this
-line.}
-  \keywords{keywords \\
-
-    \indent Word count: X
-  }
-
-
-
-
+}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[section]
@@ -157,12 +129,7 @@ line.}
 \newtheorem*{remark}{Remark}
 \newtheorem*{solution}{Solution}
 \begin{document}
-
 \maketitle
-
-\setcounter{secnumdepth}{0}
-
-
 
 TO BE PASTED FROM GOOGLE DOC
 
@@ -218,13 +185,14 @@ In order to make sure that the natural light intensity would not vary
 much between participants, the experiment took place indoors, near a
 window or a door. The study was conducted entirely in the SK language.
 
-Our procedure was similar to that used in the WCS (see {\textbf{???}}).
-Participants were seated in front of the experimenter and introduced to
-the whole procedure and the general goal of the study. Then the primary
-procedure involved presenting participants with a color chip and asking
-them: \enquote{What is the color of this chip?}\footnote{The SK word for
-  color that we used was the Spanish word \emph{color}. In general, the
-  SK language includes some castillanisms that are well-known by all
+Our procedure was similar to that used in the WCS (see Kay, Berlin,
+Maffin, Merrifield, \& Cook, 2009, pp. 585--591). Participants were
+seated in front of the experimenter and introduced to the whole
+procedure and the general goal of the study. Then the primary procedure
+involved presenting participants with a color chip and asking them:
+\enquote{What is the color of this chip?}\footnote{The SK word for color
+  that we used was the Spanish word \emph{color}. In general, the SK
+  language includes some castillanisms that are well-known by all
   speakers; color is one of them.} and recording their response or
 responses.
 
@@ -295,6 +263,10 @@ conducted entirely in the Shipibo-Konibo language. While we can only
 speculate as to this participant's motivations, it seems likely that
 they were more familiar with the Spanish vocabulary or viewed it as more
 precise.
+
+\hypertarget{htmlwidget-eaef49d4a484bc22a8b4}{}
+
+--\textgreater{}
 
 Participants on average described 69\% of chips using a SK-language
 basic color term like \enquote{yankon} (\emph{SD} = 22\%). Some
@@ -420,8 +392,8 @@ one for the accuracy of production in either language. Both of these
 predicted accuracy as a function of the child's age, and included random
 intercepts for color chip and for participant, as well as a random slope
 of age by color chip. Age was a significant predictor in both models:
-\(\beta = 0.42\), SE = 0.16, \(p = 0.01\) and \(\beta = 0.87\), SE =
-0.17, \(p < .0001\).
+\(\beta = 1.05\), SE = 0.28, \(p = 0\) and \(\beta = 1.11\), SE = 0.23,
+\(p < .0001\).
 
 Over a quarter (28\%) of all responses were given in Spanish, and the
 distribution of Spanish responses was non-random. Children tended to
@@ -541,6 +513,19 @@ yankon, joshin and pei/xo.
 
 \subsection{Results and Discussion.}\label{results-and-discussion.}
 
+\textbf{Production} Unlike Study 2, age did not have a significant
+relationship with children's production accuracy. The right panels on
+Figure 2 show the accuracy of children's first production, both in SK
+(solid line), in either language (dashed line), or including adjacent
+color terms (dotted line). To quantify these developmental trends, we
+fit two generalized linear mixed effects models, one for the accuracy of
+SK production and one for the accuracy of production in either language.
+Both of these predicted accuracy as a function of the child's age, and
+included random intercepts for color chip and for participant, as well
+as a random slope of age by color chip. Age failed to gain significance
+as a predictor in either models: \(\beta = 0.32\), SE = 0.20,
+\(p = 0.11\) and \(\beta = 0.43\), SE = 0.16, \(p < .0001\).
+
 Similar to Experiment 2, over a quarter of all responses (\emph{M} =
 28\%, \emph{SD} = 18\%) were given in another language (Shipibo in this
 case). There was significant variation in language-switching with some
@@ -590,12 +575,12 @@ TO BE PASTED FROM GOOGLE DOC
 \setlength{\parindent}{-0.5in} \setlength{\leftskip}{0.5in}
 
 \hypertarget{refs}{}
+\hypertarget{ref-berlin2009}{}
+Kay, P., Berlin, B., Maffin, L., Merrifield, W. R., \& Cook, R. (2009).
+\emph{The world color survey}. Stanford, CA: Center for the Study of
+Language; Information.
 
 \endgroup
-
-
-
-
 
 
 \end{document}

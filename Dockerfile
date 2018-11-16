@@ -22,8 +22,11 @@ RUN apt-get update -qq \
     english \
     ggthemes \
     ggrepel \
+    here \
     lme4 \
     nnet \
     plotly \
+    viridis \
 && installGithub.r \
-    langcog/wordbankr@fec28549941a32368f8e75bdd204c2f43f1d33ad
+    langcog/wordbankr@fec28549941a32368f8e75bdd204c2f43f1d33ad \
+    crsh/papaja@c55ba73cd4490083b0fb1a45df63c48bb5ba3eeb

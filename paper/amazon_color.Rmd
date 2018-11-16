@@ -9,7 +9,7 @@ author:
     affiliation   : "2"
     corresponding : yes    # Define only one corresponding author
     address       : "Postal address"
-    email         : "my@email.com"
+    email         : "martin.fortier@ens.fr"
   - name          : "Maria Fernández Flecha"
     affiliation   : "3"
   - name          : "Michael C. Frank"
@@ -20,13 +20,13 @@ affiliation:
     institution   : "University of Pennsylvania"
   - id            : "2"
     institution   : "PSL Research University"
-  - id            : "2"
+  - id            : "3"
     institution   : "Pontificia Universidad Católica del Perú"
-  - id            : "2"
+  - id            : "4"
     institution   : "Stanford University"
 
 author_note: |
-  * these authors contributed equally. 
+  \* these authors contributed equally. 
   
   MCF was supported by a Jacobs Foundation Fellowship. We are especially grateful to Paul Kay for assistance throughout the study.
 
@@ -45,6 +45,7 @@ footnotelist      : no
 lineno            : yes
 mask              : no
 
+always_allow_html : yes
 class             : "man"
 output            : papaja::apa6_pdf
 ---
@@ -90,7 +91,9 @@ In our first experiment, our goal was to replicate and update the characterizati
 study1_participants <- read_csv(
   here("data/Current_Data/naming_colors_participants.csv")) %>%
   mutate(age = as.numeric(as.character(edad)),
-         `edad aprendizaje del espanol` = as.numeric(as.character(`edad aprendizaje del espanol`))) %>%
+         `edad aprendizaje del espanol` = as.numeric(as.character(`edad aprendizaje del espanol`)))
+
+study1_agespanish_stats <- study1_participants %>%
   summarise(mean_age = round(mean(age, na.rm = T), 1),
             median_age = round(median(age, na.rm = T), 1),
             sd_age = round(sd(age, na.rm = T), 1),
@@ -106,8 +109,7 @@ study1_participants <- read_csv(
             num_men = sum(género == 'masculino'),
             num_total = n())
 
-study1_occupations <- read_csv(
-  here("data/Current_Data/naming_colors_participants.csv")) %>%
+study1_occupations <- study1_participants %>%
   group_by(género, ocupación) %>%
   summarise (n = n()) %>%
   group_by(género) %>%
@@ -115,17 +117,19 @@ study1_occupations <- read_csv(
   ungroup() %>%
   mutate(freq_total = 100*n / sum(n))
 
+study1_agespanish_test <- cor.test(~ `edad aprendizaje del espanol` + age, data = study1_participants)
+
 ```
 
 ## Methods 
 
 ### Participants
 
-We recruited `r study1_participants$num_total` adult participants (`r study1_participants$num_men` men). Most of participants were from SK communities of the Middle Ucayali region (from Yarinacocha, San Francisco, and Nueva Betania), but some of them were from communities of the Lower (Paoyhan) and Upper (Puerto Belen) Ucayali. In Yarinacocha (a small town located in the vicinity of Pucallpa), participants were recruited in Bena Jema, a neighborhood where most of the inhabitants are SK. All the other places where participants were recruited were native community villages exclusively inhabited by SK people. Overall, the sample included both somewhat urbanized SK (Yarinacocha and San Francisco) as well as SK individuals who were still used to more traditional activities and regular contact with the surrounding rainforest (Nueva Betania, Paoyhan, and Puerto Belen).
+We recruited `r study1_agespanish_stats$num_total` adult participants (`r study1_agespanish_stats$num_men` men). Most of participants were from SK communities of the Middle Ucayali region (from Yarinacocha, San Francisco, and Nueva Betania), but some of them were from communities of the Lower (Paoyhan) and Upper (Puerto Belen) Ucayali. In Yarinacocha (a small town located in the vicinity of Pucallpa), participants were recruited in Bena Jema, a neighborhood where most of the inhabitants are SK. All the other places where participants were recruited were native community villages exclusively inhabited by SK people. Overall, the sample included both somewhat urbanized SK (Yarinacocha and San Francisco) as well as SK individuals who were still used to more traditional activities and regular contact with the surrounding rainforest (Nueva Betania, Paoyhan, and Puerto Belen).
 
-The median self-reported age for participants was `r study1_participants$median_age` years with a range between `r study1_participants$min_age` to `r study1_participants$max_age` years of age (SD = `r study1_participants$sd_age`yo). Regarding occupations, `r round(filter(study1_occupations, género == 'femenino' & ocupación == 'ama de casa')$freq_gender)`% of the women were homemakers (`r round(filter(study1_occupations, género == 'femenino' & ocupación == 'ama de casa')$freq_total)`% overall) and another `r round(filter(study1_occupations, género == 'femenino' & ocupación == 'artesana')$freq_gender)`% were artisans (`r round(filter(study1_occupations, género == 'femenino' & ocupación == 'artesana')$freq_total)`%). `tools::toTitleCase(as.character(as.english(filter(study1_occupations, género == 'masculino' & ocupación == 'agricultor')$n)))` of the `r summarize(filter(study1_occupations, género == 'masculino'), n = sum(n))$n` men were horticulturalists (`r round(filter(study1_occupations, género == 'masculino' & ocupación == 'agricultor')$freq_gender)`%, `r round(filter(study1_occupations, género == 'masculino' & ocupación == 'agricultor')$freq_total)`% overall). `r tools::toTitleCase(as.character(as.english(filter(study1_occupations, género == 'femenino' & ocupación == 'estudiante')$n)))` women (`r round(filter(study1_occupations, género == 'femenino' & ocupación == 'estudiante')$freq_gender)`%, `r round(filter(study1_occupations, género == 'femenino' & ocupación == 'estudiante')$freq_total)`% overall) and `r as.character(as.english(filter(study1_occupations, género == 'masculino' & ocupación == 'estudiante')$n))` men (`r round(filter(study1_occupations, género == 'masculino' & ocupación == 'estudiante')$freq_gender)`%, `r round(filter(study1_occupations, género == 'masculino' & ocupación == 'estudiante')$freq_total)`% overall) identified as students. 
+The median self-reported age for participants was `r study1_agespanish_stats$median_age` years with a range between `r study1_agespanish_stats$min_age` to `r study1_agespanish_stats$max_age` years of age (SD = `r study1_agespanish_stats$sd_age`yo). Regarding occupations, `r round(filter(study1_occupations, género == 'femenino' & ocupación == 'ama de casa')$freq_gender)`% of the women were homemakers (`r round(filter(study1_occupations, género == 'femenino' & ocupación == 'ama de casa')$freq_total)`% overall) and another `r round(filter(study1_occupations, género == 'femenino' & ocupación == 'artesana')$freq_gender)`% were artisans (`r round(filter(study1_occupations, género == 'femenino' & ocupación == 'artesana')$freq_total)`%). `r tools::toTitleCase(as.character(as.english(filter(study1_occupations, género == 'masculino' & ocupación == 'agricultor')$n)))` of the `r summarize(filter(study1_occupations, género == 'masculino'), n = sum(n))$n` men were horticulturalists (`r round(filter(study1_occupations, género == 'masculino' & ocupación == 'agricultor')$freq_gender)`%, `r round(filter(study1_occupations, género == 'masculino' & ocupación == 'agricultor')$freq_total)`% overall). `r tools::toTitleCase(as.character(as.english(filter(study1_occupations, género == 'femenino' & ocupación == 'estudiante')$n)))` women (`r round(filter(study1_occupations, género == 'femenino' & ocupación == 'estudiante')$freq_gender)`%, `r round(filter(study1_occupations, género == 'femenino' & ocupación == 'estudiante')$freq_total)`% overall) and `r as.character(as.english(filter(study1_occupations, género == 'masculino' & ocupación == 'estudiante')$n))` men (`r round(filter(study1_occupations, género == 'masculino' & ocupación == 'estudiante')$freq_gender)`%, `r round(filter(study1_occupations, género == 'masculino' & ocupación == 'estudiante')$freq_total)`% overall) identified as students. 
 
-Although all adult participants spoke Shipibo-Konibo as a first language, all were bilingual to a substantial degree. All reported beginning to learn  Spanish before early adolescence (median = `r study1_participants$median_spanish`yo, SD = `r study1_participants$sd_spanish`y).
+Although all adult participants spoke Shipibo-Konibo as a first language, all were bilingual to a substantial degree. All reported an introduction to the Spanish language before early adolescence (*M* = `r study1_agespanish_stats$mean_spanish`yo, *SD* = `r study1_agespanish_stats$sd_spanish`y). Participant age and reported age of introduction to Spanish were positively correlated; younger participants reported learning Spanish at an early age although all participants reported introductions before early adolescence (*r* = `r study1_agespanish_test$estimate`, *p* = `r round(study1_agespanish_test$p.value,3)`).
 
 ## Materials 
 
@@ -139,7 +143,7 @@ In order to make sure that the natural light intensity would not vary much betwe
  
 Our procedure was similar to that used in the WCS [see @berlin2009, pp. 585--591].  Participants were seated in front of the experimenter and introduced to the whole procedure and the general goal of the study. Then the primary procedure involved presenting participants with a color chip and asking them: "What is the color of this chip?"^[The SK word for color that we used was the Spanish word *color*. In general, the SK language includes some castillanisms that are well-known by all speakers; color is one of them.] and recording their response or responses. 
 
-One major difference between the WCS procedure and ours is that, in the WCS, the experimenter was expected to brief participants so that they would only provide basic color terms during the task (e.g., "blue" as opposed to "navy blue" or "sky-like"). We found it rather difficult to help participants understand in a few sentences what a basic color term was, however.^[Indeed, as Berlin & Kay (2009: 587-589) acknowledge, there is no straightforward necessary and sufficient criteria for the "basicness" of a color term.] Thus, we opted to let participants provide any term they wished. If they did not provide a basic color term, we would ask further questions to elicit a basic color term. For example, if, when presented with a red color chip, the participant provided the term "blood-like" (a non-basic color term), the experimenter would ask: "Do you know of any other word to refer to the color of this chip?" If the participant subsequently responded "dark red" (another non-basic color term), the experimenter would further ask: "How would you refer to this color with only one word?" Eventually, the participant would say "red" (a basic color term). 
+One major difference between the WCS procedure and ours is that, in the WCS, the experimenter was expected to brief participants so that they would only provide basic color terms during the task (e.g., "blue" as opposed to "navy blue" or "sky-like"). However, we found it rather difficult to help participants understand in a few sentences what a basic color term was.^[Indeed, as Berlin & Kay (2009: 587-589) acknowledge, there is no straightforward necessary and sufficient criteria for the "basicness" of a color term.] Thus, we opted to let participants provide any term they wished. If they did not provide a basic color term, we would ask further questions to elicit a basic color term. For example, if the participant provided the term "blood-like" (a non-basic color term) when presented with a red color chip, the experimenter would ask: "Do you know of any other word to refer to the color of this chip?" If the participant subsequently responded "dark red" (another non-basic color term), the experimenter would further ask: "How would you refer to this color with only one word?" Eventually, the participant would say "red" (a basic color term). 
 
 For some chips, participants would provide a basic color term at once; but for others, they would first provide one or two non-basic terms before actually providing a basic term. When participants did not provide a basic color term after three trials (i.e., two follow-up questions), no further questions was asked, and the experimenter proceeded to the next chip. This method was more effortful and time-consuming than the WCS procedure, but it improved the fluency and the intuitiveness of the task for participants.
 
@@ -285,17 +289,24 @@ adult_figure <- plot_grid(
 
 print(adult_figure)
 
+study1_spanishbysubj <- naming_data %>%
+  mutate(spanish_response = ifelse(color_cat %in% spanish_terms, 1, 0)) %>%
+  group_by(subj) %>%
+  summarise(age = as.numeric(as.character(first(edad))),
+            age_introduction = first(`edad aprendizaje del espanol`),
+            mean_spanish = mean(spanish_response, na.rm = TRUE))
+
+study1_spanishbyintro_test <- cor.test(~ age_introduction + mean_spanish, data = study1_spanishbysubj)
+study1_spanishbyage_test <- cor.test(~ age + mean_spanish, data = study1_spanishbysubj)
+
 ```
 
 
 Broadly speaking, our results were quite similar to the WCS findings. Figure 1 shows a comparison between our data (Panel A) and the WCS (panel B). The basic level colors in our data were quite similar, as well. All participants described at least 1 chip with the following set of color terms: light/white ("joxo"), dark/black ("wiso"), yellow ("panshin"), red ("joshin"), and green/blue ("yankon"). Most (`r paste0(round(filter(study1_profusion, color_cat == "Manxan")$'% of Subjects Who Used the Term (Current)'), '%')`) participants also used described at least 1 chip as faded or "manxan", referring to a chip's saturation. In terms of overall popularity, participants on average described `r paste0(round(filter(study1_profusion, color_cat == "Yankon")$'Mean % of Chips in Set Labeled (Current)'), '%')` of chips as "yankon" (*SD* = `r paste0(round(filter(study1_profusion, color_cat == "Yankon")$'SD % of Chips in Set Labeled (Current)'), '%')`) followed by "joshin" (*M* = `r paste0(round(filter(study1_profusion, color_cat == "Joshin")$'Mean % of Chips in Set Labeled (Current)'), '%')`, *SD* = `r paste0(round(filter(study1_profusion, color_cat == "Joshin")$'SD % of Chips in Set Labeled (Current)'), '%')`), "joxo" (`r paste0(round(filter(study1_profusion, color_cat == "Joxo")$'Mean % of Chips in Set Labeled (Current)'), '%')`, `r paste0(round(filter(study1_profusion, color_cat == "Joxo")$'SD % of Chips in Set Labeled (Current)'), '%')`), "panshin" (`r paste0(round(filter(study1_profusion, color_cat == "Panshin")$'Mean % of Chips in Set Labeled (Current)'), '%')`, `r paste0(round(filter(study1_profusion, color_cat == "Panshin")$'SD % of Chips in Set Labeled (Current)'), '%')`), "manxan" (`r paste0(round(filter(study1_profusion, color_cat == "Manxan")$'Mean % of Chips in Set Labeled (Current)'), '%')`, `r paste0(round(filter(study1_profusion, color_cat == "Manxan")$'SD % of Chips in Set Labeled (Current)'), '%')`), and "wiso" (`r paste0(round(filter(study1_profusion, color_cat == "Wiso")$'Mean % of Chips in Set Labeled (Current)'), '%')`, `r paste0(round(filter(study1_profusion, color_cat == "Wiso")$'SD % of Chips in Set Labeled (Current)'), '%')`).
 
-One departure from the Berlin-Kay data was that `r study1_switchperc$atleast_1` of adults described at least 1 chip using a Spanish-language color term, accounting for `r study1_switchperc$overall_spanish` of all responses (Figure 1, Panel C). In particular, Spanish use reached as high as `r round(100*max(study1_spanishbychip$'% of Subjects'))`% when participants were asked to label chips that English speakers would consider to be orange. However, there was a high amount of variability in Spanish use between subjects (*M* = `r study1_switchperc$mean_subj_spanish`, *SD* = `r study1_switchperc$sd_subj_spanish`) with some subjects never responding in Spanish. One responded in Spanish for `r study1_switchperc$min_subj_spanish` of all trials despite all sessions being conducted entirely in the Shipibo-Konibo language. While we can only speculate as to this participant's motivations, it seems likely that they were more familiar with the Spanish vocabulary or viewed it as more precise. 
+One departure from the Berlin-Kay data was that `r study1_switchperc$atleast_1` of adults described at least 1 chip using a Spanish-language color term, accounting for `r study1_switchperc$overall_spanish` of all responses (Figure 1, Panel C). In particular, Spanish use reached as high as `r round(100*max(study1_spanishbychip$'% of Subjects'))`% when participants were asked to label chips that English speakers would consider to be orange. However, there was a high amount of variability in Spanish use between subjects (*M* = `r study1_switchperc$mean_subj_spanish`, *SD* = `r study1_switchperc$sd_subj_spanish`) which neither participant age (*p* = `r round(study1_spanishbyage_test$p.value,2)`) nor reported age of Spanish introduction (*p* = `r round(study1_spanishbyintro_test$p.value,2)`) failed to predict. Some subjects never responding in Spanish whereas one participant responded in Spanish for `r study1_switchperc$max_subj_spanish` of all trials despite all sessions being conducted entirely in the Shipibo-Konibo language. While we can only speculate as to this participant's motivations, it seems likely that they were more familiar with the Spanish vocabulary or viewed it as more precise. 
 
-<!--<br>
-
-`r study1_highestspanish` 
-<br>-->
+<!--<br>`r study1_highestspanish` <br>-->
 
 
 ```{r study1_termnature}
@@ -313,7 +324,7 @@ study1_nature <- naming_data %>%
   
 ```
 
-Participants on average described `r filter(study1_nature, nature == "BCT" & spanish_response == 0)$mean_prop` of chips using a SK-language basic color term like "yankon" (*SD* = `r filter(study1_nature, nature == "BCT" & spanish_response == 0)$sd_prop`). Some participants described chips using SK-language ad hoc color terms, such as "nai" or *sky* for blue chips (*M* = `r filter(study1_nature, nature == "AHCT" & spanish_response == 0)$mean_prop`, *SD* = `r filter(study1_nature, nature == "AHCT" & spanish_response == 0)$sd_prop`), or ad hoc terms referring to saturation or luminosity of a chip, such as "manxan" (*M* = `r filter(study1_nature, nature == "AHCT - SLT" & spanish_response == 0)$mean_prop`, *SD* = `r filter(study1_nature, nature == "AHCT - SLT" & spanish_response == 0)$sd_prop`). Virtually all instances where a participant responded in Spanish involved a Spanish basic color term such as "rojo" (*M* = `r filter(study1_nature, nature == "BCT" & spanish_response == 1)$mean_prop`, *SD* = `r filter(study1_nature, nature == "BCT" & spanish_response == 1)$sd_prop`). In other words, participants typically only responded in Spanish to label chips into basic categories; they relied on Shipibo-Konibo for other descriptors.
+Participants on average described `r filter(study1_nature, nature == "BCT" & spanish_response == 0)$mean_prop` of chips using a SK basic color term like "yankon" (*SD* = `r filter(study1_nature, nature == "BCT" & spanish_response == 0)$sd_prop`). Some participants described chips using SK ad-hoc color terms, such as "nai" or *sky* for blue chips (*M* = `r filter(study1_nature, nature == "AHCT" & spanish_response == 0)$mean_prop`, *SD* = `r filter(study1_nature, nature == "AHCT" & spanish_response == 0)$sd_prop`), or ad hoc terms referring to saturation or luminosity of a chip, such as "manxan" (*M* = `r filter(study1_nature, nature == "AHCT - SLT" & spanish_response == 0)$mean_prop`, *SD* = `r filter(study1_nature, nature == "AHCT - SLT" & spanish_response == 0)$sd_prop`). Virtually all instances where a participant responded in Spanish involved a Spanish basic color term such as "rojo" (*M* = `r filter(study1_nature, nature == "BCT" & spanish_response == 1)$mean_prop`, *SD* = `r filter(study1_nature, nature == "BCT" & spanish_response == 1)$sd_prop`). In other words, participants typically only responded in Spanish to label chips into basic categories; they relied on Shipibo-Konibo for other descriptors.
 
 
 ```{r, study1_genderdifferences, include = FALSE}
@@ -454,7 +465,7 @@ The Pontificia Universidad Católica del Perú’s Institutional Review Board ap
 
 ### Materials
 
-Based on findings of Experiment 1, we selected out 8 color chips that were prototypical instances of prominent SK color terms. These color chips were blue (WCS n°1), green (WCS n°234), red (WCS n°245), white (WCS n°274), yellow (WCS n°297), black (WCS n°312), greeny-yellow (WCS n°320), and purple (WCS n°325). These color chips were exactly the same as those used in Experiment 1; the only difference was that while 330 chips were used in Experiment 1, only 8 were used in Experiment 2.
+Based on findings of Experiment 1, we selected out 8 color chips that were prototypical instances of prominent SK color terms. These color chips were blue (WCS n°1), green (WCS n°234), red (WCS n°245), white (WCS n°274), yellow (WCS n°297), black (WCS n°312), greeny-yellow (WCS n°320), and purple (WCS n°325). These color chips were exactly the same as those used in Experiment 1; the only difference was that adult participants in Study 1 were presented with these chips along the rest of their assigned 165 chip set. Child participants only had these 8 chips.
 
 ### Procedure
 
@@ -462,11 +473,11 @@ The production and comprehension tasks were both conducted in SK. In both tasks,
 
 **Production task.** The procedure was very similar to that of Experiment 1. Children were first introduced to the whole procedure and the general goal of the study. It was specified that they would be expected to provide color terms in SK (and not in Spanish). Children were then asked: "What is the color of this chip?". As with adults, we used follow-up questions to elicit basic color terms when the terms children initially provided were not basic. When children provided Spanish color terms, the experimenter would write down their response but further ask: "What is the name of this color in SK?" When children replied "I don’t know" to this prompt, the experimenter would not ask further questions and would move forward to the next color chip. As a result, responses of some children include only non-basic SK color terms or Spanish color terms. In total, we collected production data for 8 color chips. For each chip, the data include either one response (when children provided a SK basic color term in the first trial) or two or three responses (when children’s initial responses were either non-basic and/or in Spanish).
 
-**Comprehension task.** The 8 color chips of the production task were simultaneously displayed in front of the children. The experimenter would then ask: "Can you give me the [color] chip?" In total, the comprehension of 9 SK color terms was tested. The choice of these terms was based on the findings of Experiment 1. Not all of them were basic, but all of them stood out as being prominent in the SK color system. The 9 terms used as prompts included: yankon ("grue"), joshin ("red"), panshin ("yellow"), joxo ("white), wiso ("black"), nai ("blue"), and barin poi ("greeny-yellow"). In addition, as Experiment 1 revealed that two non-basic terms are widely used to refer to green and purple, two words were used to test comprehension of each of these two colors: pei/xo ("green") and ami/pua ("purple").
+Further, Experiment 1 showed that for some of these color terms, only one response was accurate, while for others, several responses were equally correct. For example, responses during Experiment 1 to a particular purple chip ranged from red to blue with some using the terms ami ("flower") or pua ("yam") as common descriptors. Accuracy was coded based on the results derived from Experiment 1: if at least 15% of participants in Experiment 1 labeled a chip with a particular term, we considered a trial to be correct if the child made the same pairing, regardless of whether the term as a basic or ad-hoc color term.
 
-Further, Experiment 1 showed that for some of these color terms, only one response was accurate, while for others, several responses were equally correct. For example, only one chip could be picked up as an instance of wiso. By contrast, four chips could be considered to be instances of yankon (blue, green, greeny-yellow, and, to a lesser extent, purple); two chips for joshin (red, and, to a lesser extent, purple); and two as well for pei/xo (green, and, to a lesser extent, green-yellow). Accuracy was coded based on the results derived from Experiment 1: if at least 15% of participants in Experiment 1 associated a chip with a particular label, we considered a trial to be correct if the child made the same pairing.
+**Comprehension task.** The 8 color chips of the production task were simultaneously displayed in front of the children. The experimenter would then ask: "Can you give me the [color] chip?" In total, the comprehension of 9 SK color terms was tested. The choice of these terms was based on the findings of Experiment 1. Not all of them were basic, but all of them stood out as being prominent in the SK color system. The 9 terms used as prompts included: yankon ("green/blue"), joshin ("red"), panshin ("yellow"), joxo ("white), wiso ("black"), nai ("blue"), and barin poi ("greeny-yellow"). In addition, as Experiment 1 revealed that two non-basic terms are widely used to refer to green and purple, two words were used to test comprehension of each of these two colors: pei/xo ("green") and ami/pua ("purple").
 
-When the experimenter asked children to pick up a color that was instantiated by several chips, we followed the following procedure. The experimenter would ask: "Can you give me the [color] chip?" Children would then pick up a chip. The response would be registered and the chip be taken out of the table. As a result, only 7 chips would be remaining on the table. The experimenter would subsequently ask: "Can you give me another [color] chip?". Children would then pick up a new chip. The response would be registered and the chip be taken out of the table. The experimenter would then ask the same question again until a total of as many times as there were correct instances. Thus, for example, for yankon four chips would be elicited, while for joshin, two chips would be elicited. 
+When the experimenter asked children to pick up a color that was instantiated by several chips, we followed the following procedure. The experimenter would ask: "Can you give me the [color] chip?" Children would then pick up a chip. The response would be registered and the chip be taken out of the table. As a result, only 7 chips would be remaining on the table. The experimenter would subsequently ask: "Can you give me another [color] chip?". Children would then pick up a new chip. The response would be registered and the chip be taken out of the table. The experimenter would then ask the same question again until a total of as many times as there were correct instances. Thus, for example, for yankon four chips would be elicited, while for joshin, two chips would be elicited. Like the preceding production task, accuracy was scored based on responses given in Study 1. If a child chose a particular chip, their choice was deemed accurate if at least 15% of participants during Study 1 made the same chip-label pairing.
 
 
 ## Results and Discussion
@@ -482,54 +493,89 @@ chip_id_colors <- setNames(all_chip_sets$hex,
                            all_chip_sets$chip_id)
 
 study23_firstprod <- feather::read_feather("../intermediates/processed_data.csv") %>% 
-  filter(task == 'Production' & 
-           response_order %in% c('first','only') &
-           spanish %in% c("Blanco", "Negro", 
-                          "Verde", "Amarillo", "Rojo",
-                          "Morado")) %>%
-  group_by(language, age, prompt) %>%
-  rename(`Correct (Same Language)` = correct, 
-         `Correct (Either Language)` = correct_either) %>%
+  filter(task == 'Production' & response_order %in% c('first','only')) %>%
+  rename(study = language) %>% mutate(prompt = as.character(prompt),
+    study = case_when(
+      study == "Shipibo" ~ "Study 2",
+      study == "Spanish" ~ "Study 3"),
+    correct_nearby = correct + ifelse(is.na(wrong_adjacent), 0, wrong_adjacent),
+    correct_all = correct_either + ifelse(is.na(wrong_adjacent), 0, wrong_adjacent)) %>%
+  group_by(study, age, prompt) %>%
   gather(key = "criteria", value = "score", 
-         `Correct (Same Language)`, `Correct (Either Language)`) %>%
-  group_by(language, prompt, age_interval, criteria) %>%
+         starts_with("correct")) %>%
   left_join(study1_entropy %>% 
-              mutate(`Chip ID` = as.character(`Chip ID`),
-                     Entropy = sprintf("%.2f", round(Entropy,2))), 
+              mutate(`Chip ID` = as.character(`Chip ID`)), 
             by = c("prompt" = "Chip ID"))
 
-ggplot(study23_firstprod,
-                       aes(x = age_interval, y = score, colour = prompt,
+
+plot_accuracyvsentropy <- function(df, bystudy = TRUE) {
+  
+  df_correct <- filter(df, criteria == "correct") %>%
+    group_by(study, age_interval, prompt, criteria) %>%
+    summarise(score = mean(score, na.rm = T))
+  
+  accuracyvsentropy_plot <- ggplot(df %>% filter(criteria != "correct_all"), aes(x = age_interval, y = score, colour = prompt,
                            group = criteria, linetype = criteria)) +
-  geom_jitter(data = filter(study23_firstprod, criteria == "Correct (Same Language)"),
+  geom_jitter(data = df_correct,
     alpha = .25, width = .3, height = .1, col = "gray") + 
-  geom_smooth(se = FALSE, method = "loess", span = 1) +
-  facet_grid(as.numeric(as.character(prompt)) ~ language) + 
+  geom_smooth(se = FALSE, method = "loess", span = 1)
+  
+  if (bystudy) {
+    accuracyvsentropy_plot <- accuracyvsentropy_plot +
+      facet_grid(as.numeric(as.character(prompt)) ~ study)
+  } else {
+     accuracyvsentropy_plot <- accuracyvsentropy_plot +
+      facet_wrap(study ~ as.character(as.numeric(prompt)), scales = "free", ncol = 2)
+  }
+  
+  accuracyvsentropy_plot <- accuracyvsentropy_plot +
   scale_y_continuous(limits = c(-0.1,1.1), breaks = seq(0,1,0.5), labels = scales::percent) + 
   xlim(c(5,11.5)) +
   scale_color_manual(values = chip_id_colors) +
-  scale_linetype_manual(values = c("Correct (Same Language)" = "solid", 
-                                   "Correct (Either Language)" = "dotted"), 
+  scale_linetype_manual(values = c("correct" = "solid", 
+                                   "correct_either" = "dotted",
+                                   "correct_nearby" = "dashed"), 
                         guide = FALSE) +
   labs(x = "Age", y = "% of Correct Responses", 
        linetype = "Measure", colour = "Chip ID") +
   guides(label = "none") + 
-  geom_label(aes(x = Inf, y = -Inf, hjust = 1.1, vjust = -0.3, label = Entropy),
+  geom_label(aes(x = Inf, y = -Inf, hjust = 1.1, vjust = -0.3, label = sprintf("%.2f", round(Entropy,2))),
              show.legend = FALSE, colour = "black")
+  
+  return(accuracyvsentropy_plot)
+}
+
+accuracyvsage_sharedchips_plot <- plot_accuracyvsentropy(filter(study23_firstprod,
+                spanish %in% c("Blanco", "Negro", "Verde", "Amarillo", "Rojo", "Morado")))
+
+accuracyvsage_otherchips_plot <- plot_accuracyvsentropy(filter(study23_firstprod,
+                !spanish %in% c("Blanco", "Negro", "Verde", "Amarillo", "Rojo", "Morado")), bystudy = F)
+
+print(accuracyvsage_sharedchips_plot)
+print(accuracyvsage_otherchips_plot)
 
 ```
 
 ```{r}
-study23_firstprod$age.years.c <- scale(study23_firstprod$age, scale = FALSE)
-firstprod_same <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
-      data = filter(study23_firstprod, criteria == "Correct (Same Language)"), 
+
+study2_firstprod <- study23_firstprod %>% filter(study == "Study 2")
+
+study2_firstprod$age.years.c <- scale(study2_firstprod$age, scale = FALSE)
+
+## Doesn't converge but study2_firstprod_either and study2_firstprod_adjacent do?
+study2_firstprod_same <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
+      data = filter(study2_firstprod, criteria == "correct"), 
       family = "binomial")
-firstprod_either <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
-      data = filter(study23_firstprod, criteria == "Correct (Either Language)"), 
+study2_firstprod_either <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
+      data = filter(study2_firstprod, criteria == "correct_either"), 
       family = "binomial")
+study2_firstprod_adjacent <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
+      data = filter(study2_firstprod, criteria == "correct_nearby"), 
+      family = "binomial")
+
 ```
 
-**Production.** Children's production accuracy increased substantially across nearly all color chips in the age range that we tested. Figure 2, left panels shows the accuracy of children's first production, both in SK (solid line) and in either language (dashed line). To quantify these developmental trends, we fit two generalized linear mixed effects models, one for the accuracy of SK production and one for the accuracy of production in either language. Both of these predicted accuracy as a function of the child's age, and included random intercepts for color chip and for participant, as well as a random slope of age by color chip. Age was a significant predictor in both models: $\beta = `r round(summary(firstprod_same)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(firstprod_same)$coef["age.years.c", "Std. Error"], digits = 2)`, $p = `r round(summary(firstprod_same)$coef["age.years.c", "Pr(>|z|)"], digits = 3)`$ and $\beta = `r round(summary(firstprod_either)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(firstprod_either)$coef["age.years.c", "Std. Error"], digits = 2)`, $p < .0001$.
+**Production.** Children's production accuracy increased substantially across nearly all color chips in the age range that we tested. Figure 2, left panels shows the accuracy of children's first production, both in SK (solid line) and in either language (dashed line). To quantify these developmental trends, we fit two generalized linear mixed effects models, one for the accuracy of SK production and one for the accuracy of production in either language. Both of these predicted accuracy as a function of the child's age, and included random intercepts for color chip and for participant, as well as a random slope of age by color chip. Age was a significant predictor in both models: $\beta = `r round(summary(study2_firstprod_same)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(study2_firstprod_same)$coef["age.years.c", "Std. Error"], digits = 2)`, $p = `r round(summary(study2_firstprod_same)$coef["age.years.c", "Pr(>|z|)"], digits = 3)`$ and $\beta = `r round(summary(study2_firstprod_either)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(study2_firstprod_either)$coef["age.years.c", "Std. Error"], digits = 2)`, $p < .0001$.
 
 
 ```{r study2_accuracyspanishentropy}
@@ -635,7 +681,7 @@ study2_EucDist_pchisq <- pchisq(deviance(lm(wrong_euc_dist ~ 1, data=study2_EucD
 
 Another possible reason to use Spanish would be if children fail to recall the proper SK color term but do know the proper mapping in the Spanish. They may also choose to respond with a same-language but adjacent color term )such as "joshin" for a *panshin*-colored chip). In our next analysis, we aggregate across chips and examine the pattern of responses, categorizing them as same-language, adjacent, and different-language. 
 
-
+Using a mixed-effects model, we found a significant improvement in accuracy scores when we allowed different-language but corresponding responses (*p* `r with(study2_AdjSwitchModel, ifelse(coefficients["measurecorrecteither", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["measurecorrecteither", "Pr(>|z|)"], 3))))`) but no significant change when allowing for same-language but adjacent responses (*p* `r with(study2_AdjSwitchModel, ifelse(coefficients["measurecorrectnearby", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["measurecorrectnearby", "Pr(>|z|)"], 3))))`).
 
 ```{r study2_termnature}
 
@@ -691,162 +737,6 @@ study2_allresponseloess <- bind_rows(lapply(
 ```
 
 
-```{r study3_termnature}
-
-study3_allresponsetypes <- study3_data %>%
-  filter(response_order %in% c("first", "only", "last")) %>%
-  separate_rows(nature, sep = "-") %>%
-  mutate(nature = trimws(ifelse(is.na(nature), "Other", nature))) %>%
-  group_by(subj, age, response_order, nature) %>%
-  summarise(n = n()) %>%
-  group_by(subj, age, response_order) %>%
-  mutate(prop = n/sum(n)) %>% ungroup() %>%
-  complete(nesting(subj, age, response_order), nature, fill = list(n = 0, prop = 0.0))
-
-
-study3_allresponsetypes_whole <- study3_allresponsetypes %>%
-  select(-n) %>%
-  spread(nature, prop)
-
-study3_allresponsetypes_whole$age.years.c <- scale(study3_allresponsetypes_whole$age, scale = FALSE)[,1]
-study3_allresponsetypes_whole$Y <- as.matrix(study3_allresponsetypes_whole[, c("BCT", "AHCT", "NBCT", "Other", "SLT")])
-
-study3_allresponsetypes_model <- multinom(Y ~ age.years.c + response_order,
-                 data=study3_allresponsetypes_whole)
-
-study3_allresponsetypes_dev <- deviance(multinom(Y~1, data=study3_allresponsetypes_whole)) - deviance(study3_allresponsetypes_model)
-
-
-study3_allresponseloess <- bind_rows(lapply(
-  study3_allresponsetypes %>% split(list(.$response_order, .$nature)),
-  function(x){
-    if (nrow(x) > 0) {
-    as_data_frame(predict(loess(formula = prop ~ age, data = x, span = 0.75), 
-            newdata = predicted_range, se = TRUE)[c("fit", "se.fit")]) %>%
-      mutate(predicted_age = predicted_range, 
-             nature = case_when(
-               first(x$nature) == "AHCT" ~ "Ad-hoc color term",
-               first(x$nature) == "BCT" ~ "Basic color term",
-               first(x$nature) == "NBCT" ~ "Other color term",
-               first(x$nature) == "SLT" ~ "Saturation/lightness term",
-               TRUE ~ as.character(first(x$nature))),
-             response_order = first(x$response_order))
-    }}))
-  
-# study3_allresponseloess_plot <- ggplot(study3_allresponseloess,
-#   aes(x = predicted_age, y = fit, color = nature, group = nature)) + 
-#   facet_grid(. ~ response_order) +
-#   geom_line(size = 1) + geom_point(size = 4) +
-#   geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = nature, fill = nature), alpha = .2, colour=NA) +
-#   scale_color_viridis(discrete=TRUE, option = "D") +
-#   scale_fill_viridis(discrete=TRUE, option = "D")
-  
-```
-
-```{r study3_overextensions}
-
-study3_adjacentorswitch_whole <- study3_data %>%
-  group_by(subj, age, gender) %>%
-  filter(response_order %in% c("first", "only")) %>%
-  mutate(correct_nearby = correct + ifelse(is.na(wrong_adjacent), 0, wrong_adjacent),
-         correct_all = ifelse(correct + correct_either + correct_nearby > 0, 1, 0)) %>%
-  select(subj, age, gender, starts_with("correct")) %>%
-  gather(key = "measure", value = "score", starts_with("correct")) %>%
-  mutate(measure = factor(gsub("_","",measure)))
-
-study3_adjacentorswitch_whole$age.years.c <- scale(study3_adjacentorswitch_whole$age, scale = FALSE)[,1]
-
-study3_adjacentorswitch <- study3_adjacentorswitch_whole %>%
-  group_by(subj, age, age.years.c, gender, measure) %>%
-  summarise(score = mean(score)) %>% ungroup()
-
-study3_AdjSwitchModel <- summary(lme4::glmer(
-  score ~ age.years.c + measure + (1|subj),
-  data=study3_adjacentorswitch_whole, family = "binomial"))
-
-study3_accuracyloess <- bind_cols(lapply(
-  study3_adjacentorswitch %>% split(.$measure),
-  function(x){
-    as_data_frame(predict(loess(formula = score ~ age, data = x, span = 0.75), 
-            newdata = predicted_range, se = TRUE)[c("fit", "se.fit")]) %>%
-      rename_all(funs(paste0(first(x$measure),"_",.)))
-    })) %>%
-  mutate(predicted_age = predicted_range) %>%
-  gather(key = "measure", value = "score", starts_with("correct")) %>%
-  separate("measure", into = c("measure", "stat"), sep = "_") %>%
-  spread(stat, score)
-  
-# study3_accuracy_plot <- ggplot(study3_accuracyloess,
-#   aes(x = predicted_age, y = fit, color = measure, group = measure)) + 
-#   geom_line(size = 1) + geom_point(size = 4) +
-#   geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = measure, fill = measure), alpha = .2, colour=NA) +
-#   scale_color_viridis(discrete=TRUE, option = "D") +
-#   scale_fill_viridis(discrete=TRUE, option = "D")
-
-study3_EucDist <- study3_data %>%
-  group_by(subj, age, gender) %>%
-  filter(response_order %in% c("first", "only")) %>%
-  mutate(wrong_euc_dist = ifelse(correct == 1, NA, wrong_euc_dist)) %>%
-  filter(!is.na(wrong_euc_dist))
-
-study3_EucDist$age.years.c <- scale(study3_EucDist$age, scale = FALSE)[,1]
-
-# study3_EucDist_plot <- ggplot(study3_EucDist, aes(y = wrong_euc_dist, x = age)) +
-#   geom_point(aes(color = spanish, group = spanish)) +
-#   geom_smooth(method = "loess") +
-#   scale_colour_manual(values = graph_colors)
-
-study3_EucDist_model <- lme4::lmer(
-  wrong_euc_dist ~ age.years.c + (1|subj),
-  data=study3_EucDist, REML=FALSE)
-
-study3_EucDist_pchisq <- pchisq(deviance(lm(wrong_euc_dist ~ 1, data=study3_EucDist)) - deviance(study3_EucDist_model), 78, lower.tail=FALSE)
-
-
-```
-
-```{r crossstudy_accuracystrats}
-bind_rows(
-  list("Experiment 2" = study2_allresponseloess,
-       "Experiment 3" = study3_allresponseloess), .id = "study") %>%
-  mutate(response_order = tools::toTitleCase(as.character(response_order))) %>%
-  ggplot(aes(x = predicted_age, y = fit, color = nature, group = nature)) +
-  facet_grid(response_order ~ study) +
-  geom_line() +
-  geom_point() +
-  geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit,
-                  group = nature, fill = nature), alpha = .2, colour=NA) +
-  labs(x = "Age", y = "Proportion of Responses", fill = "Nature of Response", color = "Nature of Response") +
-  scale_color_viridis(discrete=TRUE, option = "D") +
-  scale_fill_viridis(discrete=TRUE, option = "D") +
-  coord_cartesian(ylim = c(0,1))
-```
-
-```{r, include = FALSE}
-studies2n3_accuracy_plot <- ggplot(
-  bind_rows(list("Experiment 2" = study2_accuracyloess, "Experiment 3" = study3_accuracyloess), .id = "study") %>%
-    mutate(measure = case_when(
-      measure == "correct" ~ "Original",
-      measure == "correcteither" ~ "Either Language",
-      measure == "correctnearby" ~ "Adjacent Color",
-      measure == "correctall" ~ "Either + Adjacent")) %>%
-    mutate(measure = factor(measure, levels = c("Original", "Either Language", "Adjacent Color", "Either + Adjacent"))),
-  aes(x = predicted_age, y = fit, color = measure, group = measure)) +
-  facet_grid(. ~ study) +
-  geom_line(size = 1) + geom_point(size = 4) +
-  geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = measure, fill = measure), alpha = .2, colour=NA) +
-  labs(x = "Age", y = "Proportion of Responses", fill = "Accuracy", color = "Accuracy") +
-  scale_color_viridis(discrete=TRUE, option = "D") +
-  scale_fill_viridis(discrete=TRUE, option = "D") +
-  coord_cartesian(ylim = c(0,1))
-
-# print(studies2n3_allresponseloess_plot)
-
-# print(studies2n3_accuracy_plot)
-
-```
-
-Using a mixed-effects model, we found a significant improvement in accuracy scores when we allowed different-language but corresponding responses (*p* `r with(study2_AdjSwitchModel, ifelse(coefficients["measurecorrecteither", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["measurecorrecteither", "Pr(>|z|)"], 3))))`) but no significant change when allowing for same-language but adjacent responses (*p* `r with(study2_AdjSwitchModel, ifelse(coefficients["measurecorrectnearby", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["measurecorrectnearby", "Pr(>|z|)"], 3))))`).
 
 **Comprehension.**
 
@@ -939,6 +829,29 @@ Since each color term was instantiated by only one color chip, no term required 
 
 ## Results and Discussion.
 
+```{r}
+
+study3_firstprod <- study23_firstprod %>% filter(study == "Study 3")
+
+study3_firstprod$age.years.c <- scale(study3_firstprod$age, scale = FALSE)
+
+study3_firstprod_same <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
+      data = filter(study3_firstprod, criteria == "correct"), 
+      family = "binomial")
+
+## Doesn't converge but study3_firstprod_same and study3_firstprod_adjacent do?
+study3_firstprod_either <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
+      data = filter(study3_firstprod, criteria == "correct_either"), 
+      family = "binomial")
+study3_firstprod_adjacent <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
+      data = filter(study3_firstprod, criteria == "correct_nearby"), 
+      family = "binomial")
+
+```
+
+**Production** Unlike Study 2, age did not have a significant relationship with children's production accuracy. The right panels on Figure 2 show the accuracy of children's first production, both in SK (solid line), in either language (dashed line), or including adjacent color terms (dotted line). To quantify these developmental trends, we fit two generalized linear mixed effects models, one for the accuracy of SK production and one for the accuracy of production in either language. Both of these predicted accuracy as a function of the child's age, and included random intercepts for color chip and for participant, as well as a random slope of age by color chip. Age failed to gain significance as a predictor in either models: $\beta = `r round(summary(study3_firstprod_same)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(study3_firstprod_same)$coef["age.years.c", "Std. Error"], digits = 2)`, $p = `r round(summary(study3_firstprod_same)$coef["age.years.c", "Pr(>|z|)"], digits = 3)`$ and $\beta = `r round(summary(study3_firstprod_either)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(study3_firstprod_either)$coef["age.years.c", "Std. Error"], digits = 2)`, $p < .0001$.
+
+
 ```{r study3_spanishentropy}
 study3_switchperc <- study3_data %>%
   group_by(subj) %>%
@@ -980,9 +893,123 @@ Similar to Experiment 2, over a quarter of all responses (*M* = `r study3_switch
 
 **Overextensions.**
 
+```{r study3_overextensions}
+
+study3_adjacentorswitch_whole <- study3_data %>%
+  group_by(subj, age, gender) %>%
+  filter(response_order %in% c("first", "only")) %>%
+  mutate(correct_nearby = correct + ifelse(is.na(wrong_adjacent), 0, wrong_adjacent),
+         correct_all = ifelse(correct + correct_either + correct_nearby > 0, 1, 0)) %>%
+  select(subj, age, gender, starts_with("correct")) %>%
+  gather(key = "measure", value = "score", starts_with("correct")) %>%
+  mutate(measure = factor(gsub("_","",measure)))
+
+study3_adjacentorswitch_whole$age.years.c <- scale(study3_adjacentorswitch_whole$age, scale = FALSE)[,1]
+
+study3_adjacentorswitch <- study3_adjacentorswitch_whole %>%
+  group_by(subj, age, age.years.c, gender, measure) %>%
+  summarise(score = mean(score)) %>% ungroup()
+
+study3_AdjSwitchModel <- summary(lme4::glmer(
+  score ~ age.years.c + measure + (1|subj),
+  data=study3_adjacentorswitch_whole, family = "binomial"))
+
+study3_accuracyloess <- bind_cols(lapply(
+  study3_adjacentorswitch %>% split(.$measure),
+  function(x){
+    as_data_frame(predict(loess(formula = score ~ age, data = x, span = 0.75), 
+            newdata = predicted_range, se = TRUE)[c("fit", "se.fit")]) %>%
+      rename_all(funs(paste0(first(x$measure),"_",.)))
+    })) %>%
+  mutate(predicted_age = predicted_range) %>%
+  gather(key = "measure", value = "score", starts_with("correct")) %>%
+  separate("measure", into = c("measure", "stat"), sep = "_") %>%
+  spread(stat, score)
+  
+# study3_accuracy_plot <- ggplot(study3_accuracyloess,
+#   aes(x = predicted_age, y = fit, color = measure, group = measure)) + 
+#   geom_line(size = 1) + geom_point(size = 4) +
+#   geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = measure, fill = measure), alpha = .2, colour=NA) +
+#   scale_color_viridis(discrete=TRUE, option = "D") +
+#   scale_fill_viridis(discrete=TRUE, option = "D")
+
+study3_EucDist <- study3_data %>%
+  group_by(subj, age, gender) %>%
+  filter(response_order %in% c("first", "only")) %>%
+  mutate(wrong_euc_dist = ifelse(correct == 1, NA, wrong_euc_dist)) %>%
+  filter(!is.na(wrong_euc_dist))
+
+study3_EucDist$age.years.c <- scale(study3_EucDist$age, scale = FALSE)[,1]
+
+# study3_EucDist_plot <- ggplot(study3_EucDist, aes(y = wrong_euc_dist, x = age)) +
+#   geom_point(aes(color = spanish, group = spanish)) +
+#   geom_smooth(method = "loess") +
+#   scale_colour_manual(values = graph_colors)
+
+study3_EucDist_model <- lme4::lmer(
+  wrong_euc_dist ~ age.years.c + (1|subj),
+  data=study3_EucDist, REML=FALSE)
+
+study3_EucDist_pchisq <- pchisq(deviance(lm(wrong_euc_dist ~ 1, data=study3_EucDist)) - deviance(study3_EucDist_model), 78, lower.tail=FALSE)
+
+
+```
+
 
 Similar to Experiment 2, we adopted alternative scoring to accommodate language-switching from Spanish to Shipibo-Konibo and same-language adjacent responses. Using a mixed-effects model, we did not find that age explained a significant amount of the variation seen in accuracy (*p* `r with(study3_AdjSwitchModel, ifelse(coefficients["age.years.c", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["age.years.c", "Pr(>|z|)"], 3))))`), in concordance with earlier analyses. However, we did find that participants made use of both mapping strategies of either providing different-language but corresponding responses (*p* `r with(study3_AdjSwitchModel, ifelse(coefficients["measurecorrecteither", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["measurecorrecteither", "Pr(>|z|)"], 3))))`) or same-language but adjacent responses (*p* `r with(study3_AdjSwitchModel, ifelse(coefficients["measurecorrectnearby", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["measurecorrectnearby", "Pr(>|z|)"], 3))))`). Between Studies 2 and 3, we find frequent use of language switching but only Experiment 3 shows significant use of same-language but adjacent terms as well. This discrepancy, along with the lack of an age correlation, can be due to foreign language exposure. Children may be exposed to Spanish at a young age but do not receive any formal Spanish education until later in adolescence. With a limited knowledge of Spanish color terms, children may spontaneously provide Spanish color terms during the Shipibo-language Experiment 2 but may struggle to succeed during Spanish-language Experiment 3. This suggests that children may rely on either strategy to communicate a color label to the best of their knowledge set.
 
+
+```{r study3_termnature}
+
+study3_allresponsetypes <- study3_data %>%
+  filter(response_order %in% c("first", "only", "last")) %>%
+  separate_rows(nature, sep = "-") %>%
+  mutate(nature = trimws(ifelse(is.na(nature), "Other", nature))) %>%
+  group_by(subj, age, response_order, nature) %>%
+  summarise(n = n()) %>%
+  group_by(subj, age, response_order) %>%
+  mutate(prop = n/sum(n)) %>% ungroup() %>%
+  complete(nesting(subj, age, response_order), nature, fill = list(n = 0, prop = 0.0))
+
+
+study3_allresponsetypes_whole <- study3_allresponsetypes %>%
+  select(-n) %>%
+  spread(nature, prop)
+
+study3_allresponsetypes_whole$age.years.c <- scale(study3_allresponsetypes_whole$age, scale = FALSE)[,1]
+study3_allresponsetypes_whole$Y <- as.matrix(study3_allresponsetypes_whole[, c("BCT", "AHCT", "NBCT", "Other", "SLT")])
+
+study3_allresponsetypes_model <- multinom(Y ~ age.years.c + response_order,
+                 data=study3_allresponsetypes_whole)
+
+study3_allresponsetypes_dev <- deviance(multinom(Y~1, data=study3_allresponsetypes_whole)) - deviance(study3_allresponsetypes_model)
+
+
+study3_allresponseloess <- bind_rows(lapply(
+  study3_allresponsetypes %>% split(list(.$response_order, .$nature)),
+  function(x){
+    if (nrow(x) > 0) {
+    as_data_frame(predict(loess(formula = prop ~ age, data = x, span = 0.75), 
+            newdata = predicted_range, se = TRUE)[c("fit", "se.fit")]) %>%
+      mutate(predicted_age = predicted_range, 
+             nature = case_when(
+               first(x$nature) == "AHCT" ~ "Ad-hoc color term",
+               first(x$nature) == "BCT" ~ "Basic color term",
+               first(x$nature) == "NBCT" ~ "Other color term",
+               first(x$nature) == "SLT" ~ "Saturation/lightness term",
+               TRUE ~ as.character(first(x$nature))),
+             response_order = first(x$response_order))
+    }}))
+  
+# study3_allresponseloess_plot <- ggplot(study3_allresponseloess,
+#   aes(x = predicted_age, y = fit, color = nature, group = nature)) + 
+#   facet_grid(. ~ response_order) +
+#   geom_line(size = 1) + geom_point(size = 4) +
+#   geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = nature, fill = nature), alpha = .2, colour=NA) +
+#   scale_color_viridis(discrete=TRUE, option = "D") +
+#   scale_fill_viridis(discrete=TRUE, option = "D")
+  
+```
 
 
 ```{r study3_FLTypes, include = FALSE}
@@ -1108,6 +1135,46 @@ print(studies2n3_firstresploess_plot)
 ```
 
 
+```{r crossstudy_accuracystrats}
+bind_rows(
+  list("Experiment 2" = study2_allresponseloess,
+       "Experiment 3" = study3_allresponseloess), .id = "study") %>%
+  mutate(response_order = tools::toTitleCase(as.character(response_order))) %>%
+  ggplot(aes(x = predicted_age, y = fit, color = nature, group = nature)) +
+  facet_grid(response_order ~ study) +
+  geom_line() +
+  geom_point() +
+  geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit,
+                  group = nature, fill = nature), alpha = .2, colour=NA) +
+  labs(x = "Age", y = "Proportion of Responses", fill = "Nature of Response", color = "Nature of Response") +
+  scale_color_viridis(discrete=TRUE, option = "D") +
+  scale_fill_viridis(discrete=TRUE, option = "D") +
+  coord_cartesian(ylim = c(0,1))
+```
+
+```{r, include = FALSE}
+studies2n3_accuracy_plot <- ggplot(
+  bind_rows(list("Experiment 2" = study2_accuracyloess, "Experiment 3" = study3_accuracyloess), .id = "study") %>%
+    mutate(measure = case_when(
+      measure == "correct" ~ "Original",
+      measure == "correcteither" ~ "Either Language",
+      measure == "correctnearby" ~ "Adjacent Color",
+      measure == "correctall" ~ "Either + Adjacent")) %>%
+    mutate(measure = factor(measure, levels = c("Original", "Either Language", "Adjacent Color", "Either + Adjacent"))),
+  aes(x = predicted_age, y = fit, color = measure, group = measure)) +
+  facet_grid(. ~ study) +
+  geom_line(size = 1) + geom_point(size = 4) +
+  geom_ribbon(aes(ymin = fit - se.fit, ymax = fit + se.fit, group = measure, fill = measure), alpha = .2, colour=NA) +
+  labs(x = "Age", y = "Proportion of Responses", fill = "Accuracy", color = "Accuracy") +
+  scale_color_viridis(discrete=TRUE, option = "D") +
+  scale_fill_viridis(discrete=TRUE, option = "D") +
+  coord_cartesian(ylim = c(0,1))
+
+# print(studies2n3_allresponseloess_plot)
+
+# print(studies2n3_accuracy_plot)
+
+```
 
 
 
