@@ -476,9 +476,11 @@ of age by color chip. Age was a significant predictor in both models:
 Over a quarter (28\%) of all responses were given in Spanish, and the
 distribution of Spanish responses was non-random. Children tended to
 respond in Spanish when presented with a chip with low naming consensus
-among adult participants in Experiment. We computed the naming entropy
-for each chip by computing the probabilities for each chip \(c\) to be
-named with a particular label \(l\) (\(p(l \mid c)\)) and then taking
+among adult participants in Experiment. As an exploratory analysis, we
+attempted to quantify low naming consensus using naming entropy
+(following {\textbf{???}}). We computed the naming entropy for each chip
+by computing the probabilities for each chip \(c\) to be named with a
+particular label \(l\) (\(p(l \mid c)\)) and then taking
 \(H(c) = - \sum{p(l\mid c) \log[p(l \mid c)]}\) (see inset entropy
 values by chip in Figure 2).
 
@@ -494,42 +496,34 @@ between age and entropy (\(\beta = -3.97\), SE = 1.49, \(p = 0.01\)),
 suggesting that adults' uncertainty regarding naming was related to
 children's likelihood of producing Spanish labels.
 
-Another possible reason to use Spanish would be if children fail to
-recall the proper SK color term but do know the proper mapping in the
-Spanish. They may also choose to respond with a same-language but
-adjacent color term )such as \enquote{joshin} for a
-\emph{panshin}-colored chip). In our next analysis, we aggregate across
-chips and examine the pattern of responses, categorizing them as
-same-language, adjacent, and different-language.
+One reason to use Spanish would be if children fail to recall the proper
+SK color term but do know the proper mapping in the Spanish. But another
+possibilitiy is that children may have more imprecise representations
+and choose to respond with a same-language but adjacent color term (such
+as \enquote{joshin} for a \emph{panshin}-colored chip). In our next
+analysis, following ({\textbf{???}}), we aggregate across color chips
+and examine the pattern of children's first responses, categorizing them
+as same-language, adjacent, and different-language. This analysis is
+shown in Figure 3, left panel.
 
-Using a mixed-effects model, we found a significant improvement in
-accuracy scores when we allowed different-language but corresponding
-responses (\emph{p} \textless{} 0.001) but no significant change when
-allowing for same-language but adjacent responses (\emph{p} = 0.454).
+We fit a mixed-effects model predicting correct performance with
+predictors specified as above, but including only random intercepts for
+participants due to convergence issues). We found a significant
+improvement in accuracy scores when we allowed different-language but
+corresponding responses (\emph{p} \textless{} 0.001) but no significant
+change when allowing for same-language but adjacent responses (\emph{p}
+= 0.454). This result suggests that children's incorrect responding was
+not due to imprecise knowledge of SK terms.
 
-\begin{verbatim}
-## # weights:  30 (20 variable)
-## initial  value 236.587373 
-## iter  10 value 120.155378
-## iter  20 value 113.858407
-## iter  30 value 113.838510
-## iter  40 value 113.836190
-## final  value 113.836165 
-## converged
-\end{verbatim}
-
-\begin{verbatim}
-## # weights:  10 (4 variable)
-## initial  value 236.587373 
-## iter  10 value 119.446075
-## final  value 119.333166 
-## converged
-## # weights:  15 (8 variable)
-## initial  value 236.587373 
-## iter  10 value 121.753001
-## final  value 118.436067 
-## converged
-\end{verbatim}
+\begin{figure}
+\centering
+\includegraphics{amazon_color_files/figure-latex/study23accuracy_plots-1.pdf}
+\caption{(\#fig:study23accuracy\_plots)Proportion of accurate responses
+when applying different accuracy criteria, by age and experiment. Points
+show the mean for a 2-year age group (chosen arbitrarily for
+visualization) with 95\% confidence intervals. Lines show a loess
+smoothing function.}
+\end{figure}
 
 \textbf{Comprehension.}
 
@@ -683,33 +677,6 @@ terms during the Shipibo-language Experiment 2 but may struggle to
 succeed during Spanish-language Experiment 3. This suggests that
 children may rely on either strategy to communicate a color label to the
 best of their knowledge set.
-
-\begin{verbatim}
-## # weights:  30 (20 variable)
-## initial  value 202.789177 
-## iter  10 value 72.998387
-## iter  20 value 72.094921
-## iter  30 value 72.071216
-## iter  40 value 72.069217
-## final  value 72.069182 
-## converged
-\end{verbatim}
-
-\begin{verbatim}
-## # weights:  10 (4 variable)
-## initial  value 202.789177 
-## iter  10 value 82.649326
-## final  value 82.642259 
-## converged
-\end{verbatim}
-
-\textbf{Comparisons between Studies 2 \& 3. - Unfinished plots}
-
-\begin{figure}
-\centering
-\includegraphics{amazon_color_files/figure-latex/crossstudy_accuracystrats-1.pdf}
-\caption{}
-\end{figure}
 
 \section{General Discussion}\label{general-discussion}
 
