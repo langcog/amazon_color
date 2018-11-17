@@ -343,3 +343,45 @@ study3_accuracyloess <- bind_cols(lapply(
   separate("measure", into = c("measure", "stat"), sep = "_") %>%
   spread(stat, score)
 
+
+
+
+```{r, eval=FALSE}
+study1_naturebyentropy <-naming_data %>%
+  mutate(response_language = case_when(
+    color_cat %in% spanish_terms ~ "spanish",
+    color_cat %in% shipibo_terms ~ "shipibo"
+  )) %>%
+  select(subj, chip_id, color_cat, response_language, nature) %>%
+  mutate(shipibo_BCT = ifelse(nature == "BCT" & response_language == "shipibo", 1, 0),
+         shipibo_AHCT = ifelse(nature == "AHCT" & response_language == "shipibo", 1, 0),
+         spanish_BCT = ifelse(nature == "BCT" & response_language == "spanish", 1, 0),
+         spanish_AHCT = ifelse(nature == "AHCT" & response_language == "spanish", 1, 0)) %>%
+  mutate_at(vars(shipibo_BCT:spanish_AHCT), funs(ifelse(is.na(.), 0, .))) %>%
+  group_by(chip_id) %>%
+  summarise_at(vars(ends_with("CT", ignore.case = FALSE)), mean, na.rm = TRUE) %>%
+  right_join(study1_entropy, by = c("chip_id" = "Chip ID")) %>%
+  select(`Chip ID` = chip_id, Entropy, ends_with("CT", ignore.case = FALSE))
+
+## A little circular for a correlation?
+study1_naturebyentropy_test <- cor.test(~ shipibo_BCT + Entropy, data = study1_naturebyentropy)
+
+study1_naturebyentropy_plot <- ggplot(study1_naturebyentropy %>% 
+         gather(key = "measure", value = "prop", ends_with("CT")) %>%
+         separate(measure, c("language", "nature"), sep = "_") %>%
+         mutate(language = tools::toTitleCase(language),
+                nature = case_when(
+                  nature == "BCT" ~ "Basic color term",
+                  nature == "AHCT" ~ "Ad-hoc color term"),
+                language = relevel(factor(language), ref = "Shipibo"),
+                nature = relevel(factor(nature), ref = "Basic color term")),
+       aes(x = Entropy, y = prop, group = interaction(language, nature), colour = language, shape = nature)) +
+  geom_smooth(method = "loess", aes(fill = language, linetype = nature), alpha = .2) +
+  labs(x = "Labelling Entropy of Chip", y = "Proportion of Responses", fill = "Language", color = "Language", linetype = "Nature of Response") +
+  scale_fill_viridis(discrete = TRUE, option = "D") +
+  scale_color_viridis(discrete = TRUE, option = "D") +
+  coord_cartesian(ylim = c(0,1))
+
+print(study1_naturebyentropy_plot)
+
+```

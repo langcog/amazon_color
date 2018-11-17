@@ -357,9 +357,6 @@ study1_ttest_gendertermappearance <- with(
 
 ```
 
-<!-- We found no significant gender differences in the overall spread of color term usage across the set (*t* = `r study1_ttest_gendertermprofusion$statistic`, *P* = `r study1_ttest_gendertermprofusion$p.value`) or in the percentage of subjects who used a term at least once throughout the task (*t* = `r study1_ttest_gendertermappearance$statistic`, *P* = `r study1_ttest_gendertermappearance$p.value`). -->
-<!-- MCF: There are some issues with these stats - you really want to test for distributional differences, but it's complicated. -->
-
 ```{r study1_corrected_entropy}
 study1_entropy <- naming_data %>%
   group_by(chip_id, color_cat) %>% 
@@ -370,46 +367,6 @@ study1_entropy <- naming_data %>%
   summarise(entropy = - sum(p * log(p))) %>%
   rename(`Chip ID` = chip_id, 
          Entropy = entropy)
-```
-
-```{r, eval=FALSE}
-study1_naturebyentropy <-naming_data %>%
-  mutate(response_language = case_when(
-    color_cat %in% spanish_terms ~ "spanish",
-    color_cat %in% shipibo_terms ~ "shipibo"
-  )) %>%
-  select(subj, chip_id, color_cat, response_language, nature) %>%
-  mutate(shipibo_BCT = ifelse(nature == "BCT" & response_language == "shipibo", 1, 0),
-         shipibo_AHCT = ifelse(nature == "AHCT" & response_language == "shipibo", 1, 0),
-         spanish_BCT = ifelse(nature == "BCT" & response_language == "spanish", 1, 0),
-         spanish_AHCT = ifelse(nature == "AHCT" & response_language == "spanish", 1, 0)) %>%
-  mutate_at(vars(shipibo_BCT:spanish_AHCT), funs(ifelse(is.na(.), 0, .))) %>%
-  group_by(chip_id) %>%
-  summarise_at(vars(ends_with("CT", ignore.case = FALSE)), mean, na.rm = TRUE) %>%
-  right_join(study1_entropy, by = c("chip_id" = "Chip ID")) %>%
-  select(`Chip ID` = chip_id, Entropy, ends_with("CT", ignore.case = FALSE))
-
-## A little circular for a correlation?
-study1_naturebyentropy_test <- cor.test(~ shipibo_BCT + Entropy, data = study1_naturebyentropy)
-
-study1_naturebyentropy_plot <- ggplot(study1_naturebyentropy %>% 
-         gather(key = "measure", value = "prop", ends_with("CT")) %>%
-         separate(measure, c("language", "nature"), sep = "_") %>%
-         mutate(language = tools::toTitleCase(language),
-                nature = case_when(
-                  nature == "BCT" ~ "Basic color term",
-                  nature == "AHCT" ~ "Ad-hoc color term"),
-                language = relevel(factor(language), ref = "Shipibo"),
-                nature = relevel(factor(nature), ref = "Basic color term")),
-       aes(x = Entropy, y = prop, group = interaction(language, nature), colour = language, shape = nature)) +
-  geom_smooth(method = "loess", aes(fill = language, linetype = nature), alpha = .2) +
-  labs(x = "Labelling Entropy of Chip", y = "Proportion of Responses", fill = "Language", color = "Language", linetype = "Nature of Response") +
-  scale_fill_viridis(discrete = TRUE, option = "D") +
-  scale_color_viridis(discrete = TRUE, option = "D") +
-  coord_cartesian(ylim = c(0,1))
-
-print(study1_naturebyentropy_plot)
-
 ```
 
 Given these data, we next moved on to exploring the development of SK color vocabulary in childhood. Experiment 2 tests production and comprehension of SK color terms using SK-prototypical color chips; Experiment 3 tests children in Spanish using Spanish-prototypical chips. 
@@ -507,7 +464,7 @@ When the experimenter asked children to pick up a color that was instantiated by
 
 ## Results and Discussion
 
-```{r childfigure, fig.cap = "A comparison of children's performance during the production task in Studies 2 and 3. Solid or dotted lines represent overall performance by age for a particular chip. Solid lines show whether the child gave a correct answer in the language indicated in that column; dotted lines show if they gave a response that was correct in either language. Line colors are representative of the chip’s color coordinates. Values in the lower-right corners of each subplot display the entropy (uncertainty) values calculated from adult responses given during Experiment 1."}
+```{r childfigure, fig.cap = "A comparison of children's performance during the production task in Studies 2 (top) and 3 (bottom). Solid or dotted lines represent overall performance by age for a particular chip. Solid lines show whether the child gave a correct answer in the language indicated in that column; dotted lines show if they gave a response that was correct in either language. Line colors are representative of the chip’s color coordinates."}
 
 all_chip_sets <- full_join(shipibo_chip_set, 
                            spanish_chip_set) %>%
@@ -532,7 +489,6 @@ study23_firstprod <- feather::read_feather("../intermediates/processed_data.csv"
               mutate(`Chip ID` = as.character(`Chip ID`)), 
             by = c("prompt" = "Chip ID"))
 
-
 plot_accuracyvsentropy <- function(df, bystudy = TRUE) {
   
   df_correct <- filter(df, criteria == "correct") %>%
@@ -550,13 +506,13 @@ plot_accuracyvsentropy <- function(df, bystudy = TRUE) {
       facet_grid(as.numeric(as.character(prompt)) ~ study)
   } else {
      accuracyvsentropy_plot <- accuracyvsentropy_plot +
-      facet_wrap(study ~ as.character(as.numeric(prompt)), scales = "free", ncol = 2)
+      facet_wrap(~ as.character(as.numeric(prompt)), scales = "free", ncol = 2)
   }
   
   accuracyvsentropy_plot <- accuracyvsentropy_plot +
   scale_y_continuous(limits = c(-0.1,1.1), breaks = seq(0,1,0.5), labels = scales::percent) + 
   xlim(c(5,11.5)) +
-  scale_color_manual(values = chip_id_colors) +
+  scale_color_manual(values = chip_id_colors, guide = FALSE) +
   scale_linetype_manual(values = c("correct" = "solid", 
                                    "correct_either" = "dotted",
                                    "correct_nearby" = "dashed"), 
@@ -570,14 +526,14 @@ plot_accuracyvsentropy <- function(df, bystudy = TRUE) {
   return(accuracyvsentropy_plot)
 }
 
-accuracyvsage_sharedchips_plot <- plot_accuracyvsentropy(filter(study23_firstprod,
-                spanish %in% c("Blanco", "Negro", "Verde", "Amarillo", "Rojo", "Morado")))
+accuracyvsage_2 <- plot_accuracyvsentropy(filter(study23_firstprod, study == "Study 2"), 
+                                          bystudy = FALSE)
 
-accuracyvsage_otherchips_plot <- plot_accuracyvsentropy(filter(study23_firstprod,
-                !spanish %in% c("Blanco", "Negro", "Verde", "Amarillo", "Rojo", "Morado")), bystudy = F)
+accuracyvsage_3 <- plot_accuracyvsentropy(filter(study23_firstprod, study == "Study 3"), 
+                                          bystudy = FALSE)
 
-print(accuracyvsage_sharedchips_plot)
-print(accuracyvsage_otherchips_plot)
+print(accuracyvsage_2)
+print(accuracyvsage_3)
 
 ```
 
@@ -600,7 +556,9 @@ study2_firstprod_adjacent <- glmer(score ~ age.years.c  + (age.years.c | prompt)
 
 ```
 
-**Production.** Children's production accuracy increased substantially across nearly all color chips in the age range that we tested. Figure 2, left panels shows the accuracy of children's first production, both in SK (solid line) and in either language (dashed line). To quantify these developmental trends, we fit two generalized linear mixed effects models, one for the accuracy of SK production and one for the accuracy of production in either language. Both of these predicted accuracy as a function of the child's age, and included random intercepts for color chip and for participant, as well as a random slope of age by color chip. Age was a significant predictor in both models: $\beta = `r round(summary(study2_firstprod_same)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(study2_firstprod_same)$coef["age.years.c", "Std. Error"], digits = 2)`, $p = `r round(summary(study2_firstprod_same)$coef["age.years.c", "Pr(>|z|)"], digits = 3)`$ and $\beta = `r round(summary(study2_firstprod_either)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(study2_firstprod_either)$coef["age.years.c", "Std. Error"], digits = 2)`, $p < .0001$.
+### Production
+
+Children's production accuracy increased substantially across nearly all color chips in the age range that we tested. Figure 2, top panel shows the accuracy of children's first production, both in SK (solid line) and in either language (dashed line). To quantify these developmental trends, we fit two generalized linear mixed effects models, one for the accuracy of SK production and one for the accuracy of production in either language. Both of these predicted accuracy as a function of the child's age, and included random intercepts for color chip and for participant, as well as a random slope of age by color chip. Age was a significant predictor in both models: $\beta = `r round(summary(study2_firstprod_same)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(study2_firstprod_same)$coef["age.years.c", "Std. Error"], digits = 2)`, $p = `r round(summary(study2_firstprod_same)$coef["age.years.c", "Pr(>|z|)"], digits = 3)`$ and $\beta = `r round(summary(study2_firstprod_either)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(study2_firstprod_either)$coef["age.years.c", "Std. Error"], digits = 2)`, $p < .0001$.
 
 
 ```{r study2_accuracyspanishentropy}
@@ -688,7 +646,7 @@ We fit a mixed-effects model predicting correct performance with predictors spec
 
 
 
-```{r study23accuracy_plots, fig.cap = "Proportion of accurate responses when applying different accuracy criteria, by age and experiment. Points show the mean for a 2-year age group (chosen arbitrarily for visualization) with 95% confidence intervals. Lines show a loess smoothing function."}
+```{r study23accuracyplots, fig.cap = "Proportion of accurate responses when applying different accuracy criteria, by age and experiment. Points show the mean for a 2-year age group (chosen arbitrarily for visualization) with 95% confidence intervals. Lines show a loess smoothing function."}
 
 bind_rows(list("Experiment 2" = study2_adjacentorswitch, 
                  "Experiment 3" = study3_adjacentorswitch), .id = "study") %>%
@@ -720,16 +678,19 @@ bind_rows(list("Experiment 2" = study2_adjacentorswitch,
   theme(legend.position = "bottom")
 ```
 
+### Comprehension
 
 
-**Comprehension.**
 
 
 
 
 # Experiment 3
 
-Noting the level of bilingualism in Experiment 2, we designed Experient 3 as its complement. In Experiment  3, we tested children entirely in Spanish with a set of chips representing prototypical colors for the Spanish color system.
+Noting the level of bilingualism in the SK population, we designed Experient 3 as its complement. Due to the length of these experiments, however, as well as the task demands involved in testing the same children sequentially in both languages, we chose to perform this next experiment with a separate group of children. In Experiment  3, we tested children entirely in Spanish with a set of chips representing prototypical colors for the Spanish color system.
+
+### Participants
+
 
 ```{r, results = 'asis'}
 study3_agesex <- study3_data %>%
@@ -745,33 +706,28 @@ study3_agesex <- study3_data %>%
          `Age (SD)` = paste0(mean_age, " (", sd_age, ")"),
          `N` = paste0(num_total, " (", freq_total, "%)"),
          `Male` = paste0(num_boys, " (", freq_boys, "%)")) %>%
-  select(`Age Group`, `Age (SD)`, `N`, `Male`)
+  select(`Age Group`, `N`, `Male`)
 
-apa_table(study3_agesex)
+ 
+apa_table(study3_agesex, "Demographics of participants in Experiment 3.")
 
 ```
 
-### Participants
-
-Our protocol received ethical approval from Pontificia Universidad Católica del Perú’s Institutional Review Board. Children were recruited in a SK neighborhood of Yarinacocha (Bena Jema) as well as in Bawanisho. As before, children were recruited either through their parents or through the local school. When recruited at school, consent for participation was collected from both the teachers and the parents; otherwise, only consent from the parents was collected. Data were collected from a total of 46 children (16 boys) who were between the ages of 5 and 11 years old.
+As with Study 2, our protocol received ethical approval from Pontificia Universidad Católica del Perú’s Institutional Review Board. Children were recruited in a SK neighborhood of Yarinacocha (Bena Jema) as well as in Bawanisho. As before, children were recruited either through their parents or through the local school. When recruited at school, consent for participation was collected from both the teachers and the parents; otherwise, only consent from the parents was collected. Data were collected from a total of `r length(unique(study3_data$subj))` children (16 boys) between the ages of 5 and 11 years old.
 
 ### Materials
 
-Even though participants of Experiment 1 were instructed to give color terms in SK, some Spanish color terms were provided (this was especially true of young adult participants). Based on these data and on previous studies of Spanish color systems, we singled out 11 color chips that were prototypical instances of prominent Peruvian Spanish color terms. These color chips were grey (WCS n°46), pink (WCS n°65), orange (WCS n°121), green (WCS n°234), red (WCS n°245), brown (WCS n°266), white (WCS n°274), blue (WCS n°291), yellow (WCS n°297), black (WCS n°312) and purple (WCS n°325). (To visualize the hue of these chips, see Appendix 1.) These color chips were exactly the same as those used in Experiment 1; the only difference was that while 330 chips were used in Experiment 1, only 11 of them were used in Experiment 3. It is worth noting that six chips were shared between Experiment 2 and Experiment 3.
+Even though participants in Experiment 3 were instructed to give color terms in SK, some Spanish color terms were provided (this was especially true of younger adult participants, who were more proficient in Spanish). Based on these data and on previous studies of Spanish color systems, we singled out 11 color chips that were prototypical instances of prominent Peruvian Spanish color terms. These color chips were grey (WCS n°46), pink (WCS n°65), orange (WCS n°121), green (WCS n°234), red (WCS n°245), brown (WCS n°266), white (WCS n°274), blue (WCS n°291), yellow (WCS n°297), black (WCS n°312) and purple (WCS n°325). These color chips were exactly the same as those used in Experiment 1; the only difference was that while 330 chips were used in Experiment 1, only 11 of them were used in Experiment 3. Six chips were shared between Experiment 2 and Experiment 3. 
 
 ### Procedure
 
-Since SK children are not very fluent in Spanish, the production and comprehension tasks were both conducted in SK, and Spanish was only used for color terms (i.e., Spanish color terms were embedded in SK sentences). In both tasks, children were seating in front of the experimenter; a table (on which the color chips were displayed) was standing between them. As in Experiment 2, the production task was always performed before the comprehension task.
+Since SK children are not very fluent in Spanish, the production and comprehension tasks were both conducted in SK, and Spanish was only used for color terms (i.e., Spanish color terms were embedded in SK sentences).  As in Experiment 2, the production task was always performed before the comprehension task.
 
-Production task. The procedure was the same as that of Experiment 2. Children were first introduced to the whole procedure and the general goal of the study. It was specified that they would be expected to provide color terms in Spanish (and not in SK). Children were then asked: "what is the color of this chip?". When children provided SK color terms, the experimenter would write down their response but further ask: "what is the name of this color in Spanish?". When children were replying "I don’t know" to this prompt, the experimenter would not ask further questions and would move forward to the next color chip. As a result, responses of some children include only non-basic Spanish color terms or SK color terms. In total, we collected production data for 11 color chips. For each chip, the data include either one response (when children provided a Spanish basic color term in the first trial) or two or three responses (when children’s initial responses were either non-basic and/or in SK).
+**Production task.** The procedure was the same as that of Experiment 2. Children were first introduced to the whole procedure and the general goal of the study. It was specified that they would be expected to provide color terms in Spanish (and not in SK). Children were then asked: "what is the color of this chip?" When children provided SK color terms, the experimenter would write down their response but further ask: "what is the name of this color in Spanish?" When children replied "I don’t know" to this prompt, the experimenter would not ask further questions and would move forward to the next color chip. As a result, responses by some children include only non-basic Spanish color terms or SK color terms. For each chip, the data include either one response (when children provided a Spanish basic color term in the first trial) or two or three responses (when children’s initial responses were either non-basic and/or in SK).
 
-Comprehension task. The procedure was similar to that of the comprehension task of Experiment 2. The 11 color chips of the production task were simultaneously displayed in front of the children. The experimenter would then ask: "Can you give me the ___ chip?" (where "___" stands for a color term). In total, the comprehension of 11 Spanish color terms was tested.
+**Comprehension task.** The procedure was identical to that of the comprehension task of Experiment 2, with the exception of the set of chips and labels. In total, the comprehension of 11 Spanish color terms was tested. The choice of these terms was based on previous studies examining Spanish color terms as well as on Experiment 1. The 11 terms used as prompts included: blanco ("white"), verde ("green"), rojo ("red"), amarillo ("yellow"), azul ("blue"), negro ("black"), naranja ("orange"), gris ("grey"), morado ("purple"), marrón ("brown"), and rosa ("pink"). Since each color term was instantiated by only one color chip, no term required the special procedure that was followed in Experiment 2 for the ambiguous terms. 
 
-The choice of these terms was based on previous studies examining Spanish color terms as well as on Experiment 1 (as we have seen, SK adults sometimes resorted to Spanish color terms to name the color chips). The 11 terms used as prompts included: blanco ("white"), verde ("green"), rojo ("red"), amarillo ("yellow"), azul ("blue"), negro ("black"), naranja ("orange"), gris ("grey"), morado ("purple"), marrón ("brown"), and rosa ("pink").
-Since each color term was instantiated by only one color chip, no term required the special procedure that was followed in Experiment 2 for yankon, joshin and pei/xo. 
-
-
-## Results and Discussion.
+## Results and Discussion
 
 ```{r}
 
@@ -793,7 +749,9 @@ study3_firstprod_adjacent <- glmer(score ~ age.years.c  + (age.years.c | prompt)
 
 ```
 
-**Production** Unlike Study 2, age did not have a significant relationship with children's production accuracy. The right panels on Figure 2 show the accuracy of children's first production, both in SK (solid line), in either language (dashed line), or including adjacent color terms (dotted line). To quantify these developmental trends, we fit two generalized linear mixed effects models, one for the accuracy of SK production and one for the accuracy of production in either language. Both of these predicted accuracy as a function of the child's age, and included random intercepts for color chip and for participant, as well as a random slope of age by color chip. Age failed to gain significance as a predictor in either models: $\beta = `r round(summary(study3_firstprod_same)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(study3_firstprod_same)$coef["age.years.c", "Std. Error"], digits = 2)`, $p = `r round(summary(study3_firstprod_same)$coef["age.years.c", "Pr(>|z|)"], digits = 3)`$ and $\beta = `r round(summary(study3_firstprod_either)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(study3_firstprod_either)$coef["age.years.c", "Std. Error"], digits = 2)`, $p < .0001$.
+### Production
+
+The results of the production task are shown in Figure 2, bottom panel. Qualitatively, we saw smaller developmental effets. As in Experiment 2, we fit two generalized linear mixed effects models, one for the accuracy of SK production and one for the accuracy of production in either language. Both of these predicted accuracy as a function of the child's age, and included random intercepts for color chip and for participant, as well as a random slope of age by color chip. Age was not a significant predictor in either model: $\beta = `r round(summary(study3_firstprod_same)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(study3_firstprod_same)$coef["age.years.c", "Std. Error"], digits = 2)`, $p = `r round(summary(study3_firstprod_same)$coef["age.years.c", "Pr(>|z|)"], digits = 3)`$ and $\beta = `r round(summary(study3_firstprod_either)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(study3_firstprod_either)$coef["age.years.c", "Std. Error"], digits = 2)`, $p < .0001$.
 
 
 ```{r study3_spanishentropy}
@@ -833,22 +791,14 @@ study3_SwitchEnt_model <- summary(lme4::glmer(
 
 ```
 
-Similar to Experiment 2, over a quarter of all responses (*M* = `r study3_switchperc$mean_switch`, *SD* = `r study3_switchperc$sd_switch`) were given in another language (Shipibo in this case). There was significant variation in language-switching with some children completing the entire task in Spanish while others responded to upwards of `r study3_switchperc$max_switch` of trials in Shipibo. Similar to Experiment 2, there was no significant correlation between age and label accuracy (*p* `r with(study3_overallscore_test, ifelse(p.value < 0.001, "< 0.001", paste0("= ", round(p.value, 3))))`) or between age and language-switching (*p* `r with(study3_overallswitch_test, ifelse(p.value < 0.001, "< 0.001", paste0("= ", round(p.value, 3))))`). Still, we found that participants tended to respond in Shipibo when presented with items that had low entropy among SK adults during Experiment 1 (p `r with(study3_SwitchEnt_model, ifelse(coefficients["Entropy", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["Entropy", "Pr(>|z|)"], 3))))`). This suggests that participants across Studies 2 and 3 preferred to respond in Shipibo when presented with a high-consensus chip and in Spanish when shown a low-consensus chip.
+Similar to Experiment 2, over a quarter of all responses (*M* = `r study3_switchperc$mean_switch`, *SD* = `r study3_switchperc$sd_switch`) were given in another language (Shipibo in this case). There was significant variation in language-switching with some children completing the entire task in Spanish while others responded to upwards of `r study3_switchperc$max_switch` of trials in Shipibo.In addition, similar to Experiment 2, we found that participants tended to respond in Shipibo when presented with items that had low entropy among SK adults during Experiment 1 ($p$ `r with(study3_SwitchEnt_model, ifelse(coefficients["Entropy", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["Entropy", "Pr(>|z|)"], 3))))`). This suggests that participants across Studies 2 and 3 preferred to respond in Shipibo when presented with a high-consensus chip and in Spanish when shown a low-consensus chip.
 
-**Overextensions.**
+Also following our analysis in Experiment 2, we adopted alternative scoring to accommodate language-switching from Spanish to Shipibo-Konibo and same-language adjacent responses. Results are shown in Figure 3, right panel. Using a mixed-effects model, we did not find that age explained a significant amount of the variation seen in accuracy (*p* `r with(study3_AdjSwitchModel, ifelse(coefficients["age.years.c", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["age.years.c", "Pr(>|z|)"], 3))))`), in concordance with earlier analyses. However, we did find that participants made use of *both* alternative strategies, either providing SK responses (*p* `r with(study3_AdjSwitchModel, ifelse(coefficients["measurecorrecteither", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["measurecorrecteither", "Pr(>|z|)"], 3))))`) or same-language, adjacent responses (*p* `r with(study3_AdjSwitchModel, ifelse(coefficients["measurecorrectnearby", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["measurecorrectnearby", "Pr(>|z|)"], 3))))`). In other words, in both Experiment 2 and 3, we find frequent use of language switching but only Experiment 3 shows significant use of djacent terms as well.
 
-
-
-
-Similar to Experiment 2, we adopted alternative scoring to accommodate language-switching from Spanish to Shipibo-Konibo and same-language adjacent responses. Using a mixed-effects model, we did not find that age explained a significant amount of the variation seen in accuracy (*p* `r with(study3_AdjSwitchModel, ifelse(coefficients["age.years.c", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["age.years.c", "Pr(>|z|)"], 3))))`), in concordance with earlier analyses. However, we did find that participants made use of both mapping strategies of either providing different-language but corresponding responses (*p* `r with(study3_AdjSwitchModel, ifelse(coefficients["measurecorrecteither", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["measurecorrecteither", "Pr(>|z|)"], 3))))`) or same-language but adjacent responses (*p* `r with(study3_AdjSwitchModel, ifelse(coefficients["measurecorrectnearby", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["measurecorrectnearby", "Pr(>|z|)"], 3))))`). Between Studies 2 and 3, we find frequent use of language switching but only Experiment 3 shows significant use of same-language but adjacent terms as well. This discrepancy, along with the lack of an age correlation, can be due to foreign language exposure. Children may be exposed to Spanish at a young age but do not receive any formal Spanish education until later in adolescence. With a limited knowledge of Spanish color terms, children may spontaneously provide Spanish color terms during the Shipibo-language Experiment 2 but may struggle to succeed during Spanish-language Experiment 3. This suggests that children may rely on either strategy to communicate a color label to the best of their knowledge set.
+We speculate that the findings of Experiment 3 -- the lack of developmental increases and the increasing use of adjacent Spanish terms -- are a function of the nature of second-language exposure in Spanish. SK children are often exposed to Spanish at a young age, but they do not receive any formal Spanish education until later in adolescence. With a limited knowledge of Spanish color terms, children may spontaneously provide Spanish color terms during the SK-language Experiment 2 for those mappings they know but may still struggle to succeed during Spanish-language Experiment 3. More generally, we see children relying on a mixture of strategies to communicate colors even in the absence of complete knowledge in either language. 
 
 
-
-
-
-
-
-
+## Comprehension
 
 
 
