@@ -497,9 +497,9 @@ The production and comprehension tasks were both conducted in SK. In both tasks,
 
 Further, Experiment 1 showed that for some of these color terms, only one response was accurate, while for others, several responses were equally correct. For example, responses during Experiment 1 to a particular purple chip ranged from red to blue with some using the terms ami ("flower") or pua ("yam") as common descriptors. Accuracy was coded based on the results derived from Experiment 1: if at least 15% of participants in Experiment 1 labeled a chip with a particular term, we considered a trial to be correct if the child made the same pairing, regardless of whether the term as a basic or ad-hoc color term.
 
-<!-- **Comprehension task.** The 8 color chips of the production task were simultaneously displayed in front of the children. The experimenter would then ask: "Can you give me the [color] chip?" In total, the comprehension of 9 SK color terms was tested. The choice of these terms was based on the findings of Experiment 1. Not all of them were basic, but all of them stood out as being prominent in the SK color system. The 9 terms used as prompts included: yankon ("green/blue"), joshin ("red"), panshin ("yellow"), joxo ("white), wiso ("black"), nai ("blue"), and barin poi ("greeny-yellow"). In addition, as Experiment 1 revealed that two non-basic terms are widely used to refer to green and purple, two words were used to test comprehension of each of these two colors: pei/xo ("green") and ami/pua ("purple"). -->
+**Comprehension task.** The 8 color chips of the production task were simultaneously displayed in front of the children. The experimenter would then ask: "Can you give me the [color] chip?" In total, the comprehension of 9 SK color terms was tested. The choice of these terms was based on the findings of Experiment 1. Not all of them were basic, but all of them stood out as being prominent in the SK color system. The 9 terms used as prompts included: yankon ("green/blue"), joshin ("red"), panshin ("yellow"), joxo ("white), wiso ("black"), nai ("blue"), and barin poi ("greeny-yellow"). In addition, as Experiment 1 revealed that two non-basic terms are widely used to refer to green and purple, two words were used to test comprehension of each of these two colors: pei/xo ("green") and ami/pua ("purple").
 
-<!-- When the experimenter asked children to pick up a color that was instantiated by several chips, we followed the following procedure. The experimenter would ask: "Can you give me the [color] chip?" Children would then pick up a chip. The response would be registered and the chip be taken out of the table. As a result, only 7 chips would be remaining on the table. The experimenter would subsequently ask: "Can you give me another [color] chip?". Children would then pick up a new chip. The response would be registered and the chip be taken out of the table. The experimenter would then ask the same question again until a total of as many times as there were correct instances. Thus, for example, for yankon four chips would be elicited, while for joshin, two chips would be elicited. Like the preceding production task, accuracy was scored based on responses given in Study 1. If a child chose a particular chip, their choice was deemed accurate if at least 15% of participants during Study 1 made the same chip-label pairing. -->
+When the experimenter asked children to pick up a color that was instantiated by several chips, we followed the following procedure. The experimenter would ask: "Can you give me the [color] chip?" Children would then pick up a chip. The response would be registered and the chip be taken out of the table. As a result, only 7 chips would be remaining on the table. The experimenter would subsequently ask: "Can you give me another [color] chip?". Children would then pick up a new chip. The response would be registered and the chip be taken out of the table. The experimenter would then ask the same question again until a total of as many times as there were correct instances. Thus, for example, for yankon four chips would be elicited, while for joshin, two chips would be elicited. Like the preceding production task, accuracy was scored based on responses given in Study 1. If a child chose a particular chip, their choice was deemed accurate if at least 15% of participants during Study 1 made the same chip-label pairing.
 
 
 ## Results and Discussion
@@ -720,7 +720,66 @@ bind_rows(list("Experiment 2" = study2_adjacentorswitch,
 
 ### Comprehension
 
+```{r study2_comprehension}
 
+study23_overallcomp <- feather::read_feather("../intermediates/processed_data.csv") %>% 
+  filter(task == 'Comprehension') %>% select(-correct_either) %>%
+  rename(study = language) %>% mutate(
+    study = case_when(
+      study == "Shipibo" ~ "Study 2",
+      study == "Spanish" ~ "Study 3"),
+    correct_nearby = correct + ifelse(is.na(wrong_adjacent), 0, wrong_adjacent)) %>%
+  group_by(study, age, prompt) %>%
+  gather(key = "criteria", value = "score", 
+         starts_with("correct")) 
+
+plot_compaccuracyvsage <- function(df) {
+  
+  df_correct <- filter(df, criteria == "correct") %>%
+    group_by(study, age_interval, prompt, criteria) %>%
+    summarise(score = mean(score, na.rm = T))
+  
+  compaccuracyvsage_plot <- ggplot(df, aes(x = age_interval, y = score, colour = prompt,
+                           group = criteria, linetype = criteria)) +
+  geom_jitter(data = df_correct,
+    alpha = .25, width = .3, height = .1, col = "gray") + 
+  geom_smooth(se = FALSE, method = "loess", span = 1) +
+  facet_wrap(~ prompt, scales = "free", ncol = 2) +
+  scale_y_continuous(limits = c(-0.1,1.1), breaks = seq(0,1,0.5), labels = scales::percent) + 
+  xlim(c(5,11.5)) +
+  scale_color_manual(values = graph_colors, guide = FALSE) +
+  scale_linetype_manual(values = c("correct" = "solid", "correct_nearby" = "dashed"), 
+                        guide = FALSE) +
+  labs(x = "Age", y = "% of Correct Responses", 
+       linetype = "Measure", colour = "Chip ID") +
+  guides(label = "none")
+  
+  return(compaccuracyvsage_plot)
+}
+
+compaccuracyvsage_2 <- plot_compaccuracyvsage(filter(study23_overallcomp, study == "Study 2"))
+
+compaccuracyvsage_3 <- plot_compaccuracyvsage(filter(study23_overallcomp, study == "Study 3"))
+
+  
+```
+
+```{r}
+study2_overallcomp <- study23_overallcomp %>% filter(study == "Study 2")
+
+study2_overallcomp$age.years.c <- scale(study2_overallcomp$age, scale = FALSE)
+
+## Doesn't converge but study2_firstprod_either and study2_firstprod_adjacent do?
+study2_overallcomp_same <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
+      data = filter(study2_overallcomp, criteria == "correct"), 
+      family = "binomial")
+
+study2_overallcomp_adjacent <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
+      data = filter(study2_overallcomp, criteria == "correct_nearby"), 
+      family = "binomial")
+```
+
+Children's accuracy in the comprehension task increased substantially across nearly all color chips in the age range that we tested. Figure 3, top panel shows the accuracy of children's first production, both in for strict accuracy (solid line) and including chips for adjacent colors (dashed line). To quantify these developmental trends, we fit two generalized linear mixed effects models, one for the accuracy of SK production and one for choosing the accurate or adjacent chips. Both of these predicted accuracy as a function of the child's age, and included random intercepts for color chip and for participant, as well as a random slope of age by color chip. Age was a significant predictor in both models: $\beta = `r round(summary(study2_overallcomp_same)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(study2_overallcomp_same)$coef["age.years.c", "Std. Error"], digits = 2)`, $p = `r round(summary(study2_overallcomp_same)$coef["age.years.c", "Pr(>|z|)"], digits = 3)`$ and $\beta = `r round(summary(study2_overallcomp_adjacent)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(study2_overallcomp_adjacent)$coef["age.years.c", "Std. Error"], digits = 2)`, $p < .0001$.
 
 
 
@@ -840,6 +899,23 @@ We speculate that the findings of Experiment 3 -- the lack of developmental incr
 
 
 ## Comprehension
+
+```{r}
+study3_overallcomp <- study23_overallcomp %>% filter(study == "Study 3")
+
+study3_overallcomp$age.years.c <- scale(study3_overallcomp$age, scale = FALSE)
+
+## Doesn't converge but study2_firstprod_either and study2_firstprod_adjacent do?
+study3_overallcomp_same <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
+      data = filter(study3_overallcomp, criteria == "correct"), 
+      family = "binomial")
+
+study3_overallcomp_adjacent <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
+      data = filter(study3_overallcomp, criteria == "correct_nearby"), 
+      family = "binomial")
+```
+
+Unlike the production task for Experiment 3, children's accuracy in the comprehension task increased substantially across nearly all color chips in the age range that we tested. Figure 3, top panel shows the accuracy of children's first production, both in for strict accuracy (solid line) and including chips for adjacent colors (dashed line). To quantify these developmental trends, we fit two generalized linear mixed effects models, one for the accuracy of SK production and one for choosing the accurate or adjacent chips. Both of these predicted accuracy as a function of the child's age, and included random intercepts for color chip and for participant, as well as a random slope of age by color chip. Age was a significant predictor in both models: $\beta = `r round(summary(study3_overallcomp_same)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(study3_overallcomp_same)$coef["age.years.c", "Std. Error"], digits = 2)`, $p = `r round(summary(study3_overallcomp_same)$coef["age.years.c", "Pr(>|z|)"], digits = 3)`$ and $\beta = `r round(summary(study3_overallcomp_adjacent)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(study3_overallcomp_adjacent)$coef["age.years.c", "Std. Error"], digits = 2)`, $p < .0001$.
 
 
 

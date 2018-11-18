@@ -132,6 +132,7 @@ spanish_boundary <- as.data.frame(as.matrix(Matrix::forceSymmetric(
   left_join(spanish_euclid_dist, by = c("Color_1" = "spanish.x", "Color_2" = "spanish.y")) %>%
   rename("Chip ID_1" = "chip_id.x", "Chip ID_2" = "chip_id.y") %>%
   select(starts_with("Color"), starts_with("Chip"), adjacency, dist)
+
 ```
 
 
@@ -219,26 +220,44 @@ clean_child_data <- function(df, min_consensus = 10) {
                     summarise(chips = paste(chip_id, collapse = ", ")),
                   by = c("prompt" = "color_cat")) %>%
         left_join(both_chip_sets, by = c("prompt" = "shipibo")) %>%
-        mutate(correct = ifelse(str_detect(chips, response), 1, 0),
-               correct = ifelse(!is.na(response), correct, ifelse(response_num == 1, 0, NA)),
+        mutate(correct = case_when(
+                  str_detect(chips, response) ~ 1,
+                  !str_detect(chips, response) ~ 0,
+                  is.na(response) & response_num == 1 ~ 0,
+                  is.na(response) & response_num == 2 & prompt == "Yankon" ~ 0,
+                  TRUE ~ NA_real_),
                spanish = ifelse(prompt == "Yankon", "Azul/Verde", spanish)) %>%
         left_join(select(shipibo_chip_set, shipibo, chip_id) %>%
                     mutate(chip_id = as.character(chip_id)), 
                   by = c("response" = "chip_id")) %>%
         left_join(shipibo_boundary, 
-                  by = c("prompt" = "Color_1", "shipibo" = "Color_2"))
+                  by = c("prompt" = "Color_1", "shipibo" = "Color_2")) %>%
+        mutate(adjacency = case_when(
+          correct == 1 ~ NA_integer_,
+          TRUE ~ as.integer(adjacency)))
       
     } else if (first(df$language) == "Spanish") {
       df <- df %>%
         filter(response_num == 1) %>%
         left_join(mutate(both_chip_sets, chip_id = as.character(chip_id)),
                   by = c("prompt" = "spanish")) %>%
+        left_join(mutate(both_chip_sets, chip_id = as.character(chip_id)) %>% 
+                    select(chip_id, response_label = spanish),
+                  by = c("response" = "chip_id")) %>%
         mutate(spanish = prompt,
-               correct = ifelse(str_detect(chip_id, response), 1, 0),
-               correct = ifelse(!is.na(response), correct, ifelse(response_num == 1, 0, NA))) %>%
+               correct = case_when(
+                 str_detect(chip_id, response) ~ 1,
+                 prompt == "Celeste" & response == "291" ~ 1,
+                 !str_detect(chip_id, response) ~ 0,
+                 is.na(response) & response_num == 1 ~ 0,
+                 is.na(response) & response_num > 1 ~ NA_real_
+               )) %>%
         left_join(spanish_boundary %>%
                     mutate(`Chip ID_2` = as.character(`Chip ID_2`)), 
-                  by = c("prompt" = "Color_1", "response" = "Chip ID_2"))
+                  by = c("prompt" = "Color_1", "response_label" = "Color_2")) %>%
+        mutate(adjacency = case_when(
+          correct == 1 ~ NA_integer_,
+          TRUE ~ as.integer(adjacency)))
     }
     
     
@@ -365,7 +384,11 @@ cd <- child_data %>%
             response = str_c(response, collapse = ", "),
             correct = mean(correct, na.rm = T),
             correct_either = mean(correct_either, na.rm = T),
-            wrong_adjacent = mean(adjacency, na.rm = T),
+            wrong_adjacent = case_when(
+              all(is.na(adjacency)) ~ NA_real_,
+              first(task) == "Production" ~ mean(adjacency, na.rm = T),
+              first(task) == "Comprehension" ~ sum(adjacency, na.rm = T)/num_responses
+            ),
             wrong_euc_dist = mean(dist, na.rm = T)) %>%
   mutate_if(is.double, funs(replace(., is.nan(.), NA)))
 
