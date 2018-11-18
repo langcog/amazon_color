@@ -224,7 +224,8 @@ clean_child_data <- function(df, min_consensus = 10) {
                   str_detect(chips, response) ~ 1,
                   !str_detect(chips, response) ~ 0,
                   is.na(response) & response_num == 1 ~ 0,
-                  is.na(response) & response_num == 2 & prompt == "Yankon" ~ 0,
+                  is.na(response) & response_num <= 4 & prompt == "Yankon" ~ 0,
+                  is.na(response) & response_num <= 2 & prompt %in% c("Pei/Xo", "Joshin") ~ 0,
                   TRUE ~ NA_real_),
                spanish = ifelse(prompt == "Yankon", "Azul/Verde", spanish)) %>%
         left_join(select(shipibo_chip_set, shipibo, chip_id) %>%
