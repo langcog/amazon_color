@@ -5,11 +5,11 @@ shorttitle        : "Color Terms in Shipibo-Konibo Children"
 author: 
   - name          : "Danielle Kellier\\*"
     affiliation   : "1"
-  - name          : "Martin Fortier\\*"
-    affiliation   : "2"
     corresponding : yes    # Define only one corresponding author
     address       : "Postal address"
-    email         : "martin.fortier@ens.fr"
+    email         : "danielle.kellier@pennmedicine.upenn.edu"
+  - name          : "Martin Fortier\\*"
+    affiliation   : "2"
   - name          : "Maria Fernández Flecha"
     affiliation   : "3"
   - name          : "Michael C. Frank"
@@ -82,6 +82,36 @@ theme_set(theme_bw() +
 
 TO BE PASTED FROM GOOGLE DOC
 
+# Introduction
+
+Color language is where language and perception meet. Terms like *blue* or *red* draw boundary lines across a perceptually continuous space. In English, there are 11 basic color terms, but this color categorization is not universal. For instance, Russian speakers use two distinct words to describe the colors light blue (“goluboy”) and dark blue (“siniy”); and some languages have as few as two words [e.g., the Jalé people only have terms for “light” and “dark”; @berlin1969]. Why do languages vary in their color systems? One emerging consensus is that languages categorize the color spectrum in different ways in part due to functional demands [@gibson2017]: both smaller and larger color systems are relatively optimal for suiting different communicative needs [@regier2007]. 
+One important component of this hypothesis is the idea that some color systems are easier to learn for children than others; but the actual acquisition of color terms – while well-studied in English [e.g., @wagner2013] – is extremely under-studied across other populations. Berlin & Kay’s seminal World Color Survey [WCS; @berlin2009] presented adult speakers of over 100 languages with differently colored chips and asked them to produce a label, characterizing the space of color vocabulary in a range of written and unwritten languages. The WCS is an invaluable resource for the cross-linguistic study of color vocabulary, but no comparable resource exists for cross-cultural studies of how this vocabulary is learned across childhood. 
+In the current project, our goals were (1) to characterize color term knowledge in an indigenous population previously studied by the WCS, the Shipibo-Konibo (SK), and then (2) to build on this foundation to characterize the developmental trajectory of color language acquisition in a group of children raised outside of the WEIRD (Western Educated Industrialized Rich Democratic) populations that are over-represented in behavioral science. 
+
+## Color in Amazonian languages and Latin American varieties of Spanish
+
+A few studies explore the use of color terms in the varieties of Spanish in Latin America. @berlin1969 examine the case of the Mexican dialect of Spanish, which they consider to be in Stage VII of their classification. So, for example, a Stage II system would add the term red to the colors already present in Stage I (*black* and *white*). It wouldn't be possible for a system to have *red* if it doesn't already have *black* and *white*. They identify the following basic color terms: *blanco* (white), *negro* (black), *rojo* (red), *verde* (green), *amarillo* (yellow), *azul* (blue), *café* (brown), *morado* (purple), *rosa* (pink), *anaranjado* (orange) and *gris* (grey). Also, based on their work with forty Tzeltal participants, both Tzeltal monolinguals as well as Tzeltal-Spanish bilinguals, they found that bilingualism did not skew their results regarding the existence of semantic universals in the domain of color vocabulary. Tzeltal has five basic color terms:  *?ihk´* (black), *sak* (white), *cah* (red), *yaš* (green) and *k´an* (yellow). This language is estimated to be transitioning from Stage IV to V, which is reflected in the ambiguity of the focus of *yaš* (grue). The authors posit that a long history of contact with Spanish has probably accentuated this, and suggest that exposure to Spanish in schools will eventually cause *yaš* to be entirely restricted to greens, and *azul*  (or some other Spanish term) will be adopted into the Tzeltal color system.
+@monroy1989 offers information on Colombian Spanish based on materials collected for the Linguistic-ethnographic Atlas of Colombia. He presents examples of ad hoc color terms referring to colors through objects prototypically instantiating these color: "vegetables", "animals", "food", "metals", "precious stones", "fire and its derivatives" and "atmospheric phenomena".
+More recently, @aragon2016 offers an ethnolinguistic study of color terms in Mexican Spanish: *amarillo* (yellow), *azul* (blue), *blanco* (white), *café* (literally “coffee”, but effectively brown), *gris* (gray), *morado* (purple), *naranja* (orange), *negro* (black), *rojo* (red), *rosado* (pink) and *verde* (green). She analyzes the elaboration of these meanings in dictionaries, as well as the references and associations to which informants resort to for their own definitions. Aragón concludes that the local natural and cultural referents constitute a point of consensus among Mexicans when defining terms of color. Although informants also discussed some cultural material referents, these were not salient prototypes in their explanations. A special case that would merit further study in the future is that of *café* in Mexico versus *marrón* in Spain. According to the author, these two color terms are differentiated by the prototype "toasted coffee grain” associated to the Mexican Spanish term. Finally, she reviews the symbolic associations related to some terms, such as the discourses on femininity, especially those centered around the figure of the girl, associated with the term *rosado.*
+@gibson2017 offer some approximations to the case of color terms in Bolivian Spanish, based on their analysis centered on Tsimane, an indigenous language spoken by a group living in the Amazonian piedmont. The authors compare the Tsimane case with Bolivian Spanish and American English. Compared to Bolivian Spanish and English, Tsimane exhibits greater variability in terms of the color terms used for all color chips presented in their study, with the exception of red. Out of a total of 80 color chips, Tsimane exhibits 8 modal color terms while English has 10, and Bolivian Spanish, 11. Also, despite the variability observed, the assignment of modal color terms resulted in a similar partition of the color space in the three languages assessed. The authors also emphasize that the Tsimane color system is less informative than the English and the Bolivian Spanish one. Finally, using the free choice paradigm, they show speakers of Bolivian Spanish extensively use the term *verde* (green) to denominate the color chips displayed, in addition to *celeste* (light-blue) and *azul* (blue), as well as *morado* (purple). Less frequent terms are, for example, *fucsia* (fuchsia), *guinda* (maroon) and *mostaza* (mustard).
+	Several indigenous Amazonian color systems have been studied in the WCS. One of them, Candoshi, has been further examined by Surrallés (2016). In this thought-provoking study, Surrallés suggests that no proper color term exists in this language. If the fieldworkers of the WCS found otherwise, it is only because they misidentified the elicited terms as color terms while they are nothing more than a series of ad hoc terms referring to objects or animals of the surrounding environment. For example, in Candoshi, the word for yellow is “*ptsiyaromashi*” (“like the feathers of a milvago bird”), the word for red is “*chobiapi*” (“ripe fruit”), the word for green is “*kamachpa*” (“unripe fruit”), etc. These findings lead Surrallés to argue that the Candoshi do not have a proper color system. When they use “color terms” they are not trying to subsume objects of the world under abstract color categories, but they are rather establishing horizontal and ad hoc comparisons between similar objects of the world.
+A similar criticism of the WCS approach had been previously developed by @everett2005 [p. 627-628] based on his study of Pirahã, another Amazonian language. Everett also rejects the idea that there are basic color terms in this language. He argues that the four color terms identified as basic in the WCS are not such. For example, the word identified as the basic color term for “red” and “yellow” (*bi i sai*) means nothing more than “bloodlike”. Here again, color terms seem to be ad hoc comparisons rather than proper basic terms.
+As mentioned earlier, SK color terms have been thoroughly studied in the WCS. It is worth mentioning that two anthropological studies [@morin1973; @tournon2002] have also investigated the color terms used in this Amazonian language. However, these two studies contain some serious methodological pitfalls: a very limited number of chips were tested with only a few participants. As a result, we will not further discuss these studies in the remaining of this article and will only focus on a comparison with the WCS data.
+In sum, while some dialectical differences can be noticed across varieties of Spanish, these slight variations are consistent with the general framework proposed by the WCS. Less consistent, however, is the recurrent finding that ad hoc terms seem to play a central role in Amazonian color systems – and possibly also in some South-American varieties of Spanish (such as Colombian Spanish). More broadly, it seems that Amazonian color systems are characterized by fewer color terms than dialectical Spanish systems. 
+
+
+## The Development of Color Vocabulary
+
+
+## The Current Study
+
+In the last two decades, cross-cultural research aiming to go beyond North-American “convenience samples” has mainly focused on the study of East Asian children and adults. This endeavor has proved very fruitful [@kitayama2007] but is still limited because of its almost exclusive focus on North-American vs. East-Asian samples. The current study contributes to the general effort to go beyond such samples and study the development of human cognition in a non-North American and non-East Asian context. 
+The SK people are an indigenous group located within the Peruvian Amazon. They are mainly horticulturalists, fishermen, occasionally hunters but are noted for their strong display of tradition despite increasingly regular interactions with the western world. Their children receive formal schooling for 4 hours a day and begin formal Spanish lessons closer to adolescence. Most SK adults have some grasp of Spanish but younger adults show more proficiency than elders.
+ 
+The SK indigenous people are particularly interesting for at least two reasons:
+They differ from samples usually studied by cross-cultural evolutionary psychologists [@apicella2016]. Indeed, evolutionary psychologists are particularly interested in the study of contemporary hunter-gatherers because they are believed to be a good model of our Pleistocene ancestors. By contrast, like most riverine Amazonian cultures, the SK culture is not based on hunting and gathering, but on horticulture, fishing, and to a limited extent, hunting.
+Because of their location on the Ucayali River, one of the main tributaries of the Amazon, the SK culture has always been enmeshed in rich trading networks involving other indigenous groups of the Andes and the Lowlands (in pre-conquest times) as well as Mestizos and Westerners (in post-conquest times) [@lathrap1970]. It would thus be mistaken to think of this culture as an “isolated” or “preserved” one. On the contrary, having been extensively exposed to numerous cultural influences, the SK culture has been constantly reworked and reshaped through the centuries. This was especially true in the second half of the 20th century with intense contact with the Spanish-speaking Mestizo populations established along the Ucayali River. As a result, today’s SK culture straddles two worlds. 
+
 
 # Experiment 1
 
@@ -131,13 +161,13 @@ The median self-reported age for participants was `r study1_agespanish_stats$med
 
 Although all adult participants spoke Shipibo-Konibo as a first language, all were bilingual to a substantial degree. All reported an introduction to the Spanish language before early adolescence (*M* = `r study1_agespanish_stats$mean_spanish`yo, *SD* = `r study1_agespanish_stats$sd_spanish`y). Participant age and reported age of introduction to Spanish were positively correlated; younger participants reported learning Spanish at an early age although all participants reported introductions before early adolescence (*r* = `r study1_agespanish_test$estimate`, *p* = `r round(study1_agespanish_test$p.value,3)`).
 
-## Materials 
+### Materials 
 
 We used the 330 Munsell color chips as stimuli for the study. However, only 165 chips were used for each single participant (see below). These chips were exactly those used to collect data for the WCS. Individual color chips were 2 cm x 2.5 cm. 
 <!-- The 330 hues of the set of chips can be visualized in Appendix 1.  -->
 
 
-## Procedure
+### Procedure
 
 In order to make sure that the natural light intensity would not vary much between participants, the experiment took place indoors, near a window or a door. The study was conducted entirely in the SK language. 
  
@@ -310,14 +340,15 @@ One departure from the Berlin-Kay data was that `r study1_switchperc$atleast_1` 
 study1_nature <- naming_data %>%
   mutate(spanish_response = ifelse(color_cat %in% spanish_terms, 1, 0)) %>%
   group_by(subj, spanish_response, nature) %>%
-  summarise(n = n()) %>% ungroup() %>%
+  summarise(n = n(), .group = "keep") %>% ungroup() %>%
   mutate(nature = ifelse(is.na(nature), "Other", nature)) %>%
   complete(subj, spanish_response, nature, fill = list(n = 0)) %>%
   group_by(subj) %>%
   mutate(perc = 100*n/sum(n)) %>%
   group_by(spanish_response, nature) %>%
   summarise(mean_prop = paste0(round(mean(perc)), '%'),
-            sd_prop = paste0(round(sd(perc)), '%'))
+            sd_prop = paste0(round(sd(perc)), '%'),
+            .group = "drop")
   
 ```
 
@@ -942,6 +973,20 @@ Similar to the production task, allowing for use of adjacent color terms signifi
 # General Discussion
 
 TO BE PASTED FROM GOOGLE DOC
+
+Summary of study. 
+Adult data - bilingualism and relation to WCS data
+When we turned to the children’s data, two important generalizations emerged. First, we observed a much longer developmental trajectory for color than is observed in modern US populations (cf. Bornstein, 1985). 
+Second, we found evidence for competition between the Shipibo and Spanish color systems, implying the potential for functionally-driven language change. 
+Gibson analysis of optimality: children use spanish words for low-consensus chips, SK words for high consensus chips. These support the optimality hypothesis
+Limitations of our work. 
+	Cross-sectional
+	Limited number of chips for kids (limits entropy analyses)
+	
+In sum, these data further support a model of color word knowledge and acquisition that is driven by communicative need. 
+Need for more developmental work on other languages. 
+Huge role for environmental input
+
 
 \newpage
 
