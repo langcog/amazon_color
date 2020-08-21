@@ -77,7 +77,12 @@ spanish_chip_set <- read.csv(text = "spanish, code, munsell_code, chip_id
                              stringsAsFactors = FALSE) %>%
   mutate_if(is.character, trimws)
 
+all_chip_sets <- full_join(shipibo_chip_set, spanish_chip_set) %>%
+  left_join(color_chip_data, 
+            by = c("chip_id" = "#cnum"))
 
+chip_id_colors <- setNames(all_chip_sets$hex, 
+                           all_chip_sets$chip_id)
 
 # Load in data from current study -----------------------------------------
 
@@ -213,4 +218,8 @@ graph_colors <- c(
   'Spanish Term' = '#FF6E00'
 )
 
-
+graph_lines <- c(
+  "correct" = "solid", 
+  "correct_either" = "dotted",
+  "correct_nearby" = "dashed"
+)
