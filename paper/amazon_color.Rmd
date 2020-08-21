@@ -472,11 +472,11 @@ study2_participants <- study2_prod_data %>%
 
 ```{r study3-participants}
 
-study3_data <- feather::read_feather("../intermediates/processed_data.csv") %>%
-  filter(language == "Spanish", task == "Production") %>%
+study3_prod_data <- feather::read_feather("../intermediates/processed_data.csv") %>%
+  filter(language == "Spanish" & task == "Production") %>%
   mutate(shipibo_response = ifelse(response %in% shipibo_terms, 1, 0)) 
 
-study3_participants <- study3_data %>%
+study3_participants <- study3_prod_data %>%
   group_by(subj) %>%
   filter(row_number() == 1) %>% ungroup() %>%
   summarise(min_age = min(age_interval),
@@ -755,8 +755,7 @@ y2_model_compare <- study23_firstprod %>%
 
 
 
-
-```{r study2-accuracyspanishentropy, results='asis'}
+```{r study2-accuracyswitchentropy, results='asis'}
 
 study2_overallscore <- study2_prod_data %>%
   group_by(subj, age) %>%
@@ -784,17 +783,17 @@ study2_switchperc <- study2_prod_data %>% ungroup() %>%
   summarise(spanish_response = round(100*mean(spanish_response)),
             .groups = 'drop')
 
-study2_spanishbyentropy <- study2_prod_data %>%
+study2_switchbyentropy <- study2_prod_data %>%
   filter(spanish %in% c("Blanco", "Negro", "Morado", "Amarillo", "Verde", "Rojo") & 
            response_order %in% c("first", "only")) %>%
   left_join(study1_entropy %>% mutate(`Chip ID` = as.character(`Chip ID`)),
             by = c("prompt" = "Chip ID"))
 
-study2_spanishbyentropy$age.years.c <- scale(study2_spanishbyentropy$age, scale = FALSE)[,1]
+study2_switchbyentropy$age.years.c <- scale(study2_switchbyentropy$age, scale = FALSE)[,1]
 
 study2_SwitchEnt_model <- lme4::glmer(
   spanish_response ~ age.years.c * Entropy + (1|subj),
-  data=study2_spanishbyentropy, family = "binomial")
+  data=study2_switchbyentropy, family = "binomial")
 
 apa_table(apa_print(study2_SwitchEnt_model)$table)
 
@@ -803,24 +802,25 @@ apa_table(apa_print(study2_SwitchEnt_model)$table)
 
 ```{r study2-overextensions}
 
+
 study2_adjacentorswitch_whole <- study2_prod_data %>%
-  group_by(subj, age, gender) %>%
+  group_by(subj, age) %>%
   filter(response_order %in% c("first", "only")) %>%
   mutate(correct_nearby = correct + ifelse(is.na(wrong_adjacent), 0, wrong_adjacent),
          correct_all = ifelse(correct + correct_either + correct_nearby > 0, 1, 0)) %>%
-  select(subj, age, gender, prompt, starts_with("correct")) %>%
+  select(subj, age, prompt, wrong_adjacent, starts_with("correct")) %>%
   gather(key = "measure", value = "score", starts_with("correct")) %>%
   mutate(measure = factor(gsub("_","",measure)))
 
 study2_adjacentorswitch_whole$age.years.c <- scale(study2_adjacentorswitch_whole$age, scale = FALSE)[,1]
 
 study2_adjacentorswitch <- study2_adjacentorswitch_whole %>%
-  group_by(subj, age, age.years.c, gender, measure) %>%
+  group_by(subj, age, age.years.c, measure) %>%
   summarise(score = mean(score), .groups = 'drop')
 
-study2_AdjSwitchModel <- summary(lme4::glmer(
+study2_AdjSwitchModel <- lme4::glmer(
   score ~ age.years.c * measure + (1 | subj) ,
-  data=study2_adjacentorswitch_whole, family = "binomial"))
+  data=study2_adjacentorswitch_whole, family = "binomial")
 
 study2_adjacentbyentropy <- study2_prod_data %>%
   filter(spanish %in% c("Blanco", "Negro", "Morado", "Amarillo", "Verde", "Rojo") & 
@@ -841,7 +841,7 @@ study2_AdjacEnt_model <- lme4::glmer(
 ```
 
 ```{r study3-overextensions}
-study3_adjacentorswitch_whole <- study3_data %>%
+study3_adjacentorswitch_whole <- study3_prod_data %>%
   group_by(subj, age, gender) %>%
   filter(response_order %in% c("first", "only")) %>%
   mutate(correct_nearby = correct + ifelse(is.na(wrong_adjacent), 0, wrong_adjacent),
@@ -1037,7 +1037,7 @@ Older children were more accurate in both production and comprehension compared 
 **Language switching.** Over a quarter (`r study2_switchperc$overall_response[1]`%) of all responses were given in Spanish, despite children being prompted solely in SK (i.e., labeling a panshin chip as “amarillo”). The distribution of Spanish responses was non-random, with median use in `r median(study2_overallswitch$n_spanish)`/8 trials (IQR = `r paste0(quantile(study2_overallswitch$n_spanish, c(0.25, 0.75)), collapse = "-")`). We failed to find a significant correlation between age and overall Spanish use throughout the production task (`r apa_print(study2_overallswitch_test)$statistic`).
 
 As an exploratory analysis, we attempted to quantify low naming consensus using naming entropy [following @gibson2017]. We computed the naming entropy for each chip by computing the probabilities for each chip $c$ to be named with a particular label $l$ ($p(l \mid c)$) and then taking $H(c) = - \sum{p(l\mid c) \log[p(l \mid c)]}$ (see inset entropy values by chip in Figure \@ref(fig:prod-childfigure)).
-To assess the hypothesis that naming entropy in adults was related to Spanish use in children, we fit a mixed effects model predicting  Spanish responses as a function of child age, entropy of the chip's naming distribution for adults in Study 1, and their interaction. Despite age not being significantly correlated with overall frequency of Spanish responses, when added to a mixed-effects model, we found that older children were less likely to respond in Spanish (Table \@ref(tab:study2-accuracyspanishentropy)). Older children were also more likely to respond in Spanish when presented with a chip with high entropy (low naming consensus) among adult participants in Study 1. We found a positive interaction between age and entropy.  
+To assess the hypothesis that naming entropy in adults was related to Spanish use in children, we fit a mixed effects model predicting  Spanish responses as a function of child age, entropy of the chip's naming distribution for adults in Study 1, and their interaction. Despite age not being significantly correlated with overall frequency of Spanish responses, when added to a mixed-effects model, we found that older children were less likely to respond in Spanish (Table \@ref(tab:study2-accuracyswitchentropy)). Older children were also more likely to respond in Spanish when presented with a chip with high entropy (low naming consensus) among adult participants in Study 1. We found a positive interaction between age and entropy.  
 
 **Overextensions.**
 
@@ -1054,7 +1054,7 @@ Noting the apparent strategy of language switching seen in Study 2, we designed 
 
 
 ```{r study3-demographics, results = 'asis'}
-study3_demographics <- study3_data %>%
+study3_demographics <- study3_prod_data %>%
   group_by(subj) %>%
   filter(row_number() == 1) %>% group_by(age_interval) %>%
   summarise(num_total = n(),
@@ -1086,7 +1086,7 @@ As SK children are not very fluent in Spanish (formal Spanish education occurs i
 **Comprehension task.** The procedure was similar to that of Study 2. The experimenter would ask: Can you give me the [color term] chip? For 11 Spanish color terms. The choice of these terms was based on both previous studies examining Spanish color terms as well as responses given by adult participants in Study 1 (as some adult participants used Spanish color terms to label particular color chips). The 11 terms used as prompts were *blanco* (“white”), *verde* (“green”), *rojo* (“red”), *amarillo* (“yellow”), *azul* (“blue”), *negro* (“black”), *naranja* (“orange”), *gris* (“grey”), *morado* (“purple”), *marrón* (“brown”), and *rosa* (“pink”). Since each color term was best instantiated by a single color chip and lacked the ambiguity seen with certain SK color terms, accuracy was graded one-to-one for term-chip pairings with less leniency compared to Study 2.
 
 
-```{r}
+```{r study3-prod-model-overall}
 
 study3_firstprod$age.years.c <- scale(study3_firstprod$age, scale = FALSE)
 
@@ -1094,61 +1094,77 @@ study3_firstprod_same <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (
       data = filter(study3_firstprod, criteria == "correct"), 
       family = "binomial")
 
-## Doesn't converge but study3_firstprod_same and study3_firstprod_adjacent do?
+study3_firstprod_same_noage <- glmer(score ~ (1 | prompt) + (1 | subj), 
+      data = filter(study3_firstprod, criteria == "correct"), 
+      family = "binomial")
+
 study3_firstprod_either <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
       data = filter(study3_firstprod, criteria == "correct_either"), 
       family = "binomial")
+
 study3_firstprod_adjacent <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
       data = filter(study3_firstprod, criteria == "correct_nearby"), 
+      family = "binomial")
+
+study3_firstprod_all <- glmer(score ~ age.years.c + criteria + (age.years.c | prompt) + (1 | subj), 
+      data = mutate(study3_firstprod, criteria = factor(criteria)), 
       family = "binomial")
 
 ```
 
 
-```{r study3_spanishentropy}
-study3_switchperc <- study3_data %>%
-  group_by(subj) %>%
-  summarise(shipibo_response = 100*mean(shipibo_response), .groups = 'drop') %>%
-  summarise(mean_switch = mean(shipibo_response),
-            sd_switch = sd(shipibo_response),
-            min_switch = min(shipibo_response),
-            max_switch = max(shipibo_response),
-            .groups = 'drop') %>%
-  mutate_all(funs(paste0(round(.),'%')))
+```{r study3-accuracyswitchentropy, results='asis'}
 
-study3_overallscore <- study3_data %>%
+study3_overallscore <- study3_prod_data %>%
   group_by(subj, age) %>%
   summarise(correct = mean(correct, na.rm = T), .groups = 'drop')
 
 study3_overallscore_test <- cor.test(~ correct + age, data = study3_overallscore)
 
-study3_overallswitch <- study3_data %>%
-  group_by(subj, age) %>%
-  summarise(shipibo_response = mean(shipibo_response), .groups = 'drop')
+study3_overallswitch <- study3_prod_data %>%
+  group_by(subj, age, prompt) %>%
+  summarise(shipibo_response = ifelse(sum(shipibo_response) >= 1, 1, 0), .groups = 'drop_last') %>%
+  summarise(n_shipibo = sum(shipibo_response),
+            n_trials = n(),
+            perc_shipibo = n_shipibo/n_trials, 
+            .groups = 'drop')
 
-study3_overallswitch_test <- cor.test(~ shipibo_response + age, data = study3_overallswitch)
+study3_overallswitch_test <- cor.test(~ n_shipibo + age, data = study3_overallswitch)
 
-study3_responsebyentropy <- study3_data %>%
-  filter(spanish %in% c("Blanco", "Negro", "Verde", "Amarillo", "Rojo") & 
-           (task == "Comprehension" | response_order %in% c("first", "only"))) %>%
+study3_switchperc <- study3_prod_data %>% ungroup() %>%
+  mutate(response_order = case_when(
+    response_order %in% c("only", "first") ~ "first",
+    response_order %in% c("middle", "last") ~ "subsequent"),
+    overall_response = round(100*mean(shipibo_response))) %>% 
+  group_by(overall_response, response_order) %>%
+  summarise(shipibo_response = round(100*mean(shipibo_response)),
+            .groups = 'drop')
+
+study3_switchbyentropy <- study3_prod_data %>%
+  filter(spanish %in% c("Blanco", "Negro", "Morado", "Amarillo", "Verde", "Rojo") & 
+           response_order %in% c("first", "only")) %>%
   left_join(study1_entropy %>% mutate(`Chip ID` = as.character(`Chip ID`)),
             by = c("prompt" = "Chip ID"))
 
-study3_responsebyentropy$age.years.c <- scale(study3_responsebyentropy$age, scale = FALSE)[,1]
 
-study3_SwitchEnt_model <- summary(lme4::glmer(
-  shipibo_response ~ age.years.c * Entropy + (1|subj),
-  data=study3_responsebyentropy, family = "binomial"))
+study3_switchbyentropy$age.years.c <- scale(study3_switchbyentropy$age, scale = FALSE)[,1]
+
+
+study3_SwitchEnt_model <- lme4::glmer(
+  shipibo_response ~ age.years.c + Entropy + (1|subj),
+  data=study3_switchbyentropy, family = "binomial")
+
+apa_table(apa_print(study3_SwitchEnt_model)$table)
+
 
 ```
 
 
-```{r}
+```{r study3-overallcomp-models}
 study3_overallcomp <- study23_overallcomp %>% filter(study == "Study 3")
 
 study3_overallcomp$age.years.c <- scale(study3_overallcomp$age, scale = FALSE)
 
-## Doesn't converge but study2_firstprod_either and study2_firstprod_adjacent do?
 study3_overallcomp_same <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
       data = filter(study3_overallcomp, criteria == "correct"), 
       family = "binomial")
@@ -1160,26 +1176,11 @@ study3_overallcomp_adjacent <- glmer(score ~ age.years.c  + (age.years.c | promp
 
 ## Results and Discussion
 
-Contrasting Study 2, we found age to be a significant predictor of accuracy in the comprehension task, but not in the production task (r(XX) = 0.XX, p < 0.XX, see Figure \@ref(fig:study23-accuracy)). Similar to Study 2, over a quarter (XX%) of all responses were given in SK, despite being prompted to respond in Spanish. There was significant variation in language-switching with some children responding solely in Spanish while others responded to upwards of XX/11 trials in SK (Mdn = XX trials, IQR = XX-XX). We failed to find a significant correlation between age and label accuracy (p = 0.063) or between age and language-switching (p = 0.908). Still, we found that participants tended to respond in SK when presented with items that had low entropy (high consensus) among adult participants in Study 1 (p = 0.006). This suggests that child participants across Studies 2 and 3 preferred to respond in SK when presented with a high-consensus chip, and in Spanish with a low-consensus chip.
+Contrasting Study 2, we found age to be a significant predictor of accuracy in the comprehension task (`r apa_print(study3_overallcomp_same)$statistic$age_years_c`), but not in the production task (`r apa_print(study3_firstprod_same)$statistic$age_years_c`, see Figure \@ref(fig:study23-accuracy)). Similar to Study 2, over a quarter (`r study3_switchperc$overall_response[1]`%) of all responses were given in SK, despite being prompted to respond in Spanish. There was significant variation in language-switching with some children responding solely in Spanish while others responded to upwards of `r max(study3_overallswitch$n_shipibo)`/11 trials in SK (Mdn = `r median(study3_overallswitch$n_shipibo)` trials, IQR = `r paste0(quantile(study3_overallswitch$n_shipibo, c(0.25, 0.75)), collapse = "-")`). We found only a marginal correlation between age and label accuracy (`r apa_print(study3_overallscore_test)$statistic`) and an insignificant correlation between age and language-switching (`r apa_print(study3_overallswitch_test)$statistic`). Still, when accounting for age, we found that participants tended to respond in SK when presented with items that had low entropy in Study 1 (`r apa_print(study3_SwitchEnt_model)$statistic$Entropy`). This suggests that child participants across Studies 2 and 3 preferred to respond in SK when presented with a high-consensus chip, and in Spanish with a low-consensus chip.
 
-Similar to Study 2, we adopted alternative scoring to accommodate language-switching from Spanish to SK (different-language) but corresponding and same-language but adjacent responses. Using a mixed-effects model, we failed to find age as a significant predictor for accuracy even with this more lenient scording (p = 0.123), in concordance with earlier analyses. However, we did find that participants used both mapping strategies of either providing different-language but corresponding responses (p < 0.001) or same-language but adjacent responses (p = 0.002). We find frequent use of language switching in both Studies 2 and 3, but only Study 3 exhibits significant use of same-language but adjacent terms. 
+Similar to Study 2, we adopted alternative scoring to accommodate language-switching from Spanish to SK (different-language) but corresponding and same-language but adjacent responses. Using a mixed-effects model, we failed to find age as a significant predictor for accuracy even with this more lenient scoring (`r apa_print(study3_firstprod_all)$statistic$age_years_c`), in concordance with earlier analyses. However, we did find that participants improved accuracy through both mapping strategies of either providing different-language but corresponding responses (`r apa_print(study3_firstprod_all)$statistic$criteriacorrect_either`) or same-language but adjacent responses (`r apa_print(study3_firstprod_all)$statistic$criteriacorrect_nearby`). We find frequent use of language switching in both Studies 2 and 3, but only Study 3 exhibits significant use of same-language but adjacent terms. 
 
 It is possible that early but informal Spanish language exposure can explain the discrepancies seen in Studies 2 and 3. Children may be exposed to Spanish at a young age but likely do not receive any formal Spanish education until adolescence. With limited knowledge of Spanish color terms, children may spontaneously supplement their color term knowledge with Spanish terms during SK-language Study 2 but struggle to succeed during Spanish-language Study 3. More generally, we see children relying on a mixture of strategies to communicate colors even in the absence of mastery in either language. 
-
-<---->
-### Production
-
-The results of the production task are shown in Figure 2, bottom panel. Qualitatively, we saw smaller developmental effects. As in Study 2, we fit two generalized linear mixed effects models, one for the accuracy of Spanish term production and one for the accuracy of production in either language. Both of these predicted accuracy as a function of the child's age, and included random intercepts for color chip and for participant, as well as a random slope of age by color chip. Age was not a significant predictor in either model: $\beta = `r round(summary(study3_firstprod_same)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(study3_firstprod_same)$coef["age.years.c", "Std. Error"], digits = 2)`, $p = `r round(summary(study3_firstprod_same)$coef["age.years.c", "Pr(>|z|)"], digits = 4)`$ and $\beta = `r round(summary(study3_firstprod_either)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(study3_firstprod_either)$coef["age.years.c", "Std. Error"], digits = 2)`, $p < .0001$.
-
-Similar to Study 2, over a quarter of all responses (*M* = `r study3_switchperc$mean_switch`, *SD* = `r study3_switchperc$sd_switch`) were given in another language (Shipibo in this case). There was significant variation in language-switching with some children completing the entire task in Spanish while others responded to upwards of `r study3_switchperc$max_switch` of trials in Shipibo.In addition, similar to Study 2, we found that participants tended to respond in Shipibo when presented with items that had low entropy among SK adults during Study 1 ($p$ `r with(study3_SwitchEnt_model, ifelse(coefficients["Entropy", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["Entropy", "Pr(>|z|)"], 3))))`). This suggests that participants across Studies 2 and 3 preferred to respond in Shipibo when presented with a high-consensus chip and in Spanish when shown a low-consensus chip.
-Also following our analysis in Study 2, we adopted alternative scoring to accommodate language-switching from Spanish to Shipibo-Konibo and same-language adjacent responses. Results are shown in Figure 3, right panel. Using a mixed-effects model, we did not find that age explained a significant amount of the variation seen in accuracy (*p* `r with(study3_AdjSwitchModel, ifelse(coefficients["age.years.c", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["age.years.c", "Pr(>|z|)"], 3))))`), in concordance with earlier analyses. However, we did find that participants made use of *both* alternative strategies, either providing SK responses (*p* `r with(study3_AdjSwitchModel, ifelse(coefficients["measurecorrecteither", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["measurecorrecteither", "Pr(>|z|)"], 3))))`) or same-language, adjacent responses (*p* `r with(study3_AdjSwitchModel, ifelse(coefficients["measurecorrectnearby", "Pr(>|z|)"] < 0.001, "< 0.001", paste0("= ", round(coefficients["measurecorrectnearby", "Pr(>|z|)"], 3))))`). In other words, in both Study 2 and 3, we find frequent use of language switching but only Study 3 shows significant use of adjacent terms as well.
-We speculate that the findings of Study 3 -- the lack of developmental increases and the increasing use of adjacent Spanish terms -- are a function of the nature of second-language exposure in Spanish. SK children are often exposed to Spanish at a young age, but they do not receive any formal Spanish education until later in adolescence. With a limited knowledge of Spanish color terms, children may spontaneously provide Spanish color terms during the SK-language Study 2 for those mappings they know but may still struggle to succeed during Spanish-language Study 3. More generally, we see children relying on a mixture of strategies to communicate colors even in the absence of complete knowledge in either language. 
-
-
-### Comprehension
-Unlike the production task for Study 3, children's accuracy in the comprehension task increased substantially across nearly all color chips in the age range that we tested. Figure 3, top panel shows the accuracy of children's first production, both in for strict accuracy (solid line) and including chips for adjacent colors (dashed line). To quantify these developmental trends, we fit two generalized linear mixed effects models, one for the accuracy of SK production and one for choosing the accurate or adjacent chips. Both of these predicted accuracy as a function of the child's age, and included random intercepts for color chip and for participant, as well as a random slope of age by color chip. Age was a significant predictor in both models: $\beta = `r round(summary(study3_overallcomp_same)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(study3_overallcomp_same)$coef["age.years.c", "Std. Error"], digits = 2)`, $p = `r round(summary(study3_overallcomp_same)$coef["age.years.c", "Pr(>|z|)"], digits = 4)`$ and $\beta = `r round(summary(study3_overallcomp_adjacent)$coef["age.years.c", "Estimate"], digits = 2)`$, SE = `r round(summary(study3_overallcomp_adjacent)$coef["age.years.c", "Std. Error"], digits = 2)`, $p < .0001$. 
-Similar to the production task, allowing for use of adjacent color terms significantly boosted performance but did not affect the overall developmental trajectory. However, the presence of a developmental trend in comprehension but not in production along with overextension of Spanish color categories suggests that SK children may carry some premature theories about the Spanish color system. Children may have had some knowledge of how the Spanish color system in partitioned but merely failed to recall the proper Spanish terms, leading to use of alternative strategies during the production task. However, when prompted with a Spanish color term, children were better able to make the proper term-chip association. This suggests that SK children may have some early knowledge about the Spanish color system that they lack for the SK color system which is peculiar considering their fluency in the SK language and lack thereof in Spanish.
-
 
 
 # General Discussion
