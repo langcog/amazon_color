@@ -76,6 +76,7 @@ theme_set(theme_bw() +
             theme(strip.background = element_blank(), 
                   panel.grid = element_blank())) # nice theme with limited extras
 
+raw_data <- feather::read_feather(here("intermediates/processed_data.csv"))
 
 ```
 
@@ -129,8 +130,7 @@ Before we could assess the developmental trajectory of color term knowledge in S
 
 
 ```{r study1-participants}
-study1_participants <- read_csv(
-  here("data/Current_Data/naming_colors_participants.csv")) %>%
+study1_participants <- read_csv(here("data/Current_Data/naming_colors_participants.csv")) %>%
   mutate(age = as.numeric(as.character(edad)),
          `edad aprendizaje del espanol` = as.numeric(as.character(`edad aprendizaje del espanol`)))
 
@@ -152,7 +152,7 @@ study1_agespanish_test <- cor.test(~ `edad aprendizaje del espanol` + age, data 
 
 Our protocol for Study 1 and all subsequent studies received ethical approval from Pontificia Universidad Católica del Perú’s Institutional Review Board. We recruited `r pull(summarise(study1_participants, n(), .groups = 'drop'))` adult participants (`r pull(summarise(study1_participants, sum(género == 'masculino'), .groups = 'drop'))` men). We experienced difficulty recruiting male participants as many of the men were away from the village during the day, resulting in a sample that is predominantly female. Most participants (31, 4 men) were from SK communities of the Middle Ucayali region (Yarinacocha, San Francisco, and Nueva Betania), with a subset from communities of the Lower (Paoyhan) and Upper (Puerto Belén) Ucayali region. Within the small town of Yarinacocha (in the vicinity of Pucallpa), we recruited participants (9, 2 men) from the predominantly SK neighborhood of Bena Jema. All the other recruitment sites were native community villages with exclusively SK residents. Overall, the sample included SK adults who could be characterized as more urban (Yarinacocha and San Francisco sites) or more traditional and in regular contact with the surrounding rainforest (Nueva Betania, Paoyhan, and Puerto Belén sites).
 
-The median age for participants was `r median(study1_participants$age, na.rm = T)` years (*IQR* = `r paste0(round(quantile(study1_participants$age, probs = c(0.25, 0.75), na.rm = T)), collapse = "-")` years) ranging from `r min(study1_participants$age, na.rm = T)` to `r max(study1_participants$age, na.rm = T)` years. Regarding occupations, `r filter(study1_occupations, género == 'femenino' & ocupación == 'ama de casa')$n` of the `r pull(summarise(study1_participants, sum(género == 'femenino'), .groups = 'drop'))` female participants were homemakers or housewives (`r round(filter(study1_occupations, género == 'femenino' & ocupación == 'ama de casa') %>% pull(freq_total))`% of the overall sample) and another `r filter(study1_occupations, género == 'femenino' & ocupación == 'artesana')$n` were artisans (`r round(filter(study1_occupations, género == 'femenino' & ocupación == 'artesana')$freq_total)`%). `r Words(filter(study1_occupations, género == 'masculino' & ocupación == 'agricultor')$n)` of the `r pull(summarise(study1_participants, sum(género == 'masculino'), .groups = 'drop'))` male participants (`r round(filter(study1_occupations, género == 'masculino' & ocupación == 'agricultor')$freq_total)`% overall) were horticulturalists. Across both sexes, `r sum(filter(study1_occupations, género == 'femenino' & grepl('estud', ocupación))$n)` women and `r filter(study1_occupations, género == 'masculino' & grepl('estud', ocupación))$n` men identified as students, comprising a total `r round(sum(filter(study1_occupations, grepl('estud', ocupación))$freq_total))`% of the population. Although all adult participants were required to be native SK speakers, all but 1 participant had been introduced to the Spanish language prior to adolescence (median age = `r median(study1_participants$'edad aprendizaje del espanol', na.rm = T)`yo, *IQR* = `r paste0(quantile(study1_participants$'edad aprendizaje del espanol', c(0.25, 0.75), na.rm = T), collapse = "-")`). Participant age and reported age of introduction to Spanish were positively correlated; younger participants reported learning Spanish at an earlier age (*r* = `r apa_print(study1_agespanish_test)$statistic`).
+The median age for participants was `r median(study1_participants$age, na.rm = T)` years (*IQR* = `r paste0(round(quantile(study1_participants$age, probs = c(0.25, 0.75), na.rm = T)), collapse = "-")` years) ranging from `r min(study1_participants$age, na.rm = T)` to `r max(study1_participants$age, na.rm = T)` years. Regarding occupations, `r filter(study1_occupations, género == 'femenino' & ocupación == 'ama de casa')$n` of the `r pull(summarise(study1_participants, sum(género == 'femenino'), .groups = 'drop'))` female participants were homemakers or housewives (`r round(filter(study1_occupations, género == 'femenino' & ocupación == 'ama de casa') %>% pull(freq_total))`% of the overall sample) and another `r filter(study1_occupations, género == 'femenino' & ocupación == 'artesana')$n` were artisans (`r round(filter(study1_occupations, género == 'femenino' & ocupación == 'artesana')$freq_total)`%). `r Words(filter(study1_occupations, género == 'masculino' & ocupación == 'agricultor')$n)` of the `r pull(summarise(study1_participants, sum(género == 'masculino'), .groups = 'drop'))` male participants (`r round(filter(study1_occupations, género == 'masculino' & ocupación == 'agricultor')$freq_total)`% overall) were horticulturalists. Across both sexes, `r sum(filter(study1_occupations, género == 'femenino' & grepl('estud', ocupación))$n)` women and `r filter(study1_occupations, género == 'masculino' & grepl('estud', ocupación))$n` men identified as students, comprising a total `r round(sum(filter(study1_occupations, grepl('estud', ocupación))$freq_total))`% of the population. Although all adult participants were required to be native SK speakers, all but 1 participant had been introduced to the Spanish language prior to adolescence (median age = `r median(study1_participants$'edad aprendizaje del espanol', na.rm = T)`yo, *IQR* = `r paste0(quantile(study1_participants$'edad aprendizaje del espanol', c(0.25, 0.75), na.rm = T), collapse = "-")`). Participant age and reported age of introduction to Spanish were positively correlated; younger participants reported learning Spanish at an earlier age (`r apa_print(study1_agespanish_test)$statistic`).
 
 
 ### Materials and procedure
@@ -184,9 +184,6 @@ study1_profusion <- naming_data %>%
             `IQR % of Chips in Set Labeled (Current)` = paste0(
               round(quantile(prop, c(0.25,0.75))), collapse = "-"),
             .groups = 'drop')
-
-curr_naming_list <- as.character(na.omit(filter(study1_profusion, `% of Subjects Who Used the Term (Current)` > 50 & !is.na(color_cat))$`color_cat`))
-
 
 ```
 
@@ -252,15 +249,16 @@ study1_spanishbychip <- naming_data %>%
   arrange(desc(perc)) %>%
   rename(`Chip ID` = chip_id, `% of Subjects` = perc, `Hex Code` = hex)
 
-study1_highestspanish <- datatable(study1_spanishbychip, rownames = FALSE) %>%
-  formatPercentage("% of Subjects", 0) %>%
-  formatStyle(columns = "Hex Code",
-              background = styleEqual(
-                study1_spanishbychip$`Hex Code`, study1_spanishbychip$`Hex Code`))
+# study1_highestspanish <- datatable(study1_spanishbychip, rownames = FALSE) %>%
+#   formatPercentage("% of Subjects", 0) %>%
+#   formatStyle(columns = "Hex Code",
+#               background = styleEqual(
+#                 study1_spanishbychip$`Hex Code`, study1_spanishbychip$`Hex Code`))
+
 ```
 
 
-Compared to the WCS dataset which only reported SK language terms, `r study1_switchperc$atleast_1`% of our participants used a Spanish-language color term to describe at least 1 chip, which accounted for `r study1_switchperc$overall_spanish`% of all responses (Figure 1c). Across chips, Spanish use peaked at `r round(100*max(study1_spanishbychip$'% of Subjects'))`% when participants were asked to label chips that English speakers would consider to be orange. However, Spanish use varied greatly between subjects (*Mdn* = `r study1_switchperc$mdn_subj_spanish`%, *IQR* = `r study1_switchperc$iqr_subj_spanish`%) with one participant responding in Spanish in `r study1_switchperc$max_subj_spanish`% of the time despite being prompted solely in SK.
+Compared to the WCS dataset which only reported SK language terms, `r study1_switchperc$atleast_1`% of our participants used a Spanish-language color term to describe at least 1 chip, which accounted for `r study1_switchperc$overall_spanish`% of all responses (Figure \@ref(fig:study1-corrected_entropy)). Across chips, Spanish use peaked at `r round(100*max(study1_spanishbychip$'% of Subjects'))`% when participants were asked to label chips that English speakers would consider to be orange. However, Spanish use varied greatly between subjects (*Mdn* = `r study1_switchperc$mdn_subj_spanish`%, *IQR* = `r study1_switchperc$iqr_subj_spanish`%) with one participant responding in Spanish in `r study1_switchperc$max_subj_spanish`% of the time despite being prompted solely in SK.
 
 ```{r study1-consensus}
 
@@ -383,7 +381,7 @@ SK_AHCT_prop <- group_by(naming_data, subj) %>%
 
 ```
 
-Participants used an SK-language BCT (i.e., “yankon”) to describe a median of `r filter(study1_nature, nature == "BCT" & spanish_response == 0) %>% pull(mdn_prop)`% of chips (*IQR* = `r filter(study1_nature, nature == "BCT" & spanish_response == 0) %>% pull(iqr_prop)`%). Besides BCTs, `r SK_AHCT_prop`% of participants used SK-language ad hoc hue terms (i.e., “nai” or sky for blue chips) for an overall median of `r filter(study1_nature, nature == "AHCT" & spanish_response == 0)$mdn_prop`% of chips  (*IQR* = `r filter(study1_nature, nature == "AHCT" & spanish_response == 0)$iqr_prop`%). SK-language terms referring to saturation or luminosity of a chip, such as “manxan” (faded) were used for an overall median of `r filter(study1_nature, nature == "SLT" & spanish_response == 0)$mdn_prop`% of chips (IQR = `r filter(study1_nature, nature == "SLT" & spanish_response == 0)$iqr_prop`%). Most instances (`r filter(naming_data, color_cat %in% spanish_terms) %>% summarise(round(100*sum(nature == "BCT")/n()), .groups = 'drop')`%) of Spanish use involved a Spanish BCT such as “rojo” (overall *Mdn* = `r filter(study1_nature, nature == "BCT" & spanish_response == 1)$mdn_prop`%, *IQR* = `r filter(study1_nature, nature == "BCT" & spanish_response == 1)$iqr_prop`%). In other words, participants  responded in Spanish to label chips with basic color categories but mostly relied on SK for all other descriptor types.
+Participants used an SK-language BCT (i.e., “yankon”) to describe a median of `r filter(study1_nature, nature == "BCT" & spanish_response == 0) %>% pull(mdn_prop)`% of chips (*IQR* = `r filter(study1_nature, nature == "BCT" & spanish_response == 0) %>% pull(iqr_prop)`%). Besides BCTs, `r SK_AHCT_prop`% of participants used SK-language ad hoc hue terms (i.e., “nai” or sky for blue chips) for an overall median of `r filter(study1_nature, nature == "AHCT" & spanish_response == 0)$mdn_prop`% of chips  (*IQR* = `r filter(study1_nature, nature == "AHCT" & spanish_response == 0)$iqr_prop`%). SK-language terms referring to saturation or luminosity of a chip, such as “manxan” (faded) were used for an overall median of `r filter(study1_nature, nature == "SLT" & spanish_response == 0)$mdn_prop`% of chips (*IQR* = `r filter(study1_nature, nature == "SLT" & spanish_response == 0)$iqr_prop`%). Most instances (`r filter(naming_data, color_cat %in% spanish_terms) %>% summarise(round(100*sum(nature == "BCT")/n()), .groups = 'drop')`%) of Spanish use involved a Spanish BCT such as “rojo” (overall *Mdn* = `r filter(study1_nature, nature == "BCT" & spanish_response == 1)$mdn_prop`%, *IQR* = `r filter(study1_nature, nature == "BCT" & spanish_response == 1)$iqr_prop`%). In other words, participants  responded in Spanish to label chips with basic color categories but mostly relied on SK for all other descriptor types.
 
 
 
@@ -449,7 +447,7 @@ After generating an updated SK color term map using the responses from adult par
 
 ```{r study2-participants}
 
-study2_prod_data <- feather::read_feather("../intermediates/processed_data.csv") %>%
+study2_prod_data <- raw_data %>%
   filter(language == "Shipibo" & task == "Production") %>%
   mutate(spanish_response = ifelse(response %in% spanish_terms, 1, 0)) 
 
@@ -472,7 +470,8 @@ study2_participants <- study2_prod_data %>%
 
 ```{r study3-participants}
 
-study3_prod_data <- feather::read_feather("../intermediates/processed_data.csv") %>%
+
+study3_prod_data <- raw_data %>%
   filter(language == "Spanish" & task == "Production") %>%
   mutate(shipibo_response = ifelse(response %in% shipibo_terms, 1, 0)) 
 
@@ -518,6 +517,27 @@ study2_demographics <- study2_prod_data %>%
 apa_table(study2_demographics, caption = "Demographics of participants in Study 2.")
 ```
 
+
+```{r study3-demographics, results = 'asis'}
+study3_demographics <- study3_prod_data %>%
+  group_by(subj) %>%
+  filter(row_number() == 1) %>% group_by(age_interval) %>%
+  summarise(num_total = n(),
+            num_boys = sum(gender == 'masculino'),
+            mean_age = round(mean(age), 1),
+            sd_age = round(sd(age), 2),
+            .groups = 'drop') %>%
+  mutate(freq_total = round(100*num_total/sum(num_total)),
+         freq_boys = round(100*num_boys/num_total)) %>%
+  mutate(`Age Group` = as.character(age_interval),
+         `n` = paste0(num_total, " (", freq_total, "%", ifelse(`Age Group` == "5", " of overall sample", ""), ")"),
+         `Boys` = num_boys) %>%
+  select(`Age Group`, `n`, `Boys`)
+  
+apa_table(study3_demographics, caption = "Demographics of participants in Study 3.")
+
+```
+
 `r Words(study2_participants$num_total)` children (`r study2_participants$num_boys` boys) ages `r study2_participants$min_age`- to `r study2_participants$max_age`-years-old were recruited in predominantly SK neighborhoods in Yarinacocha (Nueva Era and Bena Jema) and in Bawanisho, a native community settled along the Ucayali River, more than 500 kilometers southeast of Pucallpa. Recruitment occurred either through direct contact with interested parents or through their local school. If recruited via school, consent for participation had to be given by both teacher and parent. Outside of the school environment, consent was only given by the parent. 
 
 
@@ -538,8 +558,7 @@ In cases where a term could apply for more than one chip (i.e., *yankon*), the i
 
 ```{r prod-childfigure, fig.height = 9.5, fig.cap = "(A and B) A comparison of children's performance during the production task in Studies 2 (top) and 3 (bottom). Solid or dotted lines represent overall performance by age for a particular chip. Solid lines show whether the child gave a correct answer in the language indicated in that column; dotted lines show if they gave a response that was correct in either language. Line colors are representative of the chip’s color coordinates."}
 
-
-study23_firstprod <- feather::read_feather("../intermediates/processed_data.csv") %>% 
+study23_firstprod <- raw_data %>% 
   filter(task == 'Production' & response_order %in% c('first','only')) %>%
   rename(study = language) %>% mutate(prompt = as.character(prompt),
     study = case_when(
@@ -597,35 +616,35 @@ print(plot_grid(prod_accuracyvsage_2 + theme(axis.title.x = element_blank()),
 
 ```{r study2-prodtable, results='asis'}
 
-study2_firstprod_table <- study2_firstprod %>% 
-  filter(criteria == "correct") %>%
-  group_by(age_interval, prompt, spanish) %>%
-  summarise(n = n(), 
-            prop = round(mean(score), 2),
-            .groups = "drop") %>%
-  bind_rows(
-    study2_firstprod %>% 
-    filter(criteria == "correct") %>%
-    group_by(age_interval) %>%
-    summarise(n = n_distinct(subj),
-              prop = round(mean(score), 2),
-              prompt = "Overall",
-              spanish = "",
-              .groups = "drop")
-  )  %>%
-  mutate(
-    age_interval = case_when(
-      age_interval == 5 ~ sprintf("%d-years-old (%d children)", age_interval, n),
-      age_interval > 5 ~ sprintf("%d-years-old (%d)", age_interval, n)
-    ),
-    prompt = case_when(
-      spanish != "" ~ sprintf("n°%s (%s)", prompt, spanish),
-      spanish == "" ~ prompt
-  )) %>%
-  select(-n, -spanish) %>%
-  pivot_wider(names_from = age_interval, values_from = prop)
+# study2_firstprod_table <- study2_firstprod %>% 
+#   filter(criteria == "correct") %>%
+#   group_by(age_interval, prompt, spanish) %>%
+#   summarise(n = n(), 
+#             prop = round(mean(score), 2),
+#             .groups = "drop") %>%
+#   bind_rows(
+#     study2_firstprod %>% 
+#     filter(criteria == "correct") %>%
+#     group_by(age_interval) %>%
+#     summarise(n = n_distinct(subj),
+#               prop = round(mean(score), 2),
+#               prompt = "Overall",
+#               spanish = "",
+#               .groups = "drop")
+#   )  %>%
+#   mutate(
+#     age_interval = case_when(
+#       age_interval == 5 ~ sprintf("%d-years-old (%d children)", age_interval, n),
+#       age_interval > 5 ~ sprintf("%d-years-old (%d)", age_interval, n)
+#     ),
+#     prompt = case_when(
+#       spanish != "" ~ sprintf("n°%s (%s)", prompt, spanish),
+#       spanish == "" ~ prompt
+#   )) %>%
+#   select(-n, -spanish) %>%
+#   pivot_wider(names_from = age_interval, values_from = prop)
 
-apa_table(study2_firstprod_table, caption = "Demographics of participants in Study 2.")
+# apa_table(study2_firstprod_table, caption = "Demographics of participants in Study 2.")
 
 ```
 
@@ -634,7 +653,6 @@ apa_table(study2_firstprod_table, caption = "Demographics of participants in Stu
 
 study2_firstprod$age.years.c <- scale(study2_firstprod$age, scale = FALSE)
 
-## Doesn't converge but study2_firstprod_either and study2_firstprod_adjacent do?
 study2_firstprod_same <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
       data = filter(study2_firstprod, criteria == "correct"), 
       family = "binomial")
@@ -655,22 +673,47 @@ study2_firstprod_all <- glmer(score ~ age.years.c*criteria + (age.years.c | prom
       data = mutate(study2_firstprod, criteria = factor(criteria)), 
       family = "binomial")
 
+
+```
+
+```{r study3-prod-model-overall}
+
+study3_firstprod$age.years.c <- scale(study3_firstprod$age, scale = FALSE)
+
+study3_firstprod_same <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
+      data = filter(study3_firstprod, criteria == "correct"), 
+      family = "binomial")
+
+study3_firstprod_same_noage <- glmer(score ~ (1 | prompt) + (1 | subj), 
+      data = filter(study3_firstprod, criteria == "correct"), 
+      family = "binomial")
+
+study3_firstprod_either <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
+      data = filter(study3_firstprod, criteria == "correct_either"), 
+      family = "binomial")
+
+study3_firstprod_adjacent <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
+      data = filter(study3_firstprod, criteria == "correct_nearby"), 
+      family = "binomial")
+
+study3_firstprod_all <- glmer(score ~ age.years.c + criteria + (age.years.c | prompt) + (1 | subj), 
+      data = mutate(study3_firstprod, criteria = factor(criteria)), 
+      family = "binomial")
+
+```
+
+
+```{r study2-prod-model-original}
+
 study2_prod_predict <- with(study2_firstprod, expand.grid(subj = NA, prompt = unique(prompt), age.years.c = seq(min(age.years.c), max(age.years.c),0.05)))
 
-predict.fun <- function(my.lmm) {
-  predict(my.lmm, newdata = study2_prod_predict, re.form = NA, type = "response")   # This is predict.merMod 
-}
-
-study2_prod_predict$pred.correct <- predict.fun(study2_firstprod_same)
-
-study2_firstprod_same.boots <- bootMer(study2_firstprod_same, predict.fun, nsim = 100)
-study2_prod_predict <- cbind(study2_prod_predict, confint(study2_firstprod_same.boots))
+study2_prod_predict$fit <- predict(study2_firstprod_same, newdata = study2_prod_predict, re.form = NA, type = "response")
 
 study2_prod_predict$age <- study2_prod_predict$age.years.c + attr(study2_firstprod$age.years.c , 'scaled:center')
 
 study2_prod_predict <- study2_prod_predict %>%
   left_join(mutate(shipibo_chip_set, chip_id = factor(as.character(chip_id))), by = c("prompt" = "chip_id")) %>%
-  select(-subj, prompt, shipibo:munsell_code, age.years.c, age, pred.correct)
+  select(-subj, prompt, shipibo:munsell_code, age.years.c, age, fit)
 
   study2_model_compare <- study23_firstprod %>% 
     filter(study == "Study 2" & criteria == "correct" & !is.na(score)) %>%
@@ -679,7 +722,7 @@ study2_prod_predict <- study2_prod_predict %>%
               .groups = 'drop') %>%
     ggplot(., aes(x = age_interval, y = score, colour = prompt)) +
     geom_point(aes(size = n)) +
-    geom_line(data = study2_prod_predict, mapping = aes(x = age, y = pred.correct)) +
+    geom_line(data = study2_prod_predict, mapping = aes(x = age, y = fit)) +
     facet_wrap(~ as.character(prompt), scales = "free", ncol = 3) +
     scale_y_continuous(limits = c(-0.1,1.1), breaks = seq(0,1,0.5)) + 
     xlim(c(5,11.5)) +
@@ -690,46 +733,31 @@ study2_prod_predict <- study2_prod_predict %>%
                    label = sprintf("%.2f", round(Entropy,2))),
                show.legend = FALSE, colour = "black") + 
     theme_apa()
-
 ```
+
 
 ```{r study2-prod-model-byprompt}
 
-study2_firstprod$Entropy.c <- scale(study2_firstprod$Entropy, scale = FALSE)
-
-x1 <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
-      data = filter(study2_firstprod, criteria == "correct"), 
-      family = "binomial")
-
-x2 <- glmer(score ~ age.years.c * prompt + (1 | subj), 
-      data = filter(study2_firstprod, criteria == "correct"), 
-      family = "binomial")
-
-study2_prod_predict_x2 <- with(study2_firstprod, data.frame(subj = NA, age.years.c = seq(min(age.years.c), max(age.years.c),0.05)))
-
-predict.fun.x2 <- function(my.lmm) {
-  predict(my.lmm, newdata = with(study2_firstprod, data.frame(subj = NA, age.years.c = seq(min(age.years.c), max(age.years.c),0.05))), re.form = NA, type = "response")
-}
+study2_firstprod$age.years.c <- scale(study2_firstprod$age, scale = FALSE)
 
 fit_glm <- function(df) {
-  mdl <- glmer(score ~ age.years.c + (1 | subj), family = "binomial", 
-               data = df)
+  mdl <- glmer(score ~ age.years.c + (1 | subj), data = df, family = "binomial")
+  
   new.df <- with(study2_firstprod, data.frame(subj = NA, age.years.c = seq(min(age.years.c), max(age.years.c),0.05)))
-  new.df$pred.correct <- predict.fun.x2(mdl)
+  
+  new.df$fit <- predict(mdl, newdata = new.df, re.form = NA, type = "response")
   new.df$prompt <- first(df$prompt)
   
-  new.df.boots <- bootMer(mdl, predict.fun.x2, nsim = 100)
-  new.df <- cbind(new.df, confint(new.df.boots))
-
   return(new.df)
 }
 
 y <- study2_firstprod %>%
+  filter(criteria == "correct") %>%
   split(.$prompt) %>%
   map_df(fit_glm) %>%
   mutate(age = age.years.c + attr(study2_firstprod$age.years.c , 'scaled:center')) %>%
   left_join(mutate(shipibo_chip_set, chip_id = factor(as.character(chip_id))), by = c("prompt" = "chip_id")) %>%
-  select(-subj, prompt, shipibo:munsell_code, age.years.c, age, pred.correct)
+  select(-subj, prompt, shipibo:munsell_code, age.years.c, age, fit)
 
 
 y2_model_compare <- study23_firstprod %>% 
@@ -739,7 +767,7 @@ y2_model_compare <- study23_firstprod %>%
             .groups = 'drop') %>%
   ggplot(., aes(x = age_interval, y = score, colour = prompt)) +
   geom_point(aes(size = n)) +
-  geom_line(data = y, mapping = aes(x = age, y = pred.correct)) +
+  geom_line(data = y, mapping = aes(x = age, y = fit)) +
   facet_wrap(~ as.character(prompt), scales = "free", ncol = 3) +
   scale_y_continuous(limits = c(-0.1,1.1), breaks = seq(0,1,0.5)) + 
   xlim(c(5,11.5)) +
@@ -754,6 +782,56 @@ y2_model_compare <- study23_firstprod %>%
 ```
 
 
+```{r study2-prod-model-robustbase}
+
+
+fit_robust <- function(df) {
+  
+  mdl <- robustbase::glmrob(score ~ age, data = df, family = "binomial")
+  
+  new.df <- with(study2_firstprod, data.frame(age = seq(min(age), max(age),0.05)))
+  new.df <- cbind(new.df, predict(mdl, newdata = new.df, re.form = NA, type = "response", se.fit = TRUE))
+  new.df$prompt <- first(df$prompt)
+  
+  return(new.df)
+}
+
+z <- study2_firstprod %>%
+  filter(criteria == "correct") %>%
+  split(.$prompt) %>%
+  map_df(fit_robust) %>%
+  left_join(mutate(shipibo_chip_set, chip_id = factor(as.character(chip_id))), by = c("prompt" = "chip_id")) %>%
+  select(prompt, shipibo:munsell_code, age, fit, se.fit)
+
+z_aoa <- z %>% 
+  group_by(prompt) %>% 
+  filter(fit > 0.5, .preserve = TRUE) %>% 
+  summarise(aoa = as.character(round(min(age), 1)), .groups = 'drop') %>%
+  mutate(aoa = ifelse(aoa == "Inf", "N/A", aoa))
+
+
+z2_model_compare <- study23_firstprod %>% 
+  filter(study == "Study 2" & criteria == "correct" & !is.na(score)) %>%
+  group_by(prompt, Entropy, age_interval) %>%
+  summarise(score = mean(score), n = n_distinct(subj),
+            .groups = 'drop') %>%
+  left_join(z_aoa, by=("prompt")) %>%
+  ggplot(., aes(x = age_interval, y = score, colour = prompt)) +
+  geom_point(aes(size = n)) +
+  geom_line(data = z, mapping = aes(x = age, y = fit)) +
+  facet_wrap(~ as.character(prompt), scales = "free", ncol = 3) +
+  scale_y_continuous(limits = c(-0.1,1.1), breaks = seq(0,1,0.5)) + 
+  xlim(c(5,11.5)) +
+  scale_color_manual(values = chip_id_colors, guide = FALSE) +
+  labs(x = "Age", y = "Proportion of Correct Responses", colour = "Chip ID") +
+  guides(label = "none") + 
+  geom_label(aes(x = Inf, y = -Inf, hjust = 1.1, vjust = -0.3, 
+                 label = sprintf("Entropy: %.2f\nAoA: %s", round(Entropy,2), aoa)),
+             show.legend = FALSE, colour = "black") + 
+  theme_apa()
+
+
+```
 
 ```{r study2-accuracyswitchentropy, results='asis'}
 
@@ -799,6 +877,51 @@ apa_table(apa_print(study2_SwitchEnt_model)$table)
 
 ```
 
+```{r study3-accuracyswitchentropy, results='asis'}
+
+study3_overallscore <- study3_prod_data %>%
+  group_by(subj, age) %>%
+  summarise(correct = mean(correct, na.rm = T), .groups = 'drop')
+
+study3_overallscore_test <- cor.test(~ correct + age, data = study3_overallscore)
+
+study3_overallswitch <- study3_prod_data %>%
+  group_by(subj, age, prompt) %>%
+  summarise(shipibo_response = ifelse(sum(shipibo_response) >= 1, 1, 0), .groups = 'drop_last') %>%
+  summarise(n_shipibo = sum(shipibo_response),
+            n_trials = n(),
+            perc_shipibo = n_shipibo/n_trials, 
+            .groups = 'drop')
+
+study3_overallswitch_test <- cor.test(~ n_shipibo + age, data = study3_overallswitch)
+
+study3_switchperc <- study3_prod_data %>% ungroup() %>%
+  mutate(response_order = case_when(
+    response_order %in% c("only", "first") ~ "first",
+    response_order %in% c("middle", "last") ~ "subsequent"),
+    overall_response = round(100*mean(shipibo_response))) %>% 
+  group_by(overall_response, response_order) %>%
+  summarise(shipibo_response = round(100*mean(shipibo_response)),
+            .groups = 'drop')
+
+study3_switchbyentropy <- study3_prod_data %>%
+  filter(spanish %in% c("Blanco", "Negro", "Morado", "Amarillo", "Verde", "Rojo") & 
+           response_order %in% c("first", "only")) %>%
+  left_join(study1_entropy %>% mutate(`Chip ID` = as.character(`Chip ID`)),
+            by = c("prompt" = "Chip ID"))
+
+
+study3_switchbyentropy$age.years.c <- scale(study3_switchbyentropy$age, scale = FALSE)[,1]
+
+
+study3_SwitchEnt_model <- lme4::glmer(
+  shipibo_response ~ age.years.c + Entropy + (1|subj),
+  data=study3_switchbyentropy, family = "binomial")
+
+apa_table(apa_print(study3_SwitchEnt_model)$table)
+
+
+```
 
 ```{r study2-overextensions}
 
@@ -859,14 +982,26 @@ study3_adjacentorswitch <- study3_adjacentorswitch_whole %>%
 study3_AdjSwitchModel <- summary(lme4::glmer(
   score ~ age.years.c + measure + (1|subj),
   data=study3_adjacentorswitch_whole, family = "binomial"))
+
+study3_adjacentbyentropy <- study3_prod_data %>%
+  filter(spanish %in% c("Blanco", "Negro", "Morado", "Amarillo", "Verde", "Rojo") & 
+           response_order %in% c("first", "only")) %>%
+  left_join(study1_entropy %>% mutate(`Chip ID` = as.character(`Chip ID`)),
+            by = c("prompt" = "Chip ID")) %>%
+  mutate(wrong_adjacent = ifelse(is.na(wrong_adjacent), 0, wrong_adjacent))
+
+study3_adjacentbyentropy$age.years.c <- scale(study3_adjacentbyentropy$age, scale = FALSE)[,1]
+
+study3_AdjacEnt_model <- lme4::glmer(
+  wrong_adjacent ~ age.years.c + Entropy + (1|subj),
+  data=study3_adjacentbyentropy, family = "binomial")
+
 ```
-
-
 
 
 ```{r comp-childfigure, fig.height = 9.5, fig.cap = "(A and B) A comparison of children's performance during the comprehension tasks in Studies 2 (top) and 3 (bottom). Solid or dotted lines represent overall performance by age for a particular chip. Solid lines show whether the child chose the correct chip when prompted with a color term; dotted lines show whether a child chose the correct chip or a chip from an adjacent color category. Line colors are representative of the label’s prototypical color coordinates."}
 
-study23_overallcomp <- feather::read_feather("../intermediates/processed_data.csv") %>% 
+study23_overallcomp <- raw_data %>% 
   filter(task == 'Comprehension') %>% select(-correct_either) %>%
   rename(study = language) %>% mutate(
     study = case_when(
@@ -930,7 +1065,19 @@ study2_overallcomp_adjacent <- glmer(score ~ age.years.c  + (age.years.c | promp
       family = "binomial")
 ```
 
+```{r study3-overallcomp-models}
+study3_overallcomp <- study23_overallcomp %>% filter(study == "Study 3")
 
+study3_overallcomp$age.years.c <- scale(study3_overallcomp$age, scale = FALSE)
+
+study3_overallcomp_same <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
+      data = filter(study3_overallcomp, criteria == "correct"), 
+      family = "binomial")
+
+study3_overallcomp_adjacent <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
+      data = filter(study3_overallcomp, criteria == "correct_nearby"), 
+      family = "binomial")
+```
 
 ```{r study23-accuracy, fig.cap = "Proportion of accurate responses when applying different accuracy criteria, by age and study. Points show the mean for a 2-year age group (chosen arbitrarily for visualization) with 95% confidence intervals. Lines show a loess smoothing function. Points show the mean for a 2-year age group (chosen arbitrarily for visualization) with 95% confidence intervals."}
 
@@ -1034,7 +1181,7 @@ study2_task_compare  %>%
 Older children were more accurate in both production and comprehension compared to younger children (Figure \@ref(fig:study23-accuracy)). This produced a significant developmental projection for accuracy of term-chip pairings in both production (`r apa_print(study2_firstprod_same)$statistic$age_years_c`) and comprehension (`r apa_print(study2_overallcomp_same)$statistic$age_years_c`). For some term-chip pairings such as ami/pua and pei/xo, children performed failed to produce the correct term in the production task but improved significantly during the comprehension task (Figure \@ref(fig:study2-task-compare-plot)). It is possible that for children’s color term knowledge, comprehension precedes production. It is also possible that, given that the comprehension task always followed the production task, children were able to pick up on their errors and update their color term mapping in real-time. However, given that the experimenter did not provide feedback on accuracy during sessions, the former explanation seems more likely.
 
 
-**Language switching.** Over a quarter (`r study2_switchperc$overall_response[1]`%) of all responses were given in Spanish, despite children being prompted solely in SK (i.e., labeling a panshin chip as “amarillo”). The distribution of Spanish responses was non-random, with median use in `r median(study2_overallswitch$n_spanish)`/8 trials (IQR = `r paste0(quantile(study2_overallswitch$n_spanish, c(0.25, 0.75)), collapse = "-")`). We failed to find a significant correlation between age and overall Spanish use throughout the production task (`r apa_print(study2_overallswitch_test)$statistic`).
+**Language switching.** Over a quarter (`r study2_switchperc$overall_response[1]`%) of all responses were given in Spanish, despite children being prompted solely in SK (i.e., labeling a panshin chip as “amarillo”). The distribution of Spanish responses was non-random, with median use in `r median(study2_overallswitch$n_spanish)`/8 trials (*IQR* = `r paste0(quantile(study2_overallswitch$n_spanish, c(0.25, 0.75)), collapse = "-")`). We failed to find a significant correlation between age and overall Spanish use throughout the production task (`r apa_print(study2_overallswitch_test)$statistic`).
 
 As an exploratory analysis, we attempted to quantify low naming consensus using naming entropy [following @gibson2017]. We computed the naming entropy for each chip by computing the probabilities for each chip $c$ to be named with a particular label $l$ ($p(l \mid c)$) and then taking $H(c) = - \sum{p(l\mid c) \log[p(l \mid c)]}$ (see inset entropy values by chip in Figure \@ref(fig:prod-childfigure)).
 To assess the hypothesis that naming entropy in adults was related to Spanish use in children, we fit a mixed effects model predicting  Spanish responses as a function of child age, entropy of the chip's naming distribution for adults in Study 1, and their interaction. Despite age not being significantly correlated with overall frequency of Spanish responses, when added to a mixed-effects model, we found that older children were less likely to respond in Spanish (Table \@ref(tab:study2-accuracyswitchentropy)). Older children were also more likely to respond in Spanish when presented with a chip with high entropy (low naming consensus) among adult participants in Study 1. We found a positive interaction between age and entropy.  
@@ -1052,27 +1199,6 @@ Noting the apparent strategy of language switching seen in Study 2, we designed 
 
 ### Participants
 
-
-```{r study3-demographics, results = 'asis'}
-study3_demographics <- study3_prod_data %>%
-  group_by(subj) %>%
-  filter(row_number() == 1) %>% group_by(age_interval) %>%
-  summarise(num_total = n(),
-            num_boys = sum(gender == 'masculino'),
-            mean_age = round(mean(age), 1),
-            sd_age = round(sd(age), 2),
-            .groups = 'drop') %>%
-  mutate(freq_total = round(100*num_total/sum(num_total)),
-         freq_boys = round(100*num_boys/num_total)) %>%
-  mutate(`Age Group` = as.character(age_interval),
-         `n` = paste0(num_total, " (", freq_total, "%", ifelse(`Age Group` == "5", " of overall sample", ""), ")"),
-         `Boys` = num_boys) %>%
-  select(`Age Group`, `n`, `Boys`)
-  
-apa_table(study3_demographics, caption = "Demographics of participants in Study 3.")
-
-```
-
 Similar to Study 2, `r study3_participants$num_total` children (`r study3_participants$num_boys` boys) ages `r study3_participants$min_age`- to `r study3_participants$max_age`-years-old were recruited from the neighborhood of Bena Jema in Yarinacocha and from Bawanisho. Recruitment occurred either through interested parents or a local school. With consent collected from parents and, if in a school environment, teachers as well.
 
 ### Materials and procedure
@@ -1086,97 +1212,17 @@ As SK children are not very fluent in Spanish (formal Spanish education occurs i
 **Comprehension task.** The procedure was similar to that of Study 2. The experimenter would ask: Can you give me the [color term] chip? For 11 Spanish color terms. The choice of these terms was based on both previous studies examining Spanish color terms as well as responses given by adult participants in Study 1 (as some adult participants used Spanish color terms to label particular color chips). The 11 terms used as prompts were *blanco* (“white”), *verde* (“green”), *rojo* (“red”), *amarillo* (“yellow”), *azul* (“blue”), *negro* (“black”), *naranja* (“orange”), *gris* (“grey”), *morado* (“purple”), *marrón* (“brown”), and *rosa* (“pink”). Since each color term was best instantiated by a single color chip and lacked the ambiguity seen with certain SK color terms, accuracy was graded one-to-one for term-chip pairings with less leniency compared to Study 2.
 
 
-```{r study3-prod-model-overall}
-
-study3_firstprod$age.years.c <- scale(study3_firstprod$age, scale = FALSE)
-
-study3_firstprod_same <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
-      data = filter(study3_firstprod, criteria == "correct"), 
-      family = "binomial")
-
-study3_firstprod_same_noage <- glmer(score ~ (1 | prompt) + (1 | subj), 
-      data = filter(study3_firstprod, criteria == "correct"), 
-      family = "binomial")
-
-study3_firstprod_either <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
-      data = filter(study3_firstprod, criteria == "correct_either"), 
-      family = "binomial")
-
-study3_firstprod_adjacent <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
-      data = filter(study3_firstprod, criteria == "correct_nearby"), 
-      family = "binomial")
-
-study3_firstprod_all <- glmer(score ~ age.years.c + criteria + (age.years.c | prompt) + (1 | subj), 
-      data = mutate(study3_firstprod, criteria = factor(criteria)), 
-      family = "binomial")
-
-```
 
 
-```{r study3-accuracyswitchentropy, results='asis'}
-
-study3_overallscore <- study3_prod_data %>%
-  group_by(subj, age) %>%
-  summarise(correct = mean(correct, na.rm = T), .groups = 'drop')
-
-study3_overallscore_test <- cor.test(~ correct + age, data = study3_overallscore)
-
-study3_overallswitch <- study3_prod_data %>%
-  group_by(subj, age, prompt) %>%
-  summarise(shipibo_response = ifelse(sum(shipibo_response) >= 1, 1, 0), .groups = 'drop_last') %>%
-  summarise(n_shipibo = sum(shipibo_response),
-            n_trials = n(),
-            perc_shipibo = n_shipibo/n_trials, 
-            .groups = 'drop')
-
-study3_overallswitch_test <- cor.test(~ n_shipibo + age, data = study3_overallswitch)
-
-study3_switchperc <- study3_prod_data %>% ungroup() %>%
-  mutate(response_order = case_when(
-    response_order %in% c("only", "first") ~ "first",
-    response_order %in% c("middle", "last") ~ "subsequent"),
-    overall_response = round(100*mean(shipibo_response))) %>% 
-  group_by(overall_response, response_order) %>%
-  summarise(shipibo_response = round(100*mean(shipibo_response)),
-            .groups = 'drop')
-
-study3_switchbyentropy <- study3_prod_data %>%
-  filter(spanish %in% c("Blanco", "Negro", "Morado", "Amarillo", "Verde", "Rojo") & 
-           response_order %in% c("first", "only")) %>%
-  left_join(study1_entropy %>% mutate(`Chip ID` = as.character(`Chip ID`)),
-            by = c("prompt" = "Chip ID"))
 
 
-study3_switchbyentropy$age.years.c <- scale(study3_switchbyentropy$age, scale = FALSE)[,1]
 
 
-study3_SwitchEnt_model <- lme4::glmer(
-  shipibo_response ~ age.years.c + Entropy + (1|subj),
-  data=study3_switchbyentropy, family = "binomial")
 
-apa_table(apa_print(study3_SwitchEnt_model)$table)
-
-
-```
-
-
-```{r study3-overallcomp-models}
-study3_overallcomp <- study23_overallcomp %>% filter(study == "Study 3")
-
-study3_overallcomp$age.years.c <- scale(study3_overallcomp$age, scale = FALSE)
-
-study3_overallcomp_same <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
-      data = filter(study3_overallcomp, criteria == "correct"), 
-      family = "binomial")
-
-study3_overallcomp_adjacent <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
-      data = filter(study3_overallcomp, criteria == "correct_nearby"), 
-      family = "binomial")
-```
 
 ## Results and Discussion
 
-Contrasting Study 2, we found age to be a significant predictor of accuracy in the comprehension task (`r apa_print(study3_overallcomp_same)$statistic$age_years_c`), but not in the production task (`r apa_print(study3_firstprod_same)$statistic$age_years_c`, see Figure \@ref(fig:study23-accuracy)). Similar to Study 2, over a quarter (`r study3_switchperc$overall_response[1]`%) of all responses were given in SK, despite being prompted to respond in Spanish. There was significant variation in language-switching with some children responding solely in Spanish while others responded to upwards of `r max(study3_overallswitch$n_shipibo)`/11 trials in SK (Mdn = `r median(study3_overallswitch$n_shipibo)` trials, IQR = `r paste0(quantile(study3_overallswitch$n_shipibo, c(0.25, 0.75)), collapse = "-")`). We found only a marginal correlation between age and label accuracy (`r apa_print(study3_overallscore_test)$statistic`) and an insignificant correlation between age and language-switching (`r apa_print(study3_overallswitch_test)$statistic`). Still, when accounting for age, we found that participants tended to respond in SK when presented with items that had low entropy in Study 1 (`r apa_print(study3_SwitchEnt_model)$statistic$Entropy`). This suggests that child participants across Studies 2 and 3 preferred to respond in SK when presented with a high-consensus chip, and in Spanish with a low-consensus chip.
+Contrasting Study 2, we found age to be a significant predictor of accuracy in the comprehension task (`r apa_print(study3_overallcomp_same)$statistic$age_years_c`), but not in the production task (`r apa_print(study3_firstprod_same)$statistic$age_years_c`, see Figure \@ref(fig:study23-accuracy)). Similar to Study 2, over a quarter (`r study3_switchperc$overall_response[1]`%) of all responses were given in SK, despite being prompted to respond in Spanish. There was significant variation in language-switching with some children responding solely in Spanish while others responded to upwards of `r max(study3_overallswitch$n_shipibo)`/11 trials in SK (*Mdn* = `r median(study3_overallswitch$n_shipibo)` trials, *IQR* = `r paste0(quantile(study3_overallswitch$n_shipibo, c(0.25, 0.75)), collapse = "-")`). We found only a marginal correlation between age and label accuracy (`r apa_print(study3_overallscore_test)$statistic`) and an insignificant correlation between age and language-switching (`r apa_print(study3_overallswitch_test)$statistic`). Still, when accounting for age, we found that participants tended to respond in SK when presented with items that had low entropy in Study 1 (`r apa_print(study3_SwitchEnt_model)$statistic$Entropy`). This suggests that child participants across Studies 2 and 3 preferred to respond in SK when presented with a high-consensus chip, and in Spanish with a low-consensus chip.
 
 Similar to Study 2, we adopted alternative scoring to accommodate language-switching from Spanish to SK (different-language) but corresponding and same-language but adjacent responses. Using a mixed-effects model, we failed to find age as a significant predictor for accuracy even with this more lenient scoring (`r apa_print(study3_firstprod_all)$statistic$age_years_c`), in concordance with earlier analyses. However, we did find that participants improved accuracy through both mapping strategies of either providing different-language but corresponding responses (`r apa_print(study3_firstprod_all)$statistic$criteriacorrect_either`) or same-language but adjacent responses (`r apa_print(study3_firstprod_all)$statistic$criteriacorrect_nearby`). We find frequent use of language switching in both Studies 2 and 3, but only Study 3 exhibits significant use of same-language but adjacent terms. 
 
