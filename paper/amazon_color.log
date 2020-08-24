@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.8.10)  21 AUG 2020 11:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.8.10)  23 AUG 2020 21:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -713,36 +713,39 @@ Underfull \vbox (badness 7649) has occurred while \output is active []
 [5]
 Underfull \vbox (badness 3977) has occurred while \output is active []
 
-[6] [7] [8] [9]
+[6] [7]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[8] [9]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 212.
+(Font)              <10> on input line 204.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 212.
+(Font)              <7> on input line 204.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 212.
+(Font)              <5> on input line 204.
 [10]
-<amazon_color_files/figure-latex/study1-figure-1.pdf, id=153, 469.755pt x 325.2
+<amazon_color_files/figure-latex/study1-figure-1.pdf, id=121, 469.755pt x 325.2
 15pt>
 File: amazon_color_files/figure-latex/study1-figure-1.pdf Graphic file (type pd
 f)
 <use amazon_color_files/figure-latex/study1-figure-1.pdf>
 Package pdftex.def Info: amazon_color_files/figure-latex/study1-figure-1.pdf  u
-sed on input line 223.
+sed on input line 215.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [11]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [12 <./amazon_color_files/figure-latex/study1-figure-1.pdf>]
-<amazon_color_files/figure-latex/study1-corrected_entropy-1.pdf, id=173, 469.75
+<amazon_color_files/figure-latex/study1-corrected_entropy-1.pdf, id=142, 469.75
 5pt x 325.215pt>
 File: amazon_color_files/figure-latex/study1-corrected_entropy-1.pdf Graphic fi
 le (type pdf)
 <use amazon_color_files/figure-latex/study1-corrected_entropy-1.pdf>
 Package pdftex.def Info: amazon_color_files/figure-latex/study1-corrected_entro
-py-1.pdf  used on input line 229.
+py-1.pdf  used on input line 221.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (28.90639pt too wide) in paragraph at lines 229--230
+Overfull \hbox (28.90639pt too wide) in paragraph at lines 221--222
 [][]  
  []
 
@@ -750,101 +753,73 @@ Overfull \hbox (28.90639pt too wide) in paragraph at lines 229--230
 Underfull \vbox (badness 3977) has occurred while \output is active []
 
 [15]
-<amazon_color_files/figure-latex/prod-childfigure-1.pdf, id=202, 469.755pt x 68
-6.565pt>
-File: amazon_color_files/figure-latex/prod-childfigure-1.pdf Graphic file (type
- pdf)
-<use amazon_color_files/figure-latex/prod-childfigure-1.pdf>
-Package pdftex.def Info: amazon_color_files/figure-latex/prod-childfigure-1.pdf
-  used on input line 288.
-(pdftex.def)             Requested size: 445.02469pt x 650.42068pt.
-
-LaTeX Warning: Float too large for page by 129.97807pt on input line 290.
-
-
-Overfull \hbox (317.23676pt too wide) in paragraph at lines 296--316
- [] 
- []
-
-<amazon_color_files/figure-latex/comp-childfigure-1.pdf, id=203, 469.755pt x 68
-6.565pt>
-File: amazon_color_files/figure-latex/comp-childfigure-1.pdf Graphic file (type
- pdf)
-<use amazon_color_files/figure-latex/comp-childfigure-1.pdf>
-Package pdftex.def Info: amazon_color_files/figure-latex/comp-childfigure-1.pdf
-  used on input line 345.
-(pdftex.def)             Requested size: 445.02469pt x 650.42068pt.
-
-LaTeX Warning: Float too large for page by 153.97556pt on input line 347.
-
-<amazon_color_files/figure-latex/study23-accuracy-1.pdf, id=204, 469.755pt x 32
+<amazon_color_files/figure-latex/study23-accuracy-1.pdf, id=169, 469.755pt x 32
 5.215pt>
 File: amazon_color_files/figure-latex/study23-accuracy-1.pdf Graphic file (type
  pdf)
 <use amazon_color_files/figure-latex/study23-accuracy-1.pdf>
 Package pdftex.def Info: amazon_color_files/figure-latex/study23-accuracy-1.pdf
-  used on input line 351.
+  used on input line 323.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<amazon_color_files/figure-latex/study2-task-compare-plot-1.pdf, id=205, 469.75
+<amazon_color_files/figure-latex/study2-task-compare-plot-1.pdf, id=170, 469.75
 5pt x 325.215pt>
 File: amazon_color_files/figure-latex/study2-task-compare-plot-1.pdf Graphic fi
 le (type pdf)
 <use amazon_color_files/figure-latex/study2-task-compare-plot-1.pdf>
 Package pdftex.def Info: amazon_color_files/figure-latex/study2-task-compare-pl
-ot-1.pdf  used on input line 355.
+ot-1.pdf  used on input line 327.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (28.90639pt too wide) in paragraph at lines 355--356
+Overfull \hbox (28.90639pt too wide) in paragraph at lines 327--328
 [][]  
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[16] [17 <./amazon_color_files/figure-latex/prod-childfigure-1.pdf>] [18 <./ama
-zon_color_files/figure-latex/comp-childfigure-1.pdf>] [19 <./amazon_color_files
-/figure-latex/study23-accuracy-1.pdf>]
+[16]
 
-LaTeX Warning: Reference `fig:study2-task-compare-plot' on page 20 undefined on
- input line 360.
+LaTeX Warning: Reference `fig:study2-task-compare-plot' on page 17 undefined on
+ input line 332.
 
-[20 <./amazon_color_files/figure-latex/study2-task-compare-plot-1.pdf>]
-Underfull \vbox (badness 3977) has occurred while \output is active []
+[17 <./amazon_color_files/figure-latex/study2-task-compare-plot-1.pdf>] [18 <./
+amazon_color_files/figure-latex/study23-accuracy-1.pdf>]
 
-[21]
+LaTeX Warning: Reference `fig:prod-childfigure' on page 19 undefined on input l
+ine 336.
 
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 407.
 
-[22] [23]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[24] [25] [26] [27] AED endfloat: Processing end Figures and Tables [28]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 524.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 524.
+[19] [20]
+Underfull \vbox (badness 3977) has occurred while \output is active []
+
+[21] [22] [23] [24] [25] AED endfloat: Processing end Figures and Tables [26]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 443.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 443.
 (./amazon_color.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 524.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 524.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 443.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 443.
 Package rerunfilecheck Info: File `amazon_color.out' has not changed.
-(rerunfilecheck)             Checksum: C6F1F17A5DBA67730D26924CB650142B;3091.
+(rerunfilecheck)             Checksum: 3A7AFFC915F8A32E2B49B2E4050400BF;2091.
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 14945 strings out of 482841
- 220688 string characters out of 5955581
- 499571 words of memory out of 5000000
- 29888 multiletter control sequences out of 15000+600000
+ 14895 strings out of 482841
+ 219418 string characters out of 5955581
+ 496183 words of memory out of 5000000
+ 29861 multiletter control sequences out of 15000+600000
  608748 words of font info for 95 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 46i,13n,51p,2251b,510s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 46i,13n,51p,2251b,507s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/Users/danielle/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}
 {/Users/danielle/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/
-Users/danielle/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/Users/
-danielle/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/Users/danie
-lle/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/Users/danielle/Li
-brary/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}</Users/danielle/Libr
+Users/danielle/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/Users/
+danielle/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/Users/da
+nielle/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/Users/danielle
+/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}</Users/danielle/Libr
 ary/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/danielle/Librar
 y/TinyTeX/texmf-dist/fonts/type1/public/lm/lmex10.pfb></Users/danielle/Library/
 TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></Users/danielle/Library/Ti
@@ -855,10 +830,10 @@ f-dist/fonts/type1/public/lm/lmr8.pfb></Users/danielle/Library/TinyTeX/texmf-di
 st/fonts/type1/public/lm/lmri12.pfb></Users/danielle/Library/TinyTeX/texmf-dist
 /fonts/type1/public/lm/lmss8.pfb></Users/danielle/Library/TinyTeX/texmf-dist/fo
 nts/type1/public/lm/lmsy10.pfb>
-Output written on amazon_color.pdf (28 pages, 368386 bytes).
+Output written on amazon_color.pdf (26 pages, 270393 bytes).
 PDF statistics:
- 402 PDF objects out of 1000 (max. 8388607)
- 345 compressed objects within 4 object streams
- 103 named destinations out of 1000 (max. 500000)
- 199 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 326 PDF objects out of 1000 (max. 8388607)
+ 276 compressed objects within 3 object streams
+ 82 named destinations out of 1000 (max. 500000)
+ 133 words of extra memory for PDF output out of 10000 (max. 10000000)
 
