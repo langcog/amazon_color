@@ -20,3 +20,7 @@ lme4
 nnet
 here
 bindrcpp
+pander
+readxl
+colorspace
+stringi
