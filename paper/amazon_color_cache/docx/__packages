@@ -19,3 +19,8 @@ Matrix
 lme4
 nnet
 here
+pander
+readxl
+colorspace
+stringi
+bindrcpp
