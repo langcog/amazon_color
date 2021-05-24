@@ -28,7 +28,7 @@ affiliation:
 author_note: |
   \* these authors contributed equally. 
   
-  MCF was supported by a Jacobs Foundation Fellowship. We are especially grateful to Paul Kay for assistance throughout the study.
+  This paper is dedicated to the memory of Martin Fortier. MCF was supported by a Jacobs Foundation Fellowship. We are especially grateful to Paul Kay for assistance throughout the study.
 
 abstract: |
   Color word learning is an important case study for the relation between language and perception. While English color word learning is well-documented, there is relatively limited evidence on the developmental trajectory for color words, especially in languages from non-industrialized populations. We study color words and their acquisition in the Shipibo-Konibo (SK), an indigenous group in the Peruvian Amazon. In Study 1, we measure the color vocabulary in SK, updating data from the World Color Survey. We then study receptive and productive knowledge of color words in children, testing in both SK (Study 2) and Spanish (Study 3). Children learning the SK system show a protracted developmental trajectory compared with modern studies of English. Further, when children lack precise color term knowledge, they appeared to follow different strategies for SK and Spanish, using Spanish vocabulary in SK and overgeneralizing in Spanish. For both children and adults, bilingual vocabulary is used adaptively to facilitate task performance, broadly supporting communicative views of color vocabulary.
