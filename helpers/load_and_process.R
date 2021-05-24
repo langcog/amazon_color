@@ -1,40 +1,40 @@
 color_sheet <- readxl::read_excel("../data/shipibo_colors (2018_02_21).xlsx") %>%
   filter(!is.na(`Term (2017 survey)`))
 
-filter(color_sheet, language == "SK" & nature == "BCT")$`Term (2017 survey)`
+# filter(color_sheet, language == "SK" & nature == "BCT")$`Term (2017 survey)`
 
 
 
 # Load term-sorting data --------------------------------------------------
 
-shipibo_bct <- filter(color_sheet, language == "SK" & grepl("\\bBCT\\b", nature))$`Term (2017 survey)`
+shipibo_bct <- filter(color_sheet, grepl("SK", language) & grepl("\\bBCT\\b", nature))$`Term (2017 survey)`
 
-shipibo_nbct <- filter(color_sheet, language == "SK" & grepl("\\bNBCT\\b", nature))$`Term (2017 survey)`
+shipibo_nbct <- filter(color_sheet, grepl("SK", language) & grepl("\\bNBCT\\b", nature))$`Term (2017 survey)`
 
-shipibo_ahct <-  filter(color_sheet, language == "SK" & grepl("\\bAHCT\\b", nature))$`Term (2017 survey)`
+shipibo_ahct <-  filter(color_sheet, grepl("SK", language) & grepl("\\bAHCT\\b", nature))$`Term (2017 survey)`
 
-shipibo_slt <-  filter(color_sheet, language == "SK" & grepl("\\bSLT\\b", nature))$`Term (2017 survey)`
+shipibo_slt <-  filter(color_sheet, grepl("SK", language) & grepl("\\bSLT\\b", nature))$`Term (2017 survey)`
 
-shipibo_mt <-  filter(color_sheet, language == "SK" & grepl("\\bMT\\b", nature))$`Term (2017 survey)`
+shipibo_mt <-  filter(color_sheet, grepl("SK", language) & grepl("\\bMT\\b", nature))$`Term (2017 survey)`
 
-shipibo_ot <-  filter(color_sheet, language == "SK" & grepl("\\bOT\\b", nature))$`Term (2017 survey)`
+shipibo_ot <-  filter(color_sheet, grepl("SK", language) & grepl("\\bOT\\b", nature))$`Term (2017 survey)`
 
-shipibo_terms <- filter(color_sheet, language == "SK")$`Term (2017 survey)`
+shipibo_terms <- filter(color_sheet, grepl("SK", language))$`Term (2017 survey)`
 
 
-spanish_bct <- filter(color_sheet, language == "SP" & grepl("\\bBCT\\b", nature))$`Term (2017 survey)`
+spanish_bct <- filter(color_sheet, grepl("SP", language) & grepl("\\bBCT\\b", nature))$`Term (2017 survey)`
 
-spanish_nbct <- filter(color_sheet, language == "SP" & grepl("\\bNBCT\\b", nature))$`Term (2017 survey)`
+spanish_nbct <- filter(color_sheet, grepl("SP", language) & grepl("\\bNBCT\\b", nature))$`Term (2017 survey)`
 
-spanish_ahct <-  filter(color_sheet, language == "SP" & grepl("\\bAHCT\\b", nature))$`Term (2017 survey)`
+spanish_ahct <-  filter(color_sheet, grepl("SP", language) & grepl("\\bAHCT\\b", nature))$`Term (2017 survey)`
 
-spanish_slt <-  filter(color_sheet, language == "SP" & grepl("\\bSLT\\b", nature))$`Term (2017 survey)`
+spanish_slt <-  filter(color_sheet, grepl("SP", language) & grepl("\\bSLT\\b", nature))$`Term (2017 survey)`
 
-spanish_mt <-  filter(color_sheet, language == "SP" & grepl("\\bMT\\b", nature))$`Term (2017 survey)`
+spanish_mt <-  filter(color_sheet, grepl("SP", language) & grepl("\\bMT\\b", nature))$`Term (2017 survey)`
 
-spanish_ot <-  filter(color_sheet, language == "SP" & grepl("\\bOT\\b", nature))$`Term (2017 survey)`
+spanish_ot <-  filter(color_sheet, grepl("SP", language) & grepl("\\bOT\\b", nature))$`Term (2017 survey)`
 
-spanish_terms <- filter(color_sheet, language == "SP")$`Term (2017 survey)`
+spanish_terms <- filter(color_sheet, grepl("SP", language))$`Term (2017 survey)`
 
 color_sheet$`Alternate spellings (2017 survey-adults)`
 

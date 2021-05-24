@@ -50,7 +50,8 @@ mask              : no
 always_allow_html : yes
 class             : "apa7"
 output: 
-  papaja::apa6_pdf: default
+  papaja::apa6_pdf: 
+    latex_engine: xelatex
   papaja::apa6_word: default
 knit: (function(inputFile, encoding) {
   rmarkdown::render(inputFile, encoding = encoding,
@@ -59,7 +60,7 @@ knit: (function(inputFile, encoding) {
 
 ```{r load-packages, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE, cache = TRUE, warning = FALSE, error = FALSE, 
-                      message = FALSE, sanitize = TRUE)
+                      message = FALSE, sanitize = TRUE, fig.width = 7)
 
 # note, we need a dev version of papaja!
 # remotes::install_github("crsh/papaja@devel")
@@ -188,7 +189,7 @@ The median age for participants was `r median(study1_participants$age, na.rm = T
 
 ### Materials and procedure
 
-Similar to the original WCS, we used a set of 330 Munsell color chips and asked participants to name them [@berlin1969]. We made a number of changes to the procedure, however. In the WCS, every participant provided terms for all 330 chips. Due to fear of participant fatigue, we split up color chips based on their ID numbers (even or odd) and participants were randomly assigned work with either even- or odd-numbered color chips. As a result, each participant was presented with only 165 chips. All 330 hues within the set are visualized in Appendix 1. Dimensions of the chips were 2 cm × 2.5 cm. 
+Similar to the original WCS, we used a set of 330 Munsell color chips and asked participants to name them [@berlin1969]. We made a number of changes to the procedure, however. In the WCS, every participant provided terms for all 330 chips. Due to fear of participant fatigue, we split up color chips based on their ID numbers (even or odd) and participants were randomly assigned to work with either even- or odd-numbered color chips. As a result, each participant was presented with only 165 chips. All 330 hues within the set are visualized in Appendix 1. Dimensions of the chips were 2 cm × 2.5 cm. 
 
 First, the experimenter explained the general procedure and goals of the study to the participant. The experimenter would then present a single color chip to the participant and ask in SK: "What is the color of this chip?" The study was conducted solely in SK language with the assistance of a bilingual SK- and Spanish-speaking research assistant. It should be noted that although the experiment was conducted in SK, the SK word for color used is identical to the Spanish word *color* (an example of SK speakers adopting Spanish words into their lexicon), which might have encouraged Spanish language use.
 
@@ -235,15 +236,21 @@ study1_ttest_gendertermappearance <- with(
 
 ```
 
-Figure \@ref(fig:study1-figure) shows the original WCS data (Panel A), summarized results of Experiment 1 (Panel B) and Spanish language responses. All participants used the following set of color terms to describe a color chip at least once during their session: "joxo" (light/white), "wiso" (dark/black), "panshin" (yellow), "joshin" (red), and "yankon" (green/blue). Given the widespread use of this term set and their interpretations, we will refer to these five terms as SK-language BCTs. 
+Figure \@ref(fig:study1-figure) compares the original WCS data (Panel A) to a summary of  results (Panel B) along with the prevalence of Spanish-language responses (Panel C) for Experiment 1. All participants used the following set of color terms to describe a color chip at least once during their session: "joxo" (light/white), "wiso" (dark/black), "panshin" (yellow), "joshin" (red), and "yankon" (green/blue). Given the widespread use of this term set and their interpretations, we will refer to these five terms as SK-language BCTs. 
 
-Most (`r filter(study1_profusion, color_cat == "Manxan") %>% pull('% of Subjects Who Used the Term (Current)')`%) participants also described at least 1 chip as "manxan" (faded), referring to a chip’s saturation. In terms of overall popularity, participants described a median of `r filter(study1_profusion, color_cat == "Yankon") %>% pull('Mdn % of Chips in Set Labeled (Current)')`% of chips as "yankon" (*IQR* = `r filter(study1_profusion, color_cat == "Yankon") %>% pull('IQR % of Chips in Set Labeled (Current)')`%) followed by "joshin" (*Mdn* = `r filter(study1_profusion, color_cat == "Joshin") %>% pull('Mdn % of Chips in Set Labeled (Current)')`%, *IQR* = `r filter(study1_profusion, color_cat == "Joshin") %>% pull('IQR % of Chips in Set Labeled (Current)')`%), "joxo" (`r filter(study1_profusion, color_cat == "Joxo") %>% pull('Mdn % of Chips in Set Labeled (Current)')`%, `r filter(study1_profusion, color_cat == "Joxo") %>% pull('IQR % of Chips in Set Labeled (Current)')`%), "panshin" (`r filter(study1_profusion, color_cat == "Panshin") %>% pull('Mdn % of Chips in Set Labeled (Current)')`%, `r filter(study1_profusion, color_cat == "Panshin") %>% pull('IQR % of Chips in Set Labeled (Current)')`%), "manxan" (`r filter(study1_profusion, color_cat == "Manxan") %>% pull('Mdn % of Chips in Set Labeled (Current)')`%, `r filter(study1_profusion, color_cat == "Manxan") %>% pull('IQR % of Chips in Set Labeled (Current)')`%), and "wiso" (`r filter(study1_profusion, color_cat == "Wiso") %>% pull('Mdn % of Chips in Set Labeled (Current)')`%, `r filter(study1_profusion, color_cat == "Wiso") %>% pull('IQR % of Chips in Set Labeled (Current)')`%). We failed to find any significant sex differences in the overall spread of color term usage across chip set (`r apa_print(study1_ttest_gendertermprofusion)$statistic`) or in the proportion of subjects who used a term at least once during their session (`r apa_print(study1_ttest_gendertermappearance)$statistic`).
+Most (`r filter(study1_profusion, color_cat == "Manxan") %>% pull('% of Subjects Who Used the Term (Current)')`%) participants also described at least 1 chip as "manxan" (faded), referring to a chip’s saturation. In addition, `r filter(study1_profusion, color_cat == "Naranja") %>% pull('% of Subjects Who Used the Term (Current)') %>% english::words()` percent of participants used the color term "naranja" (or "naransha") to describe at least one chip. Naranja may be known as a Spanish-language color term used to describe both the orange fruit and its associated color--as opposed to "anaranjado", a term strictly for the orange color. 
+
+In terms of overall popularity, participants described a median of `r filter(study1_profusion, color_cat == "Yankon") %>% pull('Mdn % of Chips in Set Labeled (Current)')`% of chips as "yankon" (*IQR* = `r filter(study1_profusion, color_cat == "Yankon") %>% pull('IQR % of Chips in Set Labeled (Current)')`%) followed by "joshin" (*Mdn* = `r filter(study1_profusion, color_cat == "Joshin") %>% pull('Mdn % of Chips in Set Labeled (Current)')`%, *IQR* = `r filter(study1_profusion, color_cat == "Joshin") %>% pull('IQR % of Chips in Set Labeled (Current)')`%), "panshin" (`r filter(study1_profusion, color_cat == "Panshin") %>% pull('Mdn % of Chips in Set Labeled (Current)')`%, `r filter(study1_profusion, color_cat == "Panshin") %>% pull('IQR % of Chips in Set Labeled (Current)')`%), "joxo" (`r filter(study1_profusion, color_cat == "Joxo") %>% pull('Mdn % of Chips in Set Labeled (Current)')`%, `r filter(study1_profusion, color_cat == "Joxo") %>% pull('IQR % of Chips in Set Labeled (Current)')`%), "manxan" (`r filter(study1_profusion, color_cat == "Manxan") %>% pull('Mdn % of Chips in Set Labeled (Current)')`%, `r filter(study1_profusion, color_cat == "Manxan") %>% pull('IQR % of Chips in Set Labeled (Current)')`%), and "wiso" (`r filter(study1_profusion, color_cat == "Wiso") %>% pull('Mdn % of Chips in Set Labeled (Current)')`%, `r filter(study1_profusion, color_cat == "Wiso") %>% pull('IQR % of Chips in Set Labeled (Current)')`%). We failed to find any significant sex differences in the overall spread of color term usage across chip set (`r apa_print(study1_ttest_gendertermprofusion)$statistic`) or in the proportion of subjects who used a term at least once during their session (`r apa_print(study1_ttest_gendertermappearance)$statistic`).
 
 
 ```{r study1-langswitch}
-study1_switchperc <- naming_data %>%
-  mutate(spanish_response = ifelse(color_cat %in% spanish_terms,
-                                   1, 0)) %>%
+study1_profusion_spanish <- study1_profusion %>%
+  filter(color_cat %in% spanish_terms) %>% 
+  arrange(desc(.$'% of Subjects Who Used the Term (Current)')) 
+
+study1_switchperc_with_naranja <- naming_data %>%
+  mutate(spanish_response = ifelse(
+    color_cat %in% spanish_terms, 1, 0)) %>%
   mutate(overall_spanish = round(100*mean(spanish_response), 0)) %>%
   group_by(subj) %>%
   summarise(overall_spanish = first(overall_spanish),
@@ -259,9 +266,31 @@ study1_switchperc <- naming_data %>%
             min_subj_spanish = round(100*min(by_subject)),
             .groups = 'drop')
 
+study1_switchperc_wo_naranja_base <- naming_data %>%
+  mutate(spanish_response = ifelse(
+    color_cat %in% spanish_terms & color_cat != "Naranja",
+                                   1, 0)) %>%
+  mutate(overall_spanish = round(100*mean(spanish_response), 0)) %>%
+  group_by(subj) %>%
+  summarise(overall_spanish = first(overall_spanish),
+            atleast_1 = ifelse(sum(spanish_response) > 0, 1, 0),
+            by_subject = mean(spanish_response),
+            .groups = 'drop') 
+
+study1_switchperc_wo_naranja <- study1_switchperc_wo_naranja_base%>% 
+  summarise(overall_spanish = first(overall_spanish),
+            atleast_1 = round(100*mean(atleast_1)),
+            mdn_subj_spanish = round(100*median(by_subject)),
+            iqr_subj_spanish = paste0(
+              round(100*quantile(by_subject, c(0.25, 0.75))), collapse = "-"),
+            max_subj_spanish = round(100*max(by_subject)),
+            min_subj_spanish = round(100*min(by_subject)),
+            .groups = 'drop')
+
 
 study1_spanishbychip <- naming_data %>%
-  mutate(spanish_response = ifelse(color_cat %in% spanish_terms,
+  mutate(spanish_response = ifelse(
+    color_cat %in% spanish_terms & color_cat != "Naranja",
                                    1, 0)) %>%
   select(subj, chip_id, spanish_response) %>%
   mutate(set = ifelse((chip_id %% 2) == 0, 'even', 'odd')) %>%
@@ -284,7 +313,7 @@ study1_spanishbychip <- naming_data %>%
 
 ```
 
-Compared to the WCS dataset, which only reported SK language terms, `r study1_switchperc$atleast_1`% of our participants used a Spanish-language color term to describe at least 1 chip, which accounted for `r study1_switchperc$overall_spanish`% of all responses. Across chips, Spanish use peaked at `r round(100*max(study1_spanishbychip$'% of Subjects'))`% when participants were asked to label chips that English speakers would consider to be orange. Spanish use varied greatly between subjects but was low for most (*Median* = `r study1_switchperc$mdn_subj_spanish`%, *IQR* = `r study1_switchperc$iqr_subj_spanish`%), however one participant responded in Spanish in `r study1_switchperc$max_subj_spanish`% of the time despite being prompted solely in SK.
+Compared to the WCS dataset which only reported SK language terms, Spanish use was prevalent throughout Study 1. `r study1_switchperc_with_naranja$atleast_1 %>% english::Words()` percent of our participants used a Spanish-language color term to describe at least 1 chip, which accounted for only `r study1_switchperc_with_naranja$overall_spanish`% of all responses. Across chips, the most common Spanish-language color term was "`r study1_profusion_spanish %>% pull(color_cat) %>% first() %>% tolower`" (`r study1_profusion_spanish %>% pull('% of Subjects Who Used the Term (Current)') %>% first()`% of participants), followed by "`r study1_profusion_spanish %>% pull(color_cat) %>% nth(2) %>% tolower`" (`r study1_profusion_spanish %>% pull('% of Subjects Who Used the Term (Current)') %>% nth(2)`) and "`r study1_profusion_spanish %>% pull(color_cat) %>% nth(3) %>% tolower`" (`r study1_profusion_spanish %>% pull('% of Subjects Who Used the Term (Current)') %>% nth(3)`). Spanish use peaked at `r round(100*max(study1_spanishbychip$'% of Subjects'))`% when participants were asked to label chips that English speakers would consider to be orange or "anaranjado"/"naranja" by Spanish speakers. Indeed, the relatively common use of "naranja" by these adult SK speakers despite being prompted entirely in SK brings the possibility that "naranja" has been adopted into the SK color lexicon. If we allow "naranja" to be counted as an SK rather than Spanish-language term, then only `r study1_switchperc_wo_naranja$atleast_1`% of participants used a Spanish-language term other than "naranja" at least once throughout the study, accounting for `r study1_switchperc_wo_naranja$overall_spanish`% of all responses. One participant responded in Spanish in `r study1_switchperc_wo_naranja$max_subj_spanish`% of the time despite being prompted solely in SK. 
 
 ```{r study1-consensus}
 
@@ -306,7 +335,7 @@ study1_consensus <- naming_data %>%
 
 ```
 
-```{r study1-figure, fig.cap = "(A and B) Plots of the modal term given for a particular chip. Color coordinates were represented in 2-D Munsell space. Modal responses were given by SK adults during (A) the original World Color Survey and during (B) our Study 1. (C) Heat map of prevalence of Spanish-language responses during Study 1. Legends for all three subplots located in the bottom-right quadrant."}
+```{r study1-figure, fig.cap = "(A and B) Plots of the modal term given for a particular chip. Color coordinates were represented in 2-D Munsell space. Modal responses were given by SK adults during (A) our Study 1 and during (B) the original World Color Survey. (C) Heat map of prevalence of Spanish-language responses during Study 1. Legends for all three subplots located in the bottom-right quadrant."}
 
 study1_consensus_plot <- ggplot(study1_consensus %>%
                                  group_by(`Chip ID`) %>%
@@ -341,14 +370,14 @@ kay_consensus_plot <- ggplot(kay_consensus,
   ggtitle("WCS Data") +
   theme(legend.position = "none", plot.title = element_text(hjust = 0.5))
 
-study1_spanish_plot <- ggplot(study1_spanishbychip %>%
-                               mutate(`% of Subjects` = 100*`% of Subjects`) %>%
-                               rename(`Spanish Term` = `% of Subjects`) %>%
-                               left_join(select(color_chip_data, `#cnum`, V, H), 
-                                         by = c("Chip ID" = "#cnum")), 
-                             aes(x = H, y = V)) + 
+study1_spanish_plot <- study1_spanishbychip %>%
+  mutate(`% of Subjects` = 100*`% of Subjects`) %>%
+  rename(`Spanish Term` = `% of Subjects`) %>%
+  left_join(select(color_chip_data, `#cnum`, V, H), 
+            by = c("Chip ID" = "#cnum")) %>%
+  ggplot(., aes(x = H, y = V)) + 
   geom_tile(aes(fill = `Spanish Term`)) + 
-  scale_fill_viridis(option="magma") +
+  scale_fill_viridis(option="magma", lim = c(0, 20), breaks = seq(0,20,5)) +
   labs(fill = "Spanish\nUse (%)")
 
 adult_figurelegends <- plot_grid(
@@ -370,7 +399,7 @@ adult_figure <- plot_grid(
 print(adult_figure)
 
 # study1_spanishbysubj <- naming_data %>%
-#   mutate(spanish_response = ifelse(color_cat %in% spanish_terms, 1, 0)) %>%
+#   mutate(spanish_response = ifelse(color_cat %in% spanish_terms & color_cat != "Naranja", 1, 0)) %>%
 #   group_by(subj) %>%
 #   summarise(age = as.numeric(as.character(first(edad))),
 #             age_introduction = first(`edad aprendizaje del espanol`),
@@ -386,8 +415,24 @@ print(adult_figure)
 
 
 ```{r study1-termnature}
-study1_nature <- naming_data %>%
-  mutate(spanish_response = ifelse(color_cat %in% spanish_terms, 1, 0),
+study1_nature_wo_naranja <- naming_data %>%
+  mutate(spanish_response = ifelse(
+    color_cat %in% spanish_terms & color_cat != "Naranja", 1, 0),
+         nature = ifelse(grepl("SLT", nature), "SLT", nature)) %>%
+  group_by(subj, spanish_response, nature) %>%
+  summarise(n = n(), .groups = "drop") %>%
+  mutate(nature = ifelse(is.na(nature), "Other", nature)) %>%
+  complete(subj, spanish_response, nature, fill = list(n = 0)) %>%
+  group_by(subj) %>%
+  mutate(perc = 100*n/sum(n)) %>%
+  group_by(spanish_response, nature) %>%
+  summarise(mdn_prop = round(median(perc)),
+            iqr_prop = paste0(round(quantile(perc, c(0.25, 0.75))), collapse = "-"),
+            .groups = "drop")
+
+study1_nature_with_naranja <- naming_data %>%
+  mutate(spanish_response = ifelse(
+    color_cat %in% spanish_terms, 1, 0),
          nature = ifelse(grepl("SLT", nature), "SLT", nature)) %>%
   group_by(subj, spanish_response, nature) %>%
   summarise(n = n(), .groups = "drop") %>%
@@ -407,9 +452,9 @@ SK_AHCT_prop <- group_by(naming_data, subj) %>%
 
 ```
 
-Participants used an SK-language BCT (i.e., "yankon") to describe a median of `r filter(study1_nature, nature == "BCT" & spanish_response == 0) %>% pull(mdn_prop)`% of chips (*IQR* = `r filter(study1_nature, nature == "BCT" & spanish_response == 0) %>% pull(iqr_prop)`%). Besides BCTs, `r SK_AHCT_prop`% of participants used SK-language ad hoc hue terms (i.e., "nai" or sky for blue chips) for an overall median of `r filter(study1_nature, nature == "AHCT" & spanish_response == 0)$mdn_prop`% of chips  (*IQR* = `r filter(study1_nature, nature == "AHCT" & spanish_response == 0)$iqr_prop`%). SK-language terms referring to saturation or luminosity of a chip, such as "manxan" (faded) were used for an overall median of `r filter(study1_nature, nature == "SLT" & spanish_response == 0)$mdn_prop`% of chips (*IQR* = `r filter(study1_nature, nature == "SLT" & spanish_response == 0)$iqr_prop`%). Most instances (`r filter(naming_data, color_cat %in% spanish_terms) %>% summarise(round(100*sum(nature == "BCT")/n()), .groups = 'drop')`%) of Spanish use involved a Spanish BCT such as "rojo" (overall *Mdn* = `r filter(study1_nature, nature == "BCT" & spanish_response == 1)$mdn_prop`%, *IQR* = `r filter(study1_nature, nature == "BCT" & spanish_response == 1)$iqr_prop`%). 
+Participants used an SK-language BCT (i.e., "yankon") to describe a median of `r filter(study1_nature_wo_naranja, nature == "BCT" & spanish_response == 0) %>% pull(mdn_prop)`% of chips (*IQR* = `r filter(study1_nature_wo_naranja, nature == "BCT" & spanish_response == 0) %>% pull(iqr_prop)`%). Besides BCTs, `r SK_AHCT_prop`% of participants used SK-language ad hoc hue terms (i.e., "nai" or sky for blue chips) for an overall median of `r filter(study1_nature_wo_naranja, nature == "AHCT" & spanish_response == 0)$mdn_prop`% of chips  (*IQR* = `r filter(study1_nature_wo_naranja, nature == "AHCT" & spanish_response == 0)$iqr_prop`%). SK-language terms referring to saturation or luminosity of a chip, such as "manxan" (faded) were used for an overall median of `r filter(study1_nature_wo_naranja, nature == "SLT" & spanish_response == 0)$mdn_prop`% of chips (*IQR* = `r filter(study1_nature_wo_naranja, nature == "SLT" & spanish_response == 0)$iqr_prop`%). Most instances (`r filter(naming_data, color_cat %in% spanish_terms & color_cat != "Naranja") %>% summarise(round(100*sum(nature == "BCT")/n()), .groups = 'drop')`%) of Spanish use involved a Spanish BCT such as "rojo" (overall *Mdn* = `r filter(study1_nature_wo_naranja, nature == "BCT" & spanish_response == 1)$mdn_prop`%, *IQR* = `r filter(study1_nature_wo_naranja, nature == "BCT" & spanish_response == 1)$iqr_prop`%). 
 
-In sum, our data show similar variability to the WCS data, but with Spanish terms (as described above) mixed in with ad hoc terms. Notably, we observed the modal term for a few chips to be a Spanish word ("naranja," "orange" in English), suggesting some fairly extensive borrowing of Spanish words.
+In sum, our data show similar variability to the WCS data, but with Spanish terms (as described above) mixed in with ad hoc terms. Notably, we observed the modal term for a few chips to be loanwords from Spanish, in some cases already established as part of the SK vocabulary (the last seems to be the case of "naranja", "orange" in English), suggesting some fairly extensive borrowing of Spanish words due to the close relation between both languages in the studied communities.
 
 ```{r study1-entropy-values}
 
@@ -425,7 +470,7 @@ study1_entropy <- naming_data %>%
 
 study1_naturebyentropy <- naming_data %>%
   mutate(response_language = case_when(
-    color_cat %in% spanish_terms ~ "spanish",
+    color_cat %in% spanish_terms & color_cat != "Naranja" ~ "spanish",
     color_cat %in% shipibo_terms ~ "shipibo"
   )) %>%
   select(subj, chip_id, color_cat, response_language, nature) %>%
@@ -486,13 +531,13 @@ study1_naturebyentropy_plot <- ggplot(study1_naturebyentropy %>%
 
 # Study 2
 
-After generating an updated SK color term map using the responses from adult participants in Study 1, we created Study 2 to assess child participants’ production and comprehension of SK color terms. Because we did not think that we could feasibly ask children across a range of ages about more than 100 color chips, we selected a subset of chips representing the prototypical instances for prominent SK terms from Study 1.
+After generating an updated SK color term map using the responses from adult participants in Study 1, we designed Study 2 to assess child participants’ production and comprehension of SK color terms. Because we did not think that we could feasibly ask children across a range of ages about more than 100 color chips, we selected a subset of chips representing the prototypical instances for prominent SK terms from Study 1.
 
 ```{r study2-participants}
 
 study2_prod_data <- raw_data %>%
   filter(language == "Shipibo" & task == "Production") %>%
-  mutate(spanish_response = ifelse(response %in% spanish_terms, 1, 0)) 
+  mutate(spanish_response = ifelse(response %in% spanish_terms & response != "Naranja", 1, 0)) 
 
 study2_participants <- study2_prod_data %>%
   group_by(subj) %>%
@@ -516,7 +561,7 @@ study2_participants <- study2_prod_data %>%
 
 study3_prod_data <- raw_data %>%
   filter(language == "Spanish" & task == "Production") %>%
-  mutate(shipibo_response = ifelse(response %in% shipibo_terms, 1, 0)) 
+  mutate(shipibo_response = ifelse(response %in% shipibo_terms & response != "Naranja", 1, 0)) 
 
 study3_participants <- study3_prod_data %>%
   group_by(subj) %>%
@@ -585,21 +630,21 @@ apa_table(
 
 ### Participants
 
-`r Words(study2_participants$num_total)` children (`r study2_participants$num_boys` boys) ages `r study2_participants$min_age`- to `r study2_participants$max_age`-years-old were recruited in predominantly SK neighborhoods in Yarinacocha (Nueva Era and Bena Jema) and in Bawanisho, a native community settled along the Ucayali River, more than 500 kilometers southeast of Pucallpa. Recruitment occurred either through direct contact with interested parents or through their local school. If recruited via school, consent for participation had to be given by both teacher and parent. Outside of the school environment, consent was given by the parent. 
+`r study2_participants$num_total %>% english::Words()` children (`r study2_participants$num_boys` boys) ages `r study2_participants$min_age`- to `r study2_participants$max_age`-years-old were recruited in predominantly SK neighborhoods in Yarinacocha (Nueva Era and Bena Jema) and in Bawanisho, a native community settled along the Ucayali River, more than 500 kilometers southeast of Pucallpa. Recruitment occurred either through direct contact with interested parents or through their local school. If recruited via school, consent for participation had to be given by both teacher and parent. Outside of the school environment, consent was given by the parent. 
 
 ### Materials and procedure
 
-Based on the findings of Study 1, we chose 8 color chips from our original set of 330 to serve as prototypical instances of major SK color terms. These color chips were blue (WCS n°1), green (n°234), red (n°245), white (n°274), yellow (n°297), black (n°312), greeny-yellow (WCS n°320), and purple (WCS n°325). Study 2 was conducted entirely in SK and participants were explicitly instructed to give responses in SK as opposed to Spanish. In the production and comprehension tasks, children sat at a table across from the experimenter with color chips arranged between them. The production task was always performed before the comprehension task.
+Based on the findings of Study 1, we chose 8 color chips from our original set of 330 to serve as prototypical instances of major SK color terms. These color chips were blue (WCS n°1), green (n°234), red (n°245), white (n°274), yellow (n°297), black (n°312), greenish-yellow (WCS n°320), and purple (WCS n°325). Study 2 was conducted entirely in SK and participants were explicitly instructed to give responses in SK as opposed to Spanish. In the production and comprehension tasks, children sat at a table across from the experimenter with color chips arranged between them. The production task was always performed before the comprehension task.
 
 ### Production task
 
-Similar to Study 1, the experimenter introduced a participant to the general procedure and the goals of the study. The experimenter would then ask: "What is the color of this chip?" As in Study 1, we used follow-up questions to elicit a BCT when the child’s initial response was not a BCT. In a departure from Study 1, we were more explicit in soliciting an SK-language response. When a participant provided a Spanish-language term, the experimenter would record their response but further ask: "What is the name of this color in SK?" If a participant could not respond with an SK term, the experimenter would not ask further questions and would move forward to the next chip. As a result, some children could only produce SK non-BCTs or Spanish-language terms for particular chips. 
+Similar to Study 1, the experimenter introduced the participant to the general procedure and the goals of the study. The experimenter would then ask: "What is the color of this chip?". As in Study 1, we used follow-up questions to elicit a BCT when the child’s initial response was not a BCT. In a departure from Study 1, we were more explicit in soliciting an SK-language response. When a participant provided a Spanish-language term, the experimenter would record their response but further ask: "What is the name of this color in SK?". If a participant could not respond with an SK term, the experimenter would not ask further questions and would move forward to the next chip. As a result, some children only produced SK non-BCTs or Spanish-language terms for particular chips. 
 
 ### Comprehension task
 
-The comprehension task had a notably different procedure compared to the preceding production task or that of Study 1. We tested the comprehension of 9 SK color terms. The choice of these terms was based on common responses given by adult participants in Study 1. The color term prompts included BCTs: "yankon" (green/blue), "joshin" (red), "panshin" (yellow), "joxo" (white/light), "wiso" (black/dark). We also included non-basic but prominent terms as prompts which were "nai" (blue/sky), and "barin poi" (greenish-yellow) and two dyads of non-basic terms "pei"/"xo" (green) and "ami"/"pua" (purple). Children sat at a table across from the experimenter with the 8 color chips of the production task displayed between them. The experimenter asked: "Can you give me the [*color term*] chip?" Participants chose one of the 8 chips and their response was recorded.  
+The comprehension task had a notably different procedure compared to the preceding production task or that of Study 1. We tested the comprehension of 9 SK color terms. The choice of these terms was based on common responses given by adult participants in Study 1. The color term prompts included BCTs: "yankon" (green/blue), "joshin" (red), "panshin" (yellow), "joxo" (white/light), "wiso" (black/dark). We also included non-basic but prominent terms as prompts which were "nai" (sky or sky blue), and "barin poi" (greenish-yellow, meaning the Sun´s excrement, also used to refer to an alga) and two dyads of non-basic terms: "pei" (leaf)  and "xo" (unripe) to represent the color green along with "ami" (a type of tree used to dye fabrics) "pua" (sachapapa, a tuber) to represent purple. Children sat at a table across from the experimenter with the 8 color chips of the production task displayed between them. The experimenter asked: "Can you give me the [*color term*] chip?" Participants chose one of the 8 chips and their response was recorded.  
 
-Our findings from Study 1 suggested that color terms varied in their degrees of specificity. For example, "wiso" best describes a narrow range of very dark to black. By contrast, "yankon" could encompass blue, green, greenish-yellow, and purple; "joshin" could describe red, purple, and orange; "pei" or "xo" to green or greenish-yellow. In cases where a term could apply for more than one chip (i.e., "yankon"), the initially selected chip would be removed from the table, leaving 7 remaining chips. The experimenter would then ask: "Can you give me another [*color term*] chip?" The participant would then pick another one of the 7 chips, have their response recorded, and so on. We prompted participants 4 times for "yankon" and 2 times each for "joshin" and "pei"/"xo"*"; every other term only received a single prompt. Due to the inherent ambiguity in term-hue pairings, accuracy for a child participant was coded based on adult responses given during Study 1. If at least 15% of adult participants in Study 1 associated a chip with a particular term, we coded a similar term-chip pairing from a child participant as correct. Some trials could have multiple pairings, accuracy was scored as an average, rather than dichotomous. For instance, if a child correctly chose 3 out of 4 chips for the "yankon" trial, instead of 1 (correct) or 0 (incorrect) they would receive a score of 0.75.
+Our findings from Study 1 suggested that color terms varied in their degrees of specificity. For example, "wiso" best describes a narrow range of very dark to black. By contrast, "yankon" could encompass blue, green, greenish-yellow, and purple; "joshin" could describe red, purple, and orange; "pei" or "xo" could describe green or greenish-yellow. In cases where a term could apply to multiple chips (i.e., "yankon"), the chip selected first would be removed from the table, leaving 7 remaining chips. The experimenter would then ask: "Can you give me another [*color term*] chip?". The participant would then pick another one of the 7 chips, have their response recorded, and so on. We prompted participants 4 times for "yankon" and 2 times each for "joshin" and "pei"/"xo"; every other term only received a single prompt. Due to the inherent ambiguity in term-hue pairings, accuracy for a child participant was coded based on adult responses given during Study 1. If at least 15% of adult participants in Study 1 associated a chip with a particular term, we coded a similar term-chip pairing from a child participant as correct. Some trials could have multiple pairings; in those cases, accuracy was scored as an average, rather than as dichotomous. For instance, if a child correctly chose 3 out of 4 chips for the "yankon" trial, instead of 1 (correct) or 0 (incorrect) they would receive a score of 0.75.
 
 
 ```{r prod-childfigure, fig.height = 9.5, fig.cap = "(A and B) A comparison of children's performance during the production task in Studies 2 (top) and 3 (bottom). Solid or dotted lines represent overall performance by age for a particular chip. Solid lines show whether the child gave a correct answer in the language indicated in that column; dotted lines show if they gave a response that was correct in either language. Line colors are representative of the chip’s color coordinates."}
@@ -701,25 +746,44 @@ prod_childfigure <- plot_grid(prod_accuracyvsage_2 + theme(axis.title.x = elemen
 
 study2_firstprod$age.years.c <- scale(study2_firstprod$age, scale = FALSE)
 
-study2_firstprod_same <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
+# Earlier models failed to converge with random slope for age
+# Thoughts on adjusting for gender?
+study2_firstprod_same <- glmer(score ~ age.years.c  + (1 | prompt) + (1 | subj), 
       data = filter(study2_firstprod, criteria == "correct"), 
       family = "binomial")
 
-study2_firstprod_same_noage <- glmer(score ~ (1 | prompt) + (1 | subj), 
-      data = filter(study2_firstprod, criteria == "correct"), 
-      family = "binomial")
-
-study2_firstprod_either <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
+study2_firstprod_either <- glmer(score ~ age.years.c  + (1 | prompt) + (1 | subj), 
       data = filter(study2_firstprod, criteria == "correct_either"), 
       family = "binomial")
 
-study2_firstprod_adjacent <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
+study2_firstprod_adjacent <- glmer(score ~ age.years.c  + (1 | prompt) + (1 | subj), 
       data = filter(study2_firstprod, criteria == "correct_nearby"), 
       family = "binomial")
 
-study2_firstprod_all <- glmer(score ~ age.years.c*criteria + (age.years.c | prompt) + (1 | subj), 
+study2_firstprod_all <- glmer(score ~ age.years.c*criteria + (1 | prompt) + (1 | subj), 
       data = mutate(study2_firstprod, criteria = factor(criteria)), 
       family = "binomial")
+
+# XXX Doesn't converge? Dropped random slope for age
+# study2_firstprod_same <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
+#       data = filter(study2_firstprod, criteria == "correct"), 
+#       family = "binomial")
+
+# study2_firstprod_same_noage <- glmer(score ~ (1 | prompt) + (1 | subj), 
+#       data = filter(study2_firstprod, criteria == "correct"), 
+#       family = "binomial")
+
+# study2_firstprod_either <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
+#       data = filter(study2_firstprod, criteria == "correct_either"), 
+#       family = "binomial")
+
+# study2_firstprod_adjacent <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
+#       data = filter(study2_firstprod, criteria == "correct_nearby"), 
+#       family = "binomial")
+
+# study2_firstprod_all <- glmer(score ~ age.years.c*criteria + (age.years.c | prompt) + (1 | subj), 
+#       data = mutate(study2_firstprod, criteria = factor(criteria)), 
+#       family = "binomial")
 
 
 ```
@@ -732,19 +796,19 @@ study3_firstprod_same <- glmer(score ~ age.years.c  + (1 | prompt) + (1 | subj),
       data = filter(study3_firstprod, criteria == "correct"), 
       family = "binomial")
 
-study3_firstprod_same_noage <- glmer(score ~ (1 | prompt) + (1 | subj), 
-      data = filter(study3_firstprod, criteria == "correct"), 
-      family = "binomial")
+# study3_firstprod_same_noage <- glmer(score ~ (1 | prompt) + (1 | subj), 
+#       data = filter(study3_firstprod, criteria == "correct"), 
+#       family = "binomial")
 
 study3_firstprod_either <- glmer(score ~ age.years.c  + (1 | prompt) + (1 | subj), 
       data = filter(study3_firstprod, criteria == "correct_either"), 
       family = "binomial")
 
-study3_firstprod_adjacent <- glmer(score ~ age.years.c  + (age.years.c | prompt) + (1 | subj), 
+study3_firstprod_adjacent <- glmer(score ~ age.years.c  + (1 | prompt) + (1 | subj), 
       data = filter(study3_firstprod, criteria == "correct_nearby"), 
       family = "binomial")
 
-study3_firstprod_all <- glmer(score ~ age.years.c + criteria + (age.years.c | prompt) + (1 | subj), 
+study3_firstprod_all <- glmer(score ~ age.years.c*criteria + (1 | prompt) + (1 | subj), 
       data = mutate(study3_firstprod, criteria = factor(criteria)), 
       family = "binomial")
 
@@ -838,7 +902,7 @@ fit_robust <- function(df) {
   
   mdl <- robustbase::glmrob(score ~ age, data = df, family = "binomial")
   
-  new.df <- with(study2_firstprod, data.frame(age = seq(min(age), max(age),0.05)))
+  new.df <- with(study2_firstprod, data.frame(age = seq(min(age), max(age),0.1)))
   new.df <- cbind(new.df, predict(mdl, newdata = new.df, re.form = NA, type = "response", se.fit = TRUE))
   new.df$coef_age <- mdl$coefficients["age"]
   new.df$prompt <- first(df$prompt)
@@ -855,10 +919,9 @@ study2_prod_predict <- study2_firstprod %>%
 
 study2_prod_predict_aoa <- study2_prod_predict %>% 
   group_by(prompt) %>% 
-  filter(fit > 0.5, .preserve = TRUE) %>% 
-  summarise(aoa = as.character(round(min(age), 1)),
-            coef_age = first(coef_age), .groups = 'drop') %>%
-  mutate(aoa = ifelse(aoa == "Inf", "N/A", aoa))
+  filter(fit >= 0.5 | row_number() == max(row_number())) %>% 
+  filter(row_number() == min(row_number())) %>%
+  mutate(aoa = as.character(round(age, 1)))
 
 
 study2_prod_predict_plot <- study23_firstprod %>% 
@@ -872,7 +935,7 @@ study2_prod_predict_plot <- study23_firstprod %>%
   geom_line(data = study2_prod_predict, mapping = aes(x = age, y = fit)) +
   facet_wrap(~ as.character(prompt), scales = "free", ncol = 3) +
   scale_y_continuous(limits = c(-0.1,1.1), breaks = seq(0,1,0.5)) + 
-  xlim(c(5,11.5)) +
+  scale_x_continuous(lim = c(5,12), breaks = seq(5,11,2)) +
   scale_color_manual(values = chip_id_colors, guide = FALSE) +
   labs(x = "Age", y = "Proportion of Correct Responses", colour = "Chip ID") +
   guides(label = "none") + 
