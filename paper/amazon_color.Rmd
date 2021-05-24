@@ -1172,16 +1172,24 @@ comp_childfigure <- plot_grid(
 ```
 
 ```{r study2-overallcomp-models}
+# note that people sometimes gave more responses and we score each of these as correct or incorrect
+study23_overallcomp$n_correct <- study23_overallcomp$num_responses* study23_overallcomp$score 
+
+study23_overallcomp$n_incorrect <- study23_overallcomp$num_responses - study23_overallcomp$n_correct
+
+
 study2_overallcomp <- study23_overallcomp %>% filter(study == "Study 2")
 
 study2_overallcomp$age.years.c <- scale(study2_overallcomp$age, scale = FALSE)
 
 ## Doesn't converge but study2_firstprod_either and study2_firstprod_adjacent do?
-study2_overallcomp_same <- glmer(score ~ age.years.c  + (1 | prompt) + (1 | subj), 
+study2_overallcomp_same <- glmer(cbind(n_correct, n_incorrect) ~ age.years.c  + 
+                                   (1 | prompt) + (1 | subj), 
       data = filter(study2_overallcomp, criteria == "correct"), 
       family = "binomial")
 
-study2_overallcomp_adjacent <- glmer(score ~ age.years.c  + (1 | prompt) + (1 | subj), 
+study2_overallcomp_adjacent <- glmer(cbind(n_correct, n_incorrect) ~ 
+                                       age.years.c  + (1 | prompt) + (1 | subj), 
       data = filter(study2_overallcomp, criteria == "correct_nearby"), 
       family = "binomial")
 ```
@@ -1191,11 +1199,11 @@ study3_overallcomp <- study23_overallcomp %>% filter(study == "Study 3")
 
 study3_overallcomp$age.years.c <- scale(study3_overallcomp$age, scale = FALSE)
 
-study3_overallcomp_same <- glmer(score ~ age.years.c  + (1 | prompt) + (1 | subj), 
+study3_overallcomp_same <- glmer(cbind(n_correct, n_incorrect) ~ age.years.c  + (1 | prompt) + (1 | subj), 
       data = filter(study3_overallcomp, criteria == "correct"), 
       family = "binomial")
 
-study3_overallcomp_adjacent <- glmer(score ~ age.years.c  + (1| prompt) + (1 | subj), 
+study3_overallcomp_adjacent <- glmer(cbind(n_correct, n_incorrect) ~ age.years.c  + (1| prompt) + (1 | subj), 
       data = filter(study3_overallcomp, criteria == "correct_nearby"), 
       family = "binomial")
 ```
