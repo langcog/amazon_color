@@ -6,3 +6,4 @@ packrat/src*/
 .RData 
 .Rhistory 
 rsconnect/
+renv/*

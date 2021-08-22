@@ -1,4 +1,5 @@
 base
+tinylabels
 papaja
 tidyverse
 ggplot2
@@ -19,7 +20,6 @@ Matrix
 lme4
 nnet
 here
-bindrcpp
 pander
 readxl
 colorspace

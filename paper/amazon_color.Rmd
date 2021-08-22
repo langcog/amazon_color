@@ -31,11 +31,11 @@ author_note: |
   This paper is dedicated to the memory of Martin Fortier. MCF was supported by a Jacobs Foundation Fellowship. We are especially grateful to Paul Kay for assistance throughout the study.
 
 abstract: |
-  Color word learning is an important case study for the relation between language and perception. While English color word learning is well-documented, there is relatively limited evidence on the developmental trajectory for color words, especially in languages from non-industrialized populations. We study color words and their acquisition in the Shipibo-Konibo (SK), an indigenous group in the Peruvian Amazon. In Study 1, we measure the color vocabulary in SK, updating data from the World Color Survey. We then study receptive and productive knowledge of color words in children, testing in both SK (Study 2) and Spanish (Study 3). Children learning the SK system show a protracted developmental trajectory compared with modern studies of English. Further, when children lack precise color term knowledge, they appeared to follow different strategies for SK and Spanish, using Spanish vocabulary in SK and overgeneralizing in Spanish. For both children and adults, bilingual vocabulary is used adaptively to facilitate task performance, broadly supporting communicative views of color vocabulary.
+  Color word learning is an important case study for the relation between language and perception. While English color word learning is well-documented, there is relatively limited evidence on the developmental trajectory for color words, especially in languages from non-industrialized populations. We study color words and their acquisition in the Shipibo-Konibo (SK), an indigenous group in the Peruvian Amazon. In Study 1, we measure the color vocabulary in SK, updating data from the World Color Survey. We then study receptive and productive knowledge of color words in children, testing in both SK (Study 2) and Spanish (Study 3). Children learning the SK system show a protracted developmental trajectory towards adult-like color term knowledge compared to modern studies of English-speaking children. Further, when children lack precise color term knowledge, they appeared to follow different strategies for SK and Spanish, using Spanish vocabulary in SK and overgeneralizing in Spanish. For both children and adults, bilingual vocabulary is used adaptively to facilitate task performance, broadly supporting communicative views of color vocabulary.
 
   
 keywords          : "Shipibo-Konibo; Color; Word learning; Bilingualism"
-wordcount         : "9258"
+wordcount         : "9499"
 
 bibliography      : ["r-references.bib"]
 csl               : "apa.csl"
@@ -49,18 +49,19 @@ mask              : no
 
 always_allow_html : yes
 class             : "apa7"
-output: 
-  papaja::apa6_pdf: 
-    latex_engine: xelatex
+output:
   papaja::apa6_word: default
+  papaja::apa6_pdf:
+    latex_engine: xelatex
 knit: (function(inputFile, encoding) {
   rmarkdown::render(inputFile, encoding = encoding,
   output_format = "all") })
 ---
 
 ```{r load-packages, include = FALSE}
-knitr::opts_chunk$set(echo = FALSE, cache = TRUE, warning = FALSE, error = FALSE, 
-                      message = FALSE, sanitize = TRUE, fig.width = 7)
+knitr::opts_chunk$set(
+  echo = FALSE, cache = TRUE, warning = FALSE, error = FALSE, 
+  message = FALSE, sanitize = TRUE, fig.width = 10, fig.height = 7)
 
 # note, we need a dev version of papaja!
 # remotes::install_github("crsh/papaja@devel")
@@ -87,9 +88,9 @@ source(here("helpers/load_and_process.R"))
 
 set.seed(42) # Seed for random number generation
 
-theme_set(theme_bw() + 
+theme_set(theme_apa(base_size = 10) + 
             theme(strip.background = element_blank(), 
-                  panel.grid = element_blank())) # nice theme with limited extras
+                  panel.grid = element_blank())) 
 
 raw_data <- feather::read_feather(here("intermediates/processed_data.csv"))
 
@@ -337,19 +338,12 @@ study1_consensus <- naming_data %>%
 
 ```
 
-```{r study1-figure, fig.cap = "(A and B) Plots of the modal term given for a particular chip. Color coordinates were represented in 2-D Munsell space. Modal responses were given by SK adults during (A) our Study 1 and during (B) the original World Color Survey. (C) Heat map of prevalence of Spanish-language responses during Study 1. Legends for all three subplots located in the bottom-right quadrant."}
+```{r study1-figure, fig.cap = "(A and B) Plots of the modal term given for a particular chip. Color coordinates were represented in 2-D Munsell space, with Munsell hue represented on the x-axis and Munsell value or lightness represented on the Y-axis. Modal responses were given by SK adults during (A) our Study 1 and during (B) the original World Color Survey. (C) Heat map of prevalence of Spanish-language responses during Study 1. Legends for all three subplots located in the bottom-right quadrant."}
 
-study1_consensus_plot <- ggplot(study1_consensus %>%
-                                 group_by(`Chip ID`) %>%
-                                 filter(`% of Subjects` == max(`% of Subjects`)) %>%
-                                 left_join(color_chip_data, by = c("Chip ID" = "#cnum")), 
-                               aes(x = H, y = V, fill = `Color Term`)) + 
-  geom_tile() + 
-  scale_size(range = c(0, 2.0)) + 
-  scale_fill_manual(name = "Color Term",values = graph_colors) +
-  ggtitle("Study 1") +
-  guides(fill=guide_legend(ncol=2,byrow=TRUE)) +
-  theme(plot.title = element_text(hjust = 0.5))
+study1_consensus_plot_df <- study1_consensus %>%
+  group_by(`Chip ID`) %>%
+  filter(`% of Subjects` == max(`% of Subjects`)) %>%
+  left_join(color_chip_data, by = c("Chip ID" = "#cnum"))
 
 kay_consensus <- kay_terms %>%
   mutate(Term = ifelse(Term %in% c('Huiso', 'Wiso'), 'Wiso', as.character(Term))) %>%
@@ -363,13 +357,27 @@ kay_consensus <- kay_terms %>%
   dplyr::rename(`Color Term` = Term, `Chip ID` = `WCS Chip Number`) %>%
   left_join(color_chip_data, by = c("Chip ID" = "#cnum"))
 
+adult_graph_colors <- graph_colors[sort(
+  union(study1_consensus_plot_df$`Color Term`, 
+        kay_consensus$`Color Term`))]
+
+study1_consensus_plot <- ggplot(
+  study1_consensus_plot_df, 
+  aes(x = H, y = V, fill = `Color Term`)) + 
+  geom_tile() + 
+  scale_size(range = c(0, 2.0)) + 
+  scale_fill_manual(name = "Color Term",values = adult_graph_colors) +
+  labs(title = "Study 1", x = "Hue", y = "Value", fill = "Color Term") +
+  guides(fill=guide_legend(nrow=4,byrow=TRUE)) +
+  theme(plot.title = element_text(hjust = 0.5))
+
 
 kay_consensus_plot <- ggplot(kay_consensus, 
                              aes(x = H, y = V, fill = `Color Term`)) + 
   geom_tile() + 
   scale_size(range = c(0, 2.0)) + 
-  scale_fill_manual(name = "Color Term",values = graph_colors) +
-  ggtitle("WCS Data") +
+  scale_fill_manual(name = "Color Term",values = adult_graph_colors) +
+  labs(title = "WCS Data", x = "Hue", y = "Value", fill = "Color Term") +
   theme(legend.position = "none", plot.title = element_text(hjust = 0.5))
 
 study1_spanish_plot <- study1_spanishbychip %>%
@@ -380,15 +388,20 @@ study1_spanish_plot <- study1_spanishbychip %>%
   ggplot(., aes(x = H, y = V)) + 
   geom_tile(aes(fill = `Spanish Term`)) + 
   scale_fill_viridis(option="magma", lim = c(0, 20), breaks = seq(0,20,5)) +
-  labs(fill = "Spanish\nUse (%)")
+  labs(title = "Study 1 - Spanish Use", 
+       x = "Hue", y = "Value", fill = "Spanish\nUse (%)")  +
+  guides(fill=guide_coloursteps(direction  = "horizontal",
+                              barwidth = 15, show.limits = TRUE)) +
+  theme(plot.title = element_text(hjust = 0.5))
 
 adult_figurelegends <- plot_grid(
   get_legend(study1_consensus_plot),
   NULL,
   get_legend(study1_spanish_plot),
   # labels = c("A and B", "", "C"),
-  ncol = 3) + 
-  theme(plot.margin = unit(c(0.5,0.5,0.5,1), "in")) 
+  nrow = 3,
+  rel_widths = c(1,1,1)) + 
+  theme(plot.margin = unit(c(0.5,0.5,0.5,0.5), "in")) 
 
 adult_figure <- plot_grid(
   study1_consensus_plot + theme(legend.position = "none"), 
@@ -400,16 +413,6 @@ adult_figure <- plot_grid(
 
 print(adult_figure)
 
-# study1_spanishbysubj <- naming_data %>%
-#   mutate(spanish_response = ifelse(color_cat %in% spanish_terms & color_cat != "Naranja", 1, 0)) %>%
-#   group_by(subj) %>%
-#   summarise(age = as.numeric(as.character(first(edad))),
-#             age_introduction = first(`edad aprendizaje del espanol`),
-#             mean_spanish = mean(spanish_response, na.rm = TRUE),
-#             .groups = 'drop')
-# 
-# study1_spanishbyintro_test <- cor.test(~ age_introduction + mean_spanish, data = study1_spanishbysubj)
-# study1_spanishbyage_test <- cor.test(~ age + mean_spanish, data = study1_spanishbysubj)
 
 ```
 
@@ -454,7 +457,7 @@ SK_AHCT_prop <- group_by(naming_data, subj) %>%
 
 ```
 
-Participants used an SK-language basic level term (i.e., "yankon") to describe a median of `r filter(study1_nature_wo_naranja, nature == "BCT" & spanish_response == 0) %>% pull(mdn_prop)`% of chips (*IQR* = `r filter(study1_nature_wo_naranja, nature == "BCT" & spanish_response == 0) %>% pull(iqr_prop)`%). Besides basic level terms, `r SK_AHCT_prop`% of participants used SK-language ad hoc hue terms (i.e., "nai" or sky for blue chips) for an overall median of `r filter(study1_nature_wo_naranja, nature == "AHCT" & spanish_response == 0)$mdn_prop`% of chips  (*IQR* = `r filter(study1_nature_wo_naranja, nature == "AHCT" & spanish_response == 0)$iqr_prop`%). SK-language terms referring to saturation or luminosity of a chip, such as "manxan" (faded) were used for an overall median of `r filter(study1_nature_wo_naranja, nature == "SLT" & spanish_response == 0)$mdn_prop`% of chips (*IQR* = `r filter(study1_nature_wo_naranja, nature == "SLT" & spanish_response == 0)$iqr_prop`%). Most instances (`r filter(naming_data, color_cat %in% spanish_terms & color_cat != "Naranja") %>% summarise(round(100*sum(nature == "BCT")/n()), .groups = 'drop')`%) of Spanish use involved a Spanish BCT such as "rojo" (overall *Mdn* = `r filter(study1_nature_wo_naranja, nature == "BCT" & spanish_response == 1)$mdn_prop`%, *IQR* = `r filter(study1_nature_wo_naranja, nature == "BCT" & spanish_response == 1)$iqr_prop`%). 
+Participants used an SK-language basic level term (i.e., "yankon") to describe a median of `r filter(study1_nature_wo_naranja, nature == "BCT" & spanish_response == 0) %>% pull(mdn_prop)`% of chips (*IQR* = `r filter(study1_nature_wo_naranja, nature == "BCT" & spanish_response == 0) %>% pull(iqr_prop)`%). Besides basic level terms, `r SK_AHCT_prop`% of participants used SK-language ad hoc color terms (i.e., "nai" or sky for blue chips) for an overall median of `r filter(study1_nature_wo_naranja, nature == "AHCT" & spanish_response == 0)$mdn_prop`% of chips  (*IQR* = `r filter(study1_nature_wo_naranja, nature == "AHCT" & spanish_response == 0)$iqr_prop`%). SK-language terms referring to saturation or luminosity of a chip, such as "manxan" (faded) were used for an overall median of `r filter(study1_nature_wo_naranja, nature == "SLT" & spanish_response == 0)$mdn_prop`% of chips (*IQR* = `r filter(study1_nature_wo_naranja, nature == "SLT" & spanish_response == 0)$iqr_prop`%). Most instances (`r filter(naming_data, color_cat %in% spanish_terms & color_cat != "Naranja") %>% summarise(round(100*sum(nature == "BCT")/n()), .groups = 'drop')`%) of Spanish use involved a Spanish BCT such as "rojo" (overall *Mdn* = `r filter(study1_nature_wo_naranja, nature == "BCT" & spanish_response == 1)$mdn_prop`%, *IQR* = `r filter(study1_nature_wo_naranja, nature == "BCT" & spanish_response == 1)$iqr_prop`%). 
 
 In sum, our data show similar variability to the WCS data, but with Spanish terms (as described above) mixed in with ad hoc terms. Notably, we observed the modal term for a few chips to be loanwords from Spanish, in some cases already established as part of the SK vocabulary (the last seems to be the case of "naranja", "orange" in English), suggesting some fairly extensive borrowing of Spanish words due to the close relation between both languages in the studied communities.
 
@@ -601,8 +604,6 @@ study2_demographics <- study2_prod_data %>%
          `Boys` = num_boys) %>%
   select(`Age Group`, `n`, `Boys`)
   
-# apa_table(study2_demographics, caption = "Demographics of participants in Study 2.")
-
 study3_demographics <- study3_prod_data %>%
   group_by(subj) %>%
   filter(row_number() == 1) %>% group_by(age_interval) %>%
@@ -618,10 +619,8 @@ study3_demographics <- study3_prod_data %>%
          `Boys` = num_boys) %>%
   select(`Age Group`, `n`, `Boys`)
   
-# apa_table(study3_demographics, caption = "Demographics of participants in Study 3.")
-
 apa_table(
-  list(`Study 1` = study2_demographics, `Study 2` = study3_demographics),
+  list(`Study 2` = study2_demographics, `Study 3` = study3_demographics),
   caption = "Demographics of participants in Studies 2 and 3.",
   added_stub_head = "Variables",
   merge_method = "table_spanner")
@@ -644,7 +643,7 @@ Similar to Study 1, the experimenter introduced the participant to the general p
 
 ### Comprehension task
 
-The comprehension task had a notably different procedure compared to the preceding production task or that of Study 1. We tested the comprehension of 9 SK color terms. The choice of these terms was based on common responses given by adult participants in Study 1. The color term prompts included basic level terms: "yankon" (green/blue), "joshin" (red), "panshin" (yellow), "joxo" (white/light), "wiso" (black/dark). We also included non-basic but prominent terms as prompts which were "nai" (sky or sky blue), and "barin poi" (greenish-yellow, meaning the Sun´s excrement, also used to refer to an alga) and two dyads of non-basic terms: "pei" (leaf)  and "xo" (unripe) to represent the color green along with "ami" (a type of tree used to dye fabrics) "pua" (sachapapa, a tuber) to represent purple. Children sat at a table across from the experimenter with the 8 color chips of the production task displayed between them. The experimenter asked: "Can you give me the [*color term*] chip?" Participants chose one of the 8 chips and their response was recorded.  
+The comprehension task had a notably different procedure compared to the preceding production task or the comprehension task performed in Study 1. We tested the comprehension of 9 SK color terms. The choice of these terms was based on common responses given by adult participants in Study 1. The color term prompts included basic level terms: "yankon" (green/blue), "joshin" (red), "panshin" (yellow), "joxo" (white/light), "wiso" (black/dark). We also included non-basic but prominent terms as prompts which were "nai" (sky or sky blue), and "barin poi" (greenish-yellow, meaning the Sun´s excrement, also used to refer to an alga) and two dyads of non-basic terms: "pei" (leaf)  and "xo" (unripe) to represent the color green along with "ami" (a type of tree used to dye fabrics) "pua" (sachapapa, a tuber) to represent purple. Children sat at a table across from the experimenter with the 8 color chips of the production task displayed between them. The experimenter asked: "Can you give me the [*color term*] chip?" Participants chose one of the 8 chips and their response was recorded.  
 
 Our findings from Study 1 suggested that color terms varied in their degrees of specificity. For example, "wiso" best describes a narrow range of very dark to black. By contrast, "yankon" could encompass blue, green, greenish-yellow, and purple; "joshin" could describe red, purple, and orange; "pei" or "xo" could describe green or greenish-yellow. In cases where a term could apply to multiple chips (i.e., "yankon"), the chip selected first would be removed from the table, leaving 7 remaining chips. The experimenter would then ask: "Can you give me another [*color term*] chip?". The participant would then pick another one of the 7 chips, have their response recorded, and so on. We prompted participants 4 times for "yankon" and 2 times each for "joshin" and "pei"/"xo"; every other term only received a single prompt. Due to the inherent ambiguity in term-hue pairings, accuracy for a child participant was coded based on adult responses given during Study 1. If at least 15% of adult participants in Study 1 associated a chip with a particular term, we coded a similar term-chip pairing from a child participant as correct. Some trials could have multiple pairings; in those cases, accuracy was scored as an average, rather than as dichotomous. For instance, if a child correctly chose 3 out of 4 chips for the "yankon" trial, instead of 1 (correct) or 0 (incorrect) they would receive a score of 0.75.
 
@@ -1212,7 +1211,7 @@ study3_overallcomp_adjacent <- glmer(cbind(n_correct, n_incorrect) ~ age.years.c
 
 ```{r study23-accuracy, fig.cap = "Proportion of accurate responses when applying different accuracy criteria, by age and study. Points show the mean for a 2-year age group (chosen arbitrarily for visualization) with 95% confidence intervals. Lines show a linear fit, weighted by the number of datapoints in each age group."}
 
-study23accuracyplots_prod_plot <- bind_rows(list("Production: SK" = study2_adjacentorswitch, 
+study23accuracyplots_prod_df <- bind_rows(list("Production: SK" = study2_adjacentorswitch, 
                  "Production: Spanish" = study3_adjacentorswitch), .id = "study") %>%
   mutate(measure = fct_collapse(measure,
                       "Exact" = c("correct"),
@@ -1223,24 +1222,11 @@ study23accuracyplots_prod_plot <- bind_rows(list("Production: SK" = study2_adjac
   group_by(study, age, measure) %>% 
   summarise(n = n_distinct(subj),
             ci = qt(0.975, df=n-1)*sd(score)/sqrt(n), 
-            score = mean(score), .groups = 'drop') %>%
-  ggplot(aes(x = age, y = score, color = measure, group = measure)) +
-  facet_grid(. ~ study) +
-  geom_point(aes(size = n), alpha = .5,
-             position = position_dodge(width = .1)) + 
-  geom_linerange(aes(ymin = score - ci, ymax = score + ci), 
-                 position = position_dodge(width = .1))+ 
-  geom_smooth(method = "lm", aes(weight = n), se = FALSE) + 
-  labs(x = "Age", y = "Proportion", 
-       fill = "Accuracy", color = "Accuracy", size = "# of Subjects") +
-  ggthemes::scale_color_ptol() +
-  coord_cartesian(ylim = c(0,1)) + 
-  theme_apa() +
-  theme(legend.position = "right") 
+            score = mean(score), .groups = 'drop') 
 
-study23accuracyplots_comp_plot <- study23_overallcomp %>% ungroup() %>%
+study23accuracyplots_comp_df <- study23_overallcomp %>% ungroup() %>%
   mutate(measure = fct_collapse(criteria,
-                      "Original" = c("correct"),
+                      "Exact" = c("correct"),
                       "Adjacent Color" = c("correct_nearby"))) %>%
   mutate(age = floor((age+1)/2)*2-1, 
          study = ifelse(study == "Study 2", "Comprehension: SK", "Comprehension: Spanish")) %>%
@@ -1248,9 +1234,20 @@ study23accuracyplots_comp_plot <- study23_overallcomp %>% ungroup() %>%
   summarise(n = n_distinct(subj),
             ci = qt(0.975, df=n-1)*sd(score)/sqrt(n), 
             score = mean(score), 
-            .groups = 'drop') %>%
+            .groups = 'drop') 
+
+study23accuracy_plots <- bind_rows(study23accuracyplots_prod_df,
+          study23accuracyplots_comp_df) %>%
+  mutate(
+    study = factor(study, levels = c(
+    "Production: SK", "Production: Spanish",
+    "Comprehension: SK", "Comprehension: Spanish")),
+    measure = factor(measure, levels = c(
+      "Exact", "Adjacent Color",
+      "Either Language", "Either + Adjacent"
+    ))) %>%
   ggplot(aes(x = age, y = score, color = measure, group = measure)) +
-  facet_grid(. ~ study) +
+  facet_wrap(. ~ study, nrow = 2) +
   geom_point(aes(size = n), alpha = .5,
              position = position_dodge(width = .1)) + 
   geom_linerange(aes(ymin = score - ci, ymax = score + ci), 
@@ -1258,27 +1255,35 @@ study23accuracyplots_comp_plot <- study23_overallcomp %>% ungroup() %>%
   geom_smooth(method = "lm", aes(weight = n), se = FALSE) + 
   labs(x = "Age", y = "Proportion", size = "# of Subjects",
        fill = "Accuracy", color = "Accuracy") +
+  scale_x_continuous(breaks = seq(5,11,2), 
+                     labels = map_chr(seq(5,11,2), ~paste0(.x,"-", .x+1))) +
   ggthemes::scale_color_ptol() +
   coord_cartesian(ylim = c(0,1)) + 
   theme_apa() 
 
-study23accuracy_plots <- plot_grid(
-  plot_grid(
-    study23accuracyplots_prod_plot +
-      theme(axis.title.x = element_blank()) +
-      theme(legend.position = "none"),
-    study23accuracyplots_comp_plot +
-      theme(legend.position = "none"),
-    labels = c("A", "B"), ncol = 1, rel_heights = c(3.5,4), rel_widths = c(1,1)
-  ),
-  get_legend(study23accuracyplots_prod_plot), nrow = 1, rel_widths = c(1, 0.3))
+# study23accuracy_plots <- plot_grid(
+#   study23accuracyplots_prod_plot +
+#     theme(axis.title.x = element_blank()) +
+#     theme(legend.position = "none"),
+#   study23accuracyplots_comp_plot +
+#     theme(legend.position = "none"),
+#   labels = c("A", "B"), 
+#   ncol = 1, 
+#   rel_heights = c(3.5,4), 
+#   rel_widths = c(1,1)
+# ) %>% 
+#   plot_grid(
+#     .,
+#     get_legend(study23accuracyplots_prod_plot), 
+#     nrow = 1, rel_widths = c(1, 0.2))
 
 print(study23accuracy_plots)
+
 ```   
 
 ## Results and Discussion
 
-We begin by presenting general results from both the production and comprehension tasks, and then turn to specific analyses of overextensions. Figure \@ref(fig:study23-accuracy) shows general trends across measures. For Study 2, we saw robust developmental increases in both production and comprehension. Because we had limited expectations regarding the amount of data that would be gathered during visits to the SK, we did not preregister our analyses. Thus all reported inferential statistics should be interpreted with some caution, and we do not adopt a specific cutoff of $\alpha = .05$ for interpretation. 
+We begin by presenting general results from both the production and comprehension tasks, and then turn to specific analyses of overextensions. Figure \@ref(fig:study23-accuracy) shows general trends across measures. For Study 2, we saw robust developmental changes in both production and comprehension towards more adult-like performance. Because we had limited expectations regarding the amount of data that would be gathered during visits to the SK, we did not preregister our analyses. Thus all reported inferential statistics should be interpreted with some caution, and we do not adopt a specific cutoff of $\alpha = .05$ for interpretation. 
 
 To quantify these trends, we fit generalized linear mixed-effects models (GLMMs) predicting accuracy for both production and comprehension tasks with fixed effects of age in years (centered), random slopes of age for each color, and random intercepts for each color and participant. When these models failed to converge, we removed random slopes. We found highly significant age effects for both production (`r apa_print(study2_firstprod_same)$full_result$age_years_c`) and comprehension (`r apa_print(study2_overallcomp_same)$full_result$age_years_c`). Most children in our study knew some SK color words, but few except some of the oldest children knew all of them. 
 
@@ -1309,11 +1314,12 @@ study2_task_compare_plot <- study2_task_compare  %>%
   ggthemes::scale_color_ptol() +
   scale_x_continuous(limits = c(4.5,11.5), breaks = 5:11) +
   scale_y_continuous(limits = c(-0.1,1.1), breaks = seq(0,1,0.5)) +
-  labs(x = "Age", y = "Proportion of Correct Responses", fill = "Task") +
+  labs(x = "Age", y = "Proportion of Correct Responses", colour = "Task") +
   theme_apa() +
   theme(legend.position = "bottom") 
 
 print(study2_task_compare_plot)
+
 ```
 
 ### Production vs. comprehension
@@ -1337,7 +1343,7 @@ apa_table(study1_selectedchips_table,
          caption = "Naming entropy by color chip and whether the chip was used in Study 2 and Study 3." )
 ```
 
-As a further exploratory analysis, we attempted to quantify low naming consensus using naming entropy [following @gibson2017]. We computed the naming entropy for each chip by computing the probabilities for each chip $c$ to be named with a particular label $l$ ($p(l \mid c)$) and then taking $H(c) = -\sum_{l}{p(l\mid c) \log[p(l \mid c)]}$ (see inset entropy values by chip in Table \@ref(tab:study1-entropy-table)).
+As a further exploratory analysis, we attempted to assess whether low naming consensus amongst adult SK speakers may be linked to children's naming strategies by quantifying naming entropy [following @gibson2017]. We computed the naming entropy for each chip by computing the probabilities for each chip $c$ to be named with a particular label $l$ ($p(l \mid c)$) and then taking $H(c) = -\sum_{l}{p(l\mid c) \log[p(l \mid c)]}$ (see inset entropy values by chip in Table \@ref(tab:study1-entropy-table)).
 To assess the hypothesis that naming entropy in adults was related to Spanish use in children, we fit a GLMM to predict likelihood of switching languages from SK to Spanish (a binary variable) as a function of child age, entropy of the chip's naming distribution for adults in Study 1, and their interaction (as well as random effects of subject). Despite age not being very correlated with overall frequency of Spanish responses, within this model, we found that overall older children tended to be less likely to respond in Spanish (`r apa_print(study2_SwitchEnt_model)$full_result$age_years_c`), perhaps due to greater knowledge of SK terms. Children were also more likely to respond in Spanish when presented with a chip with high entropy (low naming consensus) among adult participants in Study 1 (`r apa_print(study2_SwitchEnt_model)$full_result$Entropy`). We further found some evidence of a positive interaction between age and entropy (`r apa_print(study2_SwitchEnt_model)$full_result$age_years_c_Entropy`), suggesting more  Spanish responding for older children specifically for those chips with high adult uncertainty. Together these findings suggest that older children show an increasingly adaptive use of Spanish vocabulary to describe chips for which there is not community consensus among adults.   
 
 ### Overextensions
@@ -1349,7 +1355,7 @@ One reason to use Spanish would be if children fail to recall the proper SK colo
 
 # Study 3
 
-Noting the apparent strategy of language switching seen in Study 2, we designed Study 3 as its complement. Here, we tested children’s production and comprehension of Spanish color terms with a similar protocol to Study 2 but with a subset of chips representing prototypical colors for the Spanish color system. We were interested in more directly probing children's Spanish knowledge as well as whether they would borrow from SK. 
+Noting the apparent strategy of language switching from SK to Spanish seen in Study 2, we designed Study 3 as its complement. Here, we tested children’s production and comprehension of Spanish color terms with a similar protocol to Study 2 but with a different set of chips meant to represent the prototypical basic color within the Spanish color system. Our goal was to more directly probe SK children's knowledge of the Spanish language and its color term lexicon as well as to observe whether children would employ language-switching as a strategy similar to what was seen in Study 2. 
 
 ## Methods
 
@@ -1365,7 +1371,7 @@ As we found that many SK children in our sample were not very fluent in Spanish 
 
 ## Production task
 
-The procedure was similar to that of both Studies 1 and 2. The experimenter would introduce a participant to the general procedure and aims of the study. Despite much of the study being conducted in SK, the experimenter would specify that participants would be expected to provide color terms in Spanish. The experimenter would then ask: "What is the color of this chip?". If the participant responded in SK, the experimenter would record their response but further ask: "What is the name of this color in Spanish?". If a participant responded with "I don’t know" to this prompt, the experimenter would not prompt any further and would move forward to the next chip. As a result, some responses lack Spanish-language basic level terms and only consist of non-basic and/or SK color terms. In total, we collected production data for 11 color chips. For each chip, the data include either one response (when children provided a Spanish basic color term in the first trial) or two or three responses (when children’s initial responses were either non-basic and/or in SK).
+The procedure was similar to that of both Studies 1 and 2. The experimenter would introduce a participant to the general procedure and aims of the study. Despite much of the study being conducted in SK, the experimenter would specify that participants would be expected to provide color terms in Spanish. The experimenter would then ask: "What is the color of this chip?" If the participant responded in SK, the experimenter would record their response but further ask: "What is the name of this color in Spanish?" If a participant responded with "I don’t know" to this prompt, the experimenter would not prompt any further and would move forward to the next chip. As a result, some responses lack Spanish-language basic level terms and only consist of non-basic and/or SK color terms. In total, we collected production data for 11 color chips. For each chip, the data include either one response (when children provided a Spanish basic color term in the first trial) or two or three responses (when children’s initial responses were either non-basic and/or in SK).
 
 ### Comprehension task
 
@@ -1377,9 +1383,9 @@ As in Study 2, we observed age-related changes in color term accuracy for both p
 
 Similar to Study 2, over a quarter (`r study3_switchperc$overall_response[1]`%) of all responses were given in SK, despite being prompted to respond in Spanish. There was significant variation in language-switching with some children responding solely in Spanish while others responded to upwards of `r max(study3_overallswitch$n_shipibo)`/11 trials in SK (*Mdn* = `r median(study3_overallswitch$n_shipibo)` trials, *IQR* = `r paste0(quantile(study3_overallswitch$n_shipibo, c(0.25, 0.75)), collapse = "-")`). We found only a marginal correlation between age and accuracy (`r apa_print(study3_overallscore_test)$statistic`) and no significant correlation between age and language-switching (`r apa_print(study3_overallswitch_test)$statistic`). 
 
-To assess to our hypothesis that older children would have more Spanish-language exposure and color term knowledge, we included age as a predictor in our GLMM assessing the effect of adult color naming entropy on likelihood to switch languages from Spanish to SK, similar to the one we fit for Study 2. This model did not show a significant interaction between age and adult color naming entropy (`r apa_print(study3_SwitchEnt_model_original)$full_result$age_years_c_Entropy`), however one without the interaction term did show an entropy effect (`r apa_print(study3_SwitchEnt_model)$full_result$Entropy`), tending to respond in SK for low-entropy items (those that were presumably more prototypical for the SK words). There was no significant effect of age (`r apa_print(study3_SwitchEnt_model)$full_result$age_years_c`). Across studies, it appears that children preferred to respond in SK when presented with a chip for which adults had high consensus about the SK label, and in Spanish for low-consensus chips.
+To assess our hypothesis that older children would have more Spanish-language exposure and color term knowledge, we included age as a predictor in our GLMM assessing the effect of adult color naming entropy on likelihood to switch languages from Spanish to SK, similar to the one we fit for Study 2. This model did not show a significant interaction between age and adult color naming entropy (`r apa_print(study3_SwitchEnt_model_original)$full_result$age_years_c_Entropy`), however one without the interaction term did show an entropy effect (`r apa_print(study3_SwitchEnt_model)$full_result$Entropy`), tending to respond in SK for low-entropy items (those that were presumably more prototypical for the SK words). There was no significant effect of age (`r apa_print(study3_SwitchEnt_model)$full_result$age_years_c`). Across studies, it appears that children preferred to respond in SK when presented with a chip for which adults had high consensus about the SK label, and in Spanish for low-consensus chips.
 
-Similar to Study 2, we adopted alternative scoring to accommodate language-switching from Spanish to SK (different-language) and adjacent same-language responses. We used a GLMM identical to that of Study 2 in order to assess if changes in scoring criteria were associated with significant changes in task performance for production. Age was again a weaker predictor for production accuracy even with this more lenient scoring (`r apa_print(study3_firstprod_all)$full_result$age_years_c`), in concordance with earlier analyses. However, we did find that participants had higher aaccuracy when we includedSK responses (`r apa_print(study3_firstprod_all)$full_result$criteriacorrect_either`) or adjacent same-language  responses (`r apa_print(study3_firstprod_all)$full_result$criteriacorrect_nearby`). In sum, we find frequent use of language switching in both Studies 2 and 3, but only Study 3 exhibits significant use of same-language but adjacent terms. 
+Similar to Study 2, we adopted alternative scoring to accommodate language-switching from Spanish to SK (different-language) and adjacent same-language responses. We used a GLMM identical to that of Study 2 in order to assess if changes in scoring criteria were associated with significant changes in task performance for production. Age was again a weaker predictor for production accuracy even with this more lenient scoring (`r apa_print(study3_firstprod_all)$full_result$age_years_c`), in concordance with earlier analyses. However, we did find that participants had greater accuracy when we included SK responses (`r apa_print(study3_firstprod_all)$full_result$criteriacorrect_either`) or adjacent same-language  responses (`r apa_print(study3_firstprod_all)$full_result$criteriacorrect_nearby`). In sum, we find frequent use of language switching in both Studies 2 and 3, but only Study 3 exhibits significant use of same-language but adjacent terms. 
 <!-- NEED TO TEST DIFFERENCE IN SCORE BETWEEN ADJACENT AND EXACT -->
 
 We speculate that early, informal Spanish language exposure can explain the discrepancies seen in Studies 2 and 3. With limited knowledge of Spanish color terms, children may spontaneously supplement their color term knowledge with Spanish terms during SK-language Study 2 but struggle to succeed in a more systematic evaluation in Study 3. More generally, we see children relying on a mixture of strategies to communicate colors even in the absence of mastery in either language. 
