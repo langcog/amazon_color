@@ -57,7 +57,7 @@ shipibo_chip_set <- read.csv(text = "shipibo, spanish, munsell_code, chip_id
                              Wiso, Negro, J1/I0, 312
                              Joxo, Blanco, A/B0, 274
                              Nai, Celeste, E29, 1
-                             Ami/Poa, Morado, H36, 325
+                             Ami/Pua, Morado, H36, 325
                              Barin Poi, Mierda sol, F12, 320",
                              stringsAsFactors = FALSE) %>%
   mutate_if(is.character, trimws)
@@ -166,7 +166,7 @@ graph_colors <- c(
   'Amarillo' = '#FFD416',
   'Ambi' = '#874A8C',
   'Ami' = '#76296E',
-  'Ami/Poa' = '#76296E',
+  'Ami/Pua' = '#76296E',
   'Azul' = '#337DCE',
   'Barin Poi' = '#6D6212',
   'Bexnan' = '#B6D744',
@@ -203,7 +203,7 @@ graph_colors <- c(
   'Pei/Xo' = '#69C360',
   'Pene' = '#55471E',
   'Plomo' = '#848484', 
-  'Poa' = '#7E4E94',
+  'Pua' = '#7E4E94',
   'Ranchesh' = '#4A2347',
   'Rojo' = '#E03D28', 
   'Rosa' = '#FF8C9D', 
