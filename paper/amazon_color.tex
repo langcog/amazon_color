@@ -40,7 +40,7 @@
   pdftitle={The Development of Color Terms in Shipibo-Konibo Children},
   pdfauthor={Martin Fortier*1, Danielle Kellier*2, María Fernández Flecha3, \& Michael C. Frank4},
   pdflang={en-EN},
-  pdfkeywords={Shipibo-Konibo; Color; Word learning; Bilingualism},
+  pdfkeywords={Shipibo-Konibo; Vocabulary development; Color; Bilingualism},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
@@ -125,8 +125,16 @@
   {\section*{\protect\normalfont{\@title}}}
   {}{\typeout{Failed to patch title.}}
 \makeatother
-\shorttitle{Color Terms in Shipibo-Konibo Children}
-\keywords{Shipibo-Konibo; Color; Word learning; Bilingualism\newline\indent Word count: 9156}
+
+\usepackage{xpatch}
+\makeatletter
+\xapptocmd\appendix
+  {\xapptocmd\section
+    {\addcontentsline{toc}{section}{\appendixname\ifoneappendix\else~\theappendix\fi\\: #1}}
+    {}{\InnerPatchFailed}%
+  }
+{}{\PatchFailed}
+\keywords{Shipibo-Konibo; Vocabulary development; Color; Bilingualism\newline\indent Word count: 9382}
 \usepackage{lineno}
 
 \linenumbers
@@ -170,13 +178,15 @@
 \date{}
 
 
+\shorttitle{Color Terms in Shipibo-Konibo Children}
+
 \authornote{
 
-Correspondence concerning this article should be addressed to Danielle Kellier*, Postal address. E-mail: \href{mailto:danielle.kellier@pennmedicine.upenn.edu}{\nolinkurl{danielle.kellier@pennmedicine.upenn.edu}}
+Correspondence concerning this article should be addressed to Michael C. Frank, 450 Serra Mall, Jordan Hall, Building 420, Stanford, CA 94301, USA. E-mail: \href{mailto:mcfrank@stanford.edu}{\nolinkurl{mcfrank@stanford.edu}}
 
 }
 
-\affiliation{\vspace{0.5cm}\textsuperscript{1} PSL Research University\\\textsuperscript{2} University of Pennsylvania\\\textsuperscript{3} Pontificia Universidad Católica del Perú\\\textsuperscript{4} Stanford University}
+\affiliation{\vspace{0.5cm}\textsuperscript{1} Paris Sciences et Lettres University, Paris, France\\\textsuperscript{2} University of Pennsylvania, Philadelphia, Pennsylvania, United States of America\\\textsuperscript{3} Pontificia Universidad Católica del Perú, Lima, Peru\\\textsuperscript{4} Stanford University, Stanford, California, United States of America}
 
 \abstract{
 Color word learning is an important case study for the relationship between language and perception. While English color word learning is well-documented, there is relatively limited evidence on the developmental trajectory for color words, especially in languages from non-Western populations. We study color words and their acquisition in the Shipibo-Konibo (SK), an indigenous group within the Peruvian Amazon. In Study 1, we measure the color vocabulary in SK adults, updating findings from the World Color Survey. We then study receptive and productive knowledge of color words in children, conducted in both SK (Study 2) and Spanish (Study 3). Children learning the SK system show a protracted developmental trajectory towards adult-like color term knowledge compared to contemporary studies of English-speaking children. Further, when SK children lack precise color term knowledge, they appeared to follow different strategies for SK and Spanish, using Spanish vocabulary in SK and overgeneralizing in Spanish. For both children and adults, bilingual vocabulary is used adaptively to facilitate task performance, broadly supporting communicative views of color vocabulary.
@@ -269,7 +279,7 @@ Before we could assess the developmental trajectory of color term knowledge in S
 \hypertarget{participants}{%
 \subsubsection{Participants}\label{participants}}
 
-Our protocol for Study 1 and all subsequent studies received ethical approval from Pontificia Universidad Católica del Perú's Institutional Review Board. We recruited 39 adult participants (7 men). We experienced difficulty recruiting male participants as many of the men were away from the village during the day, resulting in a sample that was predominantly female. Most participants (31, 4 men) were from SK villages of the Middle Ucayali region (Yarinacocha, San Francisco, and Nueva Betania), with a subset from communities of the Lower (Paoyhan) and Upper (Puerto Belén) Ucayali regions. Within the small town of Yarinacocha (in the vicinity of Pucallpa), we recruited participants (9, 2 men) from Bena Jema, a predominantly SK neighborhood. All the other recruitment sites were native community villages with exclusively SK residents but a strong relationship with the outside world. Overall, the sample included SK adults who could be characterized as more urban (Yarinacocha and San Francisco sites) or more traditional and in regular contact with the surrounding rainforest (Nueva Betania, Paoyhan, and Puerto Belén sites).
+We recruited 39 adult participants (7 men). We experienced difficulty recruiting male participants as many of the men were away from the village during the day, resulting in a sample that was predominantly female. Most participants (31, 4 men) were from SK villages of the Middle Ucayali region (Yarinacocha, San Francisco, and Nueva Betania), with a subset from communities of the Lower (Paoyhan) and Upper (Puerto Belén) Ucayali regions. Within the small town of Yarinacocha (in the vicinity of Pucallpa), we recruited participants (9, 2 men) from Bena Jema, a predominantly SK neighborhood. All the other recruitment sites were native community villages with exclusively SK residents but a strong relationship with the outside world. Overall, the sample included SK adults who could be characterized as more urban (Yarinacocha and San Francisco sites) or more traditional and in regular contact with the surrounding rainforest (Nueva Betania, Paoyhan, and Puerto Belén sites).
 
 The median age for participants was 38 years (\emph{IQR} = 26-48) ranging from 20 to 64 years. Regarding occupations, 41\% of the 32 female participants were homemakers or housewives (33\% of the overall sample) and another 41\% were artisans (33\%). Three of the 7 male participants (43\%, 8\% overall) were horticulturalists. Across both sexes, 5 women (16\%, 13\% overall) and 3 men (43\%, 8\% overall) identified as students, comprising a total of 21\% of the population. Although all adult participants were required to be native SK speakers, all were introduced to the Spanish language prior to adolescence (median age = 8yo, \emph{IQR} = 5-10).
 
@@ -349,7 +359,7 @@ Age Group & \multicolumn{1}{c}{n} & \multicolumn{1}{c}{Boys}\\
 \hypertarget{participants-1}{%
 \subsubsection{Participants}\label{participants-1}}
 
-Fifty-seven children (23 boys) ages 5- to 11-years-old were recruited in predominantly SK neighborhoods in Yarinacocha (Nueva Era and Bena Jema) and in Bawanisho, a native community settled along the Ucayali River, more than 500 kilometers southeast of Pucallpa. Recruitment occurred either through direct contact with interested parents or through their local school. If recruited via school, consent for participation had to be given by both teacher and parent. Outside of the school environment, consent was given by the parent.
+Fifty-seven children (23 boys) ages 5- to 11-years-old were recruited in predominantly SK neighborhoods in Yarinacocha (Nueva Era and Bena Jema) and in Bawanisho, a native community settled along the Ucayali River, more than 500 kilometers southeast of Pucallpa. Recruitment occurred either through direct contact with interested parents or through their local school.
 
 \hypertarget{materials-and-procedure-1}{%
 \subsubsection{Materials and procedure}\label{materials-and-procedure-1}}
@@ -457,7 +467,7 @@ Noting the apparent strategy of language switching from SK to Spanish seen in St
 \hypertarget{participants-2}{%
 \subsubsection{Participants}\label{participants-2}}
 
-We recruited a separate sample of 46 children (16 boys) ages 5- to 11-years-old from the neighborhood of Bena Jema in Yarinacocha and from Bawanisho. Recruitment occurred either through interested parents or a local school. As in Study 2, we received consent from parents and, if in a school environment, teachers as well.
+We recruited a separate sample of 46 children (16 boys) ages 5- to 11-years-old from the neighborhood of Bena Jema in Yarinacocha and from Bawanisho. Recruitment occurred either through interested parents or a local school.
 
 \hypertarget{materials-and-procedure-2}{%
 \subsubsection{Materials and procedure}\label{materials-and-procedure-2}}
@@ -509,6 +519,52 @@ Our data here are consistent with models of color word meaning in which color wo
 Studying SK children's learning provides a descriptive comparison to studies of color naming in children learning English in the US (the focus of the majority of developmental work). Nonetheless, it has a number of limitations, some shared with this previous literature and some due to the specifics of our study and context. First, we regrettably do not have access to the kind of deep ethnographic observations that would allow us to hazard generalizations about how color terms are used in daily life among the SK communities we studied. Second, our study of development is cross-sectional and does not afford precision regarding the specific knowledge state of individual children due to the limited length of the task. Third, the limited number of color chips that we investigated means that our ability to generalize about the precision of particular color generalizations is much more limited for the children than the adults (limiting our entropy analyses). Finally, and perhaps most prominently, the kinds of tasks that we used are likely more unfamiliar to all of our participants and especially our child participants than they are to the populations being tested in investigations of WEIRD cultures (e.g., US English-learning children). While the performance of the oldest children in our studies was close to ceiling, the lower performance observed with younger children could be in part a product of task unfamiliarity or other factors.
 
 Going beyond convenience populations in experimental research with children is a new frontier for developmental science (Nielsen et al., 2017). Our work here suggests some of the benefits and challenges of this approach. On the positive, we can compare and generalize models of acquisition that are largely based on a single language and population (US English-acquiring children). At the same time, there is a paucity of resources describing language use, home environment, and cultural practices once we venture outside of WEIRD contexts. To best understand acquisition across cultures, we must document both children's knowledge and the structure of their environments.
+
+\hypertarget{ethics-approvals-and-consent}{%
+\section{Ethics approvals and consent}\label{ethics-approvals-and-consent}}
+
+Our protocol for Studies 1, 2, and 3 received ethical approval from the Pontificia Universidad Católica del Perú's institutional review board. We received consent from adult participants in Study 1. In Studies 2 and 3, we received consent from a parent and assent from the child participant regardless of recruitment location. For child participants recruited within a school, we received additional consent from a supervising teacher.
+
+\hypertarget{authorship-and-contributorship-statement}{%
+\section{Authorship and contributorship statement}\label{authorship-and-contributorship-statement}}
+
+All authors approved the final version of the manuscript and agree to be accountable
+for all aspects of the work in ensuring that questions related to the accuracy or integrity of any part of the work are appropriately investigated and resolved.
+
+\begin{itemize}
+\item
+  Conceptualization: Martin Fortier, Danielle Kellier, María Fernández Flecha, and Michael C. Frank.
+\item
+  Data Curation: Martin Fortier, Danielle Kellier, and Michael C. Frank.
+\item
+  Formal Analysis: Danielle Kellier and Michael C. Frank.
+\item
+  Funding Acquisition: Michael C. Frank.
+\item
+  Investigation: Martin Fortier, Danielle Kellier, María Fernández Flecha, and Michael C. Frank.
+\item
+  Methodology: Martin Fortier, Danielle Kellier and Michael C. Frank.
+\item
+  Project Administration: Martin Fortier, Danielle Kellier, María Fernández Flecha, and Michael C. Frank.
+\item
+  Software: Danielle Kellier and Michael C. Frank.
+\item
+  Supervision: Martin Fortier, María Fernández Flecha, and Michael C. Frank.
+\item
+  Visualization: Danielle Kellier and Michael C. Frank.
+\item
+  Writing: Martin Fortier, Danielle Kellier, María Fernández Flecha, and Michael C. Frank.
+\end{itemize}
+
+\hypertarget{data-code-and-materials-availability-statement}{%
+\section{Data, code, and materials availability statement}\label{data-code-and-materials-availability-statement}}
+
+De-identified data and all analytic code are available on GitHub at (\url{https://github.com/langcog/amazon_color}){[}\url{https://github.com/langcog/amazon_color}{]}.
+
+\hypertarget{acknowledgements}{%
+\section{Acknowledgements}\label{acknowledgements}}
+
+We are especially grateful to Paul Kay for his assistance both conceptually and materially throughout the study. We further thank Roberto Zariquiey, Katie Wagner, and David Barner for their insightful feedback during the writing process. DK was supported by an NIH research grant (3U24NS115691-01S2). MCF was supported by a Jacobs Foundation Fellowship.
 
 \newpage
 
