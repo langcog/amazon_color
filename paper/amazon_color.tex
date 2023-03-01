@@ -3,12 +3,11 @@
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
-  english,
   ,apa7,floatsintext]{apa6}
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
@@ -34,16 +33,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={The Development of Color Terms in Shipibo-Konibo Children},
-  pdfauthor={Martin Fortier*1, Danielle Kellier*2, María Fernández Flecha3, \& Michael C. Frank4},
-  pdflang={en-EN},
-  pdfkeywords={Shipibo-Konibo; Vocabulary development; Color; Bilingualism},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -70,6 +59,52 @@
   \let\oldsubparagraph\subparagraph
   \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{english}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+% Set font size
+\usepackage[fontsize=12pt]{scrextend}
+
+% Set font family
+\usepackage{xeCJK}
+\usepackage{fontspec}
+
+% \setCJKmainfont[
+%     BoldFont={HanWangHeiHeavy}
+%     ]{HanWangHeiLight}
+
+% IPA font
+\newfontfamily\ipa{Doulos SIL}
+\DeclareTextFontCommand{\ipatext}{\ipa}
 % Manuscript styling
 \usepackage{upgreek}
 \captionsetup{font=singlespacing,justification=justified}
@@ -85,9 +120,9 @@
 
 % Create new environments so endfloat can handle them
 % \newenvironment{ltable}
-%   {\begin{landscape}\begin{center}\begin{threeparttable}}
-%   {\end{threeparttable}\end{center}\end{landscape}}
-\newenvironment{lltable}{\begin{landscape}\begin{center}\begin{ThreePartTable}}{\end{ThreePartTable}\end{center}\end{landscape}}
+%   {\begin{landscape}\centering\begin{threeparttable}}
+%   {\end{threeparttable}\end{landscape}}
+\newenvironment{lltable}{\begin{landscape}\centering\begin{ThreePartTable}}{\end{ThreePartTable}\end{landscape}}
 
 % Enables adjusting longtable caption width to table width
 % Solution found at http://golatex.de/longtable-mit-caption-so-breit-wie-die-tabelle-t15767.html
@@ -139,39 +174,19 @@
 
 \linenumbers
 \usepackage{csquotes}
-\ifxetex
-  % Load polyglossia as late as possible: uses bidi with RTL langages (e.g. Hebrew, Arabic)
-  \usepackage{polyglossia}
-  \setmainlanguage[]{english}
-\else
-  \usepackage[main=english]{babel}
-% get rid of language-specific shorthands (see #6817):
-\let\LanguageShortHands\languageshorthands
-\def\languageshorthands#1{}
-\fi
-\ifluatex
+\ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\newlength{\cslhangindent}
-\setlength{\cslhangindent}{1.5em}
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
-\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
- {% don't indent paragraphs
-  \setlength{\parindent}{0pt}
-  % turn on hanging indent if param 1 is 1
-  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
-  % set entry spacing
-  \ifnum #2 > 0
-  \setlength{\parskip}{#2\baselineskip}
-  \fi
- }%
- {}
-\usepackage{calc}
-\newcommand{\CSLBlock}[1]{#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
-\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={The Development of Color Terms in Shipibo-Konibo Children},
+  pdfauthor={Martin Fortier*1, Danielle Kellier*2, María Fernández Flecha3, \& Michael C. Frank4},
+  pdflang={en-EN},
+  pdfkeywords={Shipibo-Konibo; Vocabulary development; Color; Bilingualism},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
 \title{The Development of Color Terms in Shipibo-Konibo Children}
 \author{Martin Fortier*\textsuperscript{1}, Danielle Kellier*\textsuperscript{2}, María Fernández Flecha\textsuperscript{3}, \& Michael C. Frank\textsuperscript{4}}
@@ -188,7 +203,7 @@ Correspondence concerning this article should be addressed to Michael C. Frank, 
 
 \affiliation{\vspace{0.5cm}\textsuperscript{1} Paris Sciences et Lettres University, Paris, France\\\textsuperscript{2} University of Pennsylvania, Philadelphia, Pennsylvania, United States of America\\\textsuperscript{3} Pontificia Universidad Católica del Perú, Lima, Peru\\\textsuperscript{4} Stanford University, Stanford, California, United States of America}
 
-\abstract{
+\abstract{%
 Color word learning is an important case study for the relationship between language and perception. While English color word learning is well-documented, there is relatively limited evidence on the developmental trajectory for color words, especially in languages from non-Western populations. We study color words and their acquisition in the Shipibo-Konibo (SK), an indigenous group within the Peruvian Amazon. In Study 1, we measure the color vocabulary in SK adults, updating findings from the World Color Survey. We then study receptive and productive knowledge of color words in children, conducted in both SK (Study 2) and Spanish (Study 3). Children learning the SK system show a protracted developmental trajectory towards adult-like color term knowledge compared to contemporary studies of English-speaking children. Further, when SK children lack precise color term knowledge, they appeared to follow different strategies for SK and Spanish, using Spanish vocabulary in SK and overgeneralizing in Spanish. For both children and adults, bilingual vocabulary is used adaptively to facilitate task performance, broadly supporting communicative views of color vocabulary.
 }
 
@@ -200,11 +215,11 @@ Color word learning is an important case study for the relationship between lang
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-Color is where language and perception meet. Words such as ``blue'' and ``red'' draw boundary lines across a perceptually continuous space of hues and shades. In English, there are 11 high frequency color terms that together span the color space, but this categorization system is not universal. For instance, Russian speakers use two distinct words to describe the colors light blue (``goluboy'') and dark blue (``siniy''); other languages have as few as two words {[}e.g., the Jalé people only have terms for ``light'' and ``dark''; Berlin and Kay (1969){]}. Why do languages vary in their color systems? One emerging consensus is that languages categorize the color spectrum in different ways in part due to functional demands (Gibson et al., 2017): both smaller and larger color systems are relatively optimal for different communicative needs (Regier et al., 2007; Zaslavsky et al., 2018).
+Color is where language and perception meet. Words such as ``blue'' and ``red'' draw boundary lines across a perceptually continuous space of hues and shades. In English, there are 11 high frequency color terms that together span the color space, but this categorization system is not universal. For instance, Russian speakers use two distinct words to describe the colors light blue (``goluboy'') and dark blue (``siniy''); other languages have as few as two words (e.g., the Jalé people only have terms for ``light'' and ``dark''; Berlin \& Kay, 1969). Why do languages vary in their color systems? One emerging consensus is that languages categorize the color spectrum in different ways in part due to functional demands (Gibson et al., 2017): both smaller and larger color systems are relatively optimal for different communicative needs (Regier et al., 2007; Zaslavsky et al., 2018).
 
 Learnability is hypothesized to be one contributor to this cross-linguistic diversity (Chater \& Christiansen, 2010; Culbertson et al., 2012). Some color systems may be easier for children to learn than others, or children may show inductive biases that shape the color vocabulary. But the actual acquisition of color terms -- while relatively well-studied in English (e.g., Forbes \& Plunkett, 2019; Saji et al., 2015; Sandhofer \& Smith, 1999; Wagner et al., 2013, 2018) -- is relatively under-studied across other populations (cf. Forbes \& Plunkett, 2020).
 
-In the current project, our goals were (1) to characterize color term knowledge in an indigenous population, the Shipibo-Konibo (SK), and then (2) to build on this foundation to characterize the developmental trajectory of color language acquisition in a group of children raised learning Shipibo-Konibo, a departure from the WEIRD (Western Educated Industrialized Rich Democratic) populations that are over-represented in behavioral science (Henrich et al., 2010; Nielsen et al., 2017). This work provides a developmental comparison to understand both consistencies and variabilities in the trajectory of color word learning for children who are growing up in environments with far fewer manufactured, multi-colored plastic toys (Gibson et al., 2017).
+In the current project, our goals were (1) to characterize color term knowledge in an indigenous population, the Shipibo-Konibo (SK), and then (2) to build on this foundation to characterize the developmental trajectory of color language acquisition in a group of children raised learning Shipibo-Konibo, a departure from the WEIRD (Western Educated Industrialized Rich Democratic) populations that are over-represented in behavioral science (Henrich et al., 2010; Nielsen et al., 2017). This work provides a developmental comparison to understand both consistencies and variabilities in the trajectory of color word learning for children who are growing up in environments with far fewer manufactured, multi-colored plastic toys (Gibson et al., 2017) but probably exposed to many more hues of color on plants, fruits, etc. in their natural setting.
 
 In the remainder of the introduction, we review color vocabulary development in children, and then we turn to what is currently known about color terms in Latin American varieties of Spanish, such as Mexican, Colombian, and Bolivian Spanish, and in some Amazonian languages, such as Candoshi, Pirahã, and Shipibo-Konibo. These two literatures set the stage for our own study.
 
@@ -217,7 +232,7 @@ Indeed, the age at which color words are learned has been shifting over the past
 
 One prominent account of what makes color word learning difficult is that children may not recognize that color words pick out the perceptual dimension of hue at all (Bartlett, 1977; Sandhofer \& Smith, 1999), and that once they do, children rapidly map colors correctly onto the appropriate range of hues in color space. This account nicely explains the observation that there is often a period during which children will produce an inappropriate color word when asked ``what color is this?'' -- they know that color words go together and answer a particular question, they just don't know which color is which. A further point of parsimony for this account is that infants' color boundaries are not all that different in their placement from those of adults; thus, presumably the mapping task they face -- from words to hues -- is not all that difficult, once they recognize the dimension that they are attempting to map (Bornstein et al., 1976; Franklin et al., 2005).
 
-On the other hand, when children's mapping errors are examined in detail, they show more systematicity than would be predicted by this account. Wagner et al. (2013) show that children who have not yet fully mastered the color lexicon nevertheless use colors in ways that are more consistent with overextension than with ignorance of the dimensional mapping -- for example, using ``blue'' to refer to \emph{blue} and \emph{green} hues (which are close together in color space). These overextensions are reminiscent of noun overextensions that have been documented in early word learning, for example calling a horse ``dog'' (Clark, 1973). Further, the order of acquisition for color word meanings in Wagner et al. (2013) was well-predicted by the frequency and perceptual salience of color categories (Yurovsky et al., 2015), supporting the view that color categories are learned gradually from perceptual experiences rather than all at once. Finally, both behavioral and eye-tracking evidence suggest that children show earlier comprehension than production for color words (Forbes \& Plunkett, 2019; Sandhofer \& Smith, 1999; Wagner et al., 2018), a phenomenon that is seen throughout early word learning. In eye-tracking tasks, comprehension also shows evidence of perceptual overextensions, such that children fixate perceptually close distractor colors more than far distractors (Wagner et al., 2018). In sum, although attention to the dimension of hue may be one difficult component of color word learning, systematic mapping of words to particular regions of perceptual space is likely another.
+On the other hand, when children's mapping errors are examined in detail, they show more systematicity than would be predicted by this account. Wagner et al. (2013) show that children who have not yet fully mastered the color lexicon nevertheless use colors in ways that are more consistent with overextension than with ignorance of the dimensional mapping -- for example, using ``blue'' to refer to blue and green hues (which are close together in color space). These overextensions are reminiscent of noun overextensions that have been documented in early word learning, for example calling a horse ``dog'' (Clark, 1973). Further, the order of acquisition for color word meanings in Wagner et al. (2013) was well-predicted by the frequency and perceptual salience of color categories (Yurovsky et al., 2015), supporting the view that color categories are learned gradually from perceptual experiences rather than all at once. Finally, both behavioral and eye-tracking evidence suggest that children show earlier comprehension than production for color words (Forbes \& Plunkett, 2019; Sandhofer \& Smith, 1999; Wagner et al., 2018), a phenomenon that is seen throughout early word learning. In eye-tracking tasks, comprehension also shows evidence of perceptual overextensions, such that children fixate perceptually close distractor colors more than far distractors (Wagner et al., 2018). In sum, although attention to the dimension of hue may be one difficult component of color word learning, systematic mapping of words to particular regions of perceptual space is likely another.
 
 Why is color word learning occurring earlier in development, at least for English-learning children (Bornstein, 1985)? There are at least two obvious, plausible reasons. The first is the increasing prevalence of manufactured toys for children that vary exclusively in color (e.g., sets of plastic blocks of different colors) (Gibson et al., 2017). Such objects provide perfect contrastive input for mapping: if one is called ``blue'' and the other is not, such input implicates pragmatically that ``blue'' is an informative term (Clark, 1987; Frank \& Goodman, 2014). The second is a cultural landscape for parents and early educators that presupposes color words are an important part of early childhood education practices, and as such should be taught explicitly (perhaps using toys specifically made for this purpose).
 
@@ -226,15 +241,15 @@ In the current paper, we ask about the trajectory of color word learning in an e
 \hypertarget{color-in-latin-american-varieties-of-spanish-and-amazonian-languages}{%
 \subsection{Color in Latin American varieties of Spanish and Amazonian languages}\label{color-in-latin-american-varieties-of-spanish-and-amazonian-languages}}
 
-Since the color systems local to the SK provide a backdrop for our work, in this section, we provide a brief overview of descriptive work on Latin American Spanish and some Amazonian languages. In brief, our conclusion is that ad hoc color terms -- descriptors of objects or properties that are adopted for the description of hue (e.g., the use of terms like ``blood'' or ``bloody'' to refer to red objects) -- are quite common, presaging some of our findings. They are likey present in several Latin American Spanish dialects and they are well-attested in Amazonian color systems.
+Since the color systems local to the SK provide a backdrop for our work, in this section, we provide a brief overview of descriptive work on Latin American Spanish and some Amazonian languages. In brief, our conclusion is that ad hoc color terms -- descriptors of objects or properties that are adopted for the description of hue (e.g., the use of terms like ``blood'' or ``bloody'' to refer to red objects) -- are quite common, presaging some of our findings. They are likely present in several Latin American Spanish dialects and they are well-attested in Amazonian color systems.
 
-An initial framework for the cross-linguistic study of color came from the World Color Survey {[}WCS; Kay et al. (2009){]}. WCS presented adult speakers of over 100 languages with differently colored chips and asked them to produce a label, characterizing the space of color vocabulary in a range of written and unwritten languages. The WCS focused on basic level color terms, the color words that are highest frequency and most consistently used.
+An initial framework for the cross-linguistic study of color came from the World Color Survey (WCS; Kay et al., 2009). WCS presented adult speakers of over 100 languages with differently colored chips and asked them to produce a label, characterizing the space of color vocabulary in a range of written and unwritten languages. The WCS focused on basic level color terms, the color words that are highest frequency and most consistently used.
 
-The WCS framework has been revised and questioned in subsequent work, however (e.g., Levinson, 2000). In particular, there has been significant controversy about the applicability of the framework to Amazonian languages, centered around the status of ad hoc color terms. Such ad hoc terms are a common way that languages supplement color vocabulary (e.g., Kristol, 1980). Historical case studies suggest that ad hoc terms can often become conventionalized basic level color terms {[}e.g., the English color ``orange'' derives from an ad hoc term based on the fruit; St. Clair (2016){]}.
+The WCS framework has been revised and questioned in subsequent work, however (e.g., Levinson, 2000). In particular, there has been significant controversy about the applicability of the framework to Amazonian languages, centered around the status of ad hoc color terms. Such ad hoc terms are a common way that languages supplement color vocabulary (e.g., Kristol, 1980). Historical case studies suggest that ad hoc terms can often become conventionalized basic level color terms (e.g., the English color ``orange'' derives from an ad hoc term based on the fruit; St. Clair, 2016).
 
 Since the WCS, however, later research has suggested that ad hoc terms are present in some South American dialects of Spanish and that they play a central role in Amazonian color systems. With respect to Spanish, the WCS identified the following basic level terms in the Mexican dialect: ``blanco'' (white), ``negro'' (black), ``rojo'' (red), ``verde'' (green), ``amarillo'' (yellow), ``azul'' (blue), ``café'' (brown or coffee-colored), ``morado'' (purple), ``rosa'' (pink or rose), ``anaranjado'' (orange, strictly referring to the color) and ``gris'' (gray). However, Aragón (2016) offers an ethnolinguistic study of color terms in Mexican Spanish and concludes that the local natural and cultural referents constitute a point of consensus among Mexicans when defining terms of color, even though these colors still follow the general schema of basic level terms. Further, Monroy and Custodio (1989) suggest that Columbian Spanish may include ad hoc color terms referring to colors through objects prototypically instantiating these colors (e.g., vegetables, animals, food, metals, precious stones, fire and its derivatives, and atmospheric phenomena). Lillo et al. (2018) generally confirm these observations, finding an additional basic level term in Uruguayan Spanish, ``celeste'' (sky blue), which may be a conventionalized ad hoc term (``celeste'' is etymologically related to ``sky''). This observation is also confirmed by Gibson et al. (2017) for Bolivian Spanish.
 
-Turning now to Amazonian languages, SK color terms were studied in the original WCS. In this data collection effort, they list 21 distinct terms (though this could be categorized as 20 as ``huiso'' and ``wiso'' are alternative spellings of the same color term).\footnote{Two anthropological studies (Morin, 1973; Tournon, 2002) have also investigated the color terms used in SK. However, these two studies contain some serious methodological pitfalls: a very limited number of color chips were tested with only a few participants. As a result, we will not further discuss these studies in the remainder of this article and will only focus in our study on a comparison with the WCS data.} As their protocol has the field experimenters ask only for basic level color terms, it is assumed that all recorded terms are basic, but only six terms appear in \textgreater5\% of WCS trials; 10 terms appear in \textless1\% of trials (see Figure \ref{fig:study1-figure}A for a representation of this data). Immediately the issue of ad hoc terms rears its head, since it is likely that many of these other words are ad hoc color terms (Levinson, 2000).\footnote{In fact, a greater diversity of color terms beyond the basic level is used in the data for the majority of WCS languages (Gibson et al., 2017, Figure S1), suggesting that the effort to elicit only basic level color terms in WCS may not have been successful.}
+Turning now to Amazonian languages, SK color terms were studied in the original WCS. In this data collection effort, they list 21 distinct terms (though this could be categorized as 20 as ``huiso'' and ``wiso'' are alternative spellings of the same color term).\footnote{ Two anthropological studies (Morin, 1973; Tournon, 2002) have also investigated the color terms used in SK. However, these two studies contain some serious methodological pitfalls: a very limited number of color chips were tested with only a few participants. As a result, we will not further discuss these studies in the remainder of this article and will only focus in our study on a comparison with the WCS data.} As their protocol has the field experimenters ask only for basic level color terms, it is assumed that all recorded terms are basic, but only six terms appear in \textgreater5\% of WCS trials; 10 terms appear in \textless1\% of trials (see Figure \ref{fig:study1-figure}A for a representation of this data). Immediately the issue of ad hoc terms rears its head, since it is likely that many of these other words are ad hoc color terms (Levinson, 2000).\footnote{In fact, a greater diversity of color terms beyond the basic level is used in the data for the majority of WCS languages (Gibson et al., 2017, fig. S1), suggesting that the effort to elicit only basic level color terms in WCS may not have been successful.}
 
 Several other indigenous Amazonian color systems were studied in the WCS and one of them, Candoshi, has been examined more recently (Surrallés, 2016). Contrary to the WCS, Surrallés argues that no proper color terms exist in this language. If the fieldworkers of the WCS found otherwise, he claims, it is only because they misidentified the elicited terms as basic level color terms when they are nothing more than a series of ad hoc terms referring to objects or animals of the surrounding environment. For example, in Candoshi, the word for yellow is ``ptsiyaromashi'' (``like the feathers of a milvago bird''), the word for red is ``chobiapi'' (``ripe fruit''), the word for green is ``kamachpa'' (``unripe fruit''), etc. These findings lead Surrallés to argue that the Candoshi do not have a proper color system. When they use ``color terms'' they are not trying to subsume objects of the world under abstract color categories, but they are rather establishing horizontal and ad hoc comparisons between similar objects of the world.
 
@@ -245,13 +260,19 @@ Finally, Gibson et al. (2017) compared their Bolivian Spanish data with Tsimane,
 \hypertarget{the-current-study}{%
 \subsection{The Current Study}\label{the-current-study}}
 
-The Shipibo-Konibo people are an indigenous group located within the Peruvian Amazon. They are mainly horticulturalists, fishermen, occasionally hunters but are noted for their strong display of tradition (e.g.~via traditional art) despite increasingly regular interactions with the western world. They are also skilled traditional artists or artisans, resorting to these activities as a way to earn an income for their household. Their children receive formal schooling for 4 hours a day, both in SK\footnote{The phonemic inventory of SK language has 4 vowels (/i/, /ɨ/, /a/ and /o/) and 15 consonants: 3 plosives (/p/, /t/ and /k/), 2 affricates (/ts/ and /ʧ/), 2 nasals (/m/ and /n/), 5 fricatives (/β/, /s/, /ʃ/, /ʂ/, /ɦ/), and 3 approximants (/w/, /ɻ/ and /j/).} and Spanish. The amount of Spanish input they receive at school increases towards adolescence when they enter secondary education. There can be variation in how both languages coexist in the school setting from one village to another. Most SK adults are considered SK-Spanish bilinguals to different degrees although the elders may have only a minor grasp on Spanish.
+The Shipibo-Konibo people are an indigenous group located within the Peruvian Amazon. They are mainly horticulturalists, fishermen, occasionally hunters but are noted for their strong display of tradition (e.g.~via traditional art) despite increasingly regular interactions with the western world. They are also skilled traditional artists or artisans, resorting to these activities as a way to earn an income for their household. Their children receive formal schooling for 4 hours a day, both in SK\footnote{The phonemic inventory of SK language has 4 vowels (/i/, /\ipatext{ɨ}/, /a/ and /o/) and 15 consonants: 3 plosives (/p/, /t/ and /k/), 2 affricates (/ts/ and /\ipatext{ʧ}/), 2 nasals (/m/ and /n/), 5 fricatives (/\ipatext{β}/, /s/, /\ipatext{ʃ}/, /\ipatext{ʂ}/, /\ipatext{ɦ}/), and 3 approximants (/w/, /\ipatext{ɻ}/ and /j/).} and Spanish. The proportion of input in Spanish they receive at school increases towards adolescence when they enter secondary education. There can be variation in how both languages coexist in the school setting from one village to another. Most SK adults are considered SK-Spanish bilinguals to different degrees although the elders may have only a minor grasp on Spanish.
 
-The SK are an interesting group to examine from the perspective of color word learning. Although their cultural experience is quite different from the English-speaking WEIRD populations who have been the focus of color word acquisition studies, they are not an isolated hunter-gatherer group. Because of their location on the Ucayali River, one of the main tributaries of the Amazon, the SK culture has always been enmeshed in rich trading networks involving other indigenous groups of the Andes and the Lowlands (in pre-conquest times) as well as Mestizos and Westerners (in post-conquest times) (Lathrap, 1970). It would thus be mistaken to think of this culture as an ``isolated'' or ``preserved'' one. On the contrary, having been extensively exposed to numerous influences, the SK culture has been constantly reworked and reshaped through the centuries. The first deep transformation in Shipibo-Konibo culture can be traced to the 18th century, when Shipibos, Konibos and Shetebos were forced to live together by Franciscan evangelization (Myers, 1974). Later, the second half of the 20th century was characterized by intense contact with the Spanish-speaking Mestizo populations established along the Ucayali River. As a result, today's SK culture straddles two worlds: children grow up in a traditional culture but with some exposure to formal education and -- critically -- some of the manufactured, colored plastic goods that have been argued to create a need for rich color vocabulary (Gibson et al., 2017).\footnote{Access to manufactured goods varies across SK villages based in part on how close they are to Pucallpa, the regional capital.}
+The SK are an interesting group to examine from the perspective of color word learning. Although their cultural experience is quite different from the English-speaking WEIRD populations who have been the focus of color word acquisition studies, they are not an isolated hunter-gatherer group. Because of their location on the Ucayali River, one of the main tributaries of the Amazon, the SK culture has always been enmeshed in rich trading networks involving other indigenous groups of the Andes and the Lowlands (in pre-conquest times) as well as Mestizos and Westerners (in post-conquest times) (Lathrap, 1970). It would thus be mistaken to think of this culture as an ``isolated'' or ``preserved'' one. On the contrary, having been extensively exposed to numerous influences, the SK culture has been constantly reworking and reshaping itself through the centuries. The first deep transformation in Shipibo-Konibo culture can be traced to the 18th century, when Shipibos, Konibos and Shetebos were forced to live together by Franciscan evangelization (Myers, 1974). Later, the second half of the 20th century was characterized by intense contact with the Spanish-speaking Mestizo populations established along the Ucayali River. As a result, today's SK culture straddles two worlds: children grow up in a traditional culture but with some exposure to formal education (where both Spanish and SK are used by teachers in a formal setting) and -- critically -- some of the manufactured, colored plastic goods that have been argued to create a context for easily disambiguating between rich color vocabulary terms (Gibson et al., 2017).\footnote{Access to manufactured goods varies across SK villages based in part on how close they are to Pucallpa, the regional capital.}
+
+Regarding formal education, SK children start attending school when they are 6 or 7 years old, although some children may enroll later on. Boys are more likely to complete the 11 years of basic education than girls. Education is intercultural and bilingual, at least in theory, with some variation occurring in practice, and most classrooms tend to be multi-grade, so gathering children in different schools grade together. How they spend time outside school is influenced by gender too: girls usually help with chores around the house, as well as taking care of younger siblings and also working in the ``chacra'' (small farmland plot where vegetables are grown for the family), while boys also help in the ``chacra'' but are in general more free to move around.
+
+The SK are an interesting group to examine from the perspective of color word learning. Although their cultural experience is quite different from the English-speaking WEIRD populations who have been the focus of color word acquisition studies, they are not an isolated hunter-gatherer group. Because of their location on the Ucayali River, one of the main tributaries of the Amazon, the SK culture has always been enmeshed in rich trading networks involving other indigenous groups of the Andes and the Lowlands (in pre-conquest times) as well as Mestizos and Westerners (in post-conquest times; Lathrap, 1970). It would thus be mistaken to think of this culture as an ``isolated'' or ``preserved'' one. On the contrary, having been extensively exposed to numerous influences, the SK culture has been constantly reworkinged and reshapinged itself through the centuries. The first deep transformation in Shipibo-Konibo culture can be traced to the 18th century, when Shipibos, Konibos and Shetebos were forced to live together by Franciscan evangelization (Myers, 1974). Later, the second half of the 20th century was characterized by intense contact with the Spanish-speaking Mestizo populations established along the Ucayali River. As a result, today's SK culture straddles two worlds: children grow up in a traditional culture but with some exposure to formal education (where both Spanish and SK are used by teachers in a formal setting) and -- critically -- some of the manufactured, colored plastic goods that have been argued to create a context for easily disambiguating between and need for rich color vocabulary terms (Gibson et al., 2017).\footnote{Access to manufactured goods varies across SK villages based in part on how close they are to Pucallpa, the regional capital.}
 
 Further, the SK are heavily bilingual. To our knowledge, relatively little work has looked at effects of bilingualism on color word learning. Yet, with much of the world's population growing up multilingual, it is important to characterize how learners navigate a conceptual space where they may have words that appropriately name a target concept, but in a different language.
 
-In Study 1, we examine the color vocabulary of current SK adults, comparing their vocabulary to results from the World Color Survey (a gap of more than 50 years). Next, we examine SK children's color vocabulary, focusing on their knowledge and their generalization of color terms across both SK (Study 2) and Spanish (Study 3). Through these three studies, we attempted to answer four primary research questions:
+Further, the SK are heavily bilingual. To our knowledge, relatively little work has looked at effects of bilingualism on color word learning. Yet, with much of the world's population growing up multilingual (Shin, 2017), it is important to characterize how learners navigate a conceptual space where they may have words that appropriately name a target concept, but in a different language.
+
+In Study 1, we examine the color vocabulary of current SK adults, comparing their vocabulary to results from the World Color Survey, which was done more than 50 years prior (Berlin \& Kay, 1969). Next, we examine SK children's color vocabulary, focusing on their knowledge and their generalization of color terms across both SK (Study 2) and Spanish (Study 3). Through these three studies, we attempted to answer four primary research questions:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -259,14 +280,14 @@ In Study 1, we examine the color vocabulary of current SK adults, comparing thei
 \item
   What is the color vocabulary of SK and how has it changed since the WCS data collection effort?
 \item
-  What is the developmental timeline of color term acquisition in a non-WEIRD population that has fewer industrial products (toys) and less formal early childhood education?
+  What is the developmental timeline of color term acquisition in a population that has fewer industrial products (toys) and where parents are apparently less inclined to provide color labels to children?
 \item
   Is the developmental course -- especially with respect to generalization and the dynamics of comprehension and production -- similar to that which has been documented in studies of English color term learning?
 \item
   How is color term learning development affected by bilingual exposure in this group?
 \end{enumerate}
 
-To presage our conclusions, we find that SK color vocabulary has remained relatively consistent, with the exception of some intrusions from Spanish in areas of low coverage by the SK color system. Children learning the SK system show a protracted developmental trajectory towards adult-like knowledge compared with modern descriptive studies in WEIRD contexts. Further, when children lack precise color term knowledge, they appear to follow different strategies for SK and Spanish: for SK, children fell back on Spanish knowledge, while for Spanish, we observed substantial over-generalization of terms (Wagner et al., 2013, 2018). Finally, we find that children draw on their Spanish knowledge especially for colors where there is high uncertainty among adult speakers, suggesting that they are adaptively using their bilingual knowledge to facilitate accurate naming.
+To presage our conclusions, we find that SK color vocabulary has remained relatively consistent, with the exception of some intrusions from Spanish in semantic or vocabulary areas of low coverage by the SK color system. Children learning the SK system show a protracted developmental trajectory towards adult-like knowledge compared with modern descriptive studies in WEIRD contexts. Further, when children lack precise color term knowledge, they appear to follow different strategies for SK and Spanish: for SK, children fell back on Spanish knowledge, while for Spanish, we observed substantial over-generalization of terms (Wagner et al., 2013, 2018). Finally, we find that children draw on their Spanish knowledge especially for colors where there is high uncertainty among adult speakers, suggesting that they are adaptively using their bilingual knowledge to facilitate accurate naming.
 
 \hypertarget{study-1}{%
 \section{Study 1}\label{study-1}}
@@ -279,7 +300,9 @@ Before we could assess the developmental trajectory of color term knowledge in S
 \hypertarget{participants}{%
 \subsubsection{Participants}\label{participants}}
 
-We recruited 39 adult participants (7 men). We experienced difficulty recruiting male participants as many of the men were away from the village during the day, resulting in a sample that was predominantly female. Most participants (31, 4 men) were from SK villages of the Middle Ucayali region (Yarinacocha, San Francisco, and Nueva Betania), with a subset from communities of the Lower (Paoyhan) and Upper (Puerto Belén) Ucayali regions. Within the small town of Yarinacocha (in the vicinity of Pucallpa), we recruited participants (9, 2 men) from Bena Jema, a predominantly SK neighborhood. All the other recruitment sites were native community villages with exclusively SK residents but a strong relationship with the outside world. Overall, the sample included SK adults who could be characterized as more urban (Yarinacocha and San Francisco sites) or more traditional and in regular contact with the surrounding rainforest (Nueva Betania, Paoyhan, and Puerto Belén sites).
+We recruited 39 adult participants (7 men) from multiple sites ranging from more urban and industrialized (from Yarinacocha or San Francisco) to more traditional and in closer proximity to the surrounding rainforest (Nueva Betania, Paoyhan, or Puerto Belén). All villages were integrated in Peruvian economy and society. Given our relatively small sample size, we did not find apparent differences between participants from different sites.
+
+We experienced difficulty recruiting male participants as many of the men were away from the village during the day, resulting in a sample that was predominantly female. Most participants (31, 4 men) were from SK villages of the Middle Ucayali region (Yarinacocha, San Francisco, and Nueva Betania), with a subset from communities of the Lower (Paoyhan) and Upper (Puerto Belén) Ucayali regions. Within the small town of Yarinacocha (in the vicinity of Pucallpa), we recruited participants (9, 2 men) from Bena Jema, a predominantly SK neighborhood. All the other recruitment sites were native community villages with exclusively SK residents but a strong relationship with those outside their community.
 
 The median age for participants was 38 years (\emph{IQR} = 26-48) ranging from 20 to 64 years. Regarding occupations, 41\% of the 32 female participants were homemakers or housewives (33\% of the overall sample) and another 41\% were artisans (33\%). Three of the 7 male participants (43\%, 8\% overall) were horticulturalists. Across both sexes, 5 women (16\%, 13\% overall) and 3 men (43\%, 8\% overall) identified as students, comprising a total of 21\% of the population. Although all adult participants were required to be native SK speakers, all were introduced to the Spanish language prior to adolescence (median age = 8yo, \emph{IQR} = 5-10).
 
@@ -288,20 +311,14 @@ The median age for participants was 38 years (\emph{IQR} = 26-48) ranging from 2
 
 Similar to the original WCS, we used a set of 330 Munsell color chips and asked participants to name them (Berlin \& Kay, 1969). We made a number of changes to the procedure, however. In the WCS, every participant provided terms for all 330 chips. Due to fear of participant fatigue, we split up color chips based on their ID numbers (even or odd) and participants were randomly assigned to work with either even- or odd-numbered color chips. As a result, each participant was presented with only 165 chips. All 330 hues within the set are visualized in Appendix 1. Dimensions of the chips were 2 cm × 2.5 cm.
 
-First, the experimenter explained the general procedure and goals of the study to the participant. The experimenter would then present a single color chip to the participant and ask in SK: ``What is the color of this chip?'' The study was conducted solely in SK language with the assistance of a bilingual SK- and Spanish-speaking research assistant. It should be noted that although the experiment was conducted in SK, the SK word for color used is identical to the Spanish word \emph{color} (an example of SK speakers adopting Spanish words into their lexicon), which might have encouraged Spanish language use.
+One researcher, MT, traveled to each site to conduct testing aided by a trained research assistant fluent in both SK and Spanish to facilitate communication. In terms of compensation, adult participants were paid for their time and children were offered sweets during testing. All sessions were video recorded. First, the experimenter explained the general procedure and goals of the study to the participant. The experimenter would then present a single color chip to the participant and ask in SK: ``What is the color of this chip?'' The study was conducted solely in SK language with the assistance of a bilingual SK- and Spanish-speaking research assistant. It should be noted that although the experiment was conducted in SK, the SK word for color used is identical to the Spanish word color (an example of SK speakers adopting Spanish words into their lexicon), which might have encouraged Spanish language use.
 
-Besides the reduction in set size, our procedure also differed from that of WCS (see Kay et al., 2009, pp. 585--591) in other aspects. Participants sat in front of the experimenter. To manage changes in natural light intensity between participants, the experiment took place indoors near a window or a door instead of outdoors. Another difference between our study and the WCS procedure is in our approach for encouraging participants to describe chips using basic level color terms. In the WCS, the experimenter would instruct participants to only provide basic level color terms during the task (e.g., describing a chip as ``blue'' as opposed to ``navy blue'' or ``sky-like''). However, we had difficulties concisely explaining the concept of a basic level term compared to other terms.\footnote{Indeed, as Kay et al. (2009, pp. 587--589) acknowledge, there is no straightforward necessary and sufficient criteria for the basicness of a color term (cf Levinson, 2000).} We decided to allow participants to describe a chip with any term they wished, and to ask further questions to elicit a basic level term when they did not do so on their first try. For example, when presented with a red color chip, the participant might use the term ``blood-like'' (a non-basic term). The experimenter would then ask: ``Do you know of any other word to refer to the color of this chip?'' Should the participant subsequently respond with ``dark red'' (another non-basic level term), the experimenter would further ask: ``How would you refer to this color with only one word?'' Eventually, the participant might use the term ``red'' (a basic term). For some chips, participants provided a basic level term as their first description. For others, a basic level term might be preceded by 1 or 2 non-basic level terms. When participants failed to provide a basic level term after 3 attempts (i.e., two follow-up questions), no further questions were asked, and the experimenter moved on to the next chip. All responses, basic level or not, were recorded in the order produced by the participant.
+Besides the reduction in set size, our procedure also differed from that of WCS (see Kay et al., 2009, pp. 585--591) in other aspects. Participants sat in front of the experimenter. To manage changes in natural light intensity between participants, the experiment took place indoors near a window or a door instead of outdoors. Another difference between our study and the WCS procedure is in our approach for encouraging participants to describe chips using basic level color terms. In the WCS, the experimenter would instruct participants to only provide basic level color terms during the task (e.g., describing a chip as ``blue'' as opposed to ``navy blue'' or ``sky-like''). However, we had difficulties concisely explaining the concept of a basic level term compared to other terms.\footnote{ Indeed, as Kay et al. (2009, pp. 587--589) acknowledge, there is no straightforward necessary and sufficient criteria for the basicness of a color term (cf Levinson, 2000).} We decided to allow participants to describe a chip with any term they wished, and to ask further questions to elicit a basic level term when they did not do so on their first try. For example, when presented with a red color chip, the participant might use the term ``blood-like'' (a non-basic term). The experimenter would then ask: ``Do you know of any other word to refer to the color of this chip?'' Should the participant subsequently respond with ``dark red'' (another non-basic level term), the experimenter would further ask: ``How would you refer to this color with only one word?'' Eventually, the participant might use the term ``red'' (a basic term). For some chips, participants provided a basic level term as their first description. For others, a basic level term might be preceded by 1 or 2 non-basic level terms. When participants failed to provide a basic level term after 3 attempts (i.e., two follow-up questions), no further questions were asked, and the experimenter moved on to the next chip. All responses, basic level or not, were recorded in the order produced by the participant.
 
 \hypertarget{results-and-discussion}{%
 \subsection{Results and Discussion}\label{results-and-discussion}}
 
-Figure \ref{fig:study1-figure} compares the original WCS data (Panel A) to a summary of results (Panel B) along with the prevalence of Spanish-language responses (Panel C) for Study 1. All participants used the following set of color terms to describe a color chip at least once during their session: ``joxo'' (light/white), ``wiso'' (dark/black), ``panshin'' (yellow), ``joshin'' (red), and ``yankon'' (green/blue). Given the widespread use of this term set and their interpretations, we will refer to these five terms as SK-language basic level color terms
-
-Most (79\%) participants also described at least 1 chip as ``manxan'' (faded), referring to a chip's saturation. In addition, fifty-one percent of participants used the color term ``naranja'' (or ``naransha'') to describe at least one chip. ``Naranja'' may be known as a Spanish-language color term used to describe both the orange fruit and its associated color--as opposed to ``anaranjado,'' a term strictly for the orange color.
-
-In terms of overall popularity, participants described a median of 32\% of chips as ``yankon'' (\emph{IQR} = 26-39\%) followed by ``joshin'' (\emph{Mdn} = 10\%, \emph{IQR} = 7-16\%), ``panshin'' (10\%, 6-12\%), ``joxo'' (9\%, 6-15\%), ``manxan'' (6\%, 1-10\%), and ``wiso'' (5\%, 3-8\%). We failed to find any significant sex differences in the overall spread of color term usage across chip set (\(t(59) = 0.00\), \(p > .999\)) or in the proportion of subjects who used a term at least once during their session (\(t(117.95) = -0.38\), \(p = .706\)).
-
-Compared to the WCS dataset which only reported SK language terms, Spanish use was prevalent throughout Study 1. Fifty-nine percent of our participants used a Spanish-language color term to describe at least 1 chip, which accounted for only 4\% of all responses. Across chips, the most common Spanish-language color term was ``naranja'' (51\% of participants), followed by ``rosa'' (10) and ``morado'' (8). Spanish use peaked at 55\% when participants were asked to label chips that English speakers would consider to be orange or ``anaranjado''/``naranja'' by Spanish speakers. Indeed, the relatively common use of ``naranja'' by these adult SK speakers despite being prompted entirely in SK brings the possibility that ``naranja'' has been adopted into the SK color lexicon. If we allow ``naranja'' to be counted as an SK rather than Spanish-language term, then only 15\% of participants used a Spanish-language term other than ``naranja'' at least once throughout the study, accounting for 2\% of all responses. One participant responded in Spanish in 68\% of the time despite being prompted solely in SK.
+Figure \ref{fig:study1-figure} compares the original WCS data (Panel A) to a summary of results (Panel B) along with the prevalence of Spanish-language responses (Panel C) for Study 1. All participants used the following set of color terms to describe a color chip at least once during their session: ``joxo'' (light/white), ``wiso'' (dark/black)\footnote{For the purposes of our studies ``huiso'' and ``wiso'' were considered one term.}, ``panshin'' (yellow), ``joshin'' (red), and ``yankon'' (green/blue). Given the widespread use of this term set and their interpretations, we will refer to these five terms as SK-language basic level color terms.
 
 \begin{figure}
 \centering
@@ -309,14 +326,22 @@ Compared to the WCS dataset which only reported SK language terms, Spanish use w
 \caption{\label{fig:study1-figure}(A and B) Plots of the modal term given for a particular chip. Color coordinates were represented in 2-D Munsell space, with Munsell hue represented on the x-axis and Munsell value or lightness represented on the Y-axis. Modal responses were given by SK adults during (A) our Study 1 and during (B) the original World Color Survey. (C) Heat map of prevalence of Spanish-language responses during Study 1. Legends for all three subplots located in the bottom-right quadrant.}
 \end{figure}
 
+Most (79\%) participants also described at least 1 chip as ``manxan'' (faded), referring to a chip's saturation. In addition, fifty-one percent of participants used the color term ``naranja'' (or ``naransha'') to describe at least one chip. ``Naranja'' may be known as a Spanish-language color term used to describe both the orange fruit and its associated color--as opposed to ``anaranjado,'' a term strictly for the orange color.
+
+In terms of overall popularity, participants described a median of 32\% of chips as ``yankon'' (\emph{IQR} = 26-39\%) followed by ``joshin'' (\emph{Mdn} = 10\%, \emph{IQR} = 7-16\%), ``panshin'' (10\%, 6-12\%), ``joxo'' (9\%, 6-15\%), ``manxan'' (6\%, 1-10\%), and ``wiso'' (5\%, 3-8\%). We failed to find any significant sex differences in the overall spread of color term usage across chip set (\(t(59) = 0.00\), \(p > .999\)) or in the proportion of subjects who used a term at least once during their session (\(t(117.95) = -0.38\), \(p = .706\)).
+
 Participants used an SK-language basic level term (i.e., ``yankon'') to describe a median of 68\% of chips (\emph{IQR} = 56-90\%). Besides basic level terms, 59\% of participants used SK-language ad hoc color terms (i.e., ``nai'' or sky for blue chips) for an overall median of 6\% of chips (\emph{IQR} = 0-19\%). SK-language terms referring to saturation or luminosity of a chip, such as ``manxan'' (faded) were used for an overall median of 13\% of chips (\emph{IQR} = 6-20\%). Most instances (86\%) of Spanish use involved a Spanish BCT such as ``rojo'' (overall \emph{Mdn} = 0\%, \emph{IQR} = 0-0\%).
 
-In sum, our data show similar variability to the WCS data, but with Spanish terms (as described above) mixed in with ad hoc terms. Notably, we observed the modal term for a few chips to be loanwords from Spanish, in some cases already established as part of the SK vocabulary (the last seems to be the case of ``naranja,'' ``orange'' in English), suggesting some fairly extensive borrowing of Spanish words due to the close relationship between both languages in the studied communities.
+Compared to the WCS dataset which only reported SK language terms, Spanish use was prevalent throughout Study 1. Fifty-nine percent of our participants used a Spanish-language color term to describe at least 1 chip, which accounted for only 4\% of all responses. Across chips, the most common Spanish-language color term was ``naranja'' (51\% of participants), followed by ``rosa'' (10\%) and ``morado'' (8\%). Spanish use peaked at 55\% when participants were asked to label chips that English speakers would consider to be orange or ``anaranjado''/``naranja'' by Spanish speakers. Indeed, the relatively common use of ``naranja'' by these adult SK speakers despite being prompted entirely in SK brings the possibility that ``naranja'' has been adopted into the SK color lexicon. If we allow ``naranja'' to be counted as an SK rather than Spanish-language term, then only 15\% of participants used a Spanish-language term other than ``naranja'' at least once throughout the study, accounting for 2\% of all responses. One participant responded in Spanish 68\% of the time despite being prompted solely in SK.
+
+In sum, our data show similar variability to the WCS data, but with Spanish terms (as described above) mixed in with ad hoc terms. Notably, we observed the modal term for a few chips to be loanwords from Spanish, in some cases already established as part of the SK vocabulary (the last seems to be the case of ``naranja,'' ``orange'' in English), suggesting some fairly extensive borrowing of Spanish words due to the fact that both languages are commonly used in these studied communities.
 
 \hypertarget{study-2}{%
 \section{Study 2}\label{study-2}}
 
-After generating an updated SK color term map using the responses from adult participants in Study 1, we designed Study 2 to assess child participants' production and comprehension of SK color terms. Because we did not think that we could feasibly ask children across a range of ages about more than 100 color chips, we selected a subset of chips representing the prototypical instances for prominent SK terms from Study 1.
+After generating an updated SK color term map using the responses from adult participants in Study 1, we designed Study 2 to assess child participants' production and comprehension of SK color terms. Because we did not think that we could feasibly ask children across a range of ages about more than 100 color chips, we selected a subset of chips representing the prototypical instances for prominent SK terms from Study 1. We considered prototypical chips to be those that presented a hue towards the center or middle of the color category in question and so were supposed to be more salient or identifiable as exemplars of said category.
+
+\textless--! TODO: Update apa\_table?--\textgreater{}
 
 \begin{table}[tbp]
 
@@ -359,24 +384,24 @@ Age Group & \multicolumn{1}{c}{n} & \multicolumn{1}{c}{Boys}\\
 \hypertarget{participants-1}{%
 \subsubsection{Participants}\label{participants-1}}
 
-Fifty-seven children (23 boys) ages 5- to 11-years-old were recruited in predominantly SK neighborhoods in Yarinacocha (Nueva Era and Bena Jema) and in Bawanisho, a native community settled along the Ucayali River, more than 500 kilometers southeast of Pucallpa. Recruitment occurred either through direct contact with interested parents or through their local school.
+Fifty-seven children (23 boys) ages 5-11 were recruited in predominantly SK neighborhoods in Yarinacocha (Nueva Era and Bena Jema) and in Bawanisho, a native community settled along the Ucayali River, more than 500 kilometers southeast of Pucallpa. Recruitment occurred either through direct contact with interested parents or through their local school. If recruited via school, consent for participation had to be given by both teacher and parent. Outside of the school environment, consent was given by the parent.
 
 \hypertarget{materials-and-procedure-1}{%
 \subsubsection{Materials and procedure}\label{materials-and-procedure-1}}
 
-Based on the findings of Study 1, we chose 8 color chips from our original set of 330 to serve as prototypical instances of major SK color terms. These color chips were blue (WCS n°1), green (n°234), red (n°245), white (n°274), yellow (n°297), black (n°312), greenish-yellow (WCS n°320), and purple (WCS n°325). Study 2 was conducted entirely in SK and participants were explicitly instructed to give responses in SK as opposed to Spanish. In the production and comprehension tasks, children sat at a table across from the experimenter with color chips arranged between them. The production task was always performed before the comprehension task.
+Based on the findings of Study 1, we chose 8 color chips from our original set of 330 to serve as prototypical instances of major SK color terms. These color chips were blue (WCS n°1), green (n°234), red (n°245), white (n°274), yellow (n°297), black (n°312), greenish-yellow (WCS n°320), and purple (WCS n°325). Study 2 was conducted entirely in SK and participants were explicitly instructed to give responses in SK as opposed to Spanish. In the production and comprehension tasks, children sat at a table across from the experimenter with color chips arranged between them. The production task was always performed before the comprehension task. All administrations were video recorded.
 
 \hypertarget{production-task}{%
 \subsubsection{Production task}\label{production-task}}
 
-Similar to Study 1, the experimenter introduced the participant to the general procedure and the goals of the study. The experimenter would then ask: ``What is the color of this chip?'' As in Study 1, we used follow-up questions to elicit a basic level term when the child's initial response was not one. In a departure from Study 1, we were more explicit in soliciting an SK-language response. When a participant provided a Spanish-language term, the experimenter would record their response but further ask: ``What is the name of this color in SK?'' If a participant could not respond with an SK term, the experimenter would not ask further questions and would move forward to the next chip. As a result, some children only produced SK non-basic level terms or Spanish-language terms for particular chips.
+Similar to Study 1, the experimenter introduced the participant to the general procedure and the goals of the study. The experimenter would then ask: ``What is the color of this chip?''. As in Study 1, we used follow-up questions to elicit a basic level term when the child's initial response was not one. In a departure from Study 1, we were more explicit in soliciting an SK-language response. When a participant provided a Spanish-language term, the experimenter would record their response but further ask: ``What is the name of this color in SK?'' If a participant could not respond with an SK term, the experimenter would not ask further questions and would move forward to the next chip. As a result, some children only produced SK non-basic level terms or Spanish-language terms for particular chips.
 
 \hypertarget{comprehension-task}{%
 \subsubsection{Comprehension task}\label{comprehension-task}}
 
-The comprehension task had a notably different procedure compared to the preceding production task. We tested the comprehension of 9 SK color terms. The choice of these terms was based on common responses given by adult participants in Study 1. The color term prompts included basic level terms: ``yankon'' (green/blue), ``joshin'' (red), ``panshin'' (yellow), ``joxo'' (white/light), ``wiso'' (black/dark). We also included non-basic but prominent terms as prompts which were ``nai'' (sky or sky blue), and ``barin poi'' (greenish-yellow, meaning the Sun´s excrement, also used to refer to an alga) and two dyads of non-basic terms: ``pei'' (leaf) and ``xo'' (unripe) to represent the color green, along with ``ami'' (a type of tree used to dye fabrics) and ``pua'' (sachapapa, a tuber) to represent purple. Children sat at a table across from the experimenter with the 8 color chips of the production task displayed between them. The experimenter asked: ``Can you give me the {[}\emph{color term}{]} chip?'' Participants chose one of the 8 chips and their response was recorded.
+The comprehension task had a notably different procedure compared to the preceding production task. We tested the comprehension of 9 SK color terms. The choice of these terms was based on common responses given by adult participants in Study 1. The color term prompts included basic level terms: ``yankon'' (green/blue), ``joshin'' (red), ``panshin'' (yellow), ``joxo'' (white/light), ``wiso'' (black/dark). We also included non-basic but prominent terms as prompts which were ``nai'' (sky or sky blue), and ``barin poi'' (greenish-yellow, meaning the Sun´s excrement, also used to refer to an alga) and two dyads of non-basic terms: ``pei'' (leaf) and ``xo'' (unripe) to represent the color green, along with ``ami'' (a type of tree used to dye fabrics) and ``pua'' (sachapapa, a tuber) to represent purple. Children sat at a table across from the experimenter with the 8 color chips of the production task displayed between them. The experimenter asked: ``Can you give me the {[}color term{]} chip?''. Participants chose one of the 8 chips and their response was recorded.
 
-Our findings from Study 1 suggested that color terms varied in their degrees of specificity. For example, ``wiso'' best describes a narrow range of very dark to black. By contrast, ``yankon'' could encompass blue, green, greenish-yellow, and purple; ``joshin'' could describe red, purple, and orange; ``pei'' or ``xo'' could describe green or greenish-yellow. In cases where a term could apply to multiple chips (i.e., ``yankon''), the chip selected first would be removed from the table, leaving 7 remaining chips. The experimenter would then ask: ``Can you give me another {[}\emph{color term}{]} chip?'' The participant would then pick another one of the 7 chips, have their response recorded, and so on. We prompted participants 4 times for ``yankon'' and 2 times each for ``joshin'' and ``pei''/``xo''; every other term only received a single prompt. Due to the inherent ambiguity in term-hue pairings, accuracy for a child participant was coded based on adult responses given during Study 1. If at least 15\% of adult participants in Study 1 associated a chip with a particular term, we coded a similar term-chip pairing from a child participant as correct. Some trials could have multiple pairings; in those cases, accuracy was scored as an average, rather than as dichotomous. For instance, if a child correctly chose 3 out of 4 chips for the ``yankon'' trial, instead of 1 (correct) or 0 (incorrect) they would receive a score of 0.75.
+Our findings from Study 1 suggested that color terms varied in their degrees of specificity. For example, ``wiso'' best describes a narrow range of very dark to black. By contrast, ``yankon'' could encompass blue, green, greenish-yellow, and purple; ``joshin'' could describe red, purple, and orange; ``pei'' or ``xo'' could describe green or greenish-yellow. In cases where a term could apply to multiple chips (i.e., ``yankon''), the chip selected first would be removed from the table, leaving 7 remaining chips. The experimenter would then ask: ``Can you give me another {[}color term{]} chip?'' The participant would then pick another one of the 7 chips, have their response recorded, and so on. We prompted participants 4 times for ``yankon'' and 2 times each for ``joshin'' and ``pei''/``xo''; every other term only received a single prompt. Due to the inherent ambiguity in term-hue pairings, accuracy for a child participant was coded based on adult responses given during Study 1. If at least 15\% of adult participants in Study 1 associated a chip with a particular term, we coded a similar term-chip pairing from a child participant as correct. Some trials could have multiple pairings; in those cases, accuracy was scored as an average, rather than as dichotomous. For instance, if a child correctly chose 3 out of 4 chips for the ``yankon'' trial, instead of 1 (correct) or 0 (incorrect) they would receive a score of 0.75.
 
 \begin{figure}
 \centering
@@ -405,7 +430,7 @@ While overall, production and comprehension accuracies were quite close, there w
 \hypertarget{age-of-acquisition}{%
 \subsubsection{Age of Acquisition}\label{age-of-acquisition}}
 
-Following Frank et al. (2021), we used the dichotomous responses given during the production task to predict the ``age of acquisition'' when at least half of SK children are predicted to properly label a particular chip. First, we split responses by the prompted chip for which each participant had a single entry. For each chip, we attempted to fit a generalized linear model by robust methods (Maechler et al., 2020) with the structure \texttt{accuracy\ of\ response\ {[}0\ or\ 1{]}\ \textasciitilde{}\ age}. The coefficients for age ranged from 0.33 (odds of success multiplied by \(\exp{(\hat{\beta})}\) = 1.40 with every added year of age) to 1.35 (odds multiplied by \(\exp{(\hat{\beta})}\) = 3.80). To find age of acquisition, we then predicted the probability of success for the range of participant ages, 5.40- to 11.70-years-old at increments of 0.05 years, and selected the earliest age at which the accuracy crossed 0.5.
+Following Frank et al. (2021), we used the dichotomous responses given during the production task to predict the ``age of acquisition'' when at least half of SK children are predicted to properly label a particular chip. First, we split responses by the prompted chip for which each participant had a single entry. For each chip, we attempted to fit a generalized linear model by robust methods using the \emph{robustbase} R package with the structure \texttt{accuracy\ of\ response\ {[}0\ or\ 1{]}\ \textasciitilde{}\ age} (Maechler et al., 2020). The coefficients for age ranged from 0.33 (odds of success multiplied by \(\exp{(\hat{\beta})}\) = 1.40 with every added year of age) to 1.35 (odds multiplied by \(\exp{(\hat{\beta})}\) = 3.80). To find age of acquisition, we then predicted the probability of success for the range of participant ages, 5- to 12 years at increments of 0.05 years, and selected the earliest age at which the accuracy crossed 0.5.
 
 Using this method, we predict that half of SK children first learn to label the ``joxo'' chip (white) at 5.4 years of age. This is followed by the ``wiso'' chip (black) at 5.5, the ``hoshin'' chip (red) at 6.2, the ``panshin'' chip (yellow) at 7.2, the ``yankon'' chip (green) at 7.8, the ``nai'' chip (sky-blue; ``yankon'' also accepted) at 9.4, and the ``yankon''/``panshin'' chip (greenish-yellow) at 9.5. The model for one chip (``purple'') did not predict that age of acquisition would have been met within our age range, with an estimated probability of 46\% of children successfully labelling at 11.5 years of age.\footnote{It is worth noting that in Study 1, adult participants used 7 different labels for this chip (\emph{ambi}, \emph{ami}, \emph{jimi}, \emph{joshin}, \emph{kari}, \emph{morado}, and \emph{yankon}), none of which were used more than 25\% of the time.}
 
@@ -414,7 +439,7 @@ Our predictions suggest that SK children obtain color term knowledge at notably 
 \hypertarget{language-switching}{%
 \subsubsection{Language switching}\label{language-switching}}
 
-Over a quarter (27\%) of all responses were given in Spanish, despite children being prompted solely in SK (i.e., labeling a \emph{panshin}-colored chip as ``amarillo''). The distribution of Spanish responses was non-random, with median use in 2/8 trials (\emph{IQR} = 0-5). We did not find a significant correlation between age and number of trials with Spanish-language responses throughout the production task (\(t(55) = -0.97\), \(p = .335\)).
+Over a quarter (27\%) of all responses were given in Spanish, despite children being prompted solely in SK (i.e., labeling a \emph{panshin}-colored chip as ``amarillo''). The distribution of Spanish responses was non-random, with median use in 2/8 trials (\emph{IQR} = 0-5 trials). We did not find a significant correlation between age and number of trials with Spanish-language responses throughout the production task (\(t(55) = -0.97\), \(p = .335\)).
 
 \begin{table}[tbp]
 
@@ -448,13 +473,12 @@ Chip ID & \multicolumn{1}{c}{Entropy} & \multicolumn{1}{c}{Study 2} & \multicolu
 
 \end{table}
 
-As a further exploratory analysis, we attempted to assess whether low naming consensus amongst adult SK speakers may be linked to children's naming strategies by quantifying naming entropy (following Gibson et al., 2017). We computed the naming entropy for each chip by computing the probabilities for each chip \(c\) to be named with a particular label \(l\) (\(p(l \mid c)\)) and then taking \(H(c) = -\sum_{l}{p(l\mid c) \log[p(l \mid c)]}\) (see entropy values by chip in Table \ref{tab:study1-entropy-table}).
-To assess the hypothesis that naming entropy in adults was related to Spanish use in children, we fit a GLMM to predict likelihood of switching languages from SK to Spanish (a binary variable) as a function of child age, entropy of the chip's naming distribution for adults in Study 1, and their interaction (as well as random effects of subject). Despite age not being very correlated with overall frequency of Spanish responses, within this model, we found a trending but ultimately non-significant trend of older children being less likely to respond in Spanish (\(\hat{\beta} = -0.44\), 95\% CI \([-0.96, 0.07]\), \(z = -1.69\), \(p = .092\)). Children were significantly more likely to respond in Spanish when presented with a chip with greater entropy (low naming consensus) among adult participants in Study 1 (\(\hat{\beta} = 1.70\), 95\% CI \([1.15, 2.24]\), \(z = 6.10\), \(p < .001\)). We found a marginal, but non-significant positive interaction between age and entropy (\(\hat{\beta} = 0.30\), 95\% CI \([-0.03, 0.62]\), \(z = 1.78\), \(p = .074\)), suggesting greater Spanish use from older children for chips with low adult agreement. Together these findings suggest that children rely on language-switching to describe chips which lack consensus among adults.
+As a further exploratory analysis, we attempted to assess whether low naming consensus amongst adult SK speakers may be linked to children's naming strategies by quantifying naming entropy (following Gibson et al., 2017). We computed the naming entropy for each chip by computing the probabilities for each chip \(c\) to be named with a particular label \(l\) (\(p(l \mid c)\)) and then taking \(H(c) = -\sum_{l}{p(l\mid c) \log[p(l \mid c)]}\) (see entropy values by chip in Table \ref{tab:study1-entropy-table}). To assess the hypothesis that naming entropy in adults was related to Spanish use in children, we fit a GLMM to predict likelihood of switching languages from SK to Spanish (a binary variable) as a function of child age, entropy of the chip's naming distribution for adults in Study 1, and their interaction (as well as random effects of subject). Despite age not being very correlated with overall frequency of Spanish responses, within this model, we found a trending but ultimately non-significant trend of older children being less likely to respond in Spanish (\(\hat{\beta} = -0.44\), 95\% CI \([-0.96, 0.07]\), \(z = -1.69\), \(p = .092\)). Children were significantly more likely to respond in Spanish when presented with a chip with greater entropy (low naming consensus) among adult participants in Study 1 (\(\hat{\beta} = 1.70\), 95\% CI \([1.15, 2.24]\), \(z = 6.10\), \(p < .001\)). We found a marginal, but non-significant positive interaction between age and entropy (\(\hat{\beta} = 0.30\), 95\% CI \([-0.03, 0.62]\), \(z = 1.78\), \(p = .074\)), suggesting greater Spanish use from older children for chips with low adult agreement. Together these findings suggest that children rely on language-switching to describe chips which lack consensus among adults.
 
 \hypertarget{overextensions}{%
 \subsubsection{Overextensions}\label{overextensions}}
 
-One reason to use Spanish would be if children fail to recall the proper SK color term but do know the proper mapping in Spanish. But another possibility is that children may have more imprecise representations and choose to respond with a same-language but adjacent color term (i.e., labeling a \emph{panshin}-colored chip as ``joshin''). Following Wagner et al. (2013), we aggregated across color chips and examined the pattern of children's first responses, categorizing them as same-language, adjacent, and different-language. We used a GLMM to assess whether calculated word entropy and age were associated with frequency of adjacent responses. We predicted the outcome using fixed effects of age in years (centered) and entropy, with random effects of participant. We found that younger children were more likely to respond with SK-language adjacent terms (\(\hat{\beta} = -0.96\), 95\% CI \([-1.58, -0.34]\), \(z = -3.02\), \(p = .002\)) but chip entropy did not predict this strategy (\(\hat{\beta} = -1.38\), 95\% CI \([-3.06, 0.29]\), \(z = -1.62\), \(p = .106\)). Further, coefficients in this model were almost identical to the coefficient for strict scoring, confirming the impression that these overextensions were relatively rare compared to the use of Spanish terms.
+One reason to use Spanish would be if children fail to recall the proper SK color term but do know the proper mapping in Spanish. But another possibility is that children may have more imprecise representations and choose to respond with a same-language but adjacent color term (i.e., labeling a \emph{panshin}-colored chip as ``joshin''). Following Wagner et al. (2013), we aggregated across color chips and examined the pattern of children's first responses, categorizing them as same-language, adjacent, and different-language. We used a GLMM to assess whether calculated word entropy and age were associated with frequency of adjacent responses. We predicted the outcome using fixed effects of age in years (centered) and entropy, with random intercepts by participant. We found that younger children were more likely to respond with SK-language adjacent terms (\(\hat{\beta} = -0.96\), 95\% CI \([-1.58, -0.34]\), \(z = -3.02\), \(p = .002\)) but chip entropy did not predict this strategy (\(\hat{\beta} = -1.38\), 95\% CI \([-3.06, 0.29]\), \(z = -1.62\), \(p = .106\)). Further, coefficients in this model were almost identical to the coefficient for strict scoring, confirming the impression that these overextensions were relatively rare compared to the use of Spanish terms.
 
 \hypertarget{study-3}{%
 \section{Study 3}\label{study-3}}
@@ -467,7 +491,7 @@ Noting the apparent strategy of language switching from SK to Spanish seen in St
 \hypertarget{participants-2}{%
 \subsubsection{Participants}\label{participants-2}}
 
-We recruited a separate sample of 46 children (16 boys) ages 5- to 11-years-old from the neighborhood of Bena Jema in Yarinacocha and from Bawanisho. Recruitment occurred either through interested parents or a local school.
+We recruited a separate sample of 46 children (16 boys) ages 5-11 from the neighborhood of Bena Jema in Yarinacocha and from Bawanisho. Recruitment occurred either through interested parents or a local school. As in Study 2, we received consent from parents and, if in a school environment, teachers as well.
 
 \hypertarget{materials-and-procedure-2}{%
 \subsubsection{Materials and procedure}\label{materials-and-procedure-2}}
@@ -491,18 +515,18 @@ The procedure was similar to that of Study 2. The experimenter would ask: Can yo
 
 As in Study 2, we observed age-related changes in color term accuracy for both production and comprehension. Aggregate results are visualized in Figure \ref{fig:study23-accuracy}. To assess these, we again fit GLMMs for both production and comprehension tasks with an identical structure to Study 2. Age was a significant predictor of accuracy in the comprehension task (\(\hat{\beta} = 0.63\), 95\% CI \([0.21, 1.06]\), \(z = 2.90\), \(p = .004\)), but the age effect weakened in the production task (\(\hat{\beta} = 0.33\), 95\% CI \([-0.06, 0.72]\), \(z = 1.65\), \(p = .098\), see Figure \ref{fig:study23-accuracy}).
 
-Like Study 2, over a quarter (30\%) of all responses were given in SK, despite being prompted to respond in Spanish. There was significant variation in language-switching with some children responding solely in Spanish while others responded in SK for upwards of 9/11 trials (\emph{Mdn} = 5 trials, \emph{IQR} = 1.25-6). We found only a marginal correlation between age and accuracy (\(t(44) = 1.91\), \(p = .063\)) and no significant correlation between age and language-switching (\(t(44) = 0.44\), \(p = .663\)).
+Like Study 2, over a quarter (30\%) of all responses were given in SK. While participants were reminded to give responses in Spanish, their initial consent/assent was conducted in SK which could have predisposed some participants to respond in SK. There was significant variation in language-switching with some children responding solely in Spanish while others responded in SK for upwards of 9/11 trials (\emph{Mdn} = 5 trials, \emph{IQR} = 1.25-6). We found only a marginal correlation between age and accuracy (\(t(44) = 1.91\), \(p = .063\)) and no significant correlation between age and language-switching (\(t(44) = 0.44\), \(p = .663\)).
 
 To assess our hypothesis that older children would have more Spanish-language exposure and color term knowledge, we included age as a predictor in our GLMM assessing the effect of adult color naming entropy on likelihood to switch languages from Spanish to SK, similar to the one we fit for Study 2. This model did not show a significant interaction between age and adult color naming entropy (\(\hat{\beta} = -0.27\), 95\% CI \([-0.63, 0.09]\), \(z = -1.49\), \(p = .137\)), however one without the interaction term did show an entropy effect (\(\hat{\beta} = -1.49\), 95\% CI \([-2.07, -0.92]\), \(z = -5.10\), \(p < .001\)), tending to respond in SK for low-entropy items (those that were presumably more prototypical for the SK words). There was no significant effect of age (\(\hat{\beta} = -0.02\), 95\% CI \([-0.49, 0.45]\), \(z = -0.08\), \(p = .939\)). Across studies, it appears that children preferred to respond in SK when presented with a chip for which adults had high consensus about the SK label, and in Spanish for low-consensus chips.
 
 Similar to Study 2, we adopted alternative scoring to accommodate language-switching from Spanish to SK (different-language) and adjacent same-language responses. We used a GLMM identical to that of Study 2 in order to assess whether changes in scoring criteria were associated with significant changes in task performance for production. Age was again a weaker predictor for production accuracy even with this more lenient scoring (\(\hat{\beta} = 0.25\), 95\% CI \([-0.07, 0.58]\), \(z = 1.53\), \(p = .126\)), in concordance with earlier analyses. However, we did find that participants had greater accuracy when we included SK responses (\(\hat{\beta} = 1.76\), 95\% CI \([1.43, 2.08]\), \(z = 10.46\), \(p < .001\)) or adjacent same-language responses (\(\hat{\beta} = 0.51\), 95\% CI \([0.20, 0.81]\), \(z = 3.27\), \(p = .001\)). In sum, we find frequent use of language switching in both Studies 2 and 3, but only Study 3 exhibits significant use of same-language but adjacent terms.
 
-We speculate that early, informal Spanish language exposure can explain the discrepancies seen in Studies 2 and 3. With limited knowledge of Spanish color terms, children may spontaneously supplement their color term knowledge with Spanish terms during SK-language Study 2 but struggle to succeed in a more systematic evaluation in Study 3. More generally, we see children relying on a mixture of strategies to communicate colors even in the absence of mastery in either language.
+We speculate that early, informal Spanish language exposure can explain the discrepancies seen in Studies 2 and 3. With limited knowledge of Spanish color terms, children may spontaneously refer to their Spanish color term knowledge during SK-language Study 2 but struggle to succeed in a more systematic evaluation in Study 3. More generally, we see children relying on a mixture of strategies to communicate colors even in the absence of mastery in either language.
 
 \hypertarget{general-discussion}{%
 \section{General Discussion}\label{general-discussion}}
 
-In three studies, we mapped the color vocabulary of the Shipibo-Konibo (SK) language and used these data to study the development of color vocabulary in SK children growing up in a bilingual environment. This effort fills a gap in studies of color word development in non-WEIRD cultures and more generally parallels other efforts to use methods from language development to study populations that are under-represented in developmental science (Fortier et al., under review; e.g., Piantadosi et al., 2014).
+In three studies, we mapped the color vocabulary of the Shipibo-Konibo (SK) language and used these data to study the development of color vocabulary in SK children growing up in a bilingual environment. This effort contributes to filling the gap in studies of color word development in non-WEIRD cultures by analyzing the case of a bilingual population involving an Amazonian language and Spanish, and more generally parallels other efforts to use methods from language development to study populations that are under-represented in developmental science (Fortier et al., under review; e.g., Piantadosi et al., 2014).
 
 With respect to the adult data, we found that the SK color vocabulary was relatively unchanged over the generations since the original WCS. Several interesting observations emerged, however. First, consistent with our review of the prior literature, there was substantial use of non-basic color terms (including both ad hoc and luminance-based terms). These terms were used more often in SK than in Spanish, supporting the idea that Amazonian languages may make greater use of ad hoc color terms (at least in naming tasks) than Spanish (Everett, 2005). Our data do not speak to whether this use is due to a desire to succeed on specific experimental tasks or whether it is comparable to use in naturalistic contexts. Nevertheless our findings are reminiscent of a suggestion by Levinson (2000) that even purported basic level terms in Yélî Dnye did not fully span hue space and were often supplemented creatively with ad hoc terms.
 
@@ -523,7 +547,7 @@ Going beyond convenience populations in experimental research with children is a
 \hypertarget{ethics-approvals-and-consent}{%
 \section{Ethics approvals and consent}\label{ethics-approvals-and-consent}}
 
-Our protocol for Studies 1, 2, and 3 received ethical approval from the Pontificia Universidad Católica del Perú's institutional review board. We received consent from adult participants in Study 1. In Studies 2 and 3, we received consent from a parent and assent from the child participant regardless of recruitment location. For child participants recruited within a school, we received additional consent from a supervising teacher.
+Our protocol for Studies 1, 2, and 3 received ethical approval from the Pontificia Universidad Católica del Perú's institutional review board. We chose to use a short consent form was used based on advice that many SK participants would be unfamiliar with the consent process. Before recruitment, we received approval from the community authorities for each site which was contingent on their conversations with other community members during weekly meetings. {[}XXX: how did MF identify potential participants XXX After that, the researcher probed people to see if they were interested in participating; potential participants were at this time orally informed about the compensation, the duration of the study, that participation was completely voluntary and that they could terminate it at any point. If after this they were still willing to participate, a date was agreed for testing.{]} We received consent from adult participants in Study 1. In Studies 2 and 3, we received consent from a parent and assent from the participant. For child participants recruited within a school, we received additional consent from the supervising teacher. As all sessions were video recorded, participant consent and assent {[}XXX as assent always verbal?{]} varied based on the participant's literacy and comfort. Adults who were relatively literate were asked to given written consent, which involved giving a signature. In cases where the participant had difficulty understanding the consent form or felt more comfortable with not having to write, participants gave oral consent which was documented by video.
 
 \hypertarget{authorship-and-contributorship-statement}{%
 \section{Authorship and contributorship statement}\label{authorship-and-contributorship-statement}}
@@ -577,133 +601,136 @@ We are especially grateful to Paul Kay for his assistance both conceptually and 
 
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
-\leavevmode\hypertarget{ref-aragon2016}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-aragon2016}{}}%
 Aragón, K. (2016). \emph{Color language and color categorization} (G. Paulsen, M. Uusküla, \& J. Brindle, Eds.). Cambridge Scholars.
 
-\leavevmode\hypertarget{ref-bartlett1977}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-bartlett1977}{}}%
 Bartlett, E. J. (1977). \emph{Semantic organization and reference: Acquisition of two aspects of the meaning of color terms}. Biennial Meeting of the Society for Research in Child Development.
 
-\leavevmode\hypertarget{ref-berlin1969}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-berlin1969}{}}%
 Berlin, B., \& Kay, P. (1969). \emph{Basic color terms: Their universality and evolution}. University of California Press.
 
-\leavevmode\hypertarget{ref-bornstein1985}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-bornstein1985}{}}%
 Bornstein, M. H. (1985). On the development of color naming in young children: Data and theory. \emph{Brain and Language}, \emph{26}(1), 72--93.
 
-\leavevmode\hypertarget{ref-bornstein2015}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-bornstein2015}{}}%
 Bornstein, M. H. (2015). Emergence and early development of color vision and color perception. In \emph{Handbook of {C}olor {P}sychology}. Cambridge University Press.
 
-\leavevmode\hypertarget{ref-bornstein1976}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-bornstein1976}{}}%
 Bornstein, M. H., Kessen, W., \& Weiskopf, S. (1976). Color vision and hue categorization in young human infants. \emph{Journal of Experimental Psychology: Human Perception and Performance}, \emph{2}(1), 115--129.
 
-\leavevmode\hypertarget{ref-chater2010}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-chater2010}{}}%
 Chater, N., \& Christiansen, M. H. (2010). Language acquisition meets language evolution. \emph{Cognitive Science}, \emph{34}(7), 1131--1157.
 
-\leavevmode\hypertarget{ref-clark1973}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-clark1973}{}}%
 Clark, E. V. (1973). \emph{Cognitive development and acquisition of language} (pp. 65--110). Academic Press.
 
-\leavevmode\hypertarget{ref-clark1987}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-clark1987}{}}%
 Clark, E. V. (1987). \emph{Mechanisms of language acquisition} (B. MacWhinney, Ed.; pp. 1--33). Psychology Press.
 
-\leavevmode\hypertarget{ref-clark2009}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-clark2009}{}}%
 Clark, E. V. (2009). \emph{First language acquisition}. Cambridge University Press.
 
-\leavevmode\hypertarget{ref-culbertson2012}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-culbertson2012}{}}%
 Culbertson, J., Smolensky, P., \& Legendre, G. (2012). Learning biases predict a word order universal. \emph{Cognition}, \emph{122}(3), 306--329.
 
-\leavevmode\hypertarget{ref-everett2005}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-everett2005}{}}%
 Everett, D. L. (2005). Cultural constraints on grammar and cognition in pirah{ã} another look at the design features of human language. \emph{Current Anthropology}, \emph{46}(4), 621--646.
 
-\leavevmode\hypertarget{ref-forbes2019}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-forbes2019}{}}%
 Forbes, S. H., \& Plunkett, K. (2019). Infants show early comprehension of basic color words. \emph{Developmental Psychology}, \emph{55}(2), 240.
 
-\leavevmode\hypertarget{ref-forbes2020}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-forbes2020}{}}%
 Forbes, S. H., \& Plunkett, K. (2020). Linguistic and cultural variation in early color word learning. \emph{Child Development}, \emph{91}(1), 28--42.
 
-\leavevmode\hypertarget{ref-fortierunderreview}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-fortierunderreview}{}}%
 Fortier, M., Kellier, D., Fernández Flecha, M., \& Frank, M. C. (under review). \emph{Ad-hoc pragmatic implicatures among {S}hipibo-{K}onibo children in the {P}eruvian {A}mazon}.
 
-\leavevmode\hypertarget{ref-frank2020}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-frank2020}{}}%
 Frank, M. C., Braginsky, M., Yurovsky, D., \& Marchman, V. A. (2021). \emph{Variability and consistency in early language learning: The wordbank project}. MIT Press.
 
-\leavevmode\hypertarget{ref-frank2014}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-frank2014}{}}%
 Frank, M. C., \& Goodman, N. D. (2014). Inferring word meanings by assuming that speakers are informative. \emph{Cognitive Psychology}, \emph{75}, 80--96.
 
-\leavevmode\hypertarget{ref-franklin2005}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-franklin2005}{}}%
 Franklin, A., Pilling, M., \& Davies, I. (2005). The nature of infant color categorization: Evidence from eye movements on a target detection task. \emph{Journal of Experimental Child Psychology}, \emph{91}(3), 227--248.
 
-\leavevmode\hypertarget{ref-gibson2017}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-gibson2017}{}}%
 Gibson, E., Futrell, R., Jara-Ettinger, J., Mahowald, K., Bergen, L., Ratnasingam, S., Gibson, M., Piantadosi, S. T., \& Conway, B. (2017). Color naming across languages reflects color use. \emph{Proceedings of the National Academy of Sciences}, \emph{114}(40), 10785--10790.
 
-\leavevmode\hypertarget{ref-henrich2010}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-henrich2010}{}}%
 Henrich, J., Heine, S. J., \& Norenzayan, A. (2010). The weirdest people in the world? \emph{Behavioral and Brain Sciences}, \emph{33}(2-3), 61--83.
 
-\leavevmode\hypertarget{ref-berlin2009}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-berlin2009}{}}%
 Kay, P., Berlin, B., Maffin, L., Merrifield, W. R., \& Cook, R. (2009). \emph{The world color survey}. Center for the Study of Language; Information.
 
-\leavevmode\hypertarget{ref-kristol1980}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-kristol1980}{}}%
 Kristol, A. M. (1980). Color systems in southern italy: A case of regression. \emph{Language}, \emph{56}(1), 137--145.
 
-\leavevmode\hypertarget{ref-lathrap1970}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-lathrap1970}{}}%
 Lathrap, D. W. (1970). \emph{The {U}pper {A}mazon}. Thames; Hudson.
 
-\leavevmode\hypertarget{ref-levinson2000}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-levinson2000}{}}%
 Levinson, S. C. (2000). Yélî dnye and the theory of basic color terms. \emph{Journal of Linguistic Anthropology}, \emph{10}(1), 3--55.
 
-\leavevmode\hypertarget{ref-lillo2018}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-lillo2018}{}}%
 Lillo, J., González-Perilli, F., Prado-León, L., Melnikova, A., Álvaro, L., Collado, J. A., \& Moreira, H. (2018). Basic color terms (BCTs) and categories (BCCs) in three dialects of the {S}panish language: Interaction between cultural and universal factors. \emph{Frontiers in Psychology}, \emph{9}.
 
-\leavevmode\hypertarget{ref-R-robustbase}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-R-robustbase}{}}%
 Maechler, M., Rousseeuw, P., Croux, C., Todorov, V., Ruckstuhl, A., Salibian-Barrera, M., Verbeke, T., Koller, M., Conceicao, E. L. T., \& Anna di Palma, M. (2020). \emph{Robustbase: Basic robust statistics} (R package version 0.93-6).
 
-\leavevmode\hypertarget{ref-monroy1989}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-monroy1989}{}}%
 Monroy, M., \& Custodio, S. (1989). Algunos usos de los t{é}rminos del color en el espa{ñ}ol de {C}olombia {[}some uses of color terms in {C}olombian {S}panish{]}. \emph{Thesaurus: Bolet{í}n Del Instituto Caro y Cuervo}, \emph{44}(2), 441--450.
 
-\leavevmode\hypertarget{ref-morin1973}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-morin1973}{}}%
 Morin, E. (1973). \emph{Le paradigme perdu: La nature humaine {[}the lost paradigm: The human nature{]}}. {É}ditions du Seuil.
 
-\leavevmode\hypertarget{ref-Myers1974}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Myers1974}{}}%
 Myers, T. P. (1974). {S}panish contacts and social change on the {U}cayali {R}iver, {P}eru. \emph{Ethnohistory}, \emph{21}(2), 135--137.
 
-\leavevmode\hypertarget{ref-myslin2015}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-myslin2015}{}}%
 Myslin, M., \& Levy, R. (2015). Code-switching and predictability of meaning in discourse. \emph{Language}, \emph{91}(4), 871--905.
 
-\leavevmode\hypertarget{ref-nielson2017}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-nielson2017}{}}%
 Nielsen, M., Haun, D., Kärtner, J., \& Legare, C. H. (2017). The persistent sampling bias in developmental psychology: A call to action. \emph{Journal of Experimental Child Psychology}, \emph{162}, 31--38.
 
-\leavevmode\hypertarget{ref-piantadosi2014}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-piantadosi2014}{}}%
 Piantadosi, S. T., Jara‐Ettinger, J., \& Gibson, E. (2014). Children's learning of number words in an indigenous farming‐foraging group. \emph{Developmental Science}, \emph{17}(4), 553--563.
 
-\leavevmode\hypertarget{ref-regier2007}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-regier2007}{}}%
 Regier, T., Kay, P., \& Khetarpal, N. (2007). Color naming reflects optimal partitions of color space. \emph{Proceedings of the National Academy of Sciences}, \emph{104}(4), 1436--1441.
 
-\leavevmode\hypertarget{ref-saji2015}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-saji2015}{}}%
 Saji, N., Asano, M., Oishi, M., \& Imai, M. (2015). How do children construct the color lexicon?: Restructuring the domain as a connected system. \emph{CogSci}.
 
-\leavevmode\hypertarget{ref-sandhofer1999}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-sandhofer1999}{}}%
 Sandhofer, C. M., \& Smith, L. B. (1999). Learning color words involves learning a system of mappings. \emph{Developmental Psychology}, \emph{35}(3), 668--679.
 
-\leavevmode\hypertarget{ref-sedivy2003}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-sedivy2003}{}}%
 Sedivy, J. C. (2003). Pragmatic versus form-based accounts of referential contrast: Evidence for effects of informativity expectations. \emph{Journal of Psycholinguistic Research}, \emph{32}(1), 3--23.
 
-\leavevmode\hypertarget{ref-stclair2016}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-Shin2017}{}}%
+Shin, S. J. (2017). \emph{Bilingualism in schools and society: Language, identity, and policy} (2nd ed.). Routledge. \url{https://doi.org/10.4324/9781315535579}
+
+\leavevmode\vadjust pre{\hypertarget{ref-stclair2016}{}}%
 St. Clair, K. (2016). \emph{The secret lives of colour}. John Murray.
 
-\leavevmode\hypertarget{ref-surralles2016}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-surralles2016}{}}%
 Surrallés, A. (2016). On contrastive perception and ineffability: Assessing sensory experience without colour terms in an amazonian society. \emph{Journal of the Royal Anthropological Institute}, \emph{22}(4), 962--979.
 
-\leavevmode\hypertarget{ref-tournon2002}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-tournon2002}{}}%
 Tournon, J. (2002). \emph{La merma m{á}gica: Vida e historia de los {S}hipibo-{C}onibo del {U}cayali {[}the magic reduction: Life and history of the {U}cayali {S}hipibo-{C}onibo{]}}. Centro Amaz{ó}nico de Antropolog{í}a y Aplicaci{ó}n.
 
-\leavevmode\hypertarget{ref-wagner2013}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-wagner2013}{}}%
 Wagner, K., Dobkins, K., \& Barner, D. (2013). Slow mapping: Color word learning as a gradual inductive process. \emph{Cognition}, \emph{127}, 307--317.
 
-\leavevmode\hypertarget{ref-wagner2018}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-wagner2018}{}}%
 Wagner, K., Jergens, J., \& Barner, D. (2018). Partial color word comprehension precedes production. \emph{Language Learning and Development}, \emph{14}(4), 241--261.
 
-\leavevmode\hypertarget{ref-yurovsky2015}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-yurovsky2015}{}}%
 Yurovsky, D., Wagner, K., Barner, D., \& Frank, M. C. (2015). Signatures of domain-general categorization mechanisms in color word learning. \emph{Proceedings of the 37th Annual Conference of the Cognitive Science Society}.
 
-\leavevmode\hypertarget{ref-zaslavsky2018}{}%
+\leavevmode\vadjust pre{\hypertarget{ref-zaslavsky2018}{}}%
 Zaslavsky, N., Kemp, C., Tishby, N., \& Regier, T. (2018). \emph{Color naming reflects both perceptual structure and communicative need} (Vols. 1250--1255). Proceedings of the 40th Annual Conference of the Cognitive Science Society.
 
 \end{CSLReferences}
