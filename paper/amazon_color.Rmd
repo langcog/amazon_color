@@ -1364,8 +1364,8 @@ study2_task_compare_plot <- study2_task_compare  %>%
   ggplot(., aes(
     x = age_interval, y = mean, group = task, 
     col = task, fill=task, ymin=lower,ymax=upper)) +
-  geom_linerange(position = position_dodge(width = .2)) +
-  geom_line(size=1.2, position = position_dodge(width = .2)) + 
+  geom_linerange(position = position_dodge(width = .1)) +
+  geom_line(size=1.2, position = position_dodge(width = .1)) + 
   geom_point(aes(y=prop_correct)) +
   facet_wrap(~ prompt, scales = "free") +
   ggthemes::scale_color_ptol() +
