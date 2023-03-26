@@ -36,7 +36,7 @@ abstract: |
 
   
 keywords          : "Shipibo-Konibo; Vocabulary development; Color; Bilingualism"
-wordcount         : "11206"
+wordcount         : "10824"
 
 bibliography      : ["r-references.bib"]
 csl               : "apa.csl"
@@ -154,8 +154,6 @@ The Shipibo-Konibo people are an indigenous group located within the Peruvian Am
 The SK are an interesting group to examine from the perspective of color word learning. Although their cultural experience is quite different from the English-speaking WEIRD populations who have been the focus of color word acquisition studies, they are not an isolated hunter-gatherer group. Because of their location on the Ucayali River, one of the main tributaries of the Amazon, the SK culture has always been enmeshed in rich trading networks involving other indigenous groups of the Andes and the Lowlands (in pre-conquest times) as well as Mestizos and Westerners [in post-conquest times\;  @lathrap1970]. It would thus be mistaken to think of this culture as an "isolated" or "preserved" one. On the contrary, having been extensively exposed to numerous influences, the SK culture has been constantly reworking and reshaping itself through the centuries. The first deep transformation in Shipibo-Konibo culture can be traced to the 18th century, when Shipibos, Konibos and Shetebos were forced to live together by Franciscan evangelization [@Myers1974]. Later, the second half of the 20th century was characterized by intense contact with the Spanish-speaking Mestizo populations established along the Ucayali River. As a result, today’s SK culture straddles two worlds: children grow up in a traditional culture but with some exposure to formal education (where both Spanish and SK are used by teachers in a formal setting) and -- critically -- some of the manufactured, colored plastic goods that have been argued to create a context for easily disambiguating between rich color vocabulary terms [@gibson2017].^[Access to manufactured goods varies across SK villages based in part on how close they are to Pucallpa, the regional capital.]
 
 Regarding formal education, SK children start attending school when they are 6 or 7 years old, although some children may enroll later on. Boys are more likely to complete the 11 years of basic education than girls. Education is intercultural and bilingual, at least in theory, with some variation occurring in practice, and most classrooms tend to be multi-grade, so children from different school grades may gather together. How they spend time outside school is influenced by gender too: girls usually help with chores around the house, as well as taking care of younger siblings and also working in the “chacra” (small farmland plot where vegetables are grown for the family), while boys also help in the “chacra” but are generally free to move around.
-
-The SK are an interesting group to examine from the perspective of color word learning. Although their cultural experience is quite different from the English-speaking WEIRD populations who have been the focus of color word acquisition studies, they are not an isolated hunter-gatherer group. Because of their location on the Ucayali River, one of the main tributaries of the Amazon, the SK culture has always been enmeshed in rich trading networks involving other indigenous groups of the Andes and the Lowlands (in pre-conquest times) as well as Mestizos and Westerners [in post-conquest times\; @lathrap1970]. It would thus be mistaken to think of this culture as an “isolated” or “preserved” one. On the contrary, having been extensively exposed to numerous influences, the SK culture has been constantly reworkinged and reshapinged itself through the centuries. The first deep transformation in Shipibo-Konibo culture can be traced to the 18th century, when Shipibos, Konibos and Shetebos were forced to live together by Franciscan evangelization [@Myers1974]. Later, the second half of the 20th century was characterized by intense contact with the Spanish-speaking Mestizo populations established along the Ucayali River. As a result, today’s SK culture straddles two worlds: children grow up in a traditional culture but with some exposure to formal education (where both Spanish and SK are used by teachers in a formal setting) and -- critically -- some of the manufactured, colored plastic goods that have been argued to create a context for easily disambiguating between and need for rich color vocabulary terms [@gibson2017].^[Access to manufactured goods varies across SK villages based in part on how close they are to Pucallpa, the regional capital.]
 
 Further, the SK are heavily bilingual. To our knowledge, relatively little work has looked at effects of bilingualism on color word learning. Yet, with much of the world’s population growing up multilingual [@Shin2017], it is important to characterize how learners navigate a conceptual space where they may have words that appropriately name a target concept, but in a different language.
 
@@ -1333,9 +1331,9 @@ We begin by presenting general results from both the production and comprehensio
 
 To quantify these trends, we fit generalized linear mixed-effects models (GLMMs) with a binomial link function using the *lme4* R package [@R-lme4]. These models predicted accuracy for both production and comprehension tasks with fixed effects of age in years (centered), random slopes of age for each color, and random intercepts for each color and participant. When these models failed to converge, we removed random slopes. We found highly significant age effects for both production (`r apa_print(study2_firstprod_same)$full_result$age_years_c`) and comprehension (`r apa_print(study2_overallcomp_same)$full_result$age_years_c`).^[Coefficients $\beta$ denote log odds change associated with a predictor; *z*-values are derived from the coefficients and the estimated standard error.] Most children in our study knew some SK color words, but few except some of the oldest children knew all of them.
 
-<!-- TODO: Check line sizes--> 
+<!-- TODO: Add binomial confidence intervals--> 
 
-```{r study2-task-compare-plot, fig.cap = "Production and comprehension data for selected color chips, plotted by age group."}
+```{r study2-task-compare-plot, fig.cap = "Production and comprehension data for selected color chips, plotted by age group. Points show the raw average for a 2-year age group. Lines and error bars represent the 95% confidence intervals"}
 
 
 study2_task_compare <- study23_firstprod %>%
@@ -1351,18 +1349,30 @@ study2_task_compare <- study23_firstprod %>%
                     `Ami/Poa - n°325` = c("Morado")))
 
 study2_task_compare_plot <- study2_task_compare  %>%
-  group_by(age_interval, task, prompt, spanish) %>%
-  summarise(correct = mean(score),
-            n = n(),
-            .groups = 'drop') %>%
-  ggplot(., aes(x = age_interval, y = correct, group = task, col = task)) +
-  geom_line(size=1.2) + 
-  geom_point() + 
+    group_by(age_interval, task, prompt, spanish) %>%
+    summarise(
+        prop_correct = mean(score),
+        n_total = n(),
+        n_correct = sum(score),
+        .groups = 'drop') %>% 
+  group_by(task, prompt) %>% 
+  group_split() %>% 
+  map_dfr(~{.x %>% 
+      mutate(binom = binom::binom.bayes(.x$n_correct, .x$n_total)) %>% 
+      unnest(binom) %>% 
+      select(-c("x","n", "method","shape1","shape2"))}) %>%
+  ggplot(., aes(
+    x = age_interval, y = mean, group = task, 
+    col = task, fill=task, ymin=lower,ymax=upper)) +
+  geom_linerange(position = position_dodge(width = .2)) +
+  geom_line(size=1.2, position = position_dodge(width = .2)) + 
+  geom_point(aes(y=prop_correct)) +
   facet_wrap(~ prompt, scales = "free") +
   ggthemes::scale_color_ptol() +
+  ggthemes::scale_fill_ptol() +
   scale_x_continuous(limits = c(4.5,11.5), breaks = 5:11) +
   scale_y_continuous(limits = c(-0.1,1.1), breaks = seq(0,1,0.5)) +
-  labs(x = "Age", y = "Proportion of Correct Responses", colour = "Task") +
+  labs(x = "Age", y = "Proportion of prop_correct Responses", colour = "Task") +
   papaja::theme_apa() +
   theme(legend.position = "bottom") 
 
@@ -1471,7 +1481,7 @@ Going beyond convenience populations in experimental research with children is a
 
 # Ethics approvals and consent
 
-Our protocol for Studies 1, 2, and 3 received ethical approval from the Pontificia Universidad Católica del Perú’s institutional review board. We chose to use a short consent form was used based on advice that many SK participants would be unfamiliar with the consent process. Before recruitment, we received approval from the community authorities for each site which was contingent on their conversations with other community members during weekly meetings. MF recruited participants based on both recommendations from community authorities and also through directly approaching community members. He then orally informed potential participants of the overall study tasks and duration, compensation, and that participation was entirely voluntary and could stop at any time. If community members were still interested, they scheduled a later time to participate. At the beginning of each session, we received consent from adult participants in Study 1 and parental consent and participant assent for Studies 2 and 3. For child participants recruited within a school, we received additional consent from the supervising teacher. As all sessions were video recorded, participant consent varied based on the participant's literacy and comfort. Adults who were relatively literate were asked to give written consent, which involved giving a signature. In cases where the participant had difficulty understanding the consent form or felt more comfortable with not having to write, participants gave oral consent which was documented by video. Child assent was always obtained verbally.
+Our protocol for Studies 1, 2, and 3 received ethical approval from the Pontificia Universidad Católica del Perú’s institutional review board. We chose to use a short consent form based on advice that many SK participants would be unfamiliar with the consent process. Before recruitment, we received approval from the community authorities for each site which was contingent on their conversations with other community members during weekly meetings. MF recruited participants based on both recommendations from community authorities and also through directly approaching community members. He then orally informed potential participants of the overall study tasks and duration, compensation, and that participation was entirely voluntary and could stop at any time. If community members were still interested, they scheduled a later time to participate. At the beginning of each session, we received consent from adult participants in Study 1 and parental consent and participant assent for Studies 2 and 3. For child participants recruited within a school, we received additional consent from the supervising teacher. As all sessions were video recorded, participant consent varied based on the participant's literacy and comfort. Adults who were relatively literate were asked to give written consent, which involved giving a signature. In cases where the participant had difficulty understanding the consent form or felt more comfortable with not having to write, participants gave oral consent which was documented by video. Child assent was always obtained verbally.
 
 
 
